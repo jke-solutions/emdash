@@ -31,25 +31,11 @@ jobs:
       id-token: write
       pull-requests: write
     steps:
-      - name: Generate token
-        id: app-token
-        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-          # changesets/action pushes release commits/tags and opens the
-          # release PR (contents + pull-requests). npm publish auth is the
-          # separate NODE_AUTH_TOKEN; OIDC provenance is the job's id-token.
-          permission-contents: write
-          permission-pull-requests: write
-
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
-          token: ${{ steps.app-token.outputs.token }}
-          # Intentional: changesets/action pushes the release PR / tags
-          # using this credential.
+          token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
 
       - name: Setup pnpm
@@ -81,7 +67,7 @@ jobs:
           commit: "ci: release"
           title: "ci: release"
         env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Attach sandboxed-plugin tarballs to the releases changesets just
       # created, so the decentralized registry has a stable public URL to
@@ -93,7 +79,7 @@ jobs:
         if: ${{ steps.changesets.outputs.published == 'true' }}
         run: node .github/scripts/attach-plugin-tarballs.mjs
         env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
 
@@ -101,17 +87,3 @@ jobs:
         if: ${{ inputs.publish-only }}
         run: node .github/scripts/release.mjs publish
 
-  sync-templates:
-    name: Sync Templates
-    needs: release
-    if: >-
-      needs.release.outputs.published == 'true' ||
-      inputs.publish-only
-    permissions:
-      contents: read
-    uses: ./.github/workflows/sync-templates.yml
-    # Pass only the secrets sync-templates actually uses, not the full set
-    # available to this release workflow.
-    secrets:
-      APP_ID: ${{ secrets.APP_ID }}
-      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
