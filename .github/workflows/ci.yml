@@ -14,6 +14,47 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
+  changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      source: ${{ steps.diff.outputs.source }}
+      core: ${{ steps.diff.outputs.core }}
+      admin: ${{ steps.diff.outputs.admin }}
+      e2e: ${{ steps.diff.outputs.e2e }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - id: diff
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          files=$(git diff --name-only "$BASE_SHA" "$GITHUB_SHA")
+          echo "Changed files:"
+          echo "$files"
+
+          has_match() {
+            printf '%s\n' "$files" | grep -Eq "$1"
+          }
+
+          source=false
+          core=false
+          admin=false
+          e2e=false
+
+          if has_match '^(packages/|scripts/|templates/|demos/|tests/|playwright\.config|vitest\.)'; then source=true; fi
+          if has_match '^(packages/core/|packages/auth/|packages/blocks/|packages/plugin-types/|packages/plugins/|packages/registry-)'; then core=true; fi
+          if has_match '^packages/admin/'; then admin=true; fi
+          if has_match '^(tests/e2e/|playwright\.config|demos/|packages/admin/|packages/core/src/astro/)'; then e2e=true; fi
+
+          echo "source=$source" >> "$GITHUB_OUTPUT"
+          echo "core=$core" >> "$GITHUB_OUTPUT"
+          echo "admin=$admin" >> "$GITHUB_OUTPUT"
+          echo "e2e=$e2e" >> "$GITHUB_OUTPUT"
+
   typecheck:
     name: Typecheck
     runs-on: ubuntu-latest
@@ -94,7 +135,8 @@ jobs:
 
   test:
     name: Tests
-    if: ${{ github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main' }}
+    if: ${{ (needs.changes.outputs.source == 'true' && (github.event_name != 'pull_request' || (github.head_ref != 'changeset-release/main' && github.head_ref != 'staging'))) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
@@ -134,7 +176,8 @@ jobs:
 
   test-smoke:
     name: Smoke Tests
-    if: ${{ github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main' }}
+    if: ${{ (needs.changes.outputs.core == 'true' && (github.event_name != 'pull_request' || (github.head_ref != 'changeset-release/main' && github.head_ref != 'staging'))) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 30
     services:
@@ -166,7 +209,8 @@ jobs:
 
   test-integration:
     name: Integration Tests
-    if: ${{ github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main' }}
+    if: ${{ (needs.changes.outputs.core == 'true' && (github.event_name != 'pull_request' || (github.head_ref != 'changeset-release/main' && github.head_ref != 'staging'))) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -183,7 +227,8 @@ jobs:
 
   test-browser:
     name: Browser Tests
-    if: ${{ github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main' }}
+    if: ${{ (needs.changes.outputs.admin == 'true' && (github.event_name != 'pull_request' || (github.head_ref != 'changeset-release/main' && github.head_ref != 'staging'))) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -208,8 +253,8 @@ jobs:
 
   test-e2e-rollup:
     name: E2E Tests
-    if: ${{ always() && (github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main') }}
-    needs: [test-e2e]
+    if: ${{ always() && needs.changes.outputs.e2e == 'true' && (github.event_name != 'pull_request' || (github.head_ref != 'changeset-release/main' && github.head_ref != 'staging')) }}
+    needs: [changes, test-e2e]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -222,7 +267,8 @@ jobs:
 
   test-e2e:
     name: E2E tests (${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
-    if: ${{ github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main' }}
+    if: ${{ (needs.changes.outputs.e2e == 'true' && (github.event_name != 'pull_request' || (github.head_ref != 'changeset-release/main' && github.head_ref != 'staging'))) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -260,7 +306,8 @@ jobs:
 
   test-e2e-cloudflare:
     name: E2E Cloudflare (${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
-    if: ${{ github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main' }}
+    if: ${{ (needs.changes.outputs.e2e == 'true' && (github.event_name != 'pull_request' || (github.head_ref != 'changeset-release/main' && github.head_ref != 'staging'))) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 25
     strategy:
