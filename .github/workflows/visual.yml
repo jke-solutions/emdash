@@ -32,6 +32,7 @@ permissions:
 jobs:
   measure:
     name: Measure
+    if: ${{ github.head_ref != 'staging' && github.head_ref != 'changeset-release/main' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
