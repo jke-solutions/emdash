@@ -4,31 +4,19 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      publish-only:
-        description: "Skip versioning, just publish current versions"
-        type: boolean
-        default: false
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 # Default-deny at the workflow level. Each job scopes its own permissions:
-# - `release` declares contents/id-token/pull-requests below.
-# - `sync-templates` calls a reusable workflow whose own job-level
-#   permissions block (contents: read) takes precedence over the caller's
-#   inherited permissions.
+# - `release` declares contents/pull-requests below.
 permissions: {}
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    outputs:
-      published: ${{ steps.changesets.outputs.published }}
     permissions:
       contents: write
-      id-token: write
       pull-requests: write
     steps:
       - name: Checkout
@@ -46,24 +34,18 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
-          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm build
-
       - name: Block 1.x releases (we are in 0.x)
         run: node .github/scripts/check-no-major.mjs
 
-      - name: Create Release Pull Request or Publish
-        if: ${{ !inputs.publish-only }}
+      - name: Create Version Pull Request
         id: changesets
         uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
           version: node .github/scripts/release.mjs version
-          publish: node .github/scripts/release.mjs publish
           commit: "ci: release"
           title: "ci: release"
         env:
