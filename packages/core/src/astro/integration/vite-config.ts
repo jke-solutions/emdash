@@ -80,6 +80,8 @@ function linguiMacroPlugin(adminSourcePath: string, adminDistPath: string): Plug
 	// Resolve @babel/core from admin's devDependencies, not core's.
 	const adminRequire = createRequire(resolve(adminDistPath, "index.js"));
 	const babelCorePath = adminRequire.resolve("@babel/core");
+	const adminSourceUrlPath = `/@fs/${adminSourcePath.replaceAll("\\", "/")}`;
+	const isAdminSourceId = (id: string) => id.startsWith(adminSourcePath) || id.startsWith(adminSourceUrlPath);
 
 	return {
 		name: "emdash-lingui-macro",
@@ -88,14 +90,14 @@ function linguiMacroPlugin(adminSourcePath: string, adminDistPath: string): Plug
 			// Redirect relative locale catalog imports (e.g. ./de/messages.mjs) from
 			// within admin source to the compiled dist/locales/ directory, since
 			// lingui compile only runs during build — not in dev watch mode.
-			if (!importer?.startsWith(adminSourcePath)) return;
+			if (!importer || !isAdminSourceId(importer)) return;
 			const match = id.match(LOCALE_MESSAGES_RE);
 			if (match?.[1]) {
 				return resolve(adminDistPath, "locales", match[1], "messages.mjs");
 			}
 		},
 		async transform(code, id) {
-			if (!id.startsWith(adminSourcePath) || !code.includes("@lingui")) return;
+			if (!isAdminSourceId(id) || !code.includes("@lingui")) return;
 			const { transformAsync } = (await import(babelCorePath)) as typeof import("@babel/core");
 			const result = await transformAsync(code, {
 				filename: id,
@@ -390,8 +392,8 @@ export function createViteConfig(
 	const isDev = command === "dev";
 	const projectRoot = fileURLToPath(options.astroConfig.root);
 
-	const adminSourcePath = isDev ? resolveAdminSource(projectRoot) : undefined;
-	const useSource = adminSourcePath !== undefined;
+	const useSource = isDev && process.env.EMDASH_ADMIN_SOURCE === "1";
+	const adminSourcePath = useSource ? resolveAdminSource(projectRoot) : undefined;
 	const useSyncExternalStoreShimPath = resolveIntegrationShim("use-sync-external-store.js");
 	const useSyncExternalStoreWithSelectorShimPath = resolveIntegrationShim(
 		"use-sync-external-store-with-selector.js",
@@ -404,7 +406,7 @@ export function createViteConfig(
 			__EMDASH_VERSION__: JSON.stringify(VERSION),
 			__EMDASH_COMMIT__: JSON.stringify(COMMIT),
 			__EMDASH_PSEUDO_LOCALE__: JSON.stringify(
-				isDev && process.env["EMDASH_PSEUDO_LOCALE"] === "1",
+				isDev && typeof process !== "undefined" && process.env?.EMDASH_PSEUDO_LOCALE === "1",
 			),
 		},
 		resolve: {
