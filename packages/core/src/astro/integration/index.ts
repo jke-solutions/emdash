@@ -441,6 +441,7 @@ export function emdash(config: EmDashConfig = {}): AstroIntegration {
 		siteUrl: resolvedConfig.siteUrl,
 		trustedProxyHeaders: resolvedConfig.trustedProxyHeaders,
 		maxUploadSize: resolvedConfig.maxUploadSize,
+		storageQuota: resolvedConfig.storageQuota,
 		admin: resolvedConfig.admin,
 		toolbar: resolvedConfig.toolbar,
 	};

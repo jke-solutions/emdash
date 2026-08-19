@@ -43,6 +43,21 @@ export interface MediaItem {
 	meta?: Record<string, unknown>;
 }
 
+export interface MediaStorageQuota {
+	enabled: boolean;
+	usedBytes?: number;
+	quotaBytes?: number;
+	remainingBytes?: number;
+}
+
+export async function fetchMediaStorageQuota(): Promise<MediaStorageQuota> {
+	const response = await apiFetch(`${API_BASE}/media/quota`);
+	return parseApiResponse<MediaStorageQuota>(
+		response,
+		i18n._(msg`Failed to fetch media storage quota`),
+	);
+}
+
 /**
  * Fetch media list
  */

@@ -411,6 +411,12 @@ export interface EmDashConfig {
 	maxUploadSize?: number;
 
 	/**
+	 * Maximum total media storage in bytes. This is code-only configuration;
+	 * it is never exposed as an editable site setting.
+	 */
+	storageQuota?: number;
+
+	/**
 	 * Public browser-facing origin for the site.
 	 *
 	 * Use when `Astro.url` / `request.url` do not match what users open — common with a

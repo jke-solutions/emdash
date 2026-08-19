@@ -79,6 +79,7 @@ import {
 	deleteContent,
 	fetchTranslations,
 	fetchMediaList,
+	fetchMediaStorageQuota,
 	uploadMedia,
 	fetchCollections,
 	fetchCollection,
@@ -428,7 +429,6 @@ function ContentListPage() {
 			getNextPageParam: (lastPage) => lastPage.nextCursor,
 			enabled: !!manifest,
 		});
-
 	// Fetch trashed items
 	const { data: trashedData, isLoading: isTrashedLoading } = useQuery({
 		queryKey: ["content", collection, "trash"],
@@ -1387,6 +1387,10 @@ function MediaPage() {
 			initialPageParam: undefined as string | undefined,
 			getNextPageParam: (lastPage) => lastPage.nextCursor,
 		});
+	const { data: storageQuota } = useQuery({
+		queryKey: ["media-storage-quota"],
+		queryFn: fetchMediaStorageQuota,
+	});
 
 	const uploadMutation = useMutation({
 		mutationFn: (file: File) => uploadMedia(file),
@@ -1406,6 +1410,7 @@ function MediaPage() {
 	return (
 		<MediaLibrary
 			items={items}
+			storageQuota={storageQuota}
 			isLoading={isLoading || isFetchingNextPage}
 			hasMore={!!hasNextPage}
 			onLoadMore={() => void fetchNextPage()}
