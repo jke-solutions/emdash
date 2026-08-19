@@ -23,6 +23,7 @@ export default defineConfig({
 				directory: "./uploads",
 				baseUrl: "/_emdash/api/media/file",
 			}),
+			storageQuota: 1024 * 1024 * 1024,
 			plugins: [auditLog, mcpSmokePlugin()],
 		}),
 	],

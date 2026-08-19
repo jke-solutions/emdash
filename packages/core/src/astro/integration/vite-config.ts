@@ -392,8 +392,8 @@ export function createViteConfig(
 	const isDev = command === "dev";
 	const projectRoot = fileURLToPath(options.astroConfig.root);
 
-	const useSource = isDev && process.env.EMDASH_ADMIN_SOURCE === "1";
-	const adminSourcePath = useSource ? resolveAdminSource(projectRoot) : undefined;
+	const adminSourcePath = isDev ? resolveAdminSource(projectRoot) : undefined;
+	const useSource = isDev && Boolean(adminSourcePath) && process.env.EMDASH_ADMIN_SOURCE !== "0";
 	const useSyncExternalStoreShimPath = resolveIntegrationShim("use-sync-external-store.js");
 	const useSyncExternalStoreWithSelectorShimPath = resolveIntegrationShim(
 		"use-sync-external-store-with-selector.js",

@@ -204,6 +204,11 @@ export function injectCoreRoutes(
 	});
 
 	injectRoute({
+		pattern: "/_emdash/api/media/quota",
+		entrypoint: resolveRoute("api/media/quota.ts"),
+	});
+
+	injectRoute({
 		pattern: "/_emdash/api/media/file/[...key]",
 		entrypoint: resolveRoute("api/media/file/[...key].ts"),
 	});

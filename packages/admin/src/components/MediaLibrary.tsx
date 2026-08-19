@@ -22,6 +22,7 @@ import {
 	fetchProviderMedia,
 	uploadToProvider,
 } from "../lib/api";
+import type { MediaStorageQuota } from "../lib/api/media";
 import { useDebouncedValue } from "../lib/hooks.js";
 import {
 	providerItemToMediaItem,
@@ -64,6 +65,7 @@ export interface MediaLibraryProps {
 	onLocalSearchChange?: (q: string) => void;
 	/** Called with the MIME filter for the local library (undefined = all types). */
 	onLocalMimeFilterChange?: (mimeType: string | string[] | undefined) => void;
+	storageQuota?: MediaStorageQuota;
 }
 
 /**
@@ -78,6 +80,7 @@ export function MediaLibrary({
 	onLoadMore,
 	onLocalSearchChange,
 	onLocalMimeFilterChange,
+	storageQuota,
 }: MediaLibraryProps) {
 	const { t } = useLingui();
 	const [viewMode, setViewMode] = React.useState<"grid" | "list">("grid");
@@ -368,6 +371,35 @@ export function MediaLibrary({
 					)}
 				</div>
 			</div>
+			{storageQuota?.enabled && (
+				<div className="space-y-2 rounded-lg border border-kumo-line p-3">
+					<div className="flex items-center justify-between gap-3 text-sm">
+						<span className="font-medium">{t`Storage available`}</span>
+						<span className="text-kumo-subtle">
+							{formatFileSize(storageQuota.remainingBytes ?? 0)} {t`remaining`}
+						</span>
+					</div>
+					<div
+						role="progressbar"
+						aria-label={t`Media storage usage`}
+						aria-valuemin={0}
+						aria-valuemax={storageQuota.quotaBytes ?? 0}
+						aria-valuenow={Math.min(storageQuota.usedBytes ?? 0, storageQuota.quotaBytes ?? 0)}
+						className="h-2 overflow-hidden rounded-full bg-kumo-subtle/20"
+					>
+						<div
+							className="h-full rounded-full bg-kumo-brand"
+							style={{
+								width: `${Math.min(100, ((storageQuota.usedBytes ?? 0) / (storageQuota.quotaBytes ?? 1)) * 100)}%`,
+							}}
+						/>
+					</div>
+					<div className="text-xs text-kumo-subtle">
+						{formatFileSize(storageQuota.usedBytes ?? 0)} /{" "}
+						{formatFileSize(storageQuota.quotaBytes ?? 0)}
+					</div>
+				</div>
+			)}
 
 			{/* Provider tabs (only when an external provider is configured) */}
 			{providerTabs.length > 1 && (

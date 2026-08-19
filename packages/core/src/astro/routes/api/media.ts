@@ -13,6 +13,7 @@ import { ulid } from "ulidx";
 import { canReadMediaUsageCount, requirePerm } from "#api/authorize.js";
 import { apiError, apiSuccess, handleError, unwrapResult } from "#api/error.js";
 import { GLOBAL_UPLOAD_ALLOWLIST, resolveFieldAllowlist } from "#api/handlers/media-allowlist.js";
+import { getMediaStorageQuota } from "#api/handlers/media-quota.js";
 import { handleMediaUsageSummaries } from "#api/handlers/media-usage.js";
 import { isParseError, parseQuery } from "#api/parse.js";
 import { DEFAULT_MAX_UPLOAD_SIZE, formatFileSize, mediaListQuery } from "#api/schemas.js";
@@ -160,6 +161,17 @@ export const POST: APIRoute = async ({ request, locals }) => {
 			// Same content already exists - return existing item
 			const itemWithUrl = addUrlToMedia(existing);
 			return apiSuccess({ item: itemWithUrl, deduplicated: true });
+		}
+
+		const storageQuota = emdash.config.storageQuota;
+		if (storageQuota !== undefined) {
+			if (!Number.isFinite(storageQuota) || storageQuota <= 0) {
+				return apiError("CONFIGURATION_ERROR", "Invalid storageQuota configuration", 500);
+			}
+			const quota = await getMediaStorageQuota(emdash.db, storageQuota);
+			if (file.size > quota.remainingBytes) {
+				return apiError("STORAGE_QUOTA_EXCEEDED", "Storage quota exceeded", 413);
+			}
 		}
 
 		// Generate unique storage key

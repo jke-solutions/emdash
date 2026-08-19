@@ -1,7 +1,8 @@
 ---
-import { getEmDashEntry, decodeSlug } from "emdash";
+import { getEmDashEntry, getSeoMeta, decodeSlug, getSiteSettings } from "emdash";
 import { PortableText } from "emdash/ui";
 import Base from "../../layouts/Base.astro";
+import { resolveBlogSiteIdentity } from "../../utils/site-identity";
 
 const slug = decodeSlug(Astro.params.slug);
 
@@ -16,10 +17,37 @@ if (!page) {
 }
 
 Astro.cache.set(cacheHint);
+
+function getImageUrl(img: unknown): string | undefined {
+	if (!img || typeof img !== "object") return undefined;
+	const image = img as Record<string, unknown>;
+	if (typeof image.src === "string" && image.src) {
+		return image.src.startsWith("http") ? image.src : `${Astro.url.origin}${image.src}`;
+	}
+	const meta = image.meta as Record<string, unknown> | undefined;
+	const storageKey =
+		(typeof meta?.storageKey === "string" ? meta.storageKey : undefined) ||
+		(typeof image.id === "string" ? image.id : undefined);
+	return storageKey ? `${Astro.url.origin}/_emdash/api/media/file/${storageKey}` : undefined;
+}
+
+const { siteTitle } = resolveBlogSiteIdentity(await getSiteSettings());
+const pageData = page.data as typeof page.data & { featured_image?: unknown };
+const seo = getSeoMeta(page, {
+	siteTitle,
+	siteUrl: Astro.url.origin,
+	path: `/pages/${slug}`,
+	defaultOgImage: getImageUrl(pageData.featured_image),
+});
 ---
 
 <Base
-	title={page.data.title}
+	title={seo.title}
+	pageTitle={seo.ogTitle}
+	description={seo.description}
+	image={seo.ogImage}
+	canonical={seo.canonical}
+	robots={seo.robots}
 	content={{ collection: "pages", id: page.data.id, slug }}
 >
 	<article class="page-article">
