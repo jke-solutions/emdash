@@ -15,6 +15,7 @@ import { z } from "zod";
 
 import { assertMediaUsageActivationWriteAllowed } from "./api/media-usage-write-fence.js";
 import { validateRev } from "./api/rev.js";
+import { validateContentData } from "./api/handlers/validation.js";
 import type {
 	EmDashConfig,
 	PluginAdminPage,
@@ -2982,7 +2983,6 @@ export class EmDashRuntime {
 		// Validate against the collection schema. Hook output is validated
 		// rather than `body.data` so plugins that mutate field values can't
 		// sneak invalid data past.
-		const { validateContentData } = await import("./api/handlers/validation.js");
 		const validation = await validateContentData(this.db, collection, processedData, {
 			partial: false,
 		});
@@ -3081,7 +3081,6 @@ export class EmDashRuntime {
 
 			// Validate field-level shape BEFORE the draft-revision write so
 			// invalid updates can't silently land in revision history.
-			const { validateContentData } = await import("./api/handlers/validation.js");
 			const validation = await validateContentData(this.db, collection, processedData, {
 				partial: true,
 			});
