@@ -1,5 +1,13 @@
 # @emdash-cms/fixture-perf-site
 
+## 0.0.38
+
+### Patch Changes
+
+- Updated dependencies [[`340743b`](https://github.com/emdash-cms/emdash/commit/340743b3e9f7e79f3755fe612901f7ec3fd8efc6), [`0aa1bc8`](https://github.com/emdash-cms/emdash/commit/0aa1bc84a3a652b31ffb15cfd7c2d4b767b83e37), [`340743b`](https://github.com/emdash-cms/emdash/commit/340743b3e9f7e79f3755fe612901f7ec3fd8efc6), [`c0a4775`](https://github.com/emdash-cms/emdash/commit/c0a477543d7201782317caafcdd9314618cb19fa), [`34336e1`](https://github.com/emdash-cms/emdash/commit/34336e1570fe2ddaf063b0a0363a9132cf823b8b), [`34336e1`](https://github.com/emdash-cms/emdash/commit/34336e1570fe2ddaf063b0a0363a9132cf823b8b), [`34336e1`](https://github.com/emdash-cms/emdash/commit/34336e1570fe2ddaf063b0a0363a9132cf823b8b), [`50628fc`](https://github.com/emdash-cms/emdash/commit/50628fc99080ecf06a22a05379c24345c09dc5fd), [`da913fe`](https://github.com/emdash-cms/emdash/commit/da913fec6e69279c012c0ee753cb4764621adc3e), [`a9eb247`](https://github.com/emdash-cms/emdash/commit/a9eb2478a1f0c996f8fc126c201e14971ee42cea), [`34336e1`](https://github.com/emdash-cms/emdash/commit/34336e1570fe2ddaf063b0a0363a9132cf823b8b)]:
+  - @emdash-cms/cloudflare@0.35.0
+  - emdash@0.35.0
+
 ## 0.0.37
 
 ### Patch Changes
