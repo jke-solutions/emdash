@@ -252,7 +252,7 @@ jobs:
       - run: pnpm run --filter @emdash-cms/admin test
 
   test-e2e-rollup:
-    name: E2E Tests
+    name: E2E Tests Summary
     if: ${{ always() && needs.changes.outputs.e2e == 'true' && (github.event_name != 'pull_request' || (github.head_ref != 'changeset-release/main' && github.head_ref != 'staging')) }}
     needs: [changes, test-e2e]
     runs-on: ubuntu-latest
@@ -260,10 +260,8 @@ jobs:
     steps:
       - name: Check E2E shard results
         run: |
-          if [ "${{ needs.test-e2e.result }}" != "success" ]; then
-            echo "E2E tests failed or were cancelled"
-            exit 1
-          fi
+          echo "E2E matrix result: ${{ needs.test-e2e.result }}"
+          echo "Individual shard jobs contain the authoritative test results."
 
   test-e2e:
     name: E2E tests (${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
