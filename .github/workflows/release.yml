@@ -86,4 +86,3 @@ jobs:
       - name: Publish (manual)
         if: ${{ inputs.publish-only }}
         run: node .github/scripts/release.mjs publish
-
