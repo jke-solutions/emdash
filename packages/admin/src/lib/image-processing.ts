@@ -29,7 +29,7 @@ export const EDITABLE_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"] as
 const FILE_EXTENSION_PATTERN = /\.[^./\\]+$/;
 
 export function isEditableImage(file: File): boolean {
-	return EDITABLE_IMAGE_TYPES.includes(file.type as (typeof EDITABLE_IMAGE_TYPES)[number]);
+	return EDITABLE_IMAGE_TYPES.some((type) => type === file.type);
 }
 
 export function replaceFileExtension(filename: string, extension: string): string {
@@ -150,7 +150,11 @@ function canvasToBlob(canvas: HTMLCanvasElement): Promise<Blob> {
 	});
 }
 
-function getRotatedSize(width: number, height: number, rotation: number): { width: number; height: number } {
+function getRotatedSize(
+	width: number,
+	height: number,
+	rotation: number,
+): { width: number; height: number } {
 	const radians = (rotation * Math.PI) / 180;
 	return {
 		width: Math.abs(Math.cos(radians) * width) + Math.abs(Math.sin(radians) * height),

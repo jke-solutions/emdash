@@ -2,9 +2,9 @@ import { Button, Dialog, Input, Label, Loader, Select } from "@cloudflare/kumo";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
 import { ArrowClockwise, ArrowCounterClockwise } from "@phosphor-icons/react";
+import * as React from "react";
 import Cropper from "react-easy-crop";
 import type { Area } from "react-easy-crop";
-import * as React from "react";
 
 import {
 	EDITABLE_IMAGE_TYPES,
@@ -88,7 +88,9 @@ export function ImageEditor({
 	const handleOptimize = async (skipCrop = false) => {
 		if (!file) return;
 		if (!isEditableImage(file)) {
-			setError(t`This image format cannot be edited. Supported formats: ${EDITABLE_IMAGE_TYPES.join(", ")}.`);
+			setError(
+				t`This image format cannot be edited. Supported formats: ${EDITABLE_IMAGE_TYPES.join(", ")}.`,
+			);
 			return;
 		}
 
@@ -96,7 +98,7 @@ export function ImageEditor({
 		setError(null);
 		try {
 			const optimized = await optimizeImage(file, {
-				cropAreaPixels: skipCrop ? undefined : cropAreaPixels ?? undefined,
+				cropAreaPixels: skipCrop ? undefined : (cropAreaPixels ?? undefined),
 				rotation: skipCrop ? 0 : rotation,
 				maxSizeMB: optimization.maxSizeMB,
 				maxWidthOrHeight: optimization.maxWidthOrHeight,
@@ -155,7 +157,10 @@ export function ImageEditor({
 						{result && file && (
 							<div className="mt-3 grid gap-3 sm:grid-cols-2" aria-live="polite">
 								<ComparisonStat label={t`Original`} value={formatFileSize(file.size)} />
-								<ComparisonStat label={t`Optimized WebP`} value={formatFileSize(result.optimizedSize)} />
+								<ComparisonStat
+									label={t`Optimized WebP`}
+									value={formatFileSize(result.optimizedSize)}
+								/>
 							</div>
 						)}
 					</div>
@@ -165,121 +170,163 @@ export function ImageEditor({
 							<div className="rounded-md border border-kumo-line p-4">
 								<div className="text-sm font-medium">{t`Optimization settings`}</div>
 								<div className="mt-2 grid gap-2 text-sm text-kumo-subtle">
-									<div className="flex justify-between gap-3"><span>{t`Format`}</span><span className="font-medium text-kumo-default">WebP</span></div>
-									<div className="flex justify-between gap-3"><span>{t`Quality`}</span><span className="font-medium text-kumo-default">{Math.round(optimization.initialQuality * 100)}%</span></div>
-									<div className="flex justify-between gap-3"><span>{t`Maximum dimensions`}</span><span className="font-medium text-kumo-default">{optimization.maxWidthOrHeight}px</span></div>
-									<div className="flex justify-between gap-3"><span>{t`Maximum file size`}</span><span className="font-medium text-kumo-default">{optimization.maxSizeMB} MB</span></div>
+									<div className="flex justify-between gap-3">
+										<span>{t`Format`}</span>
+										<span className="font-medium text-kumo-default">WebP</span>
+									</div>
+									<div className="flex justify-between gap-3">
+										<span>{t`Quality`}</span>
+										<span className="font-medium text-kumo-default">
+											{Math.round(optimization.initialQuality * 100)}%
+										</span>
+									</div>
+									<div className="flex justify-between gap-3">
+										<span>{t`Maximum dimensions`}</span>
+										<span className="font-medium text-kumo-default">
+											{optimization.maxWidthOrHeight}px
+										</span>
+									</div>
+									<div className="flex justify-between gap-3">
+										<span>{t`Maximum file size`}</span>
+										<span className="font-medium text-kumo-default">
+											{optimization.maxSizeMB} MB
+										</span>
+									</div>
 								</div>
-								<Button type="button" variant="outline" size="sm" className="mt-4" onClick={resetResult}>
+								<Button
+									type="button"
+									variant="outline"
+									size="sm"
+									className="mt-4"
+									onClick={resetResult}
+								>
 									{t`Adjust optimization`}
 								</Button>
 							</div>
 						) : (
 							<>
-						<div>
-							<Label htmlFor="image-editor-aspect">{t`Aspect ratio`}</Label>
-							<Select
-								id="image-editor-aspect"
-								value={String(aspect)}
-								onValueChange={(value) => setAspect(value === "free" ? "free" : Number(value))}
-							>
-								{ASPECT_OPTIONS.map((option) => (
-									<Select.Option key={option.value} value={option.value}>
-										{t(option.label)}
-									</Select.Option>
-								))}
-							</Select>
-						</div>
+								<div>
+									<Label htmlFor="image-editor-aspect">{t`Aspect ratio`}</Label>
+									<Select
+										id="image-editor-aspect"
+										value={String(aspect)}
+										onValueChange={(value) => setAspect(value === "free" ? "free" : Number(value))}
+									>
+										{ASPECT_OPTIONS.map((option) => (
+											<Select.Option key={option.value} value={option.value}>
+												{t(option.label)}
+											</Select.Option>
+										))}
+									</Select>
+								</div>
 
-						<div>
-							<Label htmlFor="image-editor-zoom">
-								{t`Zoom:`} {zoom.toFixed(1)}x
-							</Label>
-							<input
-								id="image-editor-zoom"
-								type="range"
-								min="1"
-								max="5"
-								step="0.1"
-								value={zoom}
-								onChange={(event) => setZoom(Number(event.target.value))}
-								className="w-full"
-								aria-valuetext={t`${zoom.toFixed(1)} times`}
-							/>
-						</div>
+								<div>
+									<Label htmlFor="image-editor-zoom">
+										{t`Zoom:`} {zoom.toFixed(1)}x
+									</Label>
+									<input
+										id="image-editor-zoom"
+										type="range"
+										min="1"
+										max="5"
+										step="0.1"
+										value={zoom}
+										onChange={(event) => setZoom(Number(event.target.value))}
+										className="w-full"
+										aria-valuetext={t`${zoom.toFixed(1)} times`}
+									/>
+								</div>
 
-						<div>
-							<Label>
-								{t`Rotation:`} {rotation}°
-							</Label>
-							<div className="flex gap-2">
-								<Button
-									type="button"
-									variant="outline"
-									size="sm"
-									icon={<ArrowCounterClockwise />}
-									onClick={() => setRotation((value) => (value - 90 + 360) % 360)}
-								>
-									{t`Rotate left`}
-								</Button>
-								<Button
-									type="button"
-									variant="outline"
-									size="sm"
-									icon={<ArrowClockwise />}
-									onClick={() => setRotation((value) => (value + 90) % 360)}
-								>
-									{t`Rotate right`}
-								</Button>
-							</div>
-						</div>
+								<div>
+									<Label>
+										{t`Rotation:`} {rotation}°
+									</Label>
+									<div className="flex gap-2">
+										<Button
+											type="button"
+											variant="outline"
+											size="sm"
+											icon={<ArrowCounterClockwise />}
+											onClick={() => setRotation((value) => (value - 90 + 360) % 360)}
+										>
+											{t`Rotate left`}
+										</Button>
+										<Button
+											type="button"
+											variant="outline"
+											size="sm"
+											icon={<ArrowClockwise />}
+											onClick={() => setRotation((value) => (value + 90) % 360)}
+										>
+											{t`Rotate right`}
+										</Button>
+									</div>
+								</div>
 
-						<div className="rounded-md border border-kumo-line p-4">
-							<div className="text-sm font-medium">{t`Optimization settings`}</div>
-							<p className="mt-1 text-xs text-kumo-subtle">{t`Customize the WebP result for your website.`}</p>
+								<div className="rounded-md border border-kumo-line p-4">
+									<div className="text-sm font-medium">{t`Optimization settings`}</div>
+									<p className="mt-1 text-xs text-kumo-subtle">{t`Customize the WebP result for your website.`}</p>
 
-							<div className="mt-4">
-								<Label htmlFor="image-editor-quality">
-									{t`Quality:`} {Math.round(optimization.initialQuality * 100)}%
-								</Label>
-								<input
-									id="image-editor-quality"
-									type="range"
-									min="50"
-									max="100"
-									step="1"
-									value={Math.round(optimization.initialQuality * 100)}
-									onChange={(event) => setOptimization((current) => ({ ...current, initialQuality: Number(event.target.value) / 100 }))}
-									className="w-full"
-								/>
-							</div>
+									<div className="mt-4">
+										<Label htmlFor="image-editor-quality">
+											{t`Quality:`} {Math.round(optimization.initialQuality * 100)}%
+										</Label>
+										<input
+											id="image-editor-quality"
+											type="range"
+											min="50"
+											max="100"
+											step="1"
+											value={Math.round(optimization.initialQuality * 100)}
+											onChange={(event) =>
+												setOptimization((current) => ({
+													...current,
+													initialQuality: Number(event.target.value) / 100,
+												}))
+											}
+											className="w-full"
+										/>
+									</div>
 
-							<div className="mt-3">
-								<Label htmlFor="image-editor-max-dimension">{t`Maximum width or height`}</Label>
-								<Input
-									id="image-editor-max-dimension"
-									type="number"
-									min="320"
-									max="7680"
-									step="1"
-									value={optimization.maxWidthOrHeight}
-									onChange={(event) => setOptimization((current) => ({ ...current, maxWidthOrHeight: Math.min(7680, Math.max(320, Number(event.target.value) || 320)) }))}
-								/>
-							</div>
+									<div className="mt-3">
+										<Label htmlFor="image-editor-max-dimension">{t`Maximum width or height`}</Label>
+										<Input
+											id="image-editor-max-dimension"
+											type="number"
+											min="320"
+											max="7680"
+											step="1"
+											value={optimization.maxWidthOrHeight}
+											onChange={(event) =>
+												setOptimization((current) => ({
+													...current,
+													maxWidthOrHeight: Math.min(
+														7680,
+														Math.max(320, Number(event.target.value) || 320),
+													),
+												}))
+											}
+										/>
+									</div>
 
-							<div className="mt-3">
-								<Label htmlFor="image-editor-max-size">{t`Maximum file size (MB)`}</Label>
-								<Input
-									id="image-editor-max-size"
-									type="number"
-									min="0.1"
-									max="10"
-									step="0.1"
-									value={optimization.maxSizeMB}
-									onChange={(event) => setOptimization((current) => ({ ...current, maxSizeMB: Math.min(10, Math.max(0.1, Number(event.target.value) || 0.1)) }))}
-								/>
-							</div>
-						</div>
+									<div className="mt-3">
+										<Label htmlFor="image-editor-max-size">{t`Maximum file size (MB)`}</Label>
+										<Input
+											id="image-editor-max-size"
+											type="number"
+											min="0.1"
+											max="10"
+											step="0.1"
+											value={optimization.maxSizeMB}
+											onChange={(event) =>
+												setOptimization((current) => ({
+													...current,
+													maxSizeMB: Math.min(10, Math.max(0.1, Number(event.target.value) || 0.1)),
+												}))
+											}
+										/>
+									</div>
+								</div>
 							</>
 						)}
 					</div>
@@ -288,7 +335,12 @@ export function ImageEditor({
 				{error && <p className="mt-3 text-sm text-kumo-danger">{error}</p>}
 
 				<div className="mt-6 flex justify-end gap-2">
-					<Button type="button" variant="secondary" onClick={() => onOpenChange(false)} disabled={isProcessing}>
+					<Button
+						type="button"
+						variant="secondary"
+						onClick={() => onOpenChange(false)}
+						disabled={isProcessing}
+					>
 						{t`Cancel`}
 					</Button>
 					{result ? (
@@ -305,9 +357,13 @@ export function ImageEditor({
 							>
 								{t`Optimize only`}
 							</Button>
-							<Button type="button" onClick={() => void handleOptimize()} disabled={isProcessing || !file}>
-							{isProcessing && <Loader size="sm" />}
-							{isProcessing ? t`Processing...` : t`Preview optimization`}
+							<Button
+								type="button"
+								onClick={() => void handleOptimize()}
+								disabled={isProcessing || !file}
+							>
+								{isProcessing && <Loader size="sm" />}
+								{isProcessing ? t`Processing...` : t`Preview optimization`}
 							</Button>
 						</div>
 					)}

@@ -24,6 +24,7 @@ import {
 } from "../lib/api";
 import type { MediaStorageQuota } from "../lib/api/media";
 import { useDebouncedValue } from "../lib/hooks.js";
+import { isEditableImage } from "../lib/image-processing.js";
 import {
 	providerItemToMediaItem,
 	getFileIcon,
@@ -32,7 +33,6 @@ import {
 	fallbackToOriginalThumbnail,
 	MEDIA_THUMBNAIL_WIDTH,
 } from "../lib/media-utils";
-import { isEditableImage } from "../lib/image-processing.js";
 import { cn } from "../lib/utils";
 import { ImageEditor } from "./ImageEditor.js";
 import { MediaDetailPanel } from "./MediaDetailPanel";
