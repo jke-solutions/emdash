@@ -30,8 +30,8 @@ msgstr "（默认）"
 msgid " (opens in new window)"
 msgstr "（在新窗口中打开）"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:867
-#: packages/admin/src/components/MediaPickerModal.tsx:950
+#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid " (selected)"
 msgstr "（已选择）"
 
@@ -50,7 +50,7 @@ msgid ": use"
 msgstr "：使用"
 
 #. placeholder {0}: providers?.find((p) => p.id === selectedItem.providerId)?.name
-#: packages/admin/src/components/MediaPickerModal.tsx:798
+#: packages/admin/src/components/MediaPickerModal.tsx:806
 msgid "(from {0})"
 msgstr "（来自 {0}）"
 
@@ -116,13 +116,13 @@ msgid "{0, plural, one {# content item imported} other {# content items imported
 msgstr "{0, plural, one {# 个内容项已导入} other {# 个内容项已导入}}"
 
 #. placeholder {0}: selectedItems.length
-#: packages/admin/src/components/MediaPickerModal.tsx:787
+#: packages/admin/src/components/MediaPickerModal.tsx:795
 msgid "{0, plural, one {# item selected} other {# items selected}}"
 msgstr ""
 
 #. placeholder {0}: items.length
 #. placeholder {0}: menu.itemCount ?? 0
-#: packages/admin/src/components/MediaPickerModal.tsx:636
+#: packages/admin/src/components/MediaPickerModal.tsx:644
 #: packages/admin/src/components/MenuList.tsx:220
 msgid "{0, plural, one {# item} other {# items}}"
 msgstr "{0, plural, one {# 个项目} other {# 个项目}}"
@@ -304,6 +304,11 @@ msgstr "{0} 预览"
 msgid "{0} system + {1} custom {2}"
 msgstr "{0} 个系统 + {1} 个自定义 {2}"
 
+#. placeholder {0}: zoom.toFixed(1)
+#: packages/admin/src/components/ImageEditor.tsx:236
+msgid "{0} times"
+msgstr ""
+
 #. placeholder {0}: taxonomy.label
 #: packages/admin/src/components/TaxonomySidebar.tsx:411
 msgid "{0} updated"
@@ -317,8 +322,8 @@ msgstr "{0} 已更新至 v{1}"
 
 #. placeholder {0}: item.filename
 #. placeholder {1}: selected ? t` (selected)` : ""
-#: packages/admin/src/components/MediaPickerModal.tsx:867
-#: packages/admin/src/components/MediaPickerModal.tsx:950
+#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid "{0}{1}"
 msgstr "{0}{1}"
 
@@ -412,7 +417,7 @@ msgstr ""
 msgid "{readingTime, plural, one {# min read} other {# min read}}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:301
+#: packages/admin/src/components/MediaLibrary.tsx:292
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr ""
 
@@ -432,13 +437,11 @@ msgstr "{total, plural, one {# 个项目} other {# 个项目}}"
 msgid "{total, plural, one {# total} other {# total}}"
 msgstr "{total, plural, one {共 # 条} other {共 # 条}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:214
-#: packages/admin/src/components/MediaLibrary.tsx:250
+#: packages/admin/src/components/MediaLibrary.tsx:241
 msgid "{total, plural, one {File uploaded} other {# files uploaded}}"
 msgstr "{total, plural, one {文件已上传} other {# 个文件已上传}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:219
-#: packages/admin/src/components/MediaLibrary.tsx:255
+#: packages/admin/src/components/MediaLibrary.tsx:246
 msgid "{total, plural, one {Upload failed} other {All # uploads failed}}"
 msgstr "{total, plural, one {上传失败} other {全部 # 个上传失败}}"
 
@@ -458,8 +461,7 @@ msgstr "{unchangedCount, plural, one {隐藏 # 个未变更} other {隐藏 # 个
 msgid "{unchangedCount, plural, one {Show # unchanged} other {Show # unchanged}}"
 msgstr "{unchangedCount, plural, one {显示 # 个未变更} other {显示 # 个未变更}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:224
-#: packages/admin/src/components/MediaLibrary.tsx:260
+#: packages/admin/src/components/MediaLibrary.tsx:251
 msgid "{uploaded} uploaded, {failed} failed"
 msgstr "{uploaded} 个已上传，{failed} 个失败"
 
@@ -498,6 +500,10 @@ msgstr "← 返回"
 msgid "1 year"
 msgstr "1 年"
 
+#: packages/admin/src/components/ImageEditor.tsx:27
+msgid "1:1"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:1522
 msgid "1. Log into your WordPress admin"
 msgstr "1. 登录您的 WordPress 管理后台"
@@ -505,6 +511,10 @@ msgstr "1. 登录您的 WordPress 管理后台"
 #: packages/admin/src/components/WordPressImport.tsx:1275
 msgid "1. Log into your WordPress admin dashboard"
 msgstr "1. 登录您的 WordPress 管理后台"
+
+#: packages/admin/src/components/ImageEditor.tsx:29
+msgid "16:9"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1277
 msgid "2. Go to"
@@ -541,6 +551,10 @@ msgstr "307 临时（严格）"
 #: packages/admin/src/components/Redirects.tsx:159
 msgid "308 Permanent (Strict)"
 msgstr "308 永久（严格）"
+
+#: packages/admin/src/components/ImageEditor.tsx:28
+msgid "4:3"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1280
 msgid "4. Click \"Download Export File\""
@@ -816,6 +830,10 @@ msgstr "添加中..."
 msgid "Additional data to import."
 msgstr "要导入的其他数据。"
 
+#: packages/admin/src/components/ImageEditor.tsx:203
+msgid "Adjust optimization"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:1483
 msgid "admin"
 msgstr ""
@@ -916,7 +934,7 @@ msgstr "所有来源"
 msgid "All statuses"
 msgstr "所有状态"
 
-#: packages/admin/src/components/MediaLibrary.tsx:465
+#: packages/admin/src/components/MediaLibrary.tsx:455
 #: packages/admin/src/components/Redirects.tsx:432
 msgid "All types"
 msgstr "所有类型"
@@ -956,7 +974,7 @@ msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:376
 #: packages/admin/src/components/editor/ImageNode.tsx:231
-#: packages/admin/src/components/MediaLibrary.tsx:621
+#: packages/admin/src/components/MediaLibrary.tsx:611
 msgid "Alt text"
 msgstr "替代文本"
 
@@ -967,8 +985,8 @@ msgstr "替代文本"
 msgid "Alt Text"
 msgstr "替代文本"
 
-#: packages/admin/src/components/MediaLibrary.tsx:867
-#: packages/admin/src/components/MediaLibrary.tsx:924
+#: packages/admin/src/components/MediaLibrary.tsx:868
+#: packages/admin/src/components/MediaLibrary.tsx:925
 msgid "Alt text set"
 msgstr "替代文本已设置"
 
@@ -1131,6 +1149,10 @@ msgstr "您确定要删除此菜单吗？这也将删除所有菜单项。此操
 msgid "As an administrator, you can invite other users from the Users section."
 msgstr "作为管理员，您可以从\"用户\"部分邀请其他用户。"
 
+#: packages/admin/src/components/ImageEditor.tsx:209
+msgid "Aspect ratio"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:2456
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "将 WordPress 作者分配给 EmDash 用户。文章将归属于所选用户。"
@@ -1140,7 +1162,7 @@ msgid "Astro"
 msgstr "Astro"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:66
-#: packages/admin/src/components/MediaLibrary.tsx:468
+#: packages/admin/src/components/MediaLibrary.tsx:458
 msgid "Audio"
 msgstr "音频"
 
@@ -1238,7 +1260,7 @@ msgstr "自动保存失败"
 msgid "Available in {0}"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:710
+#: packages/admin/src/components/MediaPickerModal.tsx:718
 msgid "Available media"
 msgstr "可用媒体"
 
@@ -1455,8 +1477,9 @@ msgstr "可以查看内容"
 #: packages/admin/src/components/editor/ImageNode.tsx:253
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:406
 #: packages/admin/src/components/FieldEditor.tsx:678
+#: packages/admin/src/components/ImageEditor.tsx:344
 #: packages/admin/src/components/MediaDetailPanel.tsx:416
-#: packages/admin/src/components/MediaPickerModal.tsx:805
+#: packages/admin/src/components/MediaPickerModal.tsx:813
 #: packages/admin/src/components/MenuEditor.tsx:438
 #: packages/admin/src/components/MenuEditor.tsx:623
 #: packages/admin/src/components/MenuList.tsx:175
@@ -1489,7 +1512,7 @@ msgstr "取消重命名"
 msgid "Cannot delete theme sections"
 msgstr "无法删除主题区块"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:456
+#: packages/admin/src/components/MediaPickerModal.tsx:463
 msgid "Cannot determine MIME type from URL. Use a URL ending in a recognized image extension (e.g. .jpg, .png, .webp)."
 msgstr "无法从 URL 确定 MIME 类型。请使用以可识别的图片扩展名结尾的 URL（例如 .jpg、.png、.webp）。"
 
@@ -1616,13 +1639,13 @@ msgid "Clear"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:947
-#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:519
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
 msgstr "清除筛选"
 
-#: packages/admin/src/components/MediaLibrary.tsx:529
-#: packages/admin/src/components/MediaLibrary.tsx:553
+#: packages/admin/src/components/MediaLibrary.tsx:519
+#: packages/admin/src/components/MediaLibrary.tsx:543
 msgid "Clear search"
 msgstr ""
 
@@ -1659,9 +1682,9 @@ msgstr "点击邮件中的链接即可登录。"
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:449
 #: packages/admin/src/components/MediaDetailPanel.tsx:229
 #: packages/admin/src/components/MediaDetailPanel.tsx:416
-#: packages/admin/src/components/MediaPickerModal.tsx:529
-#: packages/admin/src/components/MediaPickerModal.tsx:535
-#: packages/admin/src/components/MediaPickerModal.tsx:539
+#: packages/admin/src/components/MediaPickerModal.tsx:537
+#: packages/admin/src/components/MediaPickerModal.tsx:543
+#: packages/admin/src/components/MediaPickerModal.tsx:547
 #: packages/admin/src/components/MenuEditor.tsx:400
 #: packages/admin/src/components/MenuEditor.tsx:406
 #: packages/admin/src/components/MenuEditor.tsx:410
@@ -1982,7 +2005,7 @@ msgstr ""
 msgid "Could not load dashboard data"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:486
+#: packages/admin/src/components/MediaPickerModal.tsx:493
 msgid "Could not load image from URL"
 msgstr "无法从 URL 加载图片"
 
@@ -2216,6 +2239,10 @@ msgstr "正在创建合集和字段..."
 msgid "Creating..."
 msgstr "创建中..."
 
+#: packages/admin/src/components/ImageEditor.tsx:129
+msgid "Crop and optimize this image before uploading it."
+msgstr ""
+
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:33
 msgid "CSS"
 msgstr "CSS"
@@ -2250,6 +2277,10 @@ msgstr "自定义区块"
 
 #: packages/admin/src/components/WordPressImport.tsx:1147
 msgid "Custom Taxonomies"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:268
+msgid "Customize the WebP result for your website."
 msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:223
@@ -2737,7 +2768,7 @@ msgid "Dockerfile"
 msgstr "Dockerfile"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:63
-#: packages/admin/src/components/MediaLibrary.tsx:469
+#: packages/admin/src/components/MediaLibrary.tsx:459
 msgid "Documents"
 msgstr "文档"
 
@@ -2937,6 +2968,10 @@ msgstr "编辑域名"
 #: packages/admin/src/components/FieldEditor.tsx:368
 msgid "Edit Field"
 msgstr "编辑字段"
+
+#: packages/admin/src/components/ImageEditor.tsx:127
+msgid "Edit image"
+msgstr ""
 
 #. placeholder {0}: index + 1
 #: packages/admin/src/components/editor/GalleryNode.tsx:178
@@ -3568,7 +3603,7 @@ msgstr "加载署名失败：{0}"
 msgid "Failed to load email settings"
 msgstr "加载邮件设置失败"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:465
+#: packages/admin/src/components/MediaPickerModal.tsx:472
 msgid "Failed to load image"
 msgstr "加载图片失败"
 
@@ -3895,9 +3930,13 @@ msgstr "文件 {0}"
 msgid "File from media library"
 msgstr "来自媒体库的文件"
 
+#: packages/admin/src/components/MediaLibrary.tsx:195
+msgid "File uploaded"
+msgstr ""
+
 #: packages/admin/src/components/MediaDetailPanel.tsx:325
 #: packages/admin/src/components/MediaDetailPanel.tsx:342
-#: packages/admin/src/components/MediaLibrary.tsx:618
+#: packages/admin/src/components/MediaLibrary.tsx:608
 msgid "Filename"
 msgstr "文件名"
 
@@ -3938,7 +3977,7 @@ msgstr "按来源筛选"
 msgid "Filter by status"
 msgstr "按状态筛选"
 
-#: packages/admin/src/components/MediaLibrary.tsx:471
+#: packages/admin/src/components/MediaLibrary.tsx:461
 #: packages/admin/src/components/Redirects.tsx:433
 msgid "Filter by type"
 msgstr "按类型筛选"
@@ -3962,6 +4001,14 @@ msgstr "如需完整导入（包括草稿和所有内容），请从 WordPress �
 #: packages/admin/src/components/WordPressImport.tsx:1207
 msgid "For the best import experience, install the"
 msgstr "为获得最佳导入体验，请安装"
+
+#: packages/admin/src/components/ImageEditor.tsx:174
+msgid "Format"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:26
+msgid "Free"
+msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:928
 msgid "From date"
@@ -4032,7 +4079,7 @@ msgstr "Google 验证"
 msgid "GraphQL"
 msgstr "GraphQL"
 
-#: packages/admin/src/components/MediaLibrary.tsx:492
+#: packages/admin/src/components/MediaLibrary.tsx:482
 msgid "Grid view"
 msgstr "网格视图"
 
@@ -4160,7 +4207,7 @@ msgstr ""
 msgid "https://example.com or /about"
 msgstr "https://example.com 或 /about"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:555
+#: packages/admin/src/components/MediaPickerModal.tsx:563
 msgid "https://example.com/image.jpg"
 msgstr "https://example.com/image.jpg"
 
@@ -4216,7 +4263,7 @@ msgstr "图片设置"
 msgid "Image shown when this page is shared on social media"
 msgstr "当此页面在社交媒体上分享时显示的图片"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:556
+#: packages/admin/src/components/MediaPickerModal.tsx:564
 msgid "Image URL"
 msgstr "图片 URL"
 
@@ -4226,7 +4273,7 @@ msgstr "图片 URL 已更新于"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:61
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:192
-#: packages/admin/src/components/MediaLibrary.tsx:466
+#: packages/admin/src/components/MediaLibrary.tsx:456
 msgid "Images"
 msgstr "图片"
 
@@ -4345,8 +4392,8 @@ msgstr "已索引"
 msgid "Inline Code"
 msgstr "行内代码"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:567
-#: packages/admin/src/components/MediaPickerModal.tsx:811
+#: packages/admin/src/components/MediaPickerModal.tsx:575
+#: packages/admin/src/components/MediaPickerModal.tsx:819
 msgid "Insert"
 msgstr "插入"
 
@@ -4396,7 +4443,7 @@ msgstr ""
 msgid "Insert block below"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:549
+#: packages/admin/src/components/MediaPickerModal.tsx:557
 msgid "Insert from URL"
 msgstr "从 URL 插入"
 
@@ -4661,11 +4708,11 @@ msgstr "不分配"
 msgid "Left"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:139
-#: packages/admin/src/components/MediaLibrary.tsx:276
-#: packages/admin/src/components/MediaLibrary.tsx:359
-#: packages/admin/src/components/MediaPickerModal.tsx:211
-#: packages/admin/src/components/MediaPickerModal.tsx:509
+#: packages/admin/src/components/MediaLibrary.tsx:142
+#: packages/admin/src/components/MediaLibrary.tsx:267
+#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaPickerModal.tsx:214
+#: packages/admin/src/components/MediaPickerModal.tsx:516
 msgid "Library"
 msgstr "库"
 
@@ -4714,7 +4761,7 @@ msgstr "LinkedIn"
 msgid "Links"
 msgstr "链接"
 
-#: packages/admin/src/components/MediaLibrary.tsx:501
+#: packages/admin/src/components/MediaLibrary.tsx:491
 msgid "List view"
 msgstr "列表视图"
 
@@ -4735,8 +4782,8 @@ msgstr "加载更多"
 
 #: packages/admin/src/components/ContentList.tsx:724
 #: packages/admin/src/components/ContentList.tsx:782
-#: packages/admin/src/components/MediaLibrary.tsx:667
-#: packages/admin/src/components/MediaPickerModal.tsx:775
+#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "加载更多"
@@ -4816,8 +4863,8 @@ msgstr "正在加载小部件..."
 #: packages/admin/src/components/ContentList.tsx:782
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
-#: packages/admin/src/components/MediaLibrary.tsx:667
-#: packages/admin/src/components/MediaPickerModal.tsx:775
+#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/PortableTextEditor.tsx:2413
 #: packages/admin/src/components/Redirects.tsx:560
 #: packages/admin/src/components/RegistryBrowse.tsx:146
@@ -4995,8 +5042,24 @@ msgstr "最大长度"
 msgid "Max Value"
 msgstr "最大值"
 
+#: packages/admin/src/components/ImageEditor.tsx:184
+msgid "Maximum dimensions"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:190
+msgid "Maximum file size"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:313
+msgid "Maximum file size (MB)"
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:147
 msgid "Maximum tags"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:292
+msgid "Maximum width or height"
 msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:45
@@ -5034,7 +5097,7 @@ msgid "Media import was skipped"
 msgstr "媒体导入已跳过"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:153
-#: packages/admin/src/components/MediaLibrary.tsx:325
+#: packages/admin/src/components/MediaLibrary.tsx:316
 msgid "Media Library"
 msgstr "媒体库"
 
@@ -5042,7 +5105,7 @@ msgstr "媒体库"
 msgid "Media Read"
 msgstr "媒体读取"
 
-#: packages/admin/src/components/MediaLibrary.tsx:384
+#: packages/admin/src/components/MediaLibrary.tsx:374
 msgid "Media storage usage"
 msgstr ""
 
@@ -5412,8 +5475,8 @@ msgstr "暂无{0}。创建一个以开始使用。"
 msgid "No 404 errors recorded yet."
 msgstr "暂无 404 错误记录。"
 
-#: packages/admin/src/components/MediaLibrary.tsx:867
-#: packages/admin/src/components/MediaLibrary.tsx:924
+#: packages/admin/src/components/MediaLibrary.tsx:868
+#: packages/admin/src/components/MediaLibrary.tsx:925
 msgid "No alt text"
 msgstr "无替代文本"
 
@@ -5552,8 +5615,8 @@ msgstr "无匹配项"
 msgid "No matching bylines."
 msgstr "没有匹配的署名。"
 
-#: packages/admin/src/components/MediaLibrary.tsx:521
-#: packages/admin/src/components/MediaLibrary.tsx:549
+#: packages/admin/src/components/MediaLibrary.tsx:511
+#: packages/admin/src/components/MediaLibrary.tsx:539
 msgid "No matching media"
 msgstr ""
 
@@ -5566,16 +5629,16 @@ msgstr "未找到与此账户匹配的通行密钥。"
 msgid "No maximum"
 msgstr "无最大值"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:694
+#: packages/admin/src/components/MediaPickerModal.tsx:702
 msgid "No media available from this provider"
 msgstr "此提供商无可用媒体"
 
-#: packages/admin/src/components/MediaLibrary.tsx:572
+#: packages/admin/src/components/MediaLibrary.tsx:562
 msgid "No media available from this provider."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:571
-#: packages/admin/src/components/MediaPickerModal.tsx:688
+#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaPickerModal.tsx:696
 msgid "No media found"
 msgstr "未找到媒体"
 
@@ -5780,6 +5843,23 @@ msgstr "在新标签页中打开"
 msgid "Open WordPress Profile"
 msgstr "打开 WordPress 个人资料"
 
+#: packages/admin/src/components/ImageEditor.tsx:171
+#: packages/admin/src/components/ImageEditor.tsx:267
+msgid "Optimization settings"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:358
+msgid "Optimize only"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:151
+msgid "Optimized image preview"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:161
+msgid "Optimized WebP"
+msgstr ""
+
 #: packages/admin/src/components/FieldEditor.tsx:544
 msgid ""
 "Option 1\n"
@@ -5817,7 +5897,7 @@ msgstr "悬停时的可选工具提示"
 msgid "Options (one per line)"
 msgstr "选项（每行一个）"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:579
+#: packages/admin/src/components/MediaPickerModal.tsx:587
 msgid "or choose from library"
 msgstr "或从库中选择"
 
@@ -5846,6 +5926,10 @@ msgstr "或直接上传"
 #: packages/admin/src/components/MenuEditor.tsx:227
 msgid "Order saved"
 msgstr "顺序已保存"
+
+#: packages/admin/src/components/ImageEditor.tsx:159
+msgid "Original"
+msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:369
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:257
@@ -6044,7 +6128,7 @@ msgstr "请输入有效的邮箱"
 msgid "Please enter a valid email address"
 msgstr "请输入有效的邮箱地址"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:442
+#: packages/admin/src/components/MediaPickerModal.tsx:449
 msgid "Please enter a valid URL"
 msgstr "请输入有效的 URL"
 
@@ -6201,7 +6285,7 @@ msgstr "正在准备..."
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
-#: packages/admin/src/components/MediaLibrary.tsx:617
+#: packages/admin/src/components/MediaLibrary.tsx:607
 msgid "Preview"
 msgstr "预览"
 
@@ -6212,6 +6296,10 @@ msgstr "发布前预览内容"
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 msgid "Preview draft"
 msgstr "预览草稿"
+
+#: packages/admin/src/components/ImageEditor.tsx:366
+msgid "Preview optimization"
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:308
 msgid "Previous"
@@ -6232,6 +6320,10 @@ msgstr "主导航"
 
 #: packages/admin/src/components/ContentStatusBadge.tsx:69
 msgid "Private"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:366
+msgid "Processing..."
 msgstr ""
 
 #: packages/admin/src/components/settings/EmailSettings.tsx:167
@@ -6278,6 +6370,14 @@ msgstr "发布者"
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:47
 msgid "Python"
 msgstr "Python"
+
+#: packages/admin/src/components/ImageEditor.tsx:178
+msgid "Quality"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:272
+msgid "Quality:"
+msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1084
 msgid "Quick create byline"
@@ -6417,7 +6517,7 @@ msgstr "插件仓库"
 msgid "Release is too new to install"
 msgstr "版本太新，无法安装"
 
-#: packages/admin/src/components/MediaLibrary.tsx:379
+#: packages/admin/src/components/MediaLibrary.tsx:369
 msgid "remaining"
 msgstr ""
 
@@ -6745,6 +6845,18 @@ msgstr "角色 {role}"
 msgid "Role label"
 msgstr "角色标签"
 
+#: packages/admin/src/components/ImageEditor.tsx:252
+msgid "Rotate left"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:261
+msgid "Rotate right"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:242
+msgid "Rotation:"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:428
 msgid "Routable"
 msgstr ""
@@ -6949,8 +7061,8 @@ msgstr "搜索 {0}"
 msgid "Search {0}..."
 msgstr "搜索 {0}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:447
-#: packages/admin/src/components/MediaPickerModal.tsx:626
+#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search by filename..."
 msgstr "按文件名搜索..."
 
@@ -6997,8 +7109,8 @@ msgstr "搜索引擎优化和验证"
 msgid "Search form"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:448
-#: packages/admin/src/components/MediaPickerModal.tsx:627
+#: packages/admin/src/components/MediaLibrary.tsx:438
+#: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "搜索媒体"
 
@@ -7041,8 +7153,8 @@ msgstr ""
 msgid "Search users"
 msgstr "搜索用户"
 
-#: packages/admin/src/components/MediaLibrary.tsx:447
-#: packages/admin/src/components/MediaPickerModal.tsx:626
+#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search..."
 msgstr "搜索..."
 
@@ -7200,7 +7312,7 @@ msgstr "选择网站图标"
 msgid "Select file"
 msgstr "选择文件"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:150
+#: packages/admin/src/components/MediaPickerModal.tsx:151
 msgid "Select File"
 msgstr "选择文件"
 
@@ -7212,7 +7324,7 @@ msgstr ""
 msgid "Select image"
 msgstr "选择图片"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:150
+#: packages/admin/src/components/MediaPickerModal.tsx:151
 #: packages/admin/src/components/PortableTextEditor.tsx:3433
 #: packages/admin/src/components/settings/SeoSettings.tsx:223
 msgid "Select Image"
@@ -7253,7 +7365,7 @@ msgstr ""
 msgid "Selected image"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:795
+#: packages/admin/src/components/MediaPickerModal.tsx:803
 msgid "Selected:"
 msgstr "已选择："
 
@@ -7524,7 +7636,7 @@ msgstr "站点 URL"
 msgid "Sites on Cloudflare D1 can additionally restore the database to any minute within the last 30 days using D1 Time Travel — always on, no setup required."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:620
+#: packages/admin/src/components/MediaLibrary.tsx:610
 msgid "Size"
 msgstr "大小"
 
@@ -7674,7 +7786,7 @@ msgstr "状态码"
 msgid "Status: {status}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:377
+#: packages/admin/src/components/MediaLibrary.tsx:367
 msgid "Storage available"
 msgstr ""
 
@@ -7841,6 +7953,10 @@ msgstr "现有合集包含类型不兼容的字段。"
 msgid "The following tables contain content but aren't registered as collections. Register them to manage this content in the admin."
 msgstr "以下表格包含内容但未注册为合集。注册它们以便在管理后台中管理此内容。"
 
+#: packages/admin/src/components/ImageEditor.tsx:110
+msgid "The image could not be processed. Please try another image."
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:179
 msgid "The invited user will have this role once they complete registration."
 msgstr "被邀请的用户完成注册后将拥有此角色。"
@@ -7936,7 +8052,7 @@ msgstr ""
 msgid "This field contains unsupported Portable Text marks: <0>{markList}</0>. Remove them through the API before editing or saving this content."
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:461
+#: packages/admin/src/components/MediaPickerModal.tsx:468
 msgid "This field does not accept {sniffedMime} files."
 msgstr "此字段不接受 {sniffedMime} 文件。"
 
@@ -7944,6 +8060,11 @@ msgstr "此字段不接受 {sniffedMime} 文件。"
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "此字段为必填项"
+
+#. placeholder {0}: EDITABLE_IMAGE_TYPES.join(", ")
+#: packages/admin/src/components/ImageEditor.tsx:92
+msgid "This image format cannot be edited. Supported formats: {0}."
+msgstr ""
 
 #: packages/admin/src/components/SectionEditor.tsx:301
 msgid "This is a custom section."
@@ -8190,11 +8311,11 @@ msgstr "回收站为空。"
 msgid "True/false toggle"
 msgstr "真/假切换"
 
-#: packages/admin/src/components/MediaLibrary.tsx:525
+#: packages/admin/src/components/MediaLibrary.tsx:515
 msgid "Try a broader media type or clear your filters."
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:691
+#: packages/admin/src/components/MediaPickerModal.tsx:699
 msgid "Try a different search term"
 msgstr "尝试其他搜索词"
 
@@ -8219,11 +8340,11 @@ msgstr "重试"
 msgid "Try another code"
 msgstr "尝试其他代码"
 
-#: packages/admin/src/components/MediaLibrary.tsx:550
+#: packages/admin/src/components/MediaLibrary.tsx:540
 msgid "Try another filename or clear your search."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:524
+#: packages/admin/src/components/MediaLibrary.tsx:514
 msgid "Try another filename, or clear your search and filters."
 msgstr ""
 
@@ -8251,7 +8372,7 @@ msgstr "Twitter"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
-#: packages/admin/src/components/MediaLibrary.tsx:619
+#: packages/admin/src/components/MediaLibrary.tsx:609
 #: packages/admin/src/routes/byline-schema.tsx:240
 msgid "Type"
 msgstr "类型"
@@ -8440,11 +8561,11 @@ msgstr "正在更新内容 URL..."
 msgid "Updating..."
 msgstr "更新中..."
 
-#: packages/admin/src/components/MediaPickerModal.tsx:649
+#: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Upload"
 msgstr "上传"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:152
+#: packages/admin/src/components/MediaPickerModal.tsx:153
 msgid "Upload a file to get started"
 msgstr "上传文件以开始使用"
 
@@ -8452,7 +8573,7 @@ msgstr "上传文件以开始使用"
 msgid "Upload an export file"
 msgstr "上传导出文件"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:153
+#: packages/admin/src/components/MediaPickerModal.tsx:154
 msgid "Upload an image to get started"
 msgstr "上传图片以开始使用"
 
@@ -8470,32 +8591,33 @@ msgstr "上传和管理媒体"
 msgid "Upload Export File"
 msgstr "上传导出文件"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:669
+#: packages/admin/src/components/MediaLibrary.tsx:199
+msgid "Upload failed"
+msgstr ""
+
+#: packages/admin/src/components/MediaPickerModal.tsx:677
 msgid "Upload failed: {uploadError}"
 msgstr "上传失败：{uploadError}"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:661
+#: packages/admin/src/components/MediaLibrary.tsx:358
+#: packages/admin/src/components/MediaPickerModal.tsx:669
 msgid "Upload file"
 msgstr "上传文件"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:154
+#: packages/admin/src/components/MediaPickerModal.tsx:155
 msgid "Upload File"
 msgstr "上传文件"
 
-#: packages/admin/src/components/MediaLibrary.tsx:368
-msgid "Upload files"
-msgstr "上传文件"
-
-#: packages/admin/src/components/MediaLibrary.tsx:540
-#: packages/admin/src/components/MediaLibrary.tsx:564
+#: packages/admin/src/components/MediaLibrary.tsx:530
+#: packages/admin/src/components/MediaLibrary.tsx:554
 msgid "Upload Files"
 msgstr "上传文件"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:154
+#: packages/admin/src/components/MediaPickerModal.tsx:155
 msgid "Upload Image"
 msgstr "上传图片"
 
-#: packages/admin/src/components/MediaLibrary.tsx:537
+#: packages/admin/src/components/MediaLibrary.tsx:527
 msgid "Upload images, videos, and documents to keep reusable assets in one place."
 msgstr ""
 
@@ -8503,12 +8625,12 @@ msgstr ""
 msgid "Upload Media"
 msgstr "上传媒体"
 
-#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaLibrary.tsx:551
 msgid "Upload media to keep reusable assets in one place."
 msgstr ""
 
 #. placeholder {0}: activeProviderInfo?.name || t`Library`
-#: packages/admin/src/components/MediaLibrary.tsx:359
+#: packages/admin/src/components/MediaLibrary.tsx:350
 msgid "Upload to {0}"
 msgstr "上传至 {0}"
 
@@ -8526,12 +8648,12 @@ msgstr "上传中"
 
 #. placeholder {0}: uploadState.progress.current
 #. placeholder {1}: uploadState.progress.total
-#: packages/admin/src/components/MediaLibrary.tsx:334
+#: packages/admin/src/components/MediaLibrary.tsx:325
 msgid "Uploading {0}/{1}..."
 msgstr "正在上传 {0}/{1}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:335
-#: packages/admin/src/components/MediaPickerModal.tsx:649
+#: packages/admin/src/components/MediaLibrary.tsx:326
+#: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Uploading..."
 msgstr "上传中..."
 
@@ -8566,6 +8688,10 @@ msgstr "URL:"
 #: packages/admin/src/components/Redirects.tsx:111
 msgid "Use [param] or [...rest] in paths for pattern matching."
 msgstr "在路径中使用 [param] 或 [...rest] 进行模式匹配。"
+
+#: packages/admin/src/components/ImageEditor.tsx:348
+msgid "Use optimized image"
+msgstr ""
 
 #: packages/admin/src/components/auth/PasskeyLogin.tsx:364
 msgid "Use your device's biometric authentication, security key, or PIN to sign in."
@@ -8685,7 +8811,7 @@ msgid "Version {0}"
 msgstr "版本 {0}"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:67
-#: packages/admin/src/components/MediaLibrary.tsx:467
+#: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Video"
 msgstr "视频"
 
@@ -8698,7 +8824,7 @@ msgstr "查看邮件提供商状态并发送测试邮件"
 msgid "View in Marketplace"
 msgstr "在市场查看"
 
-#: packages/admin/src/components/MediaLibrary.tsx:479
+#: packages/admin/src/components/MediaLibrary.tsx:469
 msgid "View mode"
 msgstr "查看模式"
 
@@ -9060,8 +9186,8 @@ msgstr "您的 Instagram 用户名"
 msgid "Your LinkedIn profile username"
 msgstr "您的 LinkedIn 个人资料用户名"
 
-#: packages/admin/src/components/MediaLibrary.tsx:536
-#: packages/admin/src/components/MediaLibrary.tsx:560
+#: packages/admin/src/components/MediaLibrary.tsx:526
+#: packages/admin/src/components/MediaLibrary.tsx:550
 msgid "Your media library is empty"
 msgstr ""
 
@@ -9103,3 +9229,7 @@ msgstr "您的 YouTube 频道 ID 或用户名"
 #: packages/admin/src/components/settings/SocialSettings.tsx:179
 msgid "YouTube"
 msgstr "YouTube"
+
+#: packages/admin/src/components/ImageEditor.tsx:225
+msgid "Zoom:"
+msgstr ""

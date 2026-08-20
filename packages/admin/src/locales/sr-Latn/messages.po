@@ -30,8 +30,8 @@ msgstr " (podrazumevano)"
 msgid " (opens in new window)"
 msgstr " (otvara se u novom prozoru)"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:867
-#: packages/admin/src/components/MediaPickerModal.tsx:950
+#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid " (selected)"
 msgstr " (izabrano)"
 
@@ -50,7 +50,7 @@ msgid ": use"
 msgstr ": koristite"
 
 #. placeholder {0}: providers?.find((p) => p.id === selectedItem.providerId)?.name
-#: packages/admin/src/components/MediaPickerModal.tsx:798
+#: packages/admin/src/components/MediaPickerModal.tsx:806
 msgid "(from {0})"
 msgstr "(od {0})"
 
@@ -116,13 +116,13 @@ msgid "{0, plural, one {# content item imported} other {# content items imported
 msgstr "{0, plural, one {# stavka sadržaja uvezena} few {# stavke sadržaja uvezene} other {# stavki sadržaja uvezeno}}"
 
 #. placeholder {0}: selectedItems.length
-#: packages/admin/src/components/MediaPickerModal.tsx:787
+#: packages/admin/src/components/MediaPickerModal.tsx:795
 msgid "{0, plural, one {# item selected} other {# items selected}}"
 msgstr ""
 
 #. placeholder {0}: items.length
 #. placeholder {0}: menu.itemCount ?? 0
-#: packages/admin/src/components/MediaPickerModal.tsx:636
+#: packages/admin/src/components/MediaPickerModal.tsx:644
 #: packages/admin/src/components/MenuList.tsx:220
 msgid "{0, plural, one {# item} other {# items}}"
 msgstr "{0, plural, one {# stavka} few {# stavke} other {# stavki}}"
@@ -304,6 +304,11 @@ msgstr "{0} pregled"
 msgid "{0} system + {1} custom {2}"
 msgstr "{0} sistemski + {1} prilagođenih {2}"
 
+#. placeholder {0}: zoom.toFixed(1)
+#: packages/admin/src/components/ImageEditor.tsx:236
+msgid "{0} times"
+msgstr ""
+
 #. placeholder {0}: taxonomy.label
 #: packages/admin/src/components/TaxonomySidebar.tsx:411
 msgid "{0} updated"
@@ -317,8 +322,8 @@ msgstr "{0} ažurirano na v{1}"
 
 #. placeholder {0}: item.filename
 #. placeholder {1}: selected ? t` (selected)` : ""
-#: packages/admin/src/components/MediaPickerModal.tsx:867
-#: packages/admin/src/components/MediaPickerModal.tsx:950
+#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid "{0}{1}"
 msgstr "{0}{1}"
 
@@ -412,7 +417,7 @@ msgstr ""
 msgid "{readingTime, plural, one {# min read} other {# min read}}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:301
+#: packages/admin/src/components/MediaLibrary.tsx:292
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr "{resultCount, plural, one {# stavka} few {# stavke} other {# stavki}}"
 
@@ -432,13 +437,11 @@ msgstr "{total, plural, one {# stavka} few {# stavke} other {# stavki}}"
 msgid "{total, plural, one {# total} other {# total}}"
 msgstr "{total, plural, one {# ukupno} few {# ukupno} other {# ukupno}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:214
-#: packages/admin/src/components/MediaLibrary.tsx:250
+#: packages/admin/src/components/MediaLibrary.tsx:241
 msgid "{total, plural, one {File uploaded} other {# files uploaded}}"
 msgstr "{total, plural, one {Fajl otpremljen} few {# fajla otpremljena} other {# fajlova otpremljeno}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:219
-#: packages/admin/src/components/MediaLibrary.tsx:255
+#: packages/admin/src/components/MediaLibrary.tsx:246
 msgid "{total, plural, one {Upload failed} other {All # uploads failed}}"
 msgstr "{total, plural, one {Otpremanje nije uspelo} few {Sva # otpremanja nisu uspela} other {Svih # otpremanja nije uspelo}}"
 
@@ -458,8 +461,7 @@ msgstr "{unchangedCount, plural, one {Sakrij # nepromenjeno} few {Sakrij # nepro
 msgid "{unchangedCount, plural, one {Show # unchanged} other {Show # unchanged}}"
 msgstr "{unchangedCount, plural, one {Prikaži # nepromenjeno} few {Prikaži # nepromenjena} other {Prikaži # nepromenjenih}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:224
-#: packages/admin/src/components/MediaLibrary.tsx:260
+#: packages/admin/src/components/MediaLibrary.tsx:251
 msgid "{uploaded} uploaded, {failed} failed"
 msgstr "{uploaded} otpremljeno, {failed} nije uspelo"
 
@@ -498,6 +500,10 @@ msgstr "← Nazad"
 msgid "1 year"
 msgstr "1 godina"
 
+#: packages/admin/src/components/ImageEditor.tsx:27
+msgid "1:1"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:1522
 msgid "1. Log into your WordPress admin"
 msgstr "1. Prijavite se u WordPress admin"
@@ -505,6 +511,10 @@ msgstr "1. Prijavite se u WordPress admin"
 #: packages/admin/src/components/WordPressImport.tsx:1275
 msgid "1. Log into your WordPress admin dashboard"
 msgstr "1. Prijavite se na WordPress kontrolnu tablu"
+
+#: packages/admin/src/components/ImageEditor.tsx:29
+msgid "16:9"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1277
 msgid "2. Go to"
@@ -541,6 +551,10 @@ msgstr "307 Privremeno (strogo)"
 #: packages/admin/src/components/Redirects.tsx:159
 msgid "308 Permanent (Strict)"
 msgstr "308 Trajno (strogo)"
+
+#: packages/admin/src/components/ImageEditor.tsx:28
+msgid "4:3"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1280
 msgid "4. Click \"Download Export File\""
@@ -816,6 +830,10 @@ msgstr "Dodavanje..."
 msgid "Additional data to import."
 msgstr "Dodatni podaci za uvoz."
 
+#: packages/admin/src/components/ImageEditor.tsx:203
+msgid "Adjust optimization"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:1483
 msgid "admin"
 msgstr "admin"
@@ -916,7 +934,7 @@ msgstr "Svi izvori"
 msgid "All statuses"
 msgstr "Svi statusi"
 
-#: packages/admin/src/components/MediaLibrary.tsx:465
+#: packages/admin/src/components/MediaLibrary.tsx:455
 #: packages/admin/src/components/Redirects.tsx:432
 msgid "All types"
 msgstr "Svi tipovi"
@@ -956,7 +974,7 @@ msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:376
 #: packages/admin/src/components/editor/ImageNode.tsx:231
-#: packages/admin/src/components/MediaLibrary.tsx:621
+#: packages/admin/src/components/MediaLibrary.tsx:611
 msgid "Alt text"
 msgstr "Alt tekst"
 
@@ -967,8 +985,8 @@ msgstr "Alt tekst"
 msgid "Alt Text"
 msgstr "Alt tekst"
 
-#: packages/admin/src/components/MediaLibrary.tsx:867
-#: packages/admin/src/components/MediaLibrary.tsx:924
+#: packages/admin/src/components/MediaLibrary.tsx:868
+#: packages/admin/src/components/MediaLibrary.tsx:925
 msgid "Alt text set"
 msgstr "Alt tekst postavljen"
 
@@ -1131,6 +1149,10 @@ msgstr "Da li ste sigurni da želite da obrišete ovaj meni? Ovo će takođe obr
 msgid "As an administrator, you can invite other users from the Users section."
 msgstr "Kao administrator, možete pozvati druge korisnike iz sekcije Korisnici."
 
+#: packages/admin/src/components/ImageEditor.tsx:209
+msgid "Aspect ratio"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:2456
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "Dodelite WordPress autore EmDash korisnicima. Objave će biti pripisane izabranom korisniku."
@@ -1140,7 +1162,7 @@ msgid "Astro"
 msgstr "Astro"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:66
-#: packages/admin/src/components/MediaLibrary.tsx:468
+#: packages/admin/src/components/MediaLibrary.tsx:458
 msgid "Audio"
 msgstr "Audio"
 
@@ -1238,7 +1260,7 @@ msgstr "Automatsko čuvanje nije uspelo"
 msgid "Available in {0}"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:710
+#: packages/admin/src/components/MediaPickerModal.tsx:718
 msgid "Available media"
 msgstr "Dostupni mediji"
 
@@ -1455,8 +1477,9 @@ msgstr "Može pregledati sadržaj"
 #: packages/admin/src/components/editor/ImageNode.tsx:253
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:406
 #: packages/admin/src/components/FieldEditor.tsx:678
+#: packages/admin/src/components/ImageEditor.tsx:344
 #: packages/admin/src/components/MediaDetailPanel.tsx:416
-#: packages/admin/src/components/MediaPickerModal.tsx:805
+#: packages/admin/src/components/MediaPickerModal.tsx:813
 #: packages/admin/src/components/MenuEditor.tsx:438
 #: packages/admin/src/components/MenuEditor.tsx:623
 #: packages/admin/src/components/MenuList.tsx:175
@@ -1489,7 +1512,7 @@ msgstr "Otkaži preimenovanje"
 msgid "Cannot delete theme sections"
 msgstr "Nije moguće obrisati sekcije teme"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:456
+#: packages/admin/src/components/MediaPickerModal.tsx:463
 msgid "Cannot determine MIME type from URL. Use a URL ending in a recognized image extension (e.g. .jpg, .png, .webp)."
 msgstr "Nije moguće odrediti MIME tip iz URL-a. Koristite URL koji se završava prepoznatljivom ekstenzijom slike (npr. .jpg, .png, .webp)."
 
@@ -1616,13 +1639,13 @@ msgid "Clear"
 msgstr "Obriši"
 
 #: packages/admin/src/components/ContentList.tsx:947
-#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:519
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
 msgstr "Obriši filtere"
 
-#: packages/admin/src/components/MediaLibrary.tsx:529
-#: packages/admin/src/components/MediaLibrary.tsx:553
+#: packages/admin/src/components/MediaLibrary.tsx:519
+#: packages/admin/src/components/MediaLibrary.tsx:543
 msgid "Clear search"
 msgstr "Obriši pretragu"
 
@@ -1659,9 +1682,9 @@ msgstr "Kliknite na link u email-u da se prijavite."
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:449
 #: packages/admin/src/components/MediaDetailPanel.tsx:229
 #: packages/admin/src/components/MediaDetailPanel.tsx:416
-#: packages/admin/src/components/MediaPickerModal.tsx:529
-#: packages/admin/src/components/MediaPickerModal.tsx:535
-#: packages/admin/src/components/MediaPickerModal.tsx:539
+#: packages/admin/src/components/MediaPickerModal.tsx:537
+#: packages/admin/src/components/MediaPickerModal.tsx:543
+#: packages/admin/src/components/MediaPickerModal.tsx:547
 #: packages/admin/src/components/MenuEditor.tsx:400
 #: packages/admin/src/components/MenuEditor.tsx:406
 #: packages/admin/src/components/MenuEditor.tsx:410
@@ -1982,7 +2005,7 @@ msgstr ""
 msgid "Could not load dashboard data"
 msgstr "Nije moguće učitati podatke kontrolne table"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:486
+#: packages/admin/src/components/MediaPickerModal.tsx:493
 msgid "Could not load image from URL"
 msgstr "Nije moguće učitati sliku sa URL-a"
 
@@ -2216,6 +2239,10 @@ msgstr "Kreiranje kolekcija i polja..."
 msgid "Creating..."
 msgstr "Kreiranje..."
 
+#: packages/admin/src/components/ImageEditor.tsx:129
+msgid "Crop and optimize this image before uploading it."
+msgstr ""
+
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:33
 msgid "CSS"
 msgstr "CSS"
@@ -2251,6 +2278,10 @@ msgstr "Prilagođena sekcija"
 #: packages/admin/src/components/WordPressImport.tsx:1147
 msgid "Custom Taxonomies"
 msgstr "Prilagođene taksonomije"
+
+#: packages/admin/src/components/ImageEditor.tsx:268
+msgid "Customize the WebP result for your website."
+msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:223
 msgid "Daily automatic backups"
@@ -2737,7 +2768,7 @@ msgid "Dockerfile"
 msgstr "Dockerfile"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:63
-#: packages/admin/src/components/MediaLibrary.tsx:469
+#: packages/admin/src/components/MediaLibrary.tsx:459
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -2937,6 +2968,10 @@ msgstr "Uredi domen"
 #: packages/admin/src/components/FieldEditor.tsx:368
 msgid "Edit Field"
 msgstr "Uredi polje"
+
+#: packages/admin/src/components/ImageEditor.tsx:127
+msgid "Edit image"
+msgstr ""
 
 #. placeholder {0}: index + 1
 #: packages/admin/src/components/editor/GalleryNode.tsx:178
@@ -3568,7 +3603,7 @@ msgstr "Učitavanje potpisa autora nije uspelo: {0}"
 msgid "Failed to load email settings"
 msgstr "Učitavanje podešavanja e-pošte nije uspelo"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:465
+#: packages/admin/src/components/MediaPickerModal.tsx:472
 msgid "Failed to load image"
 msgstr "Učitavanje slike nije uspelo"
 
@@ -3895,9 +3930,13 @@ msgstr "Fajl {0}"
 msgid "File from media library"
 msgstr "Fajl iz biblioteke medija"
 
+#: packages/admin/src/components/MediaLibrary.tsx:195
+msgid "File uploaded"
+msgstr ""
+
 #: packages/admin/src/components/MediaDetailPanel.tsx:325
 #: packages/admin/src/components/MediaDetailPanel.tsx:342
-#: packages/admin/src/components/MediaLibrary.tsx:618
+#: packages/admin/src/components/MediaLibrary.tsx:608
 msgid "Filename"
 msgstr "Ime fajla"
 
@@ -3938,7 +3977,7 @@ msgstr "Filtriraj po izvoru"
 msgid "Filter by status"
 msgstr "Filtriraj po statusu"
 
-#: packages/admin/src/components/MediaLibrary.tsx:471
+#: packages/admin/src/components/MediaLibrary.tsx:461
 #: packages/admin/src/components/Redirects.tsx:433
 msgid "Filter by type"
 msgstr "Filtriraj po tipu"
@@ -3962,6 +4001,14 @@ msgstr "Za kompletan uvoz uključujući nacrte i sav sadržaj, izvezite iz WordP
 #: packages/admin/src/components/WordPressImport.tsx:1207
 msgid "For the best import experience, install the"
 msgstr "Za najbolje iskustvo uvoza, instalirajte"
+
+#: packages/admin/src/components/ImageEditor.tsx:174
+msgid "Format"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:26
+msgid "Free"
+msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:928
 msgid "From date"
@@ -4032,7 +4079,7 @@ msgstr "Google verifikacija"
 msgid "GraphQL"
 msgstr "GraphQL"
 
-#: packages/admin/src/components/MediaLibrary.tsx:492
+#: packages/admin/src/components/MediaLibrary.tsx:482
 msgid "Grid view"
 msgstr "Prikaz mreže"
 
@@ -4160,7 +4207,7 @@ msgstr "https://..."
 msgid "https://example.com or /about"
 msgstr "https://example.com ili /about"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:555
+#: packages/admin/src/components/MediaPickerModal.tsx:563
 msgid "https://example.com/image.jpg"
 msgstr "https://example.com/image.jpg"
 
@@ -4216,7 +4263,7 @@ msgstr "Podešavanja slike"
 msgid "Image shown when this page is shared on social media"
 msgstr "Slika prikazana kada se ova stranica deli na društvenim mrežama"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:556
+#: packages/admin/src/components/MediaPickerModal.tsx:564
 msgid "Image URL"
 msgstr "URL slike"
 
@@ -4226,7 +4273,7 @@ msgstr "URL-ovi slika ažurirani u"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:61
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:192
-#: packages/admin/src/components/MediaLibrary.tsx:466
+#: packages/admin/src/components/MediaLibrary.tsx:456
 msgid "Images"
 msgstr "Slike"
 
@@ -4345,8 +4392,8 @@ msgstr "Indeksirano"
 msgid "Inline Code"
 msgstr "Ugrađeni kod"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:567
-#: packages/admin/src/components/MediaPickerModal.tsx:811
+#: packages/admin/src/components/MediaPickerModal.tsx:575
+#: packages/admin/src/components/MediaPickerModal.tsx:819
 msgid "Insert"
 msgstr "Umetni"
 
@@ -4396,7 +4443,7 @@ msgstr "Umetni blok posle trenutnog bloka"
 msgid "Insert block below"
 msgstr "Umetni blok ispod"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:549
+#: packages/admin/src/components/MediaPickerModal.tsx:557
 msgid "Insert from URL"
 msgstr "Umetni sa URL-a"
 
@@ -4661,11 +4708,11 @@ msgstr "Ostavi nedodeljeno"
 msgid "Left"
 msgstr "Levo"
 
-#: packages/admin/src/components/MediaLibrary.tsx:139
-#: packages/admin/src/components/MediaLibrary.tsx:276
-#: packages/admin/src/components/MediaLibrary.tsx:359
-#: packages/admin/src/components/MediaPickerModal.tsx:211
-#: packages/admin/src/components/MediaPickerModal.tsx:509
+#: packages/admin/src/components/MediaLibrary.tsx:142
+#: packages/admin/src/components/MediaLibrary.tsx:267
+#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaPickerModal.tsx:214
+#: packages/admin/src/components/MediaPickerModal.tsx:516
 msgid "Library"
 msgstr "Biblioteka"
 
@@ -4714,7 +4761,7 @@ msgstr "LinkedIn"
 msgid "Links"
 msgstr "Linkovi"
 
-#: packages/admin/src/components/MediaLibrary.tsx:501
+#: packages/admin/src/components/MediaLibrary.tsx:491
 msgid "List view"
 msgstr "Prikaz liste"
 
@@ -4735,8 +4782,8 @@ msgstr "Učitaj više"
 
 #: packages/admin/src/components/ContentList.tsx:724
 #: packages/admin/src/components/ContentList.tsx:782
-#: packages/admin/src/components/MediaLibrary.tsx:667
-#: packages/admin/src/components/MediaPickerModal.tsx:775
+#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "Učitaj više"
@@ -4816,8 +4863,8 @@ msgstr "Učitavanje vidžeta..."
 #: packages/admin/src/components/ContentList.tsx:782
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
-#: packages/admin/src/components/MediaLibrary.tsx:667
-#: packages/admin/src/components/MediaPickerModal.tsx:775
+#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/PortableTextEditor.tsx:2413
 #: packages/admin/src/components/Redirects.tsx:560
 #: packages/admin/src/components/RegistryBrowse.tsx:146
@@ -4995,9 +5042,25 @@ msgstr "Maks. dužina"
 msgid "Max Value"
 msgstr "Maks. vrednost"
 
+#: packages/admin/src/components/ImageEditor.tsx:184
+msgid "Maximum dimensions"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:190
+msgid "Maximum file size"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:313
+msgid "Maximum file size (MB)"
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:147
 msgid "Maximum tags"
 msgstr "Maksimalno oznaka"
+
+#: packages/admin/src/components/ImageEditor.tsx:292
+msgid "Maximum width or height"
+msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:45
 msgid "MDX"
@@ -5034,7 +5097,7 @@ msgid "Media import was skipped"
 msgstr "Uvoz medija je preskočen"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:153
-#: packages/admin/src/components/MediaLibrary.tsx:325
+#: packages/admin/src/components/MediaLibrary.tsx:316
 msgid "Media Library"
 msgstr "Biblioteka medija"
 
@@ -5042,7 +5105,7 @@ msgstr "Biblioteka medija"
 msgid "Media Read"
 msgstr "Čitanje medija"
 
-#: packages/admin/src/components/MediaLibrary.tsx:384
+#: packages/admin/src/components/MediaLibrary.tsx:374
 msgid "Media storage usage"
 msgstr ""
 
@@ -5412,8 +5475,8 @@ msgstr "Još nema {0}. Kreirajte jedan da biste počeli."
 msgid "No 404 errors recorded yet."
 msgstr "Još nema zabeleženih 404 grešaka."
 
-#: packages/admin/src/components/MediaLibrary.tsx:867
-#: packages/admin/src/components/MediaLibrary.tsx:924
+#: packages/admin/src/components/MediaLibrary.tsx:868
+#: packages/admin/src/components/MediaLibrary.tsx:925
 msgid "No alt text"
 msgstr "Nema alt teksta"
 
@@ -5552,8 +5615,8 @@ msgstr "Nema podudaranja"
 msgid "No matching bylines."
 msgstr "Nema odgovarajućih potpisa autora."
 
-#: packages/admin/src/components/MediaLibrary.tsx:521
-#: packages/admin/src/components/MediaLibrary.tsx:549
+#: packages/admin/src/components/MediaLibrary.tsx:511
+#: packages/admin/src/components/MediaLibrary.tsx:539
 msgid "No matching media"
 msgstr "Nema odgovarajućih medija"
 
@@ -5566,16 +5629,16 @@ msgstr "Nije pronađen odgovarajući passkey za ovaj nalog."
 msgid "No maximum"
 msgstr "Bez maksimuma"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:694
+#: packages/admin/src/components/MediaPickerModal.tsx:702
 msgid "No media available from this provider"
 msgstr "Nema dostupnih medija od ovog provajdera"
 
-#: packages/admin/src/components/MediaLibrary.tsx:572
+#: packages/admin/src/components/MediaLibrary.tsx:562
 msgid "No media available from this provider."
 msgstr "Nema dostupnih medija od ovog provajdera."
 
-#: packages/admin/src/components/MediaLibrary.tsx:571
-#: packages/admin/src/components/MediaPickerModal.tsx:688
+#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaPickerModal.tsx:696
 msgid "No media found"
 msgstr "Mediji nisu pronađeni"
 
@@ -5780,6 +5843,23 @@ msgstr "Otvori u novom tabu"
 msgid "Open WordPress Profile"
 msgstr "Otvori WordPress profil"
 
+#: packages/admin/src/components/ImageEditor.tsx:171
+#: packages/admin/src/components/ImageEditor.tsx:267
+msgid "Optimization settings"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:358
+msgid "Optimize only"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:151
+msgid "Optimized image preview"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:161
+msgid "Optimized WebP"
+msgstr ""
+
 #: packages/admin/src/components/FieldEditor.tsx:544
 msgid ""
 "Option 1\n"
@@ -5817,7 +5897,7 @@ msgstr "Opcioni tooltip pri prelasku mišem"
 msgid "Options (one per line)"
 msgstr "Opcije (jedna po liniji)"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:579
+#: packages/admin/src/components/MediaPickerModal.tsx:587
 msgid "or choose from library"
 msgstr "ili izaberi iz biblioteke"
 
@@ -5846,6 +5926,10 @@ msgstr "ili otpremi direktno"
 #: packages/admin/src/components/MenuEditor.tsx:227
 msgid "Order saved"
 msgstr "Redosled sačuvan"
+
+#: packages/admin/src/components/ImageEditor.tsx:159
+msgid "Original"
+msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:369
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:257
@@ -6044,7 +6128,7 @@ msgstr "Unesite ispravnu e-adresu"
 msgid "Please enter a valid email address"
 msgstr "Unesite ispravnu e-adresu"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:442
+#: packages/admin/src/components/MediaPickerModal.tsx:449
 msgid "Please enter a valid URL"
 msgstr "Unesite ispravan URL"
 
@@ -6201,7 +6285,7 @@ msgstr "Priprema..."
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
-#: packages/admin/src/components/MediaLibrary.tsx:617
+#: packages/admin/src/components/MediaLibrary.tsx:607
 msgid "Preview"
 msgstr "Pregled"
 
@@ -6212,6 +6296,10 @@ msgstr "Pregledaj sadržaj pre objavljivanja"
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 msgid "Preview draft"
 msgstr "Pregled nacrta"
+
+#: packages/admin/src/components/ImageEditor.tsx:366
+msgid "Preview optimization"
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:308
 msgid "Previous"
@@ -6233,6 +6321,10 @@ msgstr "Primarna navigacija"
 #: packages/admin/src/components/ContentStatusBadge.tsx:69
 msgid "Private"
 msgstr "Privatno"
+
+#: packages/admin/src/components/ImageEditor.tsx:366
+msgid "Processing..."
+msgstr ""
 
 #: packages/admin/src/components/settings/EmailSettings.tsx:167
 msgid "Provider:"
@@ -6278,6 +6370,14 @@ msgstr "Objavio"
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:47
 msgid "Python"
 msgstr "Python"
+
+#: packages/admin/src/components/ImageEditor.tsx:178
+msgid "Quality"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:272
+msgid "Quality:"
+msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1084
 msgid "Quick create byline"
@@ -6417,7 +6517,7 @@ msgstr "Registar"
 msgid "Release is too new to install"
 msgstr "Verzija je previše nova za instalaciju"
 
-#: packages/admin/src/components/MediaLibrary.tsx:379
+#: packages/admin/src/components/MediaLibrary.tsx:369
 msgid "remaining"
 msgstr ""
 
@@ -6745,6 +6845,18 @@ msgstr "Uloga {role}"
 msgid "Role label"
 msgstr "Oznaka uloge"
 
+#: packages/admin/src/components/ImageEditor.tsx:252
+msgid "Rotate left"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:261
+msgid "Rotate right"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:242
+msgid "Rotation:"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:428
 msgid "Routable"
 msgstr ""
@@ -6949,8 +7061,8 @@ msgstr "Pretraži {0}"
 msgid "Search {0}..."
 msgstr "Pretraži {0}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:447
-#: packages/admin/src/components/MediaPickerModal.tsx:626
+#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search by filename..."
 msgstr "Pretraži po nazivu fajla..."
 
@@ -6997,8 +7109,8 @@ msgstr "Optimizacija za pretraživače i verifikacija"
 msgid "Search form"
 msgstr "Obrazac za pretragu"
 
-#: packages/admin/src/components/MediaLibrary.tsx:448
-#: packages/admin/src/components/MediaPickerModal.tsx:627
+#: packages/admin/src/components/MediaLibrary.tsx:438
+#: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "Pretraži medije"
 
@@ -7041,8 +7153,8 @@ msgstr ""
 msgid "Search users"
 msgstr "Pretraži korisnike"
 
-#: packages/admin/src/components/MediaLibrary.tsx:447
-#: packages/admin/src/components/MediaPickerModal.tsx:626
+#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search..."
 msgstr "Pretraži..."
 
@@ -7200,7 +7312,7 @@ msgstr "Izaberi favicon"
 msgid "Select file"
 msgstr "Izaberi fajl"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:150
+#: packages/admin/src/components/MediaPickerModal.tsx:151
 msgid "Select File"
 msgstr "Izaberi fajl"
 
@@ -7212,7 +7324,7 @@ msgstr ""
 msgid "Select image"
 msgstr "Izaberi sliku"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:150
+#: packages/admin/src/components/MediaPickerModal.tsx:151
 #: packages/admin/src/components/PortableTextEditor.tsx:3433
 #: packages/admin/src/components/settings/SeoSettings.tsx:223
 msgid "Select Image"
@@ -7253,7 +7365,7 @@ msgstr "Izabrano {selectedItemTitle}"
 msgid "Selected image"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:795
+#: packages/admin/src/components/MediaPickerModal.tsx:803
 msgid "Selected:"
 msgstr "Izabrano:"
 
@@ -7524,7 +7636,7 @@ msgstr "URL sajta"
 msgid "Sites on Cloudflare D1 can additionally restore the database to any minute within the last 30 days using D1 Time Travel — always on, no setup required."
 msgstr "Sajtovi na Cloudflare D1 mogu dodatno vratiti bazu podataka na bilo koji minut u poslednjih 30 dana koristeći D1 Time Travel — uvek uključeno, bez potrebe za podešavanjem."
 
-#: packages/admin/src/components/MediaLibrary.tsx:620
+#: packages/admin/src/components/MediaLibrary.tsx:610
 msgid "Size"
 msgstr "Veličina"
 
@@ -7674,7 +7786,7 @@ msgstr "Statusni kod"
 msgid "Status: {status}"
 msgstr "Status: {status}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:377
+#: packages/admin/src/components/MediaLibrary.tsx:367
 msgid "Storage available"
 msgstr ""
 
@@ -7841,6 +7953,10 @@ msgstr "Postojeća kolekcija ima polja sa nekompatibilnim tipovima."
 msgid "The following tables contain content but aren't registered as collections. Register them to manage this content in the admin."
 msgstr "Sledeće tabele sadrže sadržaj ali nisu registrovane kao kolekcije. Registruj ih da upravljaš ovim sadržajem u adminu."
 
+#: packages/admin/src/components/ImageEditor.tsx:110
+msgid "The image could not be processed. Please try another image."
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:179
 msgid "The invited user will have this role once they complete registration."
 msgstr "Pozvani korisnik će imati ovu ulogu nakon završetka registracije."
@@ -7936,7 +8052,7 @@ msgstr "Ovo ne izgleda kao validan ključ migracije. Generiši novi u dodatku i 
 msgid "This field contains unsupported Portable Text marks: <0>{markList}</0>. Remove them through the API before editing or saving this content."
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:461
+#: packages/admin/src/components/MediaPickerModal.tsx:468
 msgid "This field does not accept {sniffedMime} files."
 msgstr "Ovo polje ne prihvata {sniffedMime} fajlove."
 
@@ -7944,6 +8060,11 @@ msgstr "Ovo polje ne prihvata {sniffedMime} fajlove."
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "Ovo polje je obavezno"
+
+#. placeholder {0}: EDITABLE_IMAGE_TYPES.join(", ")
+#: packages/admin/src/components/ImageEditor.tsx:92
+msgid "This image format cannot be edited. Supported formats: {0}."
+msgstr ""
 
 #: packages/admin/src/components/SectionEditor.tsx:301
 msgid "This is a custom section."
@@ -8190,11 +8311,11 @@ msgstr "Korpa je prazna."
 msgid "True/false toggle"
 msgstr "Prekidač tačno/netačno"
 
-#: packages/admin/src/components/MediaLibrary.tsx:525
+#: packages/admin/src/components/MediaLibrary.tsx:515
 msgid "Try a broader media type or clear your filters."
 msgstr "Probaj širi tip medija ili obriši filtere."
 
-#: packages/admin/src/components/MediaPickerModal.tsx:691
+#: packages/admin/src/components/MediaPickerModal.tsx:699
 msgid "Try a different search term"
 msgstr "Probaj drugi termin pretrage"
 
@@ -8219,11 +8340,11 @@ msgstr "Pokušaj ponovo"
 msgid "Try another code"
 msgstr "Probaj drugi kod"
 
-#: packages/admin/src/components/MediaLibrary.tsx:550
+#: packages/admin/src/components/MediaLibrary.tsx:540
 msgid "Try another filename or clear your search."
 msgstr "Probaj drugi naziv fajla ili obriši pretragu."
 
-#: packages/admin/src/components/MediaLibrary.tsx:524
+#: packages/admin/src/components/MediaLibrary.tsx:514
 msgid "Try another filename, or clear your search and filters."
 msgstr "Probaj drugi naziv fajla ili obriši pretragu i filtere."
 
@@ -8251,7 +8372,7 @@ msgstr "Twitter"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
-#: packages/admin/src/components/MediaLibrary.tsx:619
+#: packages/admin/src/components/MediaLibrary.tsx:609
 #: packages/admin/src/routes/byline-schema.tsx:240
 msgid "Type"
 msgstr "Tip"
@@ -8440,11 +8561,11 @@ msgstr "Ažuriranje URL-ova sadržaja..."
 msgid "Updating..."
 msgstr "Ažurira se..."
 
-#: packages/admin/src/components/MediaPickerModal.tsx:649
+#: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Upload"
 msgstr "Otpremi"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:152
+#: packages/admin/src/components/MediaPickerModal.tsx:153
 msgid "Upload a file to get started"
 msgstr "Otpremi fajl da počneš"
 
@@ -8452,7 +8573,7 @@ msgstr "Otpremi fajl da počneš"
 msgid "Upload an export file"
 msgstr "Otpremi izvozni fajl"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:153
+#: packages/admin/src/components/MediaPickerModal.tsx:154
 msgid "Upload an image to get started"
 msgstr "Otpremi sliku da počneš"
 
@@ -8470,32 +8591,33 @@ msgstr "Otpremi i upravljaj medijima"
 msgid "Upload Export File"
 msgstr "Otpremi izvozni fajl"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:669
+#: packages/admin/src/components/MediaLibrary.tsx:199
+msgid "Upload failed"
+msgstr ""
+
+#: packages/admin/src/components/MediaPickerModal.tsx:677
 msgid "Upload failed: {uploadError}"
 msgstr "Otpremanje nije uspelo: {uploadError}"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:661
+#: packages/admin/src/components/MediaLibrary.tsx:358
+#: packages/admin/src/components/MediaPickerModal.tsx:669
 msgid "Upload file"
 msgstr "Otpremi fajl"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:154
+#: packages/admin/src/components/MediaPickerModal.tsx:155
 msgid "Upload File"
 msgstr "Otpremi fajl"
 
-#: packages/admin/src/components/MediaLibrary.tsx:368
-msgid "Upload files"
-msgstr "Otpremi fajlove"
-
-#: packages/admin/src/components/MediaLibrary.tsx:540
-#: packages/admin/src/components/MediaLibrary.tsx:564
+#: packages/admin/src/components/MediaLibrary.tsx:530
+#: packages/admin/src/components/MediaLibrary.tsx:554
 msgid "Upload Files"
 msgstr "Otpremi fajlove"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:154
+#: packages/admin/src/components/MediaPickerModal.tsx:155
 msgid "Upload Image"
 msgstr "Otpremi sliku"
 
-#: packages/admin/src/components/MediaLibrary.tsx:537
+#: packages/admin/src/components/MediaLibrary.tsx:527
 msgid "Upload images, videos, and documents to keep reusable assets in one place."
 msgstr "Otpremi slike, video snimke i dokumente da držiš resurse za ponovnu upotrebu na jednom mestu."
 
@@ -8503,12 +8625,12 @@ msgstr "Otpremi slike, video snimke i dokumente da držiš resurse za ponovnu up
 msgid "Upload Media"
 msgstr "Otpremi medije"
 
-#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaLibrary.tsx:551
 msgid "Upload media to keep reusable assets in one place."
 msgstr "Otpremi medije da držiš resurse za ponovnu upotrebu na jednom mestu."
 
 #. placeholder {0}: activeProviderInfo?.name || t`Library`
-#: packages/admin/src/components/MediaLibrary.tsx:359
+#: packages/admin/src/components/MediaLibrary.tsx:350
 msgid "Upload to {0}"
 msgstr "Otpremi na {0}"
 
@@ -8526,12 +8648,12 @@ msgstr "Otprema se"
 
 #. placeholder {0}: uploadState.progress.current
 #. placeholder {1}: uploadState.progress.total
-#: packages/admin/src/components/MediaLibrary.tsx:334
+#: packages/admin/src/components/MediaLibrary.tsx:325
 msgid "Uploading {0}/{1}..."
 msgstr "Otprema se {0}/{1}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:335
-#: packages/admin/src/components/MediaPickerModal.tsx:649
+#: packages/admin/src/components/MediaLibrary.tsx:326
+#: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Uploading..."
 msgstr "Otprema se..."
 
@@ -8566,6 +8688,10 @@ msgstr "URL:"
 #: packages/admin/src/components/Redirects.tsx:111
 msgid "Use [param] or [...rest] in paths for pattern matching."
 msgstr "Koristi [param] ili [...rest] u putanjama za uparivanje šablona."
+
+#: packages/admin/src/components/ImageEditor.tsx:348
+msgid "Use optimized image"
+msgstr ""
 
 #: packages/admin/src/components/auth/PasskeyLogin.tsx:364
 msgid "Use your device's biometric authentication, security key, or PIN to sign in."
@@ -8685,7 +8811,7 @@ msgid "Version {0}"
 msgstr "Verzija {0}"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:67
-#: packages/admin/src/components/MediaLibrary.tsx:467
+#: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Video"
 msgstr "Video"
 
@@ -8698,7 +8824,7 @@ msgstr "Pogledaj status email provajdera i pošalji test emailove"
 msgid "View in Marketplace"
 msgstr "Pogledaj na tržištu"
 
-#: packages/admin/src/components/MediaLibrary.tsx:479
+#: packages/admin/src/components/MediaLibrary.tsx:469
 msgid "View mode"
 msgstr "Režim pregleda"
 
@@ -9060,8 +9186,8 @@ msgstr "Tvoje Instagram korisničko ime"
 msgid "Your LinkedIn profile username"
 msgstr "Korisničko ime tvog LinkedIn profila"
 
-#: packages/admin/src/components/MediaLibrary.tsx:536
-#: packages/admin/src/components/MediaLibrary.tsx:560
+#: packages/admin/src/components/MediaLibrary.tsx:526
+#: packages/admin/src/components/MediaLibrary.tsx:550
 msgid "Your media library is empty"
 msgstr "Tvoja biblioteka medija je prazna"
 
@@ -9103,3 +9229,7 @@ msgstr "ID ili naziv tvog YouTube kanala"
 #: packages/admin/src/components/settings/SocialSettings.tsx:179
 msgid "YouTube"
 msgstr "YouTube"
+
+#: packages/admin/src/components/ImageEditor.tsx:225
+msgid "Zoom:"
+msgstr ""

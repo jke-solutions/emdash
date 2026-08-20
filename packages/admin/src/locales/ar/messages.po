@@ -34,8 +34,8 @@ msgstr " الافتراضي"
 msgid " (opens in new window)"
 msgstr " (يفتح في نافذة جديدة)"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:867
-#: packages/admin/src/components/MediaPickerModal.tsx:950
+#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid " (selected)"
 msgstr " (محدد)"
 
@@ -54,7 +54,7 @@ msgid ": use"
 msgstr ": استخدم"
 
 #. placeholder {0}: providers?.find((p) => p.id === selectedItem.providerId)?.name
-#: packages/admin/src/components/MediaPickerModal.tsx:798
+#: packages/admin/src/components/MediaPickerModal.tsx:806
 msgid "(from {0})"
 msgstr "(من {0})"
 
@@ -120,13 +120,13 @@ msgid "{0, plural, one {# content item imported} other {# content items imported
 msgstr "{0, plural, few {# عناصر محتوى تم استيرادها} other {# عنصر محتوى تم استيراده}}"
 
 #. placeholder {0}: selectedItems.length
-#: packages/admin/src/components/MediaPickerModal.tsx:787
+#: packages/admin/src/components/MediaPickerModal.tsx:795
 msgid "{0, plural, one {# item selected} other {# items selected}}"
 msgstr ""
 
 #. placeholder {0}: items.length
 #. placeholder {0}: menu.itemCount ?? 0
-#: packages/admin/src/components/MediaPickerModal.tsx:636
+#: packages/admin/src/components/MediaPickerModal.tsx:644
 #: packages/admin/src/components/MenuList.tsx:220
 msgid "{0, plural, one {# item} other {# items}}"
 msgstr "{0, plural, few {# عناصر} many {# عنصرًا} other {# عنصر}}"
@@ -308,6 +308,11 @@ msgstr "معاينة {0}"
 msgid "{0} system + {1} custom {2}"
 msgstr "{0} نظام + {1} مخصص {2}"
 
+#. placeholder {0}: zoom.toFixed(1)
+#: packages/admin/src/components/ImageEditor.tsx:236
+msgid "{0} times"
+msgstr ""
+
 #. placeholder {0}: taxonomy.label
 #: packages/admin/src/components/TaxonomySidebar.tsx:411
 msgid "{0} updated"
@@ -321,8 +326,8 @@ msgstr "تم تحديث {0} إلى الإصدار {1}"
 
 #. placeholder {0}: item.filename
 #. placeholder {1}: selected ? t` (selected)` : ""
-#: packages/admin/src/components/MediaPickerModal.tsx:867
-#: packages/admin/src/components/MediaPickerModal.tsx:950
+#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid "{0}{1}"
 msgstr "{0}{1}"
 
@@ -416,7 +421,7 @@ msgstr ""
 msgid "{readingTime, plural, one {# min read} other {# min read}}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:301
+#: packages/admin/src/components/MediaLibrary.tsx:292
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr ""
 
@@ -436,13 +441,11 @@ msgstr "{total, plural, zero {لا عناصر} one {عنصر واحد} two {عن
 msgid "{total, plural, one {# total} other {# total}}"
 msgstr "{total, plural, other {إجمالي #}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:214
-#: packages/admin/src/components/MediaLibrary.tsx:250
+#: packages/admin/src/components/MediaLibrary.tsx:241
 msgid "{total, plural, one {File uploaded} other {# files uploaded}}"
 msgstr "{total, plural, one {تم رفع الملف} few {تم رفع # ملفات} many {تم رفع # ملفًا} other {تم رفع # ملف}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:219
-#: packages/admin/src/components/MediaLibrary.tsx:255
+#: packages/admin/src/components/MediaLibrary.tsx:246
 msgid "{total, plural, one {Upload failed} other {All # uploads failed}}"
 msgstr "{total, plural, one {فشل الرفع} other {جميع عمليات الرفع الـ # فشلت}}"
 
@@ -462,8 +465,7 @@ msgstr "{unchangedCount, plural, one {إخفاء # غير متغير} other {إ�
 msgid "{unchangedCount, plural, one {Show # unchanged} other {Show # unchanged}}"
 msgstr "{unchangedCount, plural, other {إظهار # لم تتغير}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:224
-#: packages/admin/src/components/MediaLibrary.tsx:260
+#: packages/admin/src/components/MediaLibrary.tsx:251
 msgid "{uploaded} uploaded, {failed} failed"
 msgstr "تم رفع {uploaded}، وفشل {failed}"
 
@@ -502,6 +504,10 @@ msgstr "← رجوع"
 msgid "1 year"
 msgstr "1 سنة"
 
+#: packages/admin/src/components/ImageEditor.tsx:27
+msgid "1:1"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:1522
 msgid "1. Log into your WordPress admin"
 msgstr "1. قم بتسجيل الدخول إلى لوحة تحكم WordPress الخاصة بك"
@@ -509,6 +515,10 @@ msgstr "1. قم بتسجيل الدخول إلى لوحة تحكم WordPress ا�
 #: packages/admin/src/components/WordPressImport.tsx:1275
 msgid "1. Log into your WordPress admin dashboard"
 msgstr "1. قم بتسجيل الدخول إلى لوحة تحكم WordPress الخاصة بك"
+
+#: packages/admin/src/components/ImageEditor.tsx:29
+msgid "16:9"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1277
 msgid "2. Go to"
@@ -545,6 +555,10 @@ msgstr "307 مؤقت (صارم)"
 #: packages/admin/src/components/Redirects.tsx:159
 msgid "308 Permanent (Strict)"
 msgstr "308 دائم (صارم)"
+
+#: packages/admin/src/components/ImageEditor.tsx:28
+msgid "4:3"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1280
 msgid "4. Click \"Download Export File\""
@@ -820,6 +834,10 @@ msgstr "جاري الإضافة..."
 msgid "Additional data to import."
 msgstr "بيانات إضافية للاستيراد."
 
+#: packages/admin/src/components/ImageEditor.tsx:203
+msgid "Adjust optimization"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:1483
 msgid "admin"
 msgstr ""
@@ -920,7 +938,7 @@ msgstr "جميع المصادر"
 msgid "All statuses"
 msgstr "جميع الحالات"
 
-#: packages/admin/src/components/MediaLibrary.tsx:465
+#: packages/admin/src/components/MediaLibrary.tsx:455
 #: packages/admin/src/components/Redirects.tsx:432
 msgid "All types"
 msgstr "جميع الأنواع"
@@ -960,7 +978,7 @@ msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:376
 #: packages/admin/src/components/editor/ImageNode.tsx:231
-#: packages/admin/src/components/MediaLibrary.tsx:621
+#: packages/admin/src/components/MediaLibrary.tsx:611
 msgid "Alt text"
 msgstr "النص البديل"
 
@@ -971,8 +989,8 @@ msgstr "النص البديل"
 msgid "Alt Text"
 msgstr "النص البديل"
 
-#: packages/admin/src/components/MediaLibrary.tsx:867
-#: packages/admin/src/components/MediaLibrary.tsx:924
+#: packages/admin/src/components/MediaLibrary.tsx:868
+#: packages/admin/src/components/MediaLibrary.tsx:925
 msgid "Alt text set"
 msgstr "تم تعيين النص البديل"
 
@@ -1135,6 +1153,10 @@ msgstr "هل أنت متأكد من رغبتك بحذف هذه القائمة؟ 
 msgid "As an administrator, you can invite other users from the Users section."
 msgstr "كمسؤول، يمكنك دعوة مستخدمين آخرين من منطقة \"المستخدمين\"."
 
+#: packages/admin/src/components/ImageEditor.tsx:209
+msgid "Aspect ratio"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:2456
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "قم بتعيين مؤلفي WordPress إلى مستخدمي EmDash. سيتم نسب المنشورات إلى المستخدم المحدد."
@@ -1144,7 +1166,7 @@ msgid "Astro"
 msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:66
-#: packages/admin/src/components/MediaLibrary.tsx:468
+#: packages/admin/src/components/MediaLibrary.tsx:458
 msgid "Audio"
 msgstr "صوت"
 
@@ -1242,7 +1264,7 @@ msgstr "فشل الحفظ التلقائي"
 msgid "Available in {0}"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:710
+#: packages/admin/src/components/MediaPickerModal.tsx:718
 msgid "Available media"
 msgstr "الوسائط المتاحة"
 
@@ -1459,8 +1481,9 @@ msgstr "يمكنه عرض المحتوى"
 #: packages/admin/src/components/editor/ImageNode.tsx:253
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:406
 #: packages/admin/src/components/FieldEditor.tsx:678
+#: packages/admin/src/components/ImageEditor.tsx:344
 #: packages/admin/src/components/MediaDetailPanel.tsx:416
-#: packages/admin/src/components/MediaPickerModal.tsx:805
+#: packages/admin/src/components/MediaPickerModal.tsx:813
 #: packages/admin/src/components/MenuEditor.tsx:438
 #: packages/admin/src/components/MenuEditor.tsx:623
 #: packages/admin/src/components/MenuList.tsx:175
@@ -1493,7 +1516,7 @@ msgstr "إلغاء إعادة التسمية"
 msgid "Cannot delete theme sections"
 msgstr "لا يمكن حذف أقسام المظهر"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:456
+#: packages/admin/src/components/MediaPickerModal.tsx:463
 msgid "Cannot determine MIME type from URL. Use a URL ending in a recognized image extension (e.g. .jpg, .png, .webp)."
 msgstr "تعذّر تحديد نوع MIME من الرابط. استخدم رابطًا ينتهي بامتداد صورة معروف (مثل: .jpg, .png, .webp)."
 
@@ -1620,13 +1643,13 @@ msgid "Clear"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:947
-#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:519
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
 msgstr "مسح الفلاتر"
 
-#: packages/admin/src/components/MediaLibrary.tsx:529
-#: packages/admin/src/components/MediaLibrary.tsx:553
+#: packages/admin/src/components/MediaLibrary.tsx:519
+#: packages/admin/src/components/MediaLibrary.tsx:543
 msgid "Clear search"
 msgstr ""
 
@@ -1663,9 +1686,9 @@ msgstr "إضغط على الرابط في البريد الإلكتروني لت
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:449
 #: packages/admin/src/components/MediaDetailPanel.tsx:229
 #: packages/admin/src/components/MediaDetailPanel.tsx:416
-#: packages/admin/src/components/MediaPickerModal.tsx:529
-#: packages/admin/src/components/MediaPickerModal.tsx:535
-#: packages/admin/src/components/MediaPickerModal.tsx:539
+#: packages/admin/src/components/MediaPickerModal.tsx:537
+#: packages/admin/src/components/MediaPickerModal.tsx:543
+#: packages/admin/src/components/MediaPickerModal.tsx:547
 #: packages/admin/src/components/MenuEditor.tsx:400
 #: packages/admin/src/components/MenuEditor.tsx:406
 #: packages/admin/src/components/MenuEditor.tsx:410
@@ -1986,7 +2009,7 @@ msgstr ""
 msgid "Could not load dashboard data"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:486
+#: packages/admin/src/components/MediaPickerModal.tsx:493
 msgid "Could not load image from URL"
 msgstr "تعذّر تحميل الصورة من الرابط"
 
@@ -2220,6 +2243,10 @@ msgstr "جاري إنشاء المجموعات والحقول..."
 msgid "Creating..."
 msgstr "جاري الإنشاء..."
 
+#: packages/admin/src/components/ImageEditor.tsx:129
+msgid "Crop and optimize this image before uploading it."
+msgstr ""
+
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:33
 msgid "CSS"
 msgstr ""
@@ -2254,6 +2281,10 @@ msgstr "قسم مخصص"
 
 #: packages/admin/src/components/WordPressImport.tsx:1147
 msgid "Custom Taxonomies"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:268
+msgid "Customize the WebP result for your website."
 msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:223
@@ -2741,7 +2772,7 @@ msgid "Dockerfile"
 msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:63
-#: packages/admin/src/components/MediaLibrary.tsx:469
+#: packages/admin/src/components/MediaLibrary.tsx:459
 msgid "Documents"
 msgstr "مستندات"
 
@@ -2941,6 +2972,10 @@ msgstr "تعديل النطاق"
 #: packages/admin/src/components/FieldEditor.tsx:368
 msgid "Edit Field"
 msgstr "تعديل الحقل"
+
+#: packages/admin/src/components/ImageEditor.tsx:127
+msgid "Edit image"
+msgstr ""
 
 #. placeholder {0}: index + 1
 #: packages/admin/src/components/editor/GalleryNode.tsx:178
@@ -3569,7 +3604,7 @@ msgstr "فشل تحميل الكُتّاب: {0}"
 msgid "Failed to load email settings"
 msgstr "فشل في تحميل إعدادات البريد الإلكتروني"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:465
+#: packages/admin/src/components/MediaPickerModal.tsx:472
 msgid "Failed to load image"
 msgstr "فشل تحميل الصورة"
 
@@ -3896,9 +3931,13 @@ msgstr "الملف {0}"
 msgid "File from media library"
 msgstr "ملف من مكتبة الوسائط"
 
+#: packages/admin/src/components/MediaLibrary.tsx:195
+msgid "File uploaded"
+msgstr ""
+
 #: packages/admin/src/components/MediaDetailPanel.tsx:325
 #: packages/admin/src/components/MediaDetailPanel.tsx:342
-#: packages/admin/src/components/MediaLibrary.tsx:618
+#: packages/admin/src/components/MediaLibrary.tsx:608
 msgid "Filename"
 msgstr "اسم الملف"
 
@@ -3939,7 +3978,7 @@ msgstr "تصفية حسب المصدر"
 msgid "Filter by status"
 msgstr "تصفية حسب الحالة"
 
-#: packages/admin/src/components/MediaLibrary.tsx:471
+#: packages/admin/src/components/MediaLibrary.tsx:461
 #: packages/admin/src/components/Redirects.tsx:433
 msgid "Filter by type"
 msgstr "تصفية حسب النوع"
@@ -3963,6 +4002,14 @@ msgstr "للاستيراد الكامل بما في ذلك المسودات وج
 #: packages/admin/src/components/WordPressImport.tsx:1207
 msgid "For the best import experience, install the"
 msgstr "للحصول على أفضل تجربة استيراد، قم بتثبيت"
+
+#: packages/admin/src/components/ImageEditor.tsx:174
+msgid "Format"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:26
+msgid "Free"
+msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:928
 msgid "From date"
@@ -4033,7 +4080,7 @@ msgstr "تحقق Google"
 msgid "GraphQL"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:492
+#: packages/admin/src/components/MediaLibrary.tsx:482
 msgid "Grid view"
 msgstr "عرض شبكي"
 
@@ -4161,7 +4208,7 @@ msgstr ""
 msgid "https://example.com or /about"
 msgstr "https://example.com أو /about"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:555
+#: packages/admin/src/components/MediaPickerModal.tsx:563
 msgid "https://example.com/image.jpg"
 msgstr "https://example.com/image.jpg"
 
@@ -4217,7 +4264,7 @@ msgstr "إعدادات الصورة"
 msgid "Image shown when this page is shared on social media"
 msgstr "الصورة التي تظهر عند مشاركة هذه الصفحة على وسائل التواصل الاجتماعي"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:556
+#: packages/admin/src/components/MediaPickerModal.tsx:564
 msgid "Image URL"
 msgstr "رابط الصورة"
 
@@ -4227,7 +4274,7 @@ msgstr "تم تحديث روابط الصور في"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:61
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:192
-#: packages/admin/src/components/MediaLibrary.tsx:466
+#: packages/admin/src/components/MediaLibrary.tsx:456
 msgid "Images"
 msgstr "الصور"
 
@@ -4346,8 +4393,8 @@ msgstr ""
 msgid "Inline Code"
 msgstr "كود مضمَّن"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:567
-#: packages/admin/src/components/MediaPickerModal.tsx:811
+#: packages/admin/src/components/MediaPickerModal.tsx:575
+#: packages/admin/src/components/MediaPickerModal.tsx:819
 msgid "Insert"
 msgstr "إدراج"
 
@@ -4397,7 +4444,7 @@ msgstr ""
 msgid "Insert block below"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:549
+#: packages/admin/src/components/MediaPickerModal.tsx:557
 msgid "Insert from URL"
 msgstr "إدراج من رابط"
 
@@ -4662,11 +4709,11 @@ msgstr "تركه دون تعيين"
 msgid "Left"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:139
-#: packages/admin/src/components/MediaLibrary.tsx:276
-#: packages/admin/src/components/MediaLibrary.tsx:359
-#: packages/admin/src/components/MediaPickerModal.tsx:211
-#: packages/admin/src/components/MediaPickerModal.tsx:509
+#: packages/admin/src/components/MediaLibrary.tsx:142
+#: packages/admin/src/components/MediaLibrary.tsx:267
+#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaPickerModal.tsx:214
+#: packages/admin/src/components/MediaPickerModal.tsx:516
 msgid "Library"
 msgstr "المكتبة"
 
@@ -4715,7 +4762,7 @@ msgstr "لينكد إن"
 msgid "Links"
 msgstr "الروابط"
 
-#: packages/admin/src/components/MediaLibrary.tsx:501
+#: packages/admin/src/components/MediaLibrary.tsx:491
 msgid "List view"
 msgstr "عرض قائمة"
 
@@ -4736,8 +4783,8 @@ msgstr "تحميل المزيد"
 
 #: packages/admin/src/components/ContentList.tsx:724
 #: packages/admin/src/components/ContentList.tsx:782
-#: packages/admin/src/components/MediaLibrary.tsx:667
-#: packages/admin/src/components/MediaPickerModal.tsx:775
+#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "تحميل المزيد"
@@ -4817,8 +4864,8 @@ msgstr "جارٍ تحميل عناصر الواجهة..."
 #: packages/admin/src/components/ContentList.tsx:782
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
-#: packages/admin/src/components/MediaLibrary.tsx:667
-#: packages/admin/src/components/MediaPickerModal.tsx:775
+#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/PortableTextEditor.tsx:2413
 #: packages/admin/src/components/Redirects.tsx:560
 #: packages/admin/src/components/RegistryBrowse.tsx:146
@@ -4996,8 +5043,24 @@ msgstr "الحد الأقصى للطول"
 msgid "Max Value"
 msgstr "القيمة القصوى"
 
+#: packages/admin/src/components/ImageEditor.tsx:184
+msgid "Maximum dimensions"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:190
+msgid "Maximum file size"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:313
+msgid "Maximum file size (MB)"
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:147
 msgid "Maximum tags"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:292
+msgid "Maximum width or height"
 msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:45
@@ -5035,7 +5098,7 @@ msgid "Media import was skipped"
 msgstr "تم تخطي استيراد الوسائط"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:153
-#: packages/admin/src/components/MediaLibrary.tsx:325
+#: packages/admin/src/components/MediaLibrary.tsx:316
 msgid "Media Library"
 msgstr "مكتبة الوسائط"
 
@@ -5043,7 +5106,7 @@ msgstr "مكتبة الوسائط"
 msgid "Media Read"
 msgstr "قراءة الوسائط"
 
-#: packages/admin/src/components/MediaLibrary.tsx:384
+#: packages/admin/src/components/MediaLibrary.tsx:374
 msgid "Media storage usage"
 msgstr ""
 
@@ -5413,8 +5476,8 @@ msgstr "لا يوجد {0} بعد. قم بإنشاء أحدها للبدء."
 msgid "No 404 errors recorded yet."
 msgstr "لم يتم تسجيل أخطاء 404 بعد."
 
-#: packages/admin/src/components/MediaLibrary.tsx:867
-#: packages/admin/src/components/MediaLibrary.tsx:924
+#: packages/admin/src/components/MediaLibrary.tsx:868
+#: packages/admin/src/components/MediaLibrary.tsx:925
 msgid "No alt text"
 msgstr "لا يوجد نص بديل"
 
@@ -5553,8 +5616,8 @@ msgstr "لا توجد نتائج"
 msgid "No matching bylines."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:521
-#: packages/admin/src/components/MediaLibrary.tsx:549
+#: packages/admin/src/components/MediaLibrary.tsx:511
+#: packages/admin/src/components/MediaLibrary.tsx:539
 msgid "No matching media"
 msgstr ""
 
@@ -5567,16 +5630,16 @@ msgstr "لم يتم العثور على مفتاح مرور مطابق لهذا 
 msgid "No maximum"
 msgstr "بدون حد أقصى"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:694
+#: packages/admin/src/components/MediaPickerModal.tsx:702
 msgid "No media available from this provider"
 msgstr "لا توجد وسائط متاحة من هذا المزود"
 
-#: packages/admin/src/components/MediaLibrary.tsx:572
+#: packages/admin/src/components/MediaLibrary.tsx:562
 msgid "No media available from this provider."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:571
-#: packages/admin/src/components/MediaPickerModal.tsx:688
+#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaPickerModal.tsx:696
 msgid "No media found"
 msgstr "لم يتم العثور على وسائط"
 
@@ -5781,6 +5844,23 @@ msgstr "فتح في علامة تبويب جديدة"
 msgid "Open WordPress Profile"
 msgstr "فتح ملف WordPress الشخصي"
 
+#: packages/admin/src/components/ImageEditor.tsx:171
+#: packages/admin/src/components/ImageEditor.tsx:267
+msgid "Optimization settings"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:358
+msgid "Optimize only"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:151
+msgid "Optimized image preview"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:161
+msgid "Optimized WebP"
+msgstr ""
+
 #: packages/admin/src/components/FieldEditor.tsx:544
 msgid ""
 "Option 1\n"
@@ -5818,7 +5898,7 @@ msgstr "تلميح اختياري عند التمرير"
 msgid "Options (one per line)"
 msgstr "الخيارات (خيار واحد لكل سطر)"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:579
+#: packages/admin/src/components/MediaPickerModal.tsx:587
 msgid "or choose from library"
 msgstr "أو اختر من المكتبة"
 
@@ -5847,6 +5927,10 @@ msgstr "أو ارفع مباشرةً"
 #: packages/admin/src/components/MenuEditor.tsx:227
 msgid "Order saved"
 msgstr "تم حفظ الترتيب"
+
+#: packages/admin/src/components/ImageEditor.tsx:159
+msgid "Original"
+msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:369
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:257
@@ -6045,7 +6129,7 @@ msgstr "يرجى إدخال بريد إلكتروني صحيح"
 msgid "Please enter a valid email address"
 msgstr "يرجى إدخال عنوان بريد إلكتروني صحيح"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:442
+#: packages/admin/src/components/MediaPickerModal.tsx:449
 msgid "Please enter a valid URL"
 msgstr "يرجى إدخال رابط صحيح"
 
@@ -6202,7 +6286,7 @@ msgstr "جاري التحضير..."
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
-#: packages/admin/src/components/MediaLibrary.tsx:617
+#: packages/admin/src/components/MediaLibrary.tsx:607
 msgid "Preview"
 msgstr "معاينة"
 
@@ -6213,6 +6297,10 @@ msgstr "معاينة المحتوى قبل النشر"
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 msgid "Preview draft"
 msgstr "معاينة المسودة"
+
+#: packages/admin/src/components/ImageEditor.tsx:366
+msgid "Preview optimization"
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:308
 msgid "Previous"
@@ -6233,6 +6321,10 @@ msgstr "التنقل الرئيسي"
 
 #: packages/admin/src/components/ContentStatusBadge.tsx:69
 msgid "Private"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:366
+msgid "Processing..."
 msgstr ""
 
 #: packages/admin/src/components/settings/EmailSettings.tsx:167
@@ -6278,6 +6370,14 @@ msgstr "بقلم"
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:47
 msgid "Python"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:178
+msgid "Quality"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:272
+msgid "Quality:"
 msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1084
@@ -6418,7 +6518,7 @@ msgstr "المستودع"
 msgid "Release is too new to install"
 msgstr "الإصدار حديث جدًا للتثبيت"
 
-#: packages/admin/src/components/MediaLibrary.tsx:379
+#: packages/admin/src/components/MediaLibrary.tsx:369
 msgid "remaining"
 msgstr ""
 
@@ -6746,6 +6846,18 @@ msgstr "الدور {role}"
 msgid "Role label"
 msgstr "تسمية الدور"
 
+#: packages/admin/src/components/ImageEditor.tsx:252
+msgid "Rotate left"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:261
+msgid "Rotate right"
+msgstr ""
+
+#: packages/admin/src/components/ImageEditor.tsx:242
+msgid "Rotation:"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:428
 msgid "Routable"
 msgstr ""
@@ -6950,8 +7062,8 @@ msgstr "بحث {0}"
 msgid "Search {0}..."
 msgstr "بحث {0}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:447
-#: packages/admin/src/components/MediaPickerModal.tsx:626
+#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search by filename..."
 msgstr ""
 
@@ -6998,8 +7110,8 @@ msgstr "تحسين محركات البحث والتحقق"
 msgid "Search form"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:448
-#: packages/admin/src/components/MediaPickerModal.tsx:627
+#: packages/admin/src/components/MediaLibrary.tsx:438
+#: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "البحث في الوسائط"
 
@@ -7042,8 +7154,8 @@ msgstr ""
 msgid "Search users"
 msgstr "البحث عن مستخدمين"
 
-#: packages/admin/src/components/MediaLibrary.tsx:447
-#: packages/admin/src/components/MediaPickerModal.tsx:626
+#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search..."
 msgstr "بحث..."
 
@@ -7201,7 +7313,7 @@ msgstr "اختيار أيقونة المتصفح"
 msgid "Select file"
 msgstr "اختر ملفًا"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:150
+#: packages/admin/src/components/MediaPickerModal.tsx:151
 msgid "Select File"
 msgstr "اختر ملفًا"
 
@@ -7213,7 +7325,7 @@ msgstr ""
 msgid "Select image"
 msgstr "اختيار صورة"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:150
+#: packages/admin/src/components/MediaPickerModal.tsx:151
 #: packages/admin/src/components/PortableTextEditor.tsx:3433
 #: packages/admin/src/components/settings/SeoSettings.tsx:223
 msgid "Select Image"
@@ -7254,7 +7366,7 @@ msgstr ""
 msgid "Selected image"
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:795
+#: packages/admin/src/components/MediaPickerModal.tsx:803
 msgid "Selected:"
 msgstr "المحدد:"
 
@@ -7525,7 +7637,7 @@ msgstr "رابط الموقع"
 msgid "Sites on Cloudflare D1 can additionally restore the database to any minute within the last 30 days using D1 Time Travel — always on, no setup required."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:620
+#: packages/admin/src/components/MediaLibrary.tsx:610
 msgid "Size"
 msgstr "الحجم"
 
@@ -7675,7 +7787,7 @@ msgstr "رمز الحالة"
 msgid "Status: {status}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:377
+#: packages/admin/src/components/MediaLibrary.tsx:367
 msgid "Storage available"
 msgstr ""
 
@@ -7842,6 +7954,10 @@ msgstr "المجموعة الموجودة تحتوي على حقول بأنوا�
 msgid "The following tables contain content but aren't registered as collections. Register them to manage this content in the admin."
 msgstr "الجداول التالية تحتوي على محتوى لكنها غير مسجلة كمجموعات. سجّلها لإدارة هذا المحتوى في لوحة الإدارة."
 
+#: packages/admin/src/components/ImageEditor.tsx:110
+msgid "The image could not be processed. Please try another image."
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:179
 msgid "The invited user will have this role once they complete registration."
 msgstr "سيكون للمستخدم المدعو هذا الدور بمجرد إكمال التسجيل."
@@ -7937,7 +8053,7 @@ msgstr ""
 msgid "This field contains unsupported Portable Text marks: <0>{markList}</0>. Remove them through the API before editing or saving this content."
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:461
+#: packages/admin/src/components/MediaPickerModal.tsx:468
 msgid "This field does not accept {sniffedMime} files."
 msgstr "هذا الحقل لا يقبل ملفات {sniffedMime}."
 
@@ -7945,6 +8061,11 @@ msgstr "هذا الحقل لا يقبل ملفات {sniffedMime}."
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "هذا الحقل مطلوب"
+
+#. placeholder {0}: EDITABLE_IMAGE_TYPES.join(", ")
+#: packages/admin/src/components/ImageEditor.tsx:92
+msgid "This image format cannot be edited. Supported formats: {0}."
+msgstr ""
 
 #: packages/admin/src/components/SectionEditor.tsx:301
 msgid "This is a custom section."
@@ -8191,11 +8312,11 @@ msgstr "سلة المحذوفات فارغة."
 msgid "True/false toggle"
 msgstr "زر صح/خطأ"
 
-#: packages/admin/src/components/MediaLibrary.tsx:525
+#: packages/admin/src/components/MediaLibrary.tsx:515
 msgid "Try a broader media type or clear your filters."
 msgstr ""
 
-#: packages/admin/src/components/MediaPickerModal.tsx:691
+#: packages/admin/src/components/MediaPickerModal.tsx:699
 msgid "Try a different search term"
 msgstr "جرّب مصطلح بحث مختلف"
 
@@ -8220,11 +8341,11 @@ msgstr "حاول مجددًا"
 msgid "Try another code"
 msgstr "جرّب رمزًا آخر"
 
-#: packages/admin/src/components/MediaLibrary.tsx:550
+#: packages/admin/src/components/MediaLibrary.tsx:540
 msgid "Try another filename or clear your search."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:524
+#: packages/admin/src/components/MediaLibrary.tsx:514
 msgid "Try another filename, or clear your search and filters."
 msgstr ""
 
@@ -8252,7 +8373,7 @@ msgstr "تويتر"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
-#: packages/admin/src/components/MediaLibrary.tsx:619
+#: packages/admin/src/components/MediaLibrary.tsx:609
 #: packages/admin/src/routes/byline-schema.tsx:240
 msgid "Type"
 msgstr "النوع"
@@ -8441,11 +8562,11 @@ msgstr "جاري تحديث روابط المحتوى..."
 msgid "Updating..."
 msgstr "جاري التحديث..."
 
-#: packages/admin/src/components/MediaPickerModal.tsx:649
+#: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Upload"
 msgstr "رفع"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:152
+#: packages/admin/src/components/MediaPickerModal.tsx:153
 msgid "Upload a file to get started"
 msgstr "ارفع ملفًا للبدء"
 
@@ -8453,7 +8574,7 @@ msgstr "ارفع ملفًا للبدء"
 msgid "Upload an export file"
 msgstr "رفع ملف تصدير"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:153
+#: packages/admin/src/components/MediaPickerModal.tsx:154
 msgid "Upload an image to get started"
 msgstr "ارفع صورة للبدء"
 
@@ -8471,32 +8592,33 @@ msgstr "رفع الوسائط وإدارتها"
 msgid "Upload Export File"
 msgstr "رفع ملف التصدير"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:669
+#: packages/admin/src/components/MediaLibrary.tsx:199
+msgid "Upload failed"
+msgstr ""
+
+#: packages/admin/src/components/MediaPickerModal.tsx:677
 msgid "Upload failed: {uploadError}"
 msgstr "فشل الرفع: {uploadError}"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:661
+#: packages/admin/src/components/MediaLibrary.tsx:358
+#: packages/admin/src/components/MediaPickerModal.tsx:669
 msgid "Upload file"
 msgstr "رفع ملف"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:154
+#: packages/admin/src/components/MediaPickerModal.tsx:155
 msgid "Upload File"
 msgstr "رفع ملف"
 
-#: packages/admin/src/components/MediaLibrary.tsx:368
-msgid "Upload files"
-msgstr "رفع ملفات"
-
-#: packages/admin/src/components/MediaLibrary.tsx:540
-#: packages/admin/src/components/MediaLibrary.tsx:564
+#: packages/admin/src/components/MediaLibrary.tsx:530
+#: packages/admin/src/components/MediaLibrary.tsx:554
 msgid "Upload Files"
 msgstr "رفع ملفات"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:154
+#: packages/admin/src/components/MediaPickerModal.tsx:155
 msgid "Upload Image"
 msgstr "رفع صورة"
 
-#: packages/admin/src/components/MediaLibrary.tsx:537
+#: packages/admin/src/components/MediaLibrary.tsx:527
 msgid "Upload images, videos, and documents to keep reusable assets in one place."
 msgstr ""
 
@@ -8504,12 +8626,12 @@ msgstr ""
 msgid "Upload Media"
 msgstr "رفع وسائط"
 
-#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaLibrary.tsx:551
 msgid "Upload media to keep reusable assets in one place."
 msgstr ""
 
 #. placeholder {0}: activeProviderInfo?.name || t`Library`
-#: packages/admin/src/components/MediaLibrary.tsx:359
+#: packages/admin/src/components/MediaLibrary.tsx:350
 msgid "Upload to {0}"
 msgstr "رفع إلى {0}"
 
@@ -8527,12 +8649,12 @@ msgstr "جاري الرفع"
 
 #. placeholder {0}: uploadState.progress.current
 #. placeholder {1}: uploadState.progress.total
-#: packages/admin/src/components/MediaLibrary.tsx:334
+#: packages/admin/src/components/MediaLibrary.tsx:325
 msgid "Uploading {0}/{1}..."
 msgstr "جاري رفع {0}/{1}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:335
-#: packages/admin/src/components/MediaPickerModal.tsx:649
+#: packages/admin/src/components/MediaLibrary.tsx:326
+#: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Uploading..."
 msgstr "جاري الرفع..."
 
@@ -8567,6 +8689,10 @@ msgstr ""
 #: packages/admin/src/components/Redirects.tsx:111
 msgid "Use [param] or [...rest] in paths for pattern matching."
 msgstr "استخدم [param] أو [...rest] في الروابط النسبية لمطابقة الأنماط."
+
+#: packages/admin/src/components/ImageEditor.tsx:348
+msgid "Use optimized image"
+msgstr ""
 
 #: packages/admin/src/components/auth/PasskeyLogin.tsx:364
 msgid "Use your device's biometric authentication, security key, or PIN to sign in."
@@ -8686,7 +8812,7 @@ msgid "Version {0}"
 msgstr "الإصدار {0}"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:67
-#: packages/admin/src/components/MediaLibrary.tsx:467
+#: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Video"
 msgstr "فيديو"
 
@@ -8699,7 +8825,7 @@ msgstr "عرض حالة مزود البريد الإلكتروني وإرسال 
 msgid "View in Marketplace"
 msgstr "عرض في السوق"
 
-#: packages/admin/src/components/MediaLibrary.tsx:479
+#: packages/admin/src/components/MediaLibrary.tsx:469
 msgid "View mode"
 msgstr "وضع العرض"
 
@@ -9061,8 +9187,8 @@ msgstr "اسم مستخدم Instagram الخاص بك"
 msgid "Your LinkedIn profile username"
 msgstr "اسم مستخدم ملف LinkedIn الشخصي"
 
-#: packages/admin/src/components/MediaLibrary.tsx:536
-#: packages/admin/src/components/MediaLibrary.tsx:560
+#: packages/admin/src/components/MediaLibrary.tsx:526
+#: packages/admin/src/components/MediaLibrary.tsx:550
 msgid "Your media library is empty"
 msgstr ""
 
@@ -9104,3 +9230,7 @@ msgstr "معرف قناة YouTube أو المعرّف الخاص بك"
 #: packages/admin/src/components/settings/SocialSettings.tsx:179
 msgid "YouTube"
 msgstr "يوتيوب"
+
+#: packages/admin/src/components/ImageEditor.tsx:225
+msgid "Zoom:"
+msgstr ""
