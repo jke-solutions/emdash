@@ -2,7 +2,7 @@ import node from "@astrojs/node";
 import react from "@astrojs/react";
 import auditLog from "@emdash-cms/plugin-audit-log";
 import { mcpSmokePlugin } from "@emdash-cms/plugin-mcp-smoke";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, fontProviders, passthroughImageService } from "astro/config";
 import emdash, { local } from "emdash/astro";
 import { sqlite } from "emdash/db";
 
@@ -14,6 +14,7 @@ export default defineConfig({
 	image: {
 		layout: "constrained",
 		responsiveStyles: true,
+		service: passthroughImageService(),
 	},
 	integrations: [
 		react(),
