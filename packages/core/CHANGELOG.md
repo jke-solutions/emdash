@@ -1,5 +1,14 @@
 # emdash
 
+## 0.36.0
+
+### Patch Changes
+
+- Updated dependencies [[`0e91856`](https://github.com/emdash-cms/emdash/commit/0e918563c6139c2c358a7b5513ac4ef420fe989c)]:
+  - @emdash-cms/admin@0.36.0
+  - @emdash-cms/auth@0.36.0
+  - @emdash-cms/gutenberg-to-portable-text@0.36.0
+
 ## 0.35.0
 
 ### Minor Changes
