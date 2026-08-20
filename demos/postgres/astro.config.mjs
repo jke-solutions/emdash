@@ -1,11 +1,14 @@
 import node from "@astrojs/node";
 import react from "@astrojs/react";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, fontProviders, passthroughImageService } from "astro/config";
 import emdash from "emdash/astro";
 import { postgres } from "emdash/db";
 
 export default defineConfig({
 	output: "server",
+	image: {
+		service: passthroughImageService(),
+	},
 	adapter: node({
 		mode: "standalone",
 	}),

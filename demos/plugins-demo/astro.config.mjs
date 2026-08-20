@@ -4,12 +4,15 @@ import { apiTestPlugin } from "@emdash-cms/plugin-api-test";
 import auditLog from "@emdash-cms/plugin-audit-log";
 import { embedsPlugin } from "@emdash-cms/plugin-embeds";
 import webhookNotifier from "@emdash-cms/plugin-webhook-notifier";
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import emdash from "emdash/astro";
 import { sqlite } from "emdash/db";
 
 export default defineConfig({
 	output: "server",
+	image: {
+		service: passthroughImageService(),
+	},
 	adapter: node({
 		mode: "standalone",
 	}),

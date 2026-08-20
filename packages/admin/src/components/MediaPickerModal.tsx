@@ -35,6 +35,7 @@ import {
 import { matchesMimeAllowlist, mimeFromUrl } from "../lib/mime-utils.js";
 import { cn } from "../lib/utils";
 import { DialogError } from "./DialogError.js";
+import { ImageEditor } from "./ImageEditor.js";
 
 /** Selected item can be either a local MediaItem or a provider item with provider context */
 interface SelectedMedia {
@@ -162,6 +163,7 @@ export function MediaPickerModal({
 	// Debounced for the local library's server-side filename search.
 	const debouncedSearch = useDebouncedValue(searchQuery, 300);
 	const fileInputRef = React.useRef<HTMLInputElement>(null);
+	const [pendingImageFile, setPendingImageFile] = React.useState<File | null>(null);
 
 	// URL input state
 	const [imageUrl, setImageUrl] = React.useState("");
@@ -188,6 +190,7 @@ export function MediaPickerModal({
 			setUrlError(null);
 			setUploadError(null);
 			setProviderDimensions({});
+			setPendingImageFile(null);
 		}
 	}, [open, localOnly]);
 
@@ -363,7 +366,10 @@ export function MediaPickerModal({
 		const file = files?.[0];
 		if (file) {
 			if (activeProvider === "local") {
-				uploadLocalMutation.mutate(file);
+				const canOptimize =
+					!multiple && mediaKind === "image" && matchesAnyFilter("image/webp", filters);
+				if (canOptimize) setPendingImageFile(file);
+				else uploadLocalMutation.mutate(file);
 			} else if (activeProviderInfo?.capabilities.upload) {
 				uploadProviderMutation.mutate({ providerId: activeProvider, file });
 			}
@@ -426,6 +432,7 @@ export function MediaPickerModal({
 
 	const handleClose = () => {
 		onOpenChange(false);
+		setPendingImageFile(null);
 		setSelectedItem(null);
 		setSelectedItems([]);
 		setImageUrl("");
@@ -519,7 +526,8 @@ export function MediaPickerModal({
 	}, [providers, localOnly, t]);
 
 	return (
-		<Dialog.Root open={open} onOpenChange={handleClose}>
+		<>
+			<Dialog.Root open={open} onOpenChange={handleClose}>
 			<Dialog className="p-6 max-w-4xl max-h-[80vh] flex flex-col overflow-hidden" size="xl">
 				<div className="flex items-start justify-between gap-4 mb-4">
 					<Dialog.Title className="text-lg font-semibold leading-none tracking-tight">
@@ -812,7 +820,19 @@ export function MediaPickerModal({
 					</Button>
 				</div>
 			</Dialog>
-		</Dialog.Root>
+			</Dialog.Root>
+			<ImageEditor
+				open={pendingImageFile !== null}
+				file={pendingImageFile}
+				onOpenChange={(editorOpen) => {
+					if (!editorOpen) setPendingImageFile(null);
+				}}
+				onApply={(optimized) => {
+					setPendingImageFile(null);
+					uploadLocalMutation.mutate(optimized.file);
+				}}
+			/>
+		</>
 	);
 }
 
