@@ -24,6 +24,7 @@ import {
 } from "../lib/api";
 import type { MediaStorageQuota } from "../lib/api/media";
 import { useDebouncedValue } from "../lib/hooks.js";
+import { isEditableImage } from "../lib/image-processing.js";
 import {
 	providerItemToMediaItem,
 	getFileIcon,
@@ -33,6 +34,7 @@ import {
 	MEDIA_THUMBNAIL_WIDTH,
 } from "../lib/media-utils";
 import { cn } from "../lib/utils";
+import { ImageEditor } from "./ImageEditor.js";
 import { MediaDetailPanel } from "./MediaDetailPanel";
 
 /** Maps a coarse type-filter choice to the media list's `mimeType` filter. */
@@ -91,6 +93,7 @@ export function MediaLibrary({
 	const [localTypeFilter, setLocalTypeFilter] = React.useState("all");
 	const mediaHeadingRef = React.useRef<HTMLHeadingElement>(null);
 	const detailOpenFrameRef = React.useRef<number | null>(null);
+	const [pendingImageFile, setPendingImageFile] = React.useState<File | null>(null);
 	// Debounced filename search reported up for the local library's server query.
 	const debouncedSearch = useDebouncedValue(searchQuery, 300);
 	React.useEffect(() => {
@@ -183,56 +186,44 @@ export function MediaLibrary({
 		}
 	}, [uploadState.status]);
 
+	const uploadLocalFile = async (file: File) => {
+		setUploadState({ status: "uploading", progress: { current: 0, total: 1 } });
+		try {
+			await onUpload?.(file);
+			setUploadState({
+				status: "success",
+				message: t`File uploaded`,
+			});
+		} catch (error) {
+			console.error("Upload failed:", error);
+			setUploadState({ status: "error", message: t`Upload failed` });
+		}
+	};
+
 	const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files;
-		if (files && files.length > 0) {
-			const fileArray = [...files];
+		const file = files?.[0];
+		if (file) {
+			if (activeProvider === "local" && isEditableImage(file)) {
+				setPendingImageFile(file);
+				if (fileInputRef.current) fileInputRef.current.value = "";
+				return;
+			}
+
+			const fileArray = [file];
 			const total = fileArray.length;
 
 			if (activeProvider === "local") {
-				setUploadState({ status: "uploading", progress: { current: 0, total } });
-				let uploaded = 0;
-				let failed = 0;
-
-				for (const file of fileArray) {
-					try {
-						await onUpload?.(file);
-						uploaded++;
-					} catch (error) {
-						console.error("Upload failed:", error);
-						failed++;
-					}
-					setUploadState({
-						status: "uploading",
-						progress: { current: uploaded + failed, total },
-					});
-				}
-
-				if (failed === 0) {
-					setUploadState({
-						status: "success",
-						message: plural(total, { one: "File uploaded", other: "# files uploaded" }),
-					});
-				} else if (uploaded === 0) {
-					setUploadState({
-						status: "error",
-						message: plural(total, { one: "Upload failed", other: "All # uploads failed" }),
-					});
-				} else {
-					setUploadState({
-						status: "error",
-						message: t`${uploaded} uploaded, ${failed} failed`,
-					});
-				}
+				await uploadLocalFile(file);
 			} else if (activeProviderInfo?.capabilities.upload) {
 				// Upload to external provider
 				setUploadState({ status: "uploading", progress: { current: 0, total } });
 				let uploaded = 0;
 				let failed = 0;
 
-				for (const file of fileArray) {
+				for (const uploadFile of fileArray) {
 					try {
-						await uploadToProvider(activeProvider, file);
+						await uploadToProvider(activeProvider, uploadFile);
 						uploaded++;
 					} catch (error) {
 						console.error("Upload failed:", error);
@@ -361,11 +352,10 @@ export function MediaLibrary({
 							<input
 								ref={fileInputRef}
 								type="file"
-								multiple
 								accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.xls,.xlsx"
 								className="sr-only"
 								onChange={handleFileSelect}
-								aria-label={t`Upload files`}
+								aria-label={t`Upload file`}
 							/>
 						</>
 					)}
@@ -683,6 +673,17 @@ export function MediaLibrary({
 					onDeleted={detailItem.provider ? undefined : onItemUpdated}
 				/>
 			)}
+			<ImageEditor
+				open={pendingImageFile !== null}
+				file={pendingImageFile}
+				onOpenChange={(editorOpen) => {
+					if (!editorOpen) setPendingImageFile(null);
+				}}
+				onApply={(optimized) => {
+					setPendingImageFile(null);
+					void uploadLocalFile(optimized.file);
+				}}
+			/>
 		</div>
 	);
 }
