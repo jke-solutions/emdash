@@ -528,298 +528,298 @@ export function MediaPickerModal({
 	return (
 		<>
 			<Dialog.Root open={open} onOpenChange={handleClose}>
-			<Dialog className="p-6 max-w-4xl max-h-[80vh] flex flex-col overflow-hidden" size="xl">
-				<div className="flex items-start justify-between gap-4 mb-4">
-					<Dialog.Title className="text-lg font-semibold leading-none tracking-tight">
-						{title}
-					</Dialog.Title>
-					<Dialog.Close
-						aria-label={t`Close`}
-						render={(props) => (
-							<Button
-								{...props}
-								variant="ghost"
-								shape="square"
-								aria-label={t`Close`}
-								className="absolute end-4 top-4"
-							>
-								<X className="h-4 w-4" />
-								<span className="sr-only">{t`Close`}</span>
-							</Button>
-						)}
-					/>
-				</div>
-
-				{/* URL Input (image pickers only — probes image dimensions) */}
-				{!hideUrlInput && !localOnly && (
-					<>
-						<div className="border-b pb-4">
-							<Label>{t`Insert from URL`}</Label>
-							<div className="flex gap-2 mt-1.5">
-								<div className="flex-1 relative">
-									<Globe className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-kumo-subtle" />
-									<Input
-										type="url"
-										placeholder={t`https://example.com/image.jpg`}
-										aria-label={t`Image URL`}
-										value={imageUrl}
-										onChange={(e) => {
-											setImageUrl(e.target.value);
-											setUrlError(null);
-										}}
-										onKeyDown={handleUrlKeyDown}
-										className="ps-9"
-									/>
-								</div>
-								<Button onClick={handleUrlSubmit} disabled={!imageUrl.trim() || isProbing}>
-									{isProbing ? <Loader size="sm" /> : t`Insert`}
-								</Button>
-							</div>
-							{urlError && <p className="text-sm text-kumo-danger mt-1">{urlError}</p>}
-						</div>
-
-						{/* Divider with "or" */}
-						<div className="relative py-2">
-							<div className="absolute inset-0 flex items-center">
-								<span className="w-full border-t" />
-							</div>
-							<div className="relative flex justify-center text-xs uppercase">
-								<span className="bg-kumo-base px-2 text-kumo-subtle">{t`or choose from library`}</span>
-							</div>
-						</div>
-					</>
-				)}
-
-				{/* Provider Tabs */}
-				{providerTabs.length > 1 && (
-					<div className="flex gap-2 border-b pb-3 flex-wrap">
-						{providerTabs.map((tab) => (
-							<button
-								key={tab.id}
-								type="button"
-								onClick={() => {
-									setActiveProvider(tab.id);
-									setSelectedItem(null);
-									setSelectedItems([]);
-									setSearchQuery("");
-								}}
-								className={cn(
-									"flex items-center gap-2 px-4 h-9 text-sm font-medium rounded-md transition-colors whitespace-nowrap",
-									activeProvider === tab.id
-										? "bg-kumo-brand text-white"
-										: "bg-kumo-tint hover:bg-kumo-tint/80 text-kumo-subtle",
-								)}
-							>
-								{tab.icon &&
-									(tab.icon.startsWith("data:") ? (
-										<img src={tab.icon} alt="" className="h-4 w-4" aria-hidden="true" />
-									) : (
-										<span aria-hidden="true">{tab.icon}</span>
-									))}
-								{tab.name}
-							</button>
-						))}
-					</div>
-				)}
-
-				{/* Toolbar */}
-				<div className="flex items-center justify-between pb-3 gap-4">
-					{/* Search — providers that support it, plus the local library
-					    (filename/extension search, handled server-side). */}
-					{canSearch || activeProvider === "local" ? (
-						<div className="relative flex-1 max-w-xs">
-							<MagnifyingGlass className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-kumo-subtle" />
-							<Input
-								type="search"
-								placeholder={activeProvider === "local" ? t`Search by filename...` : t`Search...`}
-								aria-label={t`Search media`}
-								value={searchQuery}
-								onChange={(e) => setSearchQuery(e.target.value)}
-								maxLength={MEDIA_SEARCH_MAX_LENGTH}
-								className="ps-9"
-							/>
-						</div>
-					) : (
-						<p className="text-sm text-kumo-subtle">
-							{plural(items.length, { one: "# item", other: "# items" })}
-						</p>
-					)}
-
-					{/* Upload button (if provider supports it) */}
-					{canUpload && (
-						<>
-							<Button
-								size="sm"
-								icon={<Upload />}
-								onClick={() => fileInputRef.current?.click()}
-								disabled={isUploading}
-							>
-								{isUploading ? t`Uploading...` : t`Upload`}
-							</Button>
-							<input
-								ref={fileInputRef}
-								type="file"
-								accept={
-									filters
-										? filters.map((f) => (f.endsWith("/") ? f + "*" : f)).join(",")
-										: undefined
-								}
-								className="sr-only"
-								onChange={handleFileSelect}
-								aria-label={t`Upload file`}
-							/>
-						</>
-					)}
-				</div>
-
-				{/* Upload error */}
-				<DialogError
-					message={uploadError ? t`Upload failed: ${uploadError}` : null}
-					className="mb-3"
-				/>
-
-				{/* Media Grid */}
-				<div className="flex-1 overflow-y-auto min-h-0">
-					{/*
-					 * Gate the centered loader on items being empty so that "Load More"
-					 * (which sets isLoading=true while fetching the next cursor page)
-					 * does not blank out already-rendered items / lose the user's
-					 * selection. Mirrors the ContentList pattern from #135.
-					 */}
-					{isLoading && items.length === 0 ? (
-						<div className="flex items-center justify-center h-full">
-							<Loader />
-						</div>
-					) : items.length === 0 ? (
-						<div className="flex flex-col items-center justify-center h-full text-center p-8">
-							<EmptyStateIcon className="h-12 w-12 text-kumo-subtle mb-4" aria-hidden="true" />
-							<h3 className="text-lg font-medium">{t`No media found`}</h3>
-							<p className="text-sm text-kumo-subtle mt-1">
-								{canSearch && searchQuery
-									? t`Try a different search term`
-									: canUpload
-										? emptyStateUploadHint
-										: t`No media available from this provider`}
-							</p>
-							{canUpload && !searchQuery && (
+				<Dialog className="p-6 max-w-4xl max-h-[80vh] flex flex-col overflow-hidden" size="xl">
+					<div className="flex items-start justify-between gap-4 mb-4">
+						<Dialog.Title className="text-lg font-semibold leading-none tracking-tight">
+							{title}
+						</Dialog.Title>
+						<Dialog.Close
+							aria-label={t`Close`}
+							render={(props) => (
 								<Button
-									className="mt-4"
-									icon={<Upload />}
-									onClick={() => fileInputRef.current?.click()}
+									{...props}
+									variant="ghost"
+									shape="square"
+									aria-label={t`Close`}
+									className="absolute end-4 top-4"
 								>
-									{emptyStateUploadCta}
+									<X className="h-4 w-4" />
+									<span className="sr-only">{t`Close`}</span>
 								</Button>
 							)}
-						</div>
-					) : (
-						<ul
-							className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3 p-1"
-							role="listbox"
-							aria-label={t`Available media`}
-						>
-							{activeProvider === "local"
-								? (items as MediaItem[]).map((item) => (
-										<MediaPickerItem
-											key={item.id}
-											item={item}
-											selected={isItemSelected("local", item.id)}
-											onClick={() => handleItemClick("local", item)}
-											onDoubleClick={() => {
-												// Multi-select: double-click is just a toggle, no instant insert
-												if (multiple) {
-													handleItemClick("local", item);
-													return;
-												}
-												onSelect(item);
-												onOpenChange(false);
-											}}
-											onDimensionsDetected={handleDimensionsDetected}
-										/>
-									))
-								: (items as MediaProviderItem[]).map((item) => (
-										<ProviderMediaItem
-											key={item.id}
-											item={item}
-											selected={isItemSelected(activeProvider, item.id)}
-											onClick={() => handleItemClick(activeProvider, item)}
-											onDoubleClick={() => {
-												if (multiple) {
-													handleItemClick(activeProvider, item);
-													return;
-												}
-												// Merge loaded dimensions for double-click select
-												const dims = providerDimensions[item.id];
-												const itemWithDims = dims
-													? {
-															...item,
-															width: item.width ?? dims.width,
-															height: item.height ?? dims.height,
-														}
-													: item;
-												const mediaItem = providerItemToMediaItem(activeProvider, itemWithDims);
-												onSelect(mediaItem);
-												onOpenChange(false);
-											}}
-											onDimensionsLoaded={(width, height) => {
-												setProviderDimensions((prev) => ({
-													...prev,
-													[item.id]: { width, height },
-												}));
-											}}
-										/>
-									))}
-						</ul>
-					)}
-
-					{/* Load more (local library only — providers handle pagination internally) */}
-					{activeProvider === "local" && hasNextLocalPage && (
-						<div className="flex justify-center py-3">
-							<Button
-								variant="outline"
-								size="sm"
-								onClick={() => void fetchNextLocalPage()}
-								disabled={isFetchingNextLocalPage}
-							>
-								{isFetchingNextLocalPage ? t`Loading...` : t`Load More`}
-							</Button>
-						</div>
-					)}
-				</div>
-
-				{/* Footer */}
-				<div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 border-t pt-4">
-					<div className="flex-1 text-sm text-kumo-subtle">
-						{multiple
-							? selectedItems.length > 0 && (
-									<span>
-										{plural(selectedItems.length, {
-											one: "# item selected",
-											other: "# items selected",
-										})}
-									</span>
-								)
-							: selectedItem && (
-									<span>
-										{t`Selected:`} <strong>{selectedItem.item.filename}</strong>
-										{selectedItem.providerId !== "local" && (
-											<span className="ms-2 text-xs">
-												{t`(from ${providers?.find((p) => p.id === selectedItem.providerId)?.name})`}
-											</span>
-										)}
-									</span>
-								)}
+						/>
 					</div>
-					<Button variant="outline" onClick={handleClose}>
-						{t`Cancel`}
-					</Button>
-					<Button
-						onClick={handleConfirm}
-						disabled={multiple ? selectedItems.length === 0 : !selectedItem}
-					>
-						{t`Insert`}
-					</Button>
-				</div>
-			</Dialog>
+
+					{/* URL Input (image pickers only — probes image dimensions) */}
+					{!hideUrlInput && !localOnly && (
+						<>
+							<div className="border-b pb-4">
+								<Label>{t`Insert from URL`}</Label>
+								<div className="flex gap-2 mt-1.5">
+									<div className="flex-1 relative">
+										<Globe className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-kumo-subtle" />
+										<Input
+											type="url"
+											placeholder={t`https://example.com/image.jpg`}
+											aria-label={t`Image URL`}
+											value={imageUrl}
+											onChange={(e) => {
+												setImageUrl(e.target.value);
+												setUrlError(null);
+											}}
+											onKeyDown={handleUrlKeyDown}
+											className="ps-9"
+										/>
+									</div>
+									<Button onClick={handleUrlSubmit} disabled={!imageUrl.trim() || isProbing}>
+										{isProbing ? <Loader size="sm" /> : t`Insert`}
+									</Button>
+								</div>
+								{urlError && <p className="text-sm text-kumo-danger mt-1">{urlError}</p>}
+							</div>
+
+							{/* Divider with "or" */}
+							<div className="relative py-2">
+								<div className="absolute inset-0 flex items-center">
+									<span className="w-full border-t" />
+								</div>
+								<div className="relative flex justify-center text-xs uppercase">
+									<span className="bg-kumo-base px-2 text-kumo-subtle">{t`or choose from library`}</span>
+								</div>
+							</div>
+						</>
+					)}
+
+					{/* Provider Tabs */}
+					{providerTabs.length > 1 && (
+						<div className="flex gap-2 border-b pb-3 flex-wrap">
+							{providerTabs.map((tab) => (
+								<button
+									key={tab.id}
+									type="button"
+									onClick={() => {
+										setActiveProvider(tab.id);
+										setSelectedItem(null);
+										setSelectedItems([]);
+										setSearchQuery("");
+									}}
+									className={cn(
+										"flex items-center gap-2 px-4 h-9 text-sm font-medium rounded-md transition-colors whitespace-nowrap",
+										activeProvider === tab.id
+											? "bg-kumo-brand text-white"
+											: "bg-kumo-tint hover:bg-kumo-tint/80 text-kumo-subtle",
+									)}
+								>
+									{tab.icon &&
+										(tab.icon.startsWith("data:") ? (
+											<img src={tab.icon} alt="" className="h-4 w-4" aria-hidden="true" />
+										) : (
+											<span aria-hidden="true">{tab.icon}</span>
+										))}
+									{tab.name}
+								</button>
+							))}
+						</div>
+					)}
+
+					{/* Toolbar */}
+					<div className="flex items-center justify-between pb-3 gap-4">
+						{/* Search — providers that support it, plus the local library
+					    (filename/extension search, handled server-side). */}
+						{canSearch || activeProvider === "local" ? (
+							<div className="relative flex-1 max-w-xs">
+								<MagnifyingGlass className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-kumo-subtle" />
+								<Input
+									type="search"
+									placeholder={activeProvider === "local" ? t`Search by filename...` : t`Search...`}
+									aria-label={t`Search media`}
+									value={searchQuery}
+									onChange={(e) => setSearchQuery(e.target.value)}
+									maxLength={MEDIA_SEARCH_MAX_LENGTH}
+									className="ps-9"
+								/>
+							</div>
+						) : (
+							<p className="text-sm text-kumo-subtle">
+								{plural(items.length, { one: "# item", other: "# items" })}
+							</p>
+						)}
+
+						{/* Upload button (if provider supports it) */}
+						{canUpload && (
+							<>
+								<Button
+									size="sm"
+									icon={<Upload />}
+									onClick={() => fileInputRef.current?.click()}
+									disabled={isUploading}
+								>
+									{isUploading ? t`Uploading...` : t`Upload`}
+								</Button>
+								<input
+									ref={fileInputRef}
+									type="file"
+									accept={
+										filters
+											? filters.map((f) => (f.endsWith("/") ? f + "*" : f)).join(",")
+											: undefined
+									}
+									className="sr-only"
+									onChange={handleFileSelect}
+									aria-label={t`Upload file`}
+								/>
+							</>
+						)}
+					</div>
+
+					{/* Upload error */}
+					<DialogError
+						message={uploadError ? t`Upload failed: ${uploadError}` : null}
+						className="mb-3"
+					/>
+
+					{/* Media Grid */}
+					<div className="flex-1 overflow-y-auto min-h-0">
+						{/*
+						 * Gate the centered loader on items being empty so that "Load More"
+						 * (which sets isLoading=true while fetching the next cursor page)
+						 * does not blank out already-rendered items / lose the user's
+						 * selection. Mirrors the ContentList pattern from #135.
+						 */}
+						{isLoading && items.length === 0 ? (
+							<div className="flex items-center justify-center h-full">
+								<Loader />
+							</div>
+						) : items.length === 0 ? (
+							<div className="flex flex-col items-center justify-center h-full text-center p-8">
+								<EmptyStateIcon className="h-12 w-12 text-kumo-subtle mb-4" aria-hidden="true" />
+								<h3 className="text-lg font-medium">{t`No media found`}</h3>
+								<p className="text-sm text-kumo-subtle mt-1">
+									{canSearch && searchQuery
+										? t`Try a different search term`
+										: canUpload
+											? emptyStateUploadHint
+											: t`No media available from this provider`}
+								</p>
+								{canUpload && !searchQuery && (
+									<Button
+										className="mt-4"
+										icon={<Upload />}
+										onClick={() => fileInputRef.current?.click()}
+									>
+										{emptyStateUploadCta}
+									</Button>
+								)}
+							</div>
+						) : (
+							<ul
+								className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3 p-1"
+								role="listbox"
+								aria-label={t`Available media`}
+							>
+								{activeProvider === "local"
+									? (items as MediaItem[]).map((item) => (
+											<MediaPickerItem
+												key={item.id}
+												item={item}
+												selected={isItemSelected("local", item.id)}
+												onClick={() => handleItemClick("local", item)}
+												onDoubleClick={() => {
+													// Multi-select: double-click is just a toggle, no instant insert
+													if (multiple) {
+														handleItemClick("local", item);
+														return;
+													}
+													onSelect(item);
+													onOpenChange(false);
+												}}
+												onDimensionsDetected={handleDimensionsDetected}
+											/>
+										))
+									: (items as MediaProviderItem[]).map((item) => (
+											<ProviderMediaItem
+												key={item.id}
+												item={item}
+												selected={isItemSelected(activeProvider, item.id)}
+												onClick={() => handleItemClick(activeProvider, item)}
+												onDoubleClick={() => {
+													if (multiple) {
+														handleItemClick(activeProvider, item);
+														return;
+													}
+													// Merge loaded dimensions for double-click select
+													const dims = providerDimensions[item.id];
+													const itemWithDims = dims
+														? {
+																...item,
+																width: item.width ?? dims.width,
+																height: item.height ?? dims.height,
+															}
+														: item;
+													const mediaItem = providerItemToMediaItem(activeProvider, itemWithDims);
+													onSelect(mediaItem);
+													onOpenChange(false);
+												}}
+												onDimensionsLoaded={(width, height) => {
+													setProviderDimensions((prev) => ({
+														...prev,
+														[item.id]: { width, height },
+													}));
+												}}
+											/>
+										))}
+							</ul>
+						)}
+
+						{/* Load more (local library only — providers handle pagination internally) */}
+						{activeProvider === "local" && hasNextLocalPage && (
+							<div className="flex justify-center py-3">
+								<Button
+									variant="outline"
+									size="sm"
+									onClick={() => void fetchNextLocalPage()}
+									disabled={isFetchingNextLocalPage}
+								>
+									{isFetchingNextLocalPage ? t`Loading...` : t`Load More`}
+								</Button>
+							</div>
+						)}
+					</div>
+
+					{/* Footer */}
+					<div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 border-t pt-4">
+						<div className="flex-1 text-sm text-kumo-subtle">
+							{multiple
+								? selectedItems.length > 0 && (
+										<span>
+											{plural(selectedItems.length, {
+												one: "# item selected",
+												other: "# items selected",
+											})}
+										</span>
+									)
+								: selectedItem && (
+										<span>
+											{t`Selected:`} <strong>{selectedItem.item.filename}</strong>
+											{selectedItem.providerId !== "local" && (
+												<span className="ms-2 text-xs">
+													{t`(from ${providers?.find((p) => p.id === selectedItem.providerId)?.name})`}
+												</span>
+											)}
+										</span>
+									)}
+						</div>
+						<Button variant="outline" onClick={handleClose}>
+							{t`Cancel`}
+						</Button>
+						<Button
+							onClick={handleConfirm}
+							disabled={multiple ? selectedItems.length === 0 : !selectedItem}
+						>
+							{t`Insert`}
+						</Button>
+					</div>
+				</Dialog>
 			</Dialog.Root>
 			<ImageEditor
 				open={pendingImageFile !== null}

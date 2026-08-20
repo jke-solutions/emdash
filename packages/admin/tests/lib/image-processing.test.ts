@@ -7,14 +7,22 @@ import {
 describe("image processing input rules", () => {
 	it("accepts the image formats supported by the editor", () => {
 		for (const type of EDITABLE_IMAGE_TYPES) {
-			expect(isEditableImage(new File(["image"], `source.${type.split("/")[1]}`, { type }))).toBe(true);
+			expect(isEditableImage(new File(["image"], `source.${type.split("/")[1]}`, { type }))).toBe(
+				true,
+			);
 		}
 	});
 
 	it("rejects formats that are not safe for the editor", () => {
-		expect(isEditableImage(new File(["image"], "animation.gif", { type: "image/gif" }))).toBe(false);
-		expect(isEditableImage(new File(["markup"], "icon.svg", { type: "image/svg+xml" }))).toBe(false);
-		expect(isEditableImage(new File(["document"], "document.pdf", { type: "application/pdf" }))).toBe(false);
+		expect(isEditableImage(new File(["image"], "animation.gif", { type: "image/gif" }))).toBe(
+			false,
+		);
+		expect(isEditableImage(new File(["markup"], "icon.svg", { type: "image/svg+xml" }))).toBe(
+			false,
+		);
+		expect(
+			isEditableImage(new File(["document"], "document.pdf", { type: "application/pdf" })),
+		).toBe(false);
 	});
 });
 
