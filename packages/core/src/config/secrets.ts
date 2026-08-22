@@ -256,7 +256,7 @@ async function getRuntimeEncryptionKeys(): Promise<ParsedEncryptionKey[]> {
 	const raw =
 		typeof runtimeEnv?.EMDASH_ENCRYPTION_KEY === "string"
 			? runtimeEnv.EMDASH_ENCRYPTION_KEY
-			: import.meta.env.EMDASH_ENCRYPTION_KEY;
+			: readDefaultEnv().EMDASH_ENCRYPTION_KEY;
 	const keys = await parseEncryptionKeys(raw);
 	if (!keys?.[0])
 		throw new EmDashSecretsError(

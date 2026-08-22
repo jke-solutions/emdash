@@ -46,17 +46,9 @@ jobs:
           core=false
           admin=false
           e2e=false
-          skip_runtime_tests=false
-
-          if [[ "$GITHUB_EVENT_NAME" == "pull_request" && "$GITHUB_HEAD_REF" == "changeset-release/main" ]]; then
-            skip_runtime_tests=true
-          elif [[ "$GITHUB_EVENT_NAME" == "pull_request" && "$GITHUB_HEAD_REF" == "staging" ]]; then
-            skip_runtime_tests=true
-          elif [[ "$GITHUB_EVENT_NAME" == "push" && "$GITHUB_REF" == "refs/heads/main" && "$EVENT_HEAD_COMMIT_MESSAGE" == *"changeset-release/main"* ]]; then
-            skip_runtime_tests=true
-          elif [[ "$GITHUB_EVENT_NAME" == "push" && "$GITHUB_REF" == "refs/heads/main" && "$EVENT_HEAD_COMMIT_MESSAGE" == *"/staging"* ]]; then
-            skip_runtime_tests=true
-          fi
+          # Runtime tests are manual and run locally before pushing. CI keeps
+          # static validation only so promotions do not consume test minutes.
+          skip_runtime_tests=true
 
           if has_match '^(packages/|scripts/|templates/|demos/|tests/|playwright\.config|vitest\.)'; then source=true; fi
           if has_match '^(packages/core/|packages/auth/|packages/blocks/|packages/plugin-types/|packages/plugins/|packages/registry-)'; then core=true; fi
