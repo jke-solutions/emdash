@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr "{0, plural, one {# komentář importován} few {# komentáře importovány} many {# komentáře importováno} other {# komentářů importováno}}"
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1540
+#: packages/admin/src/router.tsx:1541
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, one {# komentář aktualizován} few {# komentáře aktualizovány} many {# komentáře aktualizováno} other {# komentářů aktualizováno}}"
 
@@ -273,17 +273,17 @@ msgid "{0} items will be imported"
 msgstr "{0, plural, one {Bude importována # položka} few {Budou importovány # položky} many {Bude importováno # položky} other {Bude importováno # položek}}"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:560
 msgid "{0} of {total} could not be deleted"
 msgstr "{0} z {total} se nepodařilo smazat"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:516
 msgid "{0} of {total} could not be published"
 msgstr "{0} z {total} se nepodařilo publikovat"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:538
+#: packages/admin/src/router.tsx:539
 msgid "{0} of {total} could not be updated"
 msgstr "{0} z {total} se nepodařilo aktualizovat"
 
@@ -624,7 +624,7 @@ msgstr "Přijmout pozvánku"
 msgid "Access denied"
 msgstr "Přístup odepřen"
 
-#: packages/admin/src/router.tsx:1560
+#: packages/admin/src/router.tsx:1561
 msgid "Access Denied"
 msgstr "Přístup odepřen"
 
@@ -659,11 +659,16 @@ msgstr "Pole ACF"
 #: packages/admin/src/components/ContentTypeList.tsx:190
 #: packages/admin/src/components/TaxonomyManager.tsx:1050
 #: packages/admin/src/routes/byline-schema.tsx:249
+#: packages/admin/src/routes/shop.tsx:427
+#: packages/admin/src/routes/shop.tsx:669
+#: packages/admin/src/routes/shop.tsx:811
 msgid "Actions"
 msgstr "Akce"
 
 #: packages/admin/src/components/users/UserDetail.tsx:206
 #: packages/admin/src/components/users/UserList.tsx:217
+#: packages/admin/src/routes/shop.tsx:551
+#: packages/admin/src/routes/shop.tsx:587
 msgid "Active"
 msgstr "Aktivní"
 
@@ -712,6 +717,10 @@ msgstr "Přidat obsah"
 #: packages/admin/src/components/MenuEditor.tsx:496
 msgid "Add Custom Link"
 msgstr "Přidat vlastní odkaz"
+
+#: packages/admin/src/routes/shop.tsx:462
+msgid "Add delivery zone"
+msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:211
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
@@ -821,6 +830,10 @@ msgstr "Přidat oblast widgetů"
 msgid "Add your social media profiles. These are available to your site's theme and can be displayed in headers, footers, or author bios."
 msgstr "Přidejte své profily na sociálních sítích. Jsou dostupné šabloně webu a lze je zobrazit v záhlaví, zápatí nebo v profilech autorů."
 
+#: packages/admin/src/routes/shop.tsx:495
+msgid "Add zone"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:441
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
 msgid "Adding..."
@@ -829,6 +842,10 @@ msgstr "Přidávání..."
 #: packages/admin/src/components/WordPressImport.tsx:1753
 msgid "Additional data to import."
 msgstr "Další data k importu."
+
+#: packages/admin/src/routes/shop.tsx:898
+msgid "Address"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:203
 msgid "Adjust optimization"
@@ -839,12 +856,12 @@ msgid "admin"
 msgstr "admin"
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:426
+#: packages/admin/src/components/Sidebar.tsx:432
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "Správce"
 
-#: packages/admin/src/components/Sidebar.tsx:372
+#: packages/admin/src/components/Sidebar.tsx:378
 msgid "Admin navigation"
 msgstr "Navigace administrace"
 
@@ -912,6 +929,10 @@ msgstr "Všechny kolekce"
 msgid "All comments require approval"
 msgstr "Všechny komentáře vyžadují schválení"
 
+#: packages/admin/src/routes/shop.tsx:780
+msgid "All districts"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:2518
 msgid "All imported content will be unassigned. You can reassign authors later from the content editor."
 msgstr "Veškerý importovaný obsah zůstane bez přiřazení. Autory lze přiřadit později v editoru obsahu."
@@ -931,6 +952,7 @@ msgstr "Všechny zdroje"
 
 #: packages/admin/src/components/ContentList.tsx:831
 #: packages/admin/src/components/Redirects.tsx:426
+#: packages/admin/src/routes/shop.tsx:647
 msgid "All statuses"
 msgstr "Všechny stavy"
 
@@ -1024,24 +1046,24 @@ msgstr "Případně můžete provést export z WordPressu (Nástroje → Export)
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:447
-#: packages/admin/src/router.tsx:462
-#: packages/admin/src/router.tsx:476
-#: packages/admin/src/router.tsx:490
-#: packages/admin/src/router.tsx:714
-#: packages/admin/src/router.tsx:996
-#: packages/admin/src/router.tsx:1056
-#: packages/admin/src/router.tsx:1074
-#: packages/admin/src/router.tsx:1092
-#: packages/admin/src/router.tsx:1113
-#: packages/admin/src/router.tsx:1134
-#: packages/admin/src/router.tsx:1155
-#: packages/admin/src/router.tsx:1186
-#: packages/admin/src/router.tsx:1206
-#: packages/admin/src/router.tsx:1505
-#: packages/admin/src/router.tsx:1521
-#: packages/admin/src/router.tsx:1546
-#: packages/admin/src/router.tsx:2046
+#: packages/admin/src/router.tsx:448
+#: packages/admin/src/router.tsx:463
+#: packages/admin/src/router.tsx:477
+#: packages/admin/src/router.tsx:491
+#: packages/admin/src/router.tsx:715
+#: packages/admin/src/router.tsx:997
+#: packages/admin/src/router.tsx:1057
+#: packages/admin/src/router.tsx:1075
+#: packages/admin/src/router.tsx:1093
+#: packages/admin/src/router.tsx:1114
+#: packages/admin/src/router.tsx:1135
+#: packages/admin/src/router.tsx:1156
+#: packages/admin/src/router.tsx:1187
+#: packages/admin/src/router.tsx:1207
+#: packages/admin/src/router.tsx:1506
+#: packages/admin/src/router.tsx:1522
+#: packages/admin/src/router.tsx:1547
+#: packages/admin/src/router.tsx:2054
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1064,6 +1086,10 @@ msgstr "Analýza souboru exportu..."
 #: packages/admin/src/components/WordPressImport.tsx:810
 msgid "Analyzing WordPress site..."
 msgstr "Analýza webu na WordPressu…"
+
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Any date"
+msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:105
 msgid "Any media type allowed (subject to global limits)."
@@ -1156,6 +1182,10 @@ msgstr ""
 #: packages/admin/src/components/WordPressImport.tsx:2456
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "Přiřaďte autory z WordPressu uživatelům EmDash. Příspěvky budou připsány vybranému uživateli."
+
+#: packages/admin/src/routes/shop.tsx:1066
+msgid "Assigned"
+msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:28
 msgid "Astro"
@@ -1251,7 +1281,7 @@ msgstr "Automatické zálohy"
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr "Automatické zálohy vyžadují úložiště (R2, S3 nebo lokální). Povolíte je nastavením úložiště v konfiguraci EmDash."
 
-#: packages/admin/src/router.tsx:1055
+#: packages/admin/src/router.tsx:1056
 msgid "Autosave failed"
 msgstr "Automatické uložení selhalo"
 
@@ -1284,7 +1314,7 @@ msgstr "Avatar"
 msgid "Back"
 msgstr "Zpět"
 
-#: packages/admin/src/components/ContentEditor.tsx:665
+#: packages/admin/src/components/ContentEditor.tsx:668
 msgid "Back to {collectionLabel} list"
 msgstr "Zpět na seznam: {collectionLabel}"
 
@@ -1350,6 +1380,10 @@ msgstr "Zálohy"
 msgid "Backups to keep"
 msgstr "Počet uchovaných záloh"
 
+#: packages/admin/src/routes/shop.tsx:339
+msgid "Bank transfer"
+msgstr ""
+
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:29
 msgid "Bash"
 msgstr "Bash"
@@ -1413,19 +1447,23 @@ msgstr "Procházejte šablony a zobrazte jejich náhled s vlastním obsahem."
 msgid "Bullet List"
 msgstr "Odrážkový seznam"
 
+#: packages/admin/src/routes/shop.tsx:207
+msgid "Business hours"
+msgstr ""
+
 #: packages/admin/src/routes/byline-schema.tsx:218
 #: packages/admin/src/routes/bylines.tsx:383
 msgid "Byline schema"
 msgstr "Schéma autorského podpisu"
 
-#: packages/admin/src/components/Sidebar.tsx:295
+#: packages/admin/src/components/Sidebar.tsx:301
 msgid "Byline Schema"
 msgstr "Schéma autorského podpisu"
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:661
 #: packages/admin/src/components/ContentSettingsPanel.tsx:664
-#: packages/admin/src/components/Sidebar.tsx:285
+#: packages/admin/src/components/Sidebar.tsx:288
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "Autorské podpisy"
@@ -1508,6 +1546,11 @@ msgstr "Zrušit (Esc)"
 msgid "Cancel rename"
 msgstr "Zrušit přejmenování"
 
+#: packages/admin/src/routes/shop.tsx:52
+#: packages/admin/src/routes/shop.tsx:654
+msgid "Cancelled"
+msgstr ""
+
 #: packages/admin/src/components/Sections.tsx:407
 msgid "Cannot delete theme sections"
 msgstr "Sekce šablony nelze smazat"
@@ -1540,6 +1583,10 @@ msgstr "Popisek"
 msgid "Captions / Subtitles"
 msgstr "Titulky / skryté titulky"
 
+#: packages/admin/src/routes/shop.tsx:340
+msgid "Cash on delivery"
+msgstr ""
+
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
 msgid "Categories"
@@ -1560,7 +1607,7 @@ msgstr "Na střed"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:76
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:107
-#: packages/admin/src/components/ContentEditor.tsx:1712
+#: packages/admin/src/components/ContentEditor.tsx:1715
 #: packages/admin/src/components/FieldEditor.tsx:428
 #: packages/admin/src/components/ImageFieldRenderer.tsx:208
 #: packages/admin/src/components/ImageFieldRenderer.tsx:237
@@ -1591,7 +1638,7 @@ msgstr "Změnit logo"
 msgid "Changelog"
 msgstr "Seznam změn"
 
-#: packages/admin/src/router.tsx:1106
+#: packages/admin/src/router.tsx:1107
 msgid "Changes discarded"
 msgstr "Změny byly zahozeny"
 
@@ -1723,6 +1770,12 @@ msgstr "Přihlaste se kliknutím na odkaz v e-mailu."
 #: packages/admin/src/components/Widgets.tsx:413
 #: packages/admin/src/components/Widgets.tsx:419
 #: packages/admin/src/components/Widgets.tsx:423
+#: packages/admin/src/routes/shop.tsx:505
+#: packages/admin/src/routes/shop.tsx:507
+#: packages/admin/src/routes/shop.tsx:690
+#: packages/admin/src/routes/shop.tsx:692
+#: packages/admin/src/routes/shop.tsx:839
+#: packages/admin/src/routes/shop.tsx:841
 msgid "Close"
 msgstr "Zavřít"
 
@@ -1738,7 +1791,7 @@ msgstr "Zavřít nastavení galerie"
 msgid "Close panel"
 msgstr "Zavřít panel"
 
-#: packages/admin/src/components/ContentEditor.tsx:1085
+#: packages/admin/src/components/ContentEditor.tsx:1088
 msgid "Close settings"
 msgstr "Zavřít nastavení"
 
@@ -1801,7 +1854,7 @@ msgstr "Detail komentáře"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:261
+#: packages/admin/src/components/Sidebar.tsx:264
 msgid "Comments"
 msgstr "Komentáře"
 
@@ -1824,6 +1877,15 @@ msgstr "Nastavit pole"
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:416
 msgid "Confirm"
 msgstr "Potvrdit"
+
+#: packages/admin/src/routes/shop.tsx:1056
+msgid "Confirm payment"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:47
+#: packages/admin/src/routes/shop.tsx:649
+msgid "Confirmed"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:701
 #: packages/admin/src/components/WordPressImport.tsx:1054
@@ -1858,7 +1920,7 @@ msgstr "obsah"
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:408
+#: packages/admin/src/components/Sidebar.tsx:414
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "Obsah"
@@ -1876,7 +1938,7 @@ msgstr "Chyby obsahu ({0})"
 msgid "Content found:"
 msgstr "Nalezený obsah:"
 
-#: packages/admin/src/router.tsx:1128
+#: packages/admin/src/router.tsx:1129
 msgid "Content has been scheduled for publishing"
 msgstr "Obsah byl naplánován k publikování"
 
@@ -1888,7 +1950,7 @@ msgstr "Obsah byl aktualizován na vybranou revizi."
 msgid "Content ID:"
 msgstr "ID obsahu:"
 
-#: packages/admin/src/router.tsx:1069
+#: packages/admin/src/router.tsx:1070
 msgid "Content is now live"
 msgstr "Obsah je nyní veřejný"
 
@@ -1908,11 +1970,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "Čtení obsahu"
 
-#: packages/admin/src/router.tsx:1087
+#: packages/admin/src/router.tsx:1088
 msgid "Content removed from public view"
 msgstr "Obsah byl odebrán z veřejného zobrazení"
 
-#: packages/admin/src/router.tsx:1149
+#: packages/admin/src/router.tsx:1150
 msgid "Content reverted to draft"
 msgstr "Obsah byl vrácen do konceptu"
 
@@ -1926,7 +1988,7 @@ msgstr "Obsah k importu"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/components/Sidebar.tsx:297
 msgid "Content Types"
 msgstr "Typy obsahu"
 
@@ -1960,8 +2022,13 @@ msgstr ""
 msgid "Contributor"
 msgstr "Přispěvatel"
 
+#: packages/admin/src/routes/shop.tsx:336
+msgid "Coordinate by WhatsApp"
+msgstr ""
+
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:305
 #: packages/admin/src/components/users/InviteUserModal.tsx:133
+#: packages/admin/src/routes/shop.tsx:853
 msgid "Copied to clipboard"
 msgstr "Zkopírováno do schránky"
 
@@ -1970,9 +2037,17 @@ msgstr "Zkopírováno do schránky"
 msgid "Copy {0} to clipboard"
 msgstr "Kopírovat {0} do schránky"
 
+#: packages/admin/src/routes/shop.tsx:926
+msgid "Copy address"
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:124
 msgid "Copy invite link"
 msgstr "Kopírovat odkaz pozvánky"
+
+#: packages/admin/src/routes/shop.tsx:920
+msgid "Copy phone"
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:398
 msgid "Copy slug"
@@ -1993,12 +2068,20 @@ msgstr "Kopírovat token"
 msgid "Copy URL"
 msgstr "Kopírovat URL"
 
+#: packages/admin/src/routes/shop.tsx:424
+msgid "Cost"
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:136
 msgid "Could not copy automatically. Please select the URL above and copy manually."
 msgstr "Automatické zkopírování se nezdařilo. Vyberte URL výše a zkopírujte ji ručně."
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3357
 msgid "Could not insert section"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:725
+msgid "Could not load customers. Please try again."
 msgstr ""
 
 #: packages/admin/src/components/Dashboard.tsx:124
@@ -2217,7 +2300,7 @@ msgid "Created {0}"
 msgstr "Vytvořeno {0}"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1180
+#: packages/admin/src/router.tsx:1181
 msgid "Created {0} translation"
 msgstr "Překlad vytvořen ({0})"
 
@@ -2246,6 +2329,14 @@ msgstr ""
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:33
 msgid "CSS"
 msgstr "CSS"
+
+#: packages/admin/src/routes/shop.tsx:155
+msgid "Currency"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:162
+msgid "Currency symbol"
+msgstr ""
 
 #: packages/admin/src/components/TranslationsPanel.tsx:83
 msgid "current"
@@ -2279,6 +2370,19 @@ msgstr "Vlastní sekce"
 msgid "Custom Taxonomies"
 msgstr "Vlastní taxonomie"
 
+#: packages/admin/src/routes/shop.tsx:806
+#: packages/admin/src/routes/shop.tsx:1019
+msgid "Customer"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:837
+msgid "Customer details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:80
+msgid "Customers"
+msgstr ""
+
 #: packages/admin/src/components/ImageEditor.tsx:268
 msgid "Customize the WebP result for your website."
 msgstr ""
@@ -2298,8 +2402,8 @@ msgstr "Tmavý"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:246
-#: packages/admin/src/components/Sidebar.tsx:399
+#: packages/admin/src/components/Sidebar.tsx:249
+#: packages/admin/src/components/Sidebar.tsx:405
 msgid "Dashboard"
 msgstr "Přehled"
 
@@ -2404,6 +2508,7 @@ msgstr "Smazat „{0}“? Tuto akci nelze vrátit zpět."
 #: packages/admin/src/components/TaxonomyManager.tsx:280
 #: packages/admin/src/components/Widgets.tsx:817
 #: packages/admin/src/routes/byline-schema.tsx:458
+#: packages/admin/src/routes/shop.tsx:596
 msgid "Delete {0}"
 msgstr "Smazat {0}"
 
@@ -2552,6 +2657,42 @@ msgstr "Mazání..."
 #: packages/admin/src/routes/byline-schema.tsx:379
 msgid "Deleting…"
 msgstr "Mazání…"
+
+#: packages/admin/src/routes/shop.tsx:51
+#: packages/admin/src/routes/shop.tsx:653
+#: packages/admin/src/routes/shop.tsx:1068
+msgid "Delivered"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:667
+#: packages/admin/src/routes/shop.tsx:1046
+msgid "Delivery"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:477
+#: packages/admin/src/routes/shop.tsx:534
+msgid "Delivery cost"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1016
+msgid "Delivery updated"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:384
+msgid "Delivery zone created"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:409
+msgid "Delivery zone deleted"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:402
+msgid "Delivery zone updated"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:78
+msgid "Delivery zones"
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:254
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:147
@@ -2755,9 +2896,24 @@ msgstr "Zobrazí mrak štítků"
 msgid "Displayed below the image as a visible caption."
 msgstr "Zobrazí se pod obrázkem jako viditelný popisek."
 
-#: packages/admin/src/components/ContentEditor.tsx:726
+#: packages/admin/src/components/ContentEditor.tsx:729
 msgid "Distraction-free mode (⌘⇧\\)"
 msgstr "Režim bez rušivých prvků (⌘⇧\\)"
+
+#: packages/admin/src/routes/shop.tsx:808
+#: packages/admin/src/routes/shop.tsx:899
+msgid "District"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:473
+msgid "District 1, District 2"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:423
+#: packages/admin/src/routes/shop.tsx:470
+#: packages/admin/src/routes/shop.tsx:527
+msgid "Districts"
+msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:1488
 msgid "Divider"
@@ -2917,6 +3073,11 @@ msgstr "např. CI/CD Pipeline"
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "např. MacBook Pro, iPhone"
 
+#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/routes/shop.tsx:71
+msgid "Ecommerce"
+msgstr ""
+
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1044
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:367
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:368
@@ -2924,6 +3085,7 @@ msgstr "např. MacBook Pro, iPhone"
 #: packages/admin/src/components/MenuList.tsx:234
 #: packages/admin/src/components/Sections.tsx:392
 #: packages/admin/src/components/TranslationsPanel.tsx:93
+#: packages/admin/src/routes/shop.tsx:592
 msgid "Edit"
 msgstr "Upravit"
 
@@ -2945,7 +3107,7 @@ msgstr "Upravit {0}"
 msgid "Edit {0} field"
 msgstr "Upravit pole {0}"
 
-#: packages/admin/src/components/ContentEditor.tsx:672
+#: packages/admin/src/components/ContentEditor.tsx:675
 msgid "Edit {itemLabel}"
 msgstr "Upravit položku ({itemLabel})"
 
@@ -2960,6 +3122,10 @@ msgstr "Upravit autorský podpis"
 #: packages/admin/src/components/BylineFieldEditor.tsx:209
 msgid "Edit byline field"
 msgstr "Upravit pole autorského podpisu"
+
+#: packages/admin/src/routes/shop.tsx:503
+msgid "Edit delivery zone"
+msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:321
 msgid "Edit Domain"
@@ -3031,6 +3197,7 @@ msgstr "em1.…"
 #: packages/admin/src/components/Settings.tsx:95
 #: packages/admin/src/components/SignupPage.tsx:198
 #: packages/admin/src/components/users/UserDetail.tsx:154
+#: packages/admin/src/routes/shop.tsx:897
 msgid "Email"
 msgstr "E-mail"
 
@@ -3107,6 +3274,10 @@ msgstr "Povolit komentáře"
 msgid "Enable full-text search on this collection"
 msgstr "Povolit fulltextové hledání v této kolekci"
 
+#: packages/admin/src/routes/shop.tsx:229
+msgid "Enable payment gateway"
+msgstr ""
+
 #: packages/admin/src/components/PluginManager.tsx:494
 msgid "Enable plugin"
 msgstr "Povolit plugin"
@@ -3129,7 +3300,7 @@ msgstr "Povoleno"
 msgid "Enter a URL (https://…) or a relative path (/…)"
 msgstr "Zadejte URL (https://…) nebo relativní cestu (/…)"
 
-#: packages/admin/src/components/ContentEditor.tsx:1493
+#: packages/admin/src/components/ContentEditor.tsx:1496
 msgid "Enter a valid URL (e.g. https://example.com)"
 msgstr "Zadejte platnou URL (např. https://example.com)"
 
@@ -3137,7 +3308,7 @@ msgstr "Zadejte platnou URL (např. https://example.com)"
 msgid "Enter credentials manually"
 msgstr "Zadat přihlašovací údaje ručně"
 
-#: packages/admin/src/components/ContentEditor.tsx:725
+#: packages/admin/src/components/ContentEditor.tsx:728
 msgid "Enter distraction-free mode"
 msgstr "Zapnout režim bez rušení"
 
@@ -3149,7 +3320,7 @@ msgstr "Zadejte e-mail"
 msgid "Enter HTML..."
 msgstr "Zadejte HTML..."
 
-#: packages/admin/src/components/ContentEditor.tsx:1266
+#: packages/admin/src/components/ContentEditor.tsx:1269
 msgid "Enter markdown content..."
 msgstr "Zadejte obsah v Markdownu..."
 
@@ -3178,13 +3349,17 @@ msgstr "Zadejte přihlašovací údaje k WordPressu pro přímý import obsahu."
 msgid "Enter your WordPress site URL"
 msgstr "Zadejte URL svého webu na WordPressu"
 
+#: packages/admin/src/routes/shop.tsx:251
+msgid "Environment"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:155
 #: packages/admin/src/components/MenuEditor.tsx:193
 #: packages/admin/src/components/MenuEditor.tsx:233
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2260
+#: packages/admin/src/router.tsx:2269
 msgid "Error"
 msgstr "Chyba"
 
@@ -3204,6 +3379,12 @@ msgstr "Nepodařilo se uložit sekci"
 msgid "Error updating widget"
 msgstr "Nepodařilo se aktualizovat widget"
 
+#: packages/admin/src/routes/shop.tsx:425
+#: packages/admin/src/routes/shop.tsx:486
+#: packages/admin/src/routes/shop.tsx:543
+msgid "Estimated time"
+msgstr ""
+
 #: packages/admin/src/components/RegistryPluginDetail.tsx:596
 msgid "Every published release of this plugin has been withdrawn or could not be verified. Check back later, or contact the publisher."
 msgstr "Všechna publikovaná vydání tohoto pluginu byla stažena nebo je nebylo možné ověřit. Zkuste to později nebo kontaktujte vydavatele."
@@ -3211,6 +3392,18 @@ msgstr "Všechna publikovaná vydání tohoto pluginu byla stažena nebo je neby
 #. placeholder {0}: formData.dateFormat ?? "MMMM d, yyyy"
 #: packages/admin/src/components/settings/GeneralSettings.tsx:327
 msgid "Example: {0} → January 23, 2026"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:489
+msgid "Example: 30–60 minutes"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:176
+msgid "Example: 51999999999"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:166
+msgid "Example: S/"
 msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:285
@@ -3221,7 +3414,7 @@ msgstr ""
 msgid "Exists"
 msgstr "Existuje"
 
-#: packages/admin/src/components/ContentEditor.tsx:784
+#: packages/admin/src/components/ContentEditor.tsx:787
 msgid "Exit distraction-free mode"
 msgstr "Vypnout režim bez rušení"
 
@@ -3320,14 +3513,14 @@ msgid "Failed to create term"
 msgstr "Nepodařilo se vytvořit položku taxonomie"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1185
+#: packages/admin/src/router.tsx:1186
 msgid "Failed to create translation"
 msgstr "Nepodařilo se vytvořit překlad"
 
-#: packages/admin/src/router.tsx:446
-#: packages/admin/src/router.tsx:475
-#: packages/admin/src/router.tsx:558
-#: packages/admin/src/router.tsx:1205
+#: packages/admin/src/router.tsx:447
+#: packages/admin/src/router.tsx:476
+#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:1206
 msgid "Failed to delete"
 msgstr "Nepodařilo se smazat"
 
@@ -3352,7 +3545,7 @@ msgid "Failed to delete collection"
 msgstr "Nepodařilo se smazat kolekci"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1520
+#: packages/admin/src/router.tsx:1521
 msgid "Failed to delete comment"
 msgstr "Nepodařilo se smazat komentář"
 
@@ -3418,7 +3611,7 @@ msgstr "Nepodařilo se vypnout hledání"
 msgid "Failed to disable user"
 msgstr "Nepodařilo se deaktivovat uživatele"
 
-#: packages/admin/src/router.tsx:1112
+#: packages/admin/src/router.tsx:1113
 msgid "Failed to discard changes"
 msgstr "Nepodařilo se zahodit změny"
 
@@ -3426,7 +3619,7 @@ msgstr "Nepodařilo se zahodit změny"
 msgid "Failed to dismiss welcome"
 msgstr "Nepodařilo se zavřít uvítání"
 
-#: packages/admin/src/router.tsx:489
+#: packages/admin/src/router.tsx:490
 msgid "Failed to duplicate"
 msgstr "Nepodařilo se duplikovat"
 
@@ -3537,8 +3730,8 @@ msgstr "Nepodařilo se načíst položky taxonomie"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:905
-#: packages/admin/src/router.tsx:1451
+#: packages/admin/src/router.tsx:906
+#: packages/admin/src/router.tsx:1452
 msgid "Failed to fetch user"
 msgstr "Nepodařilo se načíst uživatele"
 
@@ -3580,7 +3773,7 @@ msgstr "Nepodařilo se nainstalovat plugin"
 msgid "Failed to list byline fields"
 msgstr "Nepodařilo se načíst pole autorského podpisu"
 
-#: packages/admin/src/router.tsx:287
+#: packages/admin/src/router.tsx:288
 msgid "Failed to load admin"
 msgstr "Nepodařilo se načíst administraci"
 
@@ -3649,7 +3842,7 @@ msgstr "Nepodařilo se načíst uživatele: {0}"
 msgid "Failed to load widget"
 msgstr "Nepodařilo se načíst widget"
 
-#: packages/admin/src/router.tsx:1545
+#: packages/admin/src/router.tsx:1546
 msgid "Failed to perform bulk action"
 msgstr "Nepodařilo se provést hromadnou akci"
 
@@ -3661,8 +3854,8 @@ msgstr "Nepodařilo se trvale smazat obsah"
 msgid "Failed to prepare import"
 msgstr "Nepodařilo se připravit import"
 
-#: packages/admin/src/router.tsx:514
-#: packages/admin/src/router.tsx:1073
+#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:1074
 msgid "Failed to publish"
 msgstr "Nepodařilo se publikovat"
 
@@ -3700,7 +3893,7 @@ msgstr "Nepodařilo se přeřadit pole"
 msgid "Failed to reorder widgets"
 msgstr "Nepodařilo se přeřadit widgety"
 
-#: packages/admin/src/router.tsx:461
+#: packages/admin/src/router.tsx:462
 msgid "Failed to restore"
 msgstr "Nepodařilo se obnovit"
 
@@ -3721,9 +3914,9 @@ msgstr "Nepodařilo se zrušit API token"
 msgid "Failed to rewrite URLs"
 msgstr "Nepodařilo se přepsat URL"
 
-#: packages/admin/src/router.tsx:713
-#: packages/admin/src/router.tsx:995
-#: packages/admin/src/router.tsx:2045
+#: packages/admin/src/router.tsx:714
+#: packages/admin/src/router.tsx:996
+#: packages/admin/src/router.tsx:2053
 msgid "Failed to save"
 msgstr "Nepodařilo se uložit"
 
@@ -3742,7 +3935,7 @@ msgstr "Nepodařilo se uložit pole"
 msgid "Failed to save settings"
 msgstr "Nepodařilo se uložit nastavení"
 
-#: packages/admin/src/router.tsx:1133
+#: packages/admin/src/router.tsx:1134
 msgid "Failed to schedule"
 msgstr "Nepodařilo se naplánovat"
 
@@ -3773,15 +3966,15 @@ msgstr "Nepodařilo se nastavit položky taxonomie přiřazené k obsahu"
 msgid "Failed to uninstall plugin"
 msgstr "Nepodařilo se odinstalovat plugin"
 
-#: packages/admin/src/router.tsx:1091
+#: packages/admin/src/router.tsx:1092
 msgid "Failed to unpublish"
 msgstr "Nepodařilo se zrušit publikování"
 
-#: packages/admin/src/router.tsx:1154
+#: packages/admin/src/router.tsx:1155
 msgid "Failed to unschedule"
 msgstr "Nepodařilo se zrušit naplánování"
 
-#: packages/admin/src/router.tsx:537
+#: packages/admin/src/router.tsx:538
 msgid "Failed to update"
 msgstr "Nepodařilo se aktualizovat"
 
@@ -3831,7 +4024,7 @@ msgstr "Nepodařilo se aktualizovat sekci"
 msgid "Failed to update settings"
 msgstr "Nepodařilo se aktualizovat nastavení"
 
-#: packages/admin/src/router.tsx:1504
+#: packages/admin/src/router.tsx:1505
 msgid "Failed to update status"
 msgstr "Nepodařilo se aktualizovat stav"
 
@@ -3986,6 +4179,18 @@ msgstr "Filtrovat podle typu"
 msgid "Filter byline type"
 msgstr "Filtrovat podle typu autorského podpisu"
 
+#: packages/admin/src/routes/shop.tsx:787
+msgid "Filter customers by date"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:776
+msgid "Filter customers by district"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:643
+msgid "Filter orders by status"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:64
 msgid "First-time commenters only"
 msgstr "Pouze komentáře od nových komentujících"
@@ -4066,7 +4271,7 @@ msgid "Go"
 msgstr "Go"
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2280
+#: packages/admin/src/router.tsx:2289
 msgid "Go to Dashboard"
 msgstr "Přejít na přehled"
 
@@ -4144,6 +4349,11 @@ msgstr "Nadpisy"
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:497
 msgid "Height"
 msgstr "Výška"
+
+#: packages/admin/src/routes/shop.tsx:190
+#: packages/admin/src/routes/shop.tsx:324
+msgid "Hello, I want to coordinate payment for my order."
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:180
 msgid "Hero Banner"
@@ -4278,7 +4488,7 @@ msgid "Images"
 msgstr "Obrázky"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:333
+#: packages/admin/src/components/Sidebar.tsx:339
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "Import"
@@ -4370,6 +4580,16 @@ msgstr "Import médií"
 #: packages/admin/src/components/WordPressImport.tsx:904
 msgid "Importing menus and site settings..."
 msgstr "Import nabídek a nastavení webu..."
+
+#: packages/admin/src/routes/shop.tsx:50
+#: packages/admin/src/routes/shop.tsx:652
+#: packages/admin/src/routes/shop.tsx:1067
+msgid "In transit"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:587
+msgid "Inactive"
+msgstr ""
 
 #: packages/admin/src/components/BylineFilter.tsx:172
 msgid "Include inferred bylines"
@@ -4522,7 +4742,7 @@ msgstr "Celé číslo"
 msgid "Invalid invite link"
 msgstr "Neplatný odkaz na pozvánku"
 
-#: packages/admin/src/components/ContentEditor.tsx:1562
+#: packages/admin/src/components/ContentEditor.tsx:1565
 msgid "Invalid JSON"
 msgstr "Neplatný JSON"
 
@@ -4662,6 +4882,14 @@ msgstr "Jazyk"
 msgid "Large section heading"
 msgstr "Velký nadpis sekce"
 
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Last 30 days"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Last 90 days"
+msgstr ""
+
 #: packages/admin/src/components/PluginManager.tsx:608
 msgid "Last enabled:"
 msgstr "Naposledy povoleno:"
@@ -4673,6 +4901,10 @@ msgstr "Poslední přihlášení"
 #: packages/admin/src/components/users/UserList.tsx:107
 msgid "Last Login"
 msgstr "Poslední přihlášení"
+
+#: packages/admin/src/routes/shop.tsx:810
+msgid "Last order"
+msgstr ""
 
 #: packages/admin/src/components/Redirects.tsx:227
 msgid "Last seen"
@@ -4765,8 +4997,8 @@ msgstr "Odkazy"
 msgid "List view"
 msgstr "Zobrazení seznamu"
 
-#: packages/admin/src/components/ContentEditor.tsx:706
-#: packages/admin/src/components/ContentEditor.tsx:749
+#: packages/admin/src/components/ContentEditor.tsx:709
+#: packages/admin/src/components/ContentEditor.tsx:752
 #: packages/admin/src/components/ContentSettingsPanel.tsx:265
 msgid "Live View"
 msgstr "Živý náhled"
@@ -4788,7 +5020,7 @@ msgstr "Načíst další"
 msgid "Load More"
 msgstr "Načíst další"
 
-#: packages/admin/src/router.tsx:2235
+#: packages/admin/src/router.tsx:2244
 msgid "Loading"
 msgstr "Načítání"
 
@@ -4804,14 +5036,22 @@ msgstr "Načítání kolekcí..."
 msgid "Loading comments..."
 msgstr "Načítání komentářů..."
 
-#: packages/admin/src/router.tsx:2237
-#: packages/admin/src/router.tsx:2249
+#: packages/admin/src/router.tsx:2246
+#: packages/admin/src/router.tsx:2258
 msgid "Loading configuration..."
 msgstr "Načítání konfigurace..."
 
 #: packages/admin/src/components/ContentPickerModal.tsx:164
 msgid "Loading content..."
 msgstr "Načítání obsahu..."
+
+#: packages/admin/src/routes/shop.tsx:723
+msgid "Loading customers"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:414
+msgid "Loading delivery zones"
+msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3344
 msgid "Loading editor..."
@@ -4824,6 +5064,14 @@ msgstr "Načítání nabídky..."
 #: packages/admin/src/components/MenuList.tsx:95
 msgid "Loading menus..."
 msgstr "Načítání nabídek..."
+
+#: packages/admin/src/routes/shop.tsx:699
+msgid "Loading order details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:619
+msgid "Loading orders"
+msgstr ""
 
 #: packages/admin/src/components/PluginManager.tsx:140
 msgid "Loading plugins..."
@@ -4848,6 +5096,10 @@ msgstr "Načítání nastavení..."
 #: packages/admin/src/components/SetupWizard.tsx:528
 msgid "Loading setup..."
 msgstr "Načítání průvodce..."
+
+#: packages/admin/src/routes/shop.tsx:122
+msgid "Loading store settings"
+msgstr ""
 
 #: packages/admin/src/components/TaxonomyManager.tsx:1054
 msgid "Loading terms..."
@@ -4946,7 +5198,7 @@ msgstr "Provádět síťové požadavky"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "Provádět síťové požadavky na libovolného hostitele (bez omezení)"
 
-#: packages/admin/src/components/Sidebar.tsx:418
+#: packages/admin/src/components/Sidebar.tsx:424
 msgid "Manage"
 msgstr "Spravovat"
 
@@ -4980,6 +5232,10 @@ msgstr "Spravovat přesměrování URL a zobrazit chyby 404."
 #: packages/admin/src/components/settings/SecuritySettings.tsx:89
 msgid "Manage your passkeys and authentication"
 msgstr "Spravovat přístupové klíče a ověřování"
+
+#: packages/admin/src/routes/shop.tsx:72
+msgid "Manage your products, delivery settings, and orders."
+msgstr ""
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:317
 msgid "Managed by {providerName}"
@@ -5026,7 +5282,7 @@ msgstr "tržiště"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:321
 msgid "Marketplace"
 msgstr "Tržiště"
 
@@ -5068,7 +5324,7 @@ msgstr "MDX"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:256
+#: packages/admin/src/components/Sidebar.tsx:259
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5163,7 +5419,7 @@ msgstr "Pořadí nabídky bylo upraveno."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:266
+#: packages/admin/src/components/Sidebar.tsx:269
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "Nabídky"
@@ -5176,6 +5432,14 @@ msgstr "Nabídky ({0})"
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:82
 msgid "Menus Manage"
 msgstr "Správa nabídek"
+
+#: packages/admin/src/routes/shop.tsx:186
+msgid "Message introduction"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:193
+msgid "Message preview"
+msgstr ""
 
 #: packages/admin/src/components/SeoPanel.tsx:199
 #: packages/admin/src/components/SeoPanel.tsx:203
@@ -5238,9 +5502,17 @@ msgstr "Měsíční/roční archivy"
 msgid "More information about {label}"
 msgstr "Další informace – {label}"
 
+#: packages/admin/src/routes/shop.tsx:798
+msgid "Most orders"
+msgstr ""
+
 #: packages/admin/src/components/MarketplaceBrowse.tsx:42
 msgid "Most Popular"
 msgstr "Nejoblíbenější"
+
+#: packages/admin/src/routes/shop.tsx:798
+msgid "Most recent"
+msgstr ""
 
 #. placeholder {0}: field.label
 #: packages/admin/src/routes/byline-schema.tsx:439
@@ -5305,11 +5577,11 @@ msgstr "Přesunout do koše?"
 msgid "Move up"
 msgstr "Přesunout nahoru"
 
-#: packages/admin/src/router.tsx:534
+#: packages/admin/src/router.tsx:535
 msgid "Moved {total} items to draft"
 msgstr "{total, plural, one {Přesunuta # položka do konceptů} few {Přesunuty # položky do konceptů} many {Přesunuto # položky do konceptů} other {Přesunuto # položek do konceptů}}"
 
-#: packages/admin/src/router.tsx:555
+#: packages/admin/src/router.tsx:556
 msgid "Moved {total} items to trash"
 msgstr "{total, plural, one {Přesunuta # položka do koše} few {Přesunuty # položky do koše} many {Přesunuto # položky do koše} other {Přesunuto # položek do koše}}"
 
@@ -5338,6 +5610,7 @@ msgstr "Můj skvělý blog"
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:37
 #: packages/admin/src/components/users/UserDetail.tsx:148
 #: packages/admin/src/components/Widgets.tsx:430
+#: packages/admin/src/routes/shop.tsx:896
 msgid "Name"
 msgstr "Název"
 
@@ -5358,11 +5631,13 @@ msgstr "Navigace"
 msgid "Never"
 msgstr "Nikdy"
 
-#: packages/admin/src/router.tsx:1180
+#: packages/admin/src/router.tsx:1181
 msgid "new"
 msgstr "nový"
 
 #: packages/admin/src/routes/bylines.tsx:426
+#: packages/admin/src/routes/shop.tsx:46
+#: packages/admin/src/routes/shop.tsx:648
 msgid "New"
 msgstr "Nový"
 
@@ -5375,7 +5650,7 @@ msgstr "NOVÉ"
 msgid "New {0}"
 msgstr "Nová položka: {0}"
 
-#: packages/admin/src/components/ContentEditor.tsx:672
+#: packages/admin/src/components/ContentEditor.tsx:675
 msgid "New {itemLabel}"
 msgstr "Nová položka: {itemLabel}"
 
@@ -5549,6 +5824,14 @@ msgstr "Zatím žádné typy obsahu."
 msgid "No custom fields yet"
 msgstr "Zatím žádná vlastní pole"
 
+#: packages/admin/src/routes/shop.tsx:826
+msgid "No customers match your search."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:453
+msgid "No delivery zones configured yet."
+msgstr ""
+
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:275
 msgid "No detailed description available."
 msgstr "Podrobný popis není k dispozici."
@@ -5658,6 +5941,14 @@ msgstr "Bez minima"
 #: packages/admin/src/components/ContentTypeEditor.tsx:65
 msgid "No moderation (auto-approve all)"
 msgstr "Bez moderace (vše schvalovat automaticky)"
+
+#: packages/admin/src/routes/shop.tsx:680
+msgid "No orders match your filters."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:956
+msgid "No orders yet."
+msgstr ""
 
 #: packages/admin/src/components/MenuEditor.tsx:329
 msgid "No parent (top level)"
@@ -5773,10 +6064,19 @@ msgstr "Žádná (nejvyšší úroveň)"
 msgid "Not compatible with this environment"
 msgstr "Není kompatibilní s tímto prostředím"
 
+#: packages/admin/src/routes/shop.tsx:53
+#: packages/admin/src/routes/shop.tsx:1069
+msgid "Not delivered"
+msgstr ""
+
 #: packages/admin/src/components/ContentList.tsx:1280
 #: packages/admin/src/components/PluginSettings.tsx:341
 msgid "Not set"
 msgstr "Nenastaveno"
+
+#: packages/admin/src/routes/shop.tsx:901
+msgid "Notes"
+msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:191
 #: packages/admin/src/components/FieldEditor.tsx:610
@@ -5838,6 +6138,10 @@ msgstr "Jejda!"
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:334
 msgid "Open in new tab"
 msgstr "Otevřít v nové kartě"
+
+#: packages/admin/src/routes/shop.tsx:915
+msgid "Open WhatsApp"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1534
 msgid "Open WordPress Profile"
@@ -5923,9 +6227,32 @@ msgstr "Nebo nahrajte exportní soubor"
 msgid "or upload directly"
 msgstr "nebo nahrát přímo"
 
+#: packages/admin/src/routes/shop.tsx:326
+#: packages/admin/src/routes/shop.tsx:664
+msgid "Order"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:688
+msgid "Order details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:703
+msgid "Order details unavailable."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:954
+msgid "Order history"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:227
 msgid "Order saved"
 msgstr "Pořadí uloženo"
+
+#: packages/admin/src/routes/shop.tsx:79
+#: packages/admin/src/routes/shop.tsx:809
+#: packages/admin/src/routes/shop.tsx:932
+msgid "Orders"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:159
 msgid "Original"
@@ -5955,7 +6282,7 @@ msgstr "Vlastnictví"
 msgid "Package"
 msgstr "Balíček"
 
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2284
 msgid "Page Not Found"
 msgstr "Stránka nenalezena"
 
@@ -6066,6 +6393,27 @@ msgstr "Vzor pro generování URL, např. /blog/{0}"
 msgid "Pattern must include a {0} placeholder"
 msgstr "Vzor musí obsahovat zástupný symbol {0}"
 
+#: packages/admin/src/routes/shop.tsx:666
+#: packages/admin/src/routes/shop.tsx:1043
+msgid "Payment"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1008
+msgid "Payment confirmed"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:225
+msgid "Payment gateway"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:200
+msgid "Payment instructions"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:213
+msgid "Payment methods"
+msgstr ""
+
 #: packages/admin/src/components/AllowedTypesEditor.tsx:62
 msgid "PDF"
 msgstr "PDF"
@@ -6075,6 +6423,9 @@ msgid "pending"
 msgstr "čeká"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:198
+#: packages/admin/src/routes/shop.tsx:54
+#: packages/admin/src/routes/shop.tsx:655
+#: packages/admin/src/routes/shop.tsx:1065
 msgid "Pending"
 msgstr "Čekající"
 
@@ -6093,6 +6444,11 @@ msgstr "Trvale smazat {title}"
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:284
 msgid "Permissions"
 msgstr "Oprávnění"
+
+#: packages/admin/src/routes/shop.tsx:807
+#: packages/admin/src/routes/shop.tsx:943
+msgid "Phone"
+msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:46
 msgid "PHP"
@@ -6131,6 +6487,10 @@ msgstr "Zadejte platnou e-mailovou adresu"
 #: packages/admin/src/components/MediaPickerModal.tsx:449
 msgid "Please enter a valid URL"
 msgstr "Zadejte platnou URL"
+
+#: packages/admin/src/routes/shop.tsx:338
+msgid "Plin"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1182
 msgid "Plugin"
@@ -6236,8 +6596,8 @@ msgstr "Chyba widgetu pluginu"
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:299
-#: packages/admin/src/components/Sidebar.tsx:434
+#: packages/admin/src/components/Sidebar.tsx:305
+#: packages/admin/src/components/Sidebar.tsx:440
 msgid "Plugins"
 msgstr "Pluginy"
 
@@ -6269,6 +6629,11 @@ msgstr "Příspěvků na stránku"
 #: packages/admin/src/components/RegistryPluginDetail.tsx:478
 msgid "Pre-release"
 msgstr "Předběžná verze"
+
+#: packages/admin/src/routes/shop.tsx:48
+#: packages/admin/src/routes/shop.tsx:650
+msgid "Preparing"
+msgstr ""
 
 #: packages/admin/src/components/auth/PasskeyRegistration.tsx:170
 msgid "Preparing registration..."
@@ -6326,9 +6691,25 @@ msgstr "Soukromé"
 msgid "Processing..."
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:256
+msgid "Production"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:237
+msgid "Provider"
+msgstr ""
+
 #: packages/admin/src/components/settings/EmailSettings.tsx:167
 msgid "Provider:"
 msgstr "Poskytovatel:"
+
+#: packages/admin/src/routes/shop.tsx:260
+msgid "Public key"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:265
+msgid "Public key from your provider"
+msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:485
 #: packages/admin/src/components/ContentSettingsPanel.tsx:198
@@ -6346,7 +6727,7 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:843
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1069
+#: packages/admin/src/router.tsx:1070
 msgid "Published"
 msgstr "Publikováno"
 
@@ -6355,7 +6736,7 @@ msgstr "Publikováno"
 msgid "Published {0}"
 msgstr "Publikováno {0}"
 
-#: packages/admin/src/router.tsx:511
+#: packages/admin/src/router.tsx:512
 msgid "Published {total} items"
 msgstr "{total, plural, one {Publikována # položka} few {Publikovány # položky} many {Publikováno # položky} other {Publikováno # položek}}"
 
@@ -6436,6 +6817,11 @@ msgstr "Zobrazování"
 msgid "Ready"
 msgstr "Připraveno"
 
+#: packages/admin/src/routes/shop.tsx:49
+#: packages/admin/src/routes/shop.tsx:651
+msgid "Ready for delivery"
+msgstr ""
+
 #: packages/admin/src/components/Dashboard.tsx:348
 msgid "Recent Activity"
 msgstr "Nedávná aktivita"
@@ -6468,7 +6854,7 @@ msgstr "Přesměrování na přihlašovací stránku…"
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:269
+#: packages/admin/src/components/Sidebar.tsx:272
 msgid "Redirects"
 msgstr "Přesměrování"
 
@@ -6477,6 +6863,7 @@ msgid "Redo"
 msgstr "Znovu"
 
 #: packages/admin/src/components/FieldEditor.tsx:245
+#: packages/admin/src/routes/shop.tsx:900
 msgid "Reference"
 msgstr "Odkaz na obsah"
 
@@ -6509,7 +6896,7 @@ msgstr "Registrace selhala"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "Registrace byla zrušena nebo vypršel časový limit. Zkuste to prosím znovu."
 
-#: packages/admin/src/components/Sidebar.tsx:308
+#: packages/admin/src/components/Sidebar.tsx:314
 msgid "Registry"
 msgstr "Registr"
 
@@ -6546,7 +6933,7 @@ msgstr "Odebrat {0}"
 msgid "Remove {entry}"
 msgstr "Odebrat {entry}"
 
-#: packages/admin/src/components/ContentEditor.tsx:1720
+#: packages/admin/src/components/ContentEditor.tsx:1723
 msgid "Remove {label}"
 msgstr "Odebrat {label}"
 
@@ -6754,16 +7141,20 @@ msgstr "Obnovování..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2263
+#: packages/admin/src/router.tsx:2272
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "Zkusit znovu"
+
+#: packages/admin/src/routes/shop.tsx:294
+msgid "Return URL"
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:136
 msgid "Reusable content blocks you can insert into any content"
 msgstr "Znovupoužitelné bloky obsahu, které lze vložit do libovolného obsahu"
 
-#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1108
 msgid "Reverted to published version"
 msgstr "Obnovena publikovaná verze"
 
@@ -6883,6 +7274,10 @@ msgstr "Rust"
 msgid "Same window"
 msgstr "Stejné okno"
 
+#: packages/admin/src/routes/shop.tsx:327
+msgid "Sample product"
+msgstr ""
+
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1191
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:395
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:589
@@ -6906,6 +7301,7 @@ msgid "Save alt text"
 msgstr "Uložit alternativní text"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:318
+#: packages/admin/src/routes/shop.tsx:557
 msgid "Save changes"
 msgstr "Uložit změny"
 
@@ -6917,9 +7313,17 @@ msgstr "Uložit změny"
 msgid "Save content as draft before publishing"
 msgstr "Uložit obsah jako koncept před publikováním"
 
+#: packages/admin/src/routes/shop.tsx:226
+msgid "Save gateway parameters for a future integration. Orders continue through WhatsApp until a gateway connector is enabled."
+msgstr ""
+
 #: packages/admin/src/components/settings/PasskeyItem.tsx:132
 msgid "Save name"
 msgstr "Uložit název"
+
+#: packages/admin/src/routes/shop.tsx:312
+msgid "Save settings"
+msgstr ""
 
 #: packages/admin/src/components/PluginSettings.tsx:166
 #: packages/admin/src/components/PluginSettings.tsx:209
@@ -6947,6 +7351,8 @@ msgstr "Uloženo „{0}“."
 #: packages/admin/src/components/users/UserDetail.tsx:311
 #: packages/admin/src/components/Widgets.tsx:983
 #: packages/admin/src/routes/bylines.tsx:579
+#: packages/admin/src/routes/shop.tsx:312
+#: packages/admin/src/routes/shop.tsx:557
 msgid "Saving..."
 msgstr "Ukládání..."
 
@@ -6977,7 +7383,7 @@ msgstr "Naplánovat na později"
 
 #: packages/admin/src/components/ContentList.tsx:834
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
-#: packages/admin/src/router.tsx:1127
+#: packages/admin/src/router.tsx:1128
 msgid "Scheduled"
 msgstr "Naplánováno"
 
@@ -7070,6 +7476,14 @@ msgstr "Hledat podle názvu souboru..."
 msgid "Search by name or email..."
 msgstr "Hledat podle jména nebo e-mailu..."
 
+#: packages/admin/src/routes/shop.tsx:769
+msgid "Search by name, phone, email, or district"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:636
+msgid "Search by order number"
+msgstr ""
+
 #: packages/admin/src/components/BylineFilter.tsx:121
 #: packages/admin/src/components/ContentSettingsPanel.tsx:985
 #: packages/admin/src/routes/bylines.tsx:401
@@ -7096,6 +7510,10 @@ msgstr "Hledat komentáře..."
 msgid "Search content..."
 msgstr "Hledat obsah..."
 
+#: packages/admin/src/routes/shop.tsx:768
+msgid "Search customers"
+msgstr ""
+
 #: packages/admin/src/components/settings/SeoSettings.tsx:161
 msgid "Search Engine Optimization"
 msgstr "Optimalizace pro vyhledávače"
@@ -7113,6 +7531,10 @@ msgstr "Vyhledávací formulář"
 #: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "Hledat média"
+
+#: packages/admin/src/routes/shop.tsx:635
+msgid "Search orders"
+msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:438
 msgid "Search pages and content..."
@@ -7167,6 +7589,18 @@ msgstr "Prohledávatelné"
 msgid "Searching..."
 msgstr "Hledání..."
 
+#: packages/admin/src/routes/shop.tsx:268
+msgid "Secret key"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:277
+msgid "Secret key from your provider"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:276
+msgid "Secret key saved; enter a new one to replace it"
+msgstr ""
+
 #: packages/admin/src/components/PortableTextEditor.tsx:2724
 msgid "Section"
 msgstr "Sekce"
@@ -7197,7 +7631,7 @@ msgstr "Název sekce"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:274
+#: packages/admin/src/components/Sidebar.tsx:277
 msgid "Sections"
 msgstr "Sekce"
 
@@ -7264,8 +7698,8 @@ msgid "Select"
 msgstr "Vybrat"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:140
-#: packages/admin/src/components/ContentEditor.tsx:1732
-#: packages/admin/src/components/ContentEditor.tsx:1748
+#: packages/admin/src/components/ContentEditor.tsx:1735
+#: packages/admin/src/components/ContentEditor.tsx:1751
 #: packages/admin/src/components/ImageFieldRenderer.tsx:273
 msgid "Select {label}"
 msgstr "Vybrat: {label}"
@@ -7308,7 +7742,7 @@ msgstr "Vybrat výchozí obrázek pro sociální sítě"
 msgid "Select Favicon"
 msgstr "Vybrat ikonu webu"
 
-#: packages/admin/src/components/ContentEditor.tsx:1736
+#: packages/admin/src/components/ContentEditor.tsx:1739
 msgid "Select file"
 msgstr "Vybrat soubor"
 
@@ -7329,6 +7763,10 @@ msgstr "Vybrat obrázek"
 #: packages/admin/src/components/settings/SeoSettings.tsx:223
 msgid "Select Image"
 msgstr "Vybrat obrázek"
+
+#: packages/admin/src/routes/shop.tsx:244
+msgid "Select later"
+msgstr ""
 
 #: packages/admin/src/components/settings/GeneralSettings.tsx:241
 #: packages/admin/src/components/settings/GeneralSettings.tsx:356
@@ -7467,13 +7905,13 @@ msgid "Setting up..."
 msgstr "Nastavování..."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:234
-#: packages/admin/src/components/ContentEditor.tsx:838
-#: packages/admin/src/components/ContentEditor.tsx:1071
+#: packages/admin/src/components/ContentEditor.tsx:841
+#: packages/admin/src/components/ContentEditor.tsx:1074
 #: packages/admin/src/components/ContentTypeEditor.tsx:382
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:337
+#: packages/admin/src/components/Sidebar.tsx:343
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "Nastavení"
@@ -7498,6 +7936,10 @@ msgstr "Nastavení selhalo"
 #: packages/admin/src/components/users/InviteUserModal.tsx:109
 msgid "Share this link with the invited user"
 msgstr "Sdílejte tento odkaz s pozvaným uživatelem"
+
+#: packages/admin/src/routes/shop.tsx:204
+msgid "Share your Yape, Plin, or bank transfer instructions."
+msgstr ""
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:294
 msgid "Shared across all translations of the same byline."
@@ -7716,6 +8158,10 @@ msgstr "Některé typy obsahu nelze importovat"
 msgid "Something went wrong"
 msgstr "Něco se pokazilo"
 
+#: packages/admin/src/routes/shop.tsx:795
+msgid "Sort customers"
+msgstr ""
+
 #: packages/admin/src/components/MarketplaceBrowse.tsx:125
 msgid "Sort plugins"
 msgstr "Řadit pluginy"
@@ -7764,7 +8210,7 @@ msgstr "SQL"
 msgid "Start Import"
 msgstr "Spustit import"
 
-#: packages/admin/src/components/ContentEditor.tsx:1240
+#: packages/admin/src/components/ContentEditor.tsx:1243
 #: packages/admin/src/components/PortableTextEditor.tsx:2579
 #: packages/admin/src/components/PortableTextEditor.tsx:2580
 msgid "Start writing, or type '/' for commands"
@@ -7775,6 +8221,8 @@ msgstr "Začněte psát, nebo napište „/“ pro příkazy"
 #: packages/admin/src/components/ContentTypeEditor.tsx:117
 #: packages/admin/src/components/Redirects.tsx:480
 #: packages/admin/src/components/users/UserList.tsx:104
+#: packages/admin/src/routes/shop.tsx:426
+#: packages/admin/src/routes/shop.tsx:665
 msgid "Status"
 msgstr "Stav"
 
@@ -7790,9 +8238,25 @@ msgstr "Stav: {status}"
 msgid "Storage available"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:325
+msgid "Store"
+msgstr ""
+
 #: packages/admin/src/components/settings/BackupSettings.tsx:205
 msgid "Store a daily backup in your site's storage bucket. Old backups are removed automatically."
 msgstr "Ukládat denní zálohu do úložiště vašeho webu. Staré zálohy se odstraňují automaticky."
+
+#: packages/admin/src/routes/shop.tsx:148
+msgid "Store name"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:77
+msgid "Store settings"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:118
+msgid "Store settings saved"
+msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:270
 msgid "Stored Backups"
@@ -7933,6 +8397,10 @@ msgstr "Položka „{0}“ byla vytvořena v jazyce {1}."
 msgid "Term deleted"
 msgstr "Položka taxonomie smazána"
 
+#: packages/admin/src/routes/shop.tsx:256
+msgid "Test mode"
+msgstr ""
+
 #: packages/admin/src/components/settings/EmailSettings.tsx:111
 msgid "test@example.com"
 msgstr "test@example.com"
@@ -7978,7 +8446,7 @@ msgstr "Nabídka byla smazána."
 msgid "The name of your site, used in the header and metadata"
 msgstr "Název vašeho webu, používaný v hlavičce a metadatech"
 
-#: packages/admin/src/router.tsx:2277
+#: packages/admin/src/router.tsx:2286
 msgid "The page you're looking for doesn't exist."
 msgstr "Hledaná stránka neexistuje."
 
@@ -7997,6 +8465,10 @@ msgstr "Odkazovaný obrázek již není k dispozici. Vyberte nový, nebo odkaz o
 #: packages/admin/src/components/settings/GeneralSettings.tsx:209
 msgid "The referenced logo is no longer available. Pick a new one or remove the reference."
 msgstr "Odkazované logo již není k dispozici. Vyberte nové, nebo odkaz odeberte."
+
+#: packages/admin/src/routes/shop.tsx:183
+msgid "The store name, order number, products, and total are added automatically."
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:153
 msgid "The theme marketplace is empty. Check back later."
@@ -8027,7 +8499,7 @@ msgstr "Sekce poskytované šablonou nelze smazat. Úpravou sekce vytvoříte vl
 msgid "Theme: {label}"
 msgstr "Motiv: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:324
+#: packages/admin/src/components/Sidebar.tsx:330
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "Šablony"
@@ -8056,7 +8528,7 @@ msgstr ""
 msgid "This field does not accept {sniffedMime} files."
 msgstr "Toto pole nepřijímá soubory typu {sniffedMime}."
 
-#: packages/admin/src/components/ContentEditor.tsx:1751
+#: packages/admin/src/components/ContentEditor.tsx:1754
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "Toto pole je povinné"
@@ -8245,6 +8717,15 @@ msgstr "TOML"
 msgid "Tools → Export"
 msgstr "Nástroje → Export"
 
+#: packages/admin/src/routes/shop.tsx:328
+#: packages/admin/src/routes/shop.tsx:668
+msgid "Total"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:936
+msgid "Total spent"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:77
 msgid "Track content history"
 msgstr "Sledovat historii obsahu"
@@ -8278,7 +8759,7 @@ msgstr "Překládání..."
 #: packages/admin/src/components/MenuEditor.tsx:143
 #: packages/admin/src/components/TaxonomyManager.tsx:987
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1179
+#: packages/admin/src/router.tsx:1180
 msgid "Translation created"
 msgstr "Překlad vytvořen"
 
@@ -8457,7 +8938,7 @@ msgstr "Nepojmenovaný přístupový klíč"
 msgid "Unpublish {itemLabel}"
 msgstr "Zrušit publikování položky ({itemLabel})"
 
-#: packages/admin/src/router.tsx:1087
+#: packages/admin/src/router.tsx:1088
 msgid "Unpublished"
 msgstr "Nepublikováno"
 
@@ -8473,7 +8954,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "Zrušit naplánování"
 
-#: packages/admin/src/router.tsx:1148
+#: packages/admin/src/router.tsx:1149
 msgid "Unscheduled"
 msgstr "Nenaplánováno"
 
@@ -8486,7 +8967,7 @@ msgstr "Nepodporovaný typ prvku widgetu: {0}"
 msgid "Untitled"
 msgstr "Bez názvu"
 
-#: packages/admin/src/components/ContentEditor.tsx:1654
+#: packages/admin/src/components/ContentEditor.tsx:1657
 msgid "Untitled file"
 msgstr "Soubor bez názvu"
 
@@ -8510,6 +8991,10 @@ msgstr ""
 #: packages/admin/src/components/TaxonomyManager.tsx:662
 msgid "Update"
 msgstr "Aktualizovat"
+
+#: packages/admin/src/routes/shop.tsx:1059
+msgid "Update delivery status"
+msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:689
 msgid "Update Field"
@@ -8693,6 +9178,10 @@ msgstr "Pro porovnávání vzorů použijte v cestách [param] nebo [...rest]."
 msgid "Use optimized image"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:178
+msgid "Use the country code without spaces or symbols."
+msgstr ""
+
 #: packages/admin/src/components/auth/PasskeyLogin.tsx:364
 msgid "Use your device's biometric authentication, security key, or PIN to sign in."
 msgstr "K přihlášení použijte biometrické ověření zařízení, bezpečnostní klíč nebo PIN."
@@ -8709,7 +9198,7 @@ msgstr "Použije se jako záložní obrázek Open Graph, pokud stránka vlastní
 msgid "Used as the identifier. Lowercase letters, numbers, and underscores only."
 msgstr "Použije se jako identifikátor. Pouze malá písmena, číslice a podtržítka."
 
-#: packages/admin/src/components/ContentEditor.tsx:1343
+#: packages/admin/src/components/ContentEditor.tsx:1346
 msgid "Used as the main visual for this post on listing pages and at the top of the post"
 msgstr "Použije se jako hlavní vizuál tohoto příspěvku ve výpisech a v jeho záhlaví"
 
@@ -8747,7 +9236,7 @@ msgid "User not found"
 msgstr "Uživatel nenalezen"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:296
+#: packages/admin/src/components/Sidebar.tsx:302
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "Uživatelé"
@@ -8814,6 +9303,11 @@ msgstr "Verze {0}"
 #: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Video"
 msgstr "Video"
+
+#: packages/admin/src/routes/shop.tsx:879
+#: packages/admin/src/routes/shop.tsx:994
+msgid "View details"
+msgstr ""
 
 #: packages/admin/src/components/Settings.tsx:96
 #: packages/admin/src/components/settings/EmailSettings.tsx:59
@@ -8891,6 +9385,22 @@ msgstr "Webová adresa"
 msgid "WebAuthn is not supported in this browser"
 msgstr "WebAuthn není v tomto prohlížeči podporován"
 
+#: packages/admin/src/routes/shop.tsx:281
+msgid "Webhook secret"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:290
+msgid "Webhook secret from your provider"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:289
+msgid "Webhook secret saved; enter a new one to replace it"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:302
+msgid "Webhook URL"
+msgstr ""
+
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:236
 #: packages/admin/src/components/RegistryPluginDetail.tsx:701
 msgid "Website"
@@ -8915,6 +9425,14 @@ msgstr "Co se stane při importu:"
 #: packages/admin/src/components/WordPressImport.tsx:1874
 msgid "What will happen when you import"
 msgstr "Co se stane při importu"
+
+#: packages/admin/src/routes/shop.tsx:172
+msgid "WhatsApp number"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:182
+msgid "WhatsApp order message"
+msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:125
 msgid "When the entry was created"
@@ -8999,7 +9517,7 @@ msgstr "Widget aktualizován"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:273
+#: packages/admin/src/components/Sidebar.tsx:276
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"
@@ -9058,6 +9576,10 @@ msgstr "xxxx xxxx xxxx xxxx xxxx xxxx"
 msgid "YAML"
 msgstr "YAML"
 
+#: packages/admin/src/routes/shop.tsx:337
+msgid "Yape"
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:163
 msgid "Yearly"
 msgstr "Ročně"
@@ -9105,7 +9627,7 @@ msgstr "Máte plný přístup ke správě tohoto webu včetně uživatelů, nast
 msgid "You need admin permissions to manage byline schema."
 msgstr "Ke správě schématu autorských podpisů jsou potřeba oprávnění správce."
 
-#: packages/admin/src/router.tsx:1561
+#: packages/admin/src/router.tsx:1562
 msgid "You need Editor permissions to moderate comments."
 msgstr "K moderování komentářů potřebujete oprávnění editora."
 
@@ -9229,6 +9751,15 @@ msgstr "ID nebo uživatelské jméno vašeho kanálu na YouTube"
 #: packages/admin/src/components/settings/SocialSettings.tsx:179
 msgid "YouTube"
 msgstr "YouTube"
+
+#: packages/admin/src/routes/shop.tsx:422
+msgid "Zone"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:464
+#: packages/admin/src/routes/shop.tsx:521
+msgid "Zone name"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:225
 msgid "Zoom:"

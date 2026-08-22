@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr "{0, plural, one {# टिप्पणी आयातित} other {# टिप्पणियाँ आयात की गईं}}"
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1540
+#: packages/admin/src/router.tsx:1541
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, one {# टिप्पणी अपडेट की गई} other {# टिप्पणियाँ अपडेट की गईं}}"
 
@@ -273,17 +273,17 @@ msgid "{0} items will be imported"
 msgstr "{0} आइटम आयात किए जाएंगे"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:560
 msgid "{0} of {total} could not be deleted"
 msgstr "{total} में से {0} को हटाया नहीं जा सका"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:516
 msgid "{0} of {total} could not be published"
 msgstr "{total} का {0} प्रकाशित नहीं किया जा सका"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:538
+#: packages/admin/src/router.tsx:539
 msgid "{0} of {total} could not be updated"
 msgstr "{total} में से {0} को अद्यतन नहीं किया जा सका"
 
@@ -624,7 +624,7 @@ msgstr "आमंत्रण स्वीकार करें"
 msgid "Access denied"
 msgstr "पहुंच अस्वीकृत"
 
-#: packages/admin/src/router.tsx:1560
+#: packages/admin/src/router.tsx:1561
 msgid "Access Denied"
 msgstr "पहुंच अस्वीकृत"
 
@@ -659,11 +659,16 @@ msgstr "एसीएफ फील्ड्स"
 #: packages/admin/src/components/ContentTypeList.tsx:190
 #: packages/admin/src/components/TaxonomyManager.tsx:1050
 #: packages/admin/src/routes/byline-schema.tsx:249
+#: packages/admin/src/routes/shop.tsx:427
+#: packages/admin/src/routes/shop.tsx:669
+#: packages/admin/src/routes/shop.tsx:811
 msgid "Actions"
 msgstr "कार्रवाई"
 
 #: packages/admin/src/components/users/UserDetail.tsx:206
 #: packages/admin/src/components/users/UserList.tsx:217
+#: packages/admin/src/routes/shop.tsx:551
+#: packages/admin/src/routes/shop.tsx:587
 msgid "Active"
 msgstr "सक्रिय"
 
@@ -712,6 +717,10 @@ msgstr "सामग्री जोड़ें"
 #: packages/admin/src/components/MenuEditor.tsx:496
 msgid "Add Custom Link"
 msgstr "कस्टम लिंक जोड़ें"
+
+#: packages/admin/src/routes/shop.tsx:462
+msgid "Add delivery zone"
+msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:211
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
@@ -821,6 +830,10 @@ msgstr "विजेट क्षेत्र जोड़ें"
 msgid "Add your social media profiles. These are available to your site's theme and can be displayed in headers, footers, or author bios."
 msgstr "अपनी सोशल मीडिया प्रोफ़ाइल जोड़ें. ये आपकी साइट की थीम के लिए उपलब्ध हैं और इन्हें हेडर, फ़ूटर या लेखक बायोस में प्रदर्शित किया जा सकता है।"
 
+#: packages/admin/src/routes/shop.tsx:495
+msgid "Add zone"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:441
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
 msgid "Adding..."
@@ -829,6 +842,10 @@ msgstr "जोड़ा जा रहा है..."
 #: packages/admin/src/components/WordPressImport.tsx:1753
 msgid "Additional data to import."
 msgstr "आयात करने के लिए अतिरिक्त डेटा."
+
+#: packages/admin/src/routes/shop.tsx:898
+msgid "Address"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:203
 msgid "Adjust optimization"
@@ -839,12 +856,12 @@ msgid "admin"
 msgstr "व्यवस्थापक"
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:426
+#: packages/admin/src/components/Sidebar.tsx:432
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "व्यवस्थापक"
 
-#: packages/admin/src/components/Sidebar.tsx:372
+#: packages/admin/src/components/Sidebar.tsx:378
 msgid "Admin navigation"
 msgstr "व्यवस्थापक नेविगेशन"
 
@@ -912,6 +929,10 @@ msgstr "सभी संग्रह"
 msgid "All comments require approval"
 msgstr "सभी टिप्पणियों के लिए अनुमोदन की आवश्यकता है"
 
+#: packages/admin/src/routes/shop.tsx:780
+msgid "All districts"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:2518
 msgid "All imported content will be unassigned. You can reassign authors later from the content editor."
 msgstr "सभी आयातित सामग्री अनअसाइन कर दी जाएगी. आप बाद में सामग्री संपादक से लेखकों को पुन: असाइन कर सकते हैं।"
@@ -931,6 +952,7 @@ msgstr "सभी स्रोत"
 
 #: packages/admin/src/components/ContentList.tsx:831
 #: packages/admin/src/components/Redirects.tsx:426
+#: packages/admin/src/routes/shop.tsx:647
 msgid "All statuses"
 msgstr "सभी स्थितियाँ"
 
@@ -1024,24 +1046,24 @@ msgstr "वैकल्पिक रूप से, आप वर्डप्र�
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:447
-#: packages/admin/src/router.tsx:462
-#: packages/admin/src/router.tsx:476
-#: packages/admin/src/router.tsx:490
-#: packages/admin/src/router.tsx:714
-#: packages/admin/src/router.tsx:996
-#: packages/admin/src/router.tsx:1056
-#: packages/admin/src/router.tsx:1074
-#: packages/admin/src/router.tsx:1092
-#: packages/admin/src/router.tsx:1113
-#: packages/admin/src/router.tsx:1134
-#: packages/admin/src/router.tsx:1155
-#: packages/admin/src/router.tsx:1186
-#: packages/admin/src/router.tsx:1206
-#: packages/admin/src/router.tsx:1505
-#: packages/admin/src/router.tsx:1521
-#: packages/admin/src/router.tsx:1546
-#: packages/admin/src/router.tsx:2046
+#: packages/admin/src/router.tsx:448
+#: packages/admin/src/router.tsx:463
+#: packages/admin/src/router.tsx:477
+#: packages/admin/src/router.tsx:491
+#: packages/admin/src/router.tsx:715
+#: packages/admin/src/router.tsx:997
+#: packages/admin/src/router.tsx:1057
+#: packages/admin/src/router.tsx:1075
+#: packages/admin/src/router.tsx:1093
+#: packages/admin/src/router.tsx:1114
+#: packages/admin/src/router.tsx:1135
+#: packages/admin/src/router.tsx:1156
+#: packages/admin/src/router.tsx:1187
+#: packages/admin/src/router.tsx:1207
+#: packages/admin/src/router.tsx:1506
+#: packages/admin/src/router.tsx:1522
+#: packages/admin/src/router.tsx:1547
+#: packages/admin/src/router.tsx:2054
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1064,6 +1086,10 @@ msgstr "निर्यात फ़ाइल का विश्लेषण �
 #: packages/admin/src/components/WordPressImport.tsx:810
 msgid "Analyzing WordPress site..."
 msgstr "वर्डप्रेस साइट का विश्लेषण किया जा रहा है..."
+
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Any date"
+msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:105
 msgid "Any media type allowed (subject to global limits)."
@@ -1156,6 +1182,10 @@ msgstr ""
 #: packages/admin/src/components/WordPressImport.tsx:2456
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "EmDash उपयोगकर्ताओं को वर्डप्रेस लेखक असाइन करें। पोस्ट का श्रेय चयनित उपयोगकर्ता को दिया जाएगा."
+
+#: packages/admin/src/routes/shop.tsx:1066
+msgid "Assigned"
+msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:28
 msgid "Astro"
@@ -1251,7 +1281,7 @@ msgstr "स्वचालित बैकअप"
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr "स्वचालित बैकअप के लिए स्टोरेज बैकएंड (R2, S3, या स्थानीय स्टोरेज) की आवश्यकता होती है। उन्हें सक्षम करने के लिए अपने EmDash कॉन्फ़िगरेशन में स्टोरेज कॉन्फ़िगर करें।"
 
-#: packages/admin/src/router.tsx:1055
+#: packages/admin/src/router.tsx:1056
 msgid "Autosave failed"
 msgstr "स्वतः सहेजना विफल"
 
@@ -1284,7 +1314,7 @@ msgstr "अवतार"
 msgid "Back"
 msgstr "पीछे"
 
-#: packages/admin/src/components/ContentEditor.tsx:665
+#: packages/admin/src/components/ContentEditor.tsx:668
 msgid "Back to {collectionLabel} list"
 msgstr "{collectionLabel} सूची पर वापस जाएँ"
 
@@ -1350,6 +1380,10 @@ msgstr "बैकअप"
 msgid "Backups to keep"
 msgstr "रखने के लिए बैकअप"
 
+#: packages/admin/src/routes/shop.tsx:339
+msgid "Bank transfer"
+msgstr ""
+
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:29
 msgid "Bash"
 msgstr "दे घुमा के"
@@ -1413,19 +1447,23 @@ msgstr "थीम ब्राउज़ करें और अपनी सा�
 msgid "Bullet List"
 msgstr "बुलेट सूची"
 
+#: packages/admin/src/routes/shop.tsx:207
+msgid "Business hours"
+msgstr ""
+
 #: packages/admin/src/routes/byline-schema.tsx:218
 #: packages/admin/src/routes/bylines.tsx:383
 msgid "Byline schema"
 msgstr "बाइलाइन स्कीमा"
 
-#: packages/admin/src/components/Sidebar.tsx:295
+#: packages/admin/src/components/Sidebar.tsx:301
 msgid "Byline Schema"
 msgstr "बाइलाइन स्कीमा"
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:661
 #: packages/admin/src/components/ContentSettingsPanel.tsx:664
-#: packages/admin/src/components/Sidebar.tsx:285
+#: packages/admin/src/components/Sidebar.tsx:288
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "नाम पंक्तियां"
@@ -1508,6 +1546,11 @@ msgstr "रद्द करें (Esc)"
 msgid "Cancel rename"
 msgstr "नाम बदलना रद्द करें"
 
+#: packages/admin/src/routes/shop.tsx:52
+#: packages/admin/src/routes/shop.tsx:654
+msgid "Cancelled"
+msgstr ""
+
 #: packages/admin/src/components/Sections.tsx:407
 msgid "Cannot delete theme sections"
 msgstr "थीम अनुभागों को हटाया नहीं जा सकता"
@@ -1540,6 +1583,10 @@ msgstr "कैप्शन"
 msgid "Captions / Subtitles"
 msgstr "कैप्शन/उपशीर्षक"
 
+#: packages/admin/src/routes/shop.tsx:340
+msgid "Cash on delivery"
+msgstr ""
+
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
 msgid "Categories"
@@ -1560,7 +1607,7 @@ msgstr "केंद्र"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:76
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:107
-#: packages/admin/src/components/ContentEditor.tsx:1712
+#: packages/admin/src/components/ContentEditor.tsx:1715
 #: packages/admin/src/components/FieldEditor.tsx:428
 #: packages/admin/src/components/ImageFieldRenderer.tsx:208
 #: packages/admin/src/components/ImageFieldRenderer.tsx:237
@@ -1591,7 +1638,7 @@ msgstr "लोगो बदलें"
 msgid "Changelog"
 msgstr "बदलाव का"
 
-#: packages/admin/src/router.tsx:1106
+#: packages/admin/src/router.tsx:1107
 msgid "Changes discarded"
 msgstr "परिवर्तन खारिज कर दिए गए"
 
@@ -1723,6 +1770,12 @@ msgstr "साइन इन करने के लिए ईमेल में
 #: packages/admin/src/components/Widgets.tsx:413
 #: packages/admin/src/components/Widgets.tsx:419
 #: packages/admin/src/components/Widgets.tsx:423
+#: packages/admin/src/routes/shop.tsx:505
+#: packages/admin/src/routes/shop.tsx:507
+#: packages/admin/src/routes/shop.tsx:690
+#: packages/admin/src/routes/shop.tsx:692
+#: packages/admin/src/routes/shop.tsx:839
+#: packages/admin/src/routes/shop.tsx:841
 msgid "Close"
 msgstr "बंद करना"
 
@@ -1738,7 +1791,7 @@ msgstr "गैलरी सेटिंग बंद करें"
 msgid "Close panel"
 msgstr "पैनल बंद करें"
 
-#: packages/admin/src/components/ContentEditor.tsx:1085
+#: packages/admin/src/components/ContentEditor.tsx:1088
 msgid "Close settings"
 msgstr "सेटिंग्स बंद करें"
 
@@ -1801,7 +1854,7 @@ msgstr "विस्तार से टिप्पणी करें"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:261
+#: packages/admin/src/components/Sidebar.tsx:264
 msgid "Comments"
 msgstr "टिप्पणियाँ"
 
@@ -1824,6 +1877,15 @@ msgstr "फ़ील्ड कॉन्फ़िगर करें"
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:416
 msgid "Confirm"
 msgstr "पुष्टि करना"
+
+#: packages/admin/src/routes/shop.tsx:1056
+msgid "Confirm payment"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:47
+#: packages/admin/src/routes/shop.tsx:649
+msgid "Confirmed"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:701
 #: packages/admin/src/components/WordPressImport.tsx:1054
@@ -1858,7 +1920,7 @@ msgstr "सामग्री"
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:408
+#: packages/admin/src/components/Sidebar.tsx:414
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "सामग्री"
@@ -1876,7 +1938,7 @@ msgstr "सामग्री त्रुटियाँ ({0})"
 msgid "Content found:"
 msgstr "सामग्री मिली:"
 
-#: packages/admin/src/router.tsx:1128
+#: packages/admin/src/router.tsx:1129
 msgid "Content has been scheduled for publishing"
 msgstr "सामग्री प्रकाशन के लिए निर्धारित की गई है"
 
@@ -1888,7 +1950,7 @@ msgstr "सामग्री को चयनित संशोधन मे�
 msgid "Content ID:"
 msgstr "सामग्री आईडी:"
 
-#: packages/admin/src/router.tsx:1069
+#: packages/admin/src/router.tsx:1070
 msgid "Content is now live"
 msgstr "सामग्री अब लाइव है"
 
@@ -1908,11 +1970,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "सामग्री पढ़ें"
 
-#: packages/admin/src/router.tsx:1087
+#: packages/admin/src/router.tsx:1088
 msgid "Content removed from public view"
 msgstr "सामग्री को सार्वजनिक दृश्य से हटा दिया गया"
 
-#: packages/admin/src/router.tsx:1149
+#: packages/admin/src/router.tsx:1150
 msgid "Content reverted to draft"
 msgstr "सामग्री को ड्राफ्ट में वापस लाया गया"
 
@@ -1926,7 +1988,7 @@ msgstr "आयात करने के लिए सामग्री"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/components/Sidebar.tsx:297
 msgid "Content Types"
 msgstr "सामग्री प्रकार"
 
@@ -1960,8 +2022,13 @@ msgstr ""
 msgid "Contributor"
 msgstr "योगदानकर्ता"
 
+#: packages/admin/src/routes/shop.tsx:336
+msgid "Coordinate by WhatsApp"
+msgstr ""
+
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:305
 #: packages/admin/src/components/users/InviteUserModal.tsx:133
+#: packages/admin/src/routes/shop.tsx:853
 msgid "Copied to clipboard"
 msgstr "क्लिपबोर्ड पर कॉपी किया गया"
 
@@ -1970,9 +2037,17 @@ msgstr "क्लिपबोर्ड पर कॉपी किया गय�
 msgid "Copy {0} to clipboard"
 msgstr "{0} को क्लिपबोर्ड पर कॉपी करें"
 
+#: packages/admin/src/routes/shop.tsx:926
+msgid "Copy address"
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:124
 msgid "Copy invite link"
 msgstr "आमंत्रण लिंक कॉपी करें"
+
+#: packages/admin/src/routes/shop.tsx:920
+msgid "Copy phone"
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:398
 msgid "Copy slug"
@@ -1993,12 +2068,20 @@ msgstr "टोकन कॉपी करें"
 msgid "Copy URL"
 msgstr "URL कॉपी करें"
 
+#: packages/admin/src/routes/shop.tsx:424
+msgid "Cost"
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:136
 msgid "Could not copy automatically. Please select the URL above and copy manually."
 msgstr "स्वचालित रूप से प्रतिलिपि नहीं बनाई जा सकी. कृपया ऊपर दिए गए URL का चयन करें और मैन्युअल रूप से कॉपी करें।"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3357
 msgid "Could not insert section"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:725
+msgid "Could not load customers. Please try again."
 msgstr ""
 
 #: packages/admin/src/components/Dashboard.tsx:124
@@ -2217,7 +2300,7 @@ msgid "Created {0}"
 msgstr "बनाया गया {0}"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1180
+#: packages/admin/src/router.tsx:1181
 msgid "Created {0} translation"
 msgstr "{0} अनुवाद बनाया गया"
 
@@ -2246,6 +2329,14 @@ msgstr ""
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:33
 msgid "CSS"
 msgstr "सीएसएस"
+
+#: packages/admin/src/routes/shop.tsx:155
+msgid "Currency"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:162
+msgid "Currency symbol"
+msgstr ""
 
 #: packages/admin/src/components/TranslationsPanel.tsx:83
 msgid "current"
@@ -2279,6 +2370,19 @@ msgstr "कस्टम अनुभाग"
 msgid "Custom Taxonomies"
 msgstr "कस्टम वर्गीकरण"
 
+#: packages/admin/src/routes/shop.tsx:806
+#: packages/admin/src/routes/shop.tsx:1019
+msgid "Customer"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:837
+msgid "Customer details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:80
+msgid "Customers"
+msgstr ""
+
 #: packages/admin/src/components/ImageEditor.tsx:268
 msgid "Customize the WebP result for your website."
 msgstr ""
@@ -2298,8 +2402,8 @@ msgstr "अँधेरा"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:246
-#: packages/admin/src/components/Sidebar.tsx:399
+#: packages/admin/src/components/Sidebar.tsx:249
+#: packages/admin/src/components/Sidebar.tsx:405
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
 
@@ -2404,6 +2508,7 @@ msgstr "\"{0}\" हटाएं? इसे असंपादित नहीं
 #: packages/admin/src/components/TaxonomyManager.tsx:280
 #: packages/admin/src/components/Widgets.tsx:817
 #: packages/admin/src/routes/byline-schema.tsx:458
+#: packages/admin/src/routes/shop.tsx:596
 msgid "Delete {0}"
 msgstr "{0} हटाएं"
 
@@ -2552,6 +2657,42 @@ msgstr "हटाया जा रहा है..."
 #: packages/admin/src/routes/byline-schema.tsx:379
 msgid "Deleting…"
 msgstr "हटाया जा रहा है..."
+
+#: packages/admin/src/routes/shop.tsx:51
+#: packages/admin/src/routes/shop.tsx:653
+#: packages/admin/src/routes/shop.tsx:1068
+msgid "Delivered"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:667
+#: packages/admin/src/routes/shop.tsx:1046
+msgid "Delivery"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:477
+#: packages/admin/src/routes/shop.tsx:534
+msgid "Delivery cost"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1016
+msgid "Delivery updated"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:384
+msgid "Delivery zone created"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:409
+msgid "Delivery zone deleted"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:402
+msgid "Delivery zone updated"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:78
+msgid "Delivery zones"
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:254
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:147
@@ -2755,9 +2896,24 @@ msgstr "टैग क्लाउड प्रदर्शित करें"
 msgid "Displayed below the image as a visible caption."
 msgstr "दृश्यमान कैप्शन के रूप में छवि के नीचे प्रदर्शित किया गया।"
 
-#: packages/admin/src/components/ContentEditor.tsx:726
+#: packages/admin/src/components/ContentEditor.tsx:729
 msgid "Distraction-free mode (⌘⇧\\)"
 msgstr "ध्यान-मुक्त मोड (⌘⇧\\)"
+
+#: packages/admin/src/routes/shop.tsx:808
+#: packages/admin/src/routes/shop.tsx:899
+msgid "District"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:473
+msgid "District 1, District 2"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:423
+#: packages/admin/src/routes/shop.tsx:470
+#: packages/admin/src/routes/shop.tsx:527
+msgid "Districts"
+msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:1488
 msgid "Divider"
@@ -2917,6 +3073,11 @@ msgstr "उदाहरण के लिए, सीआई/सीडी पाइ
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "उदाहरण के लिए, मैकबुक प्रो, आईफोन"
 
+#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/routes/shop.tsx:71
+msgid "Ecommerce"
+msgstr ""
+
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1044
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:367
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:368
@@ -2924,6 +3085,7 @@ msgstr "उदाहरण के लिए, मैकबुक प्रो, �
 #: packages/admin/src/components/MenuList.tsx:234
 #: packages/admin/src/components/Sections.tsx:392
 #: packages/admin/src/components/TranslationsPanel.tsx:93
+#: packages/admin/src/routes/shop.tsx:592
 msgid "Edit"
 msgstr "संपादन करना"
 
@@ -2945,7 +3107,7 @@ msgstr "संपादित करें {0}"
 msgid "Edit {0} field"
 msgstr "{0} फ़ील्ड संपादित करें"
 
-#: packages/admin/src/components/ContentEditor.tsx:672
+#: packages/admin/src/components/ContentEditor.tsx:675
 msgid "Edit {itemLabel}"
 msgstr "संपादित करें {itemLabel}"
 
@@ -2960,6 +3122,10 @@ msgstr "बायलाइन संपादित करें"
 #: packages/admin/src/components/BylineFieldEditor.tsx:209
 msgid "Edit byline field"
 msgstr "बायलाइन फ़ील्ड संपादित करें"
+
+#: packages/admin/src/routes/shop.tsx:503
+msgid "Edit delivery zone"
+msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:321
 msgid "Edit Domain"
@@ -3031,6 +3197,7 @@ msgstr "em1.…"
 #: packages/admin/src/components/Settings.tsx:95
 #: packages/admin/src/components/SignupPage.tsx:198
 #: packages/admin/src/components/users/UserDetail.tsx:154
+#: packages/admin/src/routes/shop.tsx:897
 msgid "Email"
 msgstr "ईमेल"
 
@@ -3107,6 +3274,10 @@ msgstr "टिप्पणियाँ सक्षम करें"
 msgid "Enable full-text search on this collection"
 msgstr "इस संग्रह पर पूर्ण-पाठ खोज सक्षम करें"
 
+#: packages/admin/src/routes/shop.tsx:229
+msgid "Enable payment gateway"
+msgstr ""
+
 #: packages/admin/src/components/PluginManager.tsx:494
 msgid "Enable plugin"
 msgstr "प्लगइन सक्षम करें"
@@ -3129,7 +3300,7 @@ msgstr "सक्रिय"
 msgid "Enter a URL (https://…) or a relative path (/…)"
 msgstr "एक URL (https://…) या एक संबंधित पथ (/…) दर्ज करें"
 
-#: packages/admin/src/components/ContentEditor.tsx:1493
+#: packages/admin/src/components/ContentEditor.tsx:1496
 msgid "Enter a valid URL (e.g. https://example.com)"
 msgstr "एक मान्य URL दर्ज करें (उदा. https://example.com)"
 
@@ -3137,7 +3308,7 @@ msgstr "एक मान्य URL दर्ज करें (उदा. https:/
 msgid "Enter credentials manually"
 msgstr "क्रेडेंशियल मैन्युअल रूप से दर्ज करें"
 
-#: packages/admin/src/components/ContentEditor.tsx:725
+#: packages/admin/src/components/ContentEditor.tsx:728
 msgid "Enter distraction-free mode"
 msgstr "व्याकुलता-मुक्त मोड दर्ज करें"
 
@@ -3149,7 +3320,7 @@ msgstr "ईमेल दर्ज करें"
 msgid "Enter HTML..."
 msgstr "HTML दर्ज करें..."
 
-#: packages/admin/src/components/ContentEditor.tsx:1266
+#: packages/admin/src/components/ContentEditor.tsx:1269
 msgid "Enter markdown content..."
 msgstr "मार्कडाउन सामग्री दर्ज करें..."
 
@@ -3178,13 +3349,17 @@ msgstr "सामग्री को सीधे आयात करने क�
 msgid "Enter your WordPress site URL"
 msgstr "अपना वर्डप्रेस साइट URL दर्ज करें"
 
+#: packages/admin/src/routes/shop.tsx:251
+msgid "Environment"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:155
 #: packages/admin/src/components/MenuEditor.tsx:193
 #: packages/admin/src/components/MenuEditor.tsx:233
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2260
+#: packages/admin/src/router.tsx:2269
 msgid "Error"
 msgstr "गलती"
 
@@ -3204,6 +3379,12 @@ msgstr "अनुभाग सहेजने में त्रुटि"
 msgid "Error updating widget"
 msgstr "विजेट अपडेट करने में त्रुटि"
 
+#: packages/admin/src/routes/shop.tsx:425
+#: packages/admin/src/routes/shop.tsx:486
+#: packages/admin/src/routes/shop.tsx:543
+msgid "Estimated time"
+msgstr ""
+
 #: packages/admin/src/components/RegistryPluginDetail.tsx:596
 msgid "Every published release of this plugin has been withdrawn or could not be verified. Check back later, or contact the publisher."
 msgstr "इस प्लगइन की प्रत्येक प्रकाशित रिलीज़ को वापस ले लिया गया है या सत्यापित नहीं किया जा सका है। बाद में दोबारा जाँचें, या प्रकाशक से संपर्क करें।"
@@ -3211,6 +3392,18 @@ msgstr "इस प्लगइन की प्रत्येक प्रक�
 #. placeholder {0}: formData.dateFormat ?? "MMMM d, yyyy"
 #: packages/admin/src/components/settings/GeneralSettings.tsx:327
 msgid "Example: {0} → January 23, 2026"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:489
+msgid "Example: 30–60 minutes"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:176
+msgid "Example: 51999999999"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:166
+msgid "Example: S/"
 msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:285
@@ -3221,7 +3414,7 @@ msgstr ""
 msgid "Exists"
 msgstr "मौजूद है"
 
-#: packages/admin/src/components/ContentEditor.tsx:784
+#: packages/admin/src/components/ContentEditor.tsx:787
 msgid "Exit distraction-free mode"
 msgstr "व्याकुलता-मुक्त मोड से बाहर निकलें"
 
@@ -3320,14 +3513,14 @@ msgid "Failed to create term"
 msgstr "शब्द बनाने में विफल"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1185
+#: packages/admin/src/router.tsx:1186
 msgid "Failed to create translation"
 msgstr "अनुवाद बनाने में विफल"
 
-#: packages/admin/src/router.tsx:446
-#: packages/admin/src/router.tsx:475
-#: packages/admin/src/router.tsx:558
-#: packages/admin/src/router.tsx:1205
+#: packages/admin/src/router.tsx:447
+#: packages/admin/src/router.tsx:476
+#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:1206
 msgid "Failed to delete"
 msgstr "हटाने में विफल"
 
@@ -3352,7 +3545,7 @@ msgid "Failed to delete collection"
 msgstr "संग्रह हटाने में विफल"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1520
+#: packages/admin/src/router.tsx:1521
 msgid "Failed to delete comment"
 msgstr "टिप्पणी हटाने में विफल"
 
@@ -3418,7 +3611,7 @@ msgstr "खोज अक्षम करने में विफल"
 msgid "Failed to disable user"
 msgstr "उपयोगकर्ता को अक्षम करने में विफल"
 
-#: packages/admin/src/router.tsx:1112
+#: packages/admin/src/router.tsx:1113
 msgid "Failed to discard changes"
 msgstr "परिवर्तन त्यागने में विफल"
 
@@ -3426,7 +3619,7 @@ msgstr "परिवर्तन त्यागने में विफल"
 msgid "Failed to dismiss welcome"
 msgstr "स्वागत को ख़ारिज करने में विफल"
 
-#: packages/admin/src/router.tsx:489
+#: packages/admin/src/router.tsx:490
 msgid "Failed to duplicate"
 msgstr "नकल करने में विफल"
 
@@ -3537,8 +3730,8 @@ msgstr "शर्तें लाने में विफल"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:905
-#: packages/admin/src/router.tsx:1451
+#: packages/admin/src/router.tsx:906
+#: packages/admin/src/router.tsx:1452
 msgid "Failed to fetch user"
 msgstr "उपयोगकर्ता लाने में विफल"
 
@@ -3580,7 +3773,7 @@ msgstr "प्लगइन स्थापित करने में वि�
 msgid "Failed to list byline fields"
 msgstr "बायलाइन फ़ील्ड सूचीबद्ध करने में विफल"
 
-#: packages/admin/src/router.tsx:287
+#: packages/admin/src/router.tsx:288
 msgid "Failed to load admin"
 msgstr "व्यवस्थापक लोड करने में विफल"
 
@@ -3649,7 +3842,7 @@ msgstr "उपयोगकर्ताओं को लोड करने म�
 msgid "Failed to load widget"
 msgstr "विजेट लोड करने में विफल"
 
-#: packages/admin/src/router.tsx:1545
+#: packages/admin/src/router.tsx:1546
 msgid "Failed to perform bulk action"
 msgstr "थोक कार्रवाई करने में विफल"
 
@@ -3661,8 +3854,8 @@ msgstr "सामग्री को स्थायी रूप से हट�
 msgid "Failed to prepare import"
 msgstr "आयात तैयार करने में विफल"
 
-#: packages/admin/src/router.tsx:514
-#: packages/admin/src/router.tsx:1073
+#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:1074
 msgid "Failed to publish"
 msgstr "प्रकाशित करने में विफल"
 
@@ -3700,7 +3893,7 @@ msgstr "फ़ील्ड पुन: व्यवस्थित करने �
 msgid "Failed to reorder widgets"
 msgstr "विजेट्स को पुन: व्यवस्थित करने में विफल"
 
-#: packages/admin/src/router.tsx:461
+#: packages/admin/src/router.tsx:462
 msgid "Failed to restore"
 msgstr "पुनर्स्थापित करने में विफल"
 
@@ -3721,9 +3914,9 @@ msgstr "एपीआई टोकन रद्द करने में वि�
 msgid "Failed to rewrite URLs"
 msgstr "URL पुनः लिखने में विफल"
 
-#: packages/admin/src/router.tsx:713
-#: packages/admin/src/router.tsx:995
-#: packages/admin/src/router.tsx:2045
+#: packages/admin/src/router.tsx:714
+#: packages/admin/src/router.tsx:996
+#: packages/admin/src/router.tsx:2053
 msgid "Failed to save"
 msgstr "सहेजने में विफल"
 
@@ -3742,7 +3935,7 @@ msgstr "फ़ील्ड सहेजने में विफल"
 msgid "Failed to save settings"
 msgstr "सेटिंग्स सहेजने में विफल"
 
-#: packages/admin/src/router.tsx:1133
+#: packages/admin/src/router.tsx:1134
 msgid "Failed to schedule"
 msgstr "शेड्यूल करने में विफल"
 
@@ -3773,15 +3966,15 @@ msgstr "प्रवेश शर्तें निर्धारित कर
 msgid "Failed to uninstall plugin"
 msgstr "प्लगइन अनइंस्टॉल करने में विफल"
 
-#: packages/admin/src/router.tsx:1091
+#: packages/admin/src/router.tsx:1092
 msgid "Failed to unpublish"
 msgstr "अप्रकाशित करने में विफल"
 
-#: packages/admin/src/router.tsx:1154
+#: packages/admin/src/router.tsx:1155
 msgid "Failed to unschedule"
 msgstr "शेड्यूल अनिर्धारित करने में विफल"
 
-#: packages/admin/src/router.tsx:537
+#: packages/admin/src/router.tsx:538
 msgid "Failed to update"
 msgstr "अद्यतन करने में विफल"
 
@@ -3831,7 +4024,7 @@ msgstr "अनुभाग अद्यतन करने में विफ�
 msgid "Failed to update settings"
 msgstr "सेटिंग्स अपडेट करने में विफल"
 
-#: packages/admin/src/router.tsx:1504
+#: packages/admin/src/router.tsx:1505
 msgid "Failed to update status"
 msgstr "स्थिति अपडेट करने में विफल"
 
@@ -3986,6 +4179,18 @@ msgstr "प्रकार के अनुसार फ़िल्टर क�
 msgid "Filter byline type"
 msgstr "फ़िल्टर बायलाइन प्रकार"
 
+#: packages/admin/src/routes/shop.tsx:787
+msgid "Filter customers by date"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:776
+msgid "Filter customers by district"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:643
+msgid "Filter orders by status"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:64
 msgid "First-time commenters only"
 msgstr "केवल पहली बार टिप्पणी करने वाले"
@@ -4066,7 +4271,7 @@ msgid "Go"
 msgstr "जाना"
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2280
+#: packages/admin/src/router.tsx:2289
 msgid "Go to Dashboard"
 msgstr "डैशबोर्ड पर जाएँ"
 
@@ -4144,6 +4349,11 @@ msgstr "शीर्षकों"
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:497
 msgid "Height"
 msgstr "ऊंचाई"
+
+#: packages/admin/src/routes/shop.tsx:190
+#: packages/admin/src/routes/shop.tsx:324
+msgid "Hello, I want to coordinate payment for my order."
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:180
 msgid "Hero Banner"
@@ -4278,7 +4488,7 @@ msgid "Images"
 msgstr "इमेजिस"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:333
+#: packages/admin/src/components/Sidebar.tsx:339
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "आयात"
@@ -4370,6 +4580,16 @@ msgstr "मीडिया आयात करना"
 #: packages/admin/src/components/WordPressImport.tsx:904
 msgid "Importing menus and site settings..."
 msgstr "मेनू और साइट सेटिंग आयात कर रहा है..."
+
+#: packages/admin/src/routes/shop.tsx:50
+#: packages/admin/src/routes/shop.tsx:652
+#: packages/admin/src/routes/shop.tsx:1067
+msgid "In transit"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:587
+msgid "Inactive"
+msgstr ""
 
 #: packages/admin/src/components/BylineFilter.tsx:172
 msgid "Include inferred bylines"
@@ -4522,7 +4742,7 @@ msgstr "पूर्णांक"
 msgid "Invalid invite link"
 msgstr "अमान्य आमंत्रण लिंक"
 
-#: packages/admin/src/components/ContentEditor.tsx:1562
+#: packages/admin/src/components/ContentEditor.tsx:1565
 msgid "Invalid JSON"
 msgstr "अमान्य JSON"
 
@@ -4662,6 +4882,14 @@ msgstr "भाषा"
 msgid "Large section heading"
 msgstr "बड़े अनुभाग का शीर्षक"
 
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Last 30 days"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Last 90 days"
+msgstr ""
+
 #: packages/admin/src/components/PluginManager.tsx:608
 msgid "Last enabled:"
 msgstr "अंतिम सक्षम:"
@@ -4673,6 +4901,10 @@ msgstr "आखरी लॉगइन"
 #: packages/admin/src/components/users/UserList.tsx:107
 msgid "Last Login"
 msgstr "आखरी लॉगइन"
+
+#: packages/admin/src/routes/shop.tsx:810
+msgid "Last order"
+msgstr ""
 
 #: packages/admin/src/components/Redirects.tsx:227
 msgid "Last seen"
@@ -4765,8 +4997,8 @@ msgstr "लिंक"
 msgid "List view"
 msgstr "लिस्ट व्यू"
 
-#: packages/admin/src/components/ContentEditor.tsx:706
-#: packages/admin/src/components/ContentEditor.tsx:749
+#: packages/admin/src/components/ContentEditor.tsx:709
+#: packages/admin/src/components/ContentEditor.tsx:752
 #: packages/admin/src/components/ContentSettingsPanel.tsx:265
 msgid "Live View"
 msgstr "लाइव देखें"
@@ -4788,7 +5020,7 @@ msgstr "और लोड करें"
 msgid "Load More"
 msgstr "और लोड करें"
 
-#: packages/admin/src/router.tsx:2235
+#: packages/admin/src/router.tsx:2244
 msgid "Loading"
 msgstr "लोड हो रहा है"
 
@@ -4804,14 +5036,22 @@ msgstr "संग्रह लोड हो रहा है..."
 msgid "Loading comments..."
 msgstr "टिप्पणियाँ लोड हो रही हैं..."
 
-#: packages/admin/src/router.tsx:2237
-#: packages/admin/src/router.tsx:2249
+#: packages/admin/src/router.tsx:2246
+#: packages/admin/src/router.tsx:2258
 msgid "Loading configuration..."
 msgstr "कॉन्फ़िगरेशन लोड हो रहा है..."
 
 #: packages/admin/src/components/ContentPickerModal.tsx:164
 msgid "Loading content..."
 msgstr "सामग्री लोड हो रही है..."
+
+#: packages/admin/src/routes/shop.tsx:723
+msgid "Loading customers"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:414
+msgid "Loading delivery zones"
+msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3344
 msgid "Loading editor..."
@@ -4824,6 +5064,14 @@ msgstr "मेनू लोड हो रहा है..."
 #: packages/admin/src/components/MenuList.tsx:95
 msgid "Loading menus..."
 msgstr "मेनू लोड हो रहा है..."
+
+#: packages/admin/src/routes/shop.tsx:699
+msgid "Loading order details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:619
+msgid "Loading orders"
+msgstr ""
 
 #: packages/admin/src/components/PluginManager.tsx:140
 msgid "Loading plugins..."
@@ -4848,6 +5096,10 @@ msgstr "सेटिंग लोड हो रही है..."
 #: packages/admin/src/components/SetupWizard.tsx:528
 msgid "Loading setup..."
 msgstr "सेटअप लोड हो रहा है..."
+
+#: packages/admin/src/routes/shop.tsx:122
+msgid "Loading store settings"
+msgstr ""
 
 #: packages/admin/src/components/TaxonomyManager.tsx:1054
 msgid "Loading terms..."
@@ -4946,7 +5198,7 @@ msgstr "नेटवर्क अनुरोध करें"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "किसी भी होस्ट से नेटवर्क अनुरोध करें (अप्रतिबंधित)"
 
-#: packages/admin/src/components/Sidebar.tsx:418
+#: packages/admin/src/components/Sidebar.tsx:424
 msgid "Manage"
 msgstr "प्रबंधित करना"
 
@@ -4980,6 +5232,10 @@ msgstr "URL पुनर्निर्देश प्रबंधित कर
 #: packages/admin/src/components/settings/SecuritySettings.tsx:89
 msgid "Manage your passkeys and authentication"
 msgstr "अपनी पासकी और प्रमाणीकरण प्रबंधित करें"
+
+#: packages/admin/src/routes/shop.tsx:72
+msgid "Manage your products, delivery settings, and orders."
+msgstr ""
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:317
 msgid "Managed by {providerName}"
@@ -5026,7 +5282,7 @@ msgstr "बाज़ार"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:321
 msgid "Marketplace"
 msgstr "बाजार"
 
@@ -5068,7 +5324,7 @@ msgstr "एमडीएक्स"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:256
+#: packages/admin/src/components/Sidebar.tsx:259
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5163,7 +5419,7 @@ msgstr "मेनू क्रम अद्यतन कर दिया गय�
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:266
+#: packages/admin/src/components/Sidebar.tsx:269
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "मेनू"
@@ -5176,6 +5432,14 @@ msgstr "मेनू ({0})"
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:82
 msgid "Menus Manage"
 msgstr "मेनू प्रबंधित करें"
+
+#: packages/admin/src/routes/shop.tsx:186
+msgid "Message introduction"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:193
+msgid "Message preview"
+msgstr ""
 
 #: packages/admin/src/components/SeoPanel.tsx:199
 #: packages/admin/src/components/SeoPanel.tsx:203
@@ -5238,9 +5502,17 @@ msgstr "मासिक/वार्षिक अभिलेख"
 msgid "More information about {label}"
 msgstr "{label} के बारे में अधिक जानकारी"
 
+#: packages/admin/src/routes/shop.tsx:798
+msgid "Most orders"
+msgstr ""
+
 #: packages/admin/src/components/MarketplaceBrowse.tsx:42
 msgid "Most Popular"
 msgstr "सबसे लोकप्रिय"
+
+#: packages/admin/src/routes/shop.tsx:798
+msgid "Most recent"
+msgstr ""
 
 #. placeholder {0}: field.label
 #: packages/admin/src/routes/byline-schema.tsx:439
@@ -5305,11 +5577,11 @@ msgstr "कूड़ेदान में ले जाएं?"
 msgid "Move up"
 msgstr "बढ़ाना"
 
-#: packages/admin/src/router.tsx:534
+#: packages/admin/src/router.tsx:535
 msgid "Moved {total} items to draft"
 msgstr "ड्राफ्ट में {total} आइटम ले जाया गया"
 
-#: packages/admin/src/router.tsx:555
+#: packages/admin/src/router.tsx:556
 msgid "Moved {total} items to trash"
 msgstr "{total} आइटम को कूड़ेदान में ले जाया गया"
 
@@ -5338,6 +5610,7 @@ msgstr "मेरा अद्भुत ब्लॉग"
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:37
 #: packages/admin/src/components/users/UserDetail.tsx:148
 #: packages/admin/src/components/Widgets.tsx:430
+#: packages/admin/src/routes/shop.tsx:896
 msgid "Name"
 msgstr "नाम"
 
@@ -5358,11 +5631,13 @@ msgstr "मार्गदर्शन"
 msgid "Never"
 msgstr "कभी नहीं"
 
-#: packages/admin/src/router.tsx:1180
+#: packages/admin/src/router.tsx:1181
 msgid "new"
 msgstr "नया"
 
 #: packages/admin/src/routes/bylines.tsx:426
+#: packages/admin/src/routes/shop.tsx:46
+#: packages/admin/src/routes/shop.tsx:648
 msgid "New"
 msgstr "नया"
 
@@ -5375,7 +5650,7 @@ msgstr "नया"
 msgid "New {0}"
 msgstr "नया {0}"
 
-#: packages/admin/src/components/ContentEditor.tsx:672
+#: packages/admin/src/components/ContentEditor.tsx:675
 msgid "New {itemLabel}"
 msgstr "नया {itemLabel}"
 
@@ -5549,6 +5824,14 @@ msgstr "अभी तक कोई सामग्री प्रकार न�
 msgid "No custom fields yet"
 msgstr "अभी तक कोई कस्टम फ़ील्ड नहीं"
 
+#: packages/admin/src/routes/shop.tsx:826
+msgid "No customers match your search."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:453
+msgid "No delivery zones configured yet."
+msgstr ""
+
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:275
 msgid "No detailed description available."
 msgstr "कोई विस्तृत विवरण उपलब्ध नहीं है."
@@ -5658,6 +5941,14 @@ msgstr "कोई न्यूनतम नहीं"
 #: packages/admin/src/components/ContentTypeEditor.tsx:65
 msgid "No moderation (auto-approve all)"
 msgstr "कोई मॉडरेशन नहीं (सभी को स्वतः स्वीकृत करें)"
+
+#: packages/admin/src/routes/shop.tsx:680
+msgid "No orders match your filters."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:956
+msgid "No orders yet."
+msgstr ""
 
 #: packages/admin/src/components/MenuEditor.tsx:329
 msgid "No parent (top level)"
@@ -5773,10 +6064,19 @@ msgstr "कोई नहीं (शीर्ष स्तर)"
 msgid "Not compatible with this environment"
 msgstr "इस वातावरण के अनुकूल नहीं है"
 
+#: packages/admin/src/routes/shop.tsx:53
+#: packages/admin/src/routes/shop.tsx:1069
+msgid "Not delivered"
+msgstr ""
+
 #: packages/admin/src/components/ContentList.tsx:1280
 #: packages/admin/src/components/PluginSettings.tsx:341
 msgid "Not set"
 msgstr "सेट नहीं"
+
+#: packages/admin/src/routes/shop.tsx:901
+msgid "Notes"
+msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:191
 #: packages/admin/src/components/FieldEditor.tsx:610
@@ -5838,6 +6138,10 @@ msgstr "उफ़!"
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:334
 msgid "Open in new tab"
 msgstr "वेब टेब में खोलें"
+
+#: packages/admin/src/routes/shop.tsx:915
+msgid "Open WhatsApp"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1534
 msgid "Open WordPress Profile"
@@ -5923,9 +6227,32 @@ msgstr "या एक निर्यात फ़ाइल अपलोड क�
 msgid "or upload directly"
 msgstr "या सीधे अपलोड करें"
 
+#: packages/admin/src/routes/shop.tsx:326
+#: packages/admin/src/routes/shop.tsx:664
+msgid "Order"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:688
+msgid "Order details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:703
+msgid "Order details unavailable."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:954
+msgid "Order history"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:227
 msgid "Order saved"
 msgstr "ऑर्डर सहेजा गया"
+
+#: packages/admin/src/routes/shop.tsx:79
+#: packages/admin/src/routes/shop.tsx:809
+#: packages/admin/src/routes/shop.tsx:932
+msgid "Orders"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:159
 msgid "Original"
@@ -5955,7 +6282,7 @@ msgstr "स्वामित्व"
 msgid "Package"
 msgstr "पैकेट"
 
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2284
 msgid "Page Not Found"
 msgstr "पृष्ठ नहीं मिला"
 
@@ -6066,6 +6393,27 @@ msgstr "URL जनरेट करने का पैटर्न, उदा. /
 msgid "Pattern must include a {0} placeholder"
 msgstr "पैटर्न में {0} प्लेसहोल्डर शामिल होना चाहिए"
 
+#: packages/admin/src/routes/shop.tsx:666
+#: packages/admin/src/routes/shop.tsx:1043
+msgid "Payment"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1008
+msgid "Payment confirmed"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:225
+msgid "Payment gateway"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:200
+msgid "Payment instructions"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:213
+msgid "Payment methods"
+msgstr ""
+
 #: packages/admin/src/components/AllowedTypesEditor.tsx:62
 msgid "PDF"
 msgstr "पीडीएफ"
@@ -6075,6 +6423,9 @@ msgid "pending"
 msgstr "लंबित"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:198
+#: packages/admin/src/routes/shop.tsx:54
+#: packages/admin/src/routes/shop.tsx:655
+#: packages/admin/src/routes/shop.tsx:1065
 msgid "Pending"
 msgstr "लंबित"
 
@@ -6093,6 +6444,11 @@ msgstr "{title} को स्थायी रूप से हटाएं"
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:284
 msgid "Permissions"
 msgstr "अनुमतियां"
+
+#: packages/admin/src/routes/shop.tsx:807
+#: packages/admin/src/routes/shop.tsx:943
+msgid "Phone"
+msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:46
 msgid "PHP"
@@ -6131,6 +6487,10 @@ msgstr "कृपया एक मान्य ईमेल पता प्र�
 #: packages/admin/src/components/MediaPickerModal.tsx:449
 msgid "Please enter a valid URL"
 msgstr "क्रुपया मान्य URL दर्ज करें"
+
+#: packages/admin/src/routes/shop.tsx:338
+msgid "Plin"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1182
 msgid "Plugin"
@@ -6236,8 +6596,8 @@ msgstr "प्लगइन विजेट त्रुटि"
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:299
-#: packages/admin/src/components/Sidebar.tsx:434
+#: packages/admin/src/components/Sidebar.tsx:305
+#: packages/admin/src/components/Sidebar.tsx:440
 msgid "Plugins"
 msgstr "प्लग-इन"
 
@@ -6269,6 +6629,11 @@ msgstr "प्रति पृष्ठ पोस्ट"
 #: packages/admin/src/components/RegistryPluginDetail.tsx:478
 msgid "Pre-release"
 msgstr "पूर्व-रिलीज़"
+
+#: packages/admin/src/routes/shop.tsx:48
+#: packages/admin/src/routes/shop.tsx:650
+msgid "Preparing"
+msgstr ""
 
 #: packages/admin/src/components/auth/PasskeyRegistration.tsx:170
 msgid "Preparing registration..."
@@ -6326,9 +6691,25 @@ msgstr "निजी"
 msgid "Processing..."
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:256
+msgid "Production"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:237
+msgid "Provider"
+msgstr ""
+
 #: packages/admin/src/components/settings/EmailSettings.tsx:167
 msgid "Provider:"
 msgstr "प्रदाता:"
+
+#: packages/admin/src/routes/shop.tsx:260
+msgid "Public key"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:265
+msgid "Public key from your provider"
+msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:485
 #: packages/admin/src/components/ContentSettingsPanel.tsx:198
@@ -6346,7 +6727,7 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:843
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1069
+#: packages/admin/src/router.tsx:1070
 msgid "Published"
 msgstr "प्रकाशित"
 
@@ -6355,7 +6736,7 @@ msgstr "प्रकाशित"
 msgid "Published {0}"
 msgstr "प्रकाशित {0}"
 
-#: packages/admin/src/router.tsx:511
+#: packages/admin/src/router.tsx:512
 msgid "Published {total} items"
 msgstr "{total} आइटम प्रकाशित"
 
@@ -6436,6 +6817,11 @@ msgstr "पढ़ना"
 msgid "Ready"
 msgstr "तैयार"
 
+#: packages/admin/src/routes/shop.tsx:49
+#: packages/admin/src/routes/shop.tsx:651
+msgid "Ready for delivery"
+msgstr ""
+
 #: packages/admin/src/components/Dashboard.tsx:348
 msgid "Recent Activity"
 msgstr "हाल की गतिविधि"
@@ -6468,7 +6854,7 @@ msgstr "लॉगिन करने के लिए पुनः निर्�
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:269
+#: packages/admin/src/components/Sidebar.tsx:272
 msgid "Redirects"
 msgstr "पुनर्निर्देश"
 
@@ -6477,6 +6863,7 @@ msgid "Redo"
 msgstr "फिर से करना"
 
 #: packages/admin/src/components/FieldEditor.tsx:245
+#: packages/admin/src/routes/shop.tsx:900
 msgid "Reference"
 msgstr "संदर्भ"
 
@@ -6509,7 +6896,7 @@ msgstr "पंजीकरण विफल रहा"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "पंजीकरण रद्द कर दिया गया था या समय समाप्त हो गया था. कृपया पुन: प्रयास करें।"
 
-#: packages/admin/src/components/Sidebar.tsx:308
+#: packages/admin/src/components/Sidebar.tsx:314
 msgid "Registry"
 msgstr "रजिस्ट्री"
 
@@ -6546,7 +6933,7 @@ msgstr "{0} हटाएं"
 msgid "Remove {entry}"
 msgstr "{entry} हटाएं"
 
-#: packages/admin/src/components/ContentEditor.tsx:1720
+#: packages/admin/src/components/ContentEditor.tsx:1723
 msgid "Remove {label}"
 msgstr "{label} हटाएं"
 
@@ -6754,16 +7141,20 @@ msgstr "पुनर्स्थापित किया जा रहा ह�
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2263
+#: packages/admin/src/router.tsx:2272
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "पुन: प्रयास करें"
+
+#: packages/admin/src/routes/shop.tsx:294
+msgid "Return URL"
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:136
 msgid "Reusable content blocks you can insert into any content"
 msgstr "पुन: प्रयोज्य सामग्री ब्लॉक आप किसी भी सामग्री में सम्मिलित कर सकते हैं"
 
-#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1108
 msgid "Reverted to published version"
 msgstr "प्रकाशित संस्करण पर वापस लौटाया गया"
 
@@ -6883,6 +7274,10 @@ msgstr "जंग"
 msgid "Same window"
 msgstr "वही खिड़की"
 
+#: packages/admin/src/routes/shop.tsx:327
+msgid "Sample product"
+msgstr ""
+
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1191
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:395
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:589
@@ -6906,6 +7301,7 @@ msgid "Save alt text"
 msgstr "वैकल्पिक पाठ सहेजें"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:318
+#: packages/admin/src/routes/shop.tsx:557
 msgid "Save changes"
 msgstr "परिवर्तनों को सुरक्षित करें"
 
@@ -6917,9 +7313,17 @@ msgstr "परिवर्तनों को सुरक्षित करे
 msgid "Save content as draft before publishing"
 msgstr "प्रकाशन से पहले सामग्री को ड्राफ्ट के रूप में सहेजें"
 
+#: packages/admin/src/routes/shop.tsx:226
+msgid "Save gateway parameters for a future integration. Orders continue through WhatsApp until a gateway connector is enabled."
+msgstr ""
+
 #: packages/admin/src/components/settings/PasskeyItem.tsx:132
 msgid "Save name"
 msgstr "नाम सहेजें"
+
+#: packages/admin/src/routes/shop.tsx:312
+msgid "Save settings"
+msgstr ""
 
 #: packages/admin/src/components/PluginSettings.tsx:166
 #: packages/admin/src/components/PluginSettings.tsx:209
@@ -6947,6 +7351,8 @@ msgstr "\"{0}\" सहेजा गया।"
 #: packages/admin/src/components/users/UserDetail.tsx:311
 #: packages/admin/src/components/Widgets.tsx:983
 #: packages/admin/src/routes/bylines.tsx:579
+#: packages/admin/src/routes/shop.tsx:312
+#: packages/admin/src/routes/shop.tsx:557
 msgid "Saving..."
 msgstr "सहेजा जा रहा है..."
 
@@ -6977,7 +7383,7 @@ msgstr "बाद के लिए शेड्यूल करें"
 
 #: packages/admin/src/components/ContentList.tsx:834
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
-#: packages/admin/src/router.tsx:1127
+#: packages/admin/src/router.tsx:1128
 msgid "Scheduled"
 msgstr "अनुसूचित"
 
@@ -7070,6 +7476,14 @@ msgstr "फ़ाइल नाम से खोजें..."
 msgid "Search by name or email..."
 msgstr "नाम या ईमेल से खोजें..."
 
+#: packages/admin/src/routes/shop.tsx:769
+msgid "Search by name, phone, email, or district"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:636
+msgid "Search by order number"
+msgstr ""
+
 #: packages/admin/src/components/BylineFilter.tsx:121
 #: packages/admin/src/components/ContentSettingsPanel.tsx:985
 #: packages/admin/src/routes/bylines.tsx:401
@@ -7096,6 +7510,10 @@ msgstr "टिप्पणियाँ खोजें..."
 msgid "Search content..."
 msgstr "सामग्री खोजें..."
 
+#: packages/admin/src/routes/shop.tsx:768
+msgid "Search customers"
+msgstr ""
+
 #: packages/admin/src/components/settings/SeoSettings.tsx:161
 msgid "Search Engine Optimization"
 msgstr "सर्च इंजन अनुकूलन"
@@ -7113,6 +7531,10 @@ msgstr "खोज फ़ॉर्म"
 #: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "मीडिया खोजें"
+
+#: packages/admin/src/routes/shop.tsx:635
+msgid "Search orders"
+msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:438
 msgid "Search pages and content..."
@@ -7167,6 +7589,18 @@ msgstr "खोज सकने"
 msgid "Searching..."
 msgstr "खोज रहे हैं..."
 
+#: packages/admin/src/routes/shop.tsx:268
+msgid "Secret key"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:277
+msgid "Secret key from your provider"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:276
+msgid "Secret key saved; enter a new one to replace it"
+msgstr ""
+
 #: packages/admin/src/components/PortableTextEditor.tsx:2724
 msgid "Section"
 msgstr "अनुभाग"
@@ -7197,7 +7631,7 @@ msgstr "अनुभाग शीर्षक"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:274
+#: packages/admin/src/components/Sidebar.tsx:277
 msgid "Sections"
 msgstr "धारा"
 
@@ -7264,8 +7698,8 @@ msgid "Select"
 msgstr "चुनना"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:140
-#: packages/admin/src/components/ContentEditor.tsx:1732
-#: packages/admin/src/components/ContentEditor.tsx:1748
+#: packages/admin/src/components/ContentEditor.tsx:1735
+#: packages/admin/src/components/ContentEditor.tsx:1751
 #: packages/admin/src/components/ImageFieldRenderer.tsx:273
 msgid "Select {label}"
 msgstr "{label} चुनें"
@@ -7308,7 +7742,7 @@ msgstr "डिफ़ॉल्ट सामाजिक छवि का चय�
 msgid "Select Favicon"
 msgstr "फ़ेविकॉन चुनें"
 
-#: packages/admin/src/components/ContentEditor.tsx:1736
+#: packages/admin/src/components/ContentEditor.tsx:1739
 msgid "Select file"
 msgstr "फ़ाइल का चयन करें"
 
@@ -7329,6 +7763,10 @@ msgstr "छवि का चयन करें"
 #: packages/admin/src/components/settings/SeoSettings.tsx:223
 msgid "Select Image"
 msgstr "छवि का चयन करें"
+
+#: packages/admin/src/routes/shop.tsx:244
+msgid "Select later"
+msgstr ""
 
 #: packages/admin/src/components/settings/GeneralSettings.tsx:241
 #: packages/admin/src/components/settings/GeneralSettings.tsx:356
@@ -7467,13 +7905,13 @@ msgid "Setting up..."
 msgstr "की स्थापना..."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:234
-#: packages/admin/src/components/ContentEditor.tsx:838
-#: packages/admin/src/components/ContentEditor.tsx:1071
+#: packages/admin/src/components/ContentEditor.tsx:841
+#: packages/admin/src/components/ContentEditor.tsx:1074
 #: packages/admin/src/components/ContentTypeEditor.tsx:382
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:337
+#: packages/admin/src/components/Sidebar.tsx:343
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "सेटिंग्स"
@@ -7498,6 +7936,10 @@ msgstr "सेटअप विफल रहा"
 #: packages/admin/src/components/users/InviteUserModal.tsx:109
 msgid "Share this link with the invited user"
 msgstr "इस लिंक को आमंत्रित उपयोगकर्ता के साथ साझा करें"
+
+#: packages/admin/src/routes/shop.tsx:204
+msgid "Share your Yape, Plin, or bank transfer instructions."
+msgstr ""
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:294
 msgid "Shared across all translations of the same byline."
@@ -7716,6 +8158,10 @@ msgstr "कुछ सामग्री प्रकार आयात नह�
 msgid "Something went wrong"
 msgstr "कुछ गलत हो गया"
 
+#: packages/admin/src/routes/shop.tsx:795
+msgid "Sort customers"
+msgstr ""
+
 #: packages/admin/src/components/MarketplaceBrowse.tsx:125
 msgid "Sort plugins"
 msgstr "प्लगइन्स को क्रमबद्ध करें"
@@ -7764,7 +8210,7 @@ msgstr "एसक्यूएल"
 msgid "Start Import"
 msgstr "आयात प्रारंभ करें"
 
-#: packages/admin/src/components/ContentEditor.tsx:1240
+#: packages/admin/src/components/ContentEditor.tsx:1243
 #: packages/admin/src/components/PortableTextEditor.tsx:2579
 #: packages/admin/src/components/PortableTextEditor.tsx:2580
 msgid "Start writing, or type '/' for commands"
@@ -7775,6 +8221,8 @@ msgstr "लिखना प्रारंभ करें, या आदेश�
 #: packages/admin/src/components/ContentTypeEditor.tsx:117
 #: packages/admin/src/components/Redirects.tsx:480
 #: packages/admin/src/components/users/UserList.tsx:104
+#: packages/admin/src/routes/shop.tsx:426
+#: packages/admin/src/routes/shop.tsx:665
 msgid "Status"
 msgstr "स्थिति"
 
@@ -7790,9 +8238,25 @@ msgstr "स्थिति: {status}"
 msgid "Storage available"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:325
+msgid "Store"
+msgstr ""
+
 #: packages/admin/src/components/settings/BackupSettings.tsx:205
 msgid "Store a daily backup in your site's storage bucket. Old backups are removed automatically."
 msgstr "अपनी साइट के स्टोरेज बकेट में दैनिक बैकअप स्टोर करें। पुराने बैकअप स्वचालित रूप से हटा दिए जाते हैं।"
+
+#: packages/admin/src/routes/shop.tsx:148
+msgid "Store name"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:77
+msgid "Store settings"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:118
+msgid "Store settings saved"
+msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:270
 msgid "Stored Backups"
@@ -7933,6 +8397,10 @@ msgstr "शब्द \"{0}\" {1} में बनाया गया।"
 msgid "Term deleted"
 msgstr "शब्द हटा दिया गया"
 
+#: packages/admin/src/routes/shop.tsx:256
+msgid "Test mode"
+msgstr ""
+
 #: packages/admin/src/components/settings/EmailSettings.tsx:111
 msgid "test@example.com"
 msgstr "test@example.com"
@@ -7978,7 +8446,7 @@ msgstr "मेनू हटा दिया गया है."
 msgid "The name of your site, used in the header and metadata"
 msgstr "आपकी साइट का नाम, हेडर और मेटाडेटा में उपयोग किया जाता है"
 
-#: packages/admin/src/router.tsx:2277
+#: packages/admin/src/router.tsx:2286
 msgid "The page you're looking for doesn't exist."
 msgstr "आप जिस पृष्ठ को खोज रहे हैं वह मौजूद नहीं है।"
 
@@ -7997,6 +8465,10 @@ msgstr "संदर्भित छवि अब उपलब्ध नही�
 #: packages/admin/src/components/settings/GeneralSettings.tsx:209
 msgid "The referenced logo is no longer available. Pick a new one or remove the reference."
 msgstr "संदर्भित लोगो अब उपलब्ध नहीं है. कोई नया चुनें या संदर्भ हटा दें."
+
+#: packages/admin/src/routes/shop.tsx:183
+msgid "The store name, order number, products, and total are added automatically."
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:153
 msgid "The theme marketplace is empty. Check back later."
@@ -8027,7 +8499,7 @@ msgstr "थीम-प्रदत्त अनुभागों को हट�
 msgid "Theme: {label}"
 msgstr "थीम: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:324
+#: packages/admin/src/components/Sidebar.tsx:330
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "विषय-वस्तु"
@@ -8056,7 +8528,7 @@ msgstr ""
 msgid "This field does not accept {sniffedMime} files."
 msgstr "यह फ़ील्ड {sniffedMime} फ़ाइलें स्वीकार नहीं करता है."
 
-#: packages/admin/src/components/ContentEditor.tsx:1751
+#: packages/admin/src/components/ContentEditor.tsx:1754
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "यह फ़ील्ड आवश्यक है"
@@ -8245,6 +8717,15 @@ msgstr "TOML"
 msgid "Tools → Export"
 msgstr "उपकरण → निर्यात"
 
+#: packages/admin/src/routes/shop.tsx:328
+#: packages/admin/src/routes/shop.tsx:668
+msgid "Total"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:936
+msgid "Total spent"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:77
 msgid "Track content history"
 msgstr "सामग्री इतिहास ट्रैक करें"
@@ -8278,7 +8759,7 @@ msgstr "अनुवाद हो रहा है..."
 #: packages/admin/src/components/MenuEditor.tsx:143
 #: packages/admin/src/components/TaxonomyManager.tsx:987
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1179
+#: packages/admin/src/router.tsx:1180
 msgid "Translation created"
 msgstr "अनुवाद बनाया गया"
 
@@ -8457,7 +8938,7 @@ msgstr "अनाम पासकी"
 msgid "Unpublish {itemLabel}"
 msgstr "अप्रकाशित करें {itemLabel}"
 
-#: packages/admin/src/router.tsx:1087
+#: packages/admin/src/router.tsx:1088
 msgid "Unpublished"
 msgstr "अप्रकाशित"
 
@@ -8473,7 +8954,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "गैर अनुसूचित"
 
-#: packages/admin/src/router.tsx:1148
+#: packages/admin/src/router.tsx:1149
 msgid "Unscheduled"
 msgstr "अनिर्धारित"
 
@@ -8486,7 +8967,7 @@ msgstr "असमर्थित विजेट तत्व प्रकार
 msgid "Untitled"
 msgstr "शीर्षकहीन"
 
-#: packages/admin/src/components/ContentEditor.tsx:1654
+#: packages/admin/src/components/ContentEditor.tsx:1657
 msgid "Untitled file"
 msgstr "शीर्षक रहित फ़ाइल"
 
@@ -8510,6 +8991,10 @@ msgstr ""
 #: packages/admin/src/components/TaxonomyManager.tsx:662
 msgid "Update"
 msgstr "अद्यतन"
+
+#: packages/admin/src/routes/shop.tsx:1059
+msgid "Update delivery status"
+msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:689
 msgid "Update Field"
@@ -8693,6 +9178,10 @@ msgstr "पैटर्न मिलान के लिए पथों मे�
 msgid "Use optimized image"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:178
+msgid "Use the country code without spaces or symbols."
+msgstr ""
+
 #: packages/admin/src/components/auth/PasskeyLogin.tsx:364
 msgid "Use your device's biometric authentication, security key, or PIN to sign in."
 msgstr "साइन इन करने के लिए अपने डिवाइस के बायोमेट्रिक प्रमाणीकरण, सुरक्षा कुंजी या पिन का उपयोग करें।"
@@ -8709,7 +9198,7 @@ msgstr "जब किसी पृष्ठ पर कोई नहीं हो
 msgid "Used as the identifier. Lowercase letters, numbers, and underscores only."
 msgstr "पहचानकर्ता के रूप में उपयोग किया जाता है। केवल छोटे अक्षर, संख्याएँ और अंडरस्कोर।"
 
-#: packages/admin/src/components/ContentEditor.tsx:1343
+#: packages/admin/src/components/ContentEditor.tsx:1346
 msgid "Used as the main visual for this post on listing pages and at the top of the post"
 msgstr "इस पोस्ट के लिए लिस्टिंग पृष्ठों और पोस्ट के शीर्ष पर मुख्य दृश्य के रूप में उपयोग किया जाता है"
 
@@ -8747,7 +9236,7 @@ msgid "User not found"
 msgstr "उपयोगकर्ता नहीं मिला"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:296
+#: packages/admin/src/components/Sidebar.tsx:302
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "उपयोगकर्ताओं"
@@ -8814,6 +9303,11 @@ msgstr "संस्करण {0}"
 #: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Video"
 msgstr "वीडियो"
+
+#: packages/admin/src/routes/shop.tsx:879
+#: packages/admin/src/routes/shop.tsx:994
+msgid "View details"
+msgstr ""
 
 #: packages/admin/src/components/Settings.tsx:96
 #: packages/admin/src/components/settings/EmailSettings.tsx:59
@@ -8891,6 +9385,22 @@ msgstr "वेब पते"
 msgid "WebAuthn is not supported in this browser"
 msgstr "इस ब्राउज़र में WebAuthn समर्थित नहीं है"
 
+#: packages/admin/src/routes/shop.tsx:281
+msgid "Webhook secret"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:290
+msgid "Webhook secret from your provider"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:289
+msgid "Webhook secret saved; enter a new one to replace it"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:302
+msgid "Webhook URL"
+msgstr ""
+
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:236
 #: packages/admin/src/components/RegistryPluginDetail.tsx:701
 msgid "Website"
@@ -8915,6 +9425,14 @@ msgstr "जब आप आयात करते हैं तो क्या �
 #: packages/admin/src/components/WordPressImport.tsx:1874
 msgid "What will happen when you import"
 msgstr "जब आप आयात करेंगे तो क्या होगा"
+
+#: packages/admin/src/routes/shop.tsx:172
+msgid "WhatsApp number"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:182
+msgid "WhatsApp order message"
+msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:125
 msgid "When the entry was created"
@@ -8999,7 +9517,7 @@ msgstr "विजेट अद्यतन किया गया"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:273
+#: packages/admin/src/components/Sidebar.tsx:276
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"
@@ -9058,6 +9576,10 @@ msgstr "xxxx xxxx xxxx xxxx xxxx"
 msgid "YAML"
 msgstr "वाईएएमएल"
 
+#: packages/admin/src/routes/shop.tsx:337
+msgid "Yape"
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:163
 msgid "Yearly"
 msgstr "सालाना"
@@ -9105,7 +9627,7 @@ msgstr "आपके पास उपयोगकर्ताओं, सेट�
 msgid "You need admin permissions to manage byline schema."
 msgstr "बायलाइन स्कीमा को प्रबंधित करने के लिए आपको व्यवस्थापक अनुमति की आवश्यकता है।"
 
-#: packages/admin/src/router.tsx:1561
+#: packages/admin/src/router.tsx:1562
 msgid "You need Editor permissions to moderate comments."
 msgstr "टिप्पणियों को मॉडरेट करने के लिए आपको संपादक की अनुमति की आवश्यकता है।"
 
@@ -9229,6 +9751,15 @@ msgstr "आपके YouTube चैनल की आईडी या हैं�
 #: packages/admin/src/components/settings/SocialSettings.tsx:179
 msgid "YouTube"
 msgstr "यूट्यूब"
+
+#: packages/admin/src/routes/shop.tsx:422
+msgid "Zone"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:464
+#: packages/admin/src/routes/shop.tsx:521
+msgid "Zone name"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:225
 msgid "Zoom:"

@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr "{0, plural, one {# kommentar importerad} other {# kommentarer importerade}}"
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1540
+#: packages/admin/src/router.tsx:1541
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, one {# kommentar uppdaterad} other {# kommentarer uppdaterade}}"
 
@@ -273,17 +273,17 @@ msgid "{0} items will be imported"
 msgstr "{0} objekt kommer att importeras"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:560
 msgid "{0} of {total} could not be deleted"
 msgstr "{0} av {total} kunde inte tas bort"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:516
 msgid "{0} of {total} could not be published"
 msgstr "{0} av {total} kunde inte publiceras"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:538
+#: packages/admin/src/router.tsx:539
 msgid "{0} of {total} could not be updated"
 msgstr "{0} av {total} kunde inte uppdateras"
 
@@ -624,7 +624,7 @@ msgstr "Acceptera inbjudan"
 msgid "Access denied"
 msgstr "Åtkomst nekad"
 
-#: packages/admin/src/router.tsx:1560
+#: packages/admin/src/router.tsx:1561
 msgid "Access Denied"
 msgstr "Åtkomst nekad"
 
@@ -659,11 +659,16 @@ msgstr "ACF-fält"
 #: packages/admin/src/components/ContentTypeList.tsx:190
 #: packages/admin/src/components/TaxonomyManager.tsx:1050
 #: packages/admin/src/routes/byline-schema.tsx:249
+#: packages/admin/src/routes/shop.tsx:427
+#: packages/admin/src/routes/shop.tsx:669
+#: packages/admin/src/routes/shop.tsx:811
 msgid "Actions"
 msgstr "Åtgärder"
 
 #: packages/admin/src/components/users/UserDetail.tsx:206
 #: packages/admin/src/components/users/UserList.tsx:217
+#: packages/admin/src/routes/shop.tsx:551
+#: packages/admin/src/routes/shop.tsx:587
 msgid "Active"
 msgstr "Aktiv"
 
@@ -712,6 +717,10 @@ msgstr "Lägg till innehåll"
 #: packages/admin/src/components/MenuEditor.tsx:496
 msgid "Add Custom Link"
 msgstr "Lägg till anpassad länk"
+
+#: packages/admin/src/routes/shop.tsx:462
+msgid "Add delivery zone"
+msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:211
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
@@ -821,6 +830,10 @@ msgstr "Lägg till widgetområde"
 msgid "Add your social media profiles. These are available to your site's theme and can be displayed in headers, footers, or author bios."
 msgstr "Lägg till dina profiler för sociala medier. De är tillgängliga för webbplatsens tema och kan visas i sidhuvuden, sidfötter eller författarbiografier."
 
+#: packages/admin/src/routes/shop.tsx:495
+msgid "Add zone"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:441
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
 msgid "Adding..."
@@ -829,6 +842,10 @@ msgstr "Lägger till …"
 #: packages/admin/src/components/WordPressImport.tsx:1753
 msgid "Additional data to import."
 msgstr "Ytterligare data att importera."
+
+#: packages/admin/src/routes/shop.tsx:898
+msgid "Address"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:203
 msgid "Adjust optimization"
@@ -839,12 +856,12 @@ msgid "admin"
 msgstr "admin"
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:426
+#: packages/admin/src/components/Sidebar.tsx:432
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "Administratör"
 
-#: packages/admin/src/components/Sidebar.tsx:372
+#: packages/admin/src/components/Sidebar.tsx:378
 msgid "Admin navigation"
 msgstr "Administrationsnavigering"
 
@@ -912,6 +929,10 @@ msgstr "Alla samlingar"
 msgid "All comments require approval"
 msgstr "Alla kommentarer kräver godkännande"
 
+#: packages/admin/src/routes/shop.tsx:780
+msgid "All districts"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:2518
 msgid "All imported content will be unassigned. You can reassign authors later from the content editor."
 msgstr "Allt importerat innehåll blir otilldelat. Du kan tilldela författare på nytt senare i innehållsredigeraren."
@@ -931,6 +952,7 @@ msgstr "Alla källor"
 
 #: packages/admin/src/components/ContentList.tsx:831
 #: packages/admin/src/components/Redirects.tsx:426
+#: packages/admin/src/routes/shop.tsx:647
 msgid "All statuses"
 msgstr "Alla statusar"
 
@@ -1024,24 +1046,24 @@ msgstr "Alternativt kan du exportera från WordPress (Verktyg → Exportera) och
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:447
-#: packages/admin/src/router.tsx:462
-#: packages/admin/src/router.tsx:476
-#: packages/admin/src/router.tsx:490
-#: packages/admin/src/router.tsx:714
-#: packages/admin/src/router.tsx:996
-#: packages/admin/src/router.tsx:1056
-#: packages/admin/src/router.tsx:1074
-#: packages/admin/src/router.tsx:1092
-#: packages/admin/src/router.tsx:1113
-#: packages/admin/src/router.tsx:1134
-#: packages/admin/src/router.tsx:1155
-#: packages/admin/src/router.tsx:1186
-#: packages/admin/src/router.tsx:1206
-#: packages/admin/src/router.tsx:1505
-#: packages/admin/src/router.tsx:1521
-#: packages/admin/src/router.tsx:1546
-#: packages/admin/src/router.tsx:2046
+#: packages/admin/src/router.tsx:448
+#: packages/admin/src/router.tsx:463
+#: packages/admin/src/router.tsx:477
+#: packages/admin/src/router.tsx:491
+#: packages/admin/src/router.tsx:715
+#: packages/admin/src/router.tsx:997
+#: packages/admin/src/router.tsx:1057
+#: packages/admin/src/router.tsx:1075
+#: packages/admin/src/router.tsx:1093
+#: packages/admin/src/router.tsx:1114
+#: packages/admin/src/router.tsx:1135
+#: packages/admin/src/router.tsx:1156
+#: packages/admin/src/router.tsx:1187
+#: packages/admin/src/router.tsx:1207
+#: packages/admin/src/router.tsx:1506
+#: packages/admin/src/router.tsx:1522
+#: packages/admin/src/router.tsx:1547
+#: packages/admin/src/router.tsx:2054
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1064,6 +1086,10 @@ msgstr "Analyserar exportfil …"
 #: packages/admin/src/components/WordPressImport.tsx:810
 msgid "Analyzing WordPress site..."
 msgstr "Analyserar WordPress-webbplats …"
+
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Any date"
+msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:105
 msgid "Any media type allowed (subject to global limits)."
@@ -1156,6 +1182,10 @@ msgstr ""
 #: packages/admin/src/components/WordPressImport.tsx:2456
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "Tilldela WordPress-författare till EmDash-användare. Inlägg tillskrivs den valda användaren."
+
+#: packages/admin/src/routes/shop.tsx:1066
+msgid "Assigned"
+msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:28
 msgid "Astro"
@@ -1251,7 +1281,7 @@ msgstr "Automatiska säkerhetskopior"
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr "Automatiska säkerhetskopior kräver en lagringsbackend (R2, S3 eller lokal lagring). Konfigurera lagring i din EmDash-konfiguration för att aktivera dem."
 
-#: packages/admin/src/router.tsx:1055
+#: packages/admin/src/router.tsx:1056
 msgid "Autosave failed"
 msgstr "Automatisk sparning misslyckades"
 
@@ -1284,7 +1314,7 @@ msgstr "Avatar"
 msgid "Back"
 msgstr "Tillbaka"
 
-#: packages/admin/src/components/ContentEditor.tsx:665
+#: packages/admin/src/components/ContentEditor.tsx:668
 msgid "Back to {collectionLabel} list"
 msgstr "Tillbaka till listan {collectionLabel}"
 
@@ -1350,6 +1380,10 @@ msgstr "Säkerhetskopior"
 msgid "Backups to keep"
 msgstr "Säkerhetskopior att behålla"
 
+#: packages/admin/src/routes/shop.tsx:339
+msgid "Bank transfer"
+msgstr ""
+
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:29
 msgid "Bash"
 msgstr "Bash"
@@ -1413,19 +1447,23 @@ msgstr "Bläddra bland teman och förhandsgranska dem med ditt eget innehåll."
 msgid "Bullet List"
 msgstr "Punktlista"
 
+#: packages/admin/src/routes/shop.tsx:207
+msgid "Business hours"
+msgstr ""
+
 #: packages/admin/src/routes/byline-schema.tsx:218
 #: packages/admin/src/routes/bylines.tsx:383
 msgid "Byline schema"
 msgstr "Byline-schema"
 
-#: packages/admin/src/components/Sidebar.tsx:295
+#: packages/admin/src/components/Sidebar.tsx:301
 msgid "Byline Schema"
 msgstr "Byline-schema"
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:661
 #: packages/admin/src/components/ContentSettingsPanel.tsx:664
-#: packages/admin/src/components/Sidebar.tsx:285
+#: packages/admin/src/components/Sidebar.tsx:288
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "Bylines"
@@ -1508,6 +1546,11 @@ msgstr "Avbryt (Esc)"
 msgid "Cancel rename"
 msgstr "Avbryt namnändring"
 
+#: packages/admin/src/routes/shop.tsx:52
+#: packages/admin/src/routes/shop.tsx:654
+msgid "Cancelled"
+msgstr ""
+
 #: packages/admin/src/components/Sections.tsx:407
 msgid "Cannot delete theme sections"
 msgstr "Sektioner från temat kan inte tas bort"
@@ -1540,6 +1583,10 @@ msgstr "Bildtext"
 msgid "Captions / Subtitles"
 msgstr "Bildtexter/undertexter"
 
+#: packages/admin/src/routes/shop.tsx:340
+msgid "Cash on delivery"
+msgstr ""
+
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
 msgid "Categories"
@@ -1560,7 +1607,7 @@ msgstr "Centrera"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:76
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:107
-#: packages/admin/src/components/ContentEditor.tsx:1712
+#: packages/admin/src/components/ContentEditor.tsx:1715
 #: packages/admin/src/components/FieldEditor.tsx:428
 #: packages/admin/src/components/ImageFieldRenderer.tsx:208
 #: packages/admin/src/components/ImageFieldRenderer.tsx:237
@@ -1591,7 +1638,7 @@ msgstr "Ändra logotyp"
 msgid "Changelog"
 msgstr "Ändringslogg"
 
-#: packages/admin/src/router.tsx:1106
+#: packages/admin/src/router.tsx:1107
 msgid "Changes discarded"
 msgstr "Ändringarna kasserades"
 
@@ -1723,6 +1770,12 @@ msgstr "Klicka på länken i e-postmeddelandet för att logga in."
 #: packages/admin/src/components/Widgets.tsx:413
 #: packages/admin/src/components/Widgets.tsx:419
 #: packages/admin/src/components/Widgets.tsx:423
+#: packages/admin/src/routes/shop.tsx:505
+#: packages/admin/src/routes/shop.tsx:507
+#: packages/admin/src/routes/shop.tsx:690
+#: packages/admin/src/routes/shop.tsx:692
+#: packages/admin/src/routes/shop.tsx:839
+#: packages/admin/src/routes/shop.tsx:841
 msgid "Close"
 msgstr "Stäng"
 
@@ -1738,7 +1791,7 @@ msgstr ""
 msgid "Close panel"
 msgstr "Stäng panel"
 
-#: packages/admin/src/components/ContentEditor.tsx:1085
+#: packages/admin/src/components/ContentEditor.tsx:1088
 msgid "Close settings"
 msgstr "Stäng inställningar"
 
@@ -1801,7 +1854,7 @@ msgstr "Kommentardetaljer"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:261
+#: packages/admin/src/components/Sidebar.tsx:264
 msgid "Comments"
 msgstr "Kommentarer"
 
@@ -1824,6 +1877,15 @@ msgstr "Konfigurera fält"
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:416
 msgid "Confirm"
 msgstr "Bekräfta"
+
+#: packages/admin/src/routes/shop.tsx:1056
+msgid "Confirm payment"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:47
+#: packages/admin/src/routes/shop.tsx:649
+msgid "Confirmed"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:701
 #: packages/admin/src/components/WordPressImport.tsx:1054
@@ -1858,7 +1920,7 @@ msgstr ""
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:408
+#: packages/admin/src/components/Sidebar.tsx:414
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "Innehåll"
@@ -1876,7 +1938,7 @@ msgstr "Innehållsfel ({0})"
 msgid "Content found:"
 msgstr "Innehåll hittat:"
 
-#: packages/admin/src/router.tsx:1128
+#: packages/admin/src/router.tsx:1129
 msgid "Content has been scheduled for publishing"
 msgstr "Innehållet har schemalagts för publicering"
 
@@ -1888,7 +1950,7 @@ msgstr "Innehållet har uppdaterats till den valda revisionen."
 msgid "Content ID:"
 msgstr "Innehålls-ID:"
 
-#: packages/admin/src/router.tsx:1069
+#: packages/admin/src/router.tsx:1070
 msgid "Content is now live"
 msgstr "Innehållet är nu publicerat"
 
@@ -1908,11 +1970,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "Läsa innehåll"
 
-#: packages/admin/src/router.tsx:1087
+#: packages/admin/src/router.tsx:1088
 msgid "Content removed from public view"
 msgstr "Innehållet har tagits bort från offentlig visning"
 
-#: packages/admin/src/router.tsx:1149
+#: packages/admin/src/router.tsx:1150
 msgid "Content reverted to draft"
 msgstr "Innehållet återställdes till utkast"
 
@@ -1926,7 +1988,7 @@ msgstr "Innehåll att importera"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/components/Sidebar.tsx:297
 msgid "Content Types"
 msgstr "Innehållstyper"
 
@@ -1960,8 +2022,13 @@ msgstr ""
 msgid "Contributor"
 msgstr "Bidragsgivare"
 
+#: packages/admin/src/routes/shop.tsx:336
+msgid "Coordinate by WhatsApp"
+msgstr ""
+
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:305
 #: packages/admin/src/components/users/InviteUserModal.tsx:133
+#: packages/admin/src/routes/shop.tsx:853
 msgid "Copied to clipboard"
 msgstr "Kopierat till urklipp"
 
@@ -1970,9 +2037,17 @@ msgstr "Kopierat till urklipp"
 msgid "Copy {0} to clipboard"
 msgstr "Kopiera {0} till urklipp"
 
+#: packages/admin/src/routes/shop.tsx:926
+msgid "Copy address"
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:124
 msgid "Copy invite link"
 msgstr "Kopiera inbjudningslänk"
+
+#: packages/admin/src/routes/shop.tsx:920
+msgid "Copy phone"
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:398
 msgid "Copy slug"
@@ -1993,12 +2068,20 @@ msgstr "Kopiera token"
 msgid "Copy URL"
 msgstr "Kopiera URL"
 
+#: packages/admin/src/routes/shop.tsx:424
+msgid "Cost"
+msgstr ""
+
 #: packages/admin/src/components/users/InviteUserModal.tsx:136
 msgid "Could not copy automatically. Please select the URL above and copy manually."
 msgstr "Kunde inte kopiera automatiskt. Markera URL:en ovan och kopiera manuellt."
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3357
 msgid "Could not insert section"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:725
+msgid "Could not load customers. Please try again."
 msgstr ""
 
 #: packages/admin/src/components/Dashboard.tsx:124
@@ -2217,7 +2300,7 @@ msgid "Created {0}"
 msgstr "Skapad {0}"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1180
+#: packages/admin/src/router.tsx:1181
 msgid "Created {0} translation"
 msgstr "Skapade {0}-översättning"
 
@@ -2246,6 +2329,14 @@ msgstr ""
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:33
 msgid "CSS"
 msgstr "CSS"
+
+#: packages/admin/src/routes/shop.tsx:155
+msgid "Currency"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:162
+msgid "Currency symbol"
+msgstr ""
 
 #: packages/admin/src/components/TranslationsPanel.tsx:83
 msgid "current"
@@ -2279,6 +2370,19 @@ msgstr "Anpassad sektion"
 msgid "Custom Taxonomies"
 msgstr "Anpassade taxonomier"
 
+#: packages/admin/src/routes/shop.tsx:806
+#: packages/admin/src/routes/shop.tsx:1019
+msgid "Customer"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:837
+msgid "Customer details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:80
+msgid "Customers"
+msgstr ""
+
 #: packages/admin/src/components/ImageEditor.tsx:268
 msgid "Customize the WebP result for your website."
 msgstr ""
@@ -2298,8 +2402,8 @@ msgstr "Mörk"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:246
-#: packages/admin/src/components/Sidebar.tsx:399
+#: packages/admin/src/components/Sidebar.tsx:249
+#: packages/admin/src/components/Sidebar.tsx:405
 msgid "Dashboard"
 msgstr "Översikt"
 
@@ -2404,6 +2508,7 @@ msgstr "Ta bort \"{0}\"? Detta kan inte ångras."
 #: packages/admin/src/components/TaxonomyManager.tsx:280
 #: packages/admin/src/components/Widgets.tsx:817
 #: packages/admin/src/routes/byline-schema.tsx:458
+#: packages/admin/src/routes/shop.tsx:596
 msgid "Delete {0}"
 msgstr "Ta bort {0}"
 
@@ -2552,6 +2657,42 @@ msgstr "Tar bort …"
 #: packages/admin/src/routes/byline-schema.tsx:379
 msgid "Deleting…"
 msgstr "Tar bort …"
+
+#: packages/admin/src/routes/shop.tsx:51
+#: packages/admin/src/routes/shop.tsx:653
+#: packages/admin/src/routes/shop.tsx:1068
+msgid "Delivered"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:667
+#: packages/admin/src/routes/shop.tsx:1046
+msgid "Delivery"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:477
+#: packages/admin/src/routes/shop.tsx:534
+msgid "Delivery cost"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1016
+msgid "Delivery updated"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:384
+msgid "Delivery zone created"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:409
+msgid "Delivery zone deleted"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:402
+msgid "Delivery zone updated"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:78
+msgid "Delivery zones"
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:254
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:147
@@ -2755,9 +2896,24 @@ msgstr "Visa taggmoln"
 msgid "Displayed below the image as a visible caption."
 msgstr "Visas under bilden som en synlig bildtext."
 
-#: packages/admin/src/components/ContentEditor.tsx:726
+#: packages/admin/src/components/ContentEditor.tsx:729
 msgid "Distraction-free mode (⌘⇧\\)"
 msgstr "Distraktionsfritt läge (⌘⇧\\)"
+
+#: packages/admin/src/routes/shop.tsx:808
+#: packages/admin/src/routes/shop.tsx:899
+msgid "District"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:473
+msgid "District 1, District 2"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:423
+#: packages/admin/src/routes/shop.tsx:470
+#: packages/admin/src/routes/shop.tsx:527
+msgid "Districts"
+msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:1488
 msgid "Divider"
@@ -2917,6 +3073,11 @@ msgstr "t.ex. CI/CD-pipeline"
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "t.ex. MacBook Pro, iPhone"
 
+#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/routes/shop.tsx:71
+msgid "Ecommerce"
+msgstr ""
+
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1044
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:367
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:368
@@ -2924,6 +3085,7 @@ msgstr "t.ex. MacBook Pro, iPhone"
 #: packages/admin/src/components/MenuList.tsx:234
 #: packages/admin/src/components/Sections.tsx:392
 #: packages/admin/src/components/TranslationsPanel.tsx:93
+#: packages/admin/src/routes/shop.tsx:592
 msgid "Edit"
 msgstr "Redigera"
 
@@ -2945,7 +3107,7 @@ msgstr "Redigera {0}"
 msgid "Edit {0} field"
 msgstr "Redigera fältet {0}"
 
-#: packages/admin/src/components/ContentEditor.tsx:672
+#: packages/admin/src/components/ContentEditor.tsx:675
 msgid "Edit {itemLabel}"
 msgstr ""
 
@@ -2960,6 +3122,10 @@ msgstr "Redigera byline"
 #: packages/admin/src/components/BylineFieldEditor.tsx:209
 msgid "Edit byline field"
 msgstr "Redigera byline-fält"
+
+#: packages/admin/src/routes/shop.tsx:503
+msgid "Edit delivery zone"
+msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:321
 msgid "Edit Domain"
@@ -3031,6 +3197,7 @@ msgstr "em1.…"
 #: packages/admin/src/components/Settings.tsx:95
 #: packages/admin/src/components/SignupPage.tsx:198
 #: packages/admin/src/components/users/UserDetail.tsx:154
+#: packages/admin/src/routes/shop.tsx:897
 msgid "Email"
 msgstr "E-post"
 
@@ -3107,6 +3274,10 @@ msgstr "Aktivera kommentarer"
 msgid "Enable full-text search on this collection"
 msgstr "Aktivera fritextsökning för denna samling"
 
+#: packages/admin/src/routes/shop.tsx:229
+msgid "Enable payment gateway"
+msgstr ""
+
 #: packages/admin/src/components/PluginManager.tsx:494
 msgid "Enable plugin"
 msgstr "Aktivera tillägg"
@@ -3129,7 +3300,7 @@ msgstr "Aktiverad"
 msgid "Enter a URL (https://…) or a relative path (/…)"
 msgstr "Ange en URL (https://…) eller en relativ sökväg (/…)"
 
-#: packages/admin/src/components/ContentEditor.tsx:1493
+#: packages/admin/src/components/ContentEditor.tsx:1496
 msgid "Enter a valid URL (e.g. https://example.com)"
 msgstr "Ange en giltig URL (t.ex. https://example.com)"
 
@@ -3137,7 +3308,7 @@ msgstr "Ange en giltig URL (t.ex. https://example.com)"
 msgid "Enter credentials manually"
 msgstr "Ange inloggningsuppgifter manuellt"
 
-#: packages/admin/src/components/ContentEditor.tsx:725
+#: packages/admin/src/components/ContentEditor.tsx:728
 msgid "Enter distraction-free mode"
 msgstr "Aktivera distraktionsfritt läge"
 
@@ -3149,7 +3320,7 @@ msgstr "Ange e-post"
 msgid "Enter HTML..."
 msgstr "Ange HTML …"
 
-#: packages/admin/src/components/ContentEditor.tsx:1266
+#: packages/admin/src/components/ContentEditor.tsx:1269
 msgid "Enter markdown content..."
 msgstr "Ange markdown-innehåll …"
 
@@ -3178,13 +3349,17 @@ msgstr "Ange dina WordPress-inloggningsuppgifter för att importera innehåll di
 msgid "Enter your WordPress site URL"
 msgstr "Ange URL:en till din WordPress-webbplats"
 
+#: packages/admin/src/routes/shop.tsx:251
+msgid "Environment"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:155
 #: packages/admin/src/components/MenuEditor.tsx:193
 #: packages/admin/src/components/MenuEditor.tsx:233
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2260
+#: packages/admin/src/router.tsx:2269
 msgid "Error"
 msgstr "Fel"
 
@@ -3204,6 +3379,12 @@ msgstr "Fel vid sparande av sektion"
 msgid "Error updating widget"
 msgstr "Fel vid uppdatering av widget"
 
+#: packages/admin/src/routes/shop.tsx:425
+#: packages/admin/src/routes/shop.tsx:486
+#: packages/admin/src/routes/shop.tsx:543
+msgid "Estimated time"
+msgstr ""
+
 #: packages/admin/src/components/RegistryPluginDetail.tsx:596
 msgid "Every published release of this plugin has been withdrawn or could not be verified. Check back later, or contact the publisher."
 msgstr "Alla publicerade versioner av detta tillägg har återkallats eller kunde inte verifieras. Försök igen senare eller kontakta utgivaren."
@@ -3211,6 +3392,18 @@ msgstr "Alla publicerade versioner av detta tillägg har återkallats eller kund
 #. placeholder {0}: formData.dateFormat ?? "MMMM d, yyyy"
 #: packages/admin/src/components/settings/GeneralSettings.tsx:327
 msgid "Example: {0} → January 23, 2026"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:489
+msgid "Example: 30–60 minutes"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:176
+msgid "Example: 51999999999"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:166
+msgid "Example: S/"
 msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:285
@@ -3221,7 +3414,7 @@ msgstr ""
 msgid "Exists"
 msgstr "Finns"
 
-#: packages/admin/src/components/ContentEditor.tsx:784
+#: packages/admin/src/components/ContentEditor.tsx:787
 msgid "Exit distraction-free mode"
 msgstr "Avsluta distraktionsfritt läge"
 
@@ -3320,14 +3513,14 @@ msgid "Failed to create term"
 msgstr "Det gick inte att skapa term"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1185
+#: packages/admin/src/router.tsx:1186
 msgid "Failed to create translation"
 msgstr "Det gick inte att skapa översättning"
 
-#: packages/admin/src/router.tsx:446
-#: packages/admin/src/router.tsx:475
-#: packages/admin/src/router.tsx:558
-#: packages/admin/src/router.tsx:1205
+#: packages/admin/src/router.tsx:447
+#: packages/admin/src/router.tsx:476
+#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:1206
 msgid "Failed to delete"
 msgstr "Det gick inte att ta bort"
 
@@ -3352,7 +3545,7 @@ msgid "Failed to delete collection"
 msgstr "Det gick inte att ta bort samlingen"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1520
+#: packages/admin/src/router.tsx:1521
 msgid "Failed to delete comment"
 msgstr "Det gick inte att ta bort kommentaren"
 
@@ -3418,7 +3611,7 @@ msgstr "Det gick inte att inaktivera sökning"
 msgid "Failed to disable user"
 msgstr "Det gick inte att inaktivera användaren"
 
-#: packages/admin/src/router.tsx:1112
+#: packages/admin/src/router.tsx:1113
 msgid "Failed to discard changes"
 msgstr "Det gick inte att kassera ändringarna"
 
@@ -3426,7 +3619,7 @@ msgstr "Det gick inte att kassera ändringarna"
 msgid "Failed to dismiss welcome"
 msgstr "Det gick inte att stänga välkomstmeddelandet"
 
-#: packages/admin/src/router.tsx:489
+#: packages/admin/src/router.tsx:490
 msgid "Failed to duplicate"
 msgstr "Det gick inte att duplicera"
 
@@ -3537,8 +3730,8 @@ msgstr "Det gick inte att hämta termer"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:905
-#: packages/admin/src/router.tsx:1451
+#: packages/admin/src/router.tsx:906
+#: packages/admin/src/router.tsx:1452
 msgid "Failed to fetch user"
 msgstr "Det gick inte att hämta användaren"
 
@@ -3580,7 +3773,7 @@ msgstr "Det gick inte att installera tillägget"
 msgid "Failed to list byline fields"
 msgstr "Det gick inte att lista byline-fält"
 
-#: packages/admin/src/router.tsx:287
+#: packages/admin/src/router.tsx:288
 msgid "Failed to load admin"
 msgstr "Det gick inte att läsa in administrationsgränssnittet"
 
@@ -3649,7 +3842,7 @@ msgstr "Det gick inte att läsa in användare: {0}"
 msgid "Failed to load widget"
 msgstr "Det gick inte att läsa in widgeten"
 
-#: packages/admin/src/router.tsx:1545
+#: packages/admin/src/router.tsx:1546
 msgid "Failed to perform bulk action"
 msgstr "Det gick inte att utföra massåtgärden"
 
@@ -3661,8 +3854,8 @@ msgstr "Det gick inte att ta bort innehållet permanent"
 msgid "Failed to prepare import"
 msgstr "Det gick inte att förbereda importen"
 
-#: packages/admin/src/router.tsx:514
-#: packages/admin/src/router.tsx:1073
+#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:1074
 msgid "Failed to publish"
 msgstr "Det gick inte att publicera"
 
@@ -3700,7 +3893,7 @@ msgstr "Det gick inte att ändra ordning på fält"
 msgid "Failed to reorder widgets"
 msgstr "Det gick inte att ändra ordning på widgetar"
 
-#: packages/admin/src/router.tsx:461
+#: packages/admin/src/router.tsx:462
 msgid "Failed to restore"
 msgstr "Det gick inte att återställa"
 
@@ -3721,9 +3914,9 @@ msgstr "Det gick inte att återkalla API-token"
 msgid "Failed to rewrite URLs"
 msgstr "Det gick inte att skriva om URL:erna"
 
-#: packages/admin/src/router.tsx:713
-#: packages/admin/src/router.tsx:995
-#: packages/admin/src/router.tsx:2045
+#: packages/admin/src/router.tsx:714
+#: packages/admin/src/router.tsx:996
+#: packages/admin/src/router.tsx:2053
 msgid "Failed to save"
 msgstr "Det gick inte att spara"
 
@@ -3742,7 +3935,7 @@ msgstr "Det gick inte att spara fältet"
 msgid "Failed to save settings"
 msgstr "Det gick inte att spara inställningar"
 
-#: packages/admin/src/router.tsx:1133
+#: packages/admin/src/router.tsx:1134
 msgid "Failed to schedule"
 msgstr "Det gick inte att schemalägga"
 
@@ -3773,15 +3966,15 @@ msgstr "Det gick inte att ange termer för posten"
 msgid "Failed to uninstall plugin"
 msgstr "Det gick inte att avinstallera tillägget"
 
-#: packages/admin/src/router.tsx:1091
+#: packages/admin/src/router.tsx:1092
 msgid "Failed to unpublish"
 msgstr "Det gick inte att avpublicera"
 
-#: packages/admin/src/router.tsx:1154
+#: packages/admin/src/router.tsx:1155
 msgid "Failed to unschedule"
 msgstr "Det gick inte att avboka schemaläggningen"
 
-#: packages/admin/src/router.tsx:537
+#: packages/admin/src/router.tsx:538
 msgid "Failed to update"
 msgstr "Det gick inte att uppdatera"
 
@@ -3831,7 +4024,7 @@ msgstr "Det gick inte att uppdatera sektionen"
 msgid "Failed to update settings"
 msgstr "Det gick inte att uppdatera inställningar"
 
-#: packages/admin/src/router.tsx:1504
+#: packages/admin/src/router.tsx:1505
 msgid "Failed to update status"
 msgstr "Det gick inte att uppdatera statusen"
 
@@ -3986,6 +4179,18 @@ msgstr "Filtrera efter typ"
 msgid "Filter byline type"
 msgstr "Filtrera byline-typ"
 
+#: packages/admin/src/routes/shop.tsx:787
+msgid "Filter customers by date"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:776
+msgid "Filter customers by district"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:643
+msgid "Filter orders by status"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:64
 msgid "First-time commenters only"
 msgstr "Endast förstagångskommentatorer"
@@ -4066,7 +4271,7 @@ msgid "Go"
 msgstr "Go"
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2280
+#: packages/admin/src/router.tsx:2289
 msgid "Go to Dashboard"
 msgstr "Gå till översikten"
 
@@ -4144,6 +4349,11 @@ msgstr "Rubriker"
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:497
 msgid "Height"
 msgstr "Höjd"
+
+#: packages/admin/src/routes/shop.tsx:190
+#: packages/admin/src/routes/shop.tsx:324
+msgid "Hello, I want to coordinate payment for my order."
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:180
 msgid "Hero Banner"
@@ -4278,7 +4488,7 @@ msgid "Images"
 msgstr "Bilder"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:333
+#: packages/admin/src/components/Sidebar.tsx:339
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "Importera"
@@ -4370,6 +4580,16 @@ msgstr "Importerar media"
 #: packages/admin/src/components/WordPressImport.tsx:904
 msgid "Importing menus and site settings..."
 msgstr "Importerar menyer och webbplatsinställningar …"
+
+#: packages/admin/src/routes/shop.tsx:50
+#: packages/admin/src/routes/shop.tsx:652
+#: packages/admin/src/routes/shop.tsx:1067
+msgid "In transit"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:587
+msgid "Inactive"
+msgstr ""
 
 #: packages/admin/src/components/BylineFilter.tsx:172
 msgid "Include inferred bylines"
@@ -4522,7 +4742,7 @@ msgstr "Heltal"
 msgid "Invalid invite link"
 msgstr "Ogiltig inbjudningslänk"
 
-#: packages/admin/src/components/ContentEditor.tsx:1562
+#: packages/admin/src/components/ContentEditor.tsx:1565
 msgid "Invalid JSON"
 msgstr "Ogiltig JSON"
 
@@ -4662,6 +4882,14 @@ msgstr "Språk"
 msgid "Large section heading"
 msgstr "Stor sektionsrubrik"
 
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Last 30 days"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:790
+msgid "Last 90 days"
+msgstr ""
+
 #: packages/admin/src/components/PluginManager.tsx:608
 msgid "Last enabled:"
 msgstr "Senast aktiverad:"
@@ -4673,6 +4901,10 @@ msgstr "Senaste inloggning"
 #: packages/admin/src/components/users/UserList.tsx:107
 msgid "Last Login"
 msgstr "Senaste inloggning"
+
+#: packages/admin/src/routes/shop.tsx:810
+msgid "Last order"
+msgstr ""
 
 #: packages/admin/src/components/Redirects.tsx:227
 msgid "Last seen"
@@ -4765,8 +4997,8 @@ msgstr "Länkar"
 msgid "List view"
 msgstr "Listvy"
 
-#: packages/admin/src/components/ContentEditor.tsx:706
-#: packages/admin/src/components/ContentEditor.tsx:749
+#: packages/admin/src/components/ContentEditor.tsx:709
+#: packages/admin/src/components/ContentEditor.tsx:752
 #: packages/admin/src/components/ContentSettingsPanel.tsx:265
 msgid "Live View"
 msgstr "Live-vy"
@@ -4788,7 +5020,7 @@ msgstr "Läs in mer"
 msgid "Load More"
 msgstr "Läs in mer"
 
-#: packages/admin/src/router.tsx:2235
+#: packages/admin/src/router.tsx:2244
 msgid "Loading"
 msgstr ""
 
@@ -4804,14 +5036,22 @@ msgstr "Läser in samlingar …"
 msgid "Loading comments..."
 msgstr "Läser in kommentarer …"
 
-#: packages/admin/src/router.tsx:2237
-#: packages/admin/src/router.tsx:2249
+#: packages/admin/src/router.tsx:2246
+#: packages/admin/src/router.tsx:2258
 msgid "Loading configuration..."
 msgstr "Läser in konfiguration …"
 
 #: packages/admin/src/components/ContentPickerModal.tsx:164
 msgid "Loading content..."
 msgstr "Läser in innehåll …"
+
+#: packages/admin/src/routes/shop.tsx:723
+msgid "Loading customers"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:414
+msgid "Loading delivery zones"
+msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3344
 msgid "Loading editor..."
@@ -4824,6 +5064,14 @@ msgstr "Läser in meny …"
 #: packages/admin/src/components/MenuList.tsx:95
 msgid "Loading menus..."
 msgstr "Läser in menyer …"
+
+#: packages/admin/src/routes/shop.tsx:699
+msgid "Loading order details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:619
+msgid "Loading orders"
+msgstr ""
 
 #: packages/admin/src/components/PluginManager.tsx:140
 msgid "Loading plugins..."
@@ -4848,6 +5096,10 @@ msgstr "Läser in inställningar …"
 #: packages/admin/src/components/SetupWizard.tsx:528
 msgid "Loading setup..."
 msgstr "Läser in konfiguration …"
+
+#: packages/admin/src/routes/shop.tsx:122
+msgid "Loading store settings"
+msgstr ""
 
 #: packages/admin/src/components/TaxonomyManager.tsx:1054
 msgid "Loading terms..."
@@ -4946,7 +5198,7 @@ msgstr "Skicka nätverksförfrågningar"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "Skicka nätverksförfrågningar till valfri värd (obegränsat)"
 
-#: packages/admin/src/components/Sidebar.tsx:418
+#: packages/admin/src/components/Sidebar.tsx:424
 msgid "Manage"
 msgstr "Hantera"
 
@@ -4980,6 +5232,10 @@ msgstr "Hantera URL-omdirigeringar och visa 404-fel."
 #: packages/admin/src/components/settings/SecuritySettings.tsx:89
 msgid "Manage your passkeys and authentication"
 msgstr "Hantera dina passkeys och autentisering"
+
+#: packages/admin/src/routes/shop.tsx:72
+msgid "Manage your products, delivery settings, and orders."
+msgstr ""
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:317
 msgid "Managed by {providerName}"
@@ -5026,7 +5282,7 @@ msgstr "marknadsplats"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:321
 msgid "Marketplace"
 msgstr "Marknadsplats"
 
@@ -5068,7 +5324,7 @@ msgstr "MDX"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:256
+#: packages/admin/src/components/Sidebar.tsx:259
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5163,7 +5419,7 @@ msgstr "Menyordningen har uppdaterats."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:266
+#: packages/admin/src/components/Sidebar.tsx:269
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "Menyer"
@@ -5176,6 +5432,14 @@ msgstr "Menyer ({0})"
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:82
 msgid "Menus Manage"
 msgstr "Hantera menyer"
+
+#: packages/admin/src/routes/shop.tsx:186
+msgid "Message introduction"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:193
+msgid "Message preview"
+msgstr ""
 
 #: packages/admin/src/components/SeoPanel.tsx:199
 #: packages/admin/src/components/SeoPanel.tsx:203
@@ -5238,9 +5502,17 @@ msgstr "Månads-/årsarkiv"
 msgid "More information about {label}"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:798
+msgid "Most orders"
+msgstr ""
+
 #: packages/admin/src/components/MarketplaceBrowse.tsx:42
 msgid "Most Popular"
 msgstr "Mest populära"
+
+#: packages/admin/src/routes/shop.tsx:798
+msgid "Most recent"
+msgstr ""
 
 #. placeholder {0}: field.label
 #: packages/admin/src/routes/byline-schema.tsx:439
@@ -5305,11 +5577,11 @@ msgstr "Flytta till papperskorgen?"
 msgid "Move up"
 msgstr "Flytta uppåt"
 
-#: packages/admin/src/router.tsx:534
+#: packages/admin/src/router.tsx:535
 msgid "Moved {total} items to draft"
 msgstr "Flyttade {total} objekt till utkast"
 
-#: packages/admin/src/router.tsx:555
+#: packages/admin/src/router.tsx:556
 msgid "Moved {total} items to trash"
 msgstr "Flyttade {total} objekt till papperskorgen"
 
@@ -5338,6 +5610,7 @@ msgstr "Min fantastiska blogg"
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:37
 #: packages/admin/src/components/users/UserDetail.tsx:148
 #: packages/admin/src/components/Widgets.tsx:430
+#: packages/admin/src/routes/shop.tsx:896
 msgid "Name"
 msgstr "Namn"
 
@@ -5358,11 +5631,13 @@ msgstr "Navigering"
 msgid "Never"
 msgstr "Aldrig"
 
-#: packages/admin/src/router.tsx:1180
+#: packages/admin/src/router.tsx:1181
 msgid "new"
 msgstr "ny"
 
 #: packages/admin/src/routes/bylines.tsx:426
+#: packages/admin/src/routes/shop.tsx:46
+#: packages/admin/src/routes/shop.tsx:648
 msgid "New"
 msgstr "Ny"
 
@@ -5375,7 +5650,7 @@ msgstr "NY"
 msgid "New {0}"
 msgstr "Ny {0}"
 
-#: packages/admin/src/components/ContentEditor.tsx:672
+#: packages/admin/src/components/ContentEditor.tsx:675
 msgid "New {itemLabel}"
 msgstr ""
 
@@ -5549,6 +5824,14 @@ msgstr "Inga innehållstyper ännu."
 msgid "No custom fields yet"
 msgstr "Inga anpassade fält ännu"
 
+#: packages/admin/src/routes/shop.tsx:826
+msgid "No customers match your search."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:453
+msgid "No delivery zones configured yet."
+msgstr ""
+
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:275
 msgid "No detailed description available."
 msgstr "Ingen detaljerad beskrivning tillgänglig."
@@ -5658,6 +5941,14 @@ msgstr "Inget minimivärde"
 #: packages/admin/src/components/ContentTypeEditor.tsx:65
 msgid "No moderation (auto-approve all)"
 msgstr "Ingen moderering (godkänn alla automatiskt)"
+
+#: packages/admin/src/routes/shop.tsx:680
+msgid "No orders match your filters."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:956
+msgid "No orders yet."
+msgstr ""
 
 #: packages/admin/src/components/MenuEditor.tsx:329
 msgid "No parent (top level)"
@@ -5773,9 +6064,18 @@ msgstr "Ingen (toppnivå)"
 msgid "Not compatible with this environment"
 msgstr "Inte kompatibel med denna miljö"
 
+#: packages/admin/src/routes/shop.tsx:53
+#: packages/admin/src/routes/shop.tsx:1069
+msgid "Not delivered"
+msgstr ""
+
 #: packages/admin/src/components/ContentList.tsx:1280
 #: packages/admin/src/components/PluginSettings.tsx:341
 msgid "Not set"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:901
+msgid "Notes"
 msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:191
@@ -5838,6 +6138,10 @@ msgstr "Hoppsan!"
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:334
 msgid "Open in new tab"
 msgstr "Öppna i ny flik"
+
+#: packages/admin/src/routes/shop.tsx:915
+msgid "Open WhatsApp"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1534
 msgid "Open WordPress Profile"
@@ -5923,9 +6227,32 @@ msgstr "Eller ladda upp en exportfil"
 msgid "or upload directly"
 msgstr "eller ladda upp direkt"
 
+#: packages/admin/src/routes/shop.tsx:326
+#: packages/admin/src/routes/shop.tsx:664
+msgid "Order"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:688
+msgid "Order details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:703
+msgid "Order details unavailable."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:954
+msgid "Order history"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:227
 msgid "Order saved"
 msgstr "Ordning sparad"
+
+#: packages/admin/src/routes/shop.tsx:79
+#: packages/admin/src/routes/shop.tsx:809
+#: packages/admin/src/routes/shop.tsx:932
+msgid "Orders"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:159
 msgid "Original"
@@ -5955,7 +6282,7 @@ msgstr "Ägarskap"
 msgid "Package"
 msgstr "Paket"
 
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2284
 msgid "Page Not Found"
 msgstr "Sidan hittades inte"
 
@@ -6066,6 +6393,27 @@ msgstr "Mönster för att generera URL:er, t.ex. /blog/{0}"
 msgid "Pattern must include a {0} placeholder"
 msgstr "Mönstret måste innehålla en {0}-platshållare"
 
+#: packages/admin/src/routes/shop.tsx:666
+#: packages/admin/src/routes/shop.tsx:1043
+msgid "Payment"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1008
+msgid "Payment confirmed"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:225
+msgid "Payment gateway"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:200
+msgid "Payment instructions"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:213
+msgid "Payment methods"
+msgstr ""
+
 #: packages/admin/src/components/AllowedTypesEditor.tsx:62
 msgid "PDF"
 msgstr "PDF"
@@ -6075,6 +6423,9 @@ msgid "pending"
 msgstr "väntande"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:198
+#: packages/admin/src/routes/shop.tsx:54
+#: packages/admin/src/routes/shop.tsx:655
+#: packages/admin/src/routes/shop.tsx:1065
 msgid "Pending"
 msgstr "Väntande"
 
@@ -6093,6 +6444,11 @@ msgstr "Ta bort {title} permanent"
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:284
 msgid "Permissions"
 msgstr "Behörigheter"
+
+#: packages/admin/src/routes/shop.tsx:807
+#: packages/admin/src/routes/shop.tsx:943
+msgid "Phone"
+msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:46
 msgid "PHP"
@@ -6131,6 +6487,10 @@ msgstr "Ange en giltig e-postadress"
 #: packages/admin/src/components/MediaPickerModal.tsx:449
 msgid "Please enter a valid URL"
 msgstr "Ange en giltig URL"
+
+#: packages/admin/src/routes/shop.tsx:338
+msgid "Plin"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1182
 msgid "Plugin"
@@ -6236,8 +6596,8 @@ msgstr "Fel i tilläggswidget"
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:299
-#: packages/admin/src/components/Sidebar.tsx:434
+#: packages/admin/src/components/Sidebar.tsx:305
+#: packages/admin/src/components/Sidebar.tsx:440
 msgid "Plugins"
 msgstr "Tillägg"
 
@@ -6269,6 +6629,11 @@ msgstr "Inlägg per sida"
 #: packages/admin/src/components/RegistryPluginDetail.tsx:478
 msgid "Pre-release"
 msgstr "Förhandsversion"
+
+#: packages/admin/src/routes/shop.tsx:48
+#: packages/admin/src/routes/shop.tsx:650
+msgid "Preparing"
+msgstr ""
 
 #: packages/admin/src/components/auth/PasskeyRegistration.tsx:170
 msgid "Preparing registration..."
@@ -6326,9 +6691,25 @@ msgstr "Privat"
 msgid "Processing..."
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:256
+msgid "Production"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:237
+msgid "Provider"
+msgstr ""
+
 #: packages/admin/src/components/settings/EmailSettings.tsx:167
 msgid "Provider:"
 msgstr "Leverantör:"
+
+#: packages/admin/src/routes/shop.tsx:260
+msgid "Public key"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:265
+msgid "Public key from your provider"
+msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:485
 #: packages/admin/src/components/ContentSettingsPanel.tsx:198
@@ -6346,7 +6727,7 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:843
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1069
+#: packages/admin/src/router.tsx:1070
 msgid "Published"
 msgstr "Publicerad"
 
@@ -6355,7 +6736,7 @@ msgstr "Publicerad"
 msgid "Published {0}"
 msgstr "Publicerad {0}"
 
-#: packages/admin/src/router.tsx:511
+#: packages/admin/src/router.tsx:512
 msgid "Published {total} items"
 msgstr "Publicerade {total} objekt"
 
@@ -6436,6 +6817,11 @@ msgstr "Läsning"
 msgid "Ready"
 msgstr "Klar"
 
+#: packages/admin/src/routes/shop.tsx:49
+#: packages/admin/src/routes/shop.tsx:651
+msgid "Ready for delivery"
+msgstr ""
+
 #: packages/admin/src/components/Dashboard.tsx:348
 msgid "Recent Activity"
 msgstr "Senaste aktivitet"
@@ -6468,7 +6854,7 @@ msgstr "Omdirigerar till inloggning …"
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:269
+#: packages/admin/src/components/Sidebar.tsx:272
 msgid "Redirects"
 msgstr "Omdirigeringar"
 
@@ -6477,6 +6863,7 @@ msgid "Redo"
 msgstr "Gör om"
 
 #: packages/admin/src/components/FieldEditor.tsx:245
+#: packages/admin/src/routes/shop.tsx:900
 msgid "Reference"
 msgstr "Referens"
 
@@ -6509,7 +6896,7 @@ msgstr "Registreringen misslyckades"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "Registreringen avbröts eller tog för lång tid. Försök igen."
 
-#: packages/admin/src/components/Sidebar.tsx:308
+#: packages/admin/src/components/Sidebar.tsx:314
 msgid "Registry"
 msgstr "Register"
 
@@ -6546,7 +6933,7 @@ msgstr "Ta bort {0}"
 msgid "Remove {entry}"
 msgstr "Ta bort {entry}"
 
-#: packages/admin/src/components/ContentEditor.tsx:1720
+#: packages/admin/src/components/ContentEditor.tsx:1723
 msgid "Remove {label}"
 msgstr "Ta bort {label}"
 
@@ -6754,16 +7141,20 @@ msgstr "Återställer …"
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2263
+#: packages/admin/src/router.tsx:2272
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "Försök igen"
+
+#: packages/admin/src/routes/shop.tsx:294
+msgid "Return URL"
+msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:136
 msgid "Reusable content blocks you can insert into any content"
 msgstr "Återanvändbara innehållsblock som du kan infoga i vilket innehåll som helst"
 
-#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1108
 msgid "Reverted to published version"
 msgstr "Återställd till publicerad version"
 
@@ -6883,6 +7274,10 @@ msgstr "Rust"
 msgid "Same window"
 msgstr "Samma fönster"
 
+#: packages/admin/src/routes/shop.tsx:327
+msgid "Sample product"
+msgstr ""
+
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1191
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:395
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:589
@@ -6906,6 +7301,7 @@ msgid "Save alt text"
 msgstr "Spara alt-text"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:318
+#: packages/admin/src/routes/shop.tsx:557
 msgid "Save changes"
 msgstr "Spara ändringar"
 
@@ -6917,9 +7313,17 @@ msgstr "Spara ändringar"
 msgid "Save content as draft before publishing"
 msgstr "Spara innehåll som utkast innan publicering"
 
+#: packages/admin/src/routes/shop.tsx:226
+msgid "Save gateway parameters for a future integration. Orders continue through WhatsApp until a gateway connector is enabled."
+msgstr ""
+
 #: packages/admin/src/components/settings/PasskeyItem.tsx:132
 msgid "Save name"
 msgstr "Spara namn"
+
+#: packages/admin/src/routes/shop.tsx:312
+msgid "Save settings"
+msgstr ""
 
 #: packages/admin/src/components/PluginSettings.tsx:166
 #: packages/admin/src/components/PluginSettings.tsx:209
@@ -6947,6 +7351,8 @@ msgstr "Sparade \"{0}\"."
 #: packages/admin/src/components/users/UserDetail.tsx:311
 #: packages/admin/src/components/Widgets.tsx:983
 #: packages/admin/src/routes/bylines.tsx:579
+#: packages/admin/src/routes/shop.tsx:312
+#: packages/admin/src/routes/shop.tsx:557
 msgid "Saving..."
 msgstr "Sparar …"
 
@@ -6977,7 +7383,7 @@ msgstr "Schemalägg för senare"
 
 #: packages/admin/src/components/ContentList.tsx:834
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
-#: packages/admin/src/router.tsx:1127
+#: packages/admin/src/router.tsx:1128
 msgid "Scheduled"
 msgstr "Schemalagd"
 
@@ -7070,6 +7476,14 @@ msgstr "Sök efter filnamn …"
 msgid "Search by name or email..."
 msgstr "Sök efter namn eller e-post …"
 
+#: packages/admin/src/routes/shop.tsx:769
+msgid "Search by name, phone, email, or district"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:636
+msgid "Search by order number"
+msgstr ""
+
 #: packages/admin/src/components/BylineFilter.tsx:121
 #: packages/admin/src/components/ContentSettingsPanel.tsx:985
 #: packages/admin/src/routes/bylines.tsx:401
@@ -7096,6 +7510,10 @@ msgstr "Sök i kommentarer …"
 msgid "Search content..."
 msgstr "Sök i innehåll …"
 
+#: packages/admin/src/routes/shop.tsx:768
+msgid "Search customers"
+msgstr ""
+
 #: packages/admin/src/components/settings/SeoSettings.tsx:161
 msgid "Search Engine Optimization"
 msgstr "Sökmotoroptimering"
@@ -7113,6 +7531,10 @@ msgstr "Sökformulär"
 #: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "Sök i media"
+
+#: packages/admin/src/routes/shop.tsx:635
+msgid "Search orders"
+msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:438
 msgid "Search pages and content..."
@@ -7167,6 +7589,18 @@ msgstr "Sökbar"
 msgid "Searching..."
 msgstr "Söker …"
 
+#: packages/admin/src/routes/shop.tsx:268
+msgid "Secret key"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:277
+msgid "Secret key from your provider"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:276
+msgid "Secret key saved; enter a new one to replace it"
+msgstr ""
+
 #: packages/admin/src/components/PortableTextEditor.tsx:2724
 msgid "Section"
 msgstr "Sektion"
@@ -7197,7 +7631,7 @@ msgstr "Sektionstitel"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:274
+#: packages/admin/src/components/Sidebar.tsx:277
 msgid "Sections"
 msgstr "Sektioner"
 
@@ -7264,8 +7698,8 @@ msgid "Select"
 msgstr "Välj"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:140
-#: packages/admin/src/components/ContentEditor.tsx:1732
-#: packages/admin/src/components/ContentEditor.tsx:1748
+#: packages/admin/src/components/ContentEditor.tsx:1735
+#: packages/admin/src/components/ContentEditor.tsx:1751
 #: packages/admin/src/components/ImageFieldRenderer.tsx:273
 msgid "Select {label}"
 msgstr "Välj {label}"
@@ -7308,7 +7742,7 @@ msgstr "Välj standardbild för sociala medier"
 msgid "Select Favicon"
 msgstr "Välj favicon"
 
-#: packages/admin/src/components/ContentEditor.tsx:1736
+#: packages/admin/src/components/ContentEditor.tsx:1739
 msgid "Select file"
 msgstr "Välj fil"
 
@@ -7329,6 +7763,10 @@ msgstr "Välj bild"
 #: packages/admin/src/components/settings/SeoSettings.tsx:223
 msgid "Select Image"
 msgstr "Välj bild"
+
+#: packages/admin/src/routes/shop.tsx:244
+msgid "Select later"
+msgstr ""
 
 #: packages/admin/src/components/settings/GeneralSettings.tsx:241
 #: packages/admin/src/components/settings/GeneralSettings.tsx:356
@@ -7467,13 +7905,13 @@ msgid "Setting up..."
 msgstr "Konfigurerar …"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:234
-#: packages/admin/src/components/ContentEditor.tsx:838
-#: packages/admin/src/components/ContentEditor.tsx:1071
+#: packages/admin/src/components/ContentEditor.tsx:841
+#: packages/admin/src/components/ContentEditor.tsx:1074
 #: packages/admin/src/components/ContentTypeEditor.tsx:382
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:337
+#: packages/admin/src/components/Sidebar.tsx:343
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "Inställningar"
@@ -7498,6 +7936,10 @@ msgstr "Konfigurationen misslyckades"
 #: packages/admin/src/components/users/InviteUserModal.tsx:109
 msgid "Share this link with the invited user"
 msgstr "Dela denna länk med den inbjudna användaren"
+
+#: packages/admin/src/routes/shop.tsx:204
+msgid "Share your Yape, Plin, or bank transfer instructions."
+msgstr ""
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:294
 msgid "Shared across all translations of the same byline."
@@ -7716,6 +8158,10 @@ msgstr "Vissa innehållstyper kan inte importeras"
 msgid "Something went wrong"
 msgstr "Något gick fel"
 
+#: packages/admin/src/routes/shop.tsx:795
+msgid "Sort customers"
+msgstr ""
+
 #: packages/admin/src/components/MarketplaceBrowse.tsx:125
 msgid "Sort plugins"
 msgstr "Sortera tillägg"
@@ -7764,7 +8210,7 @@ msgstr "SQL"
 msgid "Start Import"
 msgstr "Starta import"
 
-#: packages/admin/src/components/ContentEditor.tsx:1240
+#: packages/admin/src/components/ContentEditor.tsx:1243
 #: packages/admin/src/components/PortableTextEditor.tsx:2579
 #: packages/admin/src/components/PortableTextEditor.tsx:2580
 msgid "Start writing, or type '/' for commands"
@@ -7775,6 +8221,8 @@ msgstr "Börja skriva, eller skriv \"/\" för kommandon"
 #: packages/admin/src/components/ContentTypeEditor.tsx:117
 #: packages/admin/src/components/Redirects.tsx:480
 #: packages/admin/src/components/users/UserList.tsx:104
+#: packages/admin/src/routes/shop.tsx:426
+#: packages/admin/src/routes/shop.tsx:665
 msgid "Status"
 msgstr "Status"
 
@@ -7790,9 +8238,25 @@ msgstr "Status: {status}"
 msgid "Storage available"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:325
+msgid "Store"
+msgstr ""
+
 #: packages/admin/src/components/settings/BackupSettings.tsx:205
 msgid "Store a daily backup in your site's storage bucket. Old backups are removed automatically."
 msgstr "Spara en daglig säkerhetskopia i webbplatsens lagringsbucket. Gamla säkerhetskopior tas bort automatiskt."
+
+#: packages/admin/src/routes/shop.tsx:148
+msgid "Store name"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:77
+msgid "Store settings"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:118
+msgid "Store settings saved"
+msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:270
 msgid "Stored Backups"
@@ -7933,6 +8397,10 @@ msgstr "Termen \"{0}\" skapades i {1}."
 msgid "Term deleted"
 msgstr "Term borttagen"
 
+#: packages/admin/src/routes/shop.tsx:256
+msgid "Test mode"
+msgstr ""
+
 #: packages/admin/src/components/settings/EmailSettings.tsx:111
 msgid "test@example.com"
 msgstr "test@example.com"
@@ -7978,7 +8446,7 @@ msgstr "Menyn har tagits bort."
 msgid "The name of your site, used in the header and metadata"
 msgstr "Namnet på din webbplats, används i sidhuvudet och metadata"
 
-#: packages/admin/src/router.tsx:2277
+#: packages/admin/src/router.tsx:2286
 msgid "The page you're looking for doesn't exist."
 msgstr "Sidan du letar efter finns inte."
 
@@ -7997,6 +8465,10 @@ msgstr "Den refererade bilden är inte längre tillgänglig. Välj en ny eller t
 #: packages/admin/src/components/settings/GeneralSettings.tsx:209
 msgid "The referenced logo is no longer available. Pick a new one or remove the reference."
 msgstr "Den refererade logotypen är inte längre tillgänglig. Välj en ny eller ta bort referensen."
+
+#: packages/admin/src/routes/shop.tsx:183
+msgid "The store name, order number, products, and total are added automatically."
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:153
 msgid "The theme marketplace is empty. Check back later."
@@ -8027,7 +8499,7 @@ msgstr "Sektioner från temat kan inte tas bort. Redigera sektionen för att ska
 msgid "Theme: {label}"
 msgstr "Tema: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:324
+#: packages/admin/src/components/Sidebar.tsx:330
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "Teman"
@@ -8056,7 +8528,7 @@ msgstr ""
 msgid "This field does not accept {sniffedMime} files."
 msgstr "Detta fält accepterar inte filer av typen {sniffedMime}."
 
-#: packages/admin/src/components/ContentEditor.tsx:1751
+#: packages/admin/src/components/ContentEditor.tsx:1754
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "Detta fält är obligatoriskt"
@@ -8245,6 +8717,15 @@ msgstr "TOML"
 msgid "Tools → Export"
 msgstr "Verktyg → Exportera"
 
+#: packages/admin/src/routes/shop.tsx:328
+#: packages/admin/src/routes/shop.tsx:668
+msgid "Total"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:936
+msgid "Total spent"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:77
 msgid "Track content history"
 msgstr "Spåra innehållshistorik"
@@ -8278,7 +8759,7 @@ msgstr "Översätter …"
 #: packages/admin/src/components/MenuEditor.tsx:143
 #: packages/admin/src/components/TaxonomyManager.tsx:987
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1179
+#: packages/admin/src/router.tsx:1180
 msgid "Translation created"
 msgstr "Översättning skapad"
 
@@ -8457,7 +8938,7 @@ msgstr "Namnlös passkey"
 msgid "Unpublish {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1087
+#: packages/admin/src/router.tsx:1088
 msgid "Unpublished"
 msgstr "Avpublicerad"
 
@@ -8473,7 +8954,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "Avboka schemaläggning"
 
-#: packages/admin/src/router.tsx:1148
+#: packages/admin/src/router.tsx:1149
 msgid "Unscheduled"
 msgstr "Ej schemalagd"
 
@@ -8486,7 +8967,7 @@ msgstr "Widgetelementtyp som inte stöds: {0}"
 msgid "Untitled"
 msgstr "Utan titel"
 
-#: packages/admin/src/components/ContentEditor.tsx:1654
+#: packages/admin/src/components/ContentEditor.tsx:1657
 msgid "Untitled file"
 msgstr "Fil utan namn"
 
@@ -8510,6 +8991,10 @@ msgstr ""
 #: packages/admin/src/components/TaxonomyManager.tsx:662
 msgid "Update"
 msgstr "Uppdatera"
+
+#: packages/admin/src/routes/shop.tsx:1059
+msgid "Update delivery status"
+msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:689
 msgid "Update Field"
@@ -8693,6 +9178,10 @@ msgstr "Använd [param] eller [...rest] i sökvägar för mönstermatchning."
 msgid "Use optimized image"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:178
+msgid "Use the country code without spaces or symbols."
+msgstr ""
+
 #: packages/admin/src/components/auth/PasskeyLogin.tsx:364
 msgid "Use your device's biometric authentication, security key, or PIN to sign in."
 msgstr "Använd enhetens biometriska autentisering, säkerhetsnyckel eller PIN-kod för att logga in."
@@ -8709,7 +9198,7 @@ msgstr "Används som reservbild för Open Graph när en sida saknar bild. Rekomm
 msgid "Used as the identifier. Lowercase letters, numbers, and underscores only."
 msgstr "Används som identifierare. Endast gemener, siffror och understreck."
 
-#: packages/admin/src/components/ContentEditor.tsx:1343
+#: packages/admin/src/components/ContentEditor.tsx:1346
 msgid "Used as the main visual for this post on listing pages and at the top of the post"
 msgstr "Används som huvudbild för detta inlägg på listsidor och högst upp i inlägget"
 
@@ -8747,7 +9236,7 @@ msgid "User not found"
 msgstr "Användaren hittades inte"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:296
+#: packages/admin/src/components/Sidebar.tsx:302
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "Användare"
@@ -8814,6 +9303,11 @@ msgstr "Version {0}"
 #: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Video"
 msgstr "Video"
+
+#: packages/admin/src/routes/shop.tsx:879
+#: packages/admin/src/routes/shop.tsx:994
+msgid "View details"
+msgstr ""
 
 #: packages/admin/src/components/Settings.tsx:96
 #: packages/admin/src/components/settings/EmailSettings.tsx:59
@@ -8891,6 +9385,22 @@ msgstr "Webbadress"
 msgid "WebAuthn is not supported in this browser"
 msgstr "WebAuthn stöds inte i denna webbläsare"
 
+#: packages/admin/src/routes/shop.tsx:281
+msgid "Webhook secret"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:290
+msgid "Webhook secret from your provider"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:289
+msgid "Webhook secret saved; enter a new one to replace it"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:302
+msgid "Webhook URL"
+msgstr ""
+
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:236
 #: packages/admin/src/components/RegistryPluginDetail.tsx:701
 msgid "Website"
@@ -8915,6 +9425,14 @@ msgstr "Vad som händer när du importerar:"
 #: packages/admin/src/components/WordPressImport.tsx:1874
 msgid "What will happen when you import"
 msgstr "Vad som kommer att hända när du importerar"
+
+#: packages/admin/src/routes/shop.tsx:172
+msgid "WhatsApp number"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:182
+msgid "WhatsApp order message"
+msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:125
 msgid "When the entry was created"
@@ -8999,7 +9517,7 @@ msgstr "Widget uppdaterad"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:273
+#: packages/admin/src/components/Sidebar.tsx:276
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"
@@ -9058,6 +9576,10 @@ msgstr "xxxx xxxx xxxx xxxx xxxx xxxx"
 msgid "YAML"
 msgstr "YAML"
 
+#: packages/admin/src/routes/shop.tsx:337
+msgid "Yape"
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:163
 msgid "Yearly"
 msgstr "Årligen"
@@ -9105,7 +9627,7 @@ msgstr "Du har full åtkomst att hantera denna webbplats, inklusive användare, 
 msgid "You need admin permissions to manage byline schema."
 msgstr "Du behöver administratörsbehörighet för att hantera byline-schema."
 
-#: packages/admin/src/router.tsx:1561
+#: packages/admin/src/router.tsx:1562
 msgid "You need Editor permissions to moderate comments."
 msgstr "Du behöver redaktörsbehörighet för att moderera kommentarer."
 
@@ -9229,6 +9751,15 @@ msgstr "Ditt YouTube-kanal-ID eller användarnamn"
 #: packages/admin/src/components/settings/SocialSettings.tsx:179
 msgid "YouTube"
 msgstr "YouTube"
+
+#: packages/admin/src/routes/shop.tsx:422
+msgid "Zone"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:464
+#: packages/admin/src/routes/shop.tsx:521
+msgid "Zone name"
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:225
 msgid "Zoom:"
