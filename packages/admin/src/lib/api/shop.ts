@@ -121,7 +121,10 @@ export function createShopDeliveryZone(input: {
 	return mutate("/admin/shop/delivery-zones", "POST", input);
 }
 
-export function updateShopDeliveryZone(id: string, input: Partial<Parameters<typeof createShopDeliveryZone>[0]>): Promise<ShopDeliveryZone> {
+export function updateShopDeliveryZone(
+	id: string,
+	input: Partial<Parameters<typeof createShopDeliveryZone>[0]>,
+): Promise<ShopDeliveryZone> {
 	return mutate(`/admin/shop/delivery-zones/${encodeURIComponent(id)}`, "PATCH", input);
 }
 
@@ -141,10 +144,16 @@ export function fetchShopOrder(id: string): Promise<ShopOrderDetail> {
 	return get(`/admin/shop/orders/${encodeURIComponent(id)}`);
 }
 
-export function confirmShopPayment(id: string, input: { reference?: string; notes?: string } = {}): Promise<null> {
+export function confirmShopPayment(
+	id: string,
+	input: { reference?: string; notes?: string } = {},
+): Promise<null> {
 	return mutate(`/admin/shop/orders/${encodeURIComponent(id)}/payment`, "POST", input);
 }
 
-export function updateShopDelivery(id: string, input: { status: string; courierName?: string }): Promise<null> {
+export function updateShopDelivery(
+	id: string,
+	input: { status: string; courierName?: string },
+): Promise<null> {
 	return mutate(`/admin/shop/orders/${encodeURIComponent(id)}/delivery`, "PATCH", input);
 }

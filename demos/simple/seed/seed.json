@@ -358,7 +358,9 @@
 						{
 							"_type": "block",
 							"style": "normal",
-							"children": [{ "_type": "span", "text": "Freshly roasted coffee for the demo store." }]
+							"children": [
+								{ "_type": "span", "text": "Freshly roasted coffee for the demo store." }
+							]
 						}
 					],
 					"price": 28,

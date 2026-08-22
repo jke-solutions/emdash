@@ -253,11 +253,16 @@ async function getRuntimeEncryptionKeys(): Promise<ParsedEncryptionKey[]> {
 	} catch {
 		runtimeEnv = undefined;
 	}
-	const raw = typeof runtimeEnv?.EMDASH_ENCRYPTION_KEY === "string"
-		? runtimeEnv.EMDASH_ENCRYPTION_KEY
-		: import.meta.env.EMDASH_ENCRYPTION_KEY;
+	const raw =
+		typeof runtimeEnv?.EMDASH_ENCRYPTION_KEY === "string"
+			? runtimeEnv.EMDASH_ENCRYPTION_KEY
+			: import.meta.env.EMDASH_ENCRYPTION_KEY;
 	const keys = await parseEncryptionKeys(raw);
-	if (!keys?.[0]) throw new EmDashSecretsError("EMDASH_ENCRYPTION_KEY is required to store payment gateway secrets", "ENCRYPTION_KEY_MISSING");
+	if (!keys?.[0])
+		throw new EmDashSecretsError(
+			"EMDASH_ENCRYPTION_KEY is required to store payment gateway secrets",
+			"ENCRYPTION_KEY_MISSING",
+		);
 	return keys;
 }
 
@@ -280,17 +285,33 @@ export async function encryptShopSecret(value: string): Promise<string> {
 }
 
 export async function decryptShopSecret(value: string): Promise<string> {
-	if (!value.startsWith(SHOP_SECRET_PREFIX)) throw new EmDashSecretsError("Payment gateway secret is not encrypted", "UNENCRYPTED_SHOP_SECRET");
+	if (!value.startsWith(SHOP_SECRET_PREFIX))
+		throw new EmDashSecretsError(
+			"Payment gateway secret is not encrypted",
+			"UNENCRYPTED_SHOP_SECRET",
+		);
 	const payload = value.slice(SHOP_SECRET_PREFIX.length);
 	const separator = payload.indexOf("_");
-	if (separator <= 0) throw new EmDashSecretsError("Payment gateway secret envelope is invalid", "INVALID_SHOP_SECRET");
+	if (separator <= 0)
+		throw new EmDashSecretsError(
+			"Payment gateway secret envelope is invalid",
+			"INVALID_SHOP_SECRET",
+		);
 	const kid = payload.slice(0, separator);
 	const encoded = payload.slice(separator + 1);
 	const combined = decodeBase64urlStrict(encoded);
-	if (!combined || combined.length <= SHOP_SECRET_IV_BYTES) throw new EmDashSecretsError("Payment gateway secret envelope is invalid", "INVALID_SHOP_SECRET");
+	if (!combined || combined.length <= SHOP_SECRET_IV_BYTES)
+		throw new EmDashSecretsError(
+			"Payment gateway secret envelope is invalid",
+			"INVALID_SHOP_SECRET",
+		);
 	const keys = await getRuntimeEncryptionKeys();
 	const candidate = keys.find((entry) => entry.kid === kid);
-	if (!candidate) throw new EmDashSecretsError("No configured encryption key can decrypt the payment gateway secret", "SHOP_SECRET_KEY_NOT_FOUND");
+	if (!candidate)
+		throw new EmDashSecretsError(
+			"No configured encryption key can decrypt the payment gateway secret",
+			"SHOP_SECRET_KEY_NOT_FOUND",
+		);
 	const key = await importSecretKey(candidate.key, ["decrypt"]);
 	const iv = combined.slice(0, SHOP_SECRET_IV_BYTES);
 	const ciphertext = combined.slice(SHOP_SECRET_IV_BYTES);

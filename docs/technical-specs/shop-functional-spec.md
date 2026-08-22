@@ -274,15 +274,15 @@ El panel administrativo puede mostrar cantidad de pedidos, total comprado, últi
 
 El ecommerce utiliza estas tablas de Core:
 
-| Tabla | Responsabilidad |
-| --- | --- |
-| `_emdash_shop_settings` | Configuración de la tienda |
-| `_emdash_shop_delivery_zones` | Zonas y costos de delivery |
-| `_emdash_shop_customers` | Datos registrados de clientes |
-| `_emdash_shop_orders` | Cabecera y estados del pedido |
-| `_emdash_shop_order_items` | Productos, variaciones, precios y cantidades |
-| `_emdash_shop_payments` | Método y estado del pago |
-| `_emdash_shop_deliveries` | Dirección y estado del delivery |
+| Tabla                         | Responsabilidad                              |
+| ----------------------------- | -------------------------------------------- |
+| `_emdash_shop_settings`       | Configuración de la tienda                   |
+| `_emdash_shop_delivery_zones` | Zonas y costos de delivery                   |
+| `_emdash_shop_customers`      | Datos registrados de clientes                |
+| `_emdash_shop_orders`         | Cabecera y estados del pedido                |
+| `_emdash_shop_order_items`    | Productos, variaciones, precios y cantidades |
+| `_emdash_shop_payments`       | Método y estado del pago                     |
+| `_emdash_shop_deliveries`     | Dirección y estado del delivery              |
 
 Las migraciones `071_shop_orders`, `072_shop_payment_gateway` y `073_shop_currency_symbol` crean y amplían estas tablas; están registradas en el proveedor estático de migraciones de Core. El código ISO se conserva para integraciones y el símbolo configurado se utiliza en la tienda, el pedido y WhatsApp.
 

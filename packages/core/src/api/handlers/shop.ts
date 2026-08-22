@@ -1,12 +1,12 @@
 import { sql, type Kysely } from "kysely";
 import { ulid } from "ulidx";
 
+import { decryptShopSecret, encryptShopSecret } from "../../config/secrets.js";
 import { ContentRepository } from "../../database/repositories/content.js";
 import { withTransaction } from "../../database/transaction.js";
 import type { Database } from "../../database/types.js";
-import type { ApiResult } from "../types.js";
 import { invalidateCollectionCache } from "../../object-cache/index.js";
-import { decryptShopSecret, encryptShopSecret } from "../../config/secrets.js";
+import type { ApiResult } from "../types.js";
 
 const DEFAULT_SETTINGS_ID = "default";
 const DEFAULT_CURRENCY = "PEN";
@@ -15,7 +15,21 @@ const DEFAULT_PAYMENT_METHODS = ["whatsapp"];
 const SHOP_COLLECTION = "products";
 
 function currencySymbolForCurrency(currency: string): string {
-	return ({ PEN: "S/", USD: "$", EUR: "€", GBP: "£", MXN: "$", COP: "$", CLP: "$", ARS: "$", BRL: "R$" } as Record<string, string>)[currency.toUpperCase()] ?? currency;
+	return (
+		(
+			{
+				PEN: "S/",
+				USD: "$",
+				EUR: "€",
+				GBP: "£",
+				MXN: "$",
+				COP: "$",
+				CLP: "$",
+				ARS: "$",
+				BRL: "R$",
+			} as Record<string, string>
+		)[currency.toUpperCase()] ?? currency
+	);
 }
 
 export interface ShopSettings {
@@ -140,12 +154,23 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 	return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-function parseJsonStringArray(value: string | null | undefined, fallback: string[]): string[] {
-	const parsed = parseJson(value);
-	return Array.isArray(parsed) && parsed.every((item): item is string => typeof item === "string") ? parsed : fallback;
+function getStringField(value: unknown, field: string): string | undefined {
+	if (!isRecord(value)) return undefined;
+	const fieldValue = value[field];
+	return typeof fieldValue === "string" ? fieldValue : undefined;
 }
 
-async function preserveOrEncryptShopSecret(input: string | null | undefined, existing: string | null | undefined): Promise<string | null> {
+function parseJsonStringArray(value: string | null | undefined, fallback: string[]): string[] {
+	const parsed = parseJson(value);
+	return Array.isArray(parsed) && parsed.every((item): item is string => typeof item === "string")
+		? parsed
+		: fallback;
+}
+
+async function preserveOrEncryptShopSecret(
+	input: string | null | undefined,
+	existing: string | null | undefined,
+): Promise<string | null> {
 	if (input === null) return null;
 	if (typeof input === "string" && input.length > 0) return encryptShopSecret(input);
 	if (typeof existing === "string" && existing.length > 0) {
@@ -159,7 +184,25 @@ function parseJsonRecord(value: string | null | undefined): Record<string, unkno
 	return isRecord(parsed) ? parsed : {};
 }
 
-function toSettings(row: { id: string; store_name: string; currency: string; currency_symbol: string | null; whatsapp_number: string | null; whatsapp_message: string | null; payment_methods: string; delivery_instructions: string | null; business_hours: string | null; payment_gateway_enabled: number; payment_gateway_provider: string | null; payment_gateway_environment: string; payment_gateway_public_key: string | null; payment_gateway_secret_key: string | null; payment_gateway_webhook_secret: string | null; payment_gateway_return_url: string | null; payment_gateway_webhook_url: string | null }): ShopSettings {
+function toSettings(row: {
+	id: string;
+	store_name: string;
+	currency: string;
+	currency_symbol: string | null;
+	whatsapp_number: string | null;
+	whatsapp_message: string | null;
+	payment_methods: string;
+	delivery_instructions: string | null;
+	business_hours: string | null;
+	payment_gateway_enabled: number;
+	payment_gateway_provider: string | null;
+	payment_gateway_environment: string;
+	payment_gateway_public_key: string | null;
+	payment_gateway_secret_key: string | null;
+	payment_gateway_webhook_secret: string | null;
+	payment_gateway_return_url: string | null;
+	payment_gateway_webhook_url: string | null;
+}): ShopSettings {
 	return {
 		id: row.id,
 		storeName: row.store_name,
@@ -172,7 +215,8 @@ function toSettings(row: { id: string; store_name: string; currency: string; cur
 		businessHours: row.business_hours,
 		paymentGatewayEnabled: row.payment_gateway_enabled === 1,
 		paymentGatewayProvider: row.payment_gateway_provider,
-		paymentGatewayEnvironment: row.payment_gateway_environment === "production" ? "production" : "sandbox",
+		paymentGatewayEnvironment:
+			row.payment_gateway_environment === "production" ? "production" : "sandbox",
 		paymentGatewayPublicKey: row.payment_gateway_public_key,
 		paymentGatewaySecretKeyConfigured: Boolean(row.payment_gateway_secret_key),
 		paymentGatewayWebhookSecretConfigured: Boolean(row.payment_gateway_webhook_secret),
@@ -181,7 +225,14 @@ function toSettings(row: { id: string; store_name: string; currency: string; cur
 	};
 }
 
-function toDeliveryZone(row: { id: string; name: string; districts: string; delivery_cost: number; estimated_time: string | null; active: number }): ShopDeliveryZone {
+function toDeliveryZone(row: {
+	id: string;
+	name: string;
+	districts: string;
+	delivery_cost: number;
+	estimated_time: string | null;
+	active: number;
+}): ShopDeliveryZone {
 	return {
 		id: row.id,
 		name: row.name,
@@ -217,7 +268,8 @@ function productVariants(data: Record<string, unknown>): ShopVariant[] {
 }
 
 function hasProductVariants(data: Record<string, unknown>): boolean {
-	const enabled = data.has_variations === true || data.has_variations === 1 || data.has_variations === "1";
+	const enabled =
+		data.has_variations === true || data.has_variations === 1 || data.has_variations === "1";
 	return enabled && productVariants(data).length > 0;
 }
 
@@ -227,8 +279,11 @@ function isProductAvailable(data: Record<string, unknown>): boolean {
 	const variantsAvailable = productVariants(data).some(
 		(variant) => typeof variant.stock !== "number" || variant.stock > 0,
 	);
-	return availability !== "sold_out" && availability !== "hidden" &&
-		(hasProductVariants(data) ? variantsAvailable : typeof stock !== "number" || stock > 0);
+	return (
+		availability !== "sold_out" &&
+		availability !== "hidden" &&
+		(hasProductVariants(data) ? variantsAvailable : typeof stock !== "number" || stock > 0)
+	);
 }
 
 class ShopStockError extends Error {}
@@ -237,24 +292,40 @@ function makeOrderNumber(): string {
 	return `#${Date.now().toString(36).toUpperCase()}-${ulid().slice(-4)}`;
 }
 
-function makeWhatsAppUrl(phone: string | null, order: ShopWhatsAppOrder, settings: ShopSettings, customer?: Record<string, unknown>, delivery?: Record<string, unknown>): string | null {
+function makeWhatsAppUrl(
+	phone: string | null,
+	order: ShopWhatsAppOrder,
+	settings: ShopSettings,
+	customer?: Record<string, unknown>,
+	delivery?: Record<string, unknown>,
+): string | null {
 	if (!phone) return null;
 	const cleanPhone = phone.replace(/\D/g, "");
 	if (!cleanPhone) return null;
-	const itemLines = order.items?.map((item) => `- ${item.productName} x${item.quantity}: ${settings.currencySymbol} ${item.subtotal.toFixed(2)}`) ?? [];
+	const itemLines =
+		order.items?.map(
+			(item) =>
+				`- ${item.productName} x${item.quantity}: ${settings.currencySymbol} ${item.subtotal.toFixed(2)}`,
+		) ?? [];
 	const message = [
 		settings.whatsappMessage || "Hola, quiero coordinar el pago de mi pedido.",
 		settings.storeName ? `Tienda: ${settings.storeName}` : null,
 		`Pedido: ${order.orderNumber}`,
 		typeof customer?.name === "string" ? `Cliente: ${customer.name}` : null,
-		typeof delivery?.address === "string" ? `Delivery: ${delivery.address}${typeof delivery.district === "string" ? `, ${delivery.district}` : ""}` : null,
+		typeof delivery?.address === "string"
+			? `Delivery: ${delivery.address}${typeof delivery.district === "string" ? `, ${delivery.district}` : ""}`
+			: null,
 		...itemLines,
 		`Total: ${settings.currencySymbol} ${order.total.toFixed(2)}`,
-	].filter((line): line is string => line !== null).join("\n");
+	]
+		.filter((line): line is string => line !== null)
+		.join("\n");
 	return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 }
 
-export async function handleShopSettingsGet(db: Kysely<Database>): Promise<ApiResult<ShopSettings>> {
+export async function handleShopSettingsGet(
+	db: Kysely<Database>,
+): Promise<ApiResult<ShopSettings>> {
 	try {
 		const row = await db
 			.selectFrom("_emdash_shop_settings")
@@ -285,15 +356,43 @@ export async function handleShopSettingsGet(db: Kysely<Database>): Promise<ApiRe
 			},
 		};
 	} catch {
-		return { success: false, error: { code: "SHOP_SETTINGS_READ_ERROR", message: "Failed to get shop settings" } };
+		return {
+			success: false,
+			error: { code: "SHOP_SETTINGS_READ_ERROR", message: "Failed to get shop settings" },
+		};
 	}
 }
 
-export async function handleShopPublicSettingsGet(db: Kysely<Database>): Promise<ApiResult<ShopPublicSettings>> {
+export async function handleShopPublicSettingsGet(
+	db: Kysely<Database>,
+): Promise<ApiResult<ShopPublicSettings>> {
 	const result = await handleShopSettingsGet(db);
 	if (!result.success) return result;
-	const { id, storeName, currency, currencySymbol, whatsappNumber, whatsappMessage, paymentMethods, deliveryInstructions, businessHours } = result.data;
-	return { success: true, data: { id, storeName, currency, currencySymbol, whatsappNumber, whatsappMessage, paymentMethods, deliveryInstructions, businessHours } };
+	const {
+		id,
+		storeName,
+		currency,
+		currencySymbol,
+		whatsappNumber,
+		whatsappMessage,
+		paymentMethods,
+		deliveryInstructions,
+		businessHours,
+	} = result.data;
+	return {
+		success: true,
+		data: {
+			id,
+			storeName,
+			currency,
+			currencySymbol,
+			whatsappNumber,
+			whatsappMessage,
+			paymentMethods,
+			deliveryInstructions,
+			businessHours,
+		},
+	};
 }
 
 export async function handleShopSettingsUpdate(
@@ -307,26 +406,48 @@ export async function handleShopSettingsUpdate(
 			.where("id", "=", DEFAULT_SETTINGS_ID)
 			.executeTakeFirst();
 		const [paymentGatewaySecretKey, paymentGatewayWebhookSecret] = await Promise.all([
-			preserveOrEncryptShopSecret(input.paymentGatewaySecretKey, existing?.payment_gateway_secret_key),
-			preserveOrEncryptShopSecret(input.paymentGatewayWebhookSecret, existing?.payment_gateway_webhook_secret),
+			preserveOrEncryptShopSecret(
+				input.paymentGatewaySecretKey,
+				existing?.payment_gateway_secret_key,
+			),
+			preserveOrEncryptShopSecret(
+				input.paymentGatewayWebhookSecret,
+				existing?.payment_gateway_webhook_secret,
+			),
 		]);
 		const values = {
 			store_name: input.storeName ?? existing?.store_name ?? "",
 			currency: input.currency ?? existing?.currency ?? DEFAULT_CURRENCY,
-			currency_symbol: input.currencySymbol ?? existing?.currency_symbol ?? currencySymbolForCurrency(input.currency ?? existing?.currency ?? DEFAULT_CURRENCY),
+			currency_symbol:
+				input.currencySymbol ??
+				existing?.currency_symbol ??
+				currencySymbolForCurrency(input.currency ?? existing?.currency ?? DEFAULT_CURRENCY),
 			whatsapp_number: input.whatsappNumber ?? existing?.whatsapp_number ?? null,
 			whatsapp_message: input.whatsappMessage ?? existing?.whatsapp_message ?? null,
-			payment_methods: JSON.stringify(input.paymentMethods ?? parseJsonStringArray(existing?.payment_methods, DEFAULT_PAYMENT_METHODS)),
+			payment_methods: JSON.stringify(
+				input.paymentMethods ??
+					parseJsonStringArray(existing?.payment_methods, DEFAULT_PAYMENT_METHODS),
+			),
 			delivery_instructions: input.deliveryInstructions ?? existing?.delivery_instructions ?? null,
 			business_hours: input.businessHours ?? existing?.business_hours ?? null,
-			payment_gateway_enabled: input.paymentGatewayEnabled === undefined ? (existing?.payment_gateway_enabled ?? 0) : input.paymentGatewayEnabled ? 1 : 0,
-			payment_gateway_provider: input.paymentGatewayProvider ?? existing?.payment_gateway_provider ?? null,
-			payment_gateway_environment: input.paymentGatewayEnvironment ?? existing?.payment_gateway_environment ?? "sandbox",
-			payment_gateway_public_key: input.paymentGatewayPublicKey ?? existing?.payment_gateway_public_key ?? null,
+			payment_gateway_enabled:
+				input.paymentGatewayEnabled === undefined
+					? (existing?.payment_gateway_enabled ?? 0)
+					: input.paymentGatewayEnabled
+						? 1
+						: 0,
+			payment_gateway_provider:
+				input.paymentGatewayProvider ?? existing?.payment_gateway_provider ?? null,
+			payment_gateway_environment:
+				input.paymentGatewayEnvironment ?? existing?.payment_gateway_environment ?? "sandbox",
+			payment_gateway_public_key:
+				input.paymentGatewayPublicKey ?? existing?.payment_gateway_public_key ?? null,
 			payment_gateway_secret_key: paymentGatewaySecretKey,
 			payment_gateway_webhook_secret: paymentGatewayWebhookSecret,
-			payment_gateway_return_url: input.paymentGatewayReturnUrl ?? existing?.payment_gateway_return_url ?? null,
-			payment_gateway_webhook_url: input.paymentGatewayWebhookUrl ?? existing?.payment_gateway_webhook_url ?? null,
+			payment_gateway_return_url:
+				input.paymentGatewayReturnUrl ?? existing?.payment_gateway_return_url ?? null,
+			payment_gateway_webhook_url:
+				input.paymentGatewayWebhookUrl ?? existing?.payment_gateway_webhook_url ?? null,
 			updated_at: new Date().toISOString(),
 		};
 		await db
@@ -336,11 +457,16 @@ export async function handleShopSettingsUpdate(
 			.execute();
 		return handleShopSettingsGet(db);
 	} catch {
-		return { success: false, error: { code: "SHOP_SETTINGS_UPDATE_ERROR", message: "Failed to update shop settings" } };
+		return {
+			success: false,
+			error: { code: "SHOP_SETTINGS_UPDATE_ERROR", message: "Failed to update shop settings" },
+		};
 	}
 }
 
-export async function resolveShopPaymentGatewayCredentials(db: Kysely<Database>): Promise<ShopPaymentGatewayCredentials | null> {
+export async function resolveShopPaymentGatewayCredentials(
+	db: Kysely<Database>,
+): Promise<ShopPaymentGatewayCredentials | null> {
 	const row = await db
 		.selectFrom("_emdash_shop_settings")
 		.select([
@@ -360,14 +486,20 @@ export async function resolveShopPaymentGatewayCredentials(db: Kysely<Database>)
 		provider: row.payment_gateway_provider,
 		environment: row.payment_gateway_environment === "production" ? "production" : "sandbox",
 		publicKey: row.payment_gateway_public_key,
-		secretKey: row.payment_gateway_secret_key ? await decryptShopSecret(row.payment_gateway_secret_key) : null,
-		webhookSecret: row.payment_gateway_webhook_secret ? await decryptShopSecret(row.payment_gateway_webhook_secret) : null,
+		secretKey: row.payment_gateway_secret_key
+			? await decryptShopSecret(row.payment_gateway_secret_key)
+			: null,
+		webhookSecret: row.payment_gateway_webhook_secret
+			? await decryptShopSecret(row.payment_gateway_webhook_secret)
+			: null,
 		returnUrl: row.payment_gateway_return_url,
 		webhookUrl: row.payment_gateway_webhook_url,
 	};
 }
 
-export async function handleShopDeliveryZoneList(db: Kysely<Database>): Promise<ApiResult<ShopDeliveryZone[]>> {
+export async function handleShopDeliveryZoneList(
+	db: Kysely<Database>,
+): Promise<ApiResult<ShopDeliveryZone[]>> {
 	try {
 		const rows = await db
 			.selectFrom("_emdash_shop_delivery_zones")
@@ -377,7 +509,10 @@ export async function handleShopDeliveryZoneList(db: Kysely<Database>): Promise<
 			.execute();
 		return { success: true, data: rows.map(toDeliveryZone) };
 	} catch {
-		return { success: false, error: { code: "SHOP_DELIVERY_ZONE_LIST_ERROR", message: "Failed to list delivery zones" } };
+		return {
+			success: false,
+			error: { code: "SHOP_DELIVERY_ZONE_LIST_ERROR", message: "Failed to list delivery zones" },
+		};
 	}
 }
 
@@ -395,18 +530,28 @@ export async function handleShopDeliveryZoneCreate(
 ): Promise<ApiResult<ShopDeliveryZone>> {
 	try {
 		const id = ulid();
-		await db.insertInto("_emdash_shop_delivery_zones").values({
-			id,
-			name: input.name,
-			districts: JSON.stringify(input.districts),
-			delivery_cost: input.deliveryCost,
-			estimated_time: input.estimatedTime ?? null,
-			active: input.active === false ? 0 : 1,
-		}).execute();
-		const row = await db.selectFrom("_emdash_shop_delivery_zones").selectAll().where("id", "=", id).executeTakeFirstOrThrow();
+		await db
+			.insertInto("_emdash_shop_delivery_zones")
+			.values({
+				id,
+				name: input.name,
+				districts: JSON.stringify(input.districts),
+				delivery_cost: input.deliveryCost,
+				estimated_time: input.estimatedTime ?? null,
+				active: input.active === false ? 0 : 1,
+			})
+			.execute();
+		const row = await db
+			.selectFrom("_emdash_shop_delivery_zones")
+			.selectAll()
+			.where("id", "=", id)
+			.executeTakeFirstOrThrow();
 		return { success: true, data: toDeliveryZone(row) };
 	} catch {
-		return { success: false, error: { code: "SHOP_DELIVERY_ZONE_CREATE_ERROR", message: "Failed to create delivery zone" } };
+		return {
+			success: false,
+			error: { code: "SHOP_DELIVERY_ZONE_CREATE_ERROR", message: "Failed to create delivery zone" },
+		};
 	}
 }
 
@@ -425,20 +570,37 @@ export async function handleShopDeliveryZoneUpdate(
 			updated_at: new Date().toISOString(),
 		};
 		await db.updateTable("_emdash_shop_delivery_zones").set(values).where("id", "=", id).execute();
-		const row = await db.selectFrom("_emdash_shop_delivery_zones").selectAll().where("id", "=", id).executeTakeFirst();
-		if (!row) return { success: false, error: { code: "SHOP_DELIVERY_ZONE_NOT_FOUND", message: "Delivery zone not found" } };
+		const row = await db
+			.selectFrom("_emdash_shop_delivery_zones")
+			.selectAll()
+			.where("id", "=", id)
+			.executeTakeFirst();
+		if (!row)
+			return {
+				success: false,
+				error: { code: "SHOP_DELIVERY_ZONE_NOT_FOUND", message: "Delivery zone not found" },
+			};
 		return { success: true, data: toDeliveryZone(row) };
 	} catch {
-		return { success: false, error: { code: "SHOP_DELIVERY_ZONE_UPDATE_ERROR", message: "Failed to update delivery zone" } };
+		return {
+			success: false,
+			error: { code: "SHOP_DELIVERY_ZONE_UPDATE_ERROR", message: "Failed to update delivery zone" },
+		};
 	}
 }
 
-export async function handleShopDeliveryZoneDelete(db: Kysely<Database>, id: string): Promise<ApiResult<null>> {
+export async function handleShopDeliveryZoneDelete(
+	db: Kysely<Database>,
+	id: string,
+): Promise<ApiResult<null>> {
 	try {
 		await db.deleteFrom("_emdash_shop_delivery_zones").where("id", "=", id).execute();
 		return { success: true, data: null };
 	} catch {
-		return { success: false, error: { code: "SHOP_DELIVERY_ZONE_DELETE_ERROR", message: "Failed to delete delivery zone" } };
+		return {
+			success: false,
+			error: { code: "SHOP_DELIVERY_ZONE_DELETE_ERROR", message: "Failed to delete delivery zone" },
+		};
 	}
 }
 
@@ -450,19 +612,31 @@ export async function handleShopProductList(db: Kysely<Database>): Promise<ApiRe
 		});
 		return { success: true, data: result.items.filter((item) => isProductAvailable(item.data)) };
 	} catch {
-		return { success: false, error: { code: "SHOP_PRODUCT_LIST_ERROR", message: "Failed to list shop products" } };
+		return {
+			success: false,
+			error: { code: "SHOP_PRODUCT_LIST_ERROR", message: "Failed to list shop products" },
+		};
 	}
 }
 
-export async function handleShopProductGet(db: Kysely<Database>, id: string): Promise<ApiResult<unknown>> {
+export async function handleShopProductGet(
+	db: Kysely<Database>,
+	id: string,
+): Promise<ApiResult<unknown>> {
 	try {
 		const product = await new ContentRepository(db).findByIdOrSlug(SHOP_COLLECTION, id);
 		if (!product || product.status !== "published" || !isProductAvailable(product.data)) {
-			return { success: false, error: { code: "SHOP_PRODUCT_NOT_FOUND", message: "Product not found" } };
+			return {
+				success: false,
+				error: { code: "SHOP_PRODUCT_NOT_FOUND", message: "Product not found" },
+			};
 		}
 		return { success: true, data: product };
 	} catch {
-		return { success: false, error: { code: "SHOP_PRODUCT_GET_ERROR", message: "Failed to get shop product" } };
+		return {
+			success: false,
+			error: { code: "SHOP_PRODUCT_GET_ERROR", message: "Failed to get shop product" },
+		};
 	}
 }
 
@@ -480,22 +654,30 @@ export async function handleShopOrderCreate(
 			.where("id", "=", input.deliveryZoneId)
 			.where("active", "=", 1)
 			.executeTakeFirst();
-		if (!zone) return { success: false, error: { code: "SHOP_DELIVERY_ZONE_NOT_FOUND", message: "Delivery zone not found" } };
-		if (input.items.length === 0) return { success: false, error: { code: "SHOP_ORDER_EMPTY", message: "Order must contain at least one product" } };
+		if (!zone)
+			return {
+				success: false,
+				error: { code: "SHOP_DELIVERY_ZONE_NOT_FOUND", message: "Delivery zone not found" },
+			};
+		if (input.items.length === 0)
+			return {
+				success: false,
+				error: { code: "SHOP_ORDER_EMPTY", message: "Order must contain at least one product" },
+			};
 
 		const products = new ContentRepository(db);
-		const requestedQuantities = new Map<string, { productId: string; variantId?: string; quantity: number }>();
+		const requestedQuantities = new Map<
+			string,
+			{ productId: string; variantId?: string; quantity: number }
+		>();
 		for (const inputItem of input.items) {
 			const key = `${inputItem.productId}:${inputItem.variantId ?? ""}`;
 			const current = requestedQuantities.get(key);
-			requestedQuantities.set(
-				key,
-				{
-					productId: inputItem.productId,
-					variantId: inputItem.variantId,
-					quantity: (current?.quantity ?? 0) + inputItem.quantity,
-				},
-			);
+			requestedQuantities.set(key, {
+				productId: inputItem.productId,
+				variantId: inputItem.variantId,
+				quantity: (current?.quantity ?? 0) + inputItem.quantity,
+			});
 		}
 		const items = [] as Array<{
 			productId: string;
@@ -510,26 +692,43 @@ export async function handleShopOrderCreate(
 		for (const requested of requestedQuantities.values()) {
 			const product = await products.findByIdOrSlug(SHOP_COLLECTION, requested.productId);
 			if (!product || product.status !== "published" || !isProductAvailable(product.data)) {
-				return { success: false, error: { code: "SHOP_PRODUCT_UNAVAILABLE", message: "Product is not available" } };
+				return {
+					success: false,
+					error: { code: "SHOP_PRODUCT_UNAVAILABLE", message: "Product is not available" },
+				};
 			}
 			const variants = productVariants(product.data);
 			const variant = requested.variantId
 				? variants.find((item) => (item.id ?? item.label) === requested.variantId)
 				: undefined;
 			if (requested.variantId && !variant) {
-				return { success: false, error: { code: "SHOP_VARIANT_NOT_FOUND", message: "Product variation not found" } };
+				return {
+					success: false,
+					error: { code: "SHOP_VARIANT_NOT_FOUND", message: "Product variation not found" },
+				};
 			}
-			const price = variant && typeof variant.price === "number" && variant.price >= 0
-				? { price: variant.price, discount: 0 }
-				: productPrice(product.data);
+			const price =
+				variant && typeof variant.price === "number" && variant.price >= 0
+					? { price: variant.price, discount: 0 }
+					: productPrice(product.data);
 			const stock = variant?.stock ?? product.data.stock;
 			if (!price || !Number.isInteger(requested.quantity) || requested.quantity < 1) {
-				return { success: false, error: { code: "SHOP_PRODUCT_INVALID", message: "Product price or quantity is invalid" } };
+				return {
+					success: false,
+					error: { code: "SHOP_PRODUCT_INVALID", message: "Product price or quantity is invalid" },
+				};
 			}
 			if (typeof stock === "number" && requested.quantity > stock) {
-				return { success: false, error: { code: "SHOP_STOCK_UNAVAILABLE", message: "Requested quantity exceeds available stock" } };
+				return {
+					success: false,
+					error: {
+						code: "SHOP_STOCK_UNAVAILABLE",
+						message: "Requested quantity exceeds available stock",
+					},
+				};
 			}
-			const productName = typeof product.data.name === "string" ? product.data.name : product.slug || product.id;
+			const productName =
+				typeof product.data.name === "string" ? product.data.name : product.slug || product.id;
 			items.push({
 				productId: product.id,
 				productName: variant?.label ? `${productName} (${variant.label})` : productName,
@@ -561,9 +760,14 @@ export async function handleShopOrderCreate(
 		await withTransaction(db, async (trx) => {
 			for (const item of items) {
 				if (item.variantId) {
-					const currentProduct = await new ContentRepository(trx).findById(SHOP_COLLECTION, item.productId);
+					const currentProduct = await new ContentRepository(trx).findById(
+						SHOP_COLLECTION,
+						item.productId,
+					);
 					const currentVariants = currentProduct ? productVariants(currentProduct.data) : [];
-					const currentVariant = currentVariants.find((variant) => (variant.id ?? variant.label) === item.variantId);
+					const currentVariant = currentVariants.find(
+						(variant) => (variant.id ?? variant.label) === item.variantId,
+					);
 					const currentStock = currentVariant?.stock;
 					if (!currentProduct || !currentVariant) {
 						throw new ShopStockError();
@@ -619,48 +823,148 @@ export async function handleShopOrderCreate(
 					notes: input.notes ?? null,
 				})
 				.execute();
-			await trx.insertInto("_emdash_shop_order_items").values(items.map((item) => ({
-				id: ulid(), order_id: orderId, product_id: item.productId, variant_id: item.variantId,
-				product_name: item.productName, variant_name: item.variantName, unit_price: item.unitPrice,
-				quantity: item.quantity, discount: item.discount, subtotal: item.subtotal,
-			}))).execute();
-			await trx.insertInto("_emdash_shop_payments").values({
-				id: ulid(), order_id: orderId, method: input.paymentMethod, amount: subtotal + deliveryCost,
-			}).execute();
-			await trx.insertInto("_emdash_shop_deliveries").values({
-				id: ulid(), order_id: orderId, zone: zone.name, address: input.customer.address,
-				district: input.customer.district, reference: input.customer.reference ?? null,
-				phone: input.customer.phone, delivery_cost: deliveryCost,
-			}).execute();
+			await trx
+				.insertInto("_emdash_shop_order_items")
+				.values(
+					items.map((item) => ({
+						id: ulid(),
+						order_id: orderId,
+						product_id: item.productId,
+						variant_id: item.variantId,
+						product_name: item.productName,
+						variant_name: item.variantName,
+						unit_price: item.unitPrice,
+						quantity: item.quantity,
+						discount: item.discount,
+						subtotal: item.subtotal,
+					})),
+				)
+				.execute();
+			await trx
+				.insertInto("_emdash_shop_payments")
+				.values({
+					id: ulid(),
+					order_id: orderId,
+					method: input.paymentMethod,
+					amount: subtotal + deliveryCost,
+				})
+				.execute();
+			await trx
+				.insertInto("_emdash_shop_deliveries")
+				.values({
+					id: ulid(),
+					order_id: orderId,
+					zone: zone.name,
+					address: input.customer.address,
+					district: input.customer.district,
+					reference: input.customer.reference ?? null,
+					phone: input.customer.phone,
+					delivery_cost: deliveryCost,
+				})
+				.execute();
 		});
 		invalidateCollectionCache(SHOP_COLLECTION);
 
 		return {
 			success: true,
 			data: {
-				id: orderId, orderNumber, status: "new", paymentStatus: "pending", deliveryStatus: "pending",
-				currency: settings.currency, currencySymbol: settings.currencySymbol, subtotal, discount, deliveryCost, total: subtotal + deliveryCost,
-				whatsappUrl: makeWhatsAppUrl(settings.whatsappNumber, { id: orderId, orderNumber, status: "new", paymentStatus: "pending", deliveryStatus: "pending", currency: settings.currency, currencySymbol: settings.currencySymbol, subtotal, discount, deliveryCost, total: subtotal + deliveryCost, whatsappUrl: null, items: items.map((item) => ({ id: "", productId: item.productId, variantId: item.variantId, productName: item.productName, variantName: item.variantName, unitPrice: item.unitPrice, quantity: item.quantity, discount: item.discount, subtotal: item.subtotal })) }, settings, customerSnapshot, deliverySnapshot),
+				id: orderId,
+				orderNumber,
+				status: "new",
+				paymentStatus: "pending",
+				deliveryStatus: "pending",
+				currency: settings.currency,
+				currencySymbol: settings.currencySymbol,
+				subtotal,
+				discount,
+				deliveryCost,
+				total: subtotal + deliveryCost,
+				whatsappUrl: makeWhatsAppUrl(
+					settings.whatsappNumber,
+					{
+						id: orderId,
+						orderNumber,
+						status: "new",
+						paymentStatus: "pending",
+						deliveryStatus: "pending",
+						currency: settings.currency,
+						currencySymbol: settings.currencySymbol,
+						subtotal,
+						discount,
+						deliveryCost,
+						total: subtotal + deliveryCost,
+						whatsappUrl: null,
+						items: items.map((item) => ({
+							id: "",
+							productId: item.productId,
+							variantId: item.variantId,
+							productName: item.productName,
+							variantName: item.variantName,
+							unitPrice: item.unitPrice,
+							quantity: item.quantity,
+							discount: item.discount,
+							subtotal: item.subtotal,
+						})),
+					},
+					settings,
+					customerSnapshot,
+					deliverySnapshot,
+				),
 			},
 		};
 	} catch (error) {
 		if (error instanceof ShopStockError) {
-			return { success: false, error: { code: "SHOP_STOCK_UNAVAILABLE", message: "Requested quantity is no longer available" } };
+			return {
+				success: false,
+				error: {
+					code: "SHOP_STOCK_UNAVAILABLE",
+					message: "Requested quantity is no longer available",
+				},
+			};
 		}
-		return { success: false, error: { code: "SHOP_ORDER_CREATE_ERROR", message: "Failed to create order" } };
+		return {
+			success: false,
+			error: { code: "SHOP_ORDER_CREATE_ERROR", message: "Failed to create order" },
+		};
 	}
 }
 
-export async function handleShopOrderList(db: Kysely<Database>): Promise<ApiResult<ShopOrderSummary[]>> {
+export async function handleShopOrderList(
+	db: Kysely<Database>,
+): Promise<ApiResult<ShopOrderSummary[]>> {
 	try {
 		const [rows, settings] = await Promise.all([
-			db.selectFrom("_emdash_shop_orders").selectAll().orderBy("created_at", "desc").limit(100).execute(),
+			db
+				.selectFrom("_emdash_shop_orders")
+				.selectAll()
+				.orderBy("created_at", "desc")
+				.limit(100)
+				.execute(),
 			handleShopSettingsGet(db),
 		]);
 		if (!settings.success) return settings;
-		return { success: true, data: rows.map((row) => ({ id: row.id, orderNumber: row.order_number, status: row.status, paymentStatus: row.payment_status, deliveryStatus: row.delivery_status, currency: row.currency, currencySymbol: settings.data.currencySymbol, subtotal: row.subtotal, discount: row.discount, deliveryCost: row.delivery_cost, total: row.total, whatsappUrl: null })) };
+		return {
+			success: true,
+			data: rows.map((row) => ({
+				id: row.id,
+				orderNumber: row.order_number,
+				status: row.status,
+				paymentStatus: row.payment_status,
+				deliveryStatus: row.delivery_status,
+				currency: row.currency,
+				currencySymbol: settings.data.currencySymbol,
+				subtotal: row.subtotal,
+				discount: row.discount,
+				deliveryCost: row.delivery_cost,
+				total: row.total,
+				whatsappUrl: null,
+			})),
+		};
 	} catch {
-		return { success: false, error: { code: "SHOP_ORDER_LIST_ERROR", message: "Failed to list orders" } };
+		return {
+			success: false,
+			error: { code: "SHOP_ORDER_LIST_ERROR", message: "Failed to list orders" },
+		};
 	}
 }
 
@@ -683,11 +987,23 @@ export interface ShopCustomerSummary {
 	orders: Array<{ orderNumber: string; status: string; total: number; createdAt: string | null }>;
 }
 
-export async function handleShopCustomerList(db: Kysely<Database>): Promise<ApiResult<ShopCustomerSummary[]>> {
+export async function handleShopCustomerList(
+	db: Kysely<Database>,
+): Promise<ApiResult<ShopCustomerSummary[]>> {
 	try {
 		const [rows, orders] = await Promise.all([
-			db.selectFrom("_emdash_shop_customers").selectAll().orderBy("created_at", "desc").limit(100).execute(),
-			db.selectFrom("_emdash_shop_orders").select(["customer_id", "order_number", "status", "total", "created_at"]).orderBy("created_at", "desc").limit(500).execute(),
+			db
+				.selectFrom("_emdash_shop_customers")
+				.selectAll()
+				.orderBy("created_at", "desc")
+				.limit(100)
+				.execute(),
+			db
+				.selectFrom("_emdash_shop_orders")
+				.select(["customer_id", "order_number", "status", "total", "created_at"])
+				.orderBy("created_at", "desc")
+				.limit(500)
+				.execute(),
 		]);
 		const ordersByCustomer = new Map<string, typeof orders>();
 		for (const order of orders) {
@@ -709,94 +1025,215 @@ export async function handleShopCustomerList(db: Kysely<Database>): Promise<ApiR
 				createdAt: row.created_at ?? null,
 				updatedAt: row.updated_at ?? null,
 				orderCount: ordersByCustomer.get(row.id)?.length ?? 0,
-				totalSpent: (ordersByCustomer.get(row.id) ?? []).reduce((sum, order) => sum + order.total, 0),
+				totalSpent: (ordersByCustomer.get(row.id) ?? []).reduce(
+					(sum, order) => sum + order.total,
+					0,
+				),
 				lastOrderNumber: ordersByCustomer.get(row.id)?.[0]?.order_number ?? null,
 				lastOrderStatus: ordersByCustomer.get(row.id)?.[0]?.status ?? null,
 				lastOrderCreatedAt: ordersByCustomer.get(row.id)?.[0]?.created_at ?? null,
-				orders: (ordersByCustomer.get(row.id) ?? []).map((order) => ({ orderNumber: order.order_number, status: order.status, total: order.total, createdAt: order.created_at ?? null })),
+				orders: (ordersByCustomer.get(row.id) ?? []).map((order) => ({
+					orderNumber: order.order_number,
+					status: order.status,
+					total: order.total,
+					createdAt: order.created_at ?? null,
+				})),
 			})),
 		};
 	} catch {
-		return { success: false, error: { code: "SHOP_CUSTOMER_LIST_ERROR", message: "Failed to list customers" } };
+		return {
+			success: false,
+			error: { code: "SHOP_CUSTOMER_LIST_ERROR", message: "Failed to list customers" },
+		};
 	}
 }
 
-export async function handleShopOrderGet(db: Kysely<Database>, id: string): Promise<ApiResult<ShopOrderDetail>> {
+export async function handleShopOrderGet(
+	db: Kysely<Database>,
+	id: string,
+): Promise<ApiResult<ShopOrderDetail>> {
 	try {
-		const order = await db.selectFrom("_emdash_shop_orders").selectAll().where("id", "=", id).executeTakeFirst();
-		if (!order) return { success: false, error: { code: "SHOP_ORDER_NOT_FOUND", message: "Order not found" } };
+		const order = await db
+			.selectFrom("_emdash_shop_orders")
+			.selectAll()
+			.where("id", "=", id)
+			.executeTakeFirst();
+		if (!order)
+			return {
+				success: false,
+				error: { code: "SHOP_ORDER_NOT_FOUND", message: "Order not found" },
+			};
 		const [items, settings] = await Promise.all([
-			db.selectFrom("_emdash_shop_order_items").selectAll().where("order_id", "=", id).orderBy("created_at", "asc").execute(),
+			db
+				.selectFrom("_emdash_shop_order_items")
+				.selectAll()
+				.where("order_id", "=", id)
+				.orderBy("created_at", "asc")
+				.execute(),
 			handleShopSettingsGet(db),
 		]);
 		if (!settings.success) return settings;
 		const customer = parseJsonRecord(order.customer_snapshot);
 		const delivery = parseJsonRecord(order.delivery_snapshot);
 		const summary = {
-			id: order.id, orderNumber: order.order_number, status: order.status, paymentStatus: order.payment_status,
-			deliveryStatus: order.delivery_status, currency: order.currency, currencySymbol: settings.data.currencySymbol, subtotal: order.subtotal, discount: order.discount,
-			deliveryCost: order.delivery_cost, total: order.total, whatsappUrl: null,
+			id: order.id,
+			orderNumber: order.order_number,
+			status: order.status,
+			paymentStatus: order.payment_status,
+			deliveryStatus: order.delivery_status,
+			currency: order.currency,
+			currencySymbol: settings.data.currencySymbol,
+			subtotal: order.subtotal,
+			discount: order.discount,
+			deliveryCost: order.delivery_cost,
+			total: order.total,
+			whatsappUrl: null,
 		};
 		const detail: ShopOrderDetail = {
 			...summary,
-			items: items.map((item) => ({ id: item.id, productId: item.product_id, variantId: item.variant_id, productName: item.product_name, variantName: item.variant_name, unitPrice: item.unit_price, quantity: item.quantity, discount: item.discount, subtotal: item.subtotal })),
-			customer, delivery, notes: order.notes,
+			items: items.map((item) => ({
+				id: item.id,
+				productId: item.product_id,
+				variantId: item.variant_id,
+				productName: item.product_name,
+				variantName: item.variant_name,
+				unitPrice: item.unit_price,
+				quantity: item.quantity,
+				discount: item.discount,
+				subtotal: item.subtotal,
+			})),
+			customer,
+			delivery,
+			notes: order.notes,
 		};
 		const phone = typeof customer.phone === "string" ? customer.phone : null;
 		detail.whatsappUrl = makeWhatsAppUrl(phone, detail, settings.data, customer, delivery);
 		return { success: true, data: detail };
 	} catch {
-		return { success: false, error: { code: "SHOP_ORDER_GET_ERROR", message: "Failed to get order" } };
+		return {
+			success: false,
+			error: { code: "SHOP_ORDER_GET_ERROR", message: "Failed to get order" },
+		};
 	}
 }
 
-export async function handleShopOrderGetByNumber(db: Kysely<Database>, orderNumber: string): Promise<ApiResult<ShopOrderDetail>> {
+export async function handleShopOrderGetByNumber(
+	db: Kysely<Database>,
+	orderNumber: string,
+): Promise<ApiResult<ShopOrderDetail>> {
 	try {
 		const decodedOrderNumber = decodeURIComponent(orderNumber).trim();
-		const normalizedOrderNumber = decodedOrderNumber.startsWith("#") ? decodedOrderNumber : `#${decodedOrderNumber}`;
-		const order = await db.selectFrom("_emdash_shop_orders").select("id").where("order_number", "=", normalizedOrderNumber).executeTakeFirst();
-		if (!order) return { success: false, error: { code: "SHOP_ORDER_NOT_FOUND", message: "Order not found" } };
+		const normalizedOrderNumber = decodedOrderNumber.startsWith("#")
+			? decodedOrderNumber
+			: `#${decodedOrderNumber}`;
+		const order = await db
+			.selectFrom("_emdash_shop_orders")
+			.select("id")
+			.where("order_number", "=", normalizedOrderNumber)
+			.executeTakeFirst();
+		if (!order)
+			return {
+				success: false,
+				error: { code: "SHOP_ORDER_NOT_FOUND", message: "Order not found" },
+			};
 		const detail = await handleShopOrderGet(db, order.id);
 		if (!detail.success) return detail;
 		const repository = new ContentRepository(db);
-		const publicItems = await Promise.all(detail.data.items.map(async (item) => {
-			const product = await repository.findById(SHOP_COLLECTION, item.productId);
-			const variants = product && Array.isArray(product.data.variants) ? product.data.variants : [];
-			const selectedVariant = variants.find((variant) => isRecord(variant) && (variant.id ?? variant.label) === item.variantId);
-			const image = isRecord(selectedVariant) && selectedVariant.image ? selectedVariant.image : product?.data.featured_image;
-			const imageRecord = isRecord(image) ? image : null;
-			const imageUrl = typeof imageRecord?.src === "string"
-				? imageRecord.src
-				: typeof imageRecord?.meta === "object" && imageRecord.meta !== null && typeof (imageRecord.meta as Record<string, unknown>).storageKey === "string"
-					? `/_emdash/api/media/file/${(imageRecord.meta as Record<string, unknown>).storageKey}`
-					: typeof imageRecord?.id === "string" ? `/_emdash/api/media/file/${imageRecord.id}` : null;
-			return { ...item, imageUrl };
-		}));
-		return { success: true, data: { ...detail.data, items: publicItems, customer: {}, delivery: {}, notes: null } };
+		const publicItems = await Promise.all(
+			detail.data.items.map(async (item) => {
+				const product = await repository.findById(SHOP_COLLECTION, item.productId);
+				const variants =
+					product && Array.isArray(product.data.variants) ? product.data.variants : [];
+				const selectedVariant = variants.find(
+					(variant) => isRecord(variant) && (variant.id ?? variant.label) === item.variantId,
+				);
+				const image =
+					isRecord(selectedVariant) && selectedVariant.image
+						? selectedVariant.image
+						: product?.data.featured_image;
+				const imageRecord = isRecord(image) ? image : null;
+				const imageSrc = getStringField(imageRecord, "src");
+				const storageKey = getStringField(imageRecord?.meta, "storageKey");
+				const imageId = getStringField(imageRecord, "id");
+				const imageUrl = imageSrc
+					? imageSrc
+					: storageKey
+						? `/_emdash/api/media/file/${storageKey}`
+						: imageId
+							? `/_emdash/api/media/file/${imageId}`
+							: null;
+				return { ...item, imageUrl };
+			}),
+		);
+		return {
+			success: true,
+			data: { ...detail.data, items: publicItems, customer: {}, delivery: {}, notes: null },
+		};
 	} catch {
-		return { success: false, error: { code: "SHOP_ORDER_LOOKUP_ERROR", message: "Failed to find order" } };
+		return {
+			success: false,
+			error: { code: "SHOP_ORDER_LOOKUP_ERROR", message: "Failed to find order" },
+		};
 	}
 }
 
-export async function handleShopPaymentConfirm(db: Kysely<Database>, orderId: string, confirmedBy: string): Promise<ApiResult<null>> {
+export async function handleShopPaymentConfirm(
+	db: Kysely<Database>,
+	orderId: string,
+	confirmedBy: string,
+): Promise<ApiResult<null>> {
 	try {
 		const now = new Date().toISOString();
-		await db.updateTable("_emdash_shop_orders").set({ payment_status: "confirmed", status: "confirmed", updated_at: now }).where("id", "=", orderId).execute();
-		await db.updateTable("_emdash_shop_payments").set({ status: "confirmed", confirmed_by: confirmedBy, confirmed_at: now }).where("order_id", "=", orderId).execute();
+		await db
+			.updateTable("_emdash_shop_orders")
+			.set({ payment_status: "confirmed", status: "confirmed", updated_at: now })
+			.where("id", "=", orderId)
+			.execute();
+		await db
+			.updateTable("_emdash_shop_payments")
+			.set({ status: "confirmed", confirmed_by: confirmedBy, confirmed_at: now })
+			.where("order_id", "=", orderId)
+			.execute();
 		return { success: true, data: null };
 	} catch {
-		return { success: false, error: { code: "SHOP_PAYMENT_CONFIRM_ERROR", message: "Failed to confirm payment" } };
+		return {
+			success: false,
+			error: { code: "SHOP_PAYMENT_CONFIRM_ERROR", message: "Failed to confirm payment" },
+		};
 	}
 }
 
-export async function handleShopDeliveryUpdate(db: Kysely<Database>, orderId: string, status: string, courierName?: string): Promise<ApiResult<null>> {
+export async function handleShopDeliveryUpdate(
+	db: Kysely<Database>,
+	orderId: string,
+	status: string,
+	courierName?: string,
+): Promise<ApiResult<null>> {
 	try {
 		const now = new Date().toISOString();
-		await db.updateTable("_emdash_shop_deliveries").set({ status, courier_name: courierName ?? null, updated_at: now }).where("order_id", "=", orderId).execute();
-		const orderStatus = status === "delivered" ? "delivered" : status === "in_transit" ? "in_transit" : status === "not_delivered" ? "not_delivered" : "ready";
-		await db.updateTable("_emdash_shop_orders").set({ delivery_status: status, status: orderStatus, updated_at: now }).where("id", "=", orderId).execute();
+		await db
+			.updateTable("_emdash_shop_deliveries")
+			.set({ status, courier_name: courierName ?? null, updated_at: now })
+			.where("order_id", "=", orderId)
+			.execute();
+		const orderStatus =
+			status === "delivered"
+				? "delivered"
+				: status === "in_transit"
+					? "in_transit"
+					: status === "not_delivered"
+						? "not_delivered"
+						: "ready";
+		await db
+			.updateTable("_emdash_shop_orders")
+			.set({ delivery_status: status, status: orderStatus, updated_at: now })
+			.where("id", "=", orderId)
+			.execute();
 		return { success: true, data: null };
 	} catch {
-		return { success: false, error: { code: "SHOP_DELIVERY_UPDATE_ERROR", message: "Failed to update delivery" } };
+		return {
+			success: false,
+			error: { code: "SHOP_DELIVERY_UPDATE_ERROR", message: "Failed to update delivery" },
+		};
 	}
 }
