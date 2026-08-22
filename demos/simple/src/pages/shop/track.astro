@@ -1,0 +1,58 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="Track order" description="Track your order by order number.">
+	<main class="track-page">
+		<p class="eyebrow">Order tracking</p>
+		<h1>Track your order</h1>
+		<p>Enter the order number you received after checkout.</p>
+		<form id="track-form">
+			<label>Order number <input name="orderNumber" placeholder="#ABC123-4567" required /></label>
+			<button type="submit">View order</button>
+		</form>
+		<section class="order-card" id="tracked-order" hidden></section>
+	</main>
+</Base>
+
+<script is:inline>
+	const form = document.querySelector("#track-form");
+	const result = document.querySelector("#tracked-order");
+	const labels = { new: "Received", confirmed: "Confirmed", preparing: "Preparing", ready: "Ready for delivery", in_transit: "In delivery", delivered: "Delivered", cancelled: "Cancelled", pending: "Pending" };
+	const money = (value, symbol) => `${symbol} ${new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}`;
+	form?.addEventListener("submit", async (event) => {
+		event.preventDefault();
+		const number = new FormData(form).get("orderNumber");
+		if (result) { result.hidden = false; result.textContent = "Loading order…"; }
+		try {
+			const response = await fetch(`/_emdash/api/shop/orders/${encodeURIComponent(String(number))}`);
+			const body = await response.json();
+			if (!response.ok) throw new Error(body?.error?.message ?? "Order not found.");
+			const order = body.data;
+			result.replaceChildren();
+			const title = document.createElement("h2"); title.textContent = `Order ${order.orderNumber}`;
+			const status = document.createElement("p"); status.textContent = `Status: ${labels[order.status] ?? order.status} · Payment: ${labels[order.paymentStatus] ?? order.paymentStatus} · Delivery: ${labels[order.deliveryStatus] ?? order.deliveryStatus}`;
+			result.append(title, status);
+			for (const item of order.items) { const row = document.createElement("div"); row.className = "order-item"; if (item.imageUrl) { const image = document.createElement("img"); image.src = item.imageUrl; image.alt = item.productName; row.append(image); } const text = document.createElement("p"); text.textContent = `${item.productName} × ${item.quantity} — ${money(item.subtotal, order.currencySymbol)}`; row.append(text); result.append(row); }
+			const total = document.createElement("strong"); total.textContent = `Total: ${money(order.total, order.currencySymbol)}`; result.append(total);
+			if (order.whatsappUrl) { const link = document.createElement("a"); link.className = "whatsapp-link"; link.href = order.whatsappUrl; link.target = "_blank"; link.rel = "noreferrer"; link.textContent = "Coordinate payment through WhatsApp"; result.append(link); }
+		} catch (error) { result.textContent = error instanceof Error ? error.message : "Could not load order."; }
+	});
+</script>
+
+<style>
+	.track-page { max-width: 720px; margin: 0 auto; padding: var(--spacing-16) var(--spacing-6); }
+	.eyebrow { color: var(--color-accent); font-size: var(--font-size-sm); font-weight: 700; text-transform: uppercase; }
+	.track-page > p:not(.eyebrow) { color: var(--color-text-secondary); }
+	#track-form { display: grid; gap: var(--spacing-4); margin-top: var(--spacing-8); padding: var(--spacing-6); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+	#track-form label { display: grid; gap: var(--spacing-2); }
+	#track-form input { padding: var(--spacing-3); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); }
+	#track-form button { padding: var(--spacing-3); border: 0; border-radius: var(--radius); background: var(--color-accent); color: var(--color-on-accent); font-weight: 700; }
+	.order-card { display: grid; gap: var(--spacing-3); margin-top: var(--spacing-8); padding: var(--spacing-6); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+	.order-card p { margin: 0; padding-bottom: var(--spacing-3); border-bottom: 1px solid var(--color-border); }
+	.order-item { display: flex; align-items: center; gap: var(--spacing-3); padding-bottom: var(--spacing-3); border-bottom: 1px solid var(--color-border); }
+	.order-item p { padding: 0; border: 0; }
+	.order-item img { width: 64px; height: 64px; border-radius: var(--radius); object-fit: contain; background: var(--color-bg-subtle); }
+	.order-card strong { font-size: var(--font-size-xl); }
+	.whatsapp-link { display: inline-block; margin-top: var(--spacing-3); padding: var(--spacing-3) var(--spacing-4); border-radius: var(--radius); background: var(--color-accent); color: var(--color-on-accent); font-weight: 700; text-align: center; text-decoration: none; }
+</style>

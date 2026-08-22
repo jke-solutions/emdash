@@ -75,6 +75,76 @@
 					"type": "text"
 				}
 			]
+		},
+		{
+			"slug": "products",
+			"label": "Products",
+			"labelSingular": "Product",
+			"supports": ["drafts", "preview", "search"],
+			"urlPattern": "/shop/products/{slug}",
+			"fields": [
+				{
+					"slug": "name",
+					"label": "Name",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "featured_image",
+					"label": "Product image",
+					"type": "image"
+				},
+				{
+					"slug": "has_variations",
+					"label": "Has variations",
+					"type": "boolean"
+				},
+				{
+					"slug": "variants",
+					"label": "Product variations",
+					"type": "repeater",
+					"validation": {
+						"subFields": [
+							{ "slug": "label", "label": "Color or size", "type": "string", "required": true },
+							{ "slug": "image", "label": "Variation image", "type": "image" },
+							{ "slug": "stock", "label": "Stock", "type": "integer", "required": true },
+							{ "slug": "price", "label": "Price override", "type": "number" }
+						],
+						"maxItems": 50
+					}
+				},
+				{
+					"slug": "rich_description",
+					"label": "Rich description",
+					"type": "portableText"
+				},
+				{
+					"slug": "price",
+					"label": "Price",
+					"type": "number",
+					"required": true
+				},
+				{
+					"slug": "stock",
+					"label": "Stock",
+					"type": "integer",
+					"required": true
+				},
+				{
+					"slug": "promotion_price",
+					"label": "Promotion price",
+					"type": "number"
+				},
+				{
+					"slug": "availability_status",
+					"label": "Availability",
+					"type": "select",
+					"validation": {
+						"options": ["available", "sold_out", "hidden"]
+					}
+				}
+			]
 		}
 	],
 
@@ -274,6 +344,45 @@
 							]
 						}
 					]
+				}
+			}
+		],
+		"products": [
+			{
+				"id": "coffee-bag",
+				"slug": "coffee-bag",
+				"status": "published",
+				"data": {
+					"name": "Coffee Bag",
+					"rich_description": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [{ "_type": "span", "text": "Freshly roasted coffee for the demo store." }]
+						}
+					],
+					"price": 28,
+					"stock": 10,
+					"promotion_price": 24,
+					"availability_status": "available"
+				}
+			},
+			{
+				"id": "ceramic-mug",
+				"slug": "ceramic-mug",
+				"status": "published",
+				"data": {
+					"name": "Ceramic Mug",
+					"rich_description": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [{ "_type": "span", "text": "A simple ceramic mug for the demo store." }]
+						}
+					],
+					"price": 35,
+					"stock": 5,
+					"availability_status": "available"
 				}
 			}
 		],

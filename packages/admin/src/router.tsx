@@ -51,6 +51,7 @@ import { SandboxedPluginPage } from "./components/SandboxedPluginPage";
 import { SectionEditor } from "./components/SectionEditor";
 import { Sections } from "./components/Sections";
 import { Settings } from "./components/Settings";
+import { Shop } from "./routes/shop";
 import { AllowedDomainsSettings } from "./components/settings/AllowedDomainsSettings";
 import { ApiTokenSettings } from "./components/settings/ApiTokenSettings";
 import { BackupSettings } from "./components/settings/BackupSettings";
@@ -1602,6 +1603,13 @@ const settingsRoute = createRoute({
 	component: Settings,
 });
 
+// Ecommerce administration route
+const shopRoute = createRoute({
+	getParentRoute: () => adminLayoutRoute,
+	path: "/shop",
+	component: Shop,
+});
+
 // Security settings route
 const securitySettingsRoute = createRoute({
 	getParentRoute: () => adminLayoutRoute,
@@ -2184,6 +2192,7 @@ const adminRoutes = adminLayoutRoute.addChildren([
 	bylineSchemaRoute,
 	widgetsRoute,
 	settingsRoute,
+	shopRoute,
 	generalSettingsRoute,
 	socialSettingsRoute,
 	seoSettingsRoute,

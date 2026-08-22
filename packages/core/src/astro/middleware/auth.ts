@@ -98,6 +98,7 @@ const PUBLIC_API_PREFIXES = [
 	"/_emdash/api/oauth/register",
 	"/_emdash/api/comments/",
 	"/_emdash/api/media/file/",
+	"/_emdash/api/shop/",
 	"/_emdash/.well-known/",
 ];
 

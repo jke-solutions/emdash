@@ -34,6 +34,7 @@ import {
 	Signature,
 	SquaresFour,
 	Star,
+	Storefront,
 	Tag,
 	Trophy,
 	Upload,
@@ -61,6 +62,7 @@ export const ADMIN_NAV_ICONS = {
 	contentTypes: Database,
 	plugins: Plug,
 	import: Download,
+	shop: Storefront,
 } as const satisfies Record<string, Icon>;
 
 const COLLECTION_NAV_ICON_OVERRIDES: Record<string, Icon> = {

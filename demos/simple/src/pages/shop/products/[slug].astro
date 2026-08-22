@@ -1,0 +1,459 @@
+---
+import { decodeSlug, getEmDashEntry, getSeoMeta } from "emdash";
+import type { MediaValue, PortableTextBlock } from "emdash";
+import { Image as ProductImage, PortableText } from "emdash/ui";
+import Base from "../../../layouts/Base.astro";
+
+const slug = decodeSlug(Astro.params.slug);
+
+if (!slug) {
+	return Astro.redirect("/404");
+}
+
+const { entry: product, cacheHint } = await getEmDashEntry("products", slug);
+
+if (!product) {
+	return Astro.redirect("/404");
+}
+
+Astro.cache.set(cacheHint);
+
+const data = product.data as unknown as Record<string, unknown>;
+const name = typeof data.name === "string" ? data.name : "Product";
+const richDescription = Array.isArray(data.rich_description)
+	? (data.rich_description as PortableTextBlock[])
+	: [];
+const description = richDescription
+	.flatMap((block) =>
+		Array.isArray(block.children)
+			? block.children.map((child) => (typeof child.text === "string" ? child.text : ""))
+			: [],
+	)
+	.join(" ")
+	.trim();
+const rawPrice = typeof data.price === "number" ? data.price : Number(data.price);
+const price = Number.isFinite(rawPrice) ? rawPrice : null;
+const stock = typeof data.stock === "number" ? data.stock : null;
+const promotionPrice =
+	typeof data.promotion_price === "number" ? data.promotion_price : null;
+const availability = data.availability_status;
+const manuallyAvailable = availability !== "sold_out" && availability !== "hidden";
+const featuredImage = data.featured_image as MediaValue | undefined;
+const featuredImageUrl =
+	typeof featuredImage?.src === "string"
+		? featuredImage.src
+		: typeof featuredImage?.meta?.storageKey === "string"
+			? `/_emdash/api/media/file/${featuredImage.meta.storageKey}`
+		: featuredImage?.id
+			? `/_emdash/api/media/file/${featuredImage.id}`
+			: undefined;
+type ProductVariant = {
+	label?: string;
+	stock?: number;
+	price?: number;
+	image?: MediaValue;
+};
+const variants = Array.isArray(data.variants)
+	? (data.variants as ProductVariant[]).filter((variant) => typeof variant.label === "string")
+	: [];
+const variantImageUrl = (variant?: ProductVariant) =>
+	typeof variant?.image?.src === "string"
+		? variant.image.src
+		: typeof variant?.image?.meta?.storageKey === "string"
+			? `/_emdash/api/media/file/${variant.image.meta.storageKey}`
+			: variant?.image?.id
+			? `/_emdash/api/media/file/${variant.image.id}`
+			: featuredImageUrl;
+const defaultPrice = promotionPrice !== null && price !== null && promotionPrice < price ? promotionPrice : price;
+const initialPrice = price ?? defaultPrice;
+const initialStock = stock;
+const isAvailable = manuallyAvailable && (stock === null || stock > 0);
+const seo = getSeoMeta(product, {
+	defaultTitle: name,
+	defaultDescription: description || undefined,
+	defaultOgImage: featuredImageUrl,
+	path: `/shop/products/${slug}`,
+});
+---
+
+<Base
+	title={seo.title}
+	description={seo.description}
+	canonical={seo.canonical}
+	content={{ collection: "products", id: product.id, slug }}
+>
+	<main class="product-page">
+		<a class="back-link" href="/shop">← Back to shop</a>
+		<section class="product-card">
+			<div class="product-image" data-product-image>
+				{featuredImage ? <ProductImage id="product-image" image={featuredImage} alt={name} /> : <span>Product image</span>}
+			</div>
+			<div class="product-copy">
+				{promotionPrice !== null && price !== null && promotionPrice < price && (
+					<span class="promotion-label">Promotion</span>
+				)}
+				<h1 {...product.edit.name}>{name}</h1>
+				{variants.length > 0 && (
+					<label class="variant-picker">
+						<span>Choose an option</span>
+						<select
+							id="product-variant-select"
+							value=""
+							data-base-price={initialPrice ?? ""}
+							data-base-stock={initialStock ?? ""}
+							data-base-image={featuredImageUrl ?? ""}
+						>
+							<option value="">Base product</option>
+							{variants.map((variant) => (
+								<option
+									value={variant.label}
+									data-price={variant.price ?? initialPrice ?? ""}
+									data-stock={variant.stock ?? initialStock ?? ""}
+									data-image={variantImageUrl(variant)}
+									disabled={variant.stock === 0}
+								>
+									{variant.label}
+								</option>
+							))}
+						</select>
+					</label>
+				)}
+				<div class="prices">
+					{promotionPrice !== null && price !== null && promotionPrice < price && (
+						<span class="old-price">S/ {price.toFixed(2)}</span>
+					)}
+					{initialPrice !== null && (
+						<strong class="price" id="product-price">S/ {initialPrice.toFixed(2)}</strong>
+					)}
+				</div>
+				{richDescription.length > 0 && (
+					<div class="rich-description" {...product.edit.rich_description}>
+						<PortableText value={richDescription} />
+					</div>
+				)}
+				<p class:list={["availability", !isAvailable && "unavailable"]}>
+					<span id="product-stock">{variants.length > 0 ? `${initialStock ?? ""} available for delivery` : isAvailable ? `${initialStock ?? ""} available for delivery` : "Currently unavailable"}</span>
+				</p>
+				<div class="quantity-picker" aria-label="Quantity">
+					<button id="decrease-quantity" type="button" disabled={!isAvailable}>−</button>
+					<strong id="product-quantity">1</strong>
+					<button id="increase-quantity" type="button" disabled={!isAvailable}>+</button>
+				</div>
+				<button id="add-product-to-cart" class="order-button" disabled={!isAvailable} type="button">
+					{isAvailable ? "Add to order" : "Back to shop"}
+				</button>
+			</div>
+		</section>
+	</main>
+</Base>
+
+<script type="application/json" id="product-payload" set:html={JSON.stringify({ id: product.id, slug, data }).replace(/</g, "\\u003c")} />
+
+<script>
+	const cartStorageKey = "emdash-shop-cart";
+	const payloadElement = document.querySelector("#product-payload");
+	const addButton = document.querySelector("#add-product-to-cart");
+	const decreaseQuantity = document.querySelector("#decrease-quantity");
+	const increaseQuantity = document.querySelector("#increase-quantity");
+	const quantityElement = document.querySelector("#product-quantity");
+	const select = document.querySelector("#product-variant-select");
+	const price = document.querySelector("#product-price");
+	const stock = document.querySelector("#product-stock");
+	const imageContainer = document.querySelector("[data-product-image]");
+	const payload = payloadElement?.textContent ? JSON.parse(payloadElement.textContent) : null;
+	const basePrice = select instanceof HTMLSelectElement ? select.dataset.basePrice : "";
+	const baseStock = select instanceof HTMLSelectElement ? select.dataset.baseStock : "";
+	const baseImage = select instanceof HTMLSelectElement ? select.dataset.baseImage ?? "" : "";
+	let quantity = 1;
+
+	const updateImage = (source: string, alt = "Product image") => {
+		if (!imageContainer) return;
+		if (source) {
+			let image = imageContainer.querySelector("img");
+			if (!image) {
+				image = document.createElement("img");
+				imageContainer.replaceChildren(image);
+			}
+				image.alt = alt;
+				image.removeAttribute("srcset");
+				image.removeAttribute("sizes");
+				image.src = source;
+		} else if (!imageContainer.querySelector("img")) {
+			imageContainer.textContent = "Product image";
+		}
+	};
+
+	const getSelectedVariant = () => {
+		if (!(select instanceof HTMLSelectElement)) return null;
+		const option = select.selectedOptions[0];
+		if (!option || !option.value) return null;
+		return {
+			id: option.value,
+			label: option.value,
+			stock: option.dataset.stock ? Number(option.dataset.stock) : null,
+			price: option.dataset.price ? Number(option.dataset.price) : null,
+		};
+	};
+
+	const getStockLimit = () => {
+		const variant = getSelectedVariant();
+		if (variant?.stock !== null && variant?.stock !== undefined) return variant.stock;
+		return baseStock === "" ? null : Number(baseStock);
+	};
+
+	const updateQuantity = () => {
+		const stockLimit = getStockLimit();
+		if (stockLimit !== null) quantity = Math.min(quantity, Math.max(stockLimit, 1));
+		if (quantityElement) quantityElement.textContent = String(quantity);
+		if (decreaseQuantity instanceof HTMLButtonElement) decreaseQuantity.disabled = quantity <= 1;
+		if (increaseQuantity instanceof HTMLButtonElement) increaseQuantity.disabled = stockLimit !== null && quantity >= stockLimit;
+	};
+
+	decreaseQuantity?.addEventListener("click", () => {
+		quantity = Math.max(1, quantity - 1);
+		updateQuantity();
+	});
+	increaseQuantity?.addEventListener("click", () => {
+		const stockLimit = getStockLimit();
+		if (stockLimit === null || quantity < stockLimit) quantity += 1;
+		updateQuantity();
+	});
+
+	addButton?.addEventListener("click", () => {
+		if (!payload) return;
+		const variant = getSelectedVariant();
+		const key = `${payload.id}:${variant?.id ?? ""}`;
+		let cart = [];
+		try {
+			const stored = JSON.parse(localStorage.getItem(cartStorageKey) ?? "[]");
+			if (Array.isArray(stored)) cart = stored;
+		} catch {
+			cart = [];
+		}
+		const existing = cart.find((entry) => entry?.key === key);
+		const stockLimit = variant?.stock ?? (typeof payload.data.stock === "number" ? payload.data.stock : null);
+		const currentQuantity = existing?.quantity ?? 0;
+		if (stockLimit !== null && currentQuantity + quantity > stockLimit) return;
+		if (existing) existing.quantity = currentQuantity + quantity;
+		else cart.push({ key, product: payload, variantId: variant?.id ?? null, quantity });
+		localStorage.setItem(cartStorageKey, JSON.stringify(cart));
+		window.location.href = "/shop";
+	});
+
+	if (select instanceof HTMLSelectElement) {
+		select.addEventListener("change", () => {
+			const option = select.selectedOptions[0];
+			if (!option) return;
+			const selectedVariant = getSelectedVariant();
+			const optionPrice = option.dataset.price;
+			const optionStock = option.dataset.stock;
+			const optionImage = option.dataset.image;
+			if (price) {
+				const displayedPrice = selectedVariant ? optionPrice : basePrice;
+				if (displayedPrice) price.textContent = `S/ ${Number(displayedPrice).toFixed(2)}`;
+			}
+			if (stock) {
+				const displayedStock = selectedVariant ? optionStock : baseStock;
+				stock.textContent = displayedStock ? `${displayedStock} available for delivery` : "Available for delivery";
+			}
+			if (addButton instanceof HTMLButtonElement) {
+				const available = selectedVariant
+					? (selectedVariant.stock === null || selectedVariant.stock > 0)
+					: baseStock === "" || Number(baseStock) > 0;
+				addButton.disabled = !available;
+				addButton.textContent = available ? "Add to order" : "Currently unavailable";
+				if (decreaseQuantity instanceof HTMLButtonElement) decreaseQuantity.disabled = !available || quantity <= 1;
+				if (increaseQuantity instanceof HTMLButtonElement) increaseQuantity.disabled = !available || (selectedVariant?.stock ?? (baseStock === "" ? null : Number(baseStock))) === quantity;
+			}
+			updateQuantity();
+			updateImage(selectedVariant ? (optionImage ?? "") : baseImage, selectedVariant ? "Product variation" : "Product image");
+		});
+	}
+</script>
+
+<style>
+	.product-page {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: var(--spacing-16) var(--spacing-6);
+	}
+
+	.back-link {
+		color: var(--color-text-secondary);
+		text-decoration: none;
+	}
+
+	.back-link:hover {
+		color: var(--color-text);
+	}
+
+	.product-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+		gap: clamp(var(--spacing-6), 5vw, var(--spacing-12));
+		align-items: start;
+		margin-top: var(--spacing-10);
+		padding: clamp(var(--spacing-4), 5vw, var(--spacing-10));
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+	}
+
+	.product-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 1 / 1;
+		min-height: 0;
+		margin-bottom: 0;
+		overflow: hidden;
+		border-radius: var(--radius);
+		background: var(--color-bg-subtle);
+		color: var(--color-muted);
+	}
+
+	.product-image :global(img) {
+		width: 100%;
+		height: 100%;
+		max-height: 460px;
+		object-fit: cover;
+	}
+
+	.product-copy {
+		max-width: 680px;
+		padding-top: var(--spacing-2);
+	}
+
+	.promotion-label {
+		display: inline-block;
+		margin-bottom: var(--spacing-3);
+		color: var(--color-accent);
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: var(--tracking-wide);
+	}
+
+	h1 {
+		margin-bottom: var(--spacing-5);
+		font-size: clamp(2rem, 5vw, var(--font-size-5xl));
+	}
+
+	.prices {
+		display: flex;
+		align-items: baseline;
+		gap: var(--spacing-3);
+		margin-bottom: var(--spacing-6);
+	}
+
+	.variant-picker {
+		display: grid;
+		gap: var(--spacing-2);
+		margin-bottom: var(--spacing-6);
+		color: var(--color-text-secondary);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+	}
+
+	.variant-picker select {
+		padding: var(--spacing-3);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-bg);
+		color: var(--color-text);
+		font: inherit;
+	}
+
+	.price {
+		font-size: var(--font-size-2xl);
+	}
+
+	.old-price {
+		color: var(--color-muted);
+		text-decoration: line-through;
+	}
+
+	.base-price {
+		color: var(--color-muted);
+		font-size: var(--font-size-sm);
+	}
+
+	.rich-description {
+		color: var(--color-text-secondary);
+		line-height: var(--leading-relaxed);
+	}
+
+	.rich-description {
+		margin-top: var(--spacing-6);
+	}
+
+	.availability {
+		margin: var(--spacing-8) 0 var(--spacing-5);
+		color: var(--color-accent);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+	}
+
+	.availability.unavailable {
+		color: var(--color-muted);
+	}
+
+	.quantity-picker {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-3);
+		margin-bottom: var(--spacing-5);
+	}
+
+	.quantity-picker button {
+		width: 2rem;
+		height: 2rem;
+		padding: 0;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-bg);
+		color: var(--color-text);
+		font-size: var(--font-size-lg);
+		cursor: pointer;
+	}
+
+	.quantity-picker button:disabled {
+		cursor: not-allowed;
+		opacity: 0.45;
+	}
+
+	.quantity-picker strong {
+		min-width: 1.5rem;
+		text-align: center;
+	}
+
+	.quantity-picker button:hover:not(:disabled) {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.order-button {
+		display: inline-block;
+		padding: var(--spacing-3) var(--spacing-5);
+		border-radius: var(--radius);
+		background: var(--color-accent);
+		color: var(--color-on-accent);
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.order-button.disabled {
+		background: var(--color-border);
+		color: var(--color-muted);
+	}
+
+	@media (max-width: 720px) {
+		.product-card {
+			display: block;
+		}
+
+		.product-image {
+			margin-bottom: var(--spacing-8);
+		}
+	}
+</style>

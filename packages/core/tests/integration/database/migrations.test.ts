@@ -79,6 +79,13 @@ describe("Database Migrations (Integration)", () => {
 			"_emdash_media_usage_cleanup_fence",
 			"_emdash_media_usage_index_status",
 			"_emdash_media_usage_collection_deletions",
+			"_emdash_shop_settings",
+			"_emdash_shop_delivery_zones",
+			"_emdash_shop_customers",
+			"_emdash_shop_orders",
+			"_emdash_shop_order_items",
+			"_emdash_shop_payments",
+			"_emdash_shop_deliveries",
 		];
 
 		for (const table of tables) {
@@ -89,6 +96,79 @@ describe("Database Migrations (Integration)", () => {
 				.execute();
 			expect(Array.isArray(result)).toBe(true);
 		}
+	});
+
+	it("should create the ecommerce transaction tables with stable order snapshots", async () => {
+		await runMigrations(db);
+
+		await db
+			.insertInto("_emdash_shop_settings")
+			.values({ id: "default", store_name: "Demo Shop", currency: "PEN" })
+			.execute();
+		await db
+			.insertInto("_emdash_shop_delivery_zones")
+			.values({ id: "zone-1", name: "Lima Norte", districts: '["Los Olivos"]', delivery_cost: 8 })
+			.execute();
+		await db
+			.insertInto("_emdash_shop_customers")
+			.values({ id: "customer-1", name: "Ana Torres", phone: "999888777" })
+			.execute();
+		await db
+			.insertInto("_emdash_shop_orders")
+			.values({
+				id: "order-1",
+				order_number: "1024",
+				customer_id: "customer-1",
+				currency: "PEN",
+				customer_snapshot: JSON.stringify({ name: "Ana Torres", phone: "999888777" }),
+				delivery_snapshot: JSON.stringify({ district: "Los Olivos" }),
+				subtotal: 40,
+				delivery_cost: 8,
+				total: 48,
+			})
+			.execute();
+		await db
+			.insertInto("_emdash_shop_order_items")
+			.values({
+				id: "item-1",
+				order_id: "order-1",
+				product_id: "product-1",
+				product_name: "Polo básico",
+				unit_price: 40,
+				quantity: 1,
+				subtotal: 40,
+			})
+			.execute();
+		await db
+			.insertInto("_emdash_shop_payments")
+			.values({ id: "payment-1", order_id: "order-1", method: "whatsapp", amount: 48 })
+			.execute();
+		await db
+			.insertInto("_emdash_shop_deliveries")
+			.values({
+				id: "delivery-1",
+				order_id: "order-1",
+				address: "Av. Lima 123",
+				district: "Los Olivos",
+				phone: "999888777",
+				delivery_cost: 8,
+			})
+			.execute();
+
+		const order = await db
+			.selectFrom("_emdash_shop_orders")
+			.selectAll()
+			.where("id", "=", "order-1")
+			.executeTakeFirstOrThrow();
+		const item = await db
+			.selectFrom("_emdash_shop_order_items")
+			.selectAll()
+			.where("order_id", "=", "order-1")
+			.executeTakeFirstOrThrow();
+
+		expect(order.total).toBe(48);
+		expect(JSON.parse(order.customer_snapshot)).toEqual({ name: "Ana Torres", phone: "999888777" });
+		expect(item.product_name).toBe("Polo básico");
 	});
 
 	it("should track migration in _emdash_migrations table", async () => {
@@ -184,6 +264,9 @@ describe("Database Migrations (Integration)", () => {
 			"068_content_taxonomy_entry_groups",
 			"069_collection_title_date_fields",
 			"070_collection_routable",
+			"071_shop_orders",
+			"072_shop_payment_gateway",
+			"073_shop_currency_symbol",
 		];
 
 		await db.deleteFrom("_emdash_migrations").where("name", "in", trailing).execute();

@@ -620,6 +620,115 @@ export interface SectionTable {
 
 // Database schema
 // Note: ec_* content tables are dynamic and not part of this type
+export interface ShopSettingsTable {
+	id: string;
+	store_name: string;
+	currency: string;
+	currency_symbol: string;
+	whatsapp_number: string | null;
+	whatsapp_message: string | null;
+	payment_methods: string;
+	delivery_instructions: string | null;
+	business_hours: string | null;
+	payment_gateway_enabled: Generated<number>;
+	payment_gateway_provider: string | null;
+	payment_gateway_environment: string;
+	payment_gateway_public_key: string | null;
+	payment_gateway_secret_key: string | null;
+	payment_gateway_webhook_secret: string | null;
+	payment_gateway_return_url: string | null;
+	payment_gateway_webhook_url: string | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
+export interface ShopDeliveryZoneTable {
+	id: string;
+	name: string;
+	districts: string;
+	delivery_cost: number;
+	estimated_time: string | null;
+	active: Generated<number>;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
+export interface ShopCustomerTable {
+	id: string;
+	name: string;
+	phone: string;
+	email: string | null;
+	address: string | null;
+	district: string | null;
+	reference: string | null;
+	notes: string | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
+export interface ShopOrderTable {
+	id: string;
+	order_number: string;
+	customer_id: string;
+	status: Generated<string>;
+	payment_status: Generated<string>;
+	delivery_status: Generated<string>;
+	currency: string;
+	subtotal: number;
+	discount: number;
+	delivery_cost: number;
+	total: number;
+	customer_snapshot: string;
+	delivery_snapshot: string;
+	notes: string | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
+export interface ShopOrderItemTable {
+	id: string;
+	order_id: string;
+	product_id: string;
+	variant_id: string | null;
+	product_name: string;
+	variant_name: string | null;
+	unit_price: number;
+	quantity: number;
+	discount: number;
+	subtotal: number;
+	created_at: Generated<string>;
+}
+
+export interface ShopPaymentTable {
+	id: string;
+	order_id: string;
+	method: string;
+	status: Generated<string>;
+	amount: number;
+	reference: string | null;
+	notes: string | null;
+	confirmed_by: string | null;
+	confirmed_at: string | null;
+	created_at: Generated<string>;
+}
+
+export interface ShopDeliveryTable {
+	id: string;
+	order_id: string;
+	zone: string | null;
+	address: string;
+	district: string;
+	reference: string | null;
+	phone: string;
+	delivery_cost: number;
+	courier_name: string | null;
+	estimated_at: string | null;
+	status: Generated<string>;
+	notes: string | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
 export interface Database {
 	revisions: RevisionTable;
 	_emdash_revision_prune_queue: RevisionPruneQueueTable;
@@ -676,6 +785,13 @@ export interface Database {
 	_emdash_relations: RelationTable;
 	_emdash_content_references: ContentReferenceTable;
 	_emdash_rate_limits: RateLimitTable;
+	_emdash_shop_settings: ShopSettingsTable;
+	_emdash_shop_delivery_zones: ShopDeliveryZoneTable;
+	_emdash_shop_customers: ShopCustomerTable;
+	_emdash_shop_orders: ShopOrderTable;
+	_emdash_shop_order_items: ShopOrderItemTable;
+	_emdash_shop_payments: ShopPaymentTable;
+	_emdash_shop_deliveries: ShopDeliveryTable;
 }
 
 export type MediaRow = {
