@@ -463,7 +463,6 @@ export async function runMigrateCommand(
 				overrides: createOverrides(options),
 			});
 			const target = immutableTarget(executor.target);
-			printTarget(target, dependencies.writeStderr);
 
 			const onSignal = async () => {
 				interrupted = true;
@@ -474,6 +473,7 @@ export async function runMigrateCommand(
 				dependencies.onSignal("SIGINT", onSignal),
 				dependencies.onSignal("SIGTERM", onSignal),
 			);
+			printTarget(target, dependencies.writeStderr);
 
 			const applying = !options.check && !options.status;
 			if (applying && target.kind === "d1") {
