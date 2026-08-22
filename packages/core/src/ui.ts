@@ -74,6 +74,7 @@ export {
 	EmDashHead,
 	EmDashBodyStart,
 	EmDashBodyEnd,
+	ShopStore,
 } from "./components/index.js";
 
 /**

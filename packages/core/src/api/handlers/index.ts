@@ -169,6 +169,36 @@ export {
 // Settings handlers
 export { handleSettingsGet, handleSettingsUpdate } from "./settings.js";
 
+// Ecommerce handlers
+export {
+	handleShopSettingsGet,
+	handleShopPublicSettingsGet,
+	handleShopSettingsUpdate,
+	resolveShopPaymentGatewayCredentials,
+	handleShopDeliveryZoneList,
+	handleShopDeliveryZoneCreate,
+	handleShopDeliveryZoneUpdate,
+	handleShopDeliveryZoneDelete,
+	handleShopProductList,
+	handleShopProductGet,
+	handleShopOrderCreate,
+	handleShopOrderList,
+	handleShopCustomerList,
+	handleShopOrderGet,
+	handleShopPaymentConfirm,
+	handleShopDeliveryUpdate,
+	type ShopSettings,
+	type ShopPublicSettings,
+	type ShopSettingsUpdateInput,
+	type ShopPaymentGatewayCredentials,
+	type ShopDeliveryZone,
+	type ShopDeliveryZoneInput,
+	type ShopOrderInput,
+	type ShopOrderSummary,
+	type ShopOrderDetail,
+	type ShopCustomerSummary,
+} from "./shop.js";
+
 // Taxonomy handlers
 export {
 	handleTaxonomyList,

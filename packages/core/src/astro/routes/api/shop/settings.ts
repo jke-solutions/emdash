@@ -1,0 +1,16 @@
+import type { APIRoute } from "astro";
+
+import { handleError, requireDb, unwrapResult } from "#api/error.js";
+import { handleShopPublicSettingsGet } from "#api/handlers/shop.js";
+
+export const prerender = false;
+
+export const GET: APIRoute = async ({ locals }) => {
+	const dbError = requireDb(locals.emdash?.db);
+	if (dbError) return dbError;
+	try {
+		return unwrapResult(await handleShopPublicSettingsGet(locals.emdash.db));
+	} catch (error) {
+		return handleError(error, "Failed to get shop settings", "SHOP_SETTINGS_READ_ERROR");
+	}
+};

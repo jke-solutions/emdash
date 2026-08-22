@@ -163,6 +163,10 @@ export type SandboxedPluginDescriptor<TOptions = Record<string, unknown>> =
 	PluginDescriptor<TOptions>;
 
 export interface EmDashConfig {
+	/** Visual Ecommerce module configuration. */
+	shop?: {
+		enabled?: boolean;
+	};
 	/**
 	 * Database configuration
 	 *

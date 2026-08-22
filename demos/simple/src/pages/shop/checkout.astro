@@ -1,0 +1,208 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="Checkout" description="Complete your delivery details and coordinate your order through WhatsApp.">
+	<main class="checkout-page">
+		<a class="back-link" href="/shop">← Back to shop</a>
+		<header>
+			<p class="eyebrow">Order details</p>
+			<h1>Checkout</h1>
+			<p>Complete your delivery information. Payment will be coordinated through WhatsApp.</p>
+		</header>
+		<div class="checkout-layout">
+			<section class="checkout-summary">
+				<h2>Your order</h2>
+				<div id="checkout-items">Loading order…</div>
+				<strong id="checkout-total"></strong>
+			</section>
+			<form id="checkout-form" class="checkout-form">
+				<h2>Delivery details</h2>
+				<div id="saved-customer" class="saved-customer" hidden>
+					<p>We found your previous delivery details on this device.</p>
+					<div class="saved-customer-actions">
+						<button type="button" id="use-saved-customer" class="secondary-button">Use saved details</button>
+						<button type="button" id="clear-saved-customer" class="text-button">Use other details</button>
+					</div>
+				</div>
+				<label>Name <input name="name" required /></label>
+				<label>Phone <input name="phone" required /></label>
+				<label>Email <input name="email" type="email" /></label>
+				<label>Address <input name="address" required /></label>
+				<label>District <input name="district" required /></label>
+				<label>Reference <input name="reference" /></label>
+				<label>Delivery zone <select name="deliveryZoneId" required id="delivery-zone"></select></label>
+				<label>Payment method <select name="paymentMethod" required id="payment-method"></select></label>
+				<label>Notes <textarea name="notes"></textarea></label>
+				<button type="submit">Create order and continue to WhatsApp</button>
+				<p id="checkout-message" role="status"></p>
+			</form>
+		</div>
+	</main>
+</Base>
+
+<script is:inline>
+	const storageKey = "emdash-shop-cart";
+	const customerStorageKey = "emdash-shop-customer";
+	const apiBase = "/_emdash/api/shop";
+	const itemsElement = document.querySelector("#checkout-items");
+	const totalElement = document.querySelector("#checkout-total");
+	const form = document.querySelector("#checkout-form");
+	const zonesElement = document.querySelector("#delivery-zone");
+	const paymentElement = document.querySelector("#payment-method");
+	const messageElement = document.querySelector("#checkout-message");
+	const savedCustomerElement = document.querySelector("#saved-customer");
+	const useSavedCustomerButton = document.querySelector("#use-saved-customer");
+	const clearSavedCustomerButton = document.querySelector("#clear-saved-customer");
+	let cart = [];
+	let settings = { currency: "PEN", currencySymbol: "S/", paymentMethods: ["whatsapp"] };
+
+	try {
+		const stored = JSON.parse(localStorage.getItem(storageKey) ?? "[]");
+		if (Array.isArray(stored)) cart = stored.filter((entry) => entry?.product && Number.isInteger(entry.quantity) && entry.quantity > 0);
+	} catch {
+		cart = [];
+	}
+
+	if (cart.length === 0) window.location.replace("/shop");
+
+	const customerFields = ["name", "phone", "email", "address", "district", "reference"];
+	let savedCustomer = null;
+	try {
+		const storedCustomer = JSON.parse(localStorage.getItem(customerStorageKey) ?? "null");
+		if (storedCustomer && typeof storedCustomer === "object" && typeof storedCustomer.name === "string" && typeof storedCustomer.phone === "string") savedCustomer = storedCustomer;
+	} catch {
+		savedCustomer = null;
+	}
+
+	const fillCustomerForm = (customer) => {
+		for (const field of customerFields) {
+			const input = form?.elements.namedItem(field);
+			if (input && "value" in input) input.value = customer[field] ?? "";
+		}
+	};
+	if (savedCustomerElement && savedCustomer) savedCustomerElement.hidden = false;
+	useSavedCustomerButton?.addEventListener("click", () => {
+		if (savedCustomer) fillCustomerForm(savedCustomer);
+		if (savedCustomerElement) savedCustomerElement.hidden = true;
+	});
+	clearSavedCustomerButton?.addEventListener("click", () => {
+		localStorage.removeItem(customerStorageKey);
+		savedCustomer = null;
+		if (savedCustomerElement) savedCustomerElement.hidden = true;
+	});
+
+	const money = (value) => `${settings.currencySymbol} ${new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}`;
+	const productPrice = (entry) => {
+		const variant = Array.isArray(entry.product.data?.variants) ? entry.product.data.variants.find((item) => (item.id ?? item.label) === entry.variantId) : null;
+		if (typeof variant?.price === "number" && variant.price >= 0) return variant.price;
+		const regular = Number(entry.product.data?.price ?? 0);
+		const promotion = Number(entry.product.data?.promotion_price ?? regular);
+		return promotion >= 0 && promotion < regular ? promotion : regular;
+	};
+
+	const renderSummary = () => {
+		itemsElement?.replaceChildren();
+		let total = 0;
+		for (const entry of cart) {
+			const name = entry.product.data?.name ?? entry.product.slug ?? "Product";
+			const variant = Array.isArray(entry.product.data?.variants) ? entry.product.data.variants.find((item) => (item.id ?? item.label) === entry.variantId) : null;
+			const row = document.createElement("p");
+			const subtotal = productPrice(entry) * entry.quantity;
+			row.textContent = `${name}${variant?.label ? ` (${variant.label})` : ""} × ${entry.quantity} — ${money(subtotal)}`;
+			itemsElement?.append(row);
+			total += subtotal;
+		}
+		if (totalElement) totalElement.textContent = `Total: ${money(total)}`;
+	};
+
+	const loadOptions = async () => {
+		const [shopSettings, zones] = await Promise.all([
+			fetch(`${apiBase}/settings`).then((response) => response.json()).then((body) => body.data),
+			fetch(`${apiBase}/delivery-zones`).then((response) => response.json()).then((body) => body.data),
+		]);
+		settings = shopSettings;
+		for (const zone of zones) {
+			const option = document.createElement("option");
+			option.value = zone.id;
+			option.textContent = `${zone.name} — ${money(zone.deliveryCost)}`;
+			zonesElement?.append(option);
+		}
+		for (const method of settings.paymentMethods) {
+			const option = document.createElement("option");
+			option.value = method;
+			option.textContent = method;
+			paymentElement?.append(option);
+		}
+	};
+
+	form?.addEventListener("submit", async (event) => {
+		event.preventDefault();
+		const data = new FormData(form);
+		if (messageElement) messageElement.textContent = "Creating your order…";
+		try {
+			const customer = Object.fromEntries(customerFields.map((key) => [key, data.get(key)]));
+			try {
+				localStorage.setItem(customerStorageKey, JSON.stringify(customer));
+			} catch {
+				// Checkout should continue even when browser storage is unavailable.
+			}
+			const response = await fetch(`${apiBase}/orders`, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					items: cart.map((entry) => ({
+						productId: entry.product.id,
+						quantity: entry.quantity,
+						...(typeof entry.variantId === "string" && entry.variantId ? { variantId: entry.variantId } : {}),
+					})),
+					customer,
+					deliveryZoneId: data.get("deliveryZoneId"),
+					paymentMethod: data.get("paymentMethod"),
+					notes: data.get("notes"),
+				}),
+			});
+			const body = await response.json();
+			if (!response.ok) throw new Error(body?.error?.message ?? "Could not create order.");
+			localStorage.removeItem(storageKey);
+			window.location.href = `/shop/thanks?order=${encodeURIComponent(body.data.orderNumber)}`;
+		} catch (error) {
+			if (messageElement) messageElement.textContent = error instanceof Error ? error.message : "Could not create order.";
+		}
+	});
+
+	Promise.all([loadOptions(), Promise.resolve(renderSummary())]).catch((error) => {
+		if (messageElement) messageElement.textContent = error instanceof Error ? error.message : "Could not load checkout.";
+	});
+</script>
+
+<style>
+	.checkout-page {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: var(--spacing-16) var(--spacing-6);
+	}
+
+	.back-link { color: var(--color-text-secondary); text-decoration: none; }
+	.checkout-page header { max-width: 680px; margin: var(--spacing-10) 0; }
+	.eyebrow { color: var(--color-accent); font-size: var(--font-size-sm); font-weight: 700; text-transform: uppercase; }
+	.checkout-page header p:last-child { color: var(--color-text-secondary); }
+	.checkout-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--spacing-8); }
+	.checkout-summary, .checkout-form { padding: var(--spacing-6); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+	.checkout-summary p { padding: var(--spacing-3) 0; border-bottom: 1px solid var(--color-border); }
+	.checkout-summary strong { display: block; margin-top: var(--spacing-6); font-size: var(--font-size-xl); }
+	.checkout-form { display: grid; gap: var(--spacing-3); }
+	.checkout-form h2 { margin-bottom: var(--spacing-2); }
+	.checkout-form label { display: grid; gap: var(--spacing-1); font-size: var(--font-size-sm); }
+	.checkout-form input, .checkout-form select, .checkout-form textarea { width: 100%; padding: var(--spacing-3); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); }
+	.checkout-form textarea { min-height: 90px; }
+	.checkout-form button { margin-top: var(--spacing-3); padding: var(--spacing-3); border: 0; border-radius: var(--radius); background: var(--color-accent); color: var(--color-on-accent); font-weight: 700; cursor: pointer; }
+	.saved-customer { padding: var(--spacing-3); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); }
+	.saved-customer p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+	.saved-customer-actions { display: flex; flex-wrap: wrap; gap: var(--spacing-2); margin-top: var(--spacing-2); }
+	.saved-customer-actions button { margin-top: 0; }
+	.saved-customer .secondary-button { background: var(--color-accent); color: var(--color-on-accent); }
+	.saved-customer .text-button { background: transparent; color: var(--color-text-secondary); }
+	#checkout-message { color: var(--color-accent); }
+	@media (max-width: 760px) { .checkout-layout { grid-template-columns: 1fr; } }
+</style>

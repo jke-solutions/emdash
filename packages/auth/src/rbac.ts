@@ -75,6 +75,10 @@ export const Permissions = {
 	"settings:read": Role.EDITOR,
 	"settings:manage": Role.ADMIN,
 
+	// Ecommerce
+	"shop:read": Role.EDITOR,
+	"shop:manage": Role.EDITOR,
+
 	// Schema (content types)
 	"schema:read": Role.EDITOR,
 	"schema:manage": Role.ADMIN,

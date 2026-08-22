@@ -11,6 +11,8 @@ export interface Page {
   status: string;
   title: string;
   content?: PortableTextBlock[];
+  featured_image?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
+  excerpt?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
@@ -23,9 +25,29 @@ export interface Post {
   slug: string | null;
   status: string;
   title: string;
-  featured_image?: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
+  featured_image?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
   content?: PortableTextBlock[];
   excerpt?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface Product {
+  id: string;
+  slug: string | null;
+  status: string;
+  name: string;
+  price: number;
+  promotion_price?: number;
+  rich_description?: PortableTextBlock[];
+  availability_status?: "available" | "sold_out" | "hidden";
+  featured_image?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
+  stock: number;
+  has_variations?: boolean;
+  variants?: { "label": string; "image"?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } | null; "stock": number; "price"?: number | null }[];
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
@@ -37,5 +59,6 @@ declare module "emdash" {
   interface EmDashCollections {
     pages: Page;
     posts: Post;
+    products: Product;
   }
 }

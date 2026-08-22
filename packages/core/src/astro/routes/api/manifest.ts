@@ -79,7 +79,8 @@ export const GET: APIRoute = async ({ locals }) => {
 			? {
 					...emdashManifest,
 					authMode: authMode.type === "external" ? authMode.providerType : "passkey",
-					signupEnabled,
+					 signupEnabled,
+					shop: { enabled: emdash?.config?.shop?.enabled !== false },
 					admin: adminBranding,
 				}
 			: {
@@ -90,8 +91,9 @@ export const GET: APIRoute = async ({ locals }) => {
 					plugins: {},
 					taxonomies: [],
 					authMode: "passkey",
-					signupEnabled,
-					admin: adminBranding,
+				signupEnabled,
+				shop: { enabled: emdash?.config?.shop?.enabled !== false },
+				admin: adminBranding,
 				};
 
 		return apiSuccess(manifest);

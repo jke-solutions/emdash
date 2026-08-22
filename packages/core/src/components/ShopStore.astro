@@ -1,0 +1,520 @@
+---
+export interface Props {
+	apiBase?: string;
+}
+
+const { apiBase = "/_emdash/api/shop" } = Astro.props;
+---
+
+<section class="emdash-shop" data-emdash-shop data-api-base={apiBase}>
+	<div class="emdash-shop__products">
+		<div class="emdash-shop__products-header">
+			<h2>Products</h2>
+			<button class="emdash-shop__cart-toggle" type="button" data-shop-cart-toggle aria-expanded="false">
+				Cart (<span data-shop-cart-count>0</span>)
+			</button>
+		</div>
+		<div data-shop-products>Loading products…</div>
+	</div>
+	<aside class="emdash-shop__cart" data-shop-cart-panel aria-live="polite" hidden>
+		<div class="emdash-shop__cart-header">
+			<h2>Cart</h2>
+			<button type="button" data-shop-cart-close aria-label="Close cart">×</button>
+		</div>
+		<div data-shop-cart>Cart is empty.</div>
+		<div class="emdash-shop__cart-footer">
+			<div data-shop-total hidden></div>
+			<a class="emdash-shop__checkout-link" data-shop-checkout-link href="/shop/checkout" hidden>Continue to checkout</a>
+		</div>
+		<p data-shop-message role="status"></p>
+	</aside>
+</section>
+
+<script is:inline>
+	const root = document.currentScript?.previousElementSibling;
+	const productName = (product) => typeof product.data?.name === "string" ? product.data.name : product.data?.title ?? product.slug ?? product.id;
+	const productPrice = (product, variant = null) => {
+		if (typeof variant?.price === "number" && variant.price >= 0) return variant.price;
+		const regular = Number(product.data?.price ?? 0);
+		const promotional = Number(product.data?.promotion_price ?? product.data?.promotionPrice ?? regular);
+		return promotional >= 0 && promotional < regular ? promotional : regular;
+	};
+	const productStock = (product) => Number.isInteger(product.data?.stock) ? product.data.stock : null;
+	const productVariants = (product) => {
+		const enabled = product.data?.has_variations === true || product.data?.has_variations === 1 || product.data?.has_variations === "1";
+		return enabled && Array.isArray(product.data?.variants) ? product.data.variants.filter((variant) => variant && typeof variant.label === "string") : [];
+	};
+	const variantStock = (variant) => Number.isInteger(variant?.stock) ? variant.stock : null;
+	const effectiveVariantStock = (product, variant) => variantStock(variant) ?? productStock(product);
+	const variantPrice = (product, variant) => typeof variant?.price === "number" && variant.price >= 0 ? variant.price : productPrice(product);
+	const mediaUrl = (media) => {
+		if (typeof media?.src === "string" && media.src) return media.src;
+		if (typeof media?.url === "string" && media.url) return media.url;
+		if (typeof media?.meta?.storageKey === "string" && media.meta.storageKey) return `/_emdash/api/media/file/${media.meta.storageKey}`;
+		return media?.id ? `/_emdash/api/media/file/${media.id}` : "";
+	};
+	if (root instanceof HTMLElement) {
+		const apiBase = root.dataset.apiBase ?? "/_emdash/api/shop";
+		const productsElement = root.querySelector("[data-shop-products]");
+		const cartElement = root.querySelector("[data-shop-cart]");
+		const cartPanel = root.querySelector("[data-shop-cart-panel]");
+		const cartToggle = root.querySelector("[data-shop-cart-toggle]");
+		const cartClose = root.querySelector("[data-shop-cart-close]");
+		const cartCount = root.querySelector("[data-shop-cart-count]");
+		const checkoutLink = root.querySelector("[data-shop-checkout-link]");
+		const totalElement = root.querySelector("[data-shop-total]");
+		const messageElement = root.querySelector("[data-shop-message]");
+		const cartStorageKey = "emdash-shop-cart";
+		const cart = new Map();
+		try {
+			const storedCart = JSON.parse(localStorage.getItem(cartStorageKey) ?? "[]");
+			if (Array.isArray(storedCart)) {
+				for (const entry of storedCart) {
+					if (entry?.key && entry.product && Number.isInteger(entry.quantity) && entry.quantity > 0) cart.set(entry.key, entry);
+				}
+			}
+		} catch {
+			// Ignore invalid local cart data and start with an empty cart.
+		}
+		const saveCart = () => localStorage.setItem(cartStorageKey, JSON.stringify(Array.from(cart.entries(), ([key, entry]) => ({ ...entry, key }))));
+		let settings = { currency: "PEN", currencySymbol: "S/", paymentMethods: ["whatsapp"] };
+
+		const json = async (path, options) => {
+			const headers = new Headers(options?.headers);
+			headers.set("Content-Type", "application/json");
+			const response = await fetch(`${apiBase}${path}`, {
+				...options,
+				headers,
+			});
+			const body = await response.json();
+			if (!response.ok) throw new Error(body?.error?.message ?? "Request failed");
+			return body.data;
+		};
+		const money = (value) => `${settings.currencySymbol} ${new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}`;
+		const showMessage = (value, error = false) => {
+			if (!messageElement) return;
+			messageElement.textContent = value;
+			messageElement.dataset.error = error ? "true" : "false";
+		};
+		cartToggle?.addEventListener("click", () => {
+			if (!(cartPanel instanceof HTMLElement)) return;
+			cartPanel.hidden = false;
+			cartToggle.setAttribute("aria-expanded", "true");
+		});
+		cartClose?.addEventListener("click", () => {
+			if (!(cartPanel instanceof HTMLElement)) return;
+			cartPanel.hidden = true;
+			cartToggle?.setAttribute("aria-expanded", "false");
+		});
+		const renderCart = () => {
+			if (!cartElement || !totalElement) return;
+			if (cartCount) cartCount.textContent = String([...cart.values()].reduce((sum, entry) => sum + entry.quantity, 0));
+			cartElement.replaceChildren();
+			let total = 0;
+			for (const entry of cart.values()) {
+				const row = document.createElement("div");
+				row.className = "emdash-shop__cart-row";
+				const variant = productVariants(entry.product).find((item) => (item.id ?? item.label) === entry.variantId);
+				const label = document.createElement("p");
+				label.textContent = `${productName(entry.product)}${variant?.label ? ` (${variant.label})` : ""}`;
+				const controls = document.createElement("div");
+				controls.className = "emdash-shop__quantity-controls";
+				const decrease = document.createElement("button");
+				decrease.type = "button";
+				decrease.textContent = "−";
+				decrease.setAttribute("aria-label", "Decrease quantity");
+				decrease.addEventListener("click", () => {
+					if (entry.quantity <= 1) cart.delete(entry.key);
+					else entry.quantity -= 1;
+					saveCart();
+					renderCart();
+				});
+				const quantity = document.createElement("span");
+				quantity.textContent = String(entry.quantity);
+				const increase = document.createElement("button");
+				increase.type = "button";
+				increase.textContent = "+";
+				increase.setAttribute("aria-label", "Increase quantity");
+				const availableStock = variant ? effectiveVariantStock(entry.product, variant) : productStock(entry.product);
+				increase.disabled = availableStock !== null && entry.quantity >= availableStock;
+				increase.addEventListener("click", () => {
+					if (availableStock !== null && entry.quantity >= availableStock) return;
+					entry.quantity += 1;
+					saveCart();
+					renderCart();
+				});
+				controls.append(decrease, quantity, increase);
+				const subtotal = document.createElement("span");
+				subtotal.textContent = money(productPrice(entry.product, variant) * entry.quantity);
+				row.append(label, controls, subtotal);
+				cartElement.append(row);
+				total += productPrice(entry.product, variant) * entry.quantity;
+			}
+			if (cart.size === 0) {
+				cartElement.textContent = "Cart is empty.";
+				totalElement.hidden = true;
+				if (checkoutLink) checkoutLink.hidden = true;
+				return;
+			}
+			totalElement.textContent = `Subtotal: ${money(total)}`;
+			totalElement.hidden = false;
+			if (checkoutLink) checkoutLink.hidden = false;
+		};
+		const renderProducts = (products) => {
+			if (!productsElement) return;
+			productsElement.replaceChildren();
+			if (products.length === 0) {
+				productsElement.textContent = "No products available.";
+				return;
+			}
+			for (const product of products) {
+				const card = document.createElement("article");
+				card.className = "emdash-shop__product-card";
+				const variants = productVariants(product);
+				let selectedVariant = null;
+				const imageLink = document.createElement("a");
+				imageLink.className = "emdash-shop__product-image";
+				imageLink.href = `/shop/products/${encodeURIComponent(product.slug ?? product.id)}`;
+				const imageUrl = () => mediaUrl(selectedVariant?.image) || mediaUrl(product.data?.featured_image);
+				const imageElement = document.createElement("img");
+				imageElement.alt = productName(product);
+				imageElement.loading = "lazy";
+				const updateImage = () => {
+					const url = imageUrl();
+					if (url) {
+						imageElement.src = url;
+						if (!imageElement.parentElement) imageLink.replaceChildren(imageElement);
+					} else {
+						imageLink.textContent = "Product image";
+					}
+				};
+				updateImage();
+				const content = document.createElement("div");
+				content.className = "emdash-shop__product-content";
+				const title = document.createElement("h3");
+				title.textContent = productName(product);
+				const titleLink = document.createElement("a");
+				titleLink.href = imageLink.href;
+				titleLink.textContent = title.textContent;
+				title.replaceChildren(titleLink);
+				const price = document.createElement("p");
+				price.className = "emdash-shop__product-price";
+				price.textContent = money(variantPrice(product, selectedVariant));
+				const stock = document.createElement("p");
+				stock.className = "emdash-shop__product-stock";
+				const updateStock = () => { const value = selectedVariant ? variantStock(selectedVariant) : productStock(product); stock.textContent = value === null ? "Available" : `${value} available`; price.textContent = money(variantPrice(product, selectedVariant)); };
+				updateStock();
+				if (variants.length > 0) {
+					const variantSelect = document.createElement("select");
+					variantSelect.className = "emdash-shop__variant-select";
+					variantSelect.setAttribute("aria-label", "Select product variation");
+					const baseOption = document.createElement("option");
+					baseOption.value = "";
+					baseOption.textContent = "Base product";
+					baseOption.selected = true;
+					variantSelect.append(baseOption);
+					for (const variant of variants) {
+						const option = document.createElement("option");
+						option.value = variant.id ?? variant.label;
+						option.textContent = variant.label;
+						option.disabled = variantStock(variant) === 0;
+						option.selected = variant === selectedVariant;
+						variantSelect.append(option);
+					}
+					variantSelect.addEventListener("change", () => { selectedVariant = variants.find((variant) => (variant.id ?? variant.label) === variantSelect.value) ?? null; updateImage(); updateStock(); });
+					content.append(variantSelect);
+				}
+				const button = document.createElement("button");
+				button.type = "button";
+				button.textContent = "Add to cart";
+				button.addEventListener("click", () => {
+					const cartKey = `${product.id}:${selectedVariant?.id ?? selectedVariant?.label ?? ""}`;
+					const current = cart.get(cartKey);
+					const availableStock = selectedVariant ? effectiveVariantStock(product, selectedVariant) : productStock(product);
+					if (availableStock !== null && (current?.quantity ?? 0) >= availableStock) {
+						showMessage("You have reached the available stock for this product.", true);
+						return;
+					}
+					cart.set(cartKey, { product, variantId: selectedVariant?.id ?? selectedVariant?.label, quantity: (current?.quantity ?? 0) + 1 });
+					saveCart();
+					renderCart();
+				});
+				content.append(title, price, stock, button);
+				card.append(imageLink, content);
+				productsElement.append(card);
+			}
+		};
+		Promise.all([json("/products"), json("/settings")])
+			.then(([products, shopSettings]) => {
+				settings = shopSettings;
+				renderProducts(products);
+				renderCart();
+				return null;
+			})
+			.catch((error) => {
+				showMessage(error instanceof Error ? error.message : "Could not load the store.", true);
+				return null;
+			});
+	}
+</script>
+
+<style>
+	.emdash-shop {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: var(--spacing-10);
+		align-items: start;
+	}
+
+	.emdash-shop h2 {
+		margin-bottom: var(--spacing-6);
+		font-size: var(--font-size-2xl);
+	}
+
+	.emdash-shop__products > [data-shop-products] {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--spacing-6);
+	}
+
+	.emdash-shop__products-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--spacing-4);
+		margin-bottom: var(--spacing-6);
+	}
+
+	.emdash-shop__products-header h2 {
+		margin-bottom: 0;
+	}
+
+	.emdash-shop__cart-toggle {
+		border-color: var(--color-accent) !important;
+		background: var(--color-accent) !important;
+		color: var(--color-on-accent) !important;
+		font-weight: 600;
+	}
+
+	.emdash-shop__product-card {
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-bg);
+	}
+
+	.emdash-shop__product-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 4 / 3;
+		background: var(--color-bg-subtle);
+		color: var(--color-muted);
+		font-size: var(--font-size-sm);
+		text-decoration: none;
+	}
+
+	.emdash-shop__product-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center;
+	}
+
+	.emdash-shop__product-content {
+		padding: var(--spacing-5);
+	}
+
+	.emdash-shop__product-content h3 {
+		margin-bottom: var(--spacing-2);
+		font-size: var(--font-size-lg);
+	}
+
+	.emdash-shop__product-content h3 a {
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+	.emdash-shop__product-content h3 a:hover {
+		color: var(--color-accent);
+	}
+
+	.emdash-shop__product-price {
+		margin-bottom: var(--spacing-4);
+		color: var(--color-text-secondary);
+		font-weight: 600;
+	}
+
+	.emdash-shop__product-stock {
+		margin-bottom: var(--spacing-4);
+		color: var(--color-muted);
+		font-size: var(--font-size-sm);
+	}
+
+	.emdash-shop__variant-select {
+		width: 100%;
+		margin-bottom: var(--spacing-3);
+		padding: var(--spacing-2) var(--spacing-3);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-bg);
+		color: var(--color-text);
+	}
+
+	.emdash-shop button,
+	.emdash-shop__product-content button {
+		padding: var(--spacing-2) var(--spacing-4);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-bg);
+		color: var(--color-text);
+		cursor: pointer;
+	}
+
+	.emdash-shop button:hover,
+	.emdash-shop__product-content button:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.emdash-shop__cart {
+		position: fixed;
+		top: var(--nav-height);
+		right: 0;
+		bottom: 0;
+		z-index: 20;
+		width: min(92vw, 420px);
+		overflow-y: auto;
+		padding: var(--spacing-6);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		box-shadow: -12px 0 30px rgb(0 0 0 / 25%);
+	}
+
+	.emdash-shop__cart[hidden] {
+		display: none;
+	}
+
+	.emdash-shop__cart-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--spacing-4);
+	}
+
+	.emdash-shop__cart-header h2 {
+		margin-bottom: var(--spacing-4);
+	}
+
+	.emdash-shop__cart-header button {
+		padding: var(--spacing-1) var(--spacing-2);
+		border: 0;
+		background: transparent;
+		font-size: var(--font-size-2xl);
+	}
+
+	.emdash-shop__cart-row {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto auto;
+		gap: var(--spacing-3);
+		align-items: center;
+		padding: var(--spacing-3) 0;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.emdash-shop__cart-row p {
+		margin: 0;
+	}
+
+	.emdash-shop__quantity-controls {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-2);
+	}
+
+	.emdash-shop__quantity-controls button {
+		width: 1.75rem;
+		height: 1.75rem;
+		padding: 0;
+		line-height: 1;
+	}
+
+	.emdash-shop__quantity-controls button:disabled {
+		cursor: not-allowed;
+		opacity: 0.45;
+	}
+
+	.emdash-shop__cart [data-shop-total] {
+		margin-top: var(--spacing-5);
+		padding-top: var(--spacing-5);
+		border-top: 1px solid var(--color-border);
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+	}
+
+	.emdash-shop__cart-footer {
+		position: sticky;
+		bottom: calc(var(--spacing-6) * -1);
+		margin: var(--spacing-6) calc(var(--spacing-6) * -1) calc(var(--spacing-6) * -1);
+		padding: var(--spacing-4) var(--spacing-6) var(--spacing-6);
+		background: var(--color-surface);
+	}
+
+	.emdash-shop__checkout-link {
+		display: block;
+		margin-top: var(--spacing-4);
+		padding: var(--spacing-3) var(--spacing-4);
+		border-radius: var(--radius);
+		background: var(--color-accent);
+		color: var(--color-on-accent);
+		font-weight: 700;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.emdash-shop__cart label {
+		display: grid;
+		gap: var(--spacing-1);
+		margin-top: var(--spacing-3);
+		font-size: var(--font-size-sm);
+	}
+
+	.emdash-shop__cart input,
+	.emdash-shop__cart select,
+	.emdash-shop__cart textarea {
+		width: 100%;
+		padding: var(--spacing-2) var(--spacing-3);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-bg);
+		color: var(--color-text);
+	}
+
+	.emdash-shop__cart form button {
+		width: 100%;
+		margin-top: var(--spacing-5);
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+		color: var(--color-on-accent);
+	}
+
+	@media (max-width: 800px) {
+		.emdash-shop {
+			grid-template-columns: 1fr;
+		}
+
+		.emdash-shop__cart {
+			position: fixed;
+			inset: var(--nav-height) 0 0 auto;
+			width: min(92vw, 380px);
+			border-radius: 0;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.emdash-shop__products > [data-shop-products] {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
