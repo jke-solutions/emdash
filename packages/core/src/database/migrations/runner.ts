@@ -73,6 +73,9 @@ import * as m067 from "./067_indexed_content_fields.js";
 import * as m068 from "./068_content_taxonomy_entry_groups.js";
 import * as m069 from "./069_collection_title_date_fields.js";
 import * as m070 from "./070_collection_routable.js";
+import * as m071 from "./071_shop_orders.js";
+import * as m072 from "./072_shop_payment_gateway.js";
+import * as m073 from "./073_shop_currency_symbol.js";
 
 const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"001_initial": m001,
@@ -144,6 +147,9 @@ const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"068_content_taxonomy_entry_groups": m068,
 	"069_collection_title_date_fields": m069,
 	"070_collection_routable": m070,
+	"071_shop_orders": m071,
+	"072_shop_payment_gateway": m072,
+	"073_shop_currency_symbol": m073,
 });
 
 /** Ordered names from the statically registered migration set. */

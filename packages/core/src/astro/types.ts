@@ -131,6 +131,10 @@ export interface EmDashManifest {
 	astroVersion?: string;
 	collections: Record<string, ManifestCollection>;
 	plugins: Record<string, ManifestPlugin>;
+	/** Visual Ecommerce module configuration. */
+	shop?: {
+		enabled: boolean;
+	};
 	/**
 	 * Auth mode for the admin UI. When "passkey", the security settings
 	 * (passkey management, self-signup domains) are shown. When using

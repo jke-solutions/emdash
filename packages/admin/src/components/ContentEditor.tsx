@@ -547,7 +547,10 @@ export function ContentEditor({
 
 		setIsLoadingPreview(true);
 		try {
-			const result = await getPreviewUrl(collection, item.id);
+			const previewPathPattern = urlPattern?.replace("{slug}", "{id}");
+			const result = await getPreviewUrl(collection, item.id, {
+				pathPattern: previewPathPattern,
+			});
 			if (result?.url) {
 				window.open(result.url, "_blank", "noopener,noreferrer");
 			} else {

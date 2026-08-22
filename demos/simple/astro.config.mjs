@@ -6,6 +6,8 @@ import { defineConfig, fontProviders, passthroughImageService } from "astro/conf
 import emdash, { local } from "emdash/astro";
 import { sqlite } from "emdash/db";
 
+process.env.EMDASH_ADMIN_SOURCE ??= "0";
+
 export default defineConfig({
 	output: "server",
 	adapter: node({
@@ -19,6 +21,7 @@ export default defineConfig({
 	integrations: [
 		react(),
 		emdash({
+			shop: { enabled: true },
 			database: sqlite({ url: "file:./data.db" }),
 			storage: local({
 				directory: "./uploads",

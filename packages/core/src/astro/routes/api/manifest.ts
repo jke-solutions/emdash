@@ -80,6 +80,7 @@ export const GET: APIRoute = async ({ locals }) => {
 					...emdashManifest,
 					authMode: authMode.type === "external" ? authMode.providerType : "passkey",
 					signupEnabled,
+					shop: { enabled: emdash?.config?.shop?.enabled !== false },
 					admin: adminBranding,
 				}
 			: {
@@ -91,6 +92,7 @@ export const GET: APIRoute = async ({ locals }) => {
 					taxonomies: [],
 					authMode: "passkey",
 					signupEnabled,
+					shop: { enabled: emdash?.config?.shop?.enabled !== false },
 					admin: adminBranding,
 				};
 

@@ -9,6 +9,7 @@ export * from "./menus.js";
 export * from "./taxonomies.js";
 export * from "./sections.js";
 export * from "./settings.js";
+export * from "./shop.js";
 export * from "./search.js";
 export * from "./import.js";
 export * from "./setup.js";

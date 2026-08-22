@@ -131,6 +131,7 @@ import { getPluginBlocks } from "./lib/pluginBlocks";
 import { sanitizeRedirectUrl } from "./lib/url";
 import { BylineSchemaPage } from "./routes/byline-schema";
 import { BylinesPage } from "./routes/bylines";
+import { Shop } from "./routes/shop";
 import { UsersPage } from "./routes/users";
 
 // Router context type
@@ -1602,6 +1603,13 @@ const settingsRoute = createRoute({
 	component: Settings,
 });
 
+// Ecommerce administration route
+const shopRoute = createRoute({
+	getParentRoute: () => adminLayoutRoute,
+	path: "/shop",
+	component: Shop,
+});
+
 // Security settings route
 const securitySettingsRoute = createRoute({
 	getParentRoute: () => adminLayoutRoute,
@@ -2184,6 +2192,7 @@ const adminRoutes = adminLayoutRoute.addChildren([
 	bylineSchemaRoute,
 	widgetsRoute,
 	settingsRoute,
+	shopRoute,
 	generalSettingsRoute,
 	socialSettingsRoute,
 	seoSettingsRoute,

@@ -1,0 +1,54 @@
+---
+import { ShopStore } from "emdash/ui";
+import Base from "../layouts/Base.astro";
+
+const title = "Shop";
+---
+
+<Base title={title} description="Shop products and coordinate your order through WhatsApp.">
+	<div class="shop-page">
+		<header class="shop-intro">
+			<p class="shop-eyebrow">Small business store</p>
+			<h1>Shop</h1>
+			<p>Choose your products, review your order, and coordinate delivery and payment through WhatsApp.</p>
+		</header>
+		<ShopStore />
+	</div>
+</Base>
+
+<style>
+	.shop-page {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		padding: var(--spacing-16) var(--spacing-6);
+	}
+
+	.shop-intro {
+		max-width: 680px;
+		margin-bottom: var(--spacing-10);
+	}
+
+	.shop-eyebrow {
+		margin-bottom: var(--spacing-3);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		letter-spacing: var(--tracking-wider);
+		text-transform: uppercase;
+		color: var(--color-accent);
+	}
+
+	.shop-intro h1 {
+		margin-bottom: var(--spacing-3);
+		font-size: var(--font-size-4xl);
+	}
+
+	.shop-intro p:last-child {
+		color: var(--color-text-secondary);
+	}
+
+	@media (max-width: 600px) {
+		.shop-page {
+			padding: var(--spacing-10) var(--spacing-4);
+		}
+	}
+</style>

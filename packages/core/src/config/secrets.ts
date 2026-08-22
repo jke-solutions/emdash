@@ -242,6 +242,83 @@ export async function parseEncryptionKeys(
 	return parsed;
 }
 
+const SHOP_SECRET_PREFIX = "emdash_shop_secret_v1_";
+const SHOP_SECRET_IV_BYTES = 12;
+
+async function getRuntimeEncryptionKeys(): Promise<ParsedEncryptionKey[]> {
+	let runtimeEnv: Record<string, unknown> | undefined;
+	try {
+		const module = await import("virtual:emdash/env");
+		runtimeEnv = module.env;
+	} catch {
+		runtimeEnv = undefined;
+	}
+	const raw =
+		typeof runtimeEnv?.EMDASH_ENCRYPTION_KEY === "string"
+			? runtimeEnv.EMDASH_ENCRYPTION_KEY
+			: import.meta.env.EMDASH_ENCRYPTION_KEY;
+	const keys = await parseEncryptionKeys(raw);
+	if (!keys?.[0])
+		throw new EmDashSecretsError(
+			"EMDASH_ENCRYPTION_KEY is required to store payment gateway secrets",
+			"ENCRYPTION_KEY_MISSING",
+		);
+	return keys;
+}
+
+async function importSecretKey(key: Uint8Array, usage: KeyUsage[]): Promise<CryptoKey> {
+	const keyCopy = new Uint8Array(key.length);
+	keyCopy.set(key);
+	return crypto.subtle.importKey("raw", keyCopy.buffer, { name: "AES-GCM" }, false, usage);
+}
+
+export async function encryptShopSecret(value: string): Promise<string> {
+	const [primary] = await getRuntimeEncryptionKeys();
+	const key = await importSecretKey(primary.key, ["encrypt"]);
+	const iv = crypto.getRandomValues(new Uint8Array(SHOP_SECRET_IV_BYTES));
+	const plaintext = new TextEncoder().encode(value);
+	const ciphertext = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, plaintext);
+	const combined = new Uint8Array(iv.length + ciphertext.byteLength);
+	combined.set(iv);
+	combined.set(new Uint8Array(ciphertext), iv.length);
+	return `${SHOP_SECRET_PREFIX}${primary.kid}_${encodeBase64url(combined)}`;
+}
+
+export async function decryptShopSecret(value: string): Promise<string> {
+	if (!value.startsWith(SHOP_SECRET_PREFIX))
+		throw new EmDashSecretsError(
+			"Payment gateway secret is not encrypted",
+			"UNENCRYPTED_SHOP_SECRET",
+		);
+	const payload = value.slice(SHOP_SECRET_PREFIX.length);
+	const separator = payload.indexOf("_");
+	if (separator <= 0)
+		throw new EmDashSecretsError(
+			"Payment gateway secret envelope is invalid",
+			"INVALID_SHOP_SECRET",
+		);
+	const kid = payload.slice(0, separator);
+	const encoded = payload.slice(separator + 1);
+	const combined = decodeBase64urlStrict(encoded);
+	if (!combined || combined.length <= SHOP_SECRET_IV_BYTES)
+		throw new EmDashSecretsError(
+			"Payment gateway secret envelope is invalid",
+			"INVALID_SHOP_SECRET",
+		);
+	const keys = await getRuntimeEncryptionKeys();
+	const candidate = keys.find((entry) => entry.kid === kid);
+	if (!candidate)
+		throw new EmDashSecretsError(
+			"No configured encryption key can decrypt the payment gateway secret",
+			"SHOP_SECRET_KEY_NOT_FOUND",
+		);
+	const key = await importSecretKey(candidate.key, ["decrypt"]);
+	const iv = combined.slice(0, SHOP_SECRET_IV_BYTES);
+	const ciphertext = combined.slice(SHOP_SECRET_IV_BYTES);
+	const plaintext = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
+	return new TextDecoder().decode(plaintext);
+}
+
 /**
  * Compute the kid for a raw key string (the env-var form including the
  * `emdash_enc_v1_` prefix). Public so the CLI's `fingerprint` subcommand

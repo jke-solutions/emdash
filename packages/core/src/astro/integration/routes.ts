@@ -635,6 +635,78 @@ export function injectCoreRoutes(
 		entrypoint: resolveRoute("api/admin/users/[id]/send-recovery.ts"),
 	});
 
+	// Ecommerce public routes
+	injectRoute({
+		pattern: "/_emdash/api/shop/products",
+		entrypoint: resolveRoute("api/shop/products/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/shop/products/[id]",
+		entrypoint: resolveRoute("api/shop/products/[id].ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/shop/settings",
+		entrypoint: resolveRoute("api/shop/settings.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/shop/delivery-zones",
+		entrypoint: resolveRoute("api/shop/delivery-zones/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/shop/orders",
+		entrypoint: resolveRoute("api/shop/orders/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/shop/orders/[orderNumber]",
+		entrypoint: resolveRoute("api/shop/orders/[orderNumber].ts"),
+	});
+
+	// Ecommerce admin routes
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/settings",
+		entrypoint: resolveRoute("api/admin/shop/settings.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/delivery-zones",
+		entrypoint: resolveRoute("api/admin/shop/delivery-zones/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/delivery-zones/[id]",
+		entrypoint: resolveRoute("api/admin/shop/delivery-zones/[id].ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/orders",
+		entrypoint: resolveRoute("api/admin/shop/orders/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/customers",
+		entrypoint: resolveRoute("api/admin/shop/customers/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/orders/[id]",
+		entrypoint: resolveRoute("api/admin/shop/orders/[id].ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/orders/[id]/payment",
+		entrypoint: resolveRoute("api/admin/shop/orders/[id]/payment.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/orders/[id]/delivery",
+		entrypoint: resolveRoute("api/admin/shop/orders/[id]/delivery.ts"),
+	});
+
 	// API token admin routes
 	injectRoute({
 		pattern: "/_emdash/api/admin/api-tokens",

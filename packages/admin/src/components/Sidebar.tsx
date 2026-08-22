@@ -108,6 +108,9 @@ export interface SidebarNavProps {
 		registry?: {
 			aggregatorUrl: string;
 		};
+		shop?: {
+			enabled: boolean;
+		};
 		admin?: {
 			logo?: string;
 			siteName?: string;
@@ -283,6 +286,9 @@ export function SidebarNav({ manifest }: SidebarNavProps) {
 			}),
 		),
 		{ to: "/bylines", label: t`Bylines`, icon: ADMIN_NAV_ICONS.bylines, minRole: ROLE_EDITOR },
+		...(manifest.shop?.enabled === false
+			? []
+			: [{ to: "/shop", label: t`Ecommerce`, icon: ADMIN_NAV_ICONS.shop, minRole: ROLE_EDITOR }]),
 	];
 
 	const adminItems: NavItem[] = [

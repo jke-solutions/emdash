@@ -116,6 +116,27 @@ export {
 // Settings
 export { type SiteSettings, fetchSettings, updateSettings } from "./settings.js";
 
+// Ecommerce
+export {
+	type ShopSettings,
+	type ShopSettingsUpdateInput,
+	type ShopDeliveryZone,
+	type ShopOrderSummary,
+	type ShopOrderDetail,
+	type ShopCustomerSummary,
+	fetchShopSettings,
+	updateShopSettings,
+	fetchShopDeliveryZones,
+	createShopDeliveryZone,
+	updateShopDeliveryZone,
+	deleteShopDeliveryZone,
+	fetchShopOrders,
+	fetchShopCustomers,
+	fetchShopOrder,
+	confirmShopPayment,
+	updateShopDelivery,
+} from "./shop.js";
+
 // Users, passkeys, allowed domains
 export {
 	type UserListItem,
