@@ -194,7 +194,7 @@ jobs:
                   '',
                   'If this scope is intentional, no action needed. A maintainer will review it. If not, please consider splitting this into smaller PRs.',
                   '',
-                  'See [CONTRIBUTING.md](https://github.com/emdash-cms/emdash/blob/main/CONTRIBUTING.md) for contribution guidelines.',
+                  `See [CONTRIBUTING.md](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/CONTRIBUTING.md) for contribution guidelines.`,
                 ].join('\n');
 
                 await github.rest.issues.createComment({

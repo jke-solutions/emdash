@@ -144,7 +144,7 @@ jobs:
           # and PR body conventions so this workflow stays small.
           agent: auto-implementer
           prompt: |
-            A maintainer has invoked /bonk on the emdash-cms/emdash repository. Follow your agent instructions for mode classification, investigation, reproduction, and posting.
+            A maintainer has invoked /bonk on the ${{ github.repository }} repository. Follow your agent instructions for mode classification, investigation, reproduction, and posting.
 
             <trigger_kind>${{ steps.trigger.outputs.kind }}</trigger_kind>
             <target_number>${{ steps.trigger.outputs.number }}</target_number>
