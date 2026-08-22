@@ -16,7 +16,9 @@ export const PATCH: APIRoute = async ({ params, request, locals }) => {
 	try {
 		const body = await parseBody(request, shopDeliveryZoneUpdateBody);
 		if (isParseError(body)) return body;
-		return unwrapResult(await handleShopDeliveryZoneUpdate(locals.emdash.db, params.id ?? "", body));
+		return unwrapResult(
+			await handleShopDeliveryZoneUpdate(locals.emdash.db, params.id ?? "", body),
+		);
 	} catch (error) {
 		return handleError(error, "Failed to update delivery zone", "SHOP_DELIVERY_ZONE_UPDATE_ERROR");
 	}

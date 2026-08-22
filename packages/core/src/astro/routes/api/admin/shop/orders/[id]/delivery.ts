@@ -15,5 +15,12 @@ export const PATCH: APIRoute = async ({ params, request, locals }) => {
 	if (dbError) return dbError;
 	const body = await parseBody(request, shopDeliveryUpdateBody);
 	if (isParseError(body)) return body;
-	return unwrapResult(await handleShopDeliveryUpdate(locals.emdash.db, params.id ?? "", body.status, body.courierName));
+	return unwrapResult(
+		await handleShopDeliveryUpdate(
+			locals.emdash.db,
+			params.id ?? "",
+			body.status,
+			body.courierName,
+		),
+	);
 };

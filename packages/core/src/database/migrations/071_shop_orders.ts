@@ -19,7 +19,7 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.addColumn("currency", "text", (col) => col.notNull().defaultTo("PEN"))
 		.addColumn("whatsapp_number", "text")
 		.addColumn("whatsapp_message", "text")
-		.addColumn("payment_methods", "text", (col) => col.notNull().defaultTo("[\"whatsapp\"]"))
+		.addColumn("payment_methods", "text", (col) => col.notNull().defaultTo('["whatsapp"]'))
 		.addColumn("delivery_instructions", "text")
 		.addColumn("business_hours", "text")
 		.addColumn("created_at", "text", (col) => col.defaultTo(currentTimestamp(db)))

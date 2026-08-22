@@ -51,7 +51,6 @@ import { SandboxedPluginPage } from "./components/SandboxedPluginPage";
 import { SectionEditor } from "./components/SectionEditor";
 import { Sections } from "./components/Sections";
 import { Settings } from "./components/Settings";
-import { Shop } from "./routes/shop";
 import { AllowedDomainsSettings } from "./components/settings/AllowedDomainsSettings";
 import { ApiTokenSettings } from "./components/settings/ApiTokenSettings";
 import { BackupSettings } from "./components/settings/BackupSettings";
@@ -132,6 +131,7 @@ import { getPluginBlocks } from "./lib/pluginBlocks";
 import { sanitizeRedirectUrl } from "./lib/url";
 import { BylineSchemaPage } from "./routes/byline-schema";
 import { BylinesPage } from "./routes/bylines";
+import { Shop } from "./routes/shop";
 import { UsersPage } from "./routes/users";
 
 // Router context type

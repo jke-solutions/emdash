@@ -15,5 +15,7 @@ export const POST: APIRoute = async ({ params, request, locals }) => {
 	if (dbError) return dbError;
 	const body = await parseBody(request, shopPaymentConfirmBody);
 	if (isParseError(body)) return body;
-	return unwrapResult(await handleShopPaymentConfirm(locals.emdash.db, params.id ?? "", locals.user?.id ?? ""));
+	return unwrapResult(
+		await handleShopPaymentConfirm(locals.emdash.db, params.id ?? "", locals.user?.id ?? ""),
+	);
 };

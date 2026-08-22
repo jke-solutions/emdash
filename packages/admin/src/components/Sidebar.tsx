@@ -107,7 +107,7 @@ export interface SidebarNavProps {
 		marketplace?: string;
 		registry?: {
 			aggregatorUrl: string;
-			};
+		};
 		shop?: {
 			enabled: boolean;
 		};
