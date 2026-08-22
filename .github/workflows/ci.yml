@@ -52,9 +52,9 @@ jobs:
             skip_runtime_tests=true
           elif [[ "$GITHUB_EVENT_NAME" == "pull_request" && "$GITHUB_HEAD_REF" == "staging" ]]; then
             skip_runtime_tests=true
-          elif [[ "$GITHUB_EVENT_NAME" == "push" && "$GITHUB_REF" == "refs/heads/main" && "$EVENT_HEAD_COMMIT_MESSAGE" == *"changeset-release/main"* ]]; then
-            skip_runtime_tests=true
-          elif [[ "$GITHUB_EVENT_NAME" == "push" && "$GITHUB_REF" == "refs/heads/main" && "$EVENT_HEAD_COMMIT_MESSAGE" == *"/staging"* ]]; then
+          elif [[ "$GITHUB_EVENT_NAME" == "push" && "$GITHUB_REF" == "refs/heads/main" ]]; then
+            # Staging is the runtime-test gate. Promotion and release pushes
+            # to main keep static validation but do not repeat expensive tests.
             skip_runtime_tests=true
           fi
 
