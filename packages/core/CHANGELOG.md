@@ -1,5 +1,16 @@
 # emdash
 
+## 0.36.2
+
+### Patch Changes
+
+- [#33](https://github.com/jke-solutions/emdash/pull/33) [`5ab6f34`](https://github.com/jke-solutions/emdash/commit/5ab6f3480fb83a017b10b027d753925e0131983e) Thanks [@jonico22](https://github.com/jonico22)! - Fixes the CLI version output so it matches the installed EmDash package version.
+
+- Updated dependencies []:
+  - @emdash-cms/admin@0.36.2
+  - @emdash-cms/auth@0.36.2
+  - @emdash-cms/gutenberg-to-portable-text@0.36.2
+
 ## 0.36.1
 
 ### Patch Changes
