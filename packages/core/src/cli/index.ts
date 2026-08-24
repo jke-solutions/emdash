@@ -2,6 +2,7 @@
 
 import { defineCommand, runMain } from "citty";
 
+import { VERSION } from "../version.js";
 import { authCommand } from "./commands/auth.js";
 import { contentCommand } from "./commands/content.js";
 import { devCommand } from "./commands/dev.js";
@@ -23,7 +24,7 @@ import { typesCommand } from "./commands/types.js";
 const main = defineCommand({
 	meta: {
 		name: "emdash",
-		version: "0.0.0",
+		version: VERSION,
 		description: "CLI for EmDash CMS",
 	},
 	subCommands: {

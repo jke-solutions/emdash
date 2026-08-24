@@ -51,20 +51,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Attach sandboxed-plugin tarballs to the releases changesets just
-      # created, so the decentralized registry has a stable public URL to
-      # point each release record at. See the script header for details.
-      # Only the changesets path is covered: the publish-only recovery path
-      # below neither runs changesets/action nor creates GitHub releases, so
-      # assets for that path must be backfilled manually.
-      - name: Attach plugin tarballs to releases
-        if: ${{ steps.changesets.outputs.published == 'true' }}
-        run: node .github/scripts/attach-plugin-tarballs.mjs
+      - name: Create GitHub Release
+        if: steps.changesets.outputs.published == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
-
-      - name: Publish (manual)
-        if: ${{ inputs.publish-only }}
-        run: node .github/scripts/release.mjs publish
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(node -p "require('./packages/core/package.json').version")
+          TAG="v${VERSION}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "GitHub release $TAG already exists."
+          else
+            gh release create "$TAG" \
+              --title "EmDash ${TAG}" \
+              --generate-notes
+          fi
