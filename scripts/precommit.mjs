@@ -31,7 +31,14 @@ const run = (args) => {
 const oxfmtFiles = stagedFiles.filter(isOxfmtFile);
 if (oxfmtFiles.length > 0) {
 	console.log("Checking staged files with oxfmt...");
-	run(["oxfmt", "--check", "--ignore-path", ".gitignore", ...oxfmtFiles]);
+	run([
+		"oxfmt",
+		"--check",
+		"--ignore-path",
+		".gitignore",
+		"--no-error-on-unmatched-pattern",
+		...oxfmtFiles,
+	]);
 }
 
 console.log("Checking staged files with Prettier...");
