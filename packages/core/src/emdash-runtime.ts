@@ -13,9 +13,9 @@ import { Kysely, sql, type Dialect } from "kysely";
 import virtualConfig from "virtual:emdash/config";
 import { z } from "zod";
 
+import { validateContentData } from "./api/handlers/validation.js";
 import { assertMediaUsageActivationWriteAllowed } from "./api/media-usage-write-fence.js";
 import { validateRev } from "./api/rev.js";
-import { validateContentData } from "./api/handlers/validation.js";
 import type {
 	EmDashConfig,
 	PluginAdminPage,

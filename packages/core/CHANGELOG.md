@@ -1,5 +1,34 @@
 # emdash
 
+## 0.35.0
+
+### Minor Changes
+
+- [#2438](https://github.com/emdash-cms/emdash/pull/2438) [`0aa1bc8`](https://github.com/emdash-cms/emdash/commit/0aa1bc84a3a652b31ffb15cfd7c2d4b767b83e37) Thanks [@ascorbic](https://github.com/ascorbic)! - Adds `emdash migrate` for checking, reporting, and safely applying the exact core migration set recorded by a deployment build.
+
+- [#2437](https://github.com/emdash-cms/emdash/pull/2437) [`34336e1`](https://github.com/emdash-cms/emdash/commit/34336e1570fe2ddaf063b0a0363a9132cf823b8b) Thanks [@ascorbic](https://github.com/ascorbic)! - Adds a validated, secret-free deployment migration manifest during Astro build and sync so deployment tooling can run the exact migrations bundled with the site.
+
+- [#2437](https://github.com/emdash-cms/emdash/pull/2437) [`34336e1`](https://github.com/emdash-cms/emdash/commit/34336e1570fe2ddaf063b0a0363a9132cf823b8b) Thanks [@ascorbic](https://github.com/ascorbic)! - Adds public migration identity and exact-status APIs so deployment tooling can verify and run the same core migration set as the installed EmDash version.
+
+- [#2437](https://github.com/emdash-cms/emdash/pull/2437) [`34336e1`](https://github.com/emdash-cms/emdash/commit/34336e1570fe2ddaf063b0a0363a9132cf823b8b) Thanks [@ascorbic](https://github.com/ascorbic)! - Adds deployment migration executors for the built-in SQLite, libSQL, and PostgreSQL database adapters with secret-free build metadata.
+
+- [`a9eb247`](https://github.com/emdash-cms/emdash/commit/a9eb2478a1f0c996f8fc126c201e14971ee42cea) Thanks [@jonico22](https://github.com/jonico22)! - Adds a code-configured media storage quota with remaining-space visibility in the admin media library.
+
+- [#2437](https://github.com/emdash-cms/emdash/pull/2437) [`34336e1`](https://github.com/emdash-cms/emdash/commit/34336e1570fe2ddaf063b0a0363a9132cf823b8b) Thanks [@ascorbic](https://github.com/ascorbic)! - Adds `auto`, `check`, and `manual` runtime migration modes so deployments can verify or manage core database migrations before application traffic while existing sites remain on automatic migrations by default.
+
+### Patch Changes
+
+- [`c0a4775`](https://github.com/emdash-cms/emdash/commit/c0a477543d7201782317caafcdd9314618cb19fa) Thanks [@jonico22](https://github.com/jonico22)! - Fixes local monorepo development so the admin source is used for live updates without requiring an environment variable.
+
+- [`50628fc`](https://github.com/emdash-cms/emdash/commit/50628fc99080ecf06a22a05379c24345c09dc5fd) Thanks [@jonico22](https://github.com/jonico22)! - Fixes Lingui macro handling in the Astro development server so the admin loads correctly in browser environments.
+
+- [`da913fe`](https://github.com/emdash-cms/emdash/commit/da913fec6e69279c012c0ee753cb4764621adc3e) Thanks [@jonico22](https://github.com/jonico22)! - Fixes live content editing in Astro development when the Vite module runner is restarted.
+
+- Updated dependencies []:
+  - @emdash-cms/admin@0.35.0
+  - @emdash-cms/auth@0.35.0
+  - @emdash-cms/gutenberg-to-portable-text@0.35.0
+
 ## 0.34.0
 
 ### Minor Changes

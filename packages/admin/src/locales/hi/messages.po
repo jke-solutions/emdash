@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr "{0, plural, one {# टिप्पणी आयातित} other {# टिप्पणियाँ आयात की गईं}}"
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1535
+#: packages/admin/src/router.tsx:1540
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, one {# टिप्पणी अपडेट की गई} other {# टिप्पणियाँ अपडेट की गईं}}"
 
@@ -412,7 +412,7 @@ msgstr "{pluginName} सेटिंग्स"
 msgid "{readingTime, plural, one {# min read} other {# min read}}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:298
+#: packages/admin/src/components/MediaLibrary.tsx:301
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr "{resultCount, plural, one {# वस्तु} other {# सामान}}"
 
@@ -432,13 +432,13 @@ msgstr "{total, plural, one {# वस्तु} other {# सामान}}"
 msgid "{total, plural, one {# total} other {# total}}"
 msgstr "{total, plural, one {# कुल} other {# कुल}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:211
-#: packages/admin/src/components/MediaLibrary.tsx:247
+#: packages/admin/src/components/MediaLibrary.tsx:214
+#: packages/admin/src/components/MediaLibrary.tsx:250
 msgid "{total, plural, one {File uploaded} other {# files uploaded}}"
 msgstr "{total, plural, one {फ़ाइल अपलोड की गई} other {# फ़ाइलें अपलोड की गईं}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:216
-#: packages/admin/src/components/MediaLibrary.tsx:252
+#: packages/admin/src/components/MediaLibrary.tsx:219
+#: packages/admin/src/components/MediaLibrary.tsx:255
 msgid "{total, plural, one {Upload failed} other {All # uploads failed}}"
 msgstr "{total, plural, one {अपलोड विफल रहा} other {सभी # अपलोड विफल रहे}}"
 
@@ -458,8 +458,8 @@ msgstr "{unchangedCount, plural, one {छुपाएं # अपरिवर्
 msgid "{unchangedCount, plural, one {Show # unchanged} other {Show # unchanged}}"
 msgstr "{unchangedCount, plural, one {# अपरिवर्तित दिखाएँ} other {# अपरिवर्तित दिखाएँ}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:221
-#: packages/admin/src/components/MediaLibrary.tsx:257
+#: packages/admin/src/components/MediaLibrary.tsx:224
+#: packages/admin/src/components/MediaLibrary.tsx:260
 msgid "{uploaded} uploaded, {failed} failed"
 msgstr "{uploaded} अपलोड किया गया, {failed} विफल रहा"
 
@@ -610,7 +610,7 @@ msgstr "आमंत्रण स्वीकार करें"
 msgid "Access denied"
 msgstr "पहुंच अस्वीकृत"
 
-#: packages/admin/src/router.tsx:1555
+#: packages/admin/src/router.tsx:1560
 msgid "Access Denied"
 msgstr "पहुंच अस्वीकृत"
 
@@ -916,7 +916,7 @@ msgstr "सभी स्रोत"
 msgid "All statuses"
 msgstr "सभी स्थितियाँ"
 
-#: packages/admin/src/components/MediaLibrary.tsx:433
+#: packages/admin/src/components/MediaLibrary.tsx:465
 #: packages/admin/src/components/Redirects.tsx:432
 msgid "All types"
 msgstr "सभी प्रकार के"
@@ -956,7 +956,7 @@ msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:376
 #: packages/admin/src/components/editor/ImageNode.tsx:231
-#: packages/admin/src/components/MediaLibrary.tsx:589
+#: packages/admin/src/components/MediaLibrary.tsx:621
 msgid "Alt text"
 msgstr "वैकल्पिक पाठ"
 
@@ -967,8 +967,8 @@ msgstr "वैकल्पिक पाठ"
 msgid "Alt Text"
 msgstr "ऑल्ट टेक्स्ट"
 
-#: packages/admin/src/components/MediaLibrary.tsx:835
-#: packages/admin/src/components/MediaLibrary.tsx:892
+#: packages/admin/src/components/MediaLibrary.tsx:867
+#: packages/admin/src/components/MediaLibrary.tsx:924
 msgid "Alt text set"
 msgstr "ऑल्ट टेक्स्ट सेट"
 
@@ -1020,10 +1020,10 @@ msgstr "वैकल्पिक रूप से, आप वर्डप्र�
 #: packages/admin/src/router.tsx:1155
 #: packages/admin/src/router.tsx:1186
 #: packages/admin/src/router.tsx:1206
-#: packages/admin/src/router.tsx:1500
-#: packages/admin/src/router.tsx:1516
-#: packages/admin/src/router.tsx:1541
-#: packages/admin/src/router.tsx:2041
+#: packages/admin/src/router.tsx:1505
+#: packages/admin/src/router.tsx:1521
+#: packages/admin/src/router.tsx:1546
+#: packages/admin/src/router.tsx:2046
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1140,7 +1140,7 @@ msgid "Astro"
 msgstr "खगोल"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:66
-#: packages/admin/src/components/MediaLibrary.tsx:436
+#: packages/admin/src/components/MediaLibrary.tsx:468
 msgid "Audio"
 msgstr "ऑडियो"
 
@@ -1616,13 +1616,13 @@ msgid "Clear"
 msgstr "स्पष्ट"
 
 #: packages/admin/src/components/ContentList.tsx:947
-#: packages/admin/src/components/MediaLibrary.tsx:497
+#: packages/admin/src/components/MediaLibrary.tsx:529
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
 msgstr "फ़िल्टर साफ़ करें"
 
-#: packages/admin/src/components/MediaLibrary.tsx:497
-#: packages/admin/src/components/MediaLibrary.tsx:521
+#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:553
 msgid "Clear search"
 msgstr "स्पष्ट खोज"
 
@@ -2737,7 +2737,7 @@ msgid "Dockerfile"
 msgstr "Dockerfile"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:63
-#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaLibrary.tsx:469
 msgid "Documents"
 msgstr "दस्तावेज़"
 
@@ -3149,7 +3149,7 @@ msgstr "अपना वर्डप्रेस साइट URL दर्ज �
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2255
+#: packages/admin/src/router.tsx:2260
 msgid "Error"
 msgstr "गलती"
 
@@ -3247,7 +3247,7 @@ msgstr "वर्डप्रेस साइट का विश्लेषण
 msgid "Failed to communicate with plugin"
 msgstr "प्लगइन के साथ संचार करने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:179
+#: packages/admin/src/lib/api/media.ts:194
 msgid "Failed to confirm upload"
 msgstr "अपलोड की पुष्टि करने में विफल"
 
@@ -3317,7 +3317,7 @@ msgid "Failed to delete collection"
 msgstr "संग्रह हटाने में विफल"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1515
+#: packages/admin/src/router.tsx:1520
 msgid "Failed to delete comment"
 msgstr "टिप्पणी हटाने में विफल"
 
@@ -3330,11 +3330,11 @@ msgstr "सामग्री हटाने में विफल"
 msgid "Failed to delete field"
 msgstr "फ़ील्ड हटाने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:416
+#: packages/admin/src/lib/api/media.ts:431
 msgid "Failed to delete from provider"
 msgstr "प्रदाता से हटाने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:286
+#: packages/admin/src/lib/api/media.ts:301
 msgid "Failed to delete media"
 msgstr "मीडिया हटाने में विफल"
 
@@ -3441,17 +3441,21 @@ msgstr "प्रवेश शर्तें लाने में विफ�
 msgid "Failed to fetch manifest"
 msgstr "मेनिफ़ेस्ट लाने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:72
+#: packages/admin/src/lib/api/media.ts:87
 msgid "Failed to fetch media"
 msgstr "मीडिया लाने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:85
+#: packages/admin/src/lib/api/media.ts:100
 msgid "Failed to fetch media item"
 msgstr "मीडिया आइटम लाने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:352
+#: packages/admin/src/lib/api/media.ts:367
 msgid "Failed to fetch media providers"
 msgstr "मीडिया प्रदाता लाने में विफल"
+
+#: packages/admin/src/lib/api/media.ts:57
+msgid "Failed to fetch media storage quota"
+msgstr ""
 
 #: packages/admin/src/lib/api/plugins.ts:70
 #: packages/admin/src/lib/api/plugins.ts:74
@@ -3466,7 +3470,7 @@ msgstr "प्लगइन सेटिंग लाने में विफ�
 msgid "Failed to fetch plugins"
 msgstr "प्लगइन्स लाने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:382
+#: packages/admin/src/lib/api/media.ts:397
 msgid "Failed to fetch provider media"
 msgstr "प्रदाता मीडिया लाने में विफल"
 
@@ -3499,7 +3503,7 @@ msgstr "शर्तें लाने में विफल"
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
 #: packages/admin/src/router.tsx:905
-#: packages/admin/src/router.tsx:1446
+#: packages/admin/src/router.tsx:1451
 msgid "Failed to fetch user"
 msgstr "उपयोगकर्ता लाने में विफल"
 
@@ -3519,7 +3523,7 @@ msgstr "प्रमाणीकरण विकल्प प्राप्त 
 msgid "Failed to get registration options"
 msgstr "पंजीकरण विकल्प प्राप्त करने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:154
+#: packages/admin/src/lib/api/media.ts:169
 msgid "Failed to get upload URL"
 msgstr "अपलोड URL प्राप्त करने में विफल"
 
@@ -3541,7 +3545,7 @@ msgstr "प्लगइन स्थापित करने में वि�
 msgid "Failed to list byline fields"
 msgstr "बायलाइन फ़ील्ड सूचीबद्ध करने में विफल"
 
-#: packages/admin/src/router.tsx:286
+#: packages/admin/src/router.tsx:287
 msgid "Failed to load admin"
 msgstr "व्यवस्थापक लोड करने में विफल"
 
@@ -3610,7 +3614,7 @@ msgstr "उपयोगकर्ताओं को लोड करने म�
 msgid "Failed to load widget"
 msgstr "विजेट लोड करने में विफल"
 
-#: packages/admin/src/router.tsx:1540
+#: packages/admin/src/router.tsx:1545
 msgid "Failed to perform bulk action"
 msgstr "थोक कार्रवाई करने में विफल"
 
@@ -3684,7 +3688,7 @@ msgstr "URL पुनः लिखने में विफल"
 
 #: packages/admin/src/router.tsx:713
 #: packages/admin/src/router.tsx:995
-#: packages/admin/src/router.tsx:2040
+#: packages/admin/src/router.tsx:2045
 msgid "Failed to save"
 msgstr "सहेजने में विफल"
 
@@ -3767,7 +3771,7 @@ msgstr "बायलाइन फ़ील्ड अपडेट करने �
 msgid "Failed to update domain"
 msgstr "डोमेन अद्यतन करने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:303
+#: packages/admin/src/lib/api/media.ts:318
 msgid "Failed to update media"
 msgstr "मीडिया अपडेट करने में विफल"
 
@@ -3792,19 +3796,19 @@ msgstr "अनुभाग अद्यतन करने में विफ�
 msgid "Failed to update settings"
 msgstr "सेटिंग्स अपडेट करने में विफल"
 
-#: packages/admin/src/router.tsx:1499
+#: packages/admin/src/router.tsx:1504
 msgid "Failed to update status"
 msgstr "स्थिति अपडेट करने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:197
+#: packages/admin/src/lib/api/media.ts:212
 msgid "Failed to upload file"
 msgstr "फ़ाइल अपलोड करने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:242
+#: packages/admin/src/lib/api/media.ts:257
 msgid "Failed to upload media"
 msgstr "मीडिया अपलोड करने में विफल"
 
-#: packages/admin/src/lib/api/media.ts:404
+#: packages/admin/src/lib/api/media.ts:419
 msgid "Failed to upload to provider"
 msgstr "प्रदाता पर अपलोड करने में विफल"
 
@@ -3893,7 +3897,7 @@ msgstr "मीडिया लाइब्रेरी से फ़ाइल"
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:325
 #: packages/admin/src/components/MediaDetailPanel.tsx:342
-#: packages/admin/src/components/MediaLibrary.tsx:586
+#: packages/admin/src/components/MediaLibrary.tsx:618
 msgid "Filename"
 msgstr "फ़ाइलनाम"
 
@@ -3934,7 +3938,7 @@ msgstr "स्रोत के अनुसार फ़िल्टर कर�
 msgid "Filter by status"
 msgstr "स्थिति के अनुसार फ़िल्टर करें"
 
-#: packages/admin/src/components/MediaLibrary.tsx:439
+#: packages/admin/src/components/MediaLibrary.tsx:471
 #: packages/admin/src/components/Redirects.tsx:433
 msgid "Filter by type"
 msgstr "प्रकार के अनुसार फ़िल्टर करें"
@@ -4015,7 +4019,7 @@ msgid "Go"
 msgstr "जाना"
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2280
 msgid "Go to Dashboard"
 msgstr "डैशबोर्ड पर जाएँ"
 
@@ -4028,7 +4032,7 @@ msgstr "गूगल सत्यापन"
 msgid "GraphQL"
 msgstr "ग्राफक्यूएल"
 
-#: packages/admin/src/components/MediaLibrary.tsx:460
+#: packages/admin/src/components/MediaLibrary.tsx:492
 msgid "Grid view"
 msgstr "जालक दृश्य"
 
@@ -4222,7 +4226,7 @@ msgstr "छवि URL अद्यतन किए गए"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:61
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:192
-#: packages/admin/src/components/MediaLibrary.tsx:434
+#: packages/admin/src/components/MediaLibrary.tsx:466
 msgid "Images"
 msgstr "इमेजिस"
 
@@ -4657,9 +4661,9 @@ msgstr "असाइन नहीं किया गया छोड़ें"
 msgid "Left"
 msgstr "बाएं"
 
-#: packages/admin/src/components/MediaLibrary.tsx:136
-#: packages/admin/src/components/MediaLibrary.tsx:273
-#: packages/admin/src/components/MediaLibrary.tsx:356
+#: packages/admin/src/components/MediaLibrary.tsx:139
+#: packages/admin/src/components/MediaLibrary.tsx:276
+#: packages/admin/src/components/MediaLibrary.tsx:359
 #: packages/admin/src/components/MediaPickerModal.tsx:211
 #: packages/admin/src/components/MediaPickerModal.tsx:509
 msgid "Library"
@@ -4710,7 +4714,7 @@ msgstr "Linkedin"
 msgid "Links"
 msgstr "लिंक"
 
-#: packages/admin/src/components/MediaLibrary.tsx:469
+#: packages/admin/src/components/MediaLibrary.tsx:501
 msgid "List view"
 msgstr "लिस्ट व्यू"
 
@@ -4731,13 +4735,13 @@ msgstr "और लोड करें"
 
 #: packages/admin/src/components/ContentList.tsx:724
 #: packages/admin/src/components/ContentList.tsx:782
-#: packages/admin/src/components/MediaLibrary.tsx:635
+#: packages/admin/src/components/MediaLibrary.tsx:667
 #: packages/admin/src/components/MediaPickerModal.tsx:775
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "और लोड करें"
 
-#: packages/admin/src/router.tsx:2230
+#: packages/admin/src/router.tsx:2235
 msgid "Loading"
 msgstr "लोड हो रहा है"
 
@@ -4753,8 +4757,8 @@ msgstr "संग्रह लोड हो रहा है..."
 msgid "Loading comments..."
 msgstr "टिप्पणियाँ लोड हो रही हैं..."
 
-#: packages/admin/src/router.tsx:2232
-#: packages/admin/src/router.tsx:2244
+#: packages/admin/src/router.tsx:2237
+#: packages/admin/src/router.tsx:2249
 msgid "Loading configuration..."
 msgstr "कॉन्फ़िगरेशन लोड हो रहा है..."
 
@@ -4812,7 +4816,7 @@ msgstr "विजेट लोड हो रहे हैं..."
 #: packages/admin/src/components/ContentList.tsx:782
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
-#: packages/admin/src/components/MediaLibrary.tsx:635
+#: packages/admin/src/components/MediaLibrary.tsx:667
 #: packages/admin/src/components/MediaPickerModal.tsx:775
 #: packages/admin/src/components/PortableTextEditor.tsx:2413
 #: packages/admin/src/components/Redirects.tsx:560
@@ -5030,13 +5034,17 @@ msgid "Media import was skipped"
 msgstr "मीडिया आयात छोड़ दिया गया था"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:153
-#: packages/admin/src/components/MediaLibrary.tsx:322
+#: packages/admin/src/components/MediaLibrary.tsx:325
 msgid "Media Library"
 msgstr "मीडिया लाइब्रेरी"
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:57
 msgid "Media Read"
 msgstr "मीडिया पढ़ें"
+
+#: packages/admin/src/components/MediaLibrary.tsx:384
+msgid "Media storage usage"
+msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:62
 msgid "Media Write"
@@ -5404,8 +5412,8 @@ msgstr "अभी तक कोई {0} नहीं। आरंभ करने
 msgid "No 404 errors recorded yet."
 msgstr "अभी तक कोई 404 त्रुटियाँ दर्ज नहीं की गईं।"
 
-#: packages/admin/src/components/MediaLibrary.tsx:835
-#: packages/admin/src/components/MediaLibrary.tsx:892
+#: packages/admin/src/components/MediaLibrary.tsx:867
+#: packages/admin/src/components/MediaLibrary.tsx:924
 msgid "No alt text"
 msgstr "कोई वैकल्पिक पाठ नहीं"
 
@@ -5544,8 +5552,8 @@ msgstr "कोई मेल नहीं"
 msgid "No matching bylines."
 msgstr "कोई मेल खाती बायलाइन नहीं."
 
-#: packages/admin/src/components/MediaLibrary.tsx:489
-#: packages/admin/src/components/MediaLibrary.tsx:517
+#: packages/admin/src/components/MediaLibrary.tsx:521
+#: packages/admin/src/components/MediaLibrary.tsx:549
 msgid "No matching media"
 msgstr "कोई मेल खाता मीडिया नहीं"
 
@@ -5562,11 +5570,11 @@ msgstr "कोई अधिकतम नहीं"
 msgid "No media available from this provider"
 msgstr "इस प्रदाता से कोई मीडिया उपलब्ध नहीं है"
 
-#: packages/admin/src/components/MediaLibrary.tsx:540
+#: packages/admin/src/components/MediaLibrary.tsx:572
 msgid "No media available from this provider."
 msgstr "इस प्रदाता से कोई मीडिया उपलब्ध नहीं है."
 
-#: packages/admin/src/components/MediaLibrary.tsx:539
+#: packages/admin/src/components/MediaLibrary.tsx:571
 #: packages/admin/src/components/MediaPickerModal.tsx:688
 msgid "No media found"
 msgstr "कोई मीडिया नहीं मिला"
@@ -5863,7 +5871,7 @@ msgstr "स्वामित्व"
 msgid "Package"
 msgstr "पैकेट"
 
-#: packages/admin/src/router.tsx:2270
+#: packages/admin/src/router.tsx:2275
 msgid "Page Not Found"
 msgstr "पृष्ठ नहीं मिला"
 
@@ -6193,7 +6201,7 @@ msgstr "तैयारी..."
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
-#: packages/admin/src/components/MediaLibrary.tsx:585
+#: packages/admin/src/components/MediaLibrary.tsx:617
 msgid "Preview"
 msgstr "पूर्व दर्शन"
 
@@ -6408,6 +6416,10 @@ msgstr "रजिस्ट्री"
 #: packages/admin/src/components/RegistryPluginDetail.tsx:610
 msgid "Release is too new to install"
 msgstr "इंस्टॉल करने के लिए रिलीज़ बहुत नई है"
+
+#: packages/admin/src/components/MediaLibrary.tsx:379
+msgid "remaining"
+msgstr ""
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:84
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:115
@@ -6642,7 +6654,7 @@ msgstr "पुनर्स्थापित किया जा रहा ह�
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2258
+#: packages/admin/src/router.tsx:2263
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "पुन: प्रयास करें"
@@ -6937,7 +6949,7 @@ msgstr "खोजें {0}"
 msgid "Search {0}..."
 msgstr "खोजें {0}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:415
+#: packages/admin/src/components/MediaLibrary.tsx:447
 #: packages/admin/src/components/MediaPickerModal.tsx:626
 msgid "Search by filename..."
 msgstr "फ़ाइल नाम से खोजें..."
@@ -6985,7 +6997,7 @@ msgstr "खोज इंजन अनुकूलन और सत्याप�
 msgid "Search form"
 msgstr "खोज फ़ॉर्म"
 
-#: packages/admin/src/components/MediaLibrary.tsx:416
+#: packages/admin/src/components/MediaLibrary.tsx:448
 #: packages/admin/src/components/MediaPickerModal.tsx:627
 msgid "Search media"
 msgstr "मीडिया खोजें"
@@ -7029,7 +7041,7 @@ msgstr ""
 msgid "Search users"
 msgstr "उपयोगकर्ता खोजें"
 
-#: packages/admin/src/components/MediaLibrary.tsx:415
+#: packages/admin/src/components/MediaLibrary.tsx:447
 #: packages/admin/src/components/MediaPickerModal.tsx:626
 msgid "Search..."
 msgstr "खोज..."
@@ -7512,7 +7524,7 @@ msgstr "साइट URL"
 msgid "Sites on Cloudflare D1 can additionally restore the database to any minute within the last 30 days using D1 Time Travel — always on, no setup required."
 msgstr "Cloudflare D1 पर साइटें D1 टाइम ट्रैवल का उपयोग करके पिछले 30 दिनों के भीतर किसी भी मिनट में डेटाबेस को पुनर्स्थापित कर सकती हैं - हमेशा चालू, किसी सेटअप की आवश्यकता नहीं।"
 
-#: packages/admin/src/components/MediaLibrary.tsx:588
+#: packages/admin/src/components/MediaLibrary.tsx:620
 msgid "Size"
 msgstr "आकार"
 
@@ -7661,6 +7673,10 @@ msgstr "स्थिति कोड"
 #: packages/admin/src/components/Dashboard.tsx:401
 msgid "Status: {status}"
 msgstr "स्थिति: {status}"
+
+#: packages/admin/src/components/MediaLibrary.tsx:377
+msgid "Storage available"
+msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:205
 msgid "Store a daily backup in your site's storage bucket. Old backups are removed automatically."
@@ -7846,7 +7862,7 @@ msgstr "मेनू हटा दिया गया है."
 msgid "The name of your site, used in the header and metadata"
 msgstr "आपकी साइट का नाम, हेडर और मेटाडेटा में उपयोग किया जाता है"
 
-#: packages/admin/src/router.tsx:2272
+#: packages/admin/src/router.tsx:2277
 msgid "The page you're looking for doesn't exist."
 msgstr "आप जिस पृष्ठ को खोज रहे हैं वह मौजूद नहीं है।"
 
@@ -8174,7 +8190,7 @@ msgstr "कचरा खाली है."
 msgid "True/false toggle"
 msgstr "सही/गलत टॉगल करें"
 
-#: packages/admin/src/components/MediaLibrary.tsx:493
+#: packages/admin/src/components/MediaLibrary.tsx:525
 msgid "Try a broader media type or clear your filters."
 msgstr "व्यापक मीडिया प्रकार आज़माएँ या अपने फ़िल्टर साफ़ करें।"
 
@@ -8203,11 +8219,11 @@ msgstr "पुनः प्रयास करें"
 msgid "Try another code"
 msgstr "कोई अन्य कोड आज़माएँ"
 
-#: packages/admin/src/components/MediaLibrary.tsx:518
+#: packages/admin/src/components/MediaLibrary.tsx:550
 msgid "Try another filename or clear your search."
 msgstr "कोई अन्य फ़ाइल नाम आज़माएँ या अपनी खोज साफ़ करें।"
 
-#: packages/admin/src/components/MediaLibrary.tsx:492
+#: packages/admin/src/components/MediaLibrary.tsx:524
 msgid "Try another filename, or clear your search and filters."
 msgstr "कोई अन्य फ़ाइल नाम आज़माएँ, या अपनी खोज और फ़िल्टर साफ़ करें।"
 
@@ -8235,7 +8251,7 @@ msgstr "ट्विटर"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
-#: packages/admin/src/components/MediaLibrary.tsx:587
+#: packages/admin/src/components/MediaLibrary.tsx:619
 #: packages/admin/src/routes/byline-schema.tsx:240
 msgid "Type"
 msgstr "प्रकार"
@@ -8466,12 +8482,12 @@ msgstr "फ़ाइल अपलोड करें"
 msgid "Upload File"
 msgstr "फ़ाइल अपलोड करें"
 
-#: packages/admin/src/components/MediaLibrary.tsx:365
+#: packages/admin/src/components/MediaLibrary.tsx:368
 msgid "Upload files"
 msgstr "फाइलें अपलोड करें"
 
-#: packages/admin/src/components/MediaLibrary.tsx:508
-#: packages/admin/src/components/MediaLibrary.tsx:532
+#: packages/admin/src/components/MediaLibrary.tsx:540
+#: packages/admin/src/components/MediaLibrary.tsx:564
 msgid "Upload Files"
 msgstr "फाइलें अपलोड करें"
 
@@ -8479,7 +8495,7 @@ msgstr "फाइलें अपलोड करें"
 msgid "Upload Image"
 msgstr "तस्विर अपलोड करना"
 
-#: packages/admin/src/components/MediaLibrary.tsx:505
+#: packages/admin/src/components/MediaLibrary.tsx:537
 msgid "Upload images, videos, and documents to keep reusable assets in one place."
 msgstr "पुन: प्रयोज्य संपत्तियों को एक ही स्थान पर रखने के लिए चित्र, वीडियो और दस्तावेज़ अपलोड करें।"
 
@@ -8487,12 +8503,12 @@ msgstr "पुन: प्रयोज्य संपत्तियों क�
 msgid "Upload Media"
 msgstr "मीडिया अपलोड करें"
 
-#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:561
 msgid "Upload media to keep reusable assets in one place."
 msgstr "पुन: प्रयोज्य परिसंपत्तियों को एक स्थान पर रखने के लिए मीडिया अपलोड करें।"
 
 #. placeholder {0}: activeProviderInfo?.name || t`Library`
-#: packages/admin/src/components/MediaLibrary.tsx:356
+#: packages/admin/src/components/MediaLibrary.tsx:359
 msgid "Upload to {0}"
 msgstr "{0} पर अपलोड करें"
 
@@ -8510,11 +8526,11 @@ msgstr "अपलोड हो रहा है"
 
 #. placeholder {0}: uploadState.progress.current
 #. placeholder {1}: uploadState.progress.total
-#: packages/admin/src/components/MediaLibrary.tsx:331
+#: packages/admin/src/components/MediaLibrary.tsx:334
 msgid "Uploading {0}/{1}..."
 msgstr "अपलोड हो रहा है {0}/{1}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:332
+#: packages/admin/src/components/MediaLibrary.tsx:335
 #: packages/admin/src/components/MediaPickerModal.tsx:649
 msgid "Uploading..."
 msgstr "अपलोड हो रहा है..."
@@ -8669,7 +8685,7 @@ msgid "Version {0}"
 msgstr "संस्करण {0}"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:67
-#: packages/admin/src/components/MediaLibrary.tsx:435
+#: packages/admin/src/components/MediaLibrary.tsx:467
 msgid "Video"
 msgstr "वीडियो"
 
@@ -8682,7 +8698,7 @@ msgstr "ईमेल प्रदाता स्थिति देखें �
 msgid "View in Marketplace"
 msgstr "बाज़ार में देखें"
 
-#: packages/admin/src/components/MediaLibrary.tsx:447
+#: packages/admin/src/components/MediaLibrary.tsx:479
 msgid "View mode"
 msgstr "दृश्य मोड"
 
@@ -8963,7 +8979,7 @@ msgstr "आपके पास उपयोगकर्ताओं, सेट�
 msgid "You need admin permissions to manage byline schema."
 msgstr "बायलाइन स्कीमा को प्रबंधित करने के लिए आपको व्यवस्थापक अनुमति की आवश्यकता है।"
 
-#: packages/admin/src/router.tsx:1556
+#: packages/admin/src/router.tsx:1561
 msgid "You need Editor permissions to moderate comments."
 msgstr "टिप्पणियों को मॉडरेट करने के लिए आपको संपादक की अनुमति की आवश्यकता है।"
 
@@ -9044,8 +9060,8 @@ msgstr "आपका इंस्टाग्राम उपयोगकर्�
 msgid "Your LinkedIn profile username"
 msgstr "आपका लिंक्डइन प्रोफ़ाइल उपयोगकर्ता नाम"
 
-#: packages/admin/src/components/MediaLibrary.tsx:504
-#: packages/admin/src/components/MediaLibrary.tsx:528
+#: packages/admin/src/components/MediaLibrary.tsx:536
+#: packages/admin/src/components/MediaLibrary.tsx:560
 msgid "Your media library is empty"
 msgstr "आपकी मीडिया लाइब्रेरी खाली है"
 

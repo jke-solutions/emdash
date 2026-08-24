@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr ""
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1535
+#: packages/admin/src/router.tsx:1540
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, one {# comentario actualizado} other {# comentarios actualizados}}"
 
@@ -412,7 +412,7 @@ msgstr ""
 msgid "{readingTime, plural, one {# min read} other {# min read}}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:298
+#: packages/admin/src/components/MediaLibrary.tsx:301
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr ""
 
@@ -432,13 +432,13 @@ msgstr "{total, plural, one {# elemento} other {# elementos}}"
 msgid "{total, plural, one {# total} other {# total}}"
 msgstr "{total, plural, one {# total} other {# total}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:211
-#: packages/admin/src/components/MediaLibrary.tsx:247
+#: packages/admin/src/components/MediaLibrary.tsx:214
+#: packages/admin/src/components/MediaLibrary.tsx:250
 msgid "{total, plural, one {File uploaded} other {# files uploaded}}"
 msgstr "{total, plural, one {Archivo subido} other {# archivos subidos}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:216
-#: packages/admin/src/components/MediaLibrary.tsx:252
+#: packages/admin/src/components/MediaLibrary.tsx:219
+#: packages/admin/src/components/MediaLibrary.tsx:255
 msgid "{total, plural, one {Upload failed} other {All # uploads failed}}"
 msgstr "{total, plural, one {Error en la carga} other {Error en todas las # cargas}}"
 
@@ -458,8 +458,8 @@ msgstr "{unchangedCount, plural, one {Ocultar # sin cambios} other {Ocultar # si
 msgid "{unchangedCount, plural, one {Show # unchanged} other {Show # unchanged}}"
 msgstr "{unchangedCount, plural, one {Mostrar # sin cambios} other {Mostrar # sin cambios}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:221
-#: packages/admin/src/components/MediaLibrary.tsx:257
+#: packages/admin/src/components/MediaLibrary.tsx:224
+#: packages/admin/src/components/MediaLibrary.tsx:260
 msgid "{uploaded} uploaded, {failed} failed"
 msgstr "{uploaded} subido, {failed} falló"
 
@@ -610,7 +610,7 @@ msgstr "Aceptar invitación"
 msgid "Access denied"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1555
+#: packages/admin/src/router.tsx:1560
 msgid "Access Denied"
 msgstr "Acceso denegado"
 
@@ -916,7 +916,7 @@ msgstr "Todas las fuentes"
 msgid "All statuses"
 msgstr "Todos los estados"
 
-#: packages/admin/src/components/MediaLibrary.tsx:433
+#: packages/admin/src/components/MediaLibrary.tsx:465
 #: packages/admin/src/components/Redirects.tsx:432
 msgid "All types"
 msgstr "Todos los tipos"
@@ -956,7 +956,7 @@ msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:376
 #: packages/admin/src/components/editor/ImageNode.tsx:231
-#: packages/admin/src/components/MediaLibrary.tsx:589
+#: packages/admin/src/components/MediaLibrary.tsx:621
 msgid "Alt text"
 msgstr "Texto alternativo"
 
@@ -967,8 +967,8 @@ msgstr "Texto alternativo"
 msgid "Alt Text"
 msgstr "Texto alternativo"
 
-#: packages/admin/src/components/MediaLibrary.tsx:835
-#: packages/admin/src/components/MediaLibrary.tsx:892
+#: packages/admin/src/components/MediaLibrary.tsx:867
+#: packages/admin/src/components/MediaLibrary.tsx:924
 msgid "Alt text set"
 msgstr "Texto alternativo establecido"
 
@@ -1020,10 +1020,10 @@ msgstr "Alternativamente, puede exportar desde WordPress (Herramientas → Expor
 #: packages/admin/src/router.tsx:1155
 #: packages/admin/src/router.tsx:1186
 #: packages/admin/src/router.tsx:1206
-#: packages/admin/src/router.tsx:1500
-#: packages/admin/src/router.tsx:1516
-#: packages/admin/src/router.tsx:1541
-#: packages/admin/src/router.tsx:2041
+#: packages/admin/src/router.tsx:1505
+#: packages/admin/src/router.tsx:1521
+#: packages/admin/src/router.tsx:1546
+#: packages/admin/src/router.tsx:2046
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1140,7 +1140,7 @@ msgid "Astro"
 msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:66
-#: packages/admin/src/components/MediaLibrary.tsx:436
+#: packages/admin/src/components/MediaLibrary.tsx:468
 msgid "Audio"
 msgstr "Audio"
 
@@ -1616,13 +1616,13 @@ msgid "Clear"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:947
-#: packages/admin/src/components/MediaLibrary.tsx:497
+#: packages/admin/src/components/MediaLibrary.tsx:529
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
 msgstr "Limpiar filtros"
 
-#: packages/admin/src/components/MediaLibrary.tsx:497
-#: packages/admin/src/components/MediaLibrary.tsx:521
+#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:553
 msgid "Clear search"
 msgstr ""
 
@@ -2737,7 +2737,7 @@ msgid "Dockerfile"
 msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:63
-#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaLibrary.tsx:469
 msgid "Documents"
 msgstr "Documentos"
 
@@ -3146,7 +3146,7 @@ msgstr "Introduce la URL de tu sitio de WordPress"
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2255
+#: packages/admin/src/router.tsx:2260
 msgid "Error"
 msgstr "Error"
 
@@ -3244,7 +3244,7 @@ msgstr "Error al analizar el sitio de WordPress"
 msgid "Failed to communicate with plugin"
 msgstr "Error al comunicar con el plugin"
 
-#: packages/admin/src/lib/api/media.ts:179
+#: packages/admin/src/lib/api/media.ts:194
 msgid "Failed to confirm upload"
 msgstr ""
 
@@ -3314,7 +3314,7 @@ msgid "Failed to delete collection"
 msgstr "Error al eliminar la colección"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1515
+#: packages/admin/src/router.tsx:1520
 msgid "Failed to delete comment"
 msgstr "Error al eliminar el comentario"
 
@@ -3327,11 +3327,11 @@ msgstr "Error al eliminar el contenido"
 msgid "Failed to delete field"
 msgstr "Error al eliminar el campo"
 
-#: packages/admin/src/lib/api/media.ts:416
+#: packages/admin/src/lib/api/media.ts:431
 msgid "Failed to delete from provider"
 msgstr "Error al eliminar del proveedor"
 
-#: packages/admin/src/lib/api/media.ts:286
+#: packages/admin/src/lib/api/media.ts:301
 msgid "Failed to delete media"
 msgstr "Error al eliminar el medio"
 
@@ -3438,16 +3438,20 @@ msgstr "Error al obtener los términos de la entrada"
 msgid "Failed to fetch manifest"
 msgstr "Error al obtener el manifiesto"
 
-#: packages/admin/src/lib/api/media.ts:72
+#: packages/admin/src/lib/api/media.ts:87
 msgid "Failed to fetch media"
 msgstr ""
 
-#: packages/admin/src/lib/api/media.ts:85
+#: packages/admin/src/lib/api/media.ts:100
 msgid "Failed to fetch media item"
 msgstr ""
 
-#: packages/admin/src/lib/api/media.ts:352
+#: packages/admin/src/lib/api/media.ts:367
 msgid "Failed to fetch media providers"
+msgstr ""
+
+#: packages/admin/src/lib/api/media.ts:57
+msgid "Failed to fetch media storage quota"
 msgstr ""
 
 #: packages/admin/src/lib/api/plugins.ts:70
@@ -3463,7 +3467,7 @@ msgstr ""
 msgid "Failed to fetch plugins"
 msgstr ""
 
-#: packages/admin/src/lib/api/media.ts:382
+#: packages/admin/src/lib/api/media.ts:397
 msgid "Failed to fetch provider media"
 msgstr ""
 
@@ -3496,7 +3500,7 @@ msgstr "Error al obtener los términos"
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
 #: packages/admin/src/router.tsx:905
-#: packages/admin/src/router.tsx:1446
+#: packages/admin/src/router.tsx:1451
 msgid "Failed to fetch user"
 msgstr "Error al obtener el usuario"
 
@@ -3516,7 +3520,7 @@ msgstr "Error al obtener las opciones de autenticación"
 msgid "Failed to get registration options"
 msgstr "Error al obtener las opciones de registro"
 
-#: packages/admin/src/lib/api/media.ts:154
+#: packages/admin/src/lib/api/media.ts:169
 msgid "Failed to get upload URL"
 msgstr ""
 
@@ -3538,7 +3542,7 @@ msgstr "Error al instalar el plugin"
 msgid "Failed to list byline fields"
 msgstr ""
 
-#: packages/admin/src/router.tsx:286
+#: packages/admin/src/router.tsx:287
 msgid "Failed to load admin"
 msgstr "Error al cargar el administrador"
 
@@ -3607,7 +3611,7 @@ msgstr "Error al cargar los usuarios: {0}"
 msgid "Failed to load widget"
 msgstr "Error al cargar el widget"
 
-#: packages/admin/src/router.tsx:1540
+#: packages/admin/src/router.tsx:1545
 msgid "Failed to perform bulk action"
 msgstr "Error al realizar la acción masiva"
 
@@ -3681,7 +3685,7 @@ msgstr "Error al reescribir las URL"
 
 #: packages/admin/src/router.tsx:713
 #: packages/admin/src/router.tsx:995
-#: packages/admin/src/router.tsx:2040
+#: packages/admin/src/router.tsx:2045
 msgid "Failed to save"
 msgstr "Error al guardar"
 
@@ -3764,7 +3768,7 @@ msgstr ""
 msgid "Failed to update domain"
 msgstr "No se pudo actualizar el dominio"
 
-#: packages/admin/src/lib/api/media.ts:303
+#: packages/admin/src/lib/api/media.ts:318
 msgid "Failed to update media"
 msgstr ""
 
@@ -3789,19 +3793,19 @@ msgstr ""
 msgid "Failed to update settings"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1499
+#: packages/admin/src/router.tsx:1504
 msgid "Failed to update status"
 msgstr "Error al actualizar el estado"
 
-#: packages/admin/src/lib/api/media.ts:197
+#: packages/admin/src/lib/api/media.ts:212
 msgid "Failed to upload file"
 msgstr "Error al subir el archivo"
 
-#: packages/admin/src/lib/api/media.ts:242
+#: packages/admin/src/lib/api/media.ts:257
 msgid "Failed to upload media"
 msgstr ""
 
-#: packages/admin/src/lib/api/media.ts:404
+#: packages/admin/src/lib/api/media.ts:419
 msgid "Failed to upload to provider"
 msgstr ""
 
@@ -3890,7 +3894,7 @@ msgstr "Archivo de la biblioteca multimedia"
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:325
 #: packages/admin/src/components/MediaDetailPanel.tsx:342
-#: packages/admin/src/components/MediaLibrary.tsx:586
+#: packages/admin/src/components/MediaLibrary.tsx:618
 msgid "Filename"
 msgstr "Nombre del archivo"
 
@@ -3931,7 +3935,7 @@ msgstr "Filtrar por origen"
 msgid "Filter by status"
 msgstr "Filtrar por estado"
 
-#: packages/admin/src/components/MediaLibrary.tsx:439
+#: packages/admin/src/components/MediaLibrary.tsx:471
 #: packages/admin/src/components/Redirects.tsx:433
 msgid "Filter by type"
 msgstr "Filtrar por tipo"
@@ -4012,7 +4016,7 @@ msgid "Go"
 msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2280
 msgid "Go to Dashboard"
 msgstr "Ir al panel"
 
@@ -4025,7 +4029,7 @@ msgstr "Verificación de Google"
 msgid "GraphQL"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:460
+#: packages/admin/src/components/MediaLibrary.tsx:492
 msgid "Grid view"
 msgstr "Vista de cuadrícula"
 
@@ -4219,7 +4223,7 @@ msgstr "URL de imágenes actualizadas en"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:61
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:192
-#: packages/admin/src/components/MediaLibrary.tsx:434
+#: packages/admin/src/components/MediaLibrary.tsx:466
 msgid "Images"
 msgstr "Imágenes"
 
@@ -4654,9 +4658,9 @@ msgstr "Dejar sin asignar"
 msgid "Left"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:136
-#: packages/admin/src/components/MediaLibrary.tsx:273
-#: packages/admin/src/components/MediaLibrary.tsx:356
+#: packages/admin/src/components/MediaLibrary.tsx:139
+#: packages/admin/src/components/MediaLibrary.tsx:276
+#: packages/admin/src/components/MediaLibrary.tsx:359
 #: packages/admin/src/components/MediaPickerModal.tsx:211
 #: packages/admin/src/components/MediaPickerModal.tsx:509
 msgid "Library"
@@ -4707,7 +4711,7 @@ msgstr "LinkedIn"
 msgid "Links"
 msgstr "Campo de golf"
 
-#: packages/admin/src/components/MediaLibrary.tsx:469
+#: packages/admin/src/components/MediaLibrary.tsx:501
 msgid "List view"
 msgstr "Vista de lista"
 
@@ -4728,13 +4732,13 @@ msgstr "Cargar más"
 
 #: packages/admin/src/components/ContentList.tsx:724
 #: packages/admin/src/components/ContentList.tsx:782
-#: packages/admin/src/components/MediaLibrary.tsx:635
+#: packages/admin/src/components/MediaLibrary.tsx:667
 #: packages/admin/src/components/MediaPickerModal.tsx:775
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "Cargar más"
 
-#: packages/admin/src/router.tsx:2230
+#: packages/admin/src/router.tsx:2235
 msgid "Loading"
 msgstr ""
 
@@ -4750,8 +4754,8 @@ msgstr "Cargando colecciones..."
 msgid "Loading comments..."
 msgstr "Cargando comentarios..."
 
-#: packages/admin/src/router.tsx:2232
-#: packages/admin/src/router.tsx:2244
+#: packages/admin/src/router.tsx:2237
+#: packages/admin/src/router.tsx:2249
 msgid "Loading configuration..."
 msgstr "Cargando configuración..."
 
@@ -4809,7 +4813,7 @@ msgstr "Cargando widgets..."
 #: packages/admin/src/components/ContentList.tsx:782
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
-#: packages/admin/src/components/MediaLibrary.tsx:635
+#: packages/admin/src/components/MediaLibrary.tsx:667
 #: packages/admin/src/components/MediaPickerModal.tsx:775
 #: packages/admin/src/components/PortableTextEditor.tsx:2413
 #: packages/admin/src/components/Redirects.tsx:560
@@ -5027,13 +5031,17 @@ msgid "Media import was skipped"
 msgstr "Se omitió la importación de medios"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:153
-#: packages/admin/src/components/MediaLibrary.tsx:322
+#: packages/admin/src/components/MediaLibrary.tsx:325
 msgid "Media Library"
 msgstr "Biblioteca multimedia"
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:57
 msgid "Media Read"
 msgstr "Lectura de medios"
+
+#: packages/admin/src/components/MediaLibrary.tsx:384
+msgid "Media storage usage"
+msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:62
 msgid "Media Write"
@@ -5401,8 +5409,8 @@ msgstr "Aún no hay {0}. Crea uno para comenzar."
 msgid "No 404 errors recorded yet."
 msgstr "Aún no se han registrado errores 404."
 
-#: packages/admin/src/components/MediaLibrary.tsx:835
-#: packages/admin/src/components/MediaLibrary.tsx:892
+#: packages/admin/src/components/MediaLibrary.tsx:867
+#: packages/admin/src/components/MediaLibrary.tsx:924
 msgid "No alt text"
 msgstr "Sin texto alternativo"
 
@@ -5541,8 +5549,8 @@ msgstr "Sin coincidencias"
 msgid "No matching bylines."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:489
-#: packages/admin/src/components/MediaLibrary.tsx:517
+#: packages/admin/src/components/MediaLibrary.tsx:521
+#: packages/admin/src/components/MediaLibrary.tsx:549
 msgid "No matching media"
 msgstr ""
 
@@ -5559,11 +5567,11 @@ msgstr "Sin máximo"
 msgid "No media available from this provider"
 msgstr "No hay medios disponibles de este proveedor"
 
-#: packages/admin/src/components/MediaLibrary.tsx:540
+#: packages/admin/src/components/MediaLibrary.tsx:572
 msgid "No media available from this provider."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:539
+#: packages/admin/src/components/MediaLibrary.tsx:571
 #: packages/admin/src/components/MediaPickerModal.tsx:688
 msgid "No media found"
 msgstr "No se encontraron medios"
@@ -5860,7 +5868,7 @@ msgstr "Propiedad"
 msgid "Package"
 msgstr "Paquete"
 
-#: packages/admin/src/router.tsx:2270
+#: packages/admin/src/router.tsx:2275
 msgid "Page Not Found"
 msgstr "Página no encontrada"
 
@@ -6190,7 +6198,7 @@ msgstr "Preparante..."
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
-#: packages/admin/src/components/MediaLibrary.tsx:585
+#: packages/admin/src/components/MediaLibrary.tsx:617
 msgid "Preview"
 msgstr "Avance"
 
@@ -6405,6 +6413,10 @@ msgstr "Registro"
 #: packages/admin/src/components/RegistryPluginDetail.tsx:610
 msgid "Release is too new to install"
 msgstr "La versión es demasiado reciente para instalarse"
+
+#: packages/admin/src/components/MediaLibrary.tsx:379
+msgid "remaining"
+msgstr ""
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:84
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:115
@@ -6639,7 +6651,7 @@ msgstr "Restaurando..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2258
+#: packages/admin/src/router.tsx:2263
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "Rever"
@@ -6934,7 +6946,7 @@ msgstr "Buscar {0}"
 msgid "Search {0}..."
 msgstr "Buscar {0}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:415
+#: packages/admin/src/components/MediaLibrary.tsx:447
 #: packages/admin/src/components/MediaPickerModal.tsx:626
 msgid "Search by filename..."
 msgstr ""
@@ -6982,7 +6994,7 @@ msgstr "Optimización y verificación de motores de búsqueda."
 msgid "Search form"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:416
+#: packages/admin/src/components/MediaLibrary.tsx:448
 #: packages/admin/src/components/MediaPickerModal.tsx:627
 msgid "Search media"
 msgstr "Buscar medios"
@@ -7026,7 +7038,7 @@ msgstr ""
 msgid "Search users"
 msgstr "Buscar usuarios"
 
-#: packages/admin/src/components/MediaLibrary.tsx:415
+#: packages/admin/src/components/MediaLibrary.tsx:447
 #: packages/admin/src/components/MediaPickerModal.tsx:626
 msgid "Search..."
 msgstr "Buscar..."
@@ -7509,7 +7521,7 @@ msgstr "URL del sitio"
 msgid "Sites on Cloudflare D1 can additionally restore the database to any minute within the last 30 days using D1 Time Travel — always on, no setup required."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:588
+#: packages/admin/src/components/MediaLibrary.tsx:620
 msgid "Size"
 msgstr "Tamaño"
 
@@ -7657,6 +7669,10 @@ msgstr "Código de estado"
 
 #: packages/admin/src/components/Dashboard.tsx:401
 msgid "Status: {status}"
+msgstr ""
+
+#: packages/admin/src/components/MediaLibrary.tsx:377
+msgid "Storage available"
 msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:205
@@ -7843,7 +7859,7 @@ msgstr "El menú ha sido eliminado."
 msgid "The name of your site, used in the header and metadata"
 msgstr "El nombre de tu sitio, utilizado en el encabezado y los metadatos."
 
-#: packages/admin/src/router.tsx:2272
+#: packages/admin/src/router.tsx:2277
 msgid "The page you're looking for doesn't exist."
 msgstr "La página que estás buscando no existe."
 
@@ -8171,7 +8187,7 @@ msgstr "La papelera está vacía."
 msgid "True/false toggle"
 msgstr "Alternar verdadero/falso"
 
-#: packages/admin/src/components/MediaLibrary.tsx:493
+#: packages/admin/src/components/MediaLibrary.tsx:525
 msgid "Try a broader media type or clear your filters."
 msgstr ""
 
@@ -8200,11 +8216,11 @@ msgstr "Intentar otra vez"
 msgid "Try another code"
 msgstr "Prueba con otro código"
 
-#: packages/admin/src/components/MediaLibrary.tsx:518
+#: packages/admin/src/components/MediaLibrary.tsx:550
 msgid "Try another filename or clear your search."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:492
+#: packages/admin/src/components/MediaLibrary.tsx:524
 msgid "Try another filename, or clear your search and filters."
 msgstr ""
 
@@ -8232,7 +8248,7 @@ msgstr "Gorjeo"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
-#: packages/admin/src/components/MediaLibrary.tsx:587
+#: packages/admin/src/components/MediaLibrary.tsx:619
 #: packages/admin/src/routes/byline-schema.tsx:240
 msgid "Type"
 msgstr "Tipo"
@@ -8463,12 +8479,12 @@ msgstr "Subir archivo"
 msgid "Upload File"
 msgstr "Subir archivo"
 
-#: packages/admin/src/components/MediaLibrary.tsx:365
+#: packages/admin/src/components/MediaLibrary.tsx:368
 msgid "Upload files"
 msgstr "Subir archivos"
 
-#: packages/admin/src/components/MediaLibrary.tsx:508
-#: packages/admin/src/components/MediaLibrary.tsx:532
+#: packages/admin/src/components/MediaLibrary.tsx:540
+#: packages/admin/src/components/MediaLibrary.tsx:564
 msgid "Upload Files"
 msgstr "Subir archivos"
 
@@ -8476,7 +8492,7 @@ msgstr "Subir archivos"
 msgid "Upload Image"
 msgstr "Subir imagen"
 
-#: packages/admin/src/components/MediaLibrary.tsx:505
+#: packages/admin/src/components/MediaLibrary.tsx:537
 msgid "Upload images, videos, and documents to keep reusable assets in one place."
 msgstr ""
 
@@ -8484,12 +8500,12 @@ msgstr ""
 msgid "Upload Media"
 msgstr "Subir medios"
 
-#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:561
 msgid "Upload media to keep reusable assets in one place."
 msgstr ""
 
 #. placeholder {0}: activeProviderInfo?.name || t`Library`
-#: packages/admin/src/components/MediaLibrary.tsx:356
+#: packages/admin/src/components/MediaLibrary.tsx:359
 msgid "Upload to {0}"
 msgstr "Subir a {0}"
 
@@ -8507,11 +8523,11 @@ msgstr "Subiendo"
 
 #. placeholder {0}: uploadState.progress.current
 #. placeholder {1}: uploadState.progress.total
-#: packages/admin/src/components/MediaLibrary.tsx:331
+#: packages/admin/src/components/MediaLibrary.tsx:334
 msgid "Uploading {0}/{1}..."
 msgstr "Subiendo {0}/{1}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:332
+#: packages/admin/src/components/MediaLibrary.tsx:335
 #: packages/admin/src/components/MediaPickerModal.tsx:649
 msgid "Uploading..."
 msgstr "Subiendo..."
@@ -8666,7 +8682,7 @@ msgid "Version {0}"
 msgstr "Versión {0}"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:67
-#: packages/admin/src/components/MediaLibrary.tsx:435
+#: packages/admin/src/components/MediaLibrary.tsx:467
 msgid "Video"
 msgstr "Vídeo"
 
@@ -8679,7 +8695,7 @@ msgstr "Ver el estado del proveedor de correo electrónico y enviar correos elec
 msgid "View in Marketplace"
 msgstr "Ver en el mercado"
 
-#: packages/admin/src/components/MediaLibrary.tsx:447
+#: packages/admin/src/components/MediaLibrary.tsx:479
 msgid "View mode"
 msgstr "Modo de visualización"
 
@@ -8960,7 +8976,7 @@ msgstr "Tiene acceso completo para gestionar este sitio, incluidos los usuarios,
 msgid "You need admin permissions to manage byline schema."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1556
+#: packages/admin/src/router.tsx:1561
 msgid "You need Editor permissions to moderate comments."
 msgstr "Necesitas permisos de editor para moderar los comentarios."
 
@@ -9041,8 +9057,8 @@ msgstr "Tu nombre de usuario de Instagram"
 msgid "Your LinkedIn profile username"
 msgstr "El nombre de usuario de tu perfil de LinkedIn"
 
-#: packages/admin/src/components/MediaLibrary.tsx:504
-#: packages/admin/src/components/MediaLibrary.tsx:528
+#: packages/admin/src/components/MediaLibrary.tsx:536
+#: packages/admin/src/components/MediaLibrary.tsx:560
 msgid "Your media library is empty"
 msgstr ""
 

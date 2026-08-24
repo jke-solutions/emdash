@@ -81,7 +81,8 @@ function linguiMacroPlugin(adminSourcePath: string, adminDistPath: string): Plug
 	const adminRequire = createRequire(resolve(adminDistPath, "index.js"));
 	const babelCorePath = adminRequire.resolve("@babel/core");
 	const adminSourceUrlPath = `/@fs/${adminSourcePath.replaceAll("\\", "/")}`;
-	const isAdminSourceId = (id: string) => id.startsWith(adminSourcePath) || id.startsWith(adminSourceUrlPath);
+	const isAdminSourceId = (id: string) =>
+		id.startsWith(adminSourcePath) || id.startsWith(adminSourceUrlPath);
 
 	return {
 		name: "emdash-lingui-macro",

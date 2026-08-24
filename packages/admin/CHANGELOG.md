@@ -1,5 +1,12 @@
 # @emdash-cms/admin
 
+## 0.35.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @emdash-cms/blocks@0.35.0
+
 ## 0.34.0
 
 ### Minor Changes
