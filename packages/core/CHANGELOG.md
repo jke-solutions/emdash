@@ -1,5 +1,20 @@
 # emdash
 
+## 0.36.1
+
+### Patch Changes
+
+- [#27](https://github.com/jke-solutions/emdash/pull/27) [`70b3591`](https://github.com/jke-solutions/emdash/commit/70b35917b6cc00e73f3241dfadbdcfdf2050300f) Thanks [@jonico22](https://github.com/jonico22)! - Fixes the migrate CLI exit code when an in-flight migration is interrupted.
+
+- [#27](https://github.com/jke-solutions/emdash/pull/27) [`46e3905`](https://github.com/jke-solutions/emdash/commit/46e39053de117b3b42bcc0aa65708dbcdd2bf4ac) Thanks [@jonico22](https://github.com/jonico22)! - Fixes runtime encryption-key resolution so deployment secrets are not replaced by build-time environment values.
+
+- [#26](https://github.com/jke-solutions/emdash/pull/26) [`6c1b613`](https://github.com/jke-solutions/emdash/commit/6c1b613c8ce9c4ff8836b600a395dca1a4ec8f04) Thanks [@jonico22](https://github.com/jonico22)! - Fixes shop migrations so interrupted deployments can resume without duplicate-column errors.
+
+- Updated dependencies []:
+  - @emdash-cms/admin@0.36.1
+  - @emdash-cms/auth@0.36.1
+  - @emdash-cms/gutenberg-to-portable-text@0.36.1
+
 ## 0.36.0
 
 ### Patch Changes
