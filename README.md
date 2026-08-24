@@ -1,5 +1,7 @@
 # EmDash
 
+[![npm version](https://img.shields.io/npm/v/emdash?label=version)](https://www.npmjs.com/package/emdash)
+
 A full-stack TypeScript CMS built on [Astro](https://astro.build/) and [Cloudflare](https://www.cloudflare.com/). EmDash takes the ideas that made WordPress dominant -- extensibility, admin UX, a plugin ecosystem -- and rebuilds them on serverless, type-safe foundations. Plugins run in sandboxed Worker isolates, solving the fundamental security problem with WordPress's plugin architecture.
 
 ## Get Started
@@ -137,6 +139,8 @@ const { entries: posts } = await getEmDashCollection("posts");
 **Content** -- Blog posts, pages, custom content types. Rich text editing via TipTap with Portable Text storage. Revisions, drafts, scheduled publishing, full-text search (FTS5), inline visual editing.
 
 **Admin** -- Full admin panel with visual schema builder, media library (drag-drop uploads via signed URLs), navigation menus, taxonomies, widgets, and a WordPress import wizard.
+
+**Ecommerce** -- Product catalog, checkout orders, payment status, delivery zones, customer history, and order management from the admin panel.
 
 **Auth** -- Passkey-first (WebAuthn) with OAuth and magic link fallbacks. Role-based access control: Administrator, Editor, Author, Contributor.
 
