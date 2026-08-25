@@ -1,0 +1,54 @@
+{
+	"name": "@emdash-cms/plugin-email-templates",
+	"version": "0.1.0",
+	"description": "Visual email template management for EmDash CMS",
+	"type": "module",
+	"main": "src/index.ts",
+	"exports": {
+		".": "./src/index.ts",
+		"./admin": "./src/admin.tsx",
+		"./providers/resend": "./src/providers/resend.ts",
+		"./providers/brevo": "./src/providers/brevo.ts"
+	},
+	"files": [
+		"src"
+	],
+	"keywords": [
+		"emdash",
+		"cms",
+		"plugin",
+		"email",
+		"templates"
+	],
+	"license": "MIT",
+	"peerDependencies": {
+		"@cloudflare/kumo": "catalog:",
+		"@lingui/react": "catalog:",
+		"emdash": "workspace:>=0.11.0",
+		"react": "^18.0.0 || ^19.0.0",
+		"react-dom": "^18.0.0 || ^19.0.0"
+	},
+	"devDependencies": {
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"@types/node": "catalog:",
+		"@cloudflare/kumo": "catalog:",
+		"@lingui/react": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"vitest": "catalog:"
+	},
+	"scripts": {
+		"typecheck": "tsgo --noEmit",
+		"test": "vitest run"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/emdash-cms/emdash.git",
+		"directory": "packages/plugins/email-templates"
+	},
+	"dependencies": {
+		"@react-email/editor": "^1.7.2",
+		"zod": "catalog:"
+	}
+}
