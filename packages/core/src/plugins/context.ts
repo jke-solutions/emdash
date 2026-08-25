@@ -1184,6 +1184,7 @@ export class PluginContextFactory {
 				version: plugin.version,
 			},
 			storage,
+			files: this.storage,
 			kv,
 			content,
 			taxonomies,

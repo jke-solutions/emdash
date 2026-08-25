@@ -9,6 +9,7 @@
 
 import type { Kysely } from "kysely";
 
+import { encryptPluginSecret } from "../../config/secrets.js";
 import { OptionsRepository } from "../../database/repositories/options.js";
 import { withTransaction } from "../../database/transaction.js";
 import type { Database } from "../../database/types.js";
@@ -196,10 +197,16 @@ export async function handlePluginSettingsUpdate(
 		const data = await withTransaction(db, async (trx) => {
 			const txRepo = new OptionsRepository(trx);
 			for (const [key, value] of Object.entries(updates)) {
+				const field = schema[key];
 				if (value === null) {
 					await txRepo.delete(settingsKey(pluginId, key));
 				} else {
-					await txRepo.set(settingsKey(pluginId, key), value);
+					const secretValue = typeof value === "string" ? value : (JSON.stringify(value) ?? "");
+					const storedValue =
+						field?.type === "secret" && field.encrypted === true
+							? await encryptPluginSecret(secretValue)
+							: value;
+					await txRepo.set(settingsKey(pluginId, key), storedValue);
 				}
 			}
 			return buildSettingsResponse(txRepo, pluginId, schema);

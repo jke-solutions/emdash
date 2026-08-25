@@ -244,6 +244,8 @@ export async function parseEncryptionKeys(
 
 const SHOP_SECRET_PREFIX = "emdash_shop_secret_v1_";
 const SHOP_SECRET_IV_BYTES = 12;
+const PLUGIN_SECRET_PREFIX = "emdash_plugin_secret_v1_";
+const PLUGIN_SECRET_IV_BYTES = 12;
 
 async function getRuntimeEncryptionKeys(): Promise<ParsedEncryptionKey[]> {
 	let runtimeEnv: Record<string, unknown> | undefined;
@@ -270,6 +272,48 @@ async function importSecretKey(key: Uint8Array, usage: KeyUsage[]): Promise<Cryp
 	const keyCopy = new Uint8Array(key.length);
 	keyCopy.set(key);
 	return crypto.subtle.importKey("raw", keyCopy.buffer, { name: "AES-GCM" }, false, usage);
+}
+
+/** Encrypt a plugin setting secret using the deployment encryption key. */
+export async function encryptPluginSecret(value: string): Promise<string> {
+	const [primary] = await getRuntimeEncryptionKeys();
+	const key = await importSecretKey(primary.key, ["encrypt"]);
+	const iv = crypto.getRandomValues(new Uint8Array(PLUGIN_SECRET_IV_BYTES));
+	const plaintext = new TextEncoder().encode(value);
+	const ciphertext = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, plaintext);
+	const combined = new Uint8Array(iv.length + ciphertext.byteLength);
+	combined.set(iv);
+	combined.set(new Uint8Array(ciphertext), iv.length);
+	return `${PLUGIN_SECRET_PREFIX}${primary.kid}_${encodeBase64url(combined)}`;
+}
+
+/** Decrypt a plugin setting secret, including keys retained during rotation. */
+export async function decryptPluginSecret(value: string): Promise<string> {
+	if (!value.startsWith(PLUGIN_SECRET_PREFIX)) {
+		throw new EmDashSecretsError("Plugin secret is not encrypted", "UNENCRYPTED_PLUGIN_SECRET");
+	}
+	const payload = value.slice(PLUGIN_SECRET_PREFIX.length);
+	const separator = payload.indexOf("_");
+	if (separator <= 0) {
+		throw new EmDashSecretsError("Plugin secret envelope is invalid", "INVALID_PLUGIN_SECRET");
+	}
+	const kid = payload.slice(0, separator);
+	const combined = decodeBase64urlStrict(payload.slice(separator + 1));
+	if (!combined || combined.length <= PLUGIN_SECRET_IV_BYTES) {
+		throw new EmDashSecretsError("Plugin secret envelope is invalid", "INVALID_PLUGIN_SECRET");
+	}
+	const candidate = (await getRuntimeEncryptionKeys()).find((entry) => entry.kid === kid);
+	if (!candidate) {
+		throw new EmDashSecretsError(
+			"No configured encryption key can decrypt the plugin secret",
+			"PLUGIN_SECRET_KEY_NOT_FOUND",
+		);
+	}
+	const key = await importSecretKey(candidate.key, ["decrypt"]);
+	const iv = combined.slice(0, PLUGIN_SECRET_IV_BYTES);
+	const ciphertext = combined.slice(PLUGIN_SECRET_IV_BYTES);
+	const plaintext = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
+	return new TextDecoder().decode(plaintext);
 }
 
 export async function encryptShopSecret(value: string): Promise<string> {

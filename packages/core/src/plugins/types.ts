@@ -44,6 +44,7 @@ import type { z } from "astro/zod";
 
 import type { ContentFieldFilters } from "../content-list-query.js";
 import type { FieldType } from "../schema/types.js";
+import type { Storage } from "../storage/types.js";
 
 export type {
 	ContentFieldFilterScalar,
@@ -502,6 +503,9 @@ export interface PluginContext<TStorage extends PluginStorageConfig = PluginStor
 
 	/** Storage collections - only if plugin declares storage */
 	storage: PluginStorage<TStorage>;
+
+	/** Shared object storage backend (R2, S3, or local development storage). */
+	files?: Storage;
 
 	/** Key-value store for config and state */
 	kv: KVAccess;
@@ -1316,6 +1320,8 @@ export interface SelectSettingField extends BaseSettingField {
 
 export interface SecretSettingField extends BaseSettingField {
 	type: "secret";
+	/** Encrypt the value at rest with EMDASH_ENCRYPTION_KEY. */
+	encrypted?: boolean;
 }
 
 export interface UrlSettingField extends BaseSettingField {
