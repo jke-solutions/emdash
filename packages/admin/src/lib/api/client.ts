@@ -97,6 +97,8 @@ export interface AdminManifest {
 			titleField?: string;
 			dateField?: string;
 			hidden?: boolean;
+			/** Present only when the collection accepts comments. */
+			commentsEnabled?: boolean;
 			listColumns?: string[];
 			fields: Record<
 				string,
