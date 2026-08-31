@@ -19,6 +19,73 @@ Or deploy directly to your Cloudflare account:
 
 EmDash runs on Cloudflare (D1 + R2 + Workers) or any Node.js server with SQLite. No PHP, no separate hosting tier -- just deploy your Astro site.
 
+## Use EmDash in another product
+
+Use EmDash as the CMS and Ecommerce service for an organization's Astro product. The product keeps its own frontend and calls EmDash through its HTTP API.
+
+### Requirements
+
+- Node.js 22 or newer
+- An Astro 6 project
+- A persistent database: SQLite for Node.js, PostgreSQL/libSQL, or Cloudflare D1
+- Persistent media storage: local files for Node.js or R2/S3 for deployed environments
+- `EMDASH_ENCRYPTION_KEY` for encrypted plugin and payment configuration
+
+Install EmDash in the product:
+
+```bash
+pnpm add emdash
+```
+
+Generate the local encryption key once:
+
+```bash
+pnpm exec emdash secrets generate --write .env
+```
+
+Configure the integration in the product's `astro.config.mjs`:
+
+```js title="astro.config.mjs"
+import { defineConfig } from "astro/config";
+import emdash, { local } from "emdash/astro";
+import { sqlite } from "emdash/db";
+
+export default defineConfig({
+	integrations: [
+		emdash({
+			database: sqlite({ url: "file:./data/emdash.db" }),
+			storage: local({
+				directory: "./uploads",
+				baseUrl: "/_emdash/api/media/file",
+			}),
+		}),
+	],
+});
+```
+
+Start the product locally:
+
+```bash
+pnpm dev
+```
+
+The product can call the public content and Ecommerce endpoints from its server or browser code:
+
+```ts
+const products = await fetch("/_emdash/api/shop/products").then((response) => response.json());
+const content = await fetch("/_emdash/api/content/posts").then((response) => response.json());
+```
+
+Ecommerce uses the `/_emdash/api/shop` base path: products are available at `GET /_emdash/api/shop/products`, and orders are created with `POST /_emdash/api/shop/orders`. Admin shop endpoints require an authenticated user with the corresponding shop permission.
+
+For a product in this monorepo, keep the workspace dependency and run the demo with:
+
+```bash
+pnpm --filter emdash-demo dev
+```
+
+Use the [configuration reference](https://docs.emdashcms.com/reference/configuration/) for PostgreSQL, libSQL, D1, R2, and production migration settings.
+
 ## Templates
 
 EmDash ships with three starter templates:
