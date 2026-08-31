@@ -2597,6 +2597,7 @@ export class EmDashRuntime {
 					titleField: collection.titleField,
 					dateField: collection.dateField,
 					...(collection.hidden ? { hidden: true } : {}),
+					...(collection.commentsEnabled ? { commentsEnabled: true } : {}),
 					listColumns: listColumns.length > 0 ? listColumns : undefined,
 					fields,
 				};

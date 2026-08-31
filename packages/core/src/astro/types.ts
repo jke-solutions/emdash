@@ -42,6 +42,11 @@ export interface ManifestCollection {
 	 * — only the navigation link is dropped.
 	 */
 	hidden?: boolean;
+	/**
+	 * Whether the collection accepts comments. Present only when enabled, so the
+	 * admin can skip the comment-inbox badge query on sites that use no comments.
+	 */
+	commentsEnabled?: boolean;
 	/** Valid custom field slugs to render in the admin content list. */
 	listColumns?: string[];
 	fields: Record<
