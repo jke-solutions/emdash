@@ -76,13 +76,22 @@ const LOCALE_MESSAGES_RE = /[/\\]([a-z]{2}(?:-[A-Z]{2})?)[/\\]messages\.mjs$/;
  * @babel/core is dynamically imported from admin's devDependencies —
  * not declared by core, never ships to end users.
  */
-function linguiMacroPlugin(adminSourcePath: string, adminDistPath: string): Plugin {
+function linguiMacroPlugin(
+	adminSourcePath: string,
+	adminDistPath: string,
+	projectRoot: string,
+): Plugin {
 	// Resolve @babel/core from admin's devDependencies, not core's.
 	const adminRequire = createRequire(resolve(adminDistPath, "index.js"));
 	const babelCorePath = adminRequire.resolve("@babel/core");
-	const adminSourceUrlPath = `/@fs/${adminSourcePath.replaceAll("\\", "/")}`;
-	const isAdminSourceId = (id: string) =>
-		id.startsWith(adminSourcePath) || id.startsWith(adminSourceUrlPath);
+	const isLocalSourceId = (id: string) => {
+		const filePath = id.startsWith("/@fs/") ? id.slice(5) : id;
+		return (
+			(filePath.startsWith(projectRoot) || filePath.startsWith(adminSourcePath)) &&
+			!filePath.includes("/node_modules/") &&
+			!filePath.includes("\\node_modules\\")
+		);
+	};
 
 	return {
 		name: "emdash-lingui-macro",
@@ -91,14 +100,14 @@ function linguiMacroPlugin(adminSourcePath: string, adminDistPath: string): Plug
 			// Redirect relative locale catalog imports (e.g. ./de/messages.mjs) from
 			// within admin source to the compiled dist/locales/ directory, since
 			// lingui compile only runs during build — not in dev watch mode.
-			if (!importer || !isAdminSourceId(importer)) return;
+			if (!importer || !isLocalSourceId(importer)) return;
 			const match = id.match(LOCALE_MESSAGES_RE);
 			if (match?.[1]) {
 				return resolve(adminDistPath, "locales", match[1], "messages.mjs");
 			}
 		},
 		async transform(code, id) {
-			if (!isAdminSourceId(id) || !code.includes("@lingui")) return;
+			if (!isLocalSourceId(id) || !code.includes("@lingui")) return;
 			const { transformAsync } = (await import(babelCorePath)) as typeof import("@babel/core");
 			const result = await transformAsync(code, {
 				filename: id,
@@ -406,6 +415,7 @@ export function createViteConfig(
 		define: {
 			__EMDASH_VERSION__: JSON.stringify(VERSION),
 			__EMDASH_COMMIT__: JSON.stringify(COMMIT),
+			"process.env.NODE_ENV": JSON.stringify(isDev ? "development" : "production"),
 			__EMDASH_PSEUDO_LOCALE__: JSON.stringify(
 				isDev && typeof process !== "undefined" && process.env?.EMDASH_PSEUDO_LOCALE === "1",
 			),
@@ -460,7 +470,7 @@ export function createViteConfig(
 			// In dev mode with source alias, compile Lingui macros on the fly
 			// and redirect locale .mjs imports to dist/.
 			// In production, macros are pre-compiled by tsdown in the admin package.
-			...(useSource ? [linguiMacroPlugin(adminSourcePath, adminDistPath)] : []),
+			...(adminSourcePath ? [linguiMacroPlugin(adminSourcePath, adminDistPath, projectRoot)] : []),
 		] as NonNullable<AstroConfig["vite"]>["plugins"],
 		// Handle native modules for SSR.
 		// On Node: external keeps native addons out of the SSR bundle.

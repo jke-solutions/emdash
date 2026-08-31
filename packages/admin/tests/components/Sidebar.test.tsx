@@ -34,6 +34,7 @@ import * as React from "react";
 import { describe, it, expect } from "vitest";
 
 import {
+	anyCollectionAcceptsComments,
 	BYLINE_SCHEMA_NAV_ITEM,
 	filterNavItemsByRole,
 	getSidebarTaxonomies,
@@ -175,6 +176,24 @@ describe("visibleCollectionEntries", () => {
 
 	it("treats a missing hidden flag as visible", () => {
 		expect(visibleCollectionEntries({ posts: { label: "Posts" } })).toHaveLength(1);
+	});
+});
+
+describe("anyCollectionAcceptsComments", () => {
+	it("is false when no collection enables comments — the badge query never runs", () => {
+		expect(anyCollectionAcceptsComments({ posts: { commentsEnabled: false }, pages: {} })).toBe(
+			false,
+		);
+	});
+
+	it("is true as soon as one collection enables comments", () => {
+		expect(anyCollectionAcceptsComments({ posts: { commentsEnabled: true }, pages: {} })).toBe(
+			true,
+		);
+	});
+
+	it("is false for an empty manifest", () => {
+		expect(anyCollectionAcceptsComments({})).toBe(false);
 	});
 });
 

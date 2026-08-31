@@ -121,6 +121,7 @@ export type {
 // Utilities
 export { ulid } from "ulidx";
 export { computeContentHash, hashString } from "./utils/hash.js";
+export { decryptPluginSecret, encryptPluginSecret } from "./config/secrets.js";
 export { sanitizeHref, isSafeHref } from "./utils/url.js";
 export { decodeSlug, slugify } from "./utils/slugify.js";
 

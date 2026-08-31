@@ -197,7 +197,7 @@ const settingFieldSchema = z.discriminatedUnion("type", [
 		options: z.array(z.object({ value: z.string(), label: z.string() })),
 		default: z.string().optional(),
 	}),
-	z.object({ ...baseSettingFields, type: z.literal("secret") }),
+	z.object({ ...baseSettingFields, type: z.literal("secret"), encrypted: z.boolean().optional() }),
 	z.object({
 		...baseSettingFields,
 		type: z.literal("url"),
