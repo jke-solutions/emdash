@@ -856,12 +856,12 @@ msgid "admin"
 msgstr "व्यवस्थापक"
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:432
+#: packages/admin/src/components/Sidebar.tsx:450
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "व्यवस्थापक"
 
-#: packages/admin/src/components/Sidebar.tsx:378
+#: packages/admin/src/components/Sidebar.tsx:396
 msgid "Admin navigation"
 msgstr "व्यवस्थापक नेविगेशन"
 
@@ -1456,14 +1456,14 @@ msgstr ""
 msgid "Byline schema"
 msgstr "बाइलाइन स्कीमा"
 
-#: packages/admin/src/components/Sidebar.tsx:301
+#: packages/admin/src/components/Sidebar.tsx:319
 msgid "Byline Schema"
 msgstr "बाइलाइन स्कीमा"
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:661
 #: packages/admin/src/components/ContentSettingsPanel.tsx:664
-#: packages/admin/src/components/Sidebar.tsx:288
+#: packages/admin/src/components/Sidebar.tsx:306
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "नाम पंक्तियां"
@@ -1854,7 +1854,7 @@ msgstr "विस्तार से टिप्पणी करें"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:264
+#: packages/admin/src/components/Sidebar.tsx:280
 msgid "Comments"
 msgstr "टिप्पणियाँ"
 
@@ -1920,7 +1920,7 @@ msgstr "सामग्री"
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:414
+#: packages/admin/src/components/Sidebar.tsx:432
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "सामग्री"
@@ -1988,7 +1988,7 @@ msgstr "आयात करने के लिए सामग्री"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:297
+#: packages/admin/src/components/Sidebar.tsx:315
 msgid "Content Types"
 msgstr "सामग्री प्रकार"
 
@@ -2402,8 +2402,8 @@ msgstr "अँधेरा"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:249
-#: packages/admin/src/components/Sidebar.tsx:405
+#: packages/admin/src/components/Sidebar.tsx:263
+#: packages/admin/src/components/Sidebar.tsx:423
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
 
@@ -3073,7 +3073,7 @@ msgstr "उदाहरण के लिए, सीआई/सीडी पाइ
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "उदाहरण के लिए, मैकबुक प्रो, आईफोन"
 
-#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/components/Sidebar.tsx:309
 #: packages/admin/src/routes/shop.tsx:71
 msgid "Ecommerce"
 msgstr ""
@@ -3640,7 +3640,7 @@ msgstr "उपयोगकर्ता को सक्षम करने म�
 msgid "Failed to execute import"
 msgstr "आयात निष्पादित करने में विफल"
 
-#: packages/admin/src/lib/api/client.ts:268
+#: packages/admin/src/lib/api/client.ts:270
 msgid "Failed to fetch auth mode"
 msgstr "प्रमाणीकरण मोड लाने में विफल"
 
@@ -3665,7 +3665,7 @@ msgstr "ईमेल सेटिंग लाने में विफल"
 msgid "Failed to fetch entry terms"
 msgstr "प्रवेश शर्तें लाने में विफल"
 
-#: packages/admin/src/lib/api/client.ts:251
+#: packages/admin/src/lib/api/client.ts:253
 msgid "Failed to fetch manifest"
 msgstr "मेनिफ़ेस्ट लाने में विफल"
 
@@ -4488,7 +4488,7 @@ msgid "Images"
 msgstr "इमेजिस"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:339
+#: packages/admin/src/components/Sidebar.tsx:357
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "आयात"
@@ -5198,7 +5198,7 @@ msgstr "नेटवर्क अनुरोध करें"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "किसी भी होस्ट से नेटवर्क अनुरोध करें (अप्रतिबंधित)"
 
-#: packages/admin/src/components/Sidebar.tsx:424
+#: packages/admin/src/components/Sidebar.tsx:442
 msgid "Manage"
 msgstr "प्रबंधित करना"
 
@@ -5282,7 +5282,7 @@ msgstr "बाज़ार"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:321
+#: packages/admin/src/components/Sidebar.tsx:339
 msgid "Marketplace"
 msgstr "बाजार"
 
@@ -5324,7 +5324,7 @@ msgstr "एमडीएक्स"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:259
+#: packages/admin/src/components/Sidebar.tsx:273
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5419,7 +5419,7 @@ msgstr "मेनू क्रम अद्यतन कर दिया गय�
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:269
+#: packages/admin/src/components/Sidebar.tsx:287
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "मेनू"
@@ -6596,8 +6596,8 @@ msgstr "प्लगइन विजेट त्रुटि"
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:305
-#: packages/admin/src/components/Sidebar.tsx:440
+#: packages/admin/src/components/Sidebar.tsx:323
+#: packages/admin/src/components/Sidebar.tsx:458
 msgid "Plugins"
 msgstr "प्लग-इन"
 
@@ -6854,7 +6854,7 @@ msgstr "लॉगिन करने के लिए पुनः निर्�
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:272
+#: packages/admin/src/components/Sidebar.tsx:290
 msgid "Redirects"
 msgstr "पुनर्निर्देश"
 
@@ -6896,7 +6896,7 @@ msgstr "पंजीकरण विफल रहा"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "पंजीकरण रद्द कर दिया गया था या समय समाप्त हो गया था. कृपया पुन: प्रयास करें।"
 
-#: packages/admin/src/components/Sidebar.tsx:314
+#: packages/admin/src/components/Sidebar.tsx:332
 msgid "Registry"
 msgstr "रजिस्ट्री"
 
@@ -7060,7 +7060,7 @@ msgstr "कोष"
 msgid "Request a new link"
 msgstr "एक नये लिंक का अनुरोध करें"
 
-#: packages/admin/src/lib/api/client.ts:239
+#: packages/admin/src/lib/api/client.ts:241
 msgid "Request failed"
 msgstr "अनुरोध विफल रहा"
 
@@ -7631,7 +7631,7 @@ msgstr "अनुभाग शीर्षक"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:277
+#: packages/admin/src/components/Sidebar.tsx:295
 msgid "Sections"
 msgstr "धारा"
 
@@ -7911,7 +7911,7 @@ msgstr "की स्थापना..."
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:343
+#: packages/admin/src/components/Sidebar.tsx:361
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "सेटिंग्स"
@@ -8499,7 +8499,7 @@ msgstr "थीम-प्रदत्त अनुभागों को हट�
 msgid "Theme: {label}"
 msgstr "थीम: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:330
+#: packages/admin/src/components/Sidebar.tsx:348
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "विषय-वस्तु"
@@ -9236,7 +9236,7 @@ msgid "User not found"
 msgstr "उपयोगकर्ता नहीं मिला"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:302
+#: packages/admin/src/components/Sidebar.tsx:320
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "उपयोगकर्ताओं"
@@ -9517,7 +9517,7 @@ msgstr "विजेट अद्यतन किया गया"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:276
+#: packages/admin/src/components/Sidebar.tsx:294
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"

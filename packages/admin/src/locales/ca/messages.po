@@ -856,12 +856,12 @@ msgid "admin"
 msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:432
+#: packages/admin/src/components/Sidebar.tsx:450
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "Administració"
 
-#: packages/admin/src/components/Sidebar.tsx:378
+#: packages/admin/src/components/Sidebar.tsx:396
 msgid "Admin navigation"
 msgstr "Navegació d'administració"
 
@@ -1456,14 +1456,14 @@ msgstr ""
 msgid "Byline schema"
 msgstr "Esquema de signatures"
 
-#: packages/admin/src/components/Sidebar.tsx:301
+#: packages/admin/src/components/Sidebar.tsx:319
 msgid "Byline Schema"
 msgstr "Esquema de signatures"
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:661
 #: packages/admin/src/components/ContentSettingsPanel.tsx:664
-#: packages/admin/src/components/Sidebar.tsx:288
+#: packages/admin/src/components/Sidebar.tsx:306
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "Signatures"
@@ -1854,7 +1854,7 @@ msgstr "Detall del comentari"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:264
+#: packages/admin/src/components/Sidebar.tsx:280
 msgid "Comments"
 msgstr "Comentaris"
 
@@ -1920,7 +1920,7 @@ msgstr ""
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:414
+#: packages/admin/src/components/Sidebar.tsx:432
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "Contingut"
@@ -1988,7 +1988,7 @@ msgstr "Contingut per importar"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:297
+#: packages/admin/src/components/Sidebar.tsx:315
 msgid "Content Types"
 msgstr "Tipus de contingut"
 
@@ -2402,8 +2402,8 @@ msgstr "Fosc"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:249
-#: packages/admin/src/components/Sidebar.tsx:405
+#: packages/admin/src/components/Sidebar.tsx:263
+#: packages/admin/src/components/Sidebar.tsx:423
 msgid "Dashboard"
 msgstr "Tauler"
 
@@ -3073,7 +3073,7 @@ msgstr "p. ex. canalització CI/CD"
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "p. ex. MacBook Pro, iPhone"
 
-#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/components/Sidebar.tsx:309
 #: packages/admin/src/routes/shop.tsx:71
 msgid "Ecommerce"
 msgstr ""
@@ -3640,7 +3640,7 @@ msgstr "No s'ha pogut activar l'usuari"
 msgid "Failed to execute import"
 msgstr "No s'ha pogut executar la importació"
 
-#: packages/admin/src/lib/api/client.ts:268
+#: packages/admin/src/lib/api/client.ts:270
 msgid "Failed to fetch auth mode"
 msgstr "No s'ha pogut obtenir el mode d'autenticació"
 
@@ -3665,7 +3665,7 @@ msgstr "No s'ha pogut obtenir la configuració de correu"
 msgid "Failed to fetch entry terms"
 msgstr "No s'han pogut obtenir els termes de l'entrada"
 
-#: packages/admin/src/lib/api/client.ts:251
+#: packages/admin/src/lib/api/client.ts:253
 msgid "Failed to fetch manifest"
 msgstr "No s'ha pogut obtenir el manifest"
 
@@ -4488,7 +4488,7 @@ msgid "Images"
 msgstr "Imatges"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:339
+#: packages/admin/src/components/Sidebar.tsx:357
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "Importa"
@@ -5198,7 +5198,7 @@ msgstr "Fes sol·licituds de xarxa"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "Fes sol·licituds de xarxa a qualsevol amfitrió (sense restriccions)"
 
-#: packages/admin/src/components/Sidebar.tsx:424
+#: packages/admin/src/components/Sidebar.tsx:442
 msgid "Manage"
 msgstr "Gestiona"
 
@@ -5282,7 +5282,7 @@ msgstr "mercat"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:321
+#: packages/admin/src/components/Sidebar.tsx:339
 msgid "Marketplace"
 msgstr "Mercat"
 
@@ -5324,7 +5324,7 @@ msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:259
+#: packages/admin/src/components/Sidebar.tsx:273
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5419,7 +5419,7 @@ msgstr "S'ha actualitzat l'ordre del menú."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:269
+#: packages/admin/src/components/Sidebar.tsx:287
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "Menús"
@@ -6596,8 +6596,8 @@ msgstr "Error del giny del connector"
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:305
-#: packages/admin/src/components/Sidebar.tsx:440
+#: packages/admin/src/components/Sidebar.tsx:323
+#: packages/admin/src/components/Sidebar.tsx:458
 msgid "Plugins"
 msgstr "Connectors"
 
@@ -6854,7 +6854,7 @@ msgstr "S'està redirigint a l'inici de sessió..."
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:272
+#: packages/admin/src/components/Sidebar.tsx:290
 msgid "Redirects"
 msgstr "Redireccions"
 
@@ -6896,7 +6896,7 @@ msgstr "Ha fallat el registre"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "El registre s'ha cancel·lat o ha excedit el temps d'espera. Torna-ho a provar."
 
-#: packages/admin/src/components/Sidebar.tsx:314
+#: packages/admin/src/components/Sidebar.tsx:332
 msgid "Registry"
 msgstr "Registre"
 
@@ -7060,7 +7060,7 @@ msgstr "Dipòsit"
 msgid "Request a new link"
 msgstr "Sol·licita un enllaç nou"
 
-#: packages/admin/src/lib/api/client.ts:239
+#: packages/admin/src/lib/api/client.ts:241
 msgid "Request failed"
 msgstr "Ha fallat la sol·licitud"
 
@@ -7631,7 +7631,7 @@ msgstr "Títol de la secció"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:277
+#: packages/admin/src/components/Sidebar.tsx:295
 msgid "Sections"
 msgstr "Seccions"
 
@@ -7911,7 +7911,7 @@ msgstr "S'està configurant..."
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:343
+#: packages/admin/src/components/Sidebar.tsx:361
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "Configuració"
@@ -8499,7 +8499,7 @@ msgstr "Les seccions proporcionades pel tema no es poden eliminar. Edita la secc
 msgid "Theme: {label}"
 msgstr "Tema: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:330
+#: packages/admin/src/components/Sidebar.tsx:348
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "Temes"
@@ -9236,7 +9236,7 @@ msgid "User not found"
 msgstr "No s'ha trobat l'usuari"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:302
+#: packages/admin/src/components/Sidebar.tsx:320
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "Usuaris"
@@ -9517,7 +9517,7 @@ msgstr "S'ha actualitzat el giny"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:276
+#: packages/admin/src/components/Sidebar.tsx:294
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"

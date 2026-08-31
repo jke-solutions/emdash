@@ -856,12 +856,12 @@ msgid "admin"
 msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:432
+#: packages/admin/src/components/Sidebar.tsx:450
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "Yönetici"
 
-#: packages/admin/src/components/Sidebar.tsx:378
+#: packages/admin/src/components/Sidebar.tsx:396
 msgid "Admin navigation"
 msgstr "Yönetici gezinmesi"
 
@@ -1456,14 +1456,14 @@ msgstr ""
 msgid "Byline schema"
 msgstr "Yazar bilgisi şeması"
 
-#: packages/admin/src/components/Sidebar.tsx:301
+#: packages/admin/src/components/Sidebar.tsx:319
 msgid "Byline Schema"
 msgstr ""
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:661
 #: packages/admin/src/components/ContentSettingsPanel.tsx:664
-#: packages/admin/src/components/Sidebar.tsx:288
+#: packages/admin/src/components/Sidebar.tsx:306
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "Yazar bilgileri"
@@ -1854,7 +1854,7 @@ msgstr "Yorum Detayı"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:264
+#: packages/admin/src/components/Sidebar.tsx:280
 msgid "Comments"
 msgstr "Yorumlar"
 
@@ -1920,7 +1920,7 @@ msgstr ""
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:414
+#: packages/admin/src/components/Sidebar.tsx:432
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "İçerik"
@@ -1988,7 +1988,7 @@ msgstr "İçe Aktarılacak İçerik"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:297
+#: packages/admin/src/components/Sidebar.tsx:315
 msgid "Content Types"
 msgstr "İçerik Türleri"
 
@@ -2402,8 +2402,8 @@ msgstr "Koyu"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:249
-#: packages/admin/src/components/Sidebar.tsx:405
+#: packages/admin/src/components/Sidebar.tsx:263
+#: packages/admin/src/components/Sidebar.tsx:423
 msgid "Dashboard"
 msgstr "Kontrol Paneli"
 
@@ -3073,7 +3073,7 @@ msgstr "ör. CI/CD Ardışık Düzeni"
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "ör. MacBook Pro, iPhone"
 
-#: packages/admin/src/components/Sidebar.tsx:291
+#: packages/admin/src/components/Sidebar.tsx:309
 #: packages/admin/src/routes/shop.tsx:71
 msgid "Ecommerce"
 msgstr ""
@@ -3640,7 +3640,7 @@ msgstr "Kullanıcı etkinleştirilemedi"
 msgid "Failed to execute import"
 msgstr "İçe aktarma yürütülemedi"
 
-#: packages/admin/src/lib/api/client.ts:268
+#: packages/admin/src/lib/api/client.ts:270
 msgid "Failed to fetch auth mode"
 msgstr "Kimlik doğrulama modu getirilemedi"
 
@@ -3665,7 +3665,7 @@ msgstr "E-posta ayarları getirilemedi"
 msgid "Failed to fetch entry terms"
 msgstr "Kayıt terimleri getirilemedi"
 
-#: packages/admin/src/lib/api/client.ts:251
+#: packages/admin/src/lib/api/client.ts:253
 msgid "Failed to fetch manifest"
 msgstr "Manifest getirilemedi"
 
@@ -4488,7 +4488,7 @@ msgid "Images"
 msgstr "Görseller"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:339
+#: packages/admin/src/components/Sidebar.tsx:357
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "İçe aktar"
@@ -5198,7 +5198,7 @@ msgstr "Ağ istekleri yapın"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "Herhangi bir ana bilgisayara ağ istekleri yapın (kısıtlamasız)"
 
-#: packages/admin/src/components/Sidebar.tsx:424
+#: packages/admin/src/components/Sidebar.tsx:442
 msgid "Manage"
 msgstr "Yönet"
 
@@ -5282,7 +5282,7 @@ msgstr "pazar yeri"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:321
+#: packages/admin/src/components/Sidebar.tsx:339
 msgid "Marketplace"
 msgstr "Pazar yeri"
 
@@ -5324,7 +5324,7 @@ msgstr "MDX"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:259
+#: packages/admin/src/components/Sidebar.tsx:273
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5419,7 +5419,7 @@ msgstr "Menü sırası güncellendi."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:269
+#: packages/admin/src/components/Sidebar.tsx:287
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "Menüler"
@@ -6596,8 +6596,8 @@ msgstr "Eklenti widget'ı hatası"
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:305
-#: packages/admin/src/components/Sidebar.tsx:440
+#: packages/admin/src/components/Sidebar.tsx:323
+#: packages/admin/src/components/Sidebar.tsx:458
 msgid "Plugins"
 msgstr "Eklentiler"
 
@@ -6854,7 +6854,7 @@ msgstr "Giriş yapmaya yönlendiriliyorsunuz..."
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:272
+#: packages/admin/src/components/Sidebar.tsx:290
 msgid "Redirects"
 msgstr "Yönlendirmeler"
 
@@ -6896,7 +6896,7 @@ msgstr "Kayıt başarısız oldu"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "Kayıt iptal edildi veya zaman aşımına uğradı. Lütfen tekrar deneyin."
 
-#: packages/admin/src/components/Sidebar.tsx:314
+#: packages/admin/src/components/Sidebar.tsx:332
 msgid "Registry"
 msgstr "Kayıt deposu"
 
@@ -7060,7 +7060,7 @@ msgstr "Depo"
 msgid "Request a new link"
 msgstr "Yeni bir bağlantı isteyin"
 
-#: packages/admin/src/lib/api/client.ts:239
+#: packages/admin/src/lib/api/client.ts:241
 msgid "Request failed"
 msgstr "İstek başarısız oldu"
 
@@ -7631,7 +7631,7 @@ msgstr "Bölüm başlığı"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:277
+#: packages/admin/src/components/Sidebar.tsx:295
 msgid "Sections"
 msgstr "Bölümler"
 
@@ -7911,7 +7911,7 @@ msgstr "Kurulum..."
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:343
+#: packages/admin/src/components/Sidebar.tsx:361
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "Ayarlar"
@@ -8499,7 +8499,7 @@ msgstr "Tema tarafından sağlanan bölümler silinemez. Özel bir kopya oluştu
 msgid "Theme: {label}"
 msgstr "Tema: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:330
+#: packages/admin/src/components/Sidebar.tsx:348
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "Temalar"
@@ -9236,7 +9236,7 @@ msgid "User not found"
 msgstr "Kullanıcı bulunamadı"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:302
+#: packages/admin/src/components/Sidebar.tsx:320
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "Kullanıcılar"
@@ -9517,7 +9517,7 @@ msgstr "Widget güncellendi"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:276
+#: packages/admin/src/components/Sidebar.tsx:294
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"
