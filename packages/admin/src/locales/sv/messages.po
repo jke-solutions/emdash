@@ -407,9 +407,9 @@ msgstr "{pluginName} begär ytterligare behörigheter:"
 msgid "{pluginName} requires the following permissions:"
 msgstr "{pluginName} kräver följande behörigheter:"
 
-#: packages/admin/src/components/PluginSettings.tsx:128
-#: packages/admin/src/components/PluginSettings.tsx:142
-#: packages/admin/src/components/PluginSettings.tsx:170
+#: packages/admin/src/components/PluginSettings.tsx:184
+#: packages/admin/src/components/PluginSettings.tsx:198
+#: packages/admin/src/components/PluginSettings.tsx:226
 msgid "{pluginName} Settings"
 msgstr ""
 
@@ -1020,7 +1020,7 @@ msgstr "Alternativt kan du exportera från WordPress (Verktyg → Exportera) och
 #: packages/admin/src/components/MarketplaceBrowse.tsx:135
 #: packages/admin/src/components/PluginManager.tsx:102
 #: packages/admin/src/components/PluginManager.tsx:121
-#: packages/admin/src/components/PluginSettings.tsx:75
+#: packages/admin/src/components/PluginSettings.tsx:131
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:76
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:99
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:116
@@ -1335,7 +1335,7 @@ msgstr "Tillbaka till inloggning"
 msgid "Back to marketplace"
 msgstr "Tillbaka till marknadsplatsen"
 
-#: packages/admin/src/components/PluginSettings.tsx:118
+#: packages/admin/src/components/PluginSettings.tsx:174
 #: packages/admin/src/components/RegistryPluginDetail.tsx:820
 msgid "Back to plugins"
 msgstr "Tillbaka till tillägg"
@@ -1696,11 +1696,11 @@ msgstr "Rensa filter"
 msgid "Clear search"
 msgstr "Rensa sökning"
 
-#: packages/admin/src/components/PluginSettings.tsx:354
+#: packages/admin/src/components/PluginSettings.tsx:410
 msgid "Clear stored value"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:352
+#: packages/admin/src/components/PluginSettings.tsx:408
 msgid "Clear stored value for {fieldKey}"
 msgstr ""
 
@@ -2346,7 +2346,7 @@ msgstr "aktuell"
 msgid "Current"
 msgstr "Aktuell"
 
-#: packages/admin/src/components/PluginSettings.tsx:340
+#: packages/admin/src/components/PluginSettings.tsx:396
 msgid "Currently set — enter a new value to replace"
 msgstr ""
 
@@ -3808,7 +3808,7 @@ msgstr "Det gick inte att läsa in passkeys"
 msgid "Failed to load plugin"
 msgstr "Det gick inte att läsa in tillägget"
 
-#: packages/admin/src/components/PluginSettings.tsx:146
+#: packages/admin/src/components/PluginSettings.tsx:202
 msgid "Failed to load plugin settings"
 msgstr ""
 
@@ -3928,7 +3928,7 @@ msgstr "Det gick inte att spara säkerhetskopieringsinställningar"
 msgid "Failed to save field"
 msgstr "Det gick inte att spara fältet"
 
-#: packages/admin/src/components/PluginSettings.tsx:74
+#: packages/admin/src/components/PluginSettings.tsx:130
 #: packages/admin/src/components/settings/GeneralSettings.tsx:77
 #: packages/admin/src/components/settings/SeoSettings.tsx:76
 #: packages/admin/src/components/settings/SocialSettings.tsx:66
@@ -5086,7 +5086,7 @@ msgstr "Läser in omdirigeringar …"
 msgid "Loading sections..."
 msgstr "Läser in sektioner …"
 
-#: packages/admin/src/components/PluginSettings.tsx:131
+#: packages/admin/src/components/PluginSettings.tsx:187
 #: packages/admin/src/components/settings/GeneralSettings.tsx:129
 #: packages/admin/src/components/settings/SeoSettings.tsx:128
 #: packages/admin/src/components/settings/SocialSettings.tsx:100
@@ -6070,7 +6070,7 @@ msgid "Not delivered"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:1280
-#: packages/admin/src/components/PluginSettings.tsx:341
+#: packages/admin/src/components/PluginSettings.tsx:397
 msgid "Not set"
 msgstr ""
 
@@ -7325,8 +7325,8 @@ msgstr "Spara namn"
 msgid "Save settings"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 msgid "Save Settings"
 msgstr "Spara inställningar"
 
@@ -7343,8 +7343,8 @@ msgstr "Sparade \"{0}\"."
 #: packages/admin/src/components/FieldEditor.tsx:689
 #: packages/admin/src/components/MediaDetailPanel.tsx:425
 #: packages/admin/src/components/MenuEditor.tsx:626
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 #: packages/admin/src/components/Redirects.tsx:188
 #: packages/admin/src/components/SaveButton.tsx:33
 #: packages/admin/src/components/TaxonomyManager.tsx:660
@@ -7924,7 +7924,7 @@ msgstr "Hantera inställningar"
 msgid "Settings Read"
 msgstr "Läsa inställningar"
 
-#: packages/admin/src/components/PluginSettings.tsx:68
+#: packages/admin/src/components/PluginSettings.tsx:124
 #: packages/admin/src/components/settings/GeneralSettings.tsx:70
 msgid "Settings saved successfully"
 msgstr "Inställningarna sparades"
@@ -8567,7 +8567,7 @@ msgstr "Denna passkey är redan registrerad på den här enheten."
 msgid "This permanently deletes {0} from storage."
 msgstr "Detta tar bort {0} permanent från lagringen."
 
-#: packages/admin/src/components/PluginSettings.tsx:177
+#: packages/admin/src/components/PluginSettings.tsx:233
 msgid "This plugin has no configurable settings."
 msgstr ""
 
@@ -9528,7 +9528,7 @@ msgstr "Widgetar"
 msgid "Width"
 msgstr "Bredd"
 
-#: packages/admin/src/components/PluginSettings.tsx:338
+#: packages/admin/src/components/PluginSettings.tsx:394
 msgid "Will be cleared on save"
 msgstr ""
 

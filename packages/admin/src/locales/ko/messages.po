@@ -407,9 +407,9 @@ msgstr "{pluginName}에서 추가 권한을 요청하고 있습니다."
 msgid "{pluginName} requires the following permissions:"
 msgstr "{pluginName}에는 다음 권한이 필요합니다."
 
-#: packages/admin/src/components/PluginSettings.tsx:128
-#: packages/admin/src/components/PluginSettings.tsx:142
-#: packages/admin/src/components/PluginSettings.tsx:170
+#: packages/admin/src/components/PluginSettings.tsx:184
+#: packages/admin/src/components/PluginSettings.tsx:198
+#: packages/admin/src/components/PluginSettings.tsx:226
 msgid "{pluginName} Settings"
 msgstr ""
 
@@ -1020,7 +1020,7 @@ msgstr "또는 WordPress(도구 → 내보내기)에서 내보내고 파일을 �
 #: packages/admin/src/components/MarketplaceBrowse.tsx:135
 #: packages/admin/src/components/PluginManager.tsx:102
 #: packages/admin/src/components/PluginManager.tsx:121
-#: packages/admin/src/components/PluginSettings.tsx:75
+#: packages/admin/src/components/PluginSettings.tsx:131
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:76
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:99
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:116
@@ -1335,7 +1335,7 @@ msgstr "로그인으로 돌아가기"
 msgid "Back to marketplace"
 msgstr "마켓플레이스로 돌아가기"
 
-#: packages/admin/src/components/PluginSettings.tsx:118
+#: packages/admin/src/components/PluginSettings.tsx:174
 #: packages/admin/src/components/RegistryPluginDetail.tsx:820
 msgid "Back to plugins"
 msgstr ""
@@ -1696,11 +1696,11 @@ msgstr ""
 msgid "Clear search"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:354
+#: packages/admin/src/components/PluginSettings.tsx:410
 msgid "Clear stored value"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:352
+#: packages/admin/src/components/PluginSettings.tsx:408
 msgid "Clear stored value for {fieldKey}"
 msgstr ""
 
@@ -2346,7 +2346,7 @@ msgstr "현재"
 msgid "Current"
 msgstr "현재"
 
-#: packages/admin/src/components/PluginSettings.tsx:340
+#: packages/admin/src/components/PluginSettings.tsx:396
 msgid "Currently set — enter a new value to replace"
 msgstr ""
 
@@ -3805,7 +3805,7 @@ msgstr "패스키를 로드하지 못했습니다."
 msgid "Failed to load plugin"
 msgstr "플러그인을 로드하지 못했습니다."
 
-#: packages/admin/src/components/PluginSettings.tsx:146
+#: packages/admin/src/components/PluginSettings.tsx:202
 msgid "Failed to load plugin settings"
 msgstr ""
 
@@ -3925,7 +3925,7 @@ msgstr ""
 msgid "Failed to save field"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:74
+#: packages/admin/src/components/PluginSettings.tsx:130
 #: packages/admin/src/components/settings/GeneralSettings.tsx:77
 #: packages/admin/src/components/settings/SeoSettings.tsx:76
 #: packages/admin/src/components/settings/SocialSettings.tsx:66
@@ -5083,7 +5083,7 @@ msgstr "리디렉션 로드 중..."
 msgid "Loading sections..."
 msgstr "섹션 로드 중..."
 
-#: packages/admin/src/components/PluginSettings.tsx:131
+#: packages/admin/src/components/PluginSettings.tsx:187
 #: packages/admin/src/components/settings/GeneralSettings.tsx:129
 #: packages/admin/src/components/settings/SeoSettings.tsx:128
 #: packages/admin/src/components/settings/SocialSettings.tsx:100
@@ -6067,7 +6067,7 @@ msgid "Not delivered"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:1280
-#: packages/admin/src/components/PluginSettings.tsx:341
+#: packages/admin/src/components/PluginSettings.tsx:397
 msgid "Not set"
 msgstr ""
 
@@ -7319,8 +7319,8 @@ msgstr "이름 저장"
 msgid "Save settings"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 msgid "Save Settings"
 msgstr "설정 저장"
 
@@ -7337,8 +7337,8 @@ msgstr ""
 #: packages/admin/src/components/FieldEditor.tsx:689
 #: packages/admin/src/components/MediaDetailPanel.tsx:425
 #: packages/admin/src/components/MenuEditor.tsx:626
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 #: packages/admin/src/components/Redirects.tsx:188
 #: packages/admin/src/components/SaveButton.tsx:33
 #: packages/admin/src/components/TaxonomyManager.tsx:660
@@ -7918,7 +7918,7 @@ msgstr "설정 관리"
 msgid "Settings Read"
 msgstr "설정 읽기"
 
-#: packages/admin/src/components/PluginSettings.tsx:68
+#: packages/admin/src/components/PluginSettings.tsx:124
 #: packages/admin/src/components/settings/GeneralSettings.tsx:70
 msgid "Settings saved successfully"
 msgstr "설정이 성공적으로 저장되었습니다."
@@ -8561,7 +8561,7 @@ msgstr "이 패스키는 이 기기에 이미 등록되어 있습니다."
 msgid "This permanently deletes {0} from storage."
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:177
+#: packages/admin/src/components/PluginSettings.tsx:233
 msgid "This plugin has no configurable settings."
 msgstr ""
 
@@ -9522,7 +9522,7 @@ msgstr "위젯"
 msgid "Width"
 msgstr "너비"
 
-#: packages/admin/src/components/PluginSettings.tsx:338
+#: packages/admin/src/components/PluginSettings.tsx:394
 msgid "Will be cleared on save"
 msgstr ""
 

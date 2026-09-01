@@ -407,9 +407,9 @@ msgstr "{pluginName} solicita permisos adicionales:"
 msgid "{pluginName} requires the following permissions:"
 msgstr "{pluginName} requiere los siguientes permisos:"
 
-#: packages/admin/src/components/PluginSettings.tsx:128
-#: packages/admin/src/components/PluginSettings.tsx:142
-#: packages/admin/src/components/PluginSettings.tsx:170
+#: packages/admin/src/components/PluginSettings.tsx:184
+#: packages/admin/src/components/PluginSettings.tsx:198
+#: packages/admin/src/components/PluginSettings.tsx:226
 msgid "{pluginName} Settings"
 msgstr "Configuración de {pluginName}"
 
@@ -1020,7 +1020,7 @@ msgstr "Alternativamente, puede exportar desde WordPress (Herramientas → Expor
 #: packages/admin/src/components/MarketplaceBrowse.tsx:135
 #: packages/admin/src/components/PluginManager.tsx:102
 #: packages/admin/src/components/PluginManager.tsx:121
-#: packages/admin/src/components/PluginSettings.tsx:75
+#: packages/admin/src/components/PluginSettings.tsx:131
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:76
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:99
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:116
@@ -1335,7 +1335,7 @@ msgstr "Volver a iniciar sesión"
 msgid "Back to marketplace"
 msgstr "Volver al mercado"
 
-#: packages/admin/src/components/PluginSettings.tsx:118
+#: packages/admin/src/components/PluginSettings.tsx:174
 #: packages/admin/src/components/RegistryPluginDetail.tsx:820
 msgid "Back to plugins"
 msgstr "Volver a plugins"
@@ -1696,11 +1696,11 @@ msgstr "Limpiar filtros"
 msgid "Clear search"
 msgstr "Borrar búsqueda"
 
-#: packages/admin/src/components/PluginSettings.tsx:354
+#: packages/admin/src/components/PluginSettings.tsx:410
 msgid "Clear stored value"
 msgstr "Borrar valor guardado"
 
-#: packages/admin/src/components/PluginSettings.tsx:352
+#: packages/admin/src/components/PluginSettings.tsx:408
 msgid "Clear stored value for {fieldKey}"
 msgstr "Borrar el valor guardado de {fieldKey}"
 
@@ -2346,7 +2346,7 @@ msgstr "actual"
 msgid "Current"
 msgstr "Actual"
 
-#: packages/admin/src/components/PluginSettings.tsx:340
+#: packages/admin/src/components/PluginSettings.tsx:396
 msgid "Currently set — enter a new value to replace"
 msgstr "Actualmente configurado — ingrese un nuevo valor para reemplazarlo"
 
@@ -3808,7 +3808,7 @@ msgstr "No se pudieron cargar las claves de acceso"
 msgid "Failed to load plugin"
 msgstr "No se pudo cargar el plugin"
 
-#: packages/admin/src/components/PluginSettings.tsx:146
+#: packages/admin/src/components/PluginSettings.tsx:202
 msgid "Failed to load plugin settings"
 msgstr "No se pudo cargar la configuración del plugin"
 
@@ -3928,7 +3928,7 @@ msgstr "No se pudo guardar la configuración de respaldos"
 msgid "Failed to save field"
 msgstr "No se pudo guardar el campo"
 
-#: packages/admin/src/components/PluginSettings.tsx:74
+#: packages/admin/src/components/PluginSettings.tsx:130
 #: packages/admin/src/components/settings/GeneralSettings.tsx:77
 #: packages/admin/src/components/settings/SeoSettings.tsx:76
 #: packages/admin/src/components/settings/SocialSettings.tsx:66
@@ -5086,7 +5086,7 @@ msgstr "Cargando redirecciones..."
 msgid "Loading sections..."
 msgstr "Cargando secciones..."
 
-#: packages/admin/src/components/PluginSettings.tsx:131
+#: packages/admin/src/components/PluginSettings.tsx:187
 #: packages/admin/src/components/settings/GeneralSettings.tsx:129
 #: packages/admin/src/components/settings/SeoSettings.tsx:128
 #: packages/admin/src/components/settings/SocialSettings.tsx:100
@@ -6070,7 +6070,7 @@ msgid "Not delivered"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:1280
-#: packages/admin/src/components/PluginSettings.tsx:341
+#: packages/admin/src/components/PluginSettings.tsx:397
 msgid "Not set"
 msgstr "No establecido"
 
@@ -7325,8 +7325,8 @@ msgstr "Guardar nombre"
 msgid "Save settings"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 msgid "Save Settings"
 msgstr "Guardar configuración"
 
@@ -7343,8 +7343,8 @@ msgstr "Se guardó \"{0}\"."
 #: packages/admin/src/components/FieldEditor.tsx:689
 #: packages/admin/src/components/MediaDetailPanel.tsx:425
 #: packages/admin/src/components/MenuEditor.tsx:626
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 #: packages/admin/src/components/Redirects.tsx:188
 #: packages/admin/src/components/SaveButton.tsx:33
 #: packages/admin/src/components/TaxonomyManager.tsx:660
@@ -7924,7 +7924,7 @@ msgstr "Administración de configuración"
 msgid "Settings Read"
 msgstr "Lectura de configuración"
 
-#: packages/admin/src/components/PluginSettings.tsx:68
+#: packages/admin/src/components/PluginSettings.tsx:124
 #: packages/admin/src/components/settings/GeneralSettings.tsx:70
 msgid "Settings saved successfully"
 msgstr "Configuración guardada exitosamente"
@@ -8567,7 +8567,7 @@ msgstr "Esta Passkey ya está registrada en este dispositivo."
 msgid "This permanently deletes {0} from storage."
 msgstr "Esto elimina permanentemente {0} del almacenamiento."
 
-#: packages/admin/src/components/PluginSettings.tsx:177
+#: packages/admin/src/components/PluginSettings.tsx:233
 msgid "This plugin has no configurable settings."
 msgstr "Este plugin no tiene opciones de configuración."
 
@@ -9528,7 +9528,7 @@ msgstr "Widgets"
 msgid "Width"
 msgstr "Ancho"
 
-#: packages/admin/src/components/PluginSettings.tsx:338
+#: packages/admin/src/components/PluginSettings.tsx:394
 msgid "Will be cleared on save"
 msgstr "Se borrará al guardar"
 

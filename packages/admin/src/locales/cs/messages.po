@@ -407,9 +407,9 @@ msgstr "{pluginName} požaduje další oprávnění:"
 msgid "{pluginName} requires the following permissions:"
 msgstr "{pluginName} vyžaduje následující oprávnění:"
 
-#: packages/admin/src/components/PluginSettings.tsx:128
-#: packages/admin/src/components/PluginSettings.tsx:142
-#: packages/admin/src/components/PluginSettings.tsx:170
+#: packages/admin/src/components/PluginSettings.tsx:184
+#: packages/admin/src/components/PluginSettings.tsx:198
+#: packages/admin/src/components/PluginSettings.tsx:226
 msgid "{pluginName} Settings"
 msgstr "Nastavení {pluginName}"
 
@@ -1020,7 +1020,7 @@ msgstr "Případně můžete provést export z WordPressu (Nástroje → Export)
 #: packages/admin/src/components/MarketplaceBrowse.tsx:135
 #: packages/admin/src/components/PluginManager.tsx:102
 #: packages/admin/src/components/PluginManager.tsx:121
-#: packages/admin/src/components/PluginSettings.tsx:75
+#: packages/admin/src/components/PluginSettings.tsx:131
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:76
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:99
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:116
@@ -1335,7 +1335,7 @@ msgstr "Zpět na přihlášení"
 msgid "Back to marketplace"
 msgstr "Zpět na tržiště"
 
-#: packages/admin/src/components/PluginSettings.tsx:118
+#: packages/admin/src/components/PluginSettings.tsx:174
 #: packages/admin/src/components/RegistryPluginDetail.tsx:820
 msgid "Back to plugins"
 msgstr "Zpět na pluginy"
@@ -1696,11 +1696,11 @@ msgstr "Vymazat filtry"
 msgid "Clear search"
 msgstr "Vymazat hledaný výraz"
 
-#: packages/admin/src/components/PluginSettings.tsx:354
+#: packages/admin/src/components/PluginSettings.tsx:410
 msgid "Clear stored value"
 msgstr "Vymazat uloženou hodnotu"
 
-#: packages/admin/src/components/PluginSettings.tsx:352
+#: packages/admin/src/components/PluginSettings.tsx:408
 msgid "Clear stored value for {fieldKey}"
 msgstr "Vymazat uloženou hodnotu pro {fieldKey}"
 
@@ -2346,7 +2346,7 @@ msgstr "aktuální"
 msgid "Current"
 msgstr "Aktuální"
 
-#: packages/admin/src/components/PluginSettings.tsx:340
+#: packages/admin/src/components/PluginSettings.tsx:396
 msgid "Currently set — enter a new value to replace"
 msgstr "Aktuálně nastaveno — nahradíte zadáním nové hodnoty"
 
@@ -3808,7 +3808,7 @@ msgstr "Nepodařilo se načíst přístupové klíče"
 msgid "Failed to load plugin"
 msgstr "Nepodařilo se načíst plugin"
 
-#: packages/admin/src/components/PluginSettings.tsx:146
+#: packages/admin/src/components/PluginSettings.tsx:202
 msgid "Failed to load plugin settings"
 msgstr "Nepodařilo se načíst nastavení pluginu"
 
@@ -3928,7 +3928,7 @@ msgstr "Nepodařilo se uložit nastavení záloh"
 msgid "Failed to save field"
 msgstr "Nepodařilo se uložit pole"
 
-#: packages/admin/src/components/PluginSettings.tsx:74
+#: packages/admin/src/components/PluginSettings.tsx:130
 #: packages/admin/src/components/settings/GeneralSettings.tsx:77
 #: packages/admin/src/components/settings/SeoSettings.tsx:76
 #: packages/admin/src/components/settings/SocialSettings.tsx:66
@@ -5086,7 +5086,7 @@ msgstr "Načítání přesměrování..."
 msgid "Loading sections..."
 msgstr "Načítání sekcí..."
 
-#: packages/admin/src/components/PluginSettings.tsx:131
+#: packages/admin/src/components/PluginSettings.tsx:187
 #: packages/admin/src/components/settings/GeneralSettings.tsx:129
 #: packages/admin/src/components/settings/SeoSettings.tsx:128
 #: packages/admin/src/components/settings/SocialSettings.tsx:100
@@ -6070,7 +6070,7 @@ msgid "Not delivered"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:1280
-#: packages/admin/src/components/PluginSettings.tsx:341
+#: packages/admin/src/components/PluginSettings.tsx:397
 msgid "Not set"
 msgstr "Nenastaveno"
 
@@ -7325,8 +7325,8 @@ msgstr "Uložit název"
 msgid "Save settings"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 msgid "Save Settings"
 msgstr "Uložit nastavení"
 
@@ -7343,8 +7343,8 @@ msgstr "Uloženo „{0}“."
 #: packages/admin/src/components/FieldEditor.tsx:689
 #: packages/admin/src/components/MediaDetailPanel.tsx:425
 #: packages/admin/src/components/MenuEditor.tsx:626
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 #: packages/admin/src/components/Redirects.tsx:188
 #: packages/admin/src/components/SaveButton.tsx:33
 #: packages/admin/src/components/TaxonomyManager.tsx:660
@@ -7924,7 +7924,7 @@ msgstr "Nastavení – správa"
 msgid "Settings Read"
 msgstr "Nastavení – čtení"
 
-#: packages/admin/src/components/PluginSettings.tsx:68
+#: packages/admin/src/components/PluginSettings.tsx:124
 #: packages/admin/src/components/settings/GeneralSettings.tsx:70
 msgid "Settings saved successfully"
 msgstr "Nastavení bylo uloženo"
@@ -8567,7 +8567,7 @@ msgstr "Tento přístupový klíč je již na tomto zařízení zaregistrován."
 msgid "This permanently deletes {0} from storage."
 msgstr "Trvale odstraní {0} z úložiště."
 
-#: packages/admin/src/components/PluginSettings.tsx:177
+#: packages/admin/src/components/PluginSettings.tsx:233
 msgid "This plugin has no configurable settings."
 msgstr "Tento plugin nemá žádná nastavení."
 
@@ -9528,7 +9528,7 @@ msgstr "Widgety"
 msgid "Width"
 msgstr "Šířka"
 
-#: packages/admin/src/components/PluginSettings.tsx:338
+#: packages/admin/src/components/PluginSettings.tsx:394
 msgid "Will be cleared on save"
 msgstr "Při uložení bude vymazáno"
 

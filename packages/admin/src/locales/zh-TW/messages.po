@@ -407,9 +407,9 @@ msgstr "{pluginName} 要求下列額外權限:"
 msgid "{pluginName} requires the following permissions:"
 msgstr "{pluginName} 需要下列權限:"
 
-#: packages/admin/src/components/PluginSettings.tsx:128
-#: packages/admin/src/components/PluginSettings.tsx:142
-#: packages/admin/src/components/PluginSettings.tsx:170
+#: packages/admin/src/components/PluginSettings.tsx:184
+#: packages/admin/src/components/PluginSettings.tsx:198
+#: packages/admin/src/components/PluginSettings.tsx:226
 msgid "{pluginName} Settings"
 msgstr "{pluginName} 設定"
 
@@ -1020,7 +1020,7 @@ msgstr "或者，您可以從 WordPress 匯出 (工具 → 匯出)，再上傳�
 #: packages/admin/src/components/MarketplaceBrowse.tsx:135
 #: packages/admin/src/components/PluginManager.tsx:102
 #: packages/admin/src/components/PluginManager.tsx:121
-#: packages/admin/src/components/PluginSettings.tsx:75
+#: packages/admin/src/components/PluginSettings.tsx:131
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:76
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:99
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:116
@@ -1335,7 +1335,7 @@ msgstr "返回登入頁面"
 msgid "Back to marketplace"
 msgstr "返回市集"
 
-#: packages/admin/src/components/PluginSettings.tsx:118
+#: packages/admin/src/components/PluginSettings.tsx:174
 #: packages/admin/src/components/RegistryPluginDetail.tsx:820
 msgid "Back to plugins"
 msgstr "返回外掛"
@@ -1696,11 +1696,11 @@ msgstr "清除篩選條件"
 msgid "Clear search"
 msgstr "清除搜尋"
 
-#: packages/admin/src/components/PluginSettings.tsx:354
+#: packages/admin/src/components/PluginSettings.tsx:410
 msgid "Clear stored value"
 msgstr "清除已儲存的值"
 
-#: packages/admin/src/components/PluginSettings.tsx:352
+#: packages/admin/src/components/PluginSettings.tsx:408
 msgid "Clear stored value for {fieldKey}"
 msgstr "清除 {fieldKey} 的已儲存值"
 
@@ -2346,7 +2346,7 @@ msgstr "目前"
 msgid "Current"
 msgstr "目前版本"
 
-#: packages/admin/src/components/PluginSettings.tsx:340
+#: packages/admin/src/components/PluginSettings.tsx:396
 msgid "Currently set — enter a new value to replace"
 msgstr "目前已設定 — 輸入新值即可取代"
 
@@ -3808,7 +3808,7 @@ msgstr "無法載入通行金鑰"
 msgid "Failed to load plugin"
 msgstr "無法載入外掛"
 
-#: packages/admin/src/components/PluginSettings.tsx:146
+#: packages/admin/src/components/PluginSettings.tsx:202
 msgid "Failed to load plugin settings"
 msgstr "無法載入外掛設定"
 
@@ -3928,7 +3928,7 @@ msgstr "無法儲存備份設定"
 msgid "Failed to save field"
 msgstr "無法儲存欄位"
 
-#: packages/admin/src/components/PluginSettings.tsx:74
+#: packages/admin/src/components/PluginSettings.tsx:130
 #: packages/admin/src/components/settings/GeneralSettings.tsx:77
 #: packages/admin/src/components/settings/SeoSettings.tsx:76
 #: packages/admin/src/components/settings/SocialSettings.tsx:66
@@ -5086,7 +5086,7 @@ msgstr "正在載入重新導向…"
 msgid "Loading sections..."
 msgstr "正在載入區段..."
 
-#: packages/admin/src/components/PluginSettings.tsx:131
+#: packages/admin/src/components/PluginSettings.tsx:187
 #: packages/admin/src/components/settings/GeneralSettings.tsx:129
 #: packages/admin/src/components/settings/SeoSettings.tsx:128
 #: packages/admin/src/components/settings/SocialSettings.tsx:100
@@ -6070,7 +6070,7 @@ msgid "Not delivered"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:1280
-#: packages/admin/src/components/PluginSettings.tsx:341
+#: packages/admin/src/components/PluginSettings.tsx:397
 msgid "Not set"
 msgstr "未設定"
 
@@ -7325,8 +7325,8 @@ msgstr "儲存名稱"
 msgid "Save settings"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 msgid "Save Settings"
 msgstr "儲存設定"
 
@@ -7343,8 +7343,8 @@ msgstr "已儲存「{0}」。"
 #: packages/admin/src/components/FieldEditor.tsx:689
 #: packages/admin/src/components/MediaDetailPanel.tsx:425
 #: packages/admin/src/components/MenuEditor.tsx:626
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 #: packages/admin/src/components/Redirects.tsx:188
 #: packages/admin/src/components/SaveButton.tsx:33
 #: packages/admin/src/components/TaxonomyManager.tsx:660
@@ -7924,7 +7924,7 @@ msgstr "管理設定"
 msgid "Settings Read"
 msgstr "讀取設定"
 
-#: packages/admin/src/components/PluginSettings.tsx:68
+#: packages/admin/src/components/PluginSettings.tsx:124
 #: packages/admin/src/components/settings/GeneralSettings.tsx:70
 msgid "Settings saved successfully"
 msgstr "設定已成功儲存"
@@ -8567,7 +8567,7 @@ msgstr "此通行金鑰已在這個裝置上註冊。"
 msgid "This permanently deletes {0} from storage."
 msgstr "這會從儲存空間永久刪除 {0}。"
 
-#: packages/admin/src/components/PluginSettings.tsx:177
+#: packages/admin/src/components/PluginSettings.tsx:233
 msgid "This plugin has no configurable settings."
 msgstr "此外掛不提供可調整的設定。"
 
@@ -9528,7 +9528,7 @@ msgstr "小工具"
 msgid "Width"
 msgstr "寬度"
 
-#: packages/admin/src/components/PluginSettings.tsx:338
+#: packages/admin/src/components/PluginSettings.tsx:394
 msgid "Will be cleared on save"
 msgstr "儲存時將會清除"
 

@@ -407,9 +407,9 @@ msgstr "{pluginName} अतिरिक्त अनुमतियों का
 msgid "{pluginName} requires the following permissions:"
 msgstr "{pluginName} को निम्नलिखित अनुमतियों की आवश्यकता है:"
 
-#: packages/admin/src/components/PluginSettings.tsx:128
-#: packages/admin/src/components/PluginSettings.tsx:142
-#: packages/admin/src/components/PluginSettings.tsx:170
+#: packages/admin/src/components/PluginSettings.tsx:184
+#: packages/admin/src/components/PluginSettings.tsx:198
+#: packages/admin/src/components/PluginSettings.tsx:226
 msgid "{pluginName} Settings"
 msgstr "{pluginName} सेटिंग्स"
 
@@ -1020,7 +1020,7 @@ msgstr "वैकल्पिक रूप से, आप वर्डप्र�
 #: packages/admin/src/components/MarketplaceBrowse.tsx:135
 #: packages/admin/src/components/PluginManager.tsx:102
 #: packages/admin/src/components/PluginManager.tsx:121
-#: packages/admin/src/components/PluginSettings.tsx:75
+#: packages/admin/src/components/PluginSettings.tsx:131
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:76
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:99
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:116
@@ -1335,7 +1335,7 @@ msgstr "लॉगिन पर वापस जाएं"
 msgid "Back to marketplace"
 msgstr "बाज़ार में वापस"
 
-#: packages/admin/src/components/PluginSettings.tsx:118
+#: packages/admin/src/components/PluginSettings.tsx:174
 #: packages/admin/src/components/RegistryPluginDetail.tsx:820
 msgid "Back to plugins"
 msgstr "प्लगइन्स पर वापस जाएँ"
@@ -1696,11 +1696,11 @@ msgstr "फ़िल्टर साफ़ करें"
 msgid "Clear search"
 msgstr "स्पष्ट खोज"
 
-#: packages/admin/src/components/PluginSettings.tsx:354
+#: packages/admin/src/components/PluginSettings.tsx:410
 msgid "Clear stored value"
 msgstr "संग्रहित मूल्य साफ़ करें"
 
-#: packages/admin/src/components/PluginSettings.tsx:352
+#: packages/admin/src/components/PluginSettings.tsx:408
 msgid "Clear stored value for {fieldKey}"
 msgstr "{fieldKey} के लिए संग्रहीत मान साफ़ करें"
 
@@ -2346,7 +2346,7 @@ msgstr "मौजूदा"
 msgid "Current"
 msgstr "मौजूदा"
 
-#: packages/admin/src/components/PluginSettings.tsx:340
+#: packages/admin/src/components/PluginSettings.tsx:396
 msgid "Currently set — enter a new value to replace"
 msgstr "वर्तमान में सेट - प्रतिस्थापित करने के लिए एक नया मान दर्ज करें"
 
@@ -3808,7 +3808,7 @@ msgstr "पासकीज़ लोड करने में विफल"
 msgid "Failed to load plugin"
 msgstr "प्लगइन लोड करने में विफल"
 
-#: packages/admin/src/components/PluginSettings.tsx:146
+#: packages/admin/src/components/PluginSettings.tsx:202
 msgid "Failed to load plugin settings"
 msgstr "प्लगइन सेटिंग्स लोड करने में विफल"
 
@@ -3928,7 +3928,7 @@ msgstr "बैकअप सेटिंग सहेजने में वि�
 msgid "Failed to save field"
 msgstr "फ़ील्ड सहेजने में विफल"
 
-#: packages/admin/src/components/PluginSettings.tsx:74
+#: packages/admin/src/components/PluginSettings.tsx:130
 #: packages/admin/src/components/settings/GeneralSettings.tsx:77
 #: packages/admin/src/components/settings/SeoSettings.tsx:76
 #: packages/admin/src/components/settings/SocialSettings.tsx:66
@@ -5086,7 +5086,7 @@ msgstr "पुनर्निर्देश लोड हो रहे है�
 msgid "Loading sections..."
 msgstr "अनुभाग लोड हो रहे हैं..."
 
-#: packages/admin/src/components/PluginSettings.tsx:131
+#: packages/admin/src/components/PluginSettings.tsx:187
 #: packages/admin/src/components/settings/GeneralSettings.tsx:129
 #: packages/admin/src/components/settings/SeoSettings.tsx:128
 #: packages/admin/src/components/settings/SocialSettings.tsx:100
@@ -6070,7 +6070,7 @@ msgid "Not delivered"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:1280
-#: packages/admin/src/components/PluginSettings.tsx:341
+#: packages/admin/src/components/PluginSettings.tsx:397
 msgid "Not set"
 msgstr "सेट नहीं"
 
@@ -7325,8 +7325,8 @@ msgstr "नाम सहेजें"
 msgid "Save settings"
 msgstr ""
 
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 msgid "Save Settings"
 msgstr "सेटिंग्स सेव करें"
 
@@ -7343,8 +7343,8 @@ msgstr "\"{0}\" सहेजा गया।"
 #: packages/admin/src/components/FieldEditor.tsx:689
 #: packages/admin/src/components/MediaDetailPanel.tsx:425
 #: packages/admin/src/components/MenuEditor.tsx:626
-#: packages/admin/src/components/PluginSettings.tsx:166
-#: packages/admin/src/components/PluginSettings.tsx:209
+#: packages/admin/src/components/PluginSettings.tsx:222
+#: packages/admin/src/components/PluginSettings.tsx:265
 #: packages/admin/src/components/Redirects.tsx:188
 #: packages/admin/src/components/SaveButton.tsx:33
 #: packages/admin/src/components/TaxonomyManager.tsx:660
@@ -7924,7 +7924,7 @@ msgstr "सेटिंग्स प्रबंधित करें"
 msgid "Settings Read"
 msgstr "सेटिंग्स पढ़ें"
 
-#: packages/admin/src/components/PluginSettings.tsx:68
+#: packages/admin/src/components/PluginSettings.tsx:124
 #: packages/admin/src/components/settings/GeneralSettings.tsx:70
 msgid "Settings saved successfully"
 msgstr "सेटिंग्स सफलतापूर्वक सहेजी गईं"
@@ -8567,7 +8567,7 @@ msgstr "यह पासकी इस डिवाइस पर पहले स
 msgid "This permanently deletes {0} from storage."
 msgstr "यह स्टोरेज से {0} को स्थायी रूप से हटा देता है।"
 
-#: packages/admin/src/components/PluginSettings.tsx:177
+#: packages/admin/src/components/PluginSettings.tsx:233
 msgid "This plugin has no configurable settings."
 msgstr "इस प्लगइन में कोई कॉन्फ़िगर करने योग्य सेटिंग नहीं है."
 
@@ -9528,7 +9528,7 @@ msgstr "विजेट"
 msgid "Width"
 msgstr "चौड़ाई"
 
-#: packages/admin/src/components/PluginSettings.tsx:338
+#: packages/admin/src/components/PluginSettings.tsx:394
 msgid "Will be cleared on save"
 msgstr "सेव करने पर साफ़ हो जाएगा"
 
