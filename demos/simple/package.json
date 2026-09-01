@@ -20,6 +20,7 @@
     "@emdash-cms/plugin-atproto": "workspace:*",
     "@emdash-cms/plugin-audit-log": "workspace:*",
     "@emdash-cms/plugin-color": "workspace:*",
+    "@emdash-cms/plugin-email-templates": "workspace:*",
     "@emdash-cms/plugin-cli": "workspace:*",
     "@emdash-cms/plugin-mcp-smoke": "workspace:*",
     "astro": "catalog:",

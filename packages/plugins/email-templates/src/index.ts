@@ -43,6 +43,7 @@ export { brevoEmail } from "./providers/brevo.js";
 export type { BrevoEmailConfig } from "./providers/brevo.js";
 export { resendEmail } from "./providers/resend.js";
 export type { ResendEmailConfig } from "./providers/resend.js";
+export { localEmail } from "./providers/local.js";
 
 export interface EmailTemplatesPluginOptions {
 	/** Enables template management for this site. Defaults to false. */
@@ -111,6 +112,46 @@ export function createPlugin(options: EmailTemplatesPluginOptions = {}): Resolve
 				campaignsEnabled: {
 					type: "boolean",
 					label: "Enable email campaigns",
+				},
+				defaultSenderName: {
+					type: "string",
+					label: "Default sender name",
+				},
+				supportEmail: {
+					type: "email",
+					label: "Support email",
+				},
+				siteName: {
+					type: "string",
+					label: "Site name",
+				},
+				websiteUrl: {
+					type: "url",
+					label: "Website URL",
+				},
+				facebookUrl: {
+					type: "url",
+					label: "Facebook URL",
+				},
+				instagramUrl: {
+					type: "url",
+					label: "Instagram URL",
+				},
+				xUrl: {
+					type: "url",
+					label: "X URL",
+				},
+				githubUrl: {
+					type: "url",
+					label: "GitHub URL",
+				},
+				linkedinUrl: {
+					type: "url",
+					label: "LinkedIn URL",
+				},
+				youtubeUrl: {
+					type: "url",
+					label: "YouTube URL",
 				},
 			},
 		},

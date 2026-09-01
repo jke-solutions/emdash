@@ -1,6 +1,12 @@
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 import auditLog from "@emdash-cms/plugin-audit-log";
+import {
+	brevoEmail,
+	emailTemplatesPlugin,
+	localEmail,
+	resendEmail,
+} from "@emdash-cms/plugin-email-templates";
 import { mcpSmokePlugin } from "@emdash-cms/plugin-mcp-smoke";
 import { defineConfig, fontProviders, passthroughImageService } from "astro/config";
 import emdash, { local } from "emdash/astro";
@@ -28,7 +34,14 @@ export default defineConfig({
 				baseUrl: "/_emdash/api/media/file",
 			}),
 			storageQuota: 1024 * 1024 * 1024,
-			plugins: [auditLog, mcpSmokePlugin()],
+			plugins: [
+				auditLog,
+				mcpSmokePlugin(),
+				emailTemplatesPlugin({ enabled: true }),
+				localEmail(),
+				resendEmail(),
+				brevoEmail(),
+			],
 		}),
 	],
 	fonts: [

@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 import { createBrevoEmailDeliver } from "../src/providers/brevo.js";
+import { localEmailDeliver } from "../src/providers/local.js";
 import { createResendEmailDeliver } from "../src/providers/resend.js";
 
 function createContext(fetch: typeof globalThis.fetch, apiKey = "stored-key") {
@@ -74,5 +75,16 @@ describe("email provider transports", () => {
 			createResendEmailDeliver({ from: "cms@example.com" })(event, context),
 		).rejects.toThrow("API key is not configured");
 		expect(fetch).not.toHaveBeenCalled();
+	});
+
+	it("captures local email messages without making a network request", async () => {
+		const context = createContext(vi.fn());
+
+		await localEmailDeliver(event, context);
+
+		expect((context as { log: { info: ReturnType<typeof vi.fn> } }).log.info).toHaveBeenCalledWith(
+			"email captured by local-email",
+			expect.objectContaining({ to: "person@example.com", subject: "Welcome" }),
+		);
 	});
 });

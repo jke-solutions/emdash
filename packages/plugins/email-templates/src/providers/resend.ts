@@ -43,7 +43,7 @@ export function createPlugin(config: ResendEmailConfig): ResolvedPlugin {
 	});
 }
 
-export function resendEmail(config: ResendEmailConfig): PluginDescriptor<ResendEmailConfig> {
+export function resendEmail(config: ResendEmailConfig = {}): PluginDescriptor<ResendEmailConfig> {
 	return {
 		id: "resend-email",
 		version,
