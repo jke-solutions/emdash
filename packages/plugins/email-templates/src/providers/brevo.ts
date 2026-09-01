@@ -43,7 +43,7 @@ export function createPlugin(config: BrevoEmailConfig): ResolvedPlugin {
 	});
 }
 
-export function brevoEmail(config: BrevoEmailConfig): PluginDescriptor<BrevoEmailConfig> {
+export function brevoEmail(config: BrevoEmailConfig = {}): PluginDescriptor<BrevoEmailConfig> {
 	return {
 		id: "brevo-email",
 		version,

@@ -19,12 +19,44 @@ import {
 	updatePluginSettings,
 	type SettingField,
 } from "../lib/api/plugins.js";
+import { fetchSettings, type SiteSettings } from "../lib/api/settings.js";
 import { ArrowPrev } from "./ArrowIcons.js";
 import { EditorHeader } from "./EditorHeader";
 import { RouterLinkButton } from "./RouterLinkButton.js";
 
 export interface PluginSettingsProps {
 	pluginId: string;
+}
+
+const PROFILE_HANDLE_RE = /^@/;
+
+function profileUrl(value: string | undefined, baseUrl: string): string | undefined {
+	const normalized = value?.trim();
+	if (!normalized) return undefined;
+	if (URL.canParse(normalized)) return normalized;
+	return `${baseUrl}/${normalized.replace(PROFILE_HANDLE_RE, "")}`;
+}
+
+function emailSettingsSuggestions(
+	settings: Partial<SiteSettings> | undefined,
+): Record<string, string> {
+	if (!settings) return {};
+	const social = settings.social;
+	return Object.fromEntries(
+		[
+			["siteName", settings.title],
+			["defaultSenderName", settings.title],
+			["websiteUrl", settings.url],
+			["xUrl", profileUrl(social?.twitter, "https://x.com")],
+			["facebookUrl", profileUrl(social?.facebook, "https://facebook.com")],
+			["instagramUrl", profileUrl(social?.instagram, "https://instagram.com")],
+			["githubUrl", profileUrl(social?.github, "https://github.com")],
+			["linkedinUrl", profileUrl(social?.linkedin, "https://linkedin.com/in")],
+			["youtubeUrl", profileUrl(social?.youtube, "https://youtube.com")],
+		].filter(
+			(entry): entry is [string, string] => typeof entry[1] === "string" && entry[1].length > 0,
+		),
+	);
 }
 
 export function PluginSettings({ pluginId }: PluginSettingsProps) {
@@ -45,20 +77,44 @@ export function PluginSettings({ pluginId }: PluginSettingsProps) {
 		queryKey: ["plugin-settings", pluginId],
 		queryFn: () => fetchPluginSettings(pluginId),
 	});
+	const { data: siteSettings } = useQuery({
+		queryKey: ["settings"],
+		queryFn: fetchSettings,
+		staleTime: Infinity,
+		enabled: pluginId === "email-templates",
+	});
 
 	const [values, setValues] = React.useState<Record<string, unknown>>({});
+	const initializedPluginRef = React.useRef<string | null>(null);
 	// Secret fields are write-only: track typed input separately and only
 	// send keys the user actually changed.
 	const [secretInputs, setSecretInputs] = React.useState<Record<string, string>>({});
 	const [clearedSecrets, setClearedSecrets] = React.useState<Set<string>>(new Set());
 
 	React.useEffect(() => {
-		if (settings) {
-			setValues(settings.values);
+		if (
+			settings &&
+			initializedPluginRef.current !== pluginId &&
+			(pluginId !== "email-templates" || siteSettings !== undefined)
+		) {
+			const suggestedValues =
+				pluginId === "email-templates" ? emailSettingsSuggestions(siteSettings) : {};
+			const initialValues = { ...settings.values };
+			for (const [key, value] of Object.entries(suggestedValues)) {
+				if (
+					initialValues[key] === null ||
+					initialValues[key] === undefined ||
+					initialValues[key] === ""
+				) {
+					initialValues[key] = value;
+				}
+			}
+			setValues(initialValues);
 			setSecretInputs({});
 			setClearedSecrets(new Set());
+			initializedPluginRef.current = pluginId;
 		}
-	}, [settings]);
+	}, [pluginId, settings, siteSettings]);
 
 	const saveMutation = useMutation({
 		mutationFn: (updates: Record<string, unknown>) => updatePluginSettings(pluginId, updates),

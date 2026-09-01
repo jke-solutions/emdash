@@ -38,6 +38,19 @@ describe("email templates plugin", () => {
 			type: "boolean",
 			label: "Enable email campaigns",
 		});
+		expect(Object.keys(plugin.admin.settingsSchema ?? {})).toEqual([
+			"campaignsEnabled",
+			"defaultSenderName",
+			"supportEmail",
+			"siteName",
+			"websiteUrl",
+			"facebookUrl",
+			"instagramUrl",
+			"xUrl",
+			"githubUrl",
+			"linkedinUrl",
+			"youtubeUrl",
+		]);
 	});
 
 	it("provides an email-safe visual editor configuration", () => {

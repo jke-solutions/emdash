@@ -8,7 +8,8 @@
 		".": "./src/index.ts",
 		"./admin": "./src/admin.tsx",
 		"./providers/resend": "./src/providers/resend.ts",
-		"./providers/brevo": "./src/providers/brevo.ts"
+		"./providers/brevo": "./src/providers/brevo.ts",
+		"./providers/local": "./src/providers/local.ts"
 	},
 	"files": [
 		"src"

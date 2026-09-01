@@ -1,9 +1,9 @@
-import { Button, Dialog, Input, Loader, Select } from "@cloudflare/kumo";
+import { Button, Dialog, Input, Loader } from "@cloudflare/kumo";
 import { EmailEditor, type EmailEditorProps, type EmailEditorRef } from "@react-email/editor";
 import { StarterKit, StyleAttribute } from "@react-email/editor/extensions";
 import { EmailTheming } from "@react-email/editor/plugins";
 import type { PluginAdminExports } from "emdash";
-import { useEffect, useRef, useState, type DragEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type DragEvent, type FormEvent, type ReactNode } from "react";
 
 import {
 	applyEmailSafeFont,
@@ -54,6 +54,22 @@ async function handleEmailImageUpload(file: File): Promise<{ url: string }> {
 
 function isEmptyEditorNode(value: EditorJsonNode): boolean {
 	return !value.text?.trim() && !value.content?.some((child) => !isEmptyEditorNode(child));
+}
+
+function formatTemplateDate(value: string): string {
+	const date = new Date(value);
+	return Number.isNaN(date.getTime()) ? value : date.toLocaleString();
+}
+
+function templateSlug(name: string): string {
+	return (
+		name
+			.toLowerCase()
+			.trim()
+			.replace(/[^a-z0-9]+/g, "-")
+			.replace(/^-+|-+$/g, "")
+			.slice(0, 80) || "email-template"
+	);
 }
 
 function applyImageLayout(html: string, content: EditorJsonNode): string {
@@ -205,6 +221,7 @@ interface TemplateSummary {
 	id: string;
 	name: string;
 	type: "transactional" | "campaign";
+	status?: "draft" | "active";
 	updatedAt: string;
 }
 
@@ -932,6 +949,14 @@ function EmailTemplatesPage() {
 	const [draggedBlock, setDraggedBlock] = useState<EmailBlockType | null>(null);
 	const [imagePickerOpen, setImagePickerOpen] = useState(false);
 	const [templates, setTemplates] = useState<TemplateSummary[]>([]);
+	const [templateSearch, setTemplateSearch] = useState("");
+	const [templatePage, setTemplatePage] = useState(1);
+	const [templateName, setTemplateName] = useState("Transactional email template");
+	const [testTemplateId, setTestTemplateId] = useState<string | null>(null);
+	const [testEmail, setTestEmail] = useState("");
+	const [testSending, setTestSending] = useState(false);
+	const [testMessage, setTestMessage] = useState<string | null>(null);
+	const [showEditor, setShowEditor] = useState(false);
 	const [editorContent, setEditorContent] =
 		useState<NonNullable<EmailEditorProps["content"]>>(INITIAL_EDITOR_CONTENT);
 	const [editorVersion, setEditorVersion] = useState(0);
@@ -966,6 +991,15 @@ function EmailTemplatesPage() {
 	const [buttonToolbarPosition, setButtonToolbarPosition] = useState({ top: 0, left: 0 });
 	const [buttonHandlePosition, setButtonHandlePosition] = useState({ top: 0, left: 0 });
 	const [imageToolbarPosition, setImageToolbarPosition] = useState({ top: 0, left: 0 });
+	const filteredTemplates = templates.filter((template) =>
+		template.name.toLowerCase().includes(templateSearch.trim().toLowerCase()),
+	);
+	const templatePageCount = Math.max(1, Math.ceil(filteredTemplates.length / 10));
+	const pagedTemplates = filteredTemplates.slice((templatePage - 1) * 10, templatePage * 10);
+
+	useEffect(() => {
+		if (templatePage > templatePageCount) setTemplatePage(templatePageCount);
+	}, [templatePage, templatePageCount]);
 	const positionActiveBlock = (block: HTMLElement) => {
 		activeParagraphRef.current = block;
 		const shellRect = editorShellRef.current?.getBoundingClientRect();
@@ -1103,7 +1137,10 @@ function EmailTemplatesPage() {
 		let mounted = true;
 		void requestTemplateRoute<TemplateListResult>("templates/list")
 			.then((result) => {
-				if (mounted) setTemplates(result.items);
+				if (mounted) {
+					setTemplates(result.items);
+					setShowEditor((current) => current || result.items.length === 0);
+				}
 				return result;
 			})
 			.catch(() => {
@@ -1130,13 +1167,18 @@ function EmailTemplatesPage() {
 	const loadTemplate = (id: string) => {
 		if (!id) return;
 		setLoadingTemplate(true);
+		setShowEditor(true);
 		setMessage(null);
 		void requestTemplateRoute<TemplateDetail>("templates/get", { id })
 			.then((template) => {
 				setTemplateId(template.id);
+				setTemplateName(template.name);
 				setEditorContent(template.editableJson);
 				setHtml(template.html);
 				setEditorVersion((version) => version + 1);
+				window.requestAnimationFrame(() =>
+					editorShellRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+				);
 				return template;
 			})
 			.catch(() => setMessage(t`The template could not be loaded.`))
@@ -1144,7 +1186,9 @@ function EmailTemplatesPage() {
 	};
 
 	const startNewTemplate = () => {
+		setShowEditor(true);
 		setTemplateId(null);
+		setTemplateName("Transactional email template");
 		setEditorContent(INITIAL_EDITOR_CONTENT);
 		setHtml("");
 		setMessage(null);
@@ -1201,8 +1245,23 @@ function EmailTemplatesPage() {
 		setPreviewMode(false);
 	};
 
+	const returnToList = () => {
+		setPreviewMode(false);
+		setActiveEditor(null);
+		setActiveParagraphBounds(null);
+		setSelectedBlockBounds(null);
+		setButtonSelected(false);
+		setToolbarPinned(false);
+		setShowEditor(false);
+	};
+
 	const saveTemplate = async () => {
 		if (!editorRef.current) return;
+		const name = templateName.trim();
+		if (!name) {
+			setMessage(t`Enter a name for the template.`);
+			return;
+		}
 		setSaving(true);
 		setMessage(null);
 		try {
@@ -1212,10 +1271,10 @@ function EmailTemplatesPage() {
 			);
 			const route = templateId ? "templates/update" : "templates/create";
 			const body = templateId
-				? { id: templateId, editableJson, html: nextHtml }
+				? { id: templateId, name, editableJson, html: nextHtml }
 				: {
-						name: t`Transactional email template`,
-						slug: "transactional-email-template",
+						name,
+						slug: templateSlug(name),
 						type: "transactional",
 						subject: t`Transactional email preview`,
 						editableJson,
@@ -1232,10 +1291,30 @@ function EmailTemplatesPage() {
 			if (!templateId && result.id) setTemplateId(result.id);
 			setHtml(nextHtml);
 			setMessage(t`Template saved successfully.`);
+			void requestTemplateRoute<TemplateListResult>("templates/list").then((list) =>
+				setTemplates(list.items),
+			);
 		} catch {
 			setMessage(t`The template could not be saved.`);
 		} finally {
 			setSaving(false);
+		}
+	};
+
+	const sendTestEmail = async (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		if (!testTemplateId || !testEmail.trim()) return;
+		setTestSending(true);
+		setTestMessage(null);
+		try {
+			await requestTemplateRoute("templates/send", { id: testTemplateId, to: testEmail.trim() });
+			setTestTemplateId(null);
+			setTestEmail("");
+			setMessage(t`Test email sent successfully.`);
+		} catch {
+			setTestMessage(t`The test email could not be sent. Check the email provider settings.`);
+		} finally {
+			setTestSending(false);
 		}
 	};
 
@@ -1316,23 +1395,32 @@ function EmailTemplatesPage() {
 					<p className="mt-1 text-kumo-subtle">{t`Create and edit transactional email templates.`}</p>
 				</div>
 				<div className="flex gap-2">
-					{templates.length > 0 && (
-						<Select
-							value={templateId ?? ""}
-							onValueChange={(value) => loadTemplate(value ?? "")}
-							items={Object.fromEntries(templates.map((template) => [template.id, template.name]))}
-							aria-label={t`Saved templates`}
-						/>
+					{showEditor ? (
+						<>
+							<Button variant="outline" onClick={returnToList}>{t`Back to templates`}</Button>
+							<Button onClick={() => (previewMode ? returnToEditor() : void exportHtml())}>
+								{previewMode ? t`Back to editor` : t`Preview HTML`}
+							</Button>
+							<Button onClick={() => void saveTemplate()} disabled={saving}>
+								{saving ? t`Saving…` : t`Save template`}
+							</Button>
+						</>
+					) : (
+						<>
+							<Button
+								variant="outline"
+								onClick={() => {
+									window.location.href = "/_emdash/admin/plugins-manager/email-templates/settings";
+								}}
+							>
+								{t`Email settings`}
+							</Button>
+							<Button
+								onClick={startNewTemplate}
+								disabled={loadingTemplate}
+							>{t`New template`}</Button>
+						</>
 					)}
-					<Button variant="outline" onClick={startNewTemplate} disabled={loadingTemplate}>
-						{t`New template`}
-					</Button>
-					<Button onClick={() => (previewMode ? returnToEditor() : void exportHtml())}>
-						{previewMode ? t`Back to editor` : t`Preview HTML`}
-					</Button>
-					<Button onClick={() => void saveTemplate()} disabled={saving}>
-						{saving ? t`Saving…` : t`Save template`}
-					</Button>
 				</div>
 			</div>
 			{message && (
@@ -1340,10 +1428,22 @@ function EmailTemplatesPage() {
 					{message}
 				</p>
 			)}
-
+			{showEditor && !previewMode && (
+				<div className="max-w-xl rounded-lg border border-kumo-line bg-kumo-base p-4">
+					<Input
+						label={t`Template name`}
+						value={templateName}
+						onChange={(event) => setTemplateName(event.target.value)}
+						placeholder={t`Example: Welcome email`}
+						maxLength={120}
+						required
+					/>
+					<p className="mt-2 text-xs text-kumo-subtle">{t`Choose a descriptive name to find this template later.`}</p>
+				</div>
+			)}
 			{previewMode && html ? (
 				<EmailPreview html={html} onClose={returnToEditor} />
-			) : (
+			) : showEditor ? (
 				<div
 					className="overflow-hidden rounded-lg border border-kumo-line bg-kumo-base"
 					style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(20rem, 25rem)" }}
@@ -1670,6 +1770,135 @@ function EmailTemplatesPage() {
 						</div>
 					</div>
 				</div>
+			) : (
+				<section
+					className="overflow-hidden rounded-lg border border-kumo-line bg-kumo-base"
+					aria-labelledby="saved-email-templates-title"
+				>
+					<div className="flex items-center justify-between gap-4 border-b border-kumo-line p-4">
+						<div>
+							<h2
+								id="saved-email-templates-title"
+								className="text-xl font-semibold"
+							>{t`Saved templates`}</h2>
+							<p className="mt-1 text-sm text-kumo-subtle">{t`Manage your email templates and open one to edit its details.`}</p>
+						</div>
+						<span className="text-sm text-kumo-subtle">
+							{filteredTemplates.length} {t`templates`}
+						</span>
+					</div>
+					<div className="border-b border-kumo-line p-3">
+						<input
+							className="h-10 w-full max-w-sm rounded-md border border-kumo-line bg-kumo-elevated px-3 text-sm outline-none focus:border-kumo-brand"
+							placeholder={t`Search templates...`}
+							aria-label={t`Search templates`}
+							value={templateSearch}
+							onChange={(event) => {
+								setTemplateSearch(event.target.value);
+								setTemplatePage(1);
+							}}
+						/>
+					</div>
+					<div className="overflow-x-auto">
+						<table className="w-full table-fixed text-sm" style={{ tableLayout: "fixed" }}>
+							<colgroup>
+								<col style={{ width: "35%" }} />
+								<col style={{ width: "18%" }} />
+								<col style={{ width: "14%" }} />
+								<col style={{ width: "18%" }} />
+								<col style={{ width: "15%" }} />
+							</colgroup>
+							<thead className="bg-kumo-elevated text-start text-kumo-subtle">
+								<tr>
+									<th
+										className="text-start font-medium"
+										style={{ padding: "12px 16px" }}
+									>{t`Name`}</th>
+									<th
+										className="text-start font-medium"
+										style={{ padding: "12px 16px" }}
+									>{t`Type`}</th>
+									<th
+										className="text-start font-medium"
+										style={{ padding: "12px 16px" }}
+									>{t`Status`}</th>
+									<th
+										className="text-start font-medium"
+										style={{ padding: "12px 16px" }}
+									>{t`Updated`}</th>
+									<th
+										className="text-end font-medium"
+										style={{ padding: "12px 16px" }}
+									>{t`Actions`}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{pagedTemplates.map((template) => (
+									<tr
+										key={template.id}
+										className="border-t border-kumo-line hover:bg-kumo-elevated/60"
+									>
+										<td className="font-medium" style={{ padding: "12px 16px" }}>
+											{template.name}
+										</td>
+										<td className="text-kumo-subtle" style={{ padding: "12px 16px" }}>
+											{template.type === "campaign" ? t`Campaign` : t`Transactional`}
+										</td>
+										<td style={{ padding: "12px 16px" }}>
+											<span
+												className={
+													template.status === "active"
+														? "rounded-full bg-kumo-success/15 px-2 py-1 text-xs text-kumo-success"
+														: "rounded-full bg-kumo-elevated px-2 py-1 text-xs text-kumo-subtle"
+												}
+											>
+												{template.status === "active" ? t`Active` : t`Draft`}
+											</span>
+										</td>
+										<td className="text-kumo-subtle" style={{ padding: "12px 16px" }}>
+											{formatTemplateDate(template.updatedAt)}
+										</td>
+										<td className="text-end whitespace-nowrap" style={{ padding: "12px 16px" }}>
+											<div className="flex justify-end gap-2">
+												<Button
+													variant="outline"
+													onClick={() => loadTemplate(template.id)}
+													disabled={loadingTemplate}
+												>{t`Open`}</Button>
+												<Button
+													variant="outline"
+													onClick={() => {
+														setTestTemplateId(template.id);
+														setTestMessage(null);
+													}}
+												>
+													{t`Send test`}
+												</Button>
+											</div>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+					<div className="flex items-center justify-between gap-4 border-t border-kumo-line p-3 text-sm text-kumo-subtle">
+						<span>
+							{t`Page`} {templatePage} {t`of`} {templatePageCount}
+						</span>
+						<div className="flex gap-2">
+							<Button
+								variant="outline"
+								disabled={templatePage === 1}
+								onClick={() => setTemplatePage((page) => page - 1)}
+							>{t`Previous`}</Button>
+							<Button
+								variant="outline"
+								disabled={templatePage === templatePageCount}
+								onClick={() => setTemplatePage((page) => page + 1)}
+							>{t`Next`}</Button>
+						</div>
+					</div>
+				</section>
 			)}
 			<MediaPicker
 				open={imagePickerOpen}
@@ -1682,8 +1911,61 @@ function EmailTemplatesPage() {
 					insertImage(editor, item);
 				}}
 			/>
+			<Dialog.Root
+				open={testTemplateId !== null}
+				onOpenChange={(open) => {
+					if (!open) {
+						setTestTemplateId(null);
+						setTestMessage(null);
+					}
+				}}
+			>
+				<Dialog className="w-[min(28rem,calc(100vw-2rem))] p-6" size="sm">
+					<div className="mb-5 flex items-start justify-between gap-4">
+						<div>
+							<Dialog.Title className="text-lg font-semibold">{t`Send a test email`}</Dialog.Title>
+							<p className="mt-1 text-sm text-kumo-subtle">
+								{templates.find((template) => template.id === testTemplateId)?.name ??
+									t`Selected template`}
+							</p>
+						</div>
+						<Dialog.Close
+							aria-label={t`Close`}
+							render={(props) => (
+								<Button {...props} variant="ghost" shape="square" aria-label={t`Close`}>
+									×
+								</Button>
+							)}
+						/>
+					</div>
+					<form className="space-y-4" onSubmit={sendTestEmail}>
+						<Input
+							label={t`Recipient email`}
+							type="email"
+							value={testEmail}
+							onChange={(event) => setTestEmail(event.target.value)}
+							placeholder={t`you@example.com`}
+							required
+							autoFocus
+						/>
+						{testMessage && (
+							<p className="text-sm text-kumo-danger" role="alert">
+								{testMessage}
+							</p>
+						)}
+						<div className="flex justify-end gap-2">
+							<Dialog.Close
+								render={(props) => <Button {...props} variant="secondary">{t`Cancel`}</Button>}
+							/>
+							<Button type="submit" disabled={testSending}>
+								{testSending ? t`Sending…` : t`Send test`}
+							</Button>
+						</div>
+					</form>
+				</Dialog>
+			</Dialog.Root>
 
-			{html && (
+			{showEditor && html && (
 				<pre className="max-h-64 overflow-auto rounded-lg border border-kumo-line bg-kumo-tint p-4 text-xs">
 					{html}
 				</pre>
