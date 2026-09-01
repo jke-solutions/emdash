@@ -1,5 +1,16 @@
 # emdash
 
+## 0.36.3
+
+### Patch Changes
+
+- [#36](https://github.com/jke-solutions/emdash/pull/36) [`a609a34`](https://github.com/jke-solutions/emdash/commit/a609a34c19863d19188e412458a3fa279a3cff04) Thanks [@jonico22](https://github.com/jonico22)! - Stops the admin sidebar from polling `/_emdash/api/admin/comments/counts` on sites where no collection has comments enabled. The comment inbox link and its pending-count badge now appear only when at least one collection accepts comments.
+
+- Updated dependencies [[`a609a34`](https://github.com/jke-solutions/emdash/commit/a609a34c19863d19188e412458a3fa279a3cff04)]:
+  - @emdash-cms/admin@0.36.3
+  - @emdash-cms/auth@0.36.3
+  - @emdash-cms/gutenberg-to-portable-text@0.36.3
+
 ## 0.36.2
 
 ### Patch Changes
