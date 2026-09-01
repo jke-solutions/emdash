@@ -76,9 +76,21 @@ export function visibleCollectionEntries<T extends { hidden?: boolean }>(
 	return Object.entries(collections).filter(([, config]) => !config.hidden);
 }
 
+/**
+ * Whether any collection accepts comments. Drives both the "Comments" nav
+ * entry and the inbox-badge count query — a site with comments disabled
+ * everywhere never fires `/_emdash/api/admin/comments/counts`. Pure function,
+ * exported for tests.
+ */
+export function anyCollectionAcceptsComments(
+	collections: Record<string, { commentsEnabled?: boolean }>,
+): boolean {
+	return Object.values(collections).some((config) => config.commentsEnabled);
+}
+
 export interface SidebarNavProps {
 	manifest: {
-		collections: Record<string, { label: string; hidden?: boolean }>;
+		collections: Record<string, { label: string; hidden?: boolean; commentsEnabled?: boolean }>;
 		plugins: Record<
 			string,
 			{
@@ -234,13 +246,15 @@ export function SidebarNav({ manifest }: SidebarNavProps) {
 	const { data: user } = useCurrentUser();
 	const userRole = user?.role ?? 0;
 
+	const commentsEnabled = anyCollectionAcceptsComments(manifest.collections);
+
 	// Fetch pending comment count for badge
 	const { data: commentCounts } = useQuery({
 		queryKey: ["commentCounts"],
 		queryFn: fetchCommentCounts,
 		staleTime: 60 * 1000,
 		retry: false,
-		enabled: userRole >= ROLE_EDITOR,
+		enabled: commentsEnabled && userRole >= ROLE_EDITOR,
 	});
 
 	// --- Build nav item groups ---
@@ -259,13 +273,17 @@ export function SidebarNav({ manifest }: SidebarNavProps) {
 	contentItems.push({ to: "/media", label: t`Media`, icon: ADMIN_NAV_ICONS.media });
 
 	const manageItems: NavItem[] = [
-		{
-			to: "/comments",
-			label: t`Comments`,
-			icon: ADMIN_NAV_ICONS.comments,
-			minRole: ROLE_EDITOR,
-			badge: commentCounts?.pending,
-		},
+		...(commentsEnabled
+			? [
+					{
+						to: "/comments",
+						label: t`Comments`,
+						icon: ADMIN_NAV_ICONS.comments,
+						minRole: ROLE_EDITOR,
+						badge: commentCounts?.pending,
+					},
+				]
+			: []),
 		{ to: "/menus", label: t`Menus`, icon: ADMIN_NAV_ICONS.menus, minRole: ROLE_EDITOR },
 		{
 			to: "/redirects",

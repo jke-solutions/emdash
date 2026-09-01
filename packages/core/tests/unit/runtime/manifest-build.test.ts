@@ -132,6 +132,29 @@ describe("EmDashRuntime.getManifest()", () => {
 		expect(posts?.fields.body?.kind).toBe("json");
 	});
 
+	it("flags commentsEnabled only on collections that accept comments", async () => {
+		const registry = new SchemaRegistry(db);
+		await registry.createCollection({
+			slug: "posts",
+			label: "Posts",
+			labelSingular: "Post",
+			source: "test",
+			commentsEnabled: true,
+		});
+		await registry.createCollection({
+			slug: "pages",
+			label: "Pages",
+			labelSingular: "Page",
+			source: "test",
+		});
+
+		const runtime = buildRuntime(db);
+		const manifest = await runtime.getManifest();
+
+		expect(manifest.collections.posts?.commentsEnabled).toBe(true);
+		expect(manifest.collections.pages?.commentsEnabled).toBeUndefined();
+	});
+
 	it("reports the implicit English content locale when i18n is not configured", async () => {
 		const runtime = buildRuntime(db);
 
