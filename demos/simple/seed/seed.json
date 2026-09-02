@@ -96,6 +96,11 @@
 					"type": "image"
 				},
 				{
+					"slug": "featured",
+					"label": "Featured product",
+					"type": "boolean"
+				},
+				{
 					"slug": "has_variations",
 					"label": "Has variations",
 					"type": "boolean"
@@ -135,6 +140,12 @@
 					"slug": "promotion_price",
 					"label": "Promotion price",
 					"type": "number"
+				},
+				{
+					"slug": "discount_percentage",
+					"label": "Discount percentage",
+					"type": "number",
+					"validation": { "min": 0, "max": 100 }
 				},
 				{
 					"slug": "availability_status",
