@@ -739,6 +739,8 @@ export interface ShopDeliveryTable {
 	phone: string;
 	delivery_cost: number;
 	courier_name: string | null;
+	tracking_code: string | null;
+	tracking_url: string | null;
 	estimated_at: string | null;
 	status: Generated<string>;
 	notes: string | null;

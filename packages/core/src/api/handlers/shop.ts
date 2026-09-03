@@ -1342,7 +1342,16 @@ export async function handleShopOrderGet(
 		]);
 		if (!settings.success) return settings;
 		const customer = parseJsonRecord(order.customer_snapshot);
-		const delivery = parseJsonRecord(order.delivery_snapshot);
+		const deliveryRecord = await db
+			.selectFrom("_emdash_shop_deliveries")
+			.select(["tracking_code", "tracking_url"])
+			.where("order_id", "=", id)
+			.executeTakeFirst();
+		const delivery = {
+			...parseJsonRecord(order.delivery_snapshot),
+			trackingCode: deliveryRecord?.tracking_code ?? null,
+			trackingUrl: deliveryRecord?.tracking_url ?? null,
+		};
 		const summary = {
 			id: order.id,
 			orderNumber: order.order_number,
@@ -1476,12 +1485,20 @@ export async function handleShopDeliveryUpdate(
 	orderId: string,
 	status: string,
 	courierName?: string,
+	trackingCode?: string | null,
+	trackingUrl?: string | null,
 ): Promise<ApiResult<null>> {
 	try {
 		const now = new Date().toISOString();
 		await db
 			.updateTable("_emdash_shop_deliveries")
-			.set({ status, courier_name: courierName ?? null, updated_at: now })
+			.set({
+				status,
+				courier_name: courierName ?? null,
+				tracking_code: trackingCode ?? null,
+				tracking_url: trackingUrl ?? null,
+				updated_at: now,
+			})
 			.where("order_id", "=", orderId)
 			.execute();
 		const orderStatus =

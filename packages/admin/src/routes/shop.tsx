@@ -1254,13 +1254,24 @@ function OrderDetailPanel({ order }: { order: ShopOrderDetail }) {
 		},
 	});
 	const deliveryMutation = useMutation({
-		mutationFn: (status: string) => updateShopDelivery(order.id, { status }),
+		mutationFn: (status: string) =>
+			updateShopDelivery(order.id, {
+				status,
+				trackingCode: trackingCode || null,
+				trackingUrl: trackingUrl || null,
+			}),
 		onSuccess: () => {
 			void queryClient.invalidateQueries({ queryKey: ["shop", "orders"] });
 			void queryClient.invalidateQueries({ queryKey: ["shop", "order", order.id] });
 			toastManager.add({ title: t`Delivery updated`, type: "success" });
 		},
 	});
+	const [trackingCode, setTrackingCode] = React.useState(
+		typeof order.delivery.trackingCode === "string" ? order.delivery.trackingCode : "",
+	);
+	const [trackingUrl, setTrackingUrl] = React.useState(
+		typeof order.delivery.trackingUrl === "string" ? order.delivery.trackingUrl : "",
+	);
 	const customerName = typeof order.customer.name === "string" ? order.customer.name : t`Customer`;
 	const address = typeof order.delivery.address === "string" ? order.delivery.address : "";
 	return (
@@ -1313,6 +1324,21 @@ function OrderDetailPanel({ order }: { order: ShopOrderDetail }) {
 						delivered: t`Delivered`,
 						not_delivered: t`Not delivered`,
 					}}
+				/>
+			</div>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<Input
+					label={t`Tracking code (optional)`}
+					value={trackingCode}
+					onChange={(event) => setTrackingCode(event.target.value)}
+					placeholder={t`Code from delivery provider`}
+				/>
+				<Input
+					label={t`Tracking URL (optional)`}
+					type="url"
+					value={trackingUrl}
+					onChange={(event) => setTrackingUrl(event.target.value)}
+					placeholder="https://delivery.example/track/..."
 				/>
 			</div>
 		</div>

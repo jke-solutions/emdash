@@ -21,6 +21,8 @@ export const PATCH: APIRoute = async ({ params, request, locals }) => {
 			params.id ?? "",
 			body.status,
 			body.courierName,
+			body.trackingCode,
+			body.trackingUrl,
 		),
 	);
 };

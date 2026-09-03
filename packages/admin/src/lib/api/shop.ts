@@ -198,7 +198,12 @@ export function confirmShopPayment(
 
 export function updateShopDelivery(
 	id: string,
-	input: { status: string; courierName?: string },
+	input: {
+		status: string;
+		courierName?: string;
+		trackingCode?: string | null;
+		trackingUrl?: string | null;
+	},
 ): Promise<null> {
 	return mutate(`/admin/shop/orders/${encodeURIComponent(id)}/delivery`, "PATCH", input);
 }

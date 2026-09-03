@@ -77,6 +77,7 @@ import * as m071 from "./071_shop_orders.js";
 import * as m072 from "./072_shop_payment_gateway.js";
 import * as m073 from "./073_shop_currency_symbol.js";
 import * as m074 from "./074_shop_coupons.js";
+import * as m075 from "./075_shop_delivery_tracking.js";
 
 const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"001_initial": m001,
@@ -152,6 +153,7 @@ const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"072_shop_payment_gateway": m072,
 	"073_shop_currency_symbol": m073,
 	"074_shop_coupons": m074,
+	"075_shop_delivery_tracking": m075,
 });
 
 /** Ordered names from the statically registered migration set. */

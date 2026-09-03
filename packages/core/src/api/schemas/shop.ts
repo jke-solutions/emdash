@@ -61,6 +61,8 @@ export const shopDeliveryUpdateBody = z
 	.object({
 		status: z.enum(["pending", "assigned", "in_transit", "delivered", "not_delivered"]),
 		courierName: z.string().max(200).optional(),
+		trackingCode: z.string().max(200).nullable().optional(),
+		trackingUrl: z.string().url().max(2000).nullable().optional(),
 	})
 	.meta({ id: "ShopDeliveryUpdateBody" });
 
