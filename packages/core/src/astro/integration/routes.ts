@@ -844,6 +844,15 @@ export function injectCoreRoutes(
 
 	// Widget area routes
 	injectRoute({
+		pattern: "/_emdash/api/promotional-campaign",
+		entrypoint: resolveRoute("api/promotional-campaign.ts"),
+	});
+	injectRoute({
+		pattern: "/_emdash/api/promotional-campaign/[id]",
+		entrypoint: resolveRoute("api/promotional-campaign/[id].ts"),
+	});
+
+	injectRoute({
 		pattern: "/_emdash/api/widget-areas",
 		entrypoint: resolveRoute("api/widget-areas/index.ts"),
 	});

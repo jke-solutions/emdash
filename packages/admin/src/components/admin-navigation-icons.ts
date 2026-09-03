@@ -25,6 +25,7 @@ import {
 	List,
 	MagnifyingGlass,
 	Medal,
+	Megaphone,
 	Newspaper,
 	Palette,
 	Path,
@@ -63,6 +64,7 @@ export const ADMIN_NAV_ICONS = {
 	plugins: Plug,
 	import: Download,
 	shop: Storefront,
+	promotions: Megaphone,
 } as const satisfies Record<string, Icon>;
 
 const COLLECTION_NAV_ICON_OVERRIDES: Record<string, Icon> = {

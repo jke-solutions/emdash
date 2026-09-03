@@ -2,7 +2,6 @@ import { fileURLToPath } from "node:url";
 
 import node from "@astrojs/node";
 import react from "@astrojs/react";
-import auditLog from "@emdash-cms/plugin-audit-log";
 import {
 	brevoEmail,
 	emailTemplatesPlugin,
@@ -63,7 +62,6 @@ export default defineConfig({
 			}),
 			storageQuota: 1024 * 1024 * 1024,
 			plugins: [
-				auditLog,
 				mcpSmokePlugin(),
 				emailTemplatesPlugin({ enabled: true }),
 				localEmail(),

@@ -658,9 +658,6 @@ importers:
       '@emdash-cms/plugin-atproto':
         specifier: workspace:*
         version: link:../../packages/plugins/atproto
-      '@emdash-cms/plugin-audit-log':
-        specifier: workspace:*
-        version: link:../../packages/plugins/audit-log
       '@emdash-cms/plugin-cli':
         specifier: workspace:*
         version: link:../../packages/plugin-cli

@@ -115,6 +115,14 @@ export {
 
 // Settings
 export { type SiteSettings, fetchSettings, updateSettings } from "./settings.js";
+export {
+	type PromotionalCampaign,
+	type PromotionalCampaignInput,
+	fetchPromotionalCampaign,
+	fetchPromotionalCampaigns,
+	savePromotionalCampaign,
+	deletePromotionalCampaign,
+} from "./promotions.js";
 
 // Ecommerce
 export {

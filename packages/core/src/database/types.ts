@@ -558,6 +558,24 @@ export interface WidgetTable {
 	created_at: Generated<string>;
 }
 
+export interface PromotionalCampaignTable {
+	id: string;
+	title: string;
+	content: string;
+	media_id: string | null;
+	button_label: string | null;
+	button_url: string | null;
+	page_scope: string;
+	is_active: number;
+	starts_at: string | null;
+	ends_at: string | null;
+	modal_size: string;
+	modal_width: number | null;
+	modal_height: number | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
 // Cron Tasks
 
 export interface CronTaskTable {
@@ -784,6 +802,7 @@ export interface Database {
 	_emdash_menu_items: MenuItemTable;
 	_emdash_widget_areas: WidgetAreaTable;
 	_emdash_widgets: WidgetTable;
+	_emdash_promotional_campaign: PromotionalCampaignTable;
 	_emdash_sections: SectionTable;
 	_emdash_api_tokens: ApiTokenTable;
 	_emdash_oauth_tokens: OAuthTokenTable;

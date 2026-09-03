@@ -44,6 +44,7 @@ import { MenuEditor } from "./components/MenuEditor";
 import { MenuList } from "./components/MenuList";
 import { PluginManager } from "./components/PluginManager";
 import { PluginSettings } from "./components/PluginSettings";
+import { Promotions } from "./components/Promotions";
 import { Redirects } from "./components/Redirects";
 import { RegistryBrowse } from "./components/RegistryBrowse";
 import { RegistryPluginDetail } from "./components/RegistryPluginDetail";
@@ -1835,6 +1836,12 @@ const widgetsRoute = createRoute({
 	component: Widgets,
 });
 
+const promotionsRoute = createRoute({
+	getParentRoute: () => adminLayoutRoute,
+	path: "/promotions",
+	component: Promotions,
+});
+
 // Sections routes
 const redirectsRoute = createRoute({
 	getParentRoute: () => adminLayoutRoute,
@@ -2191,6 +2198,7 @@ const adminRoutes = adminLayoutRoute.addChildren([
 	bylinesRoute,
 	bylineSchemaRoute,
 	widgetsRoute,
+	promotionsRoute,
 	settingsRoute,
 	shopRoute,
 	generalSettingsRoute,
