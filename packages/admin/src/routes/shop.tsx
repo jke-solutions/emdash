@@ -20,9 +20,13 @@ import * as React from "react";
 import {
 	confirmShopPayment,
 	createShopDeliveryZone,
+	createShopCoupon,
+	deleteShopCoupon,
+	fetchShopCoupons,
 	deleteShopDeliveryZone,
 	fetchShopDeliveryZones,
 	updateShopDeliveryZone,
+	type ShopCoupon,
 	fetchShopCustomers,
 	fetchShopOrder,
 	fetchShopOrders,
@@ -35,9 +39,10 @@ import {
 	type ShopSettings,
 	updateShopDelivery,
 	updateShopSettings,
+	updateShopCoupon,
 } from "../lib/api/index.js";
 
-type ShopTab = "settings" | "delivery" | "orders" | "customers";
+type ShopTab = "settings" | "delivery" | "orders" | "customers" | "coupons";
 
 const PAYMENT_METHODS = ["whatsapp", "yape", "plin", "bank_transfer", "cash_on_delivery"] as const;
 
@@ -78,6 +83,7 @@ export function Shop() {
 						["delivery", t`Delivery zones`],
 						["orders", t`Orders`],
 						["customers", t`Customers`],
+						["coupons", t`Coupons`],
 					] as const
 				).map(([value, label]) => (
 					<Button
@@ -93,6 +99,226 @@ export function Shop() {
 			{tab === "delivery" ? <DeliveryZonesPanel /> : null}
 			{tab === "orders" ? <OrdersPanel /> : null}
 			{tab === "customers" ? <CustomersPanel /> : null}
+			{tab === "coupons" ? <CouponsPanel /> : null}
+		</div>
+	);
+}
+
+function CouponsPanel() {
+	const { t } = useLingui();
+	const toastManager = Toast.useToastManager();
+	const queryClient = useQueryClient();
+	const couponsQuery = useQuery({ queryKey: ["shop", "coupons"], queryFn: fetchShopCoupons });
+	const [form, setForm] = React.useState({
+		code: "",
+		discountType: "percentage" as "percentage" | "fixed",
+		discountValue: "",
+		minimumSubtotal: "0",
+		usageLimit: "",
+	});
+	const [editing, setEditing] = React.useState<ShopCoupon | null>(null);
+	const [dialogOpen, setDialogOpen] = React.useState(false);
+	const [search, setSearch] = React.useState("");
+	const saveMutation = useMutation({
+		mutationFn: () => {
+			const input = {
+				code: form.code,
+				discountType: form.discountType,
+				discountValue: Number(form.discountValue),
+				minimumSubtotal: Number(form.minimumSubtotal) || 0,
+				usageLimit: form.usageLimit ? Number(form.usageLimit) : null,
+				active: true,
+			};
+			return editing ? updateShopCoupon(editing.id, input) : createShopCoupon(input);
+		},
+		onSuccess: () => {
+			setForm({
+				code: "",
+				discountType: "percentage",
+				discountValue: "",
+				minimumSubtotal: "0",
+				usageLimit: "",
+			});
+			setEditing(null);
+			setDialogOpen(false);
+			void queryClient.invalidateQueries({ queryKey: ["shop", "coupons"] });
+			toastManager.add({ title: t`Coupon saved`, type: "success" });
+		},
+	});
+	const deleteMutation = useMutation({
+		mutationFn: deleteShopCoupon,
+		onSuccess: () => {
+			void queryClient.invalidateQueries({ queryKey: ["shop", "coupons"] });
+			toastManager.add({ title: t`Coupon deleted`, type: "success" });
+		},
+	});
+	if (couponsQuery.isLoading) return <LoadingState label={t`Loading coupons`} />;
+	if (couponsQuery.isError)
+		return <ErrorState label={t`Could not load coupons. Please try again.`} />;
+	const normalizedSearch = search.trim().toLowerCase();
+	const coupons = (couponsQuery.data ?? []).filter(
+		(coupon) => !normalizedSearch || coupon.code.toLowerCase().includes(normalizedSearch),
+	);
+	const openCreate = () => {
+		setEditing(null);
+		setForm({
+			code: "",
+			discountType: "percentage",
+			discountValue: "",
+			minimumSubtotal: "0",
+			usageLimit: "",
+		});
+		setDialogOpen(true);
+	};
+	const openEdit = (coupon: ShopCoupon) => {
+		setEditing(coupon);
+		setForm({
+			code: coupon.code,
+			discountType: coupon.discountType,
+			discountValue: String(coupon.discountValue),
+			minimumSubtotal: String(coupon.minimumSubtotal),
+			usageLimit: coupon.usageLimit === null ? "" : String(coupon.usageLimit),
+		});
+		setDialogOpen(true);
+	};
+	return (
+		<div className="space-y-4">
+			<div className="flex flex-wrap items-end gap-3">
+				<div className="min-w-[240px] flex-1">
+					<Input
+						label={t`Search coupons`}
+						placeholder={t`Search by coupon code`}
+						value={search}
+						onChange={(event) => setSearch(event.target.value)}
+					/>
+				</div>
+				<Button icon={Plus} onClick={openCreate}>{t`New coupon`}</Button>
+			</div>
+			<div className="overflow-x-auto rounded-lg border border-kumo-line">
+				<table className="w-full text-start">
+					<thead className="border-b border-kumo-line bg-kumo-tint">
+						<tr>
+							<th className="p-3 text-start text-sm font-medium">{t`Code`}</th>
+							<th className="p-3 text-start text-sm font-medium">{t`Discount`}</th>
+							<th className="p-3 text-end text-sm font-medium">{t`Uses`}</th>
+							<th className="p-3 text-end text-sm font-medium">{t`Actions`}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{coupons.map((coupon) => (
+							<tr
+								key={coupon.id}
+								className="border-b border-kumo-line last:border-0 hover:bg-kumo-tint"
+							>
+								<td className="p-3 font-medium">{coupon.code}</td>
+								<td className="p-3">
+									{coupon.discountType === "percentage"
+										? `${coupon.discountValue}%`
+										: money(coupon.discountValue, "")}
+								</td>
+								<td className="p-3 text-end">
+									{coupon.usageLimit === null
+										? t`Unlimited`
+										: `${coupon.usageCount}/${coupon.usageLimit}`}
+								</td>
+								<td className="p-3 text-end">
+									<div className="flex justify-end gap-2">
+										<Button
+											size="sm"
+											variant="outline"
+											onClick={() => openEdit(coupon)}
+										>{t`Edit`}</Button>
+										<Button
+											size="sm"
+											variant="ghost"
+											onClick={() => deleteMutation.mutate(coupon.id)}
+										>{t`Delete`}</Button>
+									</div>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+			{coupons.length === 0 ? (
+				<p className="rounded-lg border p-6 text-sm text-kumo-subtle">{t`No coupons match your search.`}</p>
+			) : null}
+			<Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+				<Dialog
+					className="max-h-[90vh] w-[min(560px,calc(100vw-2rem))] overflow-y-auto p-6"
+					size="lg"
+				>
+					<div className="mb-4 flex items-center justify-between gap-4">
+						<Dialog.Title className="text-lg font-semibold">
+							{editing ? t`Edit coupon` : t`New coupon`}
+						</Dialog.Title>
+						<Dialog.Close
+							aria-label={t`Close`}
+							render={(props) => (
+								<Button {...props} aria-label={t`Close`} variant="ghost" shape="square">
+									×
+								</Button>
+							)}
+						/>
+					</div>
+					<form
+						className="space-y-4"
+						onSubmit={(event) => {
+							event.preventDefault();
+							saveMutation.mutate();
+						}}
+					>
+						<Input
+							label={t`Code`}
+							value={form.code}
+							onChange={(event) => setForm({ ...form, code: event.target.value.toUpperCase() })}
+							required
+						/>
+						<Select
+							label={t`Discount type`}
+							value={form.discountType}
+							onValueChange={(value) =>
+								(value === "percentage" || value === "fixed") &&
+								setForm({ ...form, discountType: value })
+							}
+							items={{ percentage: t`Percentage`, fixed: t`Fixed amount` }}
+						/>
+						<Input
+							label={form.discountType === "percentage" ? t`Percentage` : t`Amount`}
+							type="number"
+							min="0"
+							value={form.discountValue}
+							onChange={(event) => setForm({ ...form, discountValue: event.target.value })}
+							required
+						/>
+						<Input
+							label={t`Minimum subtotal`}
+							type="number"
+							min="0"
+							value={form.minimumSubtotal}
+							onChange={(event) => setForm({ ...form, minimumSubtotal: event.target.value })}
+						/>
+						<Input
+							label={t`Usage limit`}
+							type="number"
+							min="1"
+							value={form.usageLimit}
+							onChange={(event) => setForm({ ...form, usageLimit: event.target.value })}
+							placeholder={t`Unlimited`}
+						/>
+						<div className="flex justify-end gap-2">
+							<Button
+								type="button"
+								variant="ghost"
+								onClick={() => setDialogOpen(false)}
+							>{t`Cancel`}</Button>
+							<Button type="submit" disabled={saveMutation.isPending}>
+								{saveMutation.isPending ? t`Saving...` : t`Save coupon`}
+							</Button>
+						</div>
+					</form>
+				</Dialog>
+			</Dialog.Root>
 		</div>
 	);
 }
@@ -356,6 +582,8 @@ function DeliveryZonesPanel() {
 	const [cost, setCost] = React.useState("0");
 	const [estimatedTime, setEstimatedTime] = React.useState("");
 	const [editingZone, setEditingZone] = React.useState<ShopDeliveryZone | null>(null);
+	const [dialogOpen, setDialogOpen] = React.useState(false);
+	const [search, setSearch] = React.useState("");
 	const [editForm, setEditForm] = React.useState({
 		name: "",
 		districts: "",
@@ -380,6 +608,7 @@ function DeliveryZonesPanel() {
 			setDistricts("");
 			setCost("0");
 			setEstimatedTime("");
+			setDialogOpen(false);
 			void queryClient.invalidateQueries({ queryKey: ["shop", "delivery-zones"] });
 			toastManager.add({ title: t`Delivery zone created`, type: "success" });
 		},
@@ -398,6 +627,7 @@ function DeliveryZonesPanel() {
 			}),
 		onSuccess: () => {
 			setEditingZone(null);
+			setDialogOpen(false);
 			void queryClient.invalidateQueries({ queryKey: ["shop", "delivery-zones"] });
 			toastManager.add({ title: t`Delivery zone updated`, type: "success" });
 		},
@@ -412,9 +642,49 @@ function DeliveryZonesPanel() {
 
 	if (zonesQuery.isLoading || settingsQuery.isLoading)
 		return <LoadingState label={t`Loading delivery zones`} />;
+	if (zonesQuery.isError || settingsQuery.isError)
+		return <ErrorState label={t`Could not load delivery zones. Please try again.`} />;
+	const normalizedSearch = search.trim().toLowerCase();
+	const zones = (zonesQuery.data ?? []).filter(
+		(zone) =>
+			!normalizedSearch ||
+			[zone.name, ...zone.districts].some((value) =>
+				value.toLowerCase().includes(normalizedSearch),
+			),
+	);
+	const openCreate = () => {
+		setEditingZone(null);
+		setName("");
+		setDistricts("");
+		setCost("0");
+		setEstimatedTime("");
+		setDialogOpen(true);
+	};
+	const openEdit = (zone: ShopDeliveryZone) => {
+		setEditingZone(zone);
+		setEditForm({
+			name: zone.name,
+			districts: zone.districts.join(", "),
+			deliveryCost: String(zone.deliveryCost),
+			estimatedTime: zone.estimatedTime ?? "",
+			active: zone.active,
+		});
+		setDialogOpen(true);
+	};
 
 	return (
 		<div className="space-y-6">
+			<div className="flex flex-wrap items-end gap-3">
+				<div className="min-w-[240px] flex-1">
+					<Input
+						label={t`Search delivery zones`}
+						placeholder={t`Search by zone or district`}
+						value={search}
+						onChange={(event) => setSearch(event.target.value)}
+					/>
+				</div>
+				<Button icon={Plus} onClick={openCreate}>{t`New delivery zone`}</Button>
+			</div>
 			<div className="overflow-x-auto rounded-lg border border-kumo-line">
 				<table className="w-full text-start">
 					<thead className="border-b border-kumo-line bg-kumo-tint">
@@ -428,79 +698,30 @@ function DeliveryZonesPanel() {
 						</tr>
 					</thead>
 					<tbody>
-						{(zonesQuery.data ?? []).map((zone) => (
+						{zones.map((zone) => (
 							<DeliveryZoneRow
 								key={zone.id}
 								zone={zone}
 								currencySymbol={settingsQuery.data?.currencySymbol ?? "S/"}
 								onDelete={() => deleteMutation.mutate(zone.id)}
-								onEdit={() => {
-									setEditingZone(zone);
-									setEditForm({
-										name: zone.name,
-										districts: zone.districts.join(", "),
-										deliveryCost: String(zone.deliveryCost),
-										estimatedTime: zone.estimatedTime ?? "",
-										active: zone.active,
-									});
-								}}
+								onEdit={() => openEdit(zone)}
 							/>
 						))}
 					</tbody>
 				</table>
 			</div>
-			{(zonesQuery.data ?? []).length === 0 ? (
-				<p className="rounded-lg border p-6 text-sm text-kumo-subtle">{t`No delivery zones configured yet.`}</p>
+			{zones.length === 0 ? (
+				<p className="rounded-lg border p-6 text-sm text-kumo-subtle">{t`No delivery zones match your search.`}</p>
 			) : null}
-			<form
-				className="space-y-4 rounded-lg border p-4"
-				onSubmit={(event) => {
-					event.preventDefault();
-					createMutation.mutate();
-				}}
-			>
-				<h2 className="text-lg font-semibold">{t`Add delivery zone`}</h2>
-				<Input
-					label={t`Zone name`}
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-					required
-				/>
-				<Input
-					label={t`Districts`}
-					value={districts}
-					onChange={(e) => setDistricts(e.target.value)}
-					placeholder={t`District 1, District 2`}
-					required
-				/>
-				<Input
-					label={t`Delivery cost`}
-					type="number"
-					min="0"
-					step="0.01"
-					value={cost}
-					onChange={(e) => setCost(e.target.value)}
-					required
-				/>
-				<Input
-					label={t`Estimated time`}
-					value={estimatedTime}
-					onChange={(e) => setEstimatedTime(e.target.value)}
-					placeholder={t`Example: 30–60 minutes`}
-				/>
-				<Button
-					type="submit"
-					icon={<Plus />}
-					disabled={createMutation.isPending}
-				>{t`Add zone`}</Button>
-			</form>
-			<Dialog.Root
-				open={editingZone !== null}
-				onOpenChange={(open) => !open && setEditingZone(null)}
-			>
-				<Dialog className="w-[min(600px,calc(100vw-2rem))] p-6">
+			<Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+				<Dialog
+					className="max-h-[90vh] w-[min(600px,calc(100vw-2rem))] overflow-y-auto p-6"
+					size="lg"
+				>
 					<div className="mb-4 flex items-center justify-between gap-4">
-						<Dialog.Title className="text-lg font-semibold">{t`Edit delivery zone`}</Dialog.Title>
+						<Dialog.Title className="text-lg font-semibold">
+							{editingZone ? t`Edit delivery zone` : t`New delivery zone`}
+						</Dialog.Title>
 						<Dialog.Close
 							aria-label={t`Close`}
 							render={(props) => (
@@ -514,47 +735,71 @@ function DeliveryZonesPanel() {
 						className="space-y-4"
 						onSubmit={(event) => {
 							event.preventDefault();
-							updateMutation.mutate();
+							if (editingZone) updateMutation.mutate();
+							else createMutation.mutate();
 						}}
 					>
 						<Input
 							label={t`Zone name`}
-							value={editForm.name}
-							onChange={(event) => setEditForm({ ...editForm, name: event.target.value })}
+							value={editingZone ? editForm.name : name}
+							onChange={(e) =>
+								editingZone
+									? setEditForm({ ...editForm, name: e.target.value })
+									: setName(e.target.value)
+							}
 							required
 						/>
 						<Input
 							label={t`Districts`}
-							value={editForm.districts}
-							onChange={(event) => setEditForm({ ...editForm, districts: event.target.value })}
+							value={editingZone ? editForm.districts : districts}
+							onChange={(e) =>
+								editingZone
+									? setEditForm({ ...editForm, districts: e.target.value })
+									: setDistricts(e.target.value)
+							}
+							placeholder={t`District 1, District 2`}
 							required
 						/>
-						<div className="grid gap-4 sm:grid-cols-2">
-							<Input
-								label={t`Delivery cost`}
-								type="number"
-								min="0"
-								step="0.01"
-								value={editForm.deliveryCost}
-								onChange={(event) => setEditForm({ ...editForm, deliveryCost: event.target.value })}
-								required
-							/>
-							<Input
-								label={t`Estimated time`}
-								value={editForm.estimatedTime}
-								onChange={(event) =>
-									setEditForm({ ...editForm, estimatedTime: event.target.value })
+						<Input
+							label={t`Delivery cost`}
+							type="number"
+							min="0"
+							step="0.01"
+							value={editingZone ? editForm.deliveryCost : cost}
+							onChange={(e) =>
+								editingZone
+									? setEditForm({ ...editForm, deliveryCost: e.target.value })
+									: setCost(e.target.value)
+							}
+							required
+						/>
+						<Input
+							label={t`Estimated time`}
+							value={editingZone ? editForm.estimatedTime : estimatedTime}
+							onChange={(e) =>
+								editingZone
+									? setEditForm({ ...editForm, estimatedTime: e.target.value })
+									: setEstimatedTime(e.target.value)
+							}
+							placeholder={t`Example: 30–60 minutes`}
+						/>
+						{editingZone ? (
+							<Switch
+								label={t`Active`}
+								checked={editForm.active}
+								onCheckedChange={(checked) =>
+									setEditForm({ ...editForm, active: Boolean(checked) })
 								}
 							/>
-						</div>
-						<Switch
-							label={t`Active`}
-							checked={editForm.active}
-							onCheckedChange={(checked) => setEditForm({ ...editForm, active: Boolean(checked) })}
-						/>
-						<div className="flex justify-end">
-							<Button type="submit" disabled={updateMutation.isPending}>
-								{updateMutation.isPending ? t`Saving...` : t`Save changes`}
+						) : null}
+						<div className="flex justify-end gap-2">
+							<Button
+								type="button"
+								variant="ghost"
+								onClick={() => setDialogOpen(false)}
+							>{t`Cancel`}</Button>
+							<Button type="submit" disabled={createMutation.isPending || updateMutation.isPending}>
+								{createMutation.isPending || updateMutation.isPending ? t`Saving...` : t`Save zone`}
 							</Button>
 						</div>
 					</form>

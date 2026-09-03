@@ -666,6 +666,11 @@ export function injectCoreRoutes(
 		entrypoint: resolveRoute("api/shop/orders/[orderNumber].ts"),
 	});
 
+	injectRoute({
+		pattern: "/_emdash/api/shop/coupons/validate",
+		entrypoint: resolveRoute("api/shop/coupons/validate.ts"),
+	});
+
 	// Ecommerce admin routes
 	injectRoute({
 		pattern: "/_emdash/api/admin/shop/settings",
@@ -680,6 +685,16 @@ export function injectCoreRoutes(
 	injectRoute({
 		pattern: "/_emdash/api/admin/shop/delivery-zones/[id]",
 		entrypoint: resolveRoute("api/admin/shop/delivery-zones/[id].ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/coupons",
+		entrypoint: resolveRoute("api/admin/shop/coupons/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/coupons/[id]",
+		entrypoint: resolveRoute("api/admin/shop/coupons/[id].ts"),
 	});
 
 	injectRoute({

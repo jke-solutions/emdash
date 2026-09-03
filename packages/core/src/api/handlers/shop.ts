@@ -4,7 +4,7 @@ import { ulid } from "ulidx";
 import { decryptShopSecret, encryptShopSecret } from "../../config/secrets.js";
 import { ContentRepository } from "../../database/repositories/content.js";
 import { withTransaction } from "../../database/transaction.js";
-import type { Database } from "../../database/types.js";
+import type { Database, ShopCouponTable } from "../../database/types.js";
 import { invalidateCollectionCache } from "../../object-cache/index.js";
 import type { ApiResult } from "../types.js";
 
@@ -101,6 +101,22 @@ export interface ShopOrderInput {
 	deliveryZoneId: string;
 	paymentMethod: string;
 	notes?: string;
+	couponCode?: string;
+}
+
+export interface ShopCoupon {
+	id: string;
+	code: string;
+	discountType: "percentage" | "fixed";
+	discountValue: number;
+	minimumSubtotal: number;
+	startsAt: string | null;
+	expiresAt: string | null;
+	usageLimit: number | null;
+	usageCount: number;
+	active: boolean;
+	createdAt: string | null;
+	updatedAt: string | null;
 }
 
 export interface ShopOrderSummary {
@@ -116,6 +132,8 @@ export interface ShopOrderSummary {
 	deliveryCost: number;
 	total: number;
 	whatsappUrl: string | null;
+	couponCode?: string | null;
+	couponDiscount?: number;
 }
 
 type ShopWhatsAppOrder = ShopOrderSummary & {
@@ -286,7 +304,208 @@ function isProductAvailable(data: Record<string, unknown>): boolean {
 	);
 }
 
+function normalizeCouponCode(code: string): string {
+	return code.trim().toUpperCase();
+}
+
+type ShopCouponRow = Omit<
+	ShopCouponTable,
+	"active" | "created_at" | "updated_at" | "usage_count"
+> & {
+	active: number;
+	created_at: string;
+	updated_at: string;
+	usage_count: number;
+};
+
+function toCoupon(row: ShopCouponRow): ShopCoupon {
+	return {
+		id: row.id,
+		code: row.code,
+		discountType: row.discount_type === "fixed" ? "fixed" : "percentage",
+		discountValue: row.discount_value,
+		minimumSubtotal: row.minimum_subtotal,
+		startsAt: row.starts_at,
+		expiresAt: row.expires_at,
+		usageLimit: row.usage_limit,
+		usageCount: row.usage_count,
+		active: row.active === 1,
+		createdAt: row.created_at ?? null,
+		updatedAt: row.updated_at ?? null,
+	};
+}
+
+function couponDiscount(coupon: ShopCoupon, subtotal: number): number {
+	const raw =
+		coupon.discountType === "percentage"
+			? subtotal * (coupon.discountValue / 100)
+			: coupon.discountValue;
+	return Math.min(subtotal, Math.max(0, Math.round(raw * 100) / 100));
+}
+
+function couponIsUsable(coupon: ShopCoupon, subtotal: number, now = new Date()): string | null {
+	if (!coupon.active) return "Coupon is inactive";
+	if (coupon.startsAt && now < new Date(coupon.startsAt)) return "Coupon is not active yet";
+	if (coupon.expiresAt && now > new Date(coupon.expiresAt)) return "Coupon has expired";
+	if (coupon.usageLimit !== null && coupon.usageCount >= coupon.usageLimit)
+		return "Coupon usage limit reached";
+	if (subtotal < coupon.minimumSubtotal) return "Order subtotal does not meet the coupon minimum";
+	return null;
+}
+
+export async function handleShopCouponList(db: Kysely<Database>): Promise<ApiResult<ShopCoupon[]>> {
+	try {
+		const rows = await db
+			.selectFrom("_emdash_shop_coupons")
+			.selectAll()
+			.orderBy("created_at", "desc")
+			.execute();
+		return { success: true, data: rows.map(toCoupon) };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_LIST_ERROR", message: "Failed to list coupons" },
+		};
+	}
+}
+
+export async function handleShopCouponValidate(
+	db: Kysely<Database>,
+	code: string,
+	subtotal: number,
+): Promise<ApiResult<{ code: string; discount: number; totalAfterDiscount: number }>> {
+	try {
+		const coupon = await db
+			.selectFrom("_emdash_shop_coupons")
+			.selectAll()
+			.where("code", "=", normalizeCouponCode(code))
+			.executeTakeFirst();
+		if (!coupon)
+			return {
+				success: false,
+				error: { code: "SHOP_COUPON_INVALID", message: "Coupon is invalid" },
+			};
+		const parsed = toCoupon(coupon);
+		const reason = couponIsUsable(parsed, subtotal);
+		if (reason) return { success: false, error: { code: "SHOP_COUPON_INVALID", message: reason } };
+		const discount = couponDiscount(parsed, subtotal);
+		return {
+			success: true,
+			data: { code: parsed.code, discount, totalAfterDiscount: subtotal - discount },
+		};
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_VALIDATE_ERROR", message: "Failed to validate coupon" },
+		};
+	}
+}
+
+export async function handleShopCouponCreate(
+	db: Kysely<Database>,
+	input: {
+		code: string;
+		discountType: "percentage" | "fixed";
+		discountValue: number;
+		minimumSubtotal?: number;
+		startsAt?: string | null;
+		expiresAt?: string | null;
+		usageLimit?: number | null;
+		active?: boolean;
+	},
+): Promise<ApiResult<ShopCoupon>> {
+	try {
+		const id = ulid();
+		await db
+			.insertInto("_emdash_shop_coupons")
+			.values({
+				id,
+				code: normalizeCouponCode(input.code),
+				discount_type: input.discountType,
+				discount_value: input.discountValue,
+				minimum_subtotal: input.minimumSubtotal ?? 0,
+				starts_at: input.startsAt ?? null,
+				expires_at: input.expiresAt ?? null,
+				usage_limit: input.usageLimit ?? null,
+				active: input.active === false ? 0 : 1,
+			})
+			.execute();
+		const row = await db
+			.selectFrom("_emdash_shop_coupons")
+			.selectAll()
+			.where("id", "=", id)
+			.executeTakeFirstOrThrow();
+		return { success: true, data: toCoupon(row) };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_CREATE_ERROR", message: "Failed to create coupon" },
+		};
+	}
+}
+
+export async function handleShopCouponUpdate(
+	db: Kysely<Database>,
+	id: string,
+	input: Partial<Parameters<typeof handleShopCouponCreate>[1]>,
+): Promise<ApiResult<ShopCoupon>> {
+	try {
+		const existing = await db
+			.selectFrom("_emdash_shop_coupons")
+			.selectAll()
+			.where("id", "=", id)
+			.executeTakeFirst();
+		if (!existing)
+			return { success: false, error: { code: "NOT_FOUND", message: "Coupon not found" } };
+		const values = {
+			code: input.code === undefined ? existing.code : normalizeCouponCode(input.code),
+			discount_type: input.discountType ?? existing.discount_type,
+			discount_value: input.discountValue ?? existing.discount_value,
+			minimum_subtotal: input.minimumSubtotal ?? existing.minimum_subtotal,
+			starts_at: input.startsAt === undefined ? existing.starts_at : input.startsAt,
+			expires_at: input.expiresAt === undefined ? existing.expires_at : input.expiresAt,
+			usage_limit: input.usageLimit === undefined ? existing.usage_limit : input.usageLimit,
+			active: input.active === undefined ? existing.active : input.active ? 1 : 0,
+			updated_at: new Date().toISOString(),
+		};
+		await db.updateTable("_emdash_shop_coupons").set(values).where("id", "=", id).execute();
+		return {
+			success: true,
+			data: toCoupon(
+				await db
+					.selectFrom("_emdash_shop_coupons")
+					.selectAll()
+					.where("id", "=", id)
+					.executeTakeFirstOrThrow(),
+			),
+		};
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_UPDATE_ERROR", message: "Failed to update coupon" },
+		};
+	}
+}
+
+export async function handleShopCouponDelete(
+	db: Kysely<Database>,
+	id: string,
+): Promise<ApiResult<null>> {
+	try {
+		const result = await db.deleteFrom("_emdash_shop_coupons").where("id", "=", id).execute();
+		return Number(result[0]?.numDeletedRows ?? 0)
+			? { success: true, data: null }
+			: { success: false, error: { code: "NOT_FOUND", message: "Coupon not found" } };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_DELETE_ERROR", message: "Failed to delete coupon" },
+		};
+	}
+}
+
 class ShopStockError extends Error {}
+class ShopCouponError extends Error {}
 
 function makeOrderNumber(): string {
 	return `#${Date.now().toString(36).toUpperCase()}-${ulid().slice(-4)}`;
@@ -316,6 +535,9 @@ function makeWhatsAppUrl(
 			? `Delivery: ${delivery.address}${typeof delivery.district === "string" ? `, ${delivery.district}` : ""}`
 			: null,
 		...itemLines,
+		order.couponCode
+			? `Cupón: ${order.couponCode} (-${settings.currencySymbol} ${(order.couponDiscount ?? 0).toFixed(2)})`
+			: null,
 		`Total: ${settings.currencySymbol} ${order.total.toFixed(2)}`,
 	]
 		.filter((line): line is string => line !== null)
@@ -743,6 +965,26 @@ export async function handleShopOrderCreate(
 
 		const subtotal = items.reduce((sum, item) => sum + item.subtotal, 0);
 		const discount = items.reduce((sum, item) => sum + item.discount, 0);
+		const couponRow = input.couponCode
+			? await db
+					.selectFrom("_emdash_shop_coupons")
+					.selectAll()
+					.where("code", "=", normalizeCouponCode(input.couponCode))
+					.executeTakeFirst()
+			: undefined;
+		const coupon = couponRow ? toCoupon(couponRow) : null;
+		if (input.couponCode && !coupon)
+			return {
+				success: false,
+				error: { code: "SHOP_COUPON_INVALID", message: "Coupon is invalid" },
+			};
+		if (coupon) {
+			const reason = couponIsUsable(coupon, subtotal);
+			if (reason)
+				return { success: false, error: { code: "SHOP_COUPON_INVALID", message: reason } };
+		}
+		const couponDiscountAmount = coupon ? couponDiscount(coupon, subtotal) : 0;
+		const couponCode = coupon?.code ?? null;
 		const deliveryCost = zone.delivery_cost;
 		const orderNumber = makeOrderNumber();
 		const orderId = ulid();
@@ -758,6 +1000,18 @@ export async function handleShopOrderCreate(
 		};
 
 		await withTransaction(db, async (trx) => {
+			if (coupon) {
+				const updatedCoupon = await trx
+					.updateTable("_emdash_shop_coupons")
+					.set({ usage_count: sql`usage_count + 1`, updated_at: new Date().toISOString() })
+					.where("id", "=", coupon.id)
+					.where("active", "=", 1)
+					.where((eb) =>
+						eb.or([eb("usage_limit", "is", null), eb("usage_count", "<", eb.ref("usage_limit"))]),
+					)
+					.executeTakeFirst();
+				if (Number(updatedCoupon.numUpdatedRows) !== 1) throw new ShopCouponError();
+			}
 			for (const item of items) {
 				if (item.variantId) {
 					const currentProduct = await new ContentRepository(trx).findById(
@@ -816,8 +1070,10 @@ export async function handleShopOrderCreate(
 					currency: settings.currency,
 					subtotal,
 					discount,
+					coupon_code: couponCode,
+					coupon_discount: couponDiscountAmount,
 					delivery_cost: deliveryCost,
-					total: subtotal + deliveryCost,
+					total: subtotal - couponDiscountAmount + deliveryCost,
 					customer_snapshot: JSON.stringify(customerSnapshot),
 					delivery_snapshot: JSON.stringify(deliverySnapshot),
 					notes: input.notes ?? null,
@@ -846,7 +1102,7 @@ export async function handleShopOrderCreate(
 					id: ulid(),
 					order_id: orderId,
 					method: input.paymentMethod,
-					amount: subtotal + deliveryCost,
+					amount: subtotal - couponDiscountAmount + deliveryCost,
 				})
 				.execute();
 			await trx
@@ -878,7 +1134,9 @@ export async function handleShopOrderCreate(
 				subtotal,
 				discount,
 				deliveryCost,
-				total: subtotal + deliveryCost,
+				total: subtotal - couponDiscountAmount + deliveryCost,
+				couponCode,
+				couponDiscount: couponDiscountAmount,
 				whatsappUrl: makeWhatsAppUrl(
 					settings.whatsappNumber,
 					{
@@ -892,7 +1150,9 @@ export async function handleShopOrderCreate(
 						subtotal,
 						discount,
 						deliveryCost,
-						total: subtotal + deliveryCost,
+						total: subtotal - couponDiscountAmount + deliveryCost,
+						couponCode,
+						couponDiscount: couponDiscountAmount,
 						whatsappUrl: null,
 						items: items.map((item) => ({
 							id: "",
@@ -920,6 +1180,12 @@ export async function handleShopOrderCreate(
 					code: "SHOP_STOCK_UNAVAILABLE",
 					message: "Requested quantity is no longer available",
 				},
+			};
+		}
+		if (error instanceof ShopCouponError) {
+			return {
+				success: false,
+				error: { code: "SHOP_COUPON_INVALID", message: "Coupon is no longer available" },
 			};
 		}
 		return {
@@ -958,6 +1224,8 @@ export async function handleShopOrderList(
 				deliveryCost: row.delivery_cost,
 				total: row.total,
 				whatsappUrl: null,
+				couponCode: row.coupon_code,
+				couponDiscount: row.coupon_discount,
 			})),
 		};
 	} catch {

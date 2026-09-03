@@ -1,3 +1,5 @@
+import { fileURLToPath } from "node:url";
+
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 import auditLog from "@emdash-cms/plugin-audit-log";
@@ -12,10 +14,36 @@ import { defineConfig, fontProviders, passthroughImageService } from "astro/conf
 import emdash, { local } from "emdash/astro";
 import { sqlite } from "emdash/db";
 
-process.env.EMDASH_ADMIN_SOURCE ??= "0";
+if (globalThis.process?.env) {
+	globalThis.process.env.EMDASH_ADMIN_SOURCE ??= "0";
+}
+
+const entitiesDecode = fileURLToPath(
+	new URL(
+		"../../node_modules/.pnpm/entities@6.0.1/node_modules/entities/dist/esm/decode.js",
+		import.meta.url,
+	),
+);
 
 export default defineConfig({
 	output: "server",
+	vite: {
+		optimizeDeps: {
+			include: [
+				"@cloudflare/kumo",
+				"@react-email/editor",
+				"@react-email/editor-extensions",
+				"@react-email/editor-plugins",
+				"@react-email/render",
+			],
+		},
+		resolve: {
+			alias: {
+				"entities/decode": entitiesDecode,
+				"entities/lib/decode.js": entitiesDecode,
+			},
+		},
+	},
 	adapter: node({
 		mode: "standalone",
 	}),

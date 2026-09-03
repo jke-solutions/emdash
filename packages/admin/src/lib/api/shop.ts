@@ -34,6 +34,21 @@ export interface ShopDeliveryZone {
 	active: boolean;
 }
 
+export interface ShopCoupon {
+	id: string;
+	code: string;
+	discountType: "percentage" | "fixed";
+	discountValue: number;
+	minimumSubtotal: number;
+	startsAt: string | null;
+	expiresAt: string | null;
+	usageLimit: number | null;
+	usageCount: number;
+	active: boolean;
+	createdAt: string | null;
+	updatedAt: string | null;
+}
+
 export interface ShopOrderSummary {
 	id: string;
 	orderNumber: string;
@@ -47,6 +62,8 @@ export interface ShopOrderSummary {
 	deliveryCost: number;
 	total: number;
 	whatsappUrl: string | null;
+	couponCode?: string | null;
+	couponDiscount?: number;
 }
 
 export interface ShopOrderDetail extends ShopOrderSummary {
@@ -130,6 +147,34 @@ export function updateShopDeliveryZone(
 
 export function deleteShopDeliveryZone(id: string): Promise<null> {
 	return mutate(`/admin/shop/delivery-zones/${encodeURIComponent(id)}`, "DELETE", undefined);
+}
+
+export function fetchShopCoupons(): Promise<ShopCoupon[]> {
+	return get("/admin/shop/coupons");
+}
+
+export function createShopCoupon(input: {
+	code: string;
+	discountType: "percentage" | "fixed";
+	discountValue: number;
+	minimumSubtotal?: number;
+	startsAt?: string | null;
+	expiresAt?: string | null;
+	usageLimit?: number | null;
+	active?: boolean;
+}): Promise<ShopCoupon> {
+	return mutate("/admin/shop/coupons", "POST", input);
+}
+
+export function updateShopCoupon(
+	id: string,
+	input: Partial<Parameters<typeof createShopCoupon>[0]>,
+): Promise<ShopCoupon> {
+	return mutate(`/admin/shop/coupons/${encodeURIComponent(id)}`, "PATCH", input);
+}
+
+export function deleteShopCoupon(id: string): Promise<null> {
+	return mutate(`/admin/shop/coupons/${encodeURIComponent(id)}`, "DELETE", undefined);
 }
 
 export function fetchShopOrders(): Promise<ShopOrderSummary[]> {

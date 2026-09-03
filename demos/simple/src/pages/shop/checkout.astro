@@ -33,6 +33,11 @@ import Base from "../../layouts/Base.astro";
 				<label>Reference <input name="reference" /></label>
 				<label>Delivery zone <select name="deliveryZoneId" required id="delivery-zone"></select></label>
 				<label>Payment method <select name="paymentMethod" required id="payment-method"></select></label>
+				<div class="coupon-box">
+					<label>Discount code <input name="couponCode" id="coupon-code" autocomplete="off" /></label>
+					<button type="button" id="apply-coupon" class="secondary-button">Apply coupon</button>
+					<p id="coupon-message" role="status"></p>
+				</div>
 				<label>Notes <textarea name="notes"></textarea></label>
 				<button type="submit">Create order and continue to WhatsApp</button>
 				<p id="checkout-message" role="status"></p>
@@ -52,10 +57,15 @@ import Base from "../../layouts/Base.astro";
 	const paymentElement = document.querySelector("#payment-method");
 	const messageElement = document.querySelector("#checkout-message");
 	const savedCustomerElement = document.querySelector("#saved-customer");
+	const couponCodeElement = document.querySelector("#coupon-code");
+	const applyCouponButton = document.querySelector("#apply-coupon");
+	const couponMessageElement = document.querySelector("#coupon-message");
 	const useSavedCustomerButton = document.querySelector("#use-saved-customer");
 	const clearSavedCustomerButton = document.querySelector("#clear-saved-customer");
 	let cart = [];
 	let settings = { currency: "PEN", currencySymbol: "S/", paymentMethods: ["whatsapp"] };
+	let cartSubtotal = 0;
+	let appliedCoupon = null;
 
 	try {
 		const stored = JSON.parse(localStorage.getItem(storageKey) ?? "[]");
@@ -111,10 +121,32 @@ import Base from "../../layouts/Base.astro";
 			const subtotal = productPrice(entry) * entry.quantity;
 			row.textContent = `${name}${variant?.label ? ` (${variant.label})` : ""} × ${entry.quantity} — ${money(subtotal)}`;
 			itemsElement?.append(row);
-			total += subtotal;
+			 total += subtotal;
 		}
-		if (totalElement) totalElement.textContent = `Total: ${money(total)}`;
+		cartSubtotal = total;
+		const couponDiscount = appliedCoupon?.discount ?? 0;
+		if (totalElement) totalElement.textContent = couponDiscount > 0 ? `Subtotal: ${money(total)} · Discount: -${money(couponDiscount)} · Total: ${money(total - couponDiscount)}` : `Total: ${money(total)}`;
 	};
+
+	applyCouponButton?.addEventListener("click", async () => {
+		const code = couponCodeElement?.value.trim() ?? "";
+		if (!code) { if (couponMessageElement) couponMessageElement.textContent = "Enter a discount code."; return; }
+		if (applyCouponButton instanceof HTMLButtonElement) applyCouponButton.disabled = true;
+		try {
+			const response = await fetch(`${apiBase}/coupons/validate`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, subtotal: cartSubtotal }) });
+			const body = await response.json();
+			if (!response.ok) throw new Error(body?.error?.message ?? "Coupon is invalid.");
+			appliedCoupon = body.data;
+			if (couponMessageElement) couponMessageElement.textContent = `Coupon ${appliedCoupon.code} applied.`;
+			renderSummary();
+		} catch (error) {
+			appliedCoupon = null;
+			if (couponMessageElement) couponMessageElement.textContent = error instanceof Error ? error.message : "Coupon is invalid.";
+			renderSummary();
+		} finally {
+			if (applyCouponButton instanceof HTMLButtonElement) applyCouponButton.disabled = false;
+		}
+	});
 
 	const loadOptions = async () => {
 		const [shopSettings, zones] = await Promise.all([
@@ -159,6 +191,7 @@ import Base from "../../layouts/Base.astro";
 					customer,
 					deliveryZoneId: data.get("deliveryZoneId"),
 					paymentMethod: data.get("paymentMethod"),
+					couponCode: appliedCoupon?.code ?? undefined,
 					notes: data.get("notes"),
 				}),
 			});

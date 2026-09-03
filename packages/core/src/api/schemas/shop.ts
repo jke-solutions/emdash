@@ -45,6 +45,7 @@ export const shopOrderCreateBody = z
 		}),
 		deliveryZoneId: z.string().min(1),
 		paymentMethod: z.string().min(1).max(50),
+		couponCode: z.string().trim().max(50).optional(),
 		notes: z.string().max(2000).optional(),
 	})
 	.meta({ id: "ShopOrderCreateBody" });
@@ -76,3 +77,59 @@ export const shopDeliveryZoneCreateBody = z
 export const shopDeliveryZoneUpdateBody = shopDeliveryZoneCreateBody.partial().meta({
 	id: "ShopDeliveryZoneUpdateBody",
 });
+
+const shopCouponFields = {
+	code: z.string().trim().min(1).max(50),
+	discountType: z.enum(["percentage", "fixed"]),
+	discountValue: z.number().positive(),
+	minimumSubtotal: z.number().min(0).optional(),
+	startsAt: z.string().datetime().nullable().optional(),
+	expiresAt: z.string().datetime().nullable().optional(),
+	usageLimit: z.number().int().positive().nullable().optional(),
+	active: z.boolean().optional(),
+};
+
+function refineCouponSchema<T extends z.ZodTypeAny>(schema: T) {
+	return schema
+		.refine(
+			(value) => {
+				if (typeof value !== "object" || value === null) return true;
+				if (!("discountType" in value) || !("discountValue" in value)) return true;
+				return (
+					value.discountType !== "percentage" ||
+					(typeof value.discountValue !== "number" ? true : value.discountValue <= 100)
+				);
+			},
+			{
+				message: "Percentage discount cannot exceed 100",
+				path: ["discountValue"],
+			},
+		)
+		.refine(
+			(value) => {
+				if (typeof value !== "object" || value === null) return true;
+				if (!("startsAt" in value) || !("expiresAt" in value)) return true;
+				return (
+					typeof value.startsAt !== "string" ||
+					typeof value.expiresAt !== "string" ||
+					value.startsAt < value.expiresAt
+				);
+			},
+			{
+				message: "Start date must be before expiry date",
+				path: ["expiresAt"],
+			},
+		);
+}
+
+export const shopCouponCreateBody = refineCouponSchema(z.object(shopCouponFields)).meta({
+	id: "ShopCouponCreateBody",
+});
+
+export const shopCouponUpdateBody = refineCouponSchema(z.object(shopCouponFields).partial()).meta({
+	id: "ShopCouponUpdateBody",
+});
+
+export const shopCouponValidateBody = z
+	.object({ code: z.string().trim().min(1).max(50), subtotal: z.number().min(0) })
+	.meta({ id: "ShopCouponValidateBody" });

@@ -681,6 +681,23 @@ export interface ShopOrderTable {
 	customer_snapshot: string;
 	delivery_snapshot: string;
 	notes: string | null;
+	coupon_code: string | null;
+	coupon_discount: number;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
+export interface ShopCouponTable {
+	id: string;
+	code: string;
+	discount_type: string;
+	discount_value: number;
+	minimum_subtotal: number;
+	starts_at: string | null;
+	expires_at: string | null;
+	usage_limit: number | null;
+	usage_count: Generated<number>;
+	active: Generated<number>;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
 }
@@ -789,6 +806,7 @@ export interface Database {
 	_emdash_shop_delivery_zones: ShopDeliveryZoneTable;
 	_emdash_shop_customers: ShopCustomerTable;
 	_emdash_shop_orders: ShopOrderTable;
+	_emdash_shop_coupons: ShopCouponTable;
 	_emdash_shop_order_items: ShopOrderItemTable;
 	_emdash_shop_payments: ShopPaymentTable;
 	_emdash_shop_deliveries: ShopDeliveryTable;
