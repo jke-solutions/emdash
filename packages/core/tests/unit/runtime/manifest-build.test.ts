@@ -155,12 +155,12 @@ describe("EmDashRuntime.getManifest()", () => {
 		expect(manifest.collections.pages?.commentsEnabled).toBeUndefined();
 	});
 
-	it("reports the implicit English content locale when i18n is not configured", async () => {
+	it("reports the implicit Spanish content locale when i18n is not configured", async () => {
 		const runtime = buildRuntime(db);
 
 		const manifest = await runtime.getManifest();
 
-		expect(manifest.contentLocale).toEqual({ defaultLocale: "en", implicit: true });
+		expect(manifest.contentLocale).toEqual({ defaultLocale: "es", implicit: true });
 	});
 
 	it("reports the configured content default independently of admin language", async () => {

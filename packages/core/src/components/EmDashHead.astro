@@ -38,6 +38,8 @@ import { absolutizeMediaUrl } from "../page/absolute-url.js";
 import { getHreflangAlternates } from "../seo/hreflang.js";
 import { isI18nEnabled } from "../i18n/config.js";
 
+const SAFE_THEME_TOKEN_RE = /^(?:#[0-9a-f]{6}|[a-z0-9 ,.'"-]+)$/i;
+
 interface Props {
 	page: PublicPageContext;
 }
@@ -48,6 +50,7 @@ const runtime = getPageRuntime(Astro.locals as Record<string, unknown>);
 let metadataHtml = "";
 let siteIdentityHtml = "";
 let fragmentsHtml = "";
+let themeStyle = "";
 let jsonLdScripts: ResolvedPageMetadata["jsonld"] = [];
 
 if (runtime) {
@@ -67,6 +70,42 @@ if (runtime) {
 		runtime.collectPageMetadata(page),
 		runtime.collectPageFragments(page),
 	]);
+	if (siteSettings.theme) {
+		const colors = siteSettings.theme.colors ?? {};
+		const fonts = siteSettings.theme.fonts ?? {};
+		const variables: Record<string, string | undefined> = {
+			"--color-accent": colors.primary,
+			"--color-brand": colors.primary,
+			"--color-brand-strong": colors.primaryHover,
+			"--color-accent-hover": colors.primaryHover,
+			"--color-secondary": colors.secondary,
+			"--color-secondary-hover": colors.secondaryHover,
+			"--color-bg": colors.background,
+			"--color-bg-subtle": colors.surface,
+			"--color-surface": colors.surface,
+			"--color-text": colors.text,
+			"--color-text-secondary": colors.muted,
+			"--color-muted": colors.muted,
+			"--color-border": colors.border,
+			"--color-border-subtle": colors.border,
+			"--color-link": colors.link,
+			"--color-success": colors.success,
+			"--color-warning": colors.warning,
+			"--color-danger": colors.danger,
+			"--color-on-accent": colors.onPrimary,
+			"--color-on-secondary": colors.onSecondary,
+			"--font-body": fonts.body,
+			"--font-heading": fonts.heading,
+		};
+		const declarations = Object.entries(variables)
+			.filter(
+				(entry): entry is [string, string] =>
+					typeof entry[1] === "string" && SAFE_THEME_TOKEN_RE.test(entry[1]),
+			)
+			.map(([name, value]) => `${name}:${value}`)
+			.join(";");
+		if (declarations) themeStyle = `<style>:root{${declarations}}</style>`;
+	}
 
 	// Site-level default OG image: applied per-page in base contributions
 	// rather than emitted unconditionally, so per-content images still win.
@@ -134,4 +173,5 @@ await registerJsonLdCspHashes(virtualConfig.astroCspEnabled === true, () => Astr
 	jsonLdScripts.map(({ json }) => <JsonLdScript json={json} />)
 }
 <Fragment set:html={siteIdentityHtml} />
+<Fragment set:html={themeStyle} />
 <Fragment set:html={fragmentsHtml} />

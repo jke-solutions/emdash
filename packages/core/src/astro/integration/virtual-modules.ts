@@ -6,13 +6,14 @@
  * so Vite can properly resolve and bundle them.
  */
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { resolve } from "node:path";
 
 import type { AuthProviderDescriptor } from "../../auth/types.js";
 import type { MediaProviderDescriptor } from "../../media/types.js";
 import { defaultSeed } from "../../seed/default.js";
+import { parseDesignMarkdown } from "./design-tokens.js";
 import type { PluginDescriptor } from "./runtime.js";
 
 const TS_SOURCE_EXT_RE = /^\.(ts|tsx|mts|cts|jsx)$/;
@@ -619,7 +620,25 @@ export function generateSeedModule(projectRoot: string, warnOnFallback = false):
 	}
 
 	if (userSeedJson) {
-		return [`export const userSeed = ${userSeedJson};`, `export const seed = userSeed;`].join("\n");
+		const seed = JSON.parse(userSeedJson) as Record<string, unknown>;
+		const designPath = resolve(projectRoot, "design.md");
+		if (existsSync(designPath)) {
+			const design = parseDesignMarkdown(readFileSync(designPath, "utf-8"));
+			const existingSettings = (seed.settings ?? {}) as Record<string, unknown>;
+			const existingTheme = (existingSettings.theme ?? {}) as Record<string, unknown>;
+			seed.settings = {
+				...existingSettings,
+				theme: {
+					...existingTheme,
+					colors: { ...design.colors, ...(existingTheme.colors as object) },
+					fonts: { ...design.fonts, ...(existingTheme.fonts as object) },
+				},
+			};
+		}
+		return [
+			`export const userSeed = ${JSON.stringify(seed)};`,
+			`export const seed = userSeed;`,
+		].join("\n");
 	}
 
 	// No user seed — inline the default. Caller (the Vite plugin) gates this
@@ -628,6 +647,24 @@ export function generateSeedModule(projectRoot: string, warnOnFallback = false):
 	if (warnOnFallback) {
 		console.warn(
 			"[emdash] No user seed found at .emdash/seed.json, package.json#emdash.seed, or seed/seed.json. Falling back to the built-in default seed; the setup wizard will not offer demo content for this site.",
+		);
+	}
+	const designPath = resolve(projectRoot, "design.md");
+	if (existsSync(designPath)) {
+		const design = parseDesignMarkdown(readFileSync(designPath, "utf-8"));
+		const seed = {
+			...defaultSeed,
+			settings: {
+				...defaultSeed.settings,
+				theme: {
+					...defaultSeed.settings?.theme,
+					colors: design.colors,
+					fonts: design.fonts,
+				},
+			},
+		};
+		return [`export const userSeed = null;`, `export const seed = ${JSON.stringify(seed)};`].join(
+			"\n",
 		);
 	}
 	return [

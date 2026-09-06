@@ -23,6 +23,19 @@ const resolvedLocale = resolveLocale(Astro.request);
 const resolvedDir = getLocaleDir(resolvedLocale);
 const messages = await loadMessages(resolvedLocale);
 
+// Migrate the historical English locale cookie so the browser keeps the
+// Spanish default instead of sending the stale value on every admin request.
+const hasStaleEnglishLocaleCookie = /(?:^|;\s*)emdash-locale=en(?:;|$)/i.test(
+	Astro.request.headers.get("cookie") ?? "",
+);
+if (hasStaleEnglishLocaleCookie) {
+	const secure = Astro.url.protocol === "https:" ? "; Secure" : "";
+	Astro.response.headers.append(
+		"Set-Cookie",
+		`emdash-locale=${resolvedLocale}; Path=/_emdash; SameSite=Lax; Max-Age=31536000${secure}`,
+	);
+}
+
 const adminConfig = Astro.locals.emdash?.config?.admin;
 const pageTitle = adminConfig?.siteName ? `${adminConfig.siteName} Admin` : "EmDash Admin";
 

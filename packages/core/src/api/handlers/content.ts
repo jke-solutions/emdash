@@ -284,6 +284,52 @@ async function hydrateBylinesMany(
 	}
 }
 
+async function hydrateTermsMany(
+	db: Kysely<Database>,
+	collection: string,
+	items: ContentItem[],
+): Promise<void> {
+	if (items.length === 0) return;
+	const entryIds = items.map((item) => item.translationGroup ?? item.id);
+	const rows = await db
+		.selectFrom("content_taxonomies")
+		.innerJoin("taxonomies", "taxonomies.translation_group", "content_taxonomies.taxonomy_id")
+		.select([
+			"content_taxonomies.entry_id as entryId",
+			"taxonomies.locale as locale",
+			"taxonomies.name as taxonomy",
+			"taxonomies.slug as slug",
+			"taxonomies.label as label",
+		])
+		.where("content_taxonomies.collection", "=", collection)
+		.where("content_taxonomies.entry_id", "in", entryIds)
+		.where("taxonomies.name", "in", ["category", "tag"])
+		.execute();
+	const termsByEntry = new Map<string, Record<string, Array<{ slug: string; label: string }>>>();
+	const rowsByEntry = new Map<string, typeof rows>();
+	for (const row of rows) {
+		const entryRows = rowsByEntry.get(row.entryId) ?? [];
+		entryRows.push(row);
+		rowsByEntry.set(row.entryId, entryRows);
+	}
+	for (const item of items) {
+		const entryRows = rowsByEntry.get(item.translationGroup ?? item.id) ?? [];
+		const terms = termsByEntry.get(item.id) ?? {};
+		for (const taxonomy of ["category", "tag"]) {
+			const taxonomyRows = entryRows.filter((row) => row.taxonomy === taxonomy);
+			const preferred = taxonomyRows.filter((row) => row.locale === item.locale);
+			const fallback = taxonomyRows.filter((row) => row.locale === "es");
+			const selected =
+				preferred.length > 0 ? preferred : fallback.length > 0 ? fallback : taxonomyRows;
+			if (selected.length > 0) {
+				terms[taxonomy] = selected.map((row) => ({ slug: row.slug, label: row.label }));
+			}
+		}
+		termsByEntry.set(item.id, terms);
+	}
+	for (const item of items) item.data.terms = termsByEntry.get(item.id) ?? {};
+}
+
 /**
  * Resolve an identifier (ID or slug) to a real content ID.
  * Returns the ID if found, null if not found.
@@ -515,6 +561,7 @@ export async function handleContentList(
 		bylines?: string[];
 		bylinesNone?: boolean;
 		includeInferredBylines?: boolean;
+		includeTerms?: boolean;
 		fieldFilters?: ContentFieldFilters;
 	},
 ): Promise<ApiResult<ContentListResponse>> {
@@ -578,6 +625,7 @@ export async function handleContentList(
 		const hasSeo = await collectionHasSeo(db, collection);
 		await hydrateSeoMany(db, collection, result.items, hasSeo);
 		await hydrateBylinesMany(db, collection, result.items);
+		if (params.includeTerms) await hydrateTermsMany(db, collection, result.items);
 
 		return {
 			success: true,

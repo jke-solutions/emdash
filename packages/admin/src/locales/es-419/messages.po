@@ -9103,3 +9103,156 @@ msgstr "El identificador o identificador de tu canal de YouTube"
 #: packages/admin/src/components/settings/SocialSettings.tsx:179
 msgid "YouTube"
 msgstr "YouTube"
+# Ecommerce
+msgid "Confirmed"
+msgstr "Confirmado"
+
+msgid "Not delivered"
+msgstr "No entregado"
+
+msgid "Assigned"
+msgstr "Asignado"
+
+msgid "Preparing"
+msgstr "Preparando"
+
+msgid "In transit"
+msgstr "En tránsito"
+
+msgid "Delivered"
+msgstr "Entregado"
+
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgid "Pending"
+msgstr "Pendiente"
+
+msgid "New"
+msgstr "Nuevo"
+
+msgid "Ready for delivery"
+msgstr "Listo para delivery"
+
+msgid "Rescheduled"
+msgstr "Reprogramado"
+
+msgid "Confirm payment"
+msgstr "Confirmar pago"
+
+msgid "Order details"
+msgstr "Detalles del pedido"
+
+msgid "Update delivery status"
+msgstr "Actualizar estado del delivery"
+
+msgid "Cancellation reason"
+msgstr "Motivo de cancelación"
+
+msgid "Confirm cancellation"
+msgstr "Confirmar cancelación"
+
+msgid "Order"
+msgstr "Pedido"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Products"
+msgstr "Productos"
+
+msgid "Payment status"
+msgstr "Estado del pago"
+
+msgid "Delivery status"
+msgstr "Estado del delivery"
+
+msgid "Press once to confirm the payment."
+msgstr "Presiona una sola vez para confirmar el pago."
+
+msgid "Confirming..."
+msgstr "Confirmando..."
+
+msgid "Tracking code (optional)"
+msgstr "Código de seguimiento (opcional)"
+
+msgid "Tracking URL (optional)"
+msgstr "URL de seguimiento (opcional)"
+
+msgid "Payment"
+msgstr "Pago"
+
+msgid "Delivery"
+msgstr "Delivery"
+
+msgid "Actions"
+msgstr "Acciones"
+
+msgid "View details"
+msgstr "Ver detalles"
+
+msgid "Search orders"
+msgstr "Buscar pedidos"
+
+msgid "Search by order number"
+msgstr "Buscar por número de pedido"
+
+msgid "Code from delivery provider"
+msgstr "Código proporcionado por el servicio de delivery"
+
+msgid "Manage your products, delivery settings, and orders."
+msgstr "Administra tus productos, la configuración del delivery y tus pedidos."
+
+msgid "Store settings"
+msgstr "Configuración de la tienda"
+
+msgid "Delivery zones"
+msgstr "Zonas de delivery"
+
+msgid "Customers"
+msgstr "Clientes"
+
+msgid "Coupons"
+msgstr "Cupones"
+
+msgid "Business hours"
+msgstr "Horario de atención"
+
+msgid "Preparation time"
+msgstr "Tiempo de preparación"
+
+msgid "Minimum order subtotal"
+msgstr "Monto mínimo del pedido"
+
+msgid "Free delivery from subtotal"
+msgstr "Delivery gratis desde este monto"
+
+msgid "Enable free delivery"
+msgstr "Activar delivery gratis"
+
+msgid "Payment methods"
+msgstr "Métodos de pago"
+
+msgid "Example: 24 hours"
+msgstr "Ejemplo: 24 horas"
+
+msgid "Disabled"
+msgstr "Desactivado"
+
+msgid "WhatsApp message"
+msgstr "Mensaje de WhatsApp"
+
+msgid "Choose a template, review it in WhatsApp, and send it manually."
+msgstr "Elige una plantilla, revísala en WhatsApp y envíala manualmente."
+
+msgid "Message template"
+msgstr "Plantilla de mensaje"
+
+msgid "Order received"
+msgstr "Pedido recibido"
+
+msgid "Opening..."
+msgstr "Abriendo..."
+
+msgid "Open WhatsApp"
+msgstr "Abrir WhatsApp"

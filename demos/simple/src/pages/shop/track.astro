@@ -2,14 +2,14 @@
 import Base from "../../layouts/Base.astro";
 ---
 
-<Base title="Track order" description="Track your order by order number.">
+<Base title="Rastrear pedido" description="Rastrea tu pedido por número de pedido.">
 	<main class="track-page">
-		<p class="eyebrow">Order tracking</p>
-		<h1>Track your order</h1>
-		<p>Enter the order number you received after checkout.</p>
+		<p class="eyebrow">Seguimiento del pedido</p>
+		<h1>Rastrea tu pedido</h1>
+		<p>Ingresa el número de pedido que recibiste después de finalizar la compra.</p>
 		<form id="track-form">
-			<label>Order number <input name="orderNumber" placeholder="#ABC123-4567" required /></label>
-			<button type="submit">View order</button>
+			<label>Número de pedido <input name="orderNumber" placeholder="#ABC123-4567" required /></label>
+			<button type="submit">Ver pedido</button>
 		</form>
 		<section class="order-card" id="tracked-order" hidden></section>
 	</main>
@@ -18,25 +18,25 @@ import Base from "../../layouts/Base.astro";
 <script is:inline>
 	const form = document.querySelector("#track-form");
 	const result = document.querySelector("#tracked-order");
-	const labels = { new: "Received", confirmed: "Confirmed", preparing: "Preparing", ready: "Ready for delivery", in_transit: "In delivery", delivered: "Delivered", cancelled: "Cancelled", pending: "Pending" };
+		const labels = { new: "Recibido", confirmed: "Confirmado", preparing: "Preparando", ready: "Listo para entrega", in_transit: "En entrega", delivered: "Entregado", cancelled: "Cancelado", pending: "Pendiente" };
 	const money = (value, symbol) => `${symbol} ${new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}`;
 	form?.addEventListener("submit", async (event) => {
 		event.preventDefault();
 		const number = new FormData(form).get("orderNumber");
-		if (result) { result.hidden = false; result.textContent = "Loading order…"; }
+		if (result) { result.hidden = false; result.textContent = "Cargando pedido…"; }
 		try {
 			const response = await fetch(`/_emdash/api/shop/orders/${encodeURIComponent(String(number))}`);
 			const body = await response.json();
-			if (!response.ok) throw new Error(body?.error?.message ?? "Order not found.");
+			if (!response.ok) throw new Error(body?.error?.message ?? "No se encontró el pedido.");
 			const order = body.data;
 			result.replaceChildren();
-			const title = document.createElement("h2"); title.textContent = `Order ${order.orderNumber}`;
-			const status = document.createElement("p"); status.textContent = `Status: ${labels[order.status] ?? order.status} · Payment: ${labels[order.paymentStatus] ?? order.paymentStatus} · Delivery: ${labels[order.deliveryStatus] ?? order.deliveryStatus}`;
+			const title = document.createElement("h2"); title.textContent = `Pedido ${order.orderNumber}`;
+			const status = document.createElement("p"); status.textContent = `Estado: ${labels[order.status] ?? order.status} · Pago: ${labels[order.paymentStatus] ?? order.paymentStatus} · Entrega: ${labels[order.deliveryStatus] ?? order.deliveryStatus}`;
 			result.append(title, status);
 			for (const item of order.items) { const row = document.createElement("div"); row.className = "order-item"; if (item.imageUrl) { const image = document.createElement("img"); image.src = item.imageUrl; image.alt = item.productName; row.append(image); } const text = document.createElement("p"); text.textContent = `${item.productName} × ${item.quantity} — ${money(item.subtotal, order.currencySymbol)}`; row.append(text); result.append(row); }
 			const total = document.createElement("strong"); total.textContent = `Total: ${money(order.total, order.currencySymbol)}`; result.append(total);
-			if (order.whatsappUrl) { const link = document.createElement("a"); link.className = "whatsapp-link"; link.href = order.whatsappUrl; link.target = "_blank"; link.rel = "noreferrer"; link.textContent = "Coordinate payment through WhatsApp"; result.append(link); }
-		} catch (error) { result.textContent = error instanceof Error ? error.message : "Could not load order."; }
+			if (order.whatsappUrl) { const link = document.createElement("a"); link.className = "whatsapp-link"; link.href = order.whatsappUrl; link.target = "_blank"; link.rel = "noreferrer"; link.textContent = "Coordinar pago por WhatsApp"; result.append(link); }
+		} catch (error) { result.textContent = error instanceof Error ? error.message : "No se pudo cargar el pedido."; }
 	});
 </script>
 

@@ -31,6 +31,7 @@ A theme has the following layout:
 my-theme/
 ├── package.json           # Theme metadata + EmDash config
 ├── astro.config.mjs       # Astro integration setup
+├── design.md              # Optional shared colors and fonts
 ├── src/
 │   ├── live.config.ts     # Live Collections configuration
 │   ├── pages/             # Astro routes
@@ -40,6 +41,43 @@ my-theme/
     ├── seed.json          # Schema + sample content
     └── uploads/           # Optional local media files
 ```
+
+## Defining shared design tokens
+
+Create `design.md` in the project root when the theme has shared colors and fonts. EmDash reads this file during the Astro build and includes the recognized values in `SiteSettings.theme`. The public theme, widgets, email templates, and AI-generated public components can then use the same values.
+
+Use `## Colors` and `## Fonts` headings with `Name: value` entries. Color values must be six-digit hexadecimal colors. Font values must be a font stack containing letters, numbers, spaces, commas, periods, apostrophes, quotes, or hyphens.
+
+The following file defines a complete design token set:
+
+```md title="design.md"
+## Colors
+
+- Primary: #0066cc
+- Primary hover: #0052a3
+- Secondary: #6b7280
+- Secondary hover: #4b5563
+- Background: #ffffff
+- Surface: #f7f7f7
+- Text: #1a1a1a
+- Muted text: #8b8b8b
+- Border: #e5e5e5
+- Link: #0066cc
+- Success: #248a3d
+- Warning: #9a6700
+- Danger: #d70015
+- Text on primary: #ffffff
+- Text on secondary: #ffffff
+
+## Fonts
+
+- Body: Inter, Arial, sans-serif
+- Heading: Inter, Arial, sans-serif
+```
+
+EmDash accepts the Spanish section names `Colores` and `Fuentes` too. Unrecognized entries are ignored. If `design.md` is absent, the compiler leaves the design settings unset. Values declared explicitly in the seed file take precedence over values extracted from `design.md`.
+
+You can review or change the primary and secondary colors, including their hover and foreground variants, in `Admin → Settings → General → Design`. Structural and semantic tokens such as background, surface, text, muted text, borders, fonts, links, and status colors remain managed by the design file so widgets and emails keep the intended visual harmony. Changes made there are stored in the site settings database and are available to the public site at runtime.
 
 ## How Themes Bootstrap Sites
 

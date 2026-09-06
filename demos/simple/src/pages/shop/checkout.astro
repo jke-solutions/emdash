@@ -2,44 +2,44 @@
 import Base from "../../layouts/Base.astro";
 ---
 
-<Base title="Checkout" description="Complete your delivery details and coordinate your order through WhatsApp.">
+<Base title="Finalizar compra" description="Completa tus datos de entrega y coordina tu pedido por WhatsApp.">
 	<main class="checkout-page">
-		<a class="back-link" href="/shop">← Back to shop</a>
+		<a class="back-link" href="/shop">← Volver a la tienda</a>
 		<header>
-			<p class="eyebrow">Order details</p>
-			<h1>Checkout</h1>
-			<p>Complete your delivery information. Payment will be coordinated through WhatsApp.</p>
+			<p class="eyebrow">Detalles del pedido</p>
+			<h1>Finalizar compra</h1>
+			<p>Completa tus datos de entrega. El pago se coordinará por WhatsApp.</p>
 		</header>
 		<div class="checkout-layout">
 			<section class="checkout-summary">
-				<h2>Your order</h2>
-				<div id="checkout-items">Loading order…</div>
+				<h2>Tu pedido</h2>
+				<div id="checkout-items">Cargando pedido…</div>
 				<strong id="checkout-total"></strong>
 			</section>
 			<form id="checkout-form" class="checkout-form">
-				<h2>Delivery details</h2>
+				<h2>Datos de entrega</h2>
 				<div id="saved-customer" class="saved-customer" hidden>
-					<p>We found your previous delivery details on this device.</p>
+					<p>Encontramos tus datos de entrega anteriores en este dispositivo.</p>
 					<div class="saved-customer-actions">
-						<button type="button" id="use-saved-customer" class="secondary-button">Use saved details</button>
-						<button type="button" id="clear-saved-customer" class="text-button">Use other details</button>
+						<button type="button" id="use-saved-customer" class="secondary-button">Usar datos guardados</button>
+						<button type="button" id="clear-saved-customer" class="text-button">Usar otros datos</button>
 					</div>
 				</div>
-				<label>Name <input name="name" required /></label>
-				<label>Phone <input name="phone" required /></label>
-				<label>Email <input name="email" type="email" /></label>
-				<label>Address <input name="address" required /></label>
-				<label>District <input name="district" required /></label>
-				<label>Reference <input name="reference" /></label>
-				<label>Delivery zone <select name="deliveryZoneId" required id="delivery-zone"></select></label>
-				<label>Payment method <select name="paymentMethod" required id="payment-method"></select></label>
+				<label>Nombre <input name="name" required /></label>
+				<label>Teléfono <input name="phone" required /></label>
+				<label>Correo electrónico <input name="email" type="email" /></label>
+				<label>Dirección <input name="address" required /></label>
+				<label>Distrito <input name="district" required /></label>
+				<label>Referencia <input name="reference" /></label>
+				<label>Zona de entrega <select name="deliveryZoneId" required id="delivery-zone"></select></label>
+				<label>Método de pago <select name="paymentMethod" required id="payment-method"></select></label>
 				<div class="coupon-box">
-					<label>Discount code <input name="couponCode" id="coupon-code" autocomplete="off" /></label>
-					<button type="button" id="apply-coupon" class="secondary-button">Apply coupon</button>
+					<label>Código de descuento <input name="couponCode" id="coupon-code" autocomplete="off" /></label>
+					<button type="button" id="apply-coupon" class="secondary-button">Aplicar cupón</button>
 					<p id="coupon-message" role="status"></p>
 				</div>
-				<label>Notes <textarea name="notes"></textarea></label>
-				<button type="submit">Create order and continue to WhatsApp</button>
+				<label>Notas <textarea name="notes"></textarea></label>
+				<button type="submit">Crear pedido y continuar a WhatsApp</button>
 				<p id="checkout-message" role="status"></p>
 			</form>
 		</div>
@@ -66,6 +66,13 @@ import Base from "../../layouts/Base.astro";
 	let settings = { currency: "PEN", currencySymbol: "S/", paymentMethods: ["whatsapp"] };
 	let cartSubtotal = 0;
 	let appliedCoupon = null;
+	const paymentMethodLabels = {
+		whatsapp: "WhatsApp",
+		yape: "Yape",
+		plin: "Plin",
+		bank_transfer: "Transferencia bancaria",
+		cash_on_delivery: "Pago contra entrega",
+	};
 
 	try {
 		const stored = JSON.parse(localStorage.getItem(storageKey) ?? "[]");
@@ -115,7 +122,7 @@ import Base from "../../layouts/Base.astro";
 		itemsElement?.replaceChildren();
 		let total = 0;
 		for (const entry of cart) {
-			const name = entry.product.data?.name ?? entry.product.slug ?? "Product";
+			const name = entry.product.data?.name ?? entry.product.slug ?? "Producto";
 			const variant = Array.isArray(entry.product.data?.variants) ? entry.product.data.variants.find((item) => (item.id ?? item.label) === entry.variantId) : null;
 			const row = document.createElement("p");
 			const subtotal = productPrice(entry) * entry.quantity;
@@ -125,23 +132,23 @@ import Base from "../../layouts/Base.astro";
 		}
 		cartSubtotal = total;
 		const couponDiscount = appliedCoupon?.discount ?? 0;
-		if (totalElement) totalElement.textContent = couponDiscount > 0 ? `Subtotal: ${money(total)} · Discount: -${money(couponDiscount)} · Total: ${money(total - couponDiscount)}` : `Total: ${money(total)}`;
+		if (totalElement) totalElement.textContent = couponDiscount > 0 ? `Subtotal: ${money(total)} · Descuento: -${money(couponDiscount)} · Total: ${money(total - couponDiscount)}` : `Total: ${money(total)}`;
 	};
 
 	applyCouponButton?.addEventListener("click", async () => {
 		const code = couponCodeElement?.value.trim() ?? "";
-		if (!code) { if (couponMessageElement) couponMessageElement.textContent = "Enter a discount code."; return; }
+		if (!code) { if (couponMessageElement) couponMessageElement.textContent = "Ingresa un código de descuento."; return; }
 		if (applyCouponButton instanceof HTMLButtonElement) applyCouponButton.disabled = true;
 		try {
 			const response = await fetch(`${apiBase}/coupons/validate`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, subtotal: cartSubtotal }) });
 			const body = await response.json();
-			if (!response.ok) throw new Error(body?.error?.message ?? "Coupon is invalid.");
+			if (!response.ok) throw new Error(body?.error?.message ?? "El cupón no es válido.");
 			appliedCoupon = body.data;
-			if (couponMessageElement) couponMessageElement.textContent = `Coupon ${appliedCoupon.code} applied.`;
+			if (couponMessageElement) couponMessageElement.textContent = `Cupón ${appliedCoupon.code} aplicado.`;
 			renderSummary();
 		} catch (error) {
 			appliedCoupon = null;
-			if (couponMessageElement) couponMessageElement.textContent = error instanceof Error ? error.message : "Coupon is invalid.";
+			if (couponMessageElement) couponMessageElement.textContent = error instanceof Error ? error.message : "El cupón no es válido.";
 			renderSummary();
 		} finally {
 			if (applyCouponButton instanceof HTMLButtonElement) applyCouponButton.disabled = false;
@@ -163,7 +170,7 @@ import Base from "../../layouts/Base.astro";
 		for (const method of settings.paymentMethods) {
 			const option = document.createElement("option");
 			option.value = method;
-			option.textContent = method;
+			option.textContent = paymentMethodLabels[method] ?? method;
 			paymentElement?.append(option);
 		}
 	};
@@ -171,7 +178,7 @@ import Base from "../../layouts/Base.astro";
 	form?.addEventListener("submit", async (event) => {
 		event.preventDefault();
 		const data = new FormData(form);
-		if (messageElement) messageElement.textContent = "Creating your order…";
+		if (messageElement) messageElement.textContent = "Creando tu pedido…";
 		try {
 			const customer = Object.fromEntries(customerFields.map((key) => [key, data.get(key)]));
 			try {
@@ -196,16 +203,16 @@ import Base from "../../layouts/Base.astro";
 				}),
 			});
 			const body = await response.json();
-			if (!response.ok) throw new Error(body?.error?.message ?? "Could not create order.");
+			if (!response.ok) throw new Error(body?.error?.message ?? "No se pudo crear el pedido.");
 			localStorage.removeItem(storageKey);
 			window.location.href = `/shop/thanks?order=${encodeURIComponent(body.data.orderNumber)}`;
 		} catch (error) {
-			if (messageElement) messageElement.textContent = error instanceof Error ? error.message : "Could not create order.";
+			if (messageElement) messageElement.textContent = error instanceof Error ? error.message : "No se pudo crear el pedido.";
 		}
 	});
 
 	Promise.all([loadOptions(), Promise.resolve(renderSummary())]).catch((error) => {
-		if (messageElement) messageElement.textContent = error instanceof Error ? error.message : "Could not load checkout.";
+		if (messageElement) messageElement.textContent = error instanceof Error ? error.message : "No se pudo cargar la compra.";
 	});
 </script>
 

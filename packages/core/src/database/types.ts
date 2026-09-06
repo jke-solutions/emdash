@@ -648,6 +648,10 @@ export interface ShopSettingsTable {
 	payment_methods: string;
 	delivery_instructions: string | null;
 	business_hours: string | null;
+	preparation_time: string | null;
+	minimum_subtotal: Generated<number>;
+	free_delivery_min_subtotal: number | null;
+	whatsapp_templates: Generated<string>;
 	payment_gateway_enabled: Generated<number>;
 	payment_gateway_provider: string | null;
 	payment_gateway_environment: string;
@@ -680,6 +684,10 @@ export interface ShopCustomerTable {
 	district: string | null;
 	reference: string | null;
 	notes: string | null;
+	document_type: string | null;
+	document_number: string | null;
+	fiscal_name: string | null;
+	fiscal_address: string | null;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
 }
@@ -701,6 +709,11 @@ export interface ShopOrderTable {
 	notes: string | null;
 	coupon_code: string | null;
 	coupon_discount: number;
+	cancellation_reason: string | null;
+	return_status: Generated<string>;
+	return_reason: string | null;
+	refunded_amount: Generated<number>;
+	refund_notes: string | null;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
 }
@@ -762,6 +775,14 @@ export interface ShopDeliveryTable {
 	estimated_at: string | null;
 	status: Generated<string>;
 	notes: string | null;
+	scheduled_date: string | null;
+	scheduled_time: string | null;
+	recipient_name: string | null;
+	recipient_phone: string | null;
+	instructions: string | null;
+	failed_reason: string | null;
+	delivered_at: string | null;
+	rescheduled_at: string | null;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
 }

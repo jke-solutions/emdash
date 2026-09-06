@@ -42,6 +42,10 @@ export interface ShopSettings {
 	paymentMethods: string[];
 	deliveryInstructions: string | null;
 	businessHours: string | null;
+	preparationTime: string | null;
+	minimumSubtotal: number;
+	freeDeliveryMinSubtotal: number | null;
+	whatsappTemplates: Record<string, string>;
 	paymentGatewayEnabled: boolean;
 	paymentGatewayProvider: string | null;
 	paymentGatewayEnvironment: "sandbox" | "production";
@@ -62,6 +66,10 @@ export interface ShopPublicSettings {
 	paymentMethods: string[];
 	deliveryInstructions: string | null;
 	businessHours: string | null;
+	preparationTime: string | null;
+	minimumSubtotal: number;
+	freeDeliveryMinSubtotal: number | null;
+	whatsappTemplates: Record<string, string>;
 }
 
 export interface ShopSettingsUpdateInput extends Partial<Omit<ShopSettings, "id">> {
@@ -97,8 +105,17 @@ export interface ShopOrderInput {
 		address: string;
 		district: string;
 		reference?: string;
+		documentType?: string;
+		documentNumber?: string;
+		fiscalName?: string;
+		fiscalAddress?: string;
 	};
 	deliveryZoneId: string;
+	deliveryDate?: string;
+	deliveryTime?: string;
+	recipientName?: string;
+	recipientPhone?: string;
+	deliveryInstructions?: string;
 	paymentMethod: string;
 	notes?: string;
 	couponCode?: string;
@@ -212,6 +229,10 @@ function toSettings(row: {
 	payment_methods: string;
 	delivery_instructions: string | null;
 	business_hours: string | null;
+	preparation_time: string | null;
+	minimum_subtotal: number;
+	free_delivery_min_subtotal: number | null;
+	whatsapp_templates: string;
 	payment_gateway_enabled: number;
 	payment_gateway_provider: string | null;
 	payment_gateway_environment: string;
@@ -231,6 +252,10 @@ function toSettings(row: {
 		paymentMethods: parseJsonStringArray(row.payment_methods, DEFAULT_PAYMENT_METHODS),
 		deliveryInstructions: row.delivery_instructions,
 		businessHours: row.business_hours,
+		preparationTime: row.preparation_time,
+		minimumSubtotal: row.minimum_subtotal ?? 0,
+		freeDeliveryMinSubtotal: row.free_delivery_min_subtotal,
+		whatsappTemplates: parseJsonRecord(row.whatsapp_templates) as Record<string, string>,
 		paymentGatewayEnabled: row.payment_gateway_enabled === 1,
 		paymentGatewayProvider: row.payment_gateway_provider,
 		paymentGatewayEnvironment:
@@ -285,22 +310,13 @@ function productVariants(data: Record<string, unknown>): ShopVariant[] {
 	return data.variants.filter((variant): variant is ShopVariant => isRecord(variant));
 }
 
-function hasProductVariants(data: Record<string, unknown>): boolean {
-	const enabled =
-		data.has_variations === true || data.has_variations === 1 || data.has_variations === "1";
-	return enabled && productVariants(data).length > 0;
-}
-
 function isProductAvailable(data: Record<string, unknown>): boolean {
 	const availability = data.availability_status ?? data.availability;
 	const stock = data.stock;
-	const variantsAvailable = productVariants(data).some(
-		(variant) => typeof variant.stock !== "number" || variant.stock > 0,
-	);
 	return (
 		availability !== "sold_out" &&
 		availability !== "hidden" &&
-		(hasProductVariants(data) ? variantsAvailable : typeof stock !== "number" || stock > 0)
+		(typeof stock !== "number" || stock > 0)
 	);
 }
 
@@ -517,6 +533,7 @@ function makeWhatsAppUrl(
 	settings: ShopSettings,
 	customer?: Record<string, unknown>,
 	delivery?: Record<string, unknown>,
+	templateKey?: string,
 ): string | null {
 	if (!phone) return null;
 	const cleanPhone = phone.replace(/\D/g, "");
@@ -527,7 +544,10 @@ function makeWhatsAppUrl(
 				`- ${item.productName} x${item.quantity}: ${settings.currencySymbol} ${item.subtotal.toFixed(2)}`,
 		) ?? [];
 	const message = [
-		settings.whatsappMessage || "Hola, quiero coordinar el pago de mi pedido.",
+		(templateKey ? settings.whatsappTemplates[templateKey] : null) ||
+			settings.whatsappMessage ||
+			settings.whatsappTemplates.orderReceived ||
+			"Hola, quiero coordinar el pago de mi pedido.",
 		settings.storeName ? `Tienda: ${settings.storeName}` : null,
 		`Pedido: ${order.orderNumber}`,
 		typeof customer?.name === "string" ? `Cliente: ${customer.name}` : null,
@@ -567,6 +587,10 @@ export async function handleShopSettingsGet(
 				paymentMethods: DEFAULT_PAYMENT_METHODS,
 				deliveryInstructions: null,
 				businessHours: null,
+				preparationTime: null,
+				minimumSubtotal: 0,
+				freeDeliveryMinSubtotal: null,
+				whatsappTemplates: {},
 				paymentGatewayEnabled: false,
 				paymentGatewayProvider: null,
 				paymentGatewayEnvironment: "sandbox",
@@ -600,6 +624,10 @@ export async function handleShopPublicSettingsGet(
 		paymentMethods,
 		deliveryInstructions,
 		businessHours,
+		preparationTime,
+		minimumSubtotal,
+		freeDeliveryMinSubtotal,
+		whatsappTemplates,
 	} = result.data;
 	return {
 		success: true,
@@ -613,6 +641,10 @@ export async function handleShopPublicSettingsGet(
 			paymentMethods,
 			deliveryInstructions,
 			businessHours,
+			preparationTime,
+			minimumSubtotal,
+			freeDeliveryMinSubtotal,
+			whatsappTemplates,
 		},
 	};
 }
@@ -652,6 +684,13 @@ export async function handleShopSettingsUpdate(
 			),
 			delivery_instructions: input.deliveryInstructions ?? existing?.delivery_instructions ?? null,
 			business_hours: input.businessHours ?? existing?.business_hours ?? null,
+			preparation_time: input.preparationTime ?? existing?.preparation_time ?? null,
+			minimum_subtotal: input.minimumSubtotal ?? existing?.minimum_subtotal ?? 0,
+			free_delivery_min_subtotal:
+				input.freeDeliveryMinSubtotal ?? existing?.free_delivery_min_subtotal ?? null,
+			whatsapp_templates: JSON.stringify(
+				input.whatsappTemplates ?? parseJsonRecord(existing?.whatsapp_templates),
+			),
 			payment_gateway_enabled:
 				input.paymentGatewayEnabled === undefined
 					? (existing?.payment_gateway_enabled ?? 0)
@@ -832,13 +871,109 @@ export async function handleShopProductList(db: Kysely<Database>): Promise<ApiRe
 			limit: 100,
 			where: { status: "published" },
 		});
-		return { success: true, data: result.items.filter((item) => isProductAvailable(item.data)) };
+		const products = result.items.filter((item) => isProductAvailable(item.data));
+		if (products.length === 0) return { success: true, data: products };
+
+		const entryIds = products.map((product) => product.translationGroup ?? product.id);
+		const termRows = await db
+			.selectFrom("content_taxonomies")
+			.innerJoin("taxonomies", "taxonomies.translation_group", "content_taxonomies.taxonomy_id")
+			.select([
+				"content_taxonomies.entry_id as entryId",
+				"taxonomies.name as taxonomy",
+				"taxonomies.slug as slug",
+				"taxonomies.label as label",
+			])
+			.where("content_taxonomies.collection", "=", SHOP_COLLECTION)
+			.where("content_taxonomies.entry_id", "in", entryIds)
+			.where("taxonomies.name", "in", ["category", "tag"])
+			.orderBy("taxonomies.label", "asc")
+			.execute();
+		const termsByEntry = new Map<string, Record<string, Array<{ slug: string; label: string }>>>();
+		for (const row of termRows) {
+			const terms = termsByEntry.get(row.entryId) ?? {};
+			(terms[row.taxonomy] ??= []).push({ slug: row.slug, label: row.label });
+			termsByEntry.set(row.entryId, terms);
+		}
+		return {
+			success: true,
+			data: products.map((product) => ({
+				...product,
+				data: {
+					...product.data,
+					terms: termsByEntry.get(product.translationGroup ?? product.id) ?? {},
+				},
+			})),
+		};
 	} catch {
 		return {
 			success: false,
 			error: { code: "SHOP_PRODUCT_LIST_ERROR", message: "Failed to list shop products" },
 		};
 	}
+}
+
+export async function handleShopProductRelatedList(
+	db: Kysely<Database>,
+	id: string,
+	options: { limit?: number; strategy?: "both" | "category" | "tag" } = {},
+): Promise<ApiResult<unknown[]>> {
+	try {
+		const productsResult = await handleShopProductList(db);
+		if (!productsResult.success) return productsResult;
+		const products = productsResult.data as Array<{
+			id?: string;
+			slug?: string | null;
+			data?: Record<string, unknown>;
+		}>;
+		const current = products.find((product) => product.id === id || product.slug === id);
+		if (!current) return { success: true, data: [] };
+
+		const currentTerms = current.data?.terms;
+		const terms =
+			currentTerms && typeof currentTerms === "object" && !Array.isArray(currentTerms)
+				? (currentTerms as Record<string, unknown>)
+				: {};
+		const strategy = options.strategy ?? "both";
+		const categories = new Set(strategy === "tag" ? [] : termSlugs(terms.category));
+		const tags = new Set(strategy === "category" ? [] : termSlugs(terms.tag));
+		if (categories.size === 0 && tags.size === 0) return { success: true, data: [] };
+
+		const limit = Math.min(Math.max(options.limit ?? 4, 1), 12);
+		const related = products
+			.filter((product) => product.id !== current.id)
+			.map((product, index) => {
+				const productTerms = product.data?.terms;
+				const productTermRecord =
+					productTerms && typeof productTerms === "object" && !Array.isArray(productTerms)
+						? (productTerms as Record<string, unknown>)
+						: {};
+				const categoryMatches = termSlugs(productTermRecord.category).filter((slug) =>
+					categories.has(slug),
+				).length;
+				const tagMatches = termSlugs(productTermRecord.tag).filter((slug) => tags.has(slug)).length;
+				return { product, score: categoryMatches * 2 + tagMatches, index };
+			})
+			.filter((item) => item.score > 0)
+			.toSorted((a, b) => b.score - a.score || a.index - b.index)
+			.slice(0, limit)
+			.map((item) => item.product);
+		return { success: true, data: related };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_PRODUCT_RELATED_ERROR", message: "Failed to list related products" },
+		};
+	}
+}
+
+function termSlugs(value: unknown): string[] {
+	if (!Array.isArray(value)) return [];
+	return value.flatMap((term) => {
+		if (!term || typeof term !== "object") return [];
+		const slug = (term as { slug?: unknown }).slug;
+		return typeof slug === "string" ? [slug] : [];
+	});
 }
 
 export async function handleShopProductGet(
@@ -965,6 +1100,16 @@ export async function handleShopOrderCreate(
 
 		const subtotal = items.reduce((sum, item) => sum + item.subtotal, 0);
 		const discount = items.reduce((sum, item) => sum + item.discount, 0);
+		if (subtotal < settings.minimumSubtotal) {
+			return {
+				success: false,
+				error: {
+					code: "SHOP_MINIMUM_SUBTOTAL",
+					message: "Order subtotal is below the shop minimum",
+					details: { minimumSubtotal: settings.minimumSubtotal },
+				},
+			};
+		}
 		const couponRow = input.couponCode
 			? await db
 					.selectFrom("_emdash_shop_coupons")
@@ -985,7 +1130,12 @@ export async function handleShopOrderCreate(
 		}
 		const couponDiscountAmount = coupon ? couponDiscount(coupon, subtotal) : 0;
 		const couponCode = coupon?.code ?? null;
-		const deliveryCost = zone.delivery_cost;
+		const deliveryCost =
+			settings.freeDeliveryMinSubtotal !== null &&
+			settings.freeDeliveryMinSubtotal >= 0 &&
+			subtotal >= settings.freeDeliveryMinSubtotal
+				? 0
+				: zone.delivery_cost;
 		const orderNumber = makeOrderNumber();
 		const orderId = ulid();
 		const customerId = ulid();
@@ -997,6 +1147,11 @@ export async function handleShopOrderCreate(
 			district: input.customer.district,
 			reference: input.customer.reference ?? null,
 			phone: input.customer.phone,
+			recipientName: input.recipientName ?? input.customer.name,
+			recipientPhone: input.recipientPhone ?? input.customer.phone,
+			scheduledDate: input.deliveryDate ?? null,
+			scheduledTime: input.deliveryTime ?? null,
+			instructions: input.deliveryInstructions ?? null,
 		};
 
 		await withTransaction(db, async (trx) => {
@@ -1059,6 +1214,10 @@ export async function handleShopOrderCreate(
 					address: input.customer.address,
 					district: input.customer.district,
 					reference: input.customer.reference ?? null,
+					document_type: input.customer.documentType ?? null,
+					document_number: input.customer.documentNumber ?? null,
+					fiscal_name: input.customer.fiscalName ?? null,
+					fiscal_address: input.customer.fiscalAddress ?? null,
 				})
 				.execute();
 			await trx
@@ -1116,6 +1275,11 @@ export async function handleShopOrderCreate(
 					reference: input.customer.reference ?? null,
 					phone: input.customer.phone,
 					delivery_cost: deliveryCost,
+					scheduled_date: input.deliveryDate ?? null,
+					scheduled_time: input.deliveryTime ?? null,
+					recipient_name: input.recipientName ?? input.customer.name,
+					recipient_phone: input.recipientPhone ?? input.customer.phone,
+					instructions: input.deliveryInstructions ?? null,
 				})
 				.execute();
 		});
@@ -1454,6 +1618,33 @@ export async function handleShopOrderGetByNumber(
 	}
 }
 
+export async function handleShopOrderWhatsAppUrl(
+	db: Kysely<Database>,
+	orderId: string,
+	templateKey?: string,
+): Promise<ApiResult<string>> {
+	const orderResult = await handleShopOrderGet(db, orderId);
+	if (!orderResult.success) return orderResult;
+	const settingsResult = await handleShopSettingsGet(db);
+	if (!settingsResult.success) return settingsResult;
+	const order = orderResult.data;
+	const customerPhone = typeof order.customer.phone === "string" ? order.customer.phone : null;
+	const url = makeWhatsAppUrl(
+		customerPhone,
+		order,
+		settingsResult.data,
+		order.customer,
+		order.delivery,
+		templateKey,
+	);
+	return url
+		? { success: true, data: url }
+		: {
+				success: false,
+				error: { code: "SHOP_WHATSAPP_UNAVAILABLE", message: "WhatsApp is not configured" },
+			};
+}
+
 export async function handleShopPaymentConfirm(
 	db: Kysely<Database>,
 	orderId: string,
@@ -1487,9 +1678,18 @@ export async function handleShopDeliveryUpdate(
 	courierName?: string,
 	trackingCode?: string | null,
 	trackingUrl?: string | null,
+	failedReason?: string | null,
+	scheduledDate?: string | null,
+	scheduledTime?: string | null,
+	cancellationReason?: string | null,
 ): Promise<ApiResult<null>> {
 	try {
 		const now = new Date().toISOString();
+		const existing = await db
+			.selectFrom("_emdash_shop_deliveries")
+			.select(["delivered_at", "rescheduled_at"])
+			.where("order_id", "=", orderId)
+			.executeTakeFirst();
 		await db
 			.updateTable("_emdash_shop_deliveries")
 			.set({
@@ -1497,6 +1697,11 @@ export async function handleShopDeliveryUpdate(
 				courier_name: courierName ?? null,
 				tracking_code: trackingCode ?? null,
 				tracking_url: trackingUrl ?? null,
+				failed_reason: failedReason ?? null,
+				scheduled_date: scheduledDate ?? null,
+				scheduled_time: scheduledTime ?? null,
+				delivered_at: status === "delivered" ? now : (existing?.delivered_at ?? null),
+				rescheduled_at: status === "rescheduled" ? now : (existing?.rescheduled_at ?? null),
 				updated_at: now,
 			})
 			.where("order_id", "=", orderId)
@@ -1508,10 +1713,17 @@ export async function handleShopDeliveryUpdate(
 					? "in_transit"
 					: status === "not_delivered"
 						? "not_delivered"
-						: "ready";
+						: status === "cancelled"
+							? "cancelled"
+							: "ready";
 		await db
 			.updateTable("_emdash_shop_orders")
-			.set({ delivery_status: status, status: orderStatus, updated_at: now })
+			.set({
+				delivery_status: status,
+				status: orderStatus,
+				cancellation_reason: status === "cancelled" ? (cancellationReason ?? null) : undefined,
+				updated_at: now,
+			})
 			.where("id", "=", orderId)
 			.execute();
 		return { success: true, data: null };

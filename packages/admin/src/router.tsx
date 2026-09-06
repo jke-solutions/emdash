@@ -412,6 +412,7 @@ function ContentListPage() {
 					author: authorFilter,
 					date: dateApiParams,
 					byline: bylineApiParams,
+					includeTerms: collection === "products",
 				},
 			],
 			queryFn: ({ pageParam }) =>
@@ -426,6 +427,7 @@ function ContentListPage() {
 					authorId: authorFilter || undefined,
 					...dateApiParams,
 					...bylineApiParams,
+					includeTerms: collection === "products",
 				}),
 			initialPageParam: undefined as string | undefined,
 			getNextPageParam: (lastPage) => lastPage.nextCursor,
@@ -609,6 +611,13 @@ function ContentListPage() {
 			},
 		];
 	});
+	if (collection === "products") {
+		listColumns.push(
+			{ slug: "category", label: t`Categories`, kind: "taxonomy", options: undefined },
+			{ slug: "tag", label: t`Tags`, kind: "taxonomy", options: undefined },
+		);
+	}
+	const isProductCollection = collection === "products";
 
 	const handleLocaleChange = (locale: string) => {
 		// Update URL search params without full navigation
@@ -647,13 +656,13 @@ function ContentListPage() {
 			onSearchChange={setSearchTerm}
 			statusFilter={statusFilter}
 			onStatusFilterChange={setStatusFilter}
-			authors={authors}
-			authorFilter={authorFilter}
-			onAuthorFilterChange={setAuthorFilter}
-			dateFilter={dateFilter}
-			onDateFilterChange={setDateFilter}
-			bylineFilter={bylineFilter}
-			onBylineFilterChange={setBylineFilter}
+			authors={isProductCollection ? undefined : authors}
+			authorFilter={isProductCollection ? "" : authorFilter}
+			onAuthorFilterChange={isProductCollection ? undefined : setAuthorFilter}
+			dateFilter={isProductCollection ? EMPTY_DATE_FILTER : dateFilter}
+			onDateFilterChange={isProductCollection ? undefined : setDateFilter}
+			bylineFilter={isProductCollection ? EMPTY_BYLINE_FILTER : bylineFilter}
+			onBylineFilterChange={isProductCollection ? undefined : setBylineFilter}
 			onBulkPublish={(ids) => bulkPublishMutation.mutateAsync(ids).then((r) => r.failedIds)}
 			onBulkUnpublish={(ids) => bulkUnpublishMutation.mutateAsync(ids).then((r) => r.failedIds)}
 			onBulkDelete={(ids) => bulkDeleteMutation.mutateAsync(ids).then((r) => r.failedIds)}

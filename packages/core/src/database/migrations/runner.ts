@@ -80,6 +80,7 @@ import * as m074 from "./074_shop_coupons.js";
 import * as m075 from "./075_shop_delivery_tracking.js";
 import * as m076 from "./076_promotional_campaign.js";
 import * as m077 from "./077_promotional_campaign_size.js";
+import * as m078 from "./078_shop_checkout_delivery_options.js";
 
 const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"001_initial": m001,
@@ -158,6 +159,7 @@ const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"075_shop_delivery_tracking": m075,
 	"076_promotional_campaign": m076,
 	"077_promotional_campaign_size": m077,
+	"078_shop_checkout_delivery_options": m078,
 });
 
 /** Ordered names from the statically registered migration set. */

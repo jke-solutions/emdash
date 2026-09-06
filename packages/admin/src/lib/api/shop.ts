@@ -10,6 +10,10 @@ export interface ShopSettings {
 	paymentMethods: string[];
 	deliveryInstructions: string | null;
 	businessHours: string | null;
+	preparationTime: string | null;
+	minimumSubtotal: number;
+	freeDeliveryMinSubtotal: number | null;
+	whatsappTemplates: Record<string, string>;
 	paymentGatewayEnabled: boolean;
 	paymentGatewayProvider: string | null;
 	paymentGatewayEnvironment: "sandbox" | "production";
@@ -189,6 +193,12 @@ export function fetchShopOrder(id: string): Promise<ShopOrderDetail> {
 	return get(`/admin/shop/orders/${encodeURIComponent(id)}`);
 }
 
+export function fetchShopOrderWhatsAppUrl(id: string, template: string): Promise<string> {
+	return get<string>(
+		`/admin/shop/orders/${encodeURIComponent(id)}/whatsapp?template=${encodeURIComponent(template)}`,
+	);
+}
+
 export function confirmShopPayment(
 	id: string,
 	input: { reference?: string; notes?: string } = {},
@@ -203,6 +213,7 @@ export function updateShopDelivery(
 		courierName?: string;
 		trackingCode?: string | null;
 		trackingUrl?: string | null;
+		cancellationReason?: string | null;
 	},
 ): Promise<null> {
 	return mutate(`/admin/shop/orders/${encodeURIComponent(id)}/delivery`, "PATCH", input);

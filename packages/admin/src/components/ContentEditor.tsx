@@ -1527,7 +1527,7 @@ function ProductPricingEditor({
 	return (
 		<div className="grid gap-4 rounded-lg border border-kumo-line p-4 sm:grid-cols-3">
 			<Input
-				label={t`Regular price`}
+				label={t`Precio regular`}
 				type="number"
 				min="0"
 				step="0.01"
@@ -1536,7 +1536,7 @@ function ProductPricingEditor({
 				required
 			/>
 			<Input
-				label={t`Discount percentage`}
+				label={t`Porcentaje de descuento`}
 				type="number"
 				min="0"
 				max="100"
@@ -1545,14 +1545,14 @@ function ProductPricingEditor({
 				onChange={(event) => updateDiscount(event.target.value)}
 			/>
 			<Input
-				label={t`Promotion price`}
+				label={t`Precio de promoción`}
 				type="number"
 				min="0"
 				step="0.01"
 				value={promotionPrice}
 				onChange={(event) => updatePromotionPrice(event.target.value)}
 			/>
-			<p className="text-sm text-kumo-subtle sm:col-span-3">{t`Enter a percentage to calculate the promotion price, or enter the promotion price directly.`}</p>
+			<p className="text-sm text-kumo-subtle sm:col-span-3">{t`Ingresa un porcentaje para calcular el precio de promoción o escribe directamente el precio de promoción.`}</p>
 		</div>
 	);
 }

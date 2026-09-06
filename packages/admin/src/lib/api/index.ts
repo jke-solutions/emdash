@@ -146,6 +146,7 @@ export {
 	fetchShopOrders,
 	fetchShopCustomers,
 	fetchShopOrder,
+	fetchShopOrderWhatsAppUrl,
 	confirmShopPayment,
 	updateShopDelivery,
 } from "./shop.js";

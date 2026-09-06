@@ -132,6 +132,7 @@ const contentFieldFiltersQuery = z
 export const contentListQuery = cursorPaginationQuery
 	.extend({
 		status: z.string().optional(),
+		includeTerms: booleanParam,
 		orderBy: z.string().optional(),
 		order: z.enum(["asc", "desc"]).optional(),
 		locale: localeCode.optional(),

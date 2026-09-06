@@ -19,7 +19,17 @@ if (!product) {
 Astro.cache.set(cacheHint);
 
 const data = product.data as unknown as Record<string, unknown>;
-const name = typeof data.name === "string" ? data.name : "Product";
+const name = typeof data.name === "string" ? data.name : "Producto";
+type ProductTerm = { label?: unknown; slug?: unknown };
+const terms = data.terms && typeof data.terms === "object" && !Array.isArray(data.terms)
+	? (data.terms as Record<string, ProductTerm[]>)
+	: {};
+const categories = Array.isArray(terms.category)
+	? terms.category.filter((term) => typeof term?.label === "string")
+	: [];
+const tags = Array.isArray(terms.tag)
+	? terms.tag.filter((term) => typeof term?.label === "string")
+	: [];
 const richDescription = Array.isArray(data.rich_description)
 	? (data.rich_description as PortableTextBlock[])
 	: [];
@@ -83,19 +93,25 @@ const seo = getSeoMeta(product, {
 	content={{ collection: "products", id: product.id, slug }}
 >
 	<main class="product-page">
-		<a class="back-link" href="/shop">← Back to shop</a>
+		<a class="back-link" href="/shop">← Volver a la tienda</a>
 		<section class="product-card">
 			<div class="product-image" data-product-image>
-				{featuredImage ? <ProductImage id="product-image" image={featuredImage} alt={name} /> : <span>Product image</span>}
+				{featuredImage ? <ProductImage id="product-image" image={featuredImage} alt={name} /> : <span>Imagen del producto</span>}
 			</div>
 			<div class="product-copy">
 				{promotionPrice !== null && price !== null && promotionPrice < price && (
-					<span class="promotion-label">Promotion</span>
+					<span class="promotion-label">Oferta</span>
+				)}
+				{(categories.length > 0 || tags.length > 0) && (
+					<div class="product-taxonomies" aria-label="Categorías y etiquetas del producto">
+						{categories.map((term) => <span class="taxonomy-badge">{term.label}</span>)}
+						{tags.map((term) => <span class="taxonomy-badge taxonomy-badge--tag">#{term.label}</span>)}
+					</div>
 				)}
 				<h1 {...product.edit.name}>{name}</h1>
 				{variants.length > 0 && (
 					<label class="variant-picker">
-						<span>Choose an option</span>
+						<span>Elige una opción</span>
 						<select
 							id="product-variant-select"
 							value=""
@@ -103,7 +119,7 @@ const seo = getSeoMeta(product, {
 							data-base-stock={initialStock ?? ""}
 							data-base-image={featuredImageUrl ?? ""}
 						>
-							<option value="">Base product</option>
+							<option value="">Producto base</option>
 							{variants.map((variant) => (
 								<option
 									value={variant.label}
@@ -132,17 +148,21 @@ const seo = getSeoMeta(product, {
 					</div>
 				)}
 				<p class:list={["availability", !isAvailable && "unavailable"]}>
-					<span id="product-stock">{variants.length > 0 ? `${initialStock ?? ""} available for delivery` : isAvailable ? `${initialStock ?? ""} available for delivery` : "Currently unavailable"}</span>
+					<span id="product-stock">{variants.length > 0 ? `${initialStock ?? ""} disponibles para entrega` : isAvailable ? `${initialStock ?? ""} disponibles para entrega` : "No disponible actualmente"}</span>
 				</p>
-				<div class="quantity-picker" aria-label="Quantity">
+				<div class="quantity-picker" aria-label="Cantidad">
 					<button id="decrease-quantity" type="button" disabled={!isAvailable}>−</button>
 					<strong id="product-quantity">1</strong>
 					<button id="increase-quantity" type="button" disabled={!isAvailable}>+</button>
 				</div>
 				<button id="add-product-to-cart" class="order-button" disabled={!isAvailable} type="button">
-					{isAvailable ? "Add to order" : "Back to shop"}
+					{isAvailable ? "Agregar al pedido" : "Volver a la tienda"}
 				</button>
 			</div>
+		</section>
+		<section class="related-products" id="related-products" hidden aria-labelledby="related-products-title">
+			<h2 id="related-products-title">También te puede interesar</h2>
+			<div class="related-products-grid" id="related-products-grid"></div>
 		</section>
 	</main>
 </Base>
@@ -160,13 +180,15 @@ const seo = getSeoMeta(product, {
 	const price = document.querySelector("#product-price");
 	const stock = document.querySelector("#product-stock");
 	const imageContainer = document.querySelector("[data-product-image]");
+	const relatedSection = document.querySelector("#related-products");
+	const relatedGrid = document.querySelector("#related-products-grid");
 	const payload = payloadElement?.textContent ? JSON.parse(payloadElement.textContent) : null;
 	const basePrice = select instanceof HTMLSelectElement ? select.dataset.basePrice : "";
 	const baseStock = select instanceof HTMLSelectElement ? select.dataset.baseStock : "";
 	const baseImage = select instanceof HTMLSelectElement ? select.dataset.baseImage ?? "" : "";
 	let quantity = 1;
 
-	const updateImage = (source: string, alt = "Product image") => {
+	const updateImage = (source: string, alt = "Imagen del producto") => {
 		if (!imageContainer) return;
 		if (source) {
 			let image = imageContainer.querySelector("img");
@@ -179,7 +201,7 @@ const seo = getSeoMeta(product, {
 				image.removeAttribute("sizes");
 				image.src = source;
 		} else if (!imageContainer.querySelector("img")) {
-			imageContainer.textContent = "Product image";
+			imageContainer.textContent = "Imagen del producto";
 		}
 	};
 
@@ -254,21 +276,60 @@ const seo = getSeoMeta(product, {
 			}
 			if (stock) {
 				const displayedStock = selectedVariant ? optionStock : baseStock;
-				stock.textContent = displayedStock ? `${displayedStock} available for delivery` : "Available for delivery";
+				stock.textContent = displayedStock ? `${displayedStock} disponibles para entrega` : "Disponible para entrega";
 			}
 			if (addButton instanceof HTMLButtonElement) {
 				const available = selectedVariant
 					? (selectedVariant.stock === null || selectedVariant.stock > 0)
 					: baseStock === "" || Number(baseStock) > 0;
 				addButton.disabled = !available;
-				addButton.textContent = available ? "Add to order" : "Currently unavailable";
+				addButton.textContent = available ? "Agregar al pedido" : "No disponible actualmente";
 				if (decreaseQuantity instanceof HTMLButtonElement) decreaseQuantity.disabled = !available || quantity <= 1;
 				if (increaseQuantity instanceof HTMLButtonElement) increaseQuantity.disabled = !available || (selectedVariant?.stock ?? (baseStock === "" ? null : Number(baseStock))) === quantity;
 			}
 			updateQuantity();
-			updateImage(selectedVariant ? (optionImage ?? "") : baseImage, selectedVariant ? "Product variation" : "Product image");
+			updateImage(selectedVariant ? (optionImage ?? "") : baseImage, selectedVariant ? "Variación del producto" : "Imagen del producto");
 		});
 	}
+
+	const loadRelatedProducts = async () => {
+		if (!(relatedSection instanceof HTMLElement) || !(relatedGrid instanceof HTMLElement) || !payload?.id) return;
+		try {
+			const response = await fetch(`/_emdash/api/shop/products/${encodeURIComponent(payload.id)}/related?limit=4`);
+			if (!response.ok) return;
+			const body = await response.json();
+			const products = Array.isArray(body?.data) ? body.data : [];
+			for (const item of products) {
+				const productData = item?.data;
+				if (!productData || typeof productData.name !== "string" || typeof item.slug !== "string") continue;
+				const link = document.createElement("a");
+				link.className = "related-product";
+				link.href = `/shop/products/${encodeURIComponent(item.slug)}`;
+				const image = productData.featured_image;
+				const imageUrl = typeof image?.src === "string" ? image.src : typeof image?.id === "string" ? `/_emdash/api/media/file/${image.id}` : "";
+				if (imageUrl) {
+					const imageElement = document.createElement("img");
+					imageElement.src = imageUrl;
+					imageElement.alt = productData.name;
+					imageElement.loading = "lazy";
+					link.append(imageElement);
+				}
+				const name = document.createElement("strong");
+				name.textContent = productData.name;
+				link.append(name);
+				if (typeof productData.price === "number") {
+					const priceElement = document.createElement("span");
+					priceElement.textContent = `S/ ${productData.price.toFixed(2)}`;
+					link.append(priceElement);
+				}
+				relatedGrid.append(link);
+			}
+			if (relatedGrid.childElementCount > 0) relatedSection.hidden = false;
+		} catch {
+			return;
+		}
+	};
+	void loadRelatedProducts();
 </script>
 
 <style>
@@ -334,6 +395,26 @@ const seo = getSeoMeta(product, {
 		letter-spacing: var(--tracking-wide);
 	}
 
+	.product-taxonomies {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-2);
+		margin-bottom: var(--spacing-3);
+	}
+
+	.taxonomy-badge {
+		padding: var(--spacing-1) var(--spacing-2);
+		border-radius: var(--radius);
+		background: var(--color-bg-subtle);
+		color: var(--color-text-secondary);
+		font-size: var(--font-size-sm);
+	}
+
+	.taxonomy-badge--tag {
+		background: var(--color-accent-subtle);
+		color: var(--color-accent);
+	}
+
 	h1 {
 		margin-bottom: var(--spacing-5);
 		font-size: clamp(2rem, 5vw, var(--font-size-5xl));
@@ -385,6 +466,48 @@ const seo = getSeoMeta(product, {
 
 	.rich-description {
 		margin-top: var(--spacing-6);
+	}
+
+	.related-products {
+		margin-top: var(--spacing-12);
+	}
+
+	.related-products h2 {
+		margin-bottom: var(--spacing-5);
+		font-size: var(--font-size-2xl);
+	}
+
+	.related-products-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		gap: var(--spacing-4);
+	}
+
+	.related-product {
+		display: grid;
+		gap: var(--spacing-2);
+		padding: var(--spacing-3);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+	.related-product:hover {
+		border-color: var(--color-accent);
+	}
+
+	.related-product img {
+		width: 100%;
+		aspect-ratio: 1;
+		object-fit: cover;
+		border-radius: var(--radius-sm);
+		background: var(--color-bg-subtle);
+	}
+
+	.related-product span {
+		color: var(--color-text-secondary);
+		font-size: var(--font-size-sm);
 	}
 
 	.availability {

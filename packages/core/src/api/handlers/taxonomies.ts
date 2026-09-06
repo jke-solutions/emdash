@@ -342,7 +342,7 @@ export async function handleTaxonomyCreate(
 	},
 ): Promise<ApiResult<TaxonomyResponse>> {
 	try {
-		const locale = resolveConfiguredLocale(input.locale ?? getI18nConfig()?.defaultLocale ?? "en");
+		const locale = resolveConfiguredLocale(input.locale ?? getI18nConfig()?.defaultLocale ?? "es");
 		if (!NAME_PATTERN.test(input.name)) {
 			return {
 				success: false,
@@ -629,7 +629,7 @@ export async function handleTermList(
 				? await repo.findByNameResolved(
 						taxonomyName,
 						locale,
-						getI18nConfig()?.defaultLocale ?? "en",
+						getI18nConfig()?.defaultLocale ?? "es",
 					)
 				: await repo.findByName(taxonomyName, { locale });
 
@@ -875,7 +875,7 @@ export async function handleTermCreate(
 ): Promise<ApiResult<TermResponse>> {
 	let attemptedSlug = input.slug;
 	try {
-		const locale = resolveConfiguredLocale(input.locale ?? getI18nConfig()?.defaultLocale ?? "en");
+		const locale = resolveConfiguredLocale(input.locale ?? getI18nConfig()?.defaultLocale ?? "es");
 		// Taxonomy definitions are per-locale, but terms can exist in any locale
 		// regardless of whether the def has been translated there. Look up the
 		// def across all locales — we only care that it *exists*.

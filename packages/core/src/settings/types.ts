@@ -50,6 +50,31 @@ export interface SeoSettings {
 	bingVerification?: string;
 }
 
+/** Public design tokens consumed by themes, widgets, and email templates. */
+export interface ThemeSettings {
+	colors?: {
+		primary?: string;
+		primaryHover?: string;
+		secondary?: string;
+		secondaryHover?: string;
+		background?: string;
+		surface?: string;
+		text?: string;
+		muted?: string;
+		border?: string;
+		link?: string;
+		success?: string;
+		warning?: string;
+		danger?: string;
+		onPrimary?: string;
+		onSecondary?: string;
+	};
+	fonts?: {
+		body?: string;
+		heading?: string;
+	};
+}
+
 /** Site settings schema */
 export interface SiteSettings {
 	// Identity
@@ -65,6 +90,9 @@ export interface SiteSettings {
 	postsPerPage: number;
 	dateFormat: string;
 	timezone: string;
+
+	// Public design tokens
+	theme?: ThemeSettings;
 
 	// Social
 	social?: {

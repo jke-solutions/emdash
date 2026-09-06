@@ -647,6 +647,11 @@ export function injectCoreRoutes(
 	});
 
 	injectRoute({
+		pattern: "/_emdash/api/shop/products/[id]/related",
+		entrypoint: resolveRoute("api/shop/products/[id]/related.ts"),
+	});
+
+	injectRoute({
 		pattern: "/_emdash/api/shop/settings",
 		entrypoint: resolveRoute("api/shop/settings.ts"),
 	});
@@ -720,6 +725,11 @@ export function injectCoreRoutes(
 	injectRoute({
 		pattern: "/_emdash/api/admin/shop/orders/[id]/delivery",
 		entrypoint: resolveRoute("api/admin/shop/orders/[id]/delivery.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/orders/[id]/whatsapp",
+		entrypoint: resolveRoute("api/admin/shop/orders/[id]/whatsapp.ts"),
 	});
 
 	// API token admin routes

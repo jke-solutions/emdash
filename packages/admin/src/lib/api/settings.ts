@@ -21,6 +21,26 @@ export interface SiteSettings {
 	postsPerPage: number;
 	dateFormat: string;
 	timezone: string;
+	theme?: {
+		colors?: {
+			primary?: string;
+			primaryHover?: string;
+			secondary?: string;
+			secondaryHover?: string;
+			background?: string;
+			surface?: string;
+			text?: string;
+			muted?: string;
+			border?: string;
+			link?: string;
+			success?: string;
+			warning?: string;
+			danger?: string;
+			onPrimary?: string;
+			onSecondary?: string;
+		};
+		fonts?: { body?: string; heading?: string };
+	};
 
 	// Social
 	social?: {

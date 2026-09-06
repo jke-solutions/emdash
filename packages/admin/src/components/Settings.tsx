@@ -46,7 +46,7 @@ export function Settings() {
 						to="/settings/general"
 						icon={<Gear className="h-5 w-5" />}
 						title={t`General`}
-						description={t`Site identity, logo, favicon, and reading preferences`}
+						description={t`Site identity, design colors, fonts, logo, favicon, and reading preferences`}
 					/>
 					<SettingsNavRow
 						to="/settings/social"
