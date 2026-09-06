@@ -1,11 +1,9 @@
 import { Sidebar as KumoSidebar, useSidebar } from "@cloudflare/kumo";
 import { useLingui } from "@lingui/react/macro";
 import { Gear, Palette, Storefront, Users } from "@phosphor-icons/react";
-import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "@tanstack/react-router";
 import * as React from "react";
 
-import { fetchCommentCounts } from "../lib/api/comments";
 import { useCurrentUser } from "../lib/api/current-user";
 import { resolvePluginPagePath, usePluginAdmins } from "../lib/plugin-context";
 import {
@@ -77,10 +75,8 @@ export function visibleCollectionEntries<T extends { hidden?: boolean }>(
 }
 
 /**
- * Whether any collection accepts comments. Drives both the "Comments" nav
- * entry and the inbox-badge count query — a site with comments disabled
- * everywhere never fires `/_emdash/api/admin/comments/counts`. Pure function,
- * exported for tests.
+ * Whether any collection accepts comments. Drives the "Comments" nav entry.
+ * Pure function, exported for tests.
  */
 export function anyCollectionAcceptsComments(
 	collections: Record<string, { commentsEnabled?: boolean }>,
@@ -248,15 +244,6 @@ export function SidebarNav({ manifest }: SidebarNavProps) {
 
 	const commentsEnabled = anyCollectionAcceptsComments(manifest.collections);
 
-	// Fetch pending comment count for badge
-	const { data: commentCounts } = useQuery({
-		queryKey: ["commentCounts"],
-		queryFn: fetchCommentCounts,
-		staleTime: 60 * 1000,
-		retry: false,
-		enabled: commentsEnabled && userRole >= ROLE_EDITOR,
-	});
-
 	// --- Build nav item groups ---
 
 	const contentItems: NavItem[] = [
@@ -280,7 +267,6 @@ export function SidebarNav({ manifest }: SidebarNavProps) {
 						label: t`Comments`,
 						icon: ADMIN_NAV_ICONS.comments,
 						minRole: ROLE_EDITOR,
-						badge: commentCounts?.pending,
 					},
 				]
 			: []),
