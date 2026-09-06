@@ -223,7 +223,7 @@ export function MediaPickerModal({
 	// first page remain selectable from the picker, not just the first 50).
 	// setQueryData is exact-match, so the optimistic dimension update below
 	// must share this exact key with the query that populates it.
-	const mediaQueryKey = ["media", filters?.join(",") ?? "", debouncedSearch.trim()];
+	const mediaQueryKey = ["media", "paged-10", filters?.join(",") ?? "", debouncedSearch.trim()];
 	const {
 		data: localData,
 		isLoading: localLoading,
@@ -236,7 +236,7 @@ export function MediaPickerModal({
 			fetchMediaList({
 				mimeType: filters,
 				cursor: pageParam,
-				limit: 100,
+				limit: 10,
 				search: debouncedSearch.trim() || undefined,
 			}),
 		initialPageParam: undefined as string | undefined,
@@ -855,10 +855,8 @@ function MediaPickerItem({
 	const isImage = item.mimeType.startsWith("image/");
 	const needsDimensions = isImage && (!item.width || !item.height);
 
-	// Serve a resized thumbnail only when the original dimensions are already
-	// known. When they're missing we display the original so `onLoad` can read
-	// the true `naturalWidth`/`naturalHeight` to backfill them — a resized
-	// rendition would report the thumbnail's dimensions and corrupt the record.
+	// When dimensions are missing, display the original so `onLoad` can read the
+	// true `naturalWidth`/`naturalHeight` to backfill them.
 	const displayUrl = needsDimensions ? item.url : getMediaThumbnailUrl(item.url, item.mimeType);
 
 	const handleImageLoad = React.useCallback(
@@ -891,6 +889,8 @@ function MediaPickerItem({
 						src={displayUrl}
 						alt=""
 						className="h-full w-full object-cover"
+						loading="lazy"
+						decoding="async"
 						onLoad={handleImageLoad}
 						onError={(e) => fallbackToOriginalThumbnail(e.currentTarget, item.url)}
 					/>
@@ -974,6 +974,8 @@ function ProviderMediaItem({
 						src={item.previewUrl}
 						alt=""
 						className="h-full w-full object-cover"
+						loading="lazy"
+						decoding="async"
 						onLoad={handleImageLoad}
 					/>
 				) : (

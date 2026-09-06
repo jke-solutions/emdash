@@ -31,7 +31,6 @@ import {
 	formatFileSize,
 	getMediaThumbnailUrl,
 	fallbackToOriginalThumbnail,
-	MEDIA_THUMBNAIL_WIDTH,
 } from "../lib/media-utils";
 import { cn } from "../lib/utils";
 import { ImageEditor } from "./ImageEditor.js";
@@ -753,9 +752,11 @@ function MediaGridItem({ item, selected, onClick }: MediaGridItemProps) {
 			<div className="aspect-square">
 				{isImage ? (
 					<img
-						src={getMediaThumbnailUrl(item.url, item.mimeType, MEDIA_THUMBNAIL_WIDTH)}
+						src={getMediaThumbnailUrl(item.url, item.mimeType)}
 						alt={item.alt || item.filename}
 						className="h-full w-full object-cover"
+						loading="lazy"
+						decoding="async"
 						onError={(e) => fallbackToOriginalThumbnail(e.currentTarget, item.url)}
 					/>
 				) : (
@@ -807,6 +808,8 @@ function ProviderGridItem({ item, selected, onClick, onDimensionsLoaded }: Provi
 						src={item.previewUrl}
 						alt={item.alt || item.filename}
 						className="h-full w-full object-cover"
+						loading="lazy"
+						decoding="async"
 						onLoad={handleImageLoad}
 					/>
 				) : (
@@ -849,6 +852,8 @@ function MediaListItem({ item, selected, onClick }: MediaListItemProps) {
 							src={getMediaThumbnailUrl(item.url, item.mimeType, 80)}
 							alt={item.alt || item.filename}
 							className="h-full w-full object-cover"
+							loading="lazy"
+							decoding="async"
 							onError={(e) => fallbackToOriginalThumbnail(e.currentTarget, item.url)}
 						/>
 					) : (
@@ -906,6 +911,8 @@ function ProviderListItem({ item, selected, onClick, onDimensionsLoaded }: Provi
 							src={item.previewUrl}
 							alt={item.alt || item.filename}
 							className="h-full w-full object-cover"
+							loading="lazy"
+							decoding="async"
 							onLoad={handleImageLoad}
 						/>
 					) : (
