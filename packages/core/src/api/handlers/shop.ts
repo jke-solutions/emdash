@@ -4,7 +4,7 @@ import { ulid } from "ulidx";
 import { decryptShopSecret, encryptShopSecret } from "../../config/secrets.js";
 import { ContentRepository } from "../../database/repositories/content.js";
 import { withTransaction } from "../../database/transaction.js";
-import type { Database } from "../../database/types.js";
+import type { Database, ShopCouponTable } from "../../database/types.js";
 import { invalidateCollectionCache } from "../../object-cache/index.js";
 import type { ApiResult } from "../types.js";
 
@@ -42,6 +42,10 @@ export interface ShopSettings {
 	paymentMethods: string[];
 	deliveryInstructions: string | null;
 	businessHours: string | null;
+	preparationTime: string | null;
+	minimumSubtotal: number;
+	freeDeliveryMinSubtotal: number | null;
+	whatsappTemplates: Record<string, string>;
 	paymentGatewayEnabled: boolean;
 	paymentGatewayProvider: string | null;
 	paymentGatewayEnvironment: "sandbox" | "production";
@@ -62,6 +66,10 @@ export interface ShopPublicSettings {
 	paymentMethods: string[];
 	deliveryInstructions: string | null;
 	businessHours: string | null;
+	preparationTime: string | null;
+	minimumSubtotal: number;
+	freeDeliveryMinSubtotal: number | null;
+	whatsappTemplates: Record<string, string>;
 }
 
 export interface ShopSettingsUpdateInput extends Partial<Omit<ShopSettings, "id">> {
@@ -97,10 +105,35 @@ export interface ShopOrderInput {
 		address: string;
 		district: string;
 		reference?: string;
+		documentType?: string;
+		documentNumber?: string;
+		fiscalName?: string;
+		fiscalAddress?: string;
 	};
 	deliveryZoneId: string;
+	deliveryDate?: string;
+	deliveryTime?: string;
+	recipientName?: string;
+	recipientPhone?: string;
+	deliveryInstructions?: string;
 	paymentMethod: string;
 	notes?: string;
+	couponCode?: string;
+}
+
+export interface ShopCoupon {
+	id: string;
+	code: string;
+	discountType: "percentage" | "fixed";
+	discountValue: number;
+	minimumSubtotal: number;
+	startsAt: string | null;
+	expiresAt: string | null;
+	usageLimit: number | null;
+	usageCount: number;
+	active: boolean;
+	createdAt: string | null;
+	updatedAt: string | null;
 }
 
 export interface ShopOrderSummary {
@@ -116,6 +149,8 @@ export interface ShopOrderSummary {
 	deliveryCost: number;
 	total: number;
 	whatsappUrl: string | null;
+	couponCode?: string | null;
+	couponDiscount?: number;
 }
 
 type ShopWhatsAppOrder = ShopOrderSummary & {
@@ -184,6 +219,14 @@ function parseJsonRecord(value: string | null | undefined): Record<string, unkno
 	return isRecord(parsed) ? parsed : {};
 }
 
+function parseJsonStringRecord(value: string | null | undefined): Record<string, string> {
+	return Object.fromEntries(
+		Object.entries(parseJsonRecord(value)).filter(
+			(entry): entry is [string, string] => typeof entry[1] === "string",
+		),
+	);
+}
+
 function toSettings(row: {
 	id: string;
 	store_name: string;
@@ -194,6 +237,10 @@ function toSettings(row: {
 	payment_methods: string;
 	delivery_instructions: string | null;
 	business_hours: string | null;
+	preparation_time: string | null;
+	minimum_subtotal: number;
+	free_delivery_min_subtotal: number | null;
+	whatsapp_templates: string;
 	payment_gateway_enabled: number;
 	payment_gateway_provider: string | null;
 	payment_gateway_environment: string;
@@ -213,6 +260,10 @@ function toSettings(row: {
 		paymentMethods: parseJsonStringArray(row.payment_methods, DEFAULT_PAYMENT_METHODS),
 		deliveryInstructions: row.delivery_instructions,
 		businessHours: row.business_hours,
+		preparationTime: row.preparation_time,
+		minimumSubtotal: row.minimum_subtotal ?? 0,
+		freeDeliveryMinSubtotal: row.free_delivery_min_subtotal,
+		whatsappTemplates: parseJsonStringRecord(row.whatsapp_templates),
 		paymentGatewayEnabled: row.payment_gateway_enabled === 1,
 		paymentGatewayProvider: row.payment_gateway_provider,
 		paymentGatewayEnvironment:
@@ -267,26 +318,218 @@ function productVariants(data: Record<string, unknown>): ShopVariant[] {
 	return data.variants.filter((variant): variant is ShopVariant => isRecord(variant));
 }
 
-function hasProductVariants(data: Record<string, unknown>): boolean {
-	const enabled =
-		data.has_variations === true || data.has_variations === 1 || data.has_variations === "1";
-	return enabled && productVariants(data).length > 0;
-}
-
 function isProductAvailable(data: Record<string, unknown>): boolean {
 	const availability = data.availability_status ?? data.availability;
 	const stock = data.stock;
-	const variantsAvailable = productVariants(data).some(
-		(variant) => typeof variant.stock !== "number" || variant.stock > 0,
-	);
 	return (
 		availability !== "sold_out" &&
 		availability !== "hidden" &&
-		(hasProductVariants(data) ? variantsAvailable : typeof stock !== "number" || stock > 0)
+		(typeof stock !== "number" || stock > 0)
 	);
 }
 
+function normalizeCouponCode(code: string): string {
+	return code.trim().toUpperCase();
+}
+
+type ShopCouponRow = Omit<
+	ShopCouponTable,
+	"active" | "created_at" | "updated_at" | "usage_count"
+> & {
+	active: number;
+	created_at: string;
+	updated_at: string;
+	usage_count: number;
+};
+
+function toCoupon(row: ShopCouponRow): ShopCoupon {
+	return {
+		id: row.id,
+		code: row.code,
+		discountType: row.discount_type === "fixed" ? "fixed" : "percentage",
+		discountValue: row.discount_value,
+		minimumSubtotal: row.minimum_subtotal,
+		startsAt: row.starts_at,
+		expiresAt: row.expires_at,
+		usageLimit: row.usage_limit,
+		usageCount: row.usage_count,
+		active: row.active === 1,
+		createdAt: row.created_at ?? null,
+		updatedAt: row.updated_at ?? null,
+	};
+}
+
+function couponDiscount(coupon: ShopCoupon, subtotal: number): number {
+	const raw =
+		coupon.discountType === "percentage"
+			? subtotal * (coupon.discountValue / 100)
+			: coupon.discountValue;
+	return Math.min(subtotal, Math.max(0, Math.round(raw * 100) / 100));
+}
+
+function couponIsUsable(coupon: ShopCoupon, subtotal: number, now = new Date()): string | null {
+	if (!coupon.active) return "Coupon is inactive";
+	if (coupon.startsAt && now < new Date(coupon.startsAt)) return "Coupon is not active yet";
+	if (coupon.expiresAt && now > new Date(coupon.expiresAt)) return "Coupon has expired";
+	if (coupon.usageLimit !== null && coupon.usageCount >= coupon.usageLimit)
+		return "Coupon usage limit reached";
+	if (subtotal < coupon.minimumSubtotal) return "Order subtotal does not meet the coupon minimum";
+	return null;
+}
+
+export async function handleShopCouponList(db: Kysely<Database>): Promise<ApiResult<ShopCoupon[]>> {
+	try {
+		const rows = await db
+			.selectFrom("_emdash_shop_coupons")
+			.selectAll()
+			.orderBy("created_at", "desc")
+			.execute();
+		return { success: true, data: rows.map(toCoupon) };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_LIST_ERROR", message: "Failed to list coupons" },
+		};
+	}
+}
+
+export async function handleShopCouponValidate(
+	db: Kysely<Database>,
+	code: string,
+	subtotal: number,
+): Promise<ApiResult<{ code: string; discount: number; totalAfterDiscount: number }>> {
+	try {
+		const coupon = await db
+			.selectFrom("_emdash_shop_coupons")
+			.selectAll()
+			.where("code", "=", normalizeCouponCode(code))
+			.executeTakeFirst();
+		if (!coupon)
+			return {
+				success: false,
+				error: { code: "SHOP_COUPON_INVALID", message: "Coupon is invalid" },
+			};
+		const parsed = toCoupon(coupon);
+		const reason = couponIsUsable(parsed, subtotal);
+		if (reason) return { success: false, error: { code: "SHOP_COUPON_INVALID", message: reason } };
+		const discount = couponDiscount(parsed, subtotal);
+		return {
+			success: true,
+			data: { code: parsed.code, discount, totalAfterDiscount: subtotal - discount },
+		};
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_VALIDATE_ERROR", message: "Failed to validate coupon" },
+		};
+	}
+}
+
+export async function handleShopCouponCreate(
+	db: Kysely<Database>,
+	input: {
+		code: string;
+		discountType: "percentage" | "fixed";
+		discountValue: number;
+		minimumSubtotal?: number;
+		startsAt?: string | null;
+		expiresAt?: string | null;
+		usageLimit?: number | null;
+		active?: boolean;
+	},
+): Promise<ApiResult<ShopCoupon>> {
+	try {
+		const id = ulid();
+		await db
+			.insertInto("_emdash_shop_coupons")
+			.values({
+				id,
+				code: normalizeCouponCode(input.code),
+				discount_type: input.discountType,
+				discount_value: input.discountValue,
+				minimum_subtotal: input.minimumSubtotal ?? 0,
+				starts_at: input.startsAt ?? null,
+				expires_at: input.expiresAt ?? null,
+				usage_limit: input.usageLimit ?? null,
+				active: input.active === false ? 0 : 1,
+			})
+			.execute();
+		const row = await db
+			.selectFrom("_emdash_shop_coupons")
+			.selectAll()
+			.where("id", "=", id)
+			.executeTakeFirstOrThrow();
+		return { success: true, data: toCoupon(row) };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_CREATE_ERROR", message: "Failed to create coupon" },
+		};
+	}
+}
+
+export async function handleShopCouponUpdate(
+	db: Kysely<Database>,
+	id: string,
+	input: Partial<Parameters<typeof handleShopCouponCreate>[1]>,
+): Promise<ApiResult<ShopCoupon>> {
+	try {
+		const existing = await db
+			.selectFrom("_emdash_shop_coupons")
+			.selectAll()
+			.where("id", "=", id)
+			.executeTakeFirst();
+		if (!existing)
+			return { success: false, error: { code: "NOT_FOUND", message: "Coupon not found" } };
+		const values = {
+			code: input.code === undefined ? existing.code : normalizeCouponCode(input.code),
+			discount_type: input.discountType ?? existing.discount_type,
+			discount_value: input.discountValue ?? existing.discount_value,
+			minimum_subtotal: input.minimumSubtotal ?? existing.minimum_subtotal,
+			starts_at: input.startsAt === undefined ? existing.starts_at : input.startsAt,
+			expires_at: input.expiresAt === undefined ? existing.expires_at : input.expiresAt,
+			usage_limit: input.usageLimit === undefined ? existing.usage_limit : input.usageLimit,
+			active: input.active === undefined ? existing.active : input.active ? 1 : 0,
+			updated_at: new Date().toISOString(),
+		};
+		await db.updateTable("_emdash_shop_coupons").set(values).where("id", "=", id).execute();
+		return {
+			success: true,
+			data: toCoupon(
+				await db
+					.selectFrom("_emdash_shop_coupons")
+					.selectAll()
+					.where("id", "=", id)
+					.executeTakeFirstOrThrow(),
+			),
+		};
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_UPDATE_ERROR", message: "Failed to update coupon" },
+		};
+	}
+}
+
+export async function handleShopCouponDelete(
+	db: Kysely<Database>,
+	id: string,
+): Promise<ApiResult<null>> {
+	try {
+		const result = await db.deleteFrom("_emdash_shop_coupons").where("id", "=", id).execute();
+		return Number(result[0]?.numDeletedRows ?? 0)
+			? { success: true, data: null }
+			: { success: false, error: { code: "NOT_FOUND", message: "Coupon not found" } };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_COUPON_DELETE_ERROR", message: "Failed to delete coupon" },
+		};
+	}
+}
+
 class ShopStockError extends Error {}
+class ShopCouponError extends Error {}
 
 function makeOrderNumber(): string {
 	return `#${Date.now().toString(36).toUpperCase()}-${ulid().slice(-4)}`;
@@ -298,6 +541,7 @@ function makeWhatsAppUrl(
 	settings: ShopSettings,
 	customer?: Record<string, unknown>,
 	delivery?: Record<string, unknown>,
+	templateKey?: string,
 ): string | null {
 	if (!phone) return null;
 	const cleanPhone = phone.replace(/\D/g, "");
@@ -308,7 +552,10 @@ function makeWhatsAppUrl(
 				`- ${item.productName} x${item.quantity}: ${settings.currencySymbol} ${item.subtotal.toFixed(2)}`,
 		) ?? [];
 	const message = [
-		settings.whatsappMessage || "Hola, quiero coordinar el pago de mi pedido.",
+		(templateKey ? settings.whatsappTemplates[templateKey] : null) ||
+			settings.whatsappMessage ||
+			settings.whatsappTemplates.orderReceived ||
+			"Hola, quiero coordinar el pago de mi pedido.",
 		settings.storeName ? `Tienda: ${settings.storeName}` : null,
 		`Pedido: ${order.orderNumber}`,
 		typeof customer?.name === "string" ? `Cliente: ${customer.name}` : null,
@@ -316,6 +563,9 @@ function makeWhatsAppUrl(
 			? `Delivery: ${delivery.address}${typeof delivery.district === "string" ? `, ${delivery.district}` : ""}`
 			: null,
 		...itemLines,
+		order.couponCode
+			? `Cupón: ${order.couponCode} (-${settings.currencySymbol} ${(order.couponDiscount ?? 0).toFixed(2)})`
+			: null,
 		`Total: ${settings.currencySymbol} ${order.total.toFixed(2)}`,
 	]
 		.filter((line): line is string => line !== null)
@@ -345,6 +595,10 @@ export async function handleShopSettingsGet(
 				paymentMethods: DEFAULT_PAYMENT_METHODS,
 				deliveryInstructions: null,
 				businessHours: null,
+				preparationTime: null,
+				minimumSubtotal: 0,
+				freeDeliveryMinSubtotal: null,
+				whatsappTemplates: {},
 				paymentGatewayEnabled: false,
 				paymentGatewayProvider: null,
 				paymentGatewayEnvironment: "sandbox",
@@ -378,6 +632,10 @@ export async function handleShopPublicSettingsGet(
 		paymentMethods,
 		deliveryInstructions,
 		businessHours,
+		preparationTime,
+		minimumSubtotal,
+		freeDeliveryMinSubtotal,
+		whatsappTemplates,
 	} = result.data;
 	return {
 		success: true,
@@ -391,6 +649,10 @@ export async function handleShopPublicSettingsGet(
 			paymentMethods,
 			deliveryInstructions,
 			businessHours,
+			preparationTime,
+			minimumSubtotal,
+			freeDeliveryMinSubtotal,
+			whatsappTemplates,
 		},
 	};
 }
@@ -430,6 +692,13 @@ export async function handleShopSettingsUpdate(
 			),
 			delivery_instructions: input.deliveryInstructions ?? existing?.delivery_instructions ?? null,
 			business_hours: input.businessHours ?? existing?.business_hours ?? null,
+			preparation_time: input.preparationTime ?? existing?.preparation_time ?? null,
+			minimum_subtotal: input.minimumSubtotal ?? existing?.minimum_subtotal ?? 0,
+			free_delivery_min_subtotal:
+				input.freeDeliveryMinSubtotal ?? existing?.free_delivery_min_subtotal ?? null,
+			whatsapp_templates: JSON.stringify(
+				input.whatsappTemplates ?? parseJsonRecord(existing?.whatsapp_templates),
+			),
 			payment_gateway_enabled:
 				input.paymentGatewayEnabled === undefined
 					? (existing?.payment_gateway_enabled ?? 0)
@@ -610,13 +879,111 @@ export async function handleShopProductList(db: Kysely<Database>): Promise<ApiRe
 			limit: 100,
 			where: { status: "published" },
 		});
-		return { success: true, data: result.items.filter((item) => isProductAvailable(item.data)) };
+		const products = result.items.filter((item) => isProductAvailable(item.data));
+		if (products.length === 0) return { success: true, data: products };
+
+		const entryIds = products.map((product) => product.translationGroup ?? product.id);
+		const termRows = await db
+			.selectFrom("content_taxonomies")
+			.innerJoin("taxonomies", "taxonomies.translation_group", "content_taxonomies.taxonomy_id")
+			.select([
+				"content_taxonomies.entry_id as entryId",
+				"taxonomies.name as taxonomy",
+				"taxonomies.slug as slug",
+				"taxonomies.label as label",
+			])
+			.where("content_taxonomies.collection", "=", SHOP_COLLECTION)
+			.where("content_taxonomies.entry_id", "in", entryIds)
+			.where("taxonomies.name", "in", ["category", "tag"])
+			.orderBy("taxonomies.label", "asc")
+			.execute();
+		const termsByEntry = new Map<string, Record<string, Array<{ slug: string; label: string }>>>();
+		for (const row of termRows) {
+			const terms = termsByEntry.get(row.entryId) ?? {};
+			(terms[row.taxonomy] ??= []).push({ slug: row.slug, label: row.label });
+			termsByEntry.set(row.entryId, terms);
+		}
+		return {
+			success: true,
+			data: products.map((product) => ({
+				...product,
+				data: {
+					...product.data,
+					terms: termsByEntry.get(product.translationGroup ?? product.id) ?? {},
+				},
+			})),
+		};
 	} catch {
 		return {
 			success: false,
 			error: { code: "SHOP_PRODUCT_LIST_ERROR", message: "Failed to list shop products" },
 		};
 	}
+}
+
+export async function handleShopProductRelatedList(
+	db: Kysely<Database>,
+	id: string,
+	options: { limit?: number; strategy?: "both" | "category" | "tag" } = {},
+): Promise<ApiResult<unknown[]>> {
+	try {
+		const productsResult = await handleShopProductList(db);
+		if (!productsResult.success) return productsResult;
+		const products = productsResult.data.filter(isRelatedProduct);
+		const current = products.find((product) => product.id === id || product.slug === id);
+		if (!current) return { success: true, data: [] };
+
+		const terms = isRecord(current.data?.terms) ? current.data.terms : {};
+		const strategy = options.strategy ?? "both";
+		const categories = new Set(strategy === "tag" ? [] : termSlugs(terms.category));
+		const tags = new Set(strategy === "category" ? [] : termSlugs(terms.tag));
+		if (categories.size === 0 && tags.size === 0) return { success: true, data: [] };
+
+		const limit = Math.min(Math.max(options.limit ?? 4, 1), 12);
+		const related = products
+			.filter((product) => product.id !== current.id)
+			.map((product, index) => {
+				const productTerms = product.data?.terms;
+				const productTermRecord = isRecord(productTerms) ? productTerms : {};
+				const categoryMatches = termSlugs(productTermRecord.category).filter((slug) =>
+					categories.has(slug),
+				).length;
+				const tagMatches = termSlugs(productTermRecord.tag).filter((slug) => tags.has(slug)).length;
+				return { product, score: categoryMatches * 2 + tagMatches, index };
+			})
+			.filter((item) => item.score > 0)
+			.toSorted((a, b) => b.score - a.score || a.index - b.index)
+			.slice(0, limit)
+			.map((item) => item.product);
+		return { success: true, data: related };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_PRODUCT_RELATED_ERROR", message: "Failed to list related products" },
+		};
+	}
+}
+
+function termSlugs(value: unknown): string[] {
+	if (!Array.isArray(value)) return [];
+	return value.flatMap((term) => {
+		if (!isRecord(term)) return [];
+		const slug = term.slug;
+		return typeof slug === "string" ? [slug] : [];
+	});
+}
+
+function isRelatedProduct(value: unknown): value is {
+	id?: string;
+	slug?: string | null;
+	data?: Record<string, unknown>;
+} {
+	if (!isRecord(value)) return false;
+	return (
+		(value.id === undefined || typeof value.id === "string") &&
+		(value.slug === undefined || value.slug === null || typeof value.slug === "string") &&
+		(value.data === undefined || isRecord(value.data))
+	);
 }
 
 export async function handleShopProductGet(
@@ -743,7 +1110,42 @@ export async function handleShopOrderCreate(
 
 		const subtotal = items.reduce((sum, item) => sum + item.subtotal, 0);
 		const discount = items.reduce((sum, item) => sum + item.discount, 0);
-		const deliveryCost = zone.delivery_cost;
+		if (subtotal < settings.minimumSubtotal) {
+			return {
+				success: false,
+				error: {
+					code: "SHOP_MINIMUM_SUBTOTAL",
+					message: "Order subtotal is below the shop minimum",
+					details: { minimumSubtotal: settings.minimumSubtotal },
+				},
+			};
+		}
+		const couponRow = input.couponCode
+			? await db
+					.selectFrom("_emdash_shop_coupons")
+					.selectAll()
+					.where("code", "=", normalizeCouponCode(input.couponCode))
+					.executeTakeFirst()
+			: undefined;
+		const coupon = couponRow ? toCoupon(couponRow) : null;
+		if (input.couponCode && !coupon)
+			return {
+				success: false,
+				error: { code: "SHOP_COUPON_INVALID", message: "Coupon is invalid" },
+			};
+		if (coupon) {
+			const reason = couponIsUsable(coupon, subtotal);
+			if (reason)
+				return { success: false, error: { code: "SHOP_COUPON_INVALID", message: reason } };
+		}
+		const couponDiscountAmount = coupon ? couponDiscount(coupon, subtotal) : 0;
+		const couponCode = coupon?.code ?? null;
+		const deliveryCost =
+			settings.freeDeliveryMinSubtotal !== null &&
+			settings.freeDeliveryMinSubtotal >= 0 &&
+			subtotal >= settings.freeDeliveryMinSubtotal
+				? 0
+				: zone.delivery_cost;
 		const orderNumber = makeOrderNumber();
 		const orderId = ulid();
 		const customerId = ulid();
@@ -755,9 +1157,26 @@ export async function handleShopOrderCreate(
 			district: input.customer.district,
 			reference: input.customer.reference ?? null,
 			phone: input.customer.phone,
+			recipientName: input.recipientName ?? input.customer.name,
+			recipientPhone: input.recipientPhone ?? input.customer.phone,
+			scheduledDate: input.deliveryDate ?? null,
+			scheduledTime: input.deliveryTime ?? null,
+			instructions: input.deliveryInstructions ?? null,
 		};
 
 		await withTransaction(db, async (trx) => {
+			if (coupon) {
+				const updatedCoupon = await trx
+					.updateTable("_emdash_shop_coupons")
+					.set({ usage_count: sql`usage_count + 1`, updated_at: new Date().toISOString() })
+					.where("id", "=", coupon.id)
+					.where("active", "=", 1)
+					.where((eb) =>
+						eb.or([eb("usage_limit", "is", null), eb("usage_count", "<", eb.ref("usage_limit"))]),
+					)
+					.executeTakeFirst();
+				if (Number(updatedCoupon.numUpdatedRows) !== 1) throw new ShopCouponError();
+			}
 			for (const item of items) {
 				if (item.variantId) {
 					const currentProduct = await new ContentRepository(trx).findById(
@@ -805,6 +1224,10 @@ export async function handleShopOrderCreate(
 					address: input.customer.address,
 					district: input.customer.district,
 					reference: input.customer.reference ?? null,
+					document_type: input.customer.documentType ?? null,
+					document_number: input.customer.documentNumber ?? null,
+					fiscal_name: input.customer.fiscalName ?? null,
+					fiscal_address: input.customer.fiscalAddress ?? null,
 				})
 				.execute();
 			await trx
@@ -816,8 +1239,10 @@ export async function handleShopOrderCreate(
 					currency: settings.currency,
 					subtotal,
 					discount,
+					coupon_code: couponCode,
+					coupon_discount: couponDiscountAmount,
 					delivery_cost: deliveryCost,
-					total: subtotal + deliveryCost,
+					total: subtotal - couponDiscountAmount + deliveryCost,
 					customer_snapshot: JSON.stringify(customerSnapshot),
 					delivery_snapshot: JSON.stringify(deliverySnapshot),
 					notes: input.notes ?? null,
@@ -846,7 +1271,7 @@ export async function handleShopOrderCreate(
 					id: ulid(),
 					order_id: orderId,
 					method: input.paymentMethod,
-					amount: subtotal + deliveryCost,
+					amount: subtotal - couponDiscountAmount + deliveryCost,
 				})
 				.execute();
 			await trx
@@ -860,6 +1285,11 @@ export async function handleShopOrderCreate(
 					reference: input.customer.reference ?? null,
 					phone: input.customer.phone,
 					delivery_cost: deliveryCost,
+					scheduled_date: input.deliveryDate ?? null,
+					scheduled_time: input.deliveryTime ?? null,
+					recipient_name: input.recipientName ?? input.customer.name,
+					recipient_phone: input.recipientPhone ?? input.customer.phone,
+					instructions: input.deliveryInstructions ?? null,
 				})
 				.execute();
 		});
@@ -878,7 +1308,9 @@ export async function handleShopOrderCreate(
 				subtotal,
 				discount,
 				deliveryCost,
-				total: subtotal + deliveryCost,
+				total: subtotal - couponDiscountAmount + deliveryCost,
+				couponCode,
+				couponDiscount: couponDiscountAmount,
 				whatsappUrl: makeWhatsAppUrl(
 					settings.whatsappNumber,
 					{
@@ -892,7 +1324,9 @@ export async function handleShopOrderCreate(
 						subtotal,
 						discount,
 						deliveryCost,
-						total: subtotal + deliveryCost,
+						total: subtotal - couponDiscountAmount + deliveryCost,
+						couponCode,
+						couponDiscount: couponDiscountAmount,
 						whatsappUrl: null,
 						items: items.map((item) => ({
 							id: "",
@@ -920,6 +1354,12 @@ export async function handleShopOrderCreate(
 					code: "SHOP_STOCK_UNAVAILABLE",
 					message: "Requested quantity is no longer available",
 				},
+			};
+		}
+		if (error instanceof ShopCouponError) {
+			return {
+				success: false,
+				error: { code: "SHOP_COUPON_INVALID", message: "Coupon is no longer available" },
 			};
 		}
 		return {
@@ -958,6 +1398,8 @@ export async function handleShopOrderList(
 				deliveryCost: row.delivery_cost,
 				total: row.total,
 				whatsappUrl: null,
+				couponCode: row.coupon_code,
+				couponDiscount: row.coupon_discount,
 			})),
 		};
 	} catch {
@@ -1074,7 +1516,16 @@ export async function handleShopOrderGet(
 		]);
 		if (!settings.success) return settings;
 		const customer = parseJsonRecord(order.customer_snapshot);
-		const delivery = parseJsonRecord(order.delivery_snapshot);
+		const deliveryRecord = await db
+			.selectFrom("_emdash_shop_deliveries")
+			.select(["tracking_code", "tracking_url"])
+			.where("order_id", "=", id)
+			.executeTakeFirst();
+		const delivery = {
+			...parseJsonRecord(order.delivery_snapshot),
+			trackingCode: deliveryRecord?.tracking_code ?? null,
+			trackingUrl: deliveryRecord?.tracking_url ?? null,
+		};
 		const summary = {
 			id: order.id,
 			orderNumber: order.order_number,
@@ -1177,6 +1628,33 @@ export async function handleShopOrderGetByNumber(
 	}
 }
 
+export async function handleShopOrderWhatsAppUrl(
+	db: Kysely<Database>,
+	orderId: string,
+	templateKey?: string,
+): Promise<ApiResult<string>> {
+	const orderResult = await handleShopOrderGet(db, orderId);
+	if (!orderResult.success) return orderResult;
+	const settingsResult = await handleShopSettingsGet(db);
+	if (!settingsResult.success) return settingsResult;
+	const order = orderResult.data;
+	const customerPhone = typeof order.customer.phone === "string" ? order.customer.phone : null;
+	const url = makeWhatsAppUrl(
+		customerPhone,
+		order,
+		settingsResult.data,
+		order.customer,
+		order.delivery,
+		templateKey,
+	);
+	return url
+		? { success: true, data: url }
+		: {
+				success: false,
+				error: { code: "SHOP_WHATSAPP_UNAVAILABLE", message: "WhatsApp is not configured" },
+			};
+}
+
 export async function handleShopPaymentConfirm(
 	db: Kysely<Database>,
 	orderId: string,
@@ -1208,12 +1686,34 @@ export async function handleShopDeliveryUpdate(
 	orderId: string,
 	status: string,
 	courierName?: string,
+	trackingCode?: string | null,
+	trackingUrl?: string | null,
+	failedReason?: string | null,
+	scheduledDate?: string | null,
+	scheduledTime?: string | null,
+	cancellationReason?: string | null,
 ): Promise<ApiResult<null>> {
 	try {
 		const now = new Date().toISOString();
+		const existing = await db
+			.selectFrom("_emdash_shop_deliveries")
+			.select(["delivered_at", "rescheduled_at"])
+			.where("order_id", "=", orderId)
+			.executeTakeFirst();
 		await db
 			.updateTable("_emdash_shop_deliveries")
-			.set({ status, courier_name: courierName ?? null, updated_at: now })
+			.set({
+				status,
+				courier_name: courierName ?? null,
+				tracking_code: trackingCode ?? null,
+				tracking_url: trackingUrl ?? null,
+				failed_reason: failedReason ?? null,
+				scheduled_date: scheduledDate ?? null,
+				scheduled_time: scheduledTime ?? null,
+				delivered_at: status === "delivered" ? now : (existing?.delivered_at ?? null),
+				rescheduled_at: status === "rescheduled" ? now : (existing?.rescheduled_at ?? null),
+				updated_at: now,
+			})
 			.where("order_id", "=", orderId)
 			.execute();
 		const orderStatus =
@@ -1223,10 +1723,17 @@ export async function handleShopDeliveryUpdate(
 					? "in_transit"
 					: status === "not_delivered"
 						? "not_delivered"
-						: "ready";
+						: status === "cancelled"
+							? "cancelled"
+							: "ready";
 		await db
 			.updateTable("_emdash_shop_orders")
-			.set({ delivery_status: status, status: orderStatus, updated_at: now })
+			.set({
+				delivery_status: status,
+				status: orderStatus,
+				cancellation_reason: status === "cancelled" ? (cancellationReason ?? null) : undefined,
+				updated_at: now,
+			})
 			.where("id", "=", orderId)
 			.execute();
 		return { success: true, data: null };

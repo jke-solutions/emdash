@@ -6,16 +6,21 @@
  * so Vite can properly resolve and bundle them.
  */
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { resolve } from "node:path";
 
 import type { AuthProviderDescriptor } from "../../auth/types.js";
 import type { MediaProviderDescriptor } from "../../media/types.js";
 import { defaultSeed } from "../../seed/default.js";
+import { parseDesignMarkdown } from "./design-tokens.js";
 import type { PluginDescriptor } from "./runtime.js";
 
 const TS_SOURCE_EXT_RE = /^\.(ts|tsx|mts|cts|jsx)$/;
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+	return typeof value === "object" && value !== null && !Array.isArray(value);
+}
 
 /** Pattern to remove scoped package prefix from plugin ID */
 const SCOPED_PREFIX_PATTERN = /^@[^/]+\/plugin-/;
@@ -619,7 +624,29 @@ export function generateSeedModule(projectRoot: string, warnOnFallback = false):
 	}
 
 	if (userSeedJson) {
-		return [`export const userSeed = ${userSeedJson};`, `export const seed = userSeed;`].join("\n");
+		const parsedSeed: unknown = JSON.parse(userSeedJson);
+		if (!isRecord(parsedSeed)) throw new Error("Seed must contain a JSON object");
+		const seed = parsedSeed;
+		const designPath = resolve(projectRoot, "design.md");
+		if (existsSync(designPath)) {
+			const design = parseDesignMarkdown(readFileSync(designPath, "utf-8"));
+			const existingSettings = isRecord(seed.settings) ? seed.settings : {};
+			const existingTheme = isRecord(existingSettings.theme) ? existingSettings.theme : {};
+			const existingColors = isRecord(existingTheme.colors) ? existingTheme.colors : {};
+			const existingFonts = isRecord(existingTheme.fonts) ? existingTheme.fonts : {};
+			seed.settings = {
+				...existingSettings,
+				theme: {
+					...existingTheme,
+					colors: { ...design.colors, ...existingColors },
+					fonts: { ...design.fonts, ...existingFonts },
+				},
+			};
+		}
+		return [
+			`export const userSeed = ${JSON.stringify(seed)};`,
+			`export const seed = userSeed;`,
+		].join("\n");
 	}
 
 	// No user seed — inline the default. Caller (the Vite plugin) gates this
@@ -628,6 +655,24 @@ export function generateSeedModule(projectRoot: string, warnOnFallback = false):
 	if (warnOnFallback) {
 		console.warn(
 			"[emdash] No user seed found at .emdash/seed.json, package.json#emdash.seed, or seed/seed.json. Falling back to the built-in default seed; the setup wizard will not offer demo content for this site.",
+		);
+	}
+	const designPath = resolve(projectRoot, "design.md");
+	if (existsSync(designPath)) {
+		const design = parseDesignMarkdown(readFileSync(designPath, "utf-8"));
+		const seed = {
+			...defaultSeed,
+			settings: {
+				...defaultSeed.settings,
+				theme: {
+					...defaultSeed.settings?.theme,
+					colors: design.colors,
+					fonts: design.fonts,
+				},
+			},
+		};
+		return [`export const userSeed = null;`, `export const seed = ${JSON.stringify(seed)};`].join(
+			"\n",
 		);
 	}
 	return [

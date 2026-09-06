@@ -2,17 +2,17 @@
 import Base from "../../layouts/Base.astro";
 ---
 
-<Base title="Order received" description="Your order has been received.">
+<Base title="Pedido recibido" description="Hemos recibido tu pedido.">
 	<main class="order-page">
-		<p class="eyebrow">Thank you</p>
-		<h1>Order received</h1>
-		<p>Your order was registered successfully. Save your order number to follow its status.</p>
+		<p class="eyebrow">Gracias</p>
+		<h1>Pedido recibido</h1>
+		<p>Tu pedido se registró correctamente. Guarda el número de pedido para consultar su estado.</p>
 		<section class="order-card" id="order-card">
-			<p>Loading order details…</p>
+			<p>Cargando los detalles del pedido…</p>
 		</section>
 		<nav class="order-actions">
-			<a href="/shop/track">Track another order</a>
-			<a href="/shop">Continue shopping</a>
+			<a href="/shop/track">Rastrear otro pedido</a>
+			<a href="/shop">Continuar comprando</a>
 		</nav>
 	</main>
 </Base>
@@ -20,15 +20,15 @@ import Base from "../../layouts/Base.astro";
 <script is:inline>
 	const orderCard = document.querySelector("#order-card");
 	const orderNumber = new URLSearchParams(window.location.search).get("order");
-	const labels = { new: "Received", confirmed: "Confirmed", preparing: "Preparing", ready: "Ready for delivery", in_transit: "In delivery", delivered: "Delivered", cancelled: "Cancelled", pending: "Pending" };
+	const labels = { new: "Recibido", confirmed: "Confirmado", preparing: "Preparando", ready: "Listo para entrega", in_transit: "En entrega", delivered: "Entregado", cancelled: "Cancelado", pending: "Pendiente" };
 	const money = (value, symbol) => `${symbol} ${new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}`;
 
 	const renderOrder = (order) => {
 		orderCard.replaceChildren();
 		const title = document.createElement("h2");
-		title.textContent = `Order ${order.orderNumber}`;
+		title.textContent = `Pedido ${order.orderNumber}`;
 		const status = document.createElement("p");
-		status.textContent = `Status: ${labels[order.status] ?? order.status} · Payment: ${labels[order.paymentStatus] ?? order.paymentStatus} · Delivery: ${labels[order.deliveryStatus] ?? order.deliveryStatus}`;
+		status.textContent = `Estado: ${labels[order.status] ?? order.status} · Pago: ${labels[order.paymentStatus] ?? order.paymentStatus} · Entrega: ${labels[order.deliveryStatus] ?? order.deliveryStatus}`;
 		orderCard.append(title, status);
 		for (const item of order.items) {
 			const row = document.createElement("div");
@@ -48,17 +48,17 @@ import Base from "../../layouts/Base.astro";
 			whatsapp.href = order.whatsappUrl;
 			whatsapp.target = "_blank";
 			whatsapp.rel = "noreferrer";
-			whatsapp.textContent = "Coordinate payment through WhatsApp";
+			whatsapp.textContent = "Coordinar pago por WhatsApp";
 			orderCard.append(whatsapp);
 		}
 	};
 
-	if (!orderNumber) orderCard.textContent = "Order number not provided.";
+	if (!orderNumber) orderCard.textContent = "No se proporcionó el número de pedido.";
 	else fetch(`/_emdash/api/shop/orders/${encodeURIComponent(orderNumber)}`).then((response) => response.json().then((body) => ({ response, body }))).then(({ response, body }) => {
-		if (!response.ok) throw new Error(body?.error?.message ?? "Order not found.");
+		if (!response.ok) throw new Error(body?.error?.message ?? "No se encontró el pedido.");
 		renderOrder(body.data);
 		return null;
-	}).catch((error) => { orderCard.textContent = error instanceof Error ? error.message : "Could not load order."; });
+	}).catch((error) => { orderCard.textContent = error instanceof Error ? error.message : "No se pudo cargar el pedido."; });
 </script>
 
 <style>

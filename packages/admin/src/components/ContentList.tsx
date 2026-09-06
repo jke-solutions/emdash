@@ -1153,7 +1153,15 @@ function ContentListItem({
 				</Link>
 			</td>
 			{listColumns.map((column) => (
-				<ContentListCustomCell key={column.slug} column={column} value={item.data[column.slug]} />
+				<ContentListCustomCell
+					key={column.slug}
+					column={column}
+					value={
+						column.kind === "taxonomy"
+							? (item.data.terms as Record<string, unknown> | undefined)?.[column.slug]
+							: item.data[column.slug]
+					}
+				/>
 			))}
 			<td className="px-4 py-3">
 				<StatusBadge
@@ -1332,6 +1340,17 @@ function formatListColumnValue(
 				? new Intl.ListFormat(locale, { style: "short", type: "unit" }).format(
 						values.map(optionLabel),
 					)
+				: emptyLabel;
+		}
+		case "taxonomy": {
+			if (!Array.isArray(value)) return emptyLabel;
+			const labels = value.flatMap((term) => {
+				if (!term || typeof term !== "object") return [];
+				const label = (term as { label?: unknown }).label;
+				return typeof label === "string" ? [label] : [];
+			});
+			return labels.length > 0
+				? new Intl.ListFormat(locale, { style: "short", type: "unit" }).format(labels)
 				: emptyLabel;
 		}
 		case "boolean":

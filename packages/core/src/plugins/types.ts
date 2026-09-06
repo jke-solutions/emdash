@@ -448,7 +448,7 @@ export interface SiteInfo {
 	name: string;
 	/** Site URL (from settings or request) */
 	url: string;
-	/** Site locale (from settings, defaults to "en") */
+	/** Site locale (from settings, defaults to "es") */
 	locale: string;
 	/**
 	 * Astro's `trailingSlash` routing policy, from the host's Astro config.

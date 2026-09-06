@@ -1433,7 +1433,7 @@ export class SchemaRegistry {
 			.addColumn("version", "integer", (col) => col.defaultTo(1))
 			.addColumn("live_revision_id", "text", (col) => col.references("revisions.id"))
 			.addColumn("draft_revision_id", "text", (col) => col.references("revisions.id"))
-			.addColumn("locale", "text", (col) => col.notNull().defaultTo("en"))
+			.addColumn("locale", "text", (col) => col.notNull().defaultTo("es"))
 			.addColumn("translation_group", "text");
 		if (options.ifNotExists) table = table.ifNotExists();
 

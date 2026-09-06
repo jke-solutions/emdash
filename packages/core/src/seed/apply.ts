@@ -139,7 +139,7 @@ export async function applySeed(
 	// (CLI exports run outside the runtime), and only then `en`. Without the
 	// seed-carried default, a non-`en` single-locale project would be rewritten to
 	// `en` on apply (#1421).
-	const defaultLocale = getI18nConfig()?.defaultLocale ?? seed.defaultLocale ?? "en";
+	const defaultLocale = getI18nConfig()?.defaultLocale ?? seed.defaultLocale ?? "es";
 	const markSeedContentCollectionStale = async (collectionSlug: string): Promise<void> => {
 		if (staleMarkedContentCollections.has(collectionSlug)) return;
 		const marked = await markContentMediaUsageCollectionStaleSafely(

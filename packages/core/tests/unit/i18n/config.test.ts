@@ -7,6 +7,12 @@ afterEach(async () => {
 });
 
 describe("i18n config", () => {
+	it("uses Spanish when no site locale is configured", async () => {
+		const { resolveContentCreateLocale } = await import("../../../src/i18n/config.js");
+
+		expect(resolveContentCreateLocale(undefined, null)).toBe("es");
+	});
+
 	it("shares config across duplicated module instances", async () => {
 		const writer = await import("../../../src/i18n/config.js");
 		writer.setI18nConfig({ defaultLocale: "en", locales: ["en", "fr"] });

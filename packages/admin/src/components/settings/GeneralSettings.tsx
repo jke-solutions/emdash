@@ -26,6 +26,7 @@ function generalSettingsSnapshot(settings: Partial<SiteSettings>) {
 		postsPerPage: settings.postsPerPage ?? 10,
 		dateFormat: settings.dateFormat ?? "MMMM d, yyyy",
 		timezone: settings.timezone ?? "UTC",
+		theme: settings.theme ?? {},
 	});
 }
 
@@ -116,7 +117,7 @@ export function GeneralSettings() {
 	};
 
 	const title = t`General Settings`;
-	const description = t`Site identity, logo, favicon, and reading preferences`;
+	const description = t`Site identity, design colors, fonts, logo, favicon, and reading preferences`;
 
 	if (isLoading) {
 		return (
@@ -302,6 +303,67 @@ export function GeneralSettings() {
 										</Button>
 									</div>
 								)}
+							</div>
+						</div>
+					</SettingRow>
+				</SettingsSection>
+
+				<SettingsSection
+					title={t`Design`}
+					description={t`Shared public colors and fonts for themes, widgets, and email templates`}
+				>
+					<SettingRow>
+						<div className="grid gap-4 sm:grid-cols-2">
+							{(
+								[
+									["primary", t`Primary color`],
+									["primaryHover", t`Primary hover color`],
+									["secondary", t`Secondary color`],
+									["secondaryHover", t`Secondary hover color`],
+									["onPrimary", t`Text on primary`],
+									["onSecondary", t`Text on secondary`],
+								] as const
+							).map(([key, label]) => (
+								<label key={key} className="grid gap-1 text-sm font-medium">
+									<span>{label}</span>
+									<input
+										type="color"
+										value={formData.theme?.colors?.[key] ?? "#000000"}
+										onChange={(event) =>
+											handleChange("theme", {
+												...formData.theme,
+												colors: { ...formData.theme?.colors, [key]: event.target.value },
+											})
+										}
+										className="h-10 w-full cursor-pointer rounded border border-kumo-line bg-kumo-base p-1"
+										aria-label={label}
+									/>
+								</label>
+							))}
+						</div>
+					</SettingRow>
+					<SettingRow>
+						<div className="grid gap-2 text-sm text-kumo-subtle">
+							<span className="font-medium text-kumo-default">{t`System-managed colors`}</span>
+							<span>{t`Background, surface, text, muted text, borders, and fonts come from the design.md system tokens and cannot be changed here.`}</span>
+							<div className="grid gap-2 sm:grid-cols-2">
+								{(
+									[
+										["link", t`Link`],
+										["success", t`Success`],
+										["warning", t`Warning`],
+										["danger", t`Danger`],
+									] as const
+								).map(([key, label]) => (
+									<div key={key} className="flex items-center gap-2">
+										<span
+											className="size-5 rounded border border-kumo-line"
+											style={{ backgroundColor: formData.theme?.colors?.[key] ?? "transparent" }}
+											aria-hidden="true"
+										/>
+										<span>{label}</span>
+									</div>
+								))}
 							</div>
 						</div>
 					</SettingRow>

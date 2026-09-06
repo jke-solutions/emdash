@@ -65,7 +65,7 @@ async function selectEntryTermRows(
 	validateIdentifier(collection, "collection slug");
 	const tableName = `ec_${collection}`;
 	const preferredLocale = locale ? sql`${locale}` : sql`content.locale`;
-	const defaultLocale = getI18nConfig()?.defaultLocale ?? "en";
+	const defaultLocale = getI18nConfig()?.defaultLocale ?? "es";
 	const result = await sql<EntryTermRow>`
 		SELECT content.id AS entry_id,
 			coalesce(exact_term.id, default_term.id) AS id,

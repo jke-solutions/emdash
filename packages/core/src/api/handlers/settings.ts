@@ -37,7 +37,22 @@ export async function handleSettingsUpdate(
 	input: Partial<SiteSettings>,
 ): Promise<ApiResult<Partial<SiteSettings>>> {
 	try {
-		await setSiteSettings(input, db);
+		const currentSettings = input.theme ? await getSiteSettingsWithDb(db, storage) : undefined;
+		const theme = input.theme
+			? {
+					colors: {
+						...currentSettings?.theme?.colors,
+						primary: input.theme.colors?.primary,
+						primaryHover: input.theme.colors?.primaryHover,
+						secondary: input.theme.colors?.secondary,
+						secondaryHover: input.theme.colors?.secondaryHover,
+						onPrimary: input.theme.colors?.onPrimary,
+						onSecondary: input.theme.colors?.onSecondary,
+					},
+					fonts: currentSettings?.theme?.fonts,
+				}
+			: undefined;
+		await setSiteSettings({ ...input, ...(theme ? { theme } : {}) }, db);
 		const updatedSettings = await getSiteSettingsWithDb(db, storage);
 		return { success: true, data: updatedSettings };
 	} catch {

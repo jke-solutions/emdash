@@ -5,7 +5,7 @@
  * shared by this file, lingui.config.ts and lunaria.config.ts.
  */
 
-import { ENABLED_LOCALES, LOCALES, SOURCE_LOCALE } from "./locales.js";
+import { ENABLED_LOCALES, LOCALES } from "./locales.js";
 
 export type { LocaleDefinition as SupportedLocale } from "./locales.js";
 
@@ -42,7 +42,8 @@ export const SUPPORTED_LOCALES = [
 
 export const SUPPORTED_LOCALE_CODES = new Set(SUPPORTED_LOCALES.map((l) => l.code));
 
-export const DEFAULT_LOCALE = SOURCE_LOCALE.code;
+/** Spanish is the default admin language; English remains the source catalog. */
+export const DEFAULT_LOCALE = "es-ES";
 
 /** Maps base language codes to supported locales (e.g. "pt" -> "pt-BR"). */
 const BASE_LANGUAGE_MAP = new Map<string, string>();
@@ -115,20 +116,25 @@ const LOCALE_COOKIE_RE = /(?:^|;\s*)emdash-locale=([^;]+)/;
 
 /**
  * Resolve the admin locale from a Request.
- * Priority: emdash-locale cookie -> Accept-Language -> DEFAULT_LOCALE.
+ * Priority: explicit emdash-locale cookie -> Spanish browser preference -> DEFAULT_LOCALE.
+ * A browser configured in another language still receives Spanish until the
+ * user explicitly chooses a different admin language.
  */
 export function resolveLocale(request: Request): string {
 	const cookieHeader = request.headers.get("cookie") ?? "";
 	const cookieMatch = cookieHeader.match(LOCALE_COOKIE_RE);
 	const cookieLocale = cookieMatch?.[1]?.trim() ?? "";
 
+	// `en` was the historical default. Treat it as stale so existing sessions
+	// migrate to the new Spanish default without requiring manual cookie cleanup.
+	if (cookieLocale.toLowerCase() === "en") return DEFAULT_LOCALE;
 	if (SUPPORTED_LOCALE_CODES.has(cookieLocale)) return cookieLocale;
 
 	const acceptLang = request.headers.get("accept-language") ?? "";
 	for (const entry of acceptLang.split(",")) {
 		const tag = entry.split(";")[0]!.trim();
 		const matched = matchLocale(tag);
-		if (matched) return matched;
+		if (matched?.toLowerCase().startsWith("es")) return matched;
 	}
 
 	return DEFAULT_LOCALE;

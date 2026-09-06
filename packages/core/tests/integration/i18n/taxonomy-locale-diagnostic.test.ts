@@ -61,7 +61,7 @@ describeEachDialect("taxonomy locale diagnostic", (dialect) => {
 		);
 	});
 
-	it("treats English as the supported locale when i18n is not configured", async () => {
+	it("treats Spanish as the supported locale when i18n is not configured", async () => {
 		const definitionId = ulid();
 		await ctx.db
 			.insertInto("_emdash_taxonomy_defs")
@@ -80,7 +80,7 @@ describeEachDialect("taxonomy locale diagnostic", (dialect) => {
 
 		await warnAboutUnconfiguredTaxonomyLocales(ctx.db, []);
 
-		expect(warn).toHaveBeenCalledWith(expect.stringContaining("configured locales (en)"));
+		expect(warn).toHaveBeenCalledWith(expect.stringContaining("configured locales (es)"));
 		expect(warn).toHaveBeenCalledWith(expect.stringContaining("definitions: ja"));
 	});
 

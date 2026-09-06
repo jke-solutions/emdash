@@ -912,7 +912,7 @@ export function createSiteInfo(options: SiteInfoOptions): SiteInfo {
 	return {
 		name: options.siteName ?? "",
 		url: (options.siteUrl ?? "").replace(TRAILING_SLASH_RE, ""), // strip trailing slash
-		locale: options.locale ?? "en",
+		locale: options.locale ?? "es",
 		trailingSlash: options.trailingSlash ?? "ignore", // Astro's default
 	};
 }

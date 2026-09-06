@@ -134,7 +134,7 @@ function foldedHydrationSelects(db: Kysely<any>, type: string, outer: string) {
 	const termObj = obj(
 		"'id', coalesce(exact_term.id, default_term.id), 'name', coalesce(exact_term.name, default_term.name), 'slug', coalesce(exact_term.slug, default_term.slug), 'label', coalesce(exact_term.label, default_term.label), 'parent_id', coalesce(exact_term.parent_id, default_term.parent_id), 'locale', coalesce(exact_term.locale, default_term.locale), 'translation_group', coalesce(exact_term.translation_group, default_term.translation_group)",
 	);
-	const defaultLocale = getI18nConfig()?.defaultLocale ?? "en";
+	const defaultLocale = getI18nConfig()?.defaultLocale ?? "es";
 	const selectedTermId = sql`coalesce(exact_term.id, default_term.id)`;
 	const termAgg = pg
 		? sql`coalesce(json_agg(${termObj}) FILTER (WHERE ${selectedTermId} IS NOT NULL), '[]'::json)`

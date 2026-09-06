@@ -163,6 +163,7 @@ export {
 	isI18nEnabled,
 	getFallbackChain,
 	resolveContentCreateLocale,
+	DEFAULT_LOCALE,
 } from "./i18n/config.js";
 export type { I18nConfig } from "./i18n/config.js";
 
@@ -433,6 +434,7 @@ export type {
 	SiteSettingKey,
 	MediaReference,
 	SeoSettings,
+	ThemeSettings,
 } from "./settings/types.js";
 
 // SEO

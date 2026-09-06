@@ -52,7 +52,7 @@ export function validateSeed(data: unknown): ValidationResult {
 	const seed = data as Partial<SeedFile>;
 	const defaultLocale =
 		getI18nConfig()?.defaultLocale ??
-		(typeof seed.defaultLocale === "string" ? seed.defaultLocale : "en");
+		(typeof seed.defaultLocale === "string" ? seed.defaultLocale : "es");
 
 	// Required fields
 	if (!seed.version) {

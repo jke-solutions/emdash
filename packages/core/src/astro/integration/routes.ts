@@ -647,6 +647,11 @@ export function injectCoreRoutes(
 	});
 
 	injectRoute({
+		pattern: "/_emdash/api/shop/products/[id]/related",
+		entrypoint: resolveRoute("api/shop/products/[id]/related.ts"),
+	});
+
+	injectRoute({
 		pattern: "/_emdash/api/shop/settings",
 		entrypoint: resolveRoute("api/shop/settings.ts"),
 	});
@@ -666,6 +671,11 @@ export function injectCoreRoutes(
 		entrypoint: resolveRoute("api/shop/orders/[orderNumber].ts"),
 	});
 
+	injectRoute({
+		pattern: "/_emdash/api/shop/coupons/validate",
+		entrypoint: resolveRoute("api/shop/coupons/validate.ts"),
+	});
+
 	// Ecommerce admin routes
 	injectRoute({
 		pattern: "/_emdash/api/admin/shop/settings",
@@ -680,6 +690,16 @@ export function injectCoreRoutes(
 	injectRoute({
 		pattern: "/_emdash/api/admin/shop/delivery-zones/[id]",
 		entrypoint: resolveRoute("api/admin/shop/delivery-zones/[id].ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/coupons",
+		entrypoint: resolveRoute("api/admin/shop/coupons/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/coupons/[id]",
+		entrypoint: resolveRoute("api/admin/shop/coupons/[id].ts"),
 	});
 
 	injectRoute({
@@ -705,6 +725,11 @@ export function injectCoreRoutes(
 	injectRoute({
 		pattern: "/_emdash/api/admin/shop/orders/[id]/delivery",
 		entrypoint: resolveRoute("api/admin/shop/orders/[id]/delivery.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/orders/[id]/whatsapp",
+		entrypoint: resolveRoute("api/admin/shop/orders/[id]/whatsapp.ts"),
 	});
 
 	// API token admin routes
@@ -828,6 +853,15 @@ export function injectCoreRoutes(
 	});
 
 	// Widget area routes
+	injectRoute({
+		pattern: "/_emdash/api/promotional-campaign",
+		entrypoint: resolveRoute("api/promotional-campaign.ts"),
+	});
+	injectRoute({
+		pattern: "/_emdash/api/promotional-campaign/[id]",
+		entrypoint: resolveRoute("api/promotional-campaign/[id].ts"),
+	});
+
 	injectRoute({
 		pattern: "/_emdash/api/widget-areas",
 		entrypoint: resolveRoute("api/widget-areas/index.ts"),

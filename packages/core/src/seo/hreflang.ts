@@ -161,7 +161,7 @@ export async function getHreflangAlternatesWithDb(
 
 	const resolved: Array<{ locale: string; href: string }> = [];
 	for (const variant of published) {
-		const locale = variant.locale || "en";
+		const locale = variant.locale || "es";
 		const path = interpolateUrlPattern({
 			pattern: urlPattern,
 			collection,

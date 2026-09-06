@@ -15,7 +15,7 @@ export async function warnAboutUnconfiguredTaxonomyLocales(
 	configuredLocales: readonly string[],
 	definitionLocales?: readonly string[],
 ): Promise<void> {
-	const supportedLocales = configuredLocales.length > 0 ? configuredLocales : ["en"];
+	const supportedLocales = configuredLocales.length > 0 ? configuredLocales : ["es"];
 	const definitionRows =
 		definitionLocales === undefined
 			? await db

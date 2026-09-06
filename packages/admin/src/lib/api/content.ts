@@ -169,6 +169,7 @@ export async function fetchContentList(
 		 * explicit credit. Off by default: the filter matches real credits.
 		 */
 		includeInferredBylines?: boolean;
+		includeTerms?: boolean;
 	},
 ): Promise<FindManyResult<ContentItem>> {
 	const params = new URLSearchParams();
@@ -197,6 +198,7 @@ export async function fetchContentList(
 	if (options?.includeInferredBylines && (options.bylinesNone || options.bylines?.length)) {
 		params.set("includeInferredBylines", "1");
 	}
+	if (options?.includeTerms) params.set("includeTerms", "1");
 
 	const url = `${API_BASE}/content/${collection}${params.toString() ? `?${params}` : ""}`;
 	const response = await apiFetch(url);

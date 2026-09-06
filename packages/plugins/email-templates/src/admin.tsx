@@ -12,8 +12,50 @@ import {
 } from "./editor-config.js";
 import { fetchEmailMedia, type EmailMediaItem } from "./media.js";
 
+const SPANISH_UI: Record<string, string> = {
+	Actions: "Acciones",
+	Active: "Activo",
+	Apply: "Aplicar",
+	Cancel: "Cancelar",
+	Center: "Centrar",
+	Close: "Cerrar",
+	"Email Templates": "Plantillas de correo",
+	"Create and edit transactional email templates.":
+		"Crea y edita plantillas de correo transaccional.",
+	"Back to templates": "Volver a las plantillas",
+	"Back to editor": "Volver al editor",
+	"Email preview": "Vista previa del correo",
+	"Email settings": "Configuración del correo",
+	"Saved templates": "Plantillas guardadas",
+	"Manage your email templates and open one to edit its details.":
+		"Administra tus plantillas de correo y abre una para editar sus detalles.",
+	"New template": "Nueva plantilla",
+	"Save template": "Guardar plantilla",
+	"Saving…": "Guardando…",
+	"Preview HTML": "Vista previa HTML",
+	"Search templates...": "Buscar plantillas...",
+	"Template name": "Nombre de la plantilla",
+	"Recipient email": "Correo del destinatario",
+	"Send a test email": "Enviar correo de prueba",
+	"Send test": "Enviar prueba",
+	"Sending…": "Enviando…",
+	"Test email sent successfully.": "Correo de prueba enviado correctamente.",
+	"Template saved successfully.": "Plantilla guardada correctamente.",
+	"The template could not be loaded.": "No se pudo cargar la plantilla.",
+	"The template could not be saved.": "No se pudo guardar la plantilla.",
+	"The test email could not be sent. Check the email provider settings.":
+		"No se pudo enviar el correo de prueba. Revisa la configuración del proveedor de correo.",
+	"No images found in the media gallery.": "No se encontraron imágenes en la galería multimedia.",
+	"Select an image": "Seleccionar una imagen",
+	"Search the media gallery": "Buscar en la galería multimedia",
+};
+
 function t(parts: TemplateStringsArray): string {
-	return parts[0] ?? "";
+	const source = parts[0] ?? "";
+	if (typeof document !== "undefined" && document.documentElement.lang.startsWith("es")) {
+		return SPANISH_UI[source] ?? source;
+	}
+	return source;
 }
 
 type UiIconName =
@@ -27,12 +69,45 @@ type UiIconName =
 	| "body";
 type EditorJsonNode = { type?: string; text?: string; content?: EditorJsonNode[] };
 
-const DEFAULT_BUTTON_ATTRIBUTES = {
-	href: "https://example.com",
-	alignment: "center",
-	style:
-		"background-color: #111827; color: #ffffff; padding: 12px 24px; border-radius: 6px; font-size: 16px; font-weight: 600; text-decoration: none;",
+interface EmailThemeSettings {
+	colors?: {
+		primary?: string;
+		background?: string;
+		surface?: string;
+		text?: string;
+		onPrimary?: string;
+	};
+	fonts?: { body?: string; heading?: string };
+}
+
+const FALLBACK_EMAIL_THEME = {
+	primary: "#111827",
+	background: "#f4f4f5",
+	surface: "#ffffff",
+	text: "#18181b",
+	onPrimary: "#ffffff",
+	font: "Arial, Helvetica, sans-serif",
 };
+
+function emailThemeValues(theme?: EmailThemeSettings) {
+	return {
+		primary: theme?.colors?.primary ?? FALLBACK_EMAIL_THEME.primary,
+		background: theme?.colors?.background ?? FALLBACK_EMAIL_THEME.background,
+		surface: theme?.colors?.surface ?? FALLBACK_EMAIL_THEME.surface,
+		text: theme?.colors?.text ?? FALLBACK_EMAIL_THEME.text,
+		onPrimary: theme?.colors?.onPrimary ?? FALLBACK_EMAIL_THEME.onPrimary,
+		font: theme?.fonts?.body ?? FALLBACK_EMAIL_THEME.font,
+	};
+}
+
+function buttonAttributes(theme?: EmailThemeSettings) {
+	const values = emailThemeValues(theme);
+	return {
+		href: "https://example.com",
+		alignment: "center",
+		style: `background-color: ${values.primary}; color: ${values.onPrimary}; padding: 12px 24px; border-radius: 6px; font-size: 16px; font-weight: 600; text-decoration: none;`,
+	};
+}
 
 const HIDDEN_LAYOUT_COMMAND_LABEL = /^(?:\d+ columns|section)$/i;
 const EDITABLE_BLOCK_SELECTOR = "p,h1,h2,h3,li,blockquote,pre,hr,img,.node-h1,.node-h2,.node-h3";
@@ -165,57 +240,65 @@ function UiIcon({ name, size = 20 }: { name: UiIconName; size?: number }) {
 	);
 }
 
-const INITIAL_EDITOR_CONTENT: NonNullable<EmailEditorProps["content"]> = {
-	type: "doc",
-	content: [
-		{
-			type: "section",
-			content: [
-				{
-					type: "heading",
-					attrs: { level: 1, align: "center", alignment: "center", style: "text-align: center;" },
-					content: [{ type: "text", text: "EmDash" }],
-				},
-				{
-					type: "paragraph",
-					attrs: { align: "center", alignment: "center", style: "text-align: center;" },
-					content: [{ type: "text", text: "Transactional email template" }],
-				},
-				{ type: "horizontalRule" },
-				{
-					type: "paragraph",
-					content: [{ type: "text", text: "Hi there," }],
-				},
-				{
-					type: "paragraph",
-					content: [
-						{
-							type: "text",
-							text: "This is a demo transactional email created with the EmDash visual editor. You can replace this content with your own message.",
-						},
-					],
-				},
-				{
-					type: "button",
-					attrs: { ...DEFAULT_BUTTON_ATTRIBUTES, align: "center" },
-					content: [{ type: "text", text: "Confirm email" }],
-				},
-				{
-					type: "paragraph",
-					content: [
-						{ type: "text", text: "If you did not request this email, you can safely ignore it." },
-					],
-				},
-				{ type: "horizontalRule" },
-				{
-					type: "paragraph",
-					attrs: { align: "center", alignment: "center", style: "text-align: center;" },
-					content: [{ type: "text", text: "Thanks,\nThe EmDash team\n\n© EmDash CMS" }],
-				},
-			],
-		},
-	],
-};
+function initialEditorContent(
+	theme?: EmailThemeSettings,
+): NonNullable<EmailEditorProps["content"]> {
+	const button = buttonAttributes(theme);
+	return {
+		type: "doc",
+		content: [
+			{
+				type: "section",
+				content: [
+					{
+						type: "heading",
+						attrs: { level: 1, align: "center", alignment: "center", style: "text-align: center;" },
+						content: [{ type: "text", text: "EmDash" }],
+					},
+					{
+						type: "paragraph",
+						attrs: { align: "center", alignment: "center", style: "text-align: center;" },
+						content: [{ type: "text", text: "Transactional email template" }],
+					},
+					{ type: "horizontalRule" },
+					{
+						type: "paragraph",
+						content: [{ type: "text", text: "Hi there," }],
+					},
+					{
+						type: "paragraph",
+						content: [
+							{
+								type: "text",
+								text: "This is a demo transactional email created with the EmDash visual editor. You can replace this content with your own message.",
+							},
+						],
+					},
+					{
+						type: "button",
+						attrs: { ...button, align: "center" },
+						content: [{ type: "text", text: "Confirm email" }],
+					},
+					{
+						type: "paragraph",
+						content: [
+							{
+								type: "text",
+								text: "If you did not request this email, you can safely ignore it.",
+							},
+						],
+					},
+					{ type: "horizontalRule" },
+					{
+						type: "paragraph",
+						attrs: { align: "center", alignment: "center", style: "text-align: center;" },
+						content: [{ type: "text", text: "Thanks,\nThe EmDash team\n\n© EmDash CMS" }],
+					},
+				],
+			},
+		],
+	};
+}
 
 interface TemplateSummary {
 	id: string;
@@ -248,6 +331,7 @@ async function requestTemplateRoute<T>(route: string, body?: unknown): Promise<T
 function insertBlock(
 	editor: NonNullable<EmailEditorRef["editor"]>,
 	blockType: EmailBlockType,
+	theme?: EmailThemeSettings,
 ): void {
 	switch (blockType) {
 		case "section":
@@ -281,7 +365,7 @@ function insertBlock(
 		case "button":
 			editor.commands.insertContent({
 				type: "button",
-				attrs: DEFAULT_BUTTON_ATTRIBUTES,
+				attrs: buttonAttributes(theme),
 				content: [{ type: "text", text: "Call to action" }],
 			});
 			return;
@@ -957,8 +1041,9 @@ function EmailTemplatesPage() {
 	const [testSending, setTestSending] = useState(false);
 	const [testMessage, setTestMessage] = useState<string | null>(null);
 	const [showEditor, setShowEditor] = useState(false);
+	const [siteTheme, setSiteTheme] = useState<EmailThemeSettings | undefined>();
 	const [editorContent, setEditorContent] =
-		useState<NonNullable<EmailEditorProps["content"]>>(INITIAL_EDITOR_CONTENT);
+		useState<NonNullable<EmailEditorProps["content"]>>(initialEditorContent());
 	const [editorVersion, setEditorVersion] = useState(0);
 	const [loadingTemplate, setLoadingTemplate] = useState(false);
 	const [activePanel, setActivePanel] = useState<"content" | "blocks" | "body">("content");
@@ -996,6 +1081,14 @@ function EmailTemplatesPage() {
 	);
 	const templatePageCount = Math.max(1, Math.ceil(filteredTemplates.length / 10));
 	const pagedTemplates = filteredTemplates.slice((templatePage - 1) * 10, templatePage * 10);
+	const emailTheme = emailThemeValues(siteTheme);
+
+	useEffect(() => {
+		void fetch("/_emdash/api/settings")
+			.then((response) => response.json() as Promise<{ data?: { theme?: EmailThemeSettings } }>)
+			.then((payload) => setSiteTheme(payload.data?.theme))
+			.catch(() => undefined);
+	}, []);
 
 	useEffect(() => {
 		if (templatePage > templatePageCount) setTemplatePage(templatePageCount);
@@ -1189,7 +1282,7 @@ function EmailTemplatesPage() {
 		setShowEditor(true);
 		setTemplateId(null);
 		setTemplateName("Transactional email template");
-		setEditorContent(INITIAL_EDITOR_CONTENT);
+		setEditorContent(initialEditorContent(siteTheme));
 		setHtml("");
 		setMessage(null);
 		setEditorVersion((version) => version + 1);
@@ -1204,7 +1297,7 @@ function EmailTemplatesPage() {
 		if (!editor) return;
 		if (insertionPositionRef.current !== null)
 			editor.commands.setTextSelection(insertionPositionRef.current);
-		insertBlock(editor, blockType);
+		insertBlock(editor, blockType, siteTheme);
 	};
 
 	const handleDrop = (event: DragEvent<HTMLDivElement>) => {
@@ -1570,7 +1663,15 @@ function EmailTemplatesPage() {
 						<div
 							ref={editorShellRef}
 							className={`email-template-editor relative ${buttonSelected || toolbarPinned ? "button-node-selected" : ""}`}
-							style={{ width: "100%", maxWidth: "54rem", minWidth: 0, minHeight: "30rem" }}
+							style={{
+								width: "100%",
+								maxWidth: "54rem",
+								minWidth: 0,
+								minHeight: "30rem",
+								backgroundColor: emailTheme.surface,
+								color: emailTheme.text,
+								fontFamily: emailTheme.font,
+							}}
 						>
 							<style>{`.email-template-editor .node-container,.email-template-editor .tiptap{width:100% !important;max-width:100% !important;min-width:0 !important;box-sizing:border-box;}.email-template-editor .node-h1,.email-template-editor .node-h2,.email-template-editor .node-h3,.email-template-editor .node-h1 + p,.email-template-editor .align-center{text-align:center;}.email-template-editor .email-block-selected{position:relative;min-height:4.5rem;display:flex;align-items:center;justify-content:center;outline:2px solid #3b82f6;outline-offset:6px;}.email-template-editor .email-node-selected{outline:none;box-shadow:none;}.email-template-editor [data-re-bubble-menu]{display:none !important;}[data-re-slash-command]{display:flex;flex-direction:column;max-height:330px;width:256px;overflow:hidden;background:#111827 !important;border:1px solid #475569 !important;color:#f8fafc !important;box-shadow:0 12px 28px rgb(0 0 0 / 35%);z-index:70 !important;}[data-re-slash-command-scroll]{flex:1 1 auto;min-height:0;overflow-y:auto;padding:.25rem;}[data-re-slash-command-item]{display:flex;align-items:center;gap:.5rem;width:100%;padding:.375rem .5rem;border:0;border-radius:.375rem;background:transparent;color:#f8fafc !important;font-size:.875rem;line-height:1.25rem;text-align:start;}[data-re-slash-command-item] svg{flex-shrink:0;}[data-re-slash-command-item]:hover,[data-re-slash-command-item][data-selected]{background:#334155 !important;}[data-re-slash-command-category]{padding:.5rem .5rem .25rem;font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#cbd5e1 !important;}[data-re-slash-command-empty]{padding:.75rem .5rem;font-size:.875rem;text-align:center;color:#cbd5e1 !important;}`}</style>
 							<style>{`.email-template-editor .node-hr{height:2px !important;margin-block:22px !important;padding:0 !important;border:0 !important;border-top:2px solid #e5e7eb !important;}`}</style>
@@ -1764,7 +1865,7 @@ function EmailTemplatesPage() {
 								content={editorContent}
 								extensions={EMAIL_EDITOR_EXTENSIONS}
 								onUploadImage={handleEmailImageUpload}
-								className="min-h-[30rem] w-full rounded-md bg-white"
+								className="min-h-[30rem] w-full rounded-md"
 								bubbleMenu={{ hideWhenActiveNodes: [], hideWhenActiveMarks: [] }}
 							/>
 						</div>

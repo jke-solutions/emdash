@@ -13,6 +13,7 @@
 import type { PublicPageContext } from "../plugins/types.js";
 import { renderFragments } from "../page/fragments.js";
 import { getPageRuntime } from "../page/index.js";
+import PromotionalCampaignModal from "./PromotionalCampaignModal.astro";
 
 interface Props {
 	page: PublicPageContext;
@@ -30,3 +31,4 @@ if (runtime) {
 ---
 
 <Fragment set:html={html} />
+<PromotionalCampaignModal page={page} />

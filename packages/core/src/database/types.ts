@@ -558,6 +558,24 @@ export interface WidgetTable {
 	created_at: Generated<string>;
 }
 
+export interface PromotionalCampaignTable {
+	id: string;
+	title: string;
+	content: string;
+	media_id: string | null;
+	button_label: string | null;
+	button_url: string | null;
+	page_scope: string;
+	is_active: number;
+	starts_at: string | null;
+	ends_at: string | null;
+	modal_size: string;
+	modal_width: number | null;
+	modal_height: number | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
 // Cron Tasks
 
 export interface CronTaskTable {
@@ -630,6 +648,10 @@ export interface ShopSettingsTable {
 	payment_methods: string;
 	delivery_instructions: string | null;
 	business_hours: string | null;
+	preparation_time: string | null;
+	minimum_subtotal: Generated<number>;
+	free_delivery_min_subtotal: number | null;
+	whatsapp_templates: Generated<string>;
 	payment_gateway_enabled: Generated<number>;
 	payment_gateway_provider: string | null;
 	payment_gateway_environment: string;
@@ -662,6 +684,10 @@ export interface ShopCustomerTable {
 	district: string | null;
 	reference: string | null;
 	notes: string | null;
+	document_type: string | null;
+	document_number: string | null;
+	fiscal_name: string | null;
+	fiscal_address: string | null;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
 }
@@ -681,6 +707,28 @@ export interface ShopOrderTable {
 	customer_snapshot: string;
 	delivery_snapshot: string;
 	notes: string | null;
+	coupon_code: string | null;
+	coupon_discount: number;
+	cancellation_reason: string | null;
+	return_status: Generated<string>;
+	return_reason: string | null;
+	refunded_amount: Generated<number>;
+	refund_notes: string | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
+export interface ShopCouponTable {
+	id: string;
+	code: string;
+	discount_type: string;
+	discount_value: number;
+	minimum_subtotal: number;
+	starts_at: string | null;
+	expires_at: string | null;
+	usage_limit: number | null;
+	usage_count: Generated<number>;
+	active: Generated<number>;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
 }
@@ -722,9 +770,19 @@ export interface ShopDeliveryTable {
 	phone: string;
 	delivery_cost: number;
 	courier_name: string | null;
+	tracking_code: string | null;
+	tracking_url: string | null;
 	estimated_at: string | null;
 	status: Generated<string>;
 	notes: string | null;
+	scheduled_date: string | null;
+	scheduled_time: string | null;
+	recipient_name: string | null;
+	recipient_phone: string | null;
+	instructions: string | null;
+	failed_reason: string | null;
+	delivered_at: string | null;
+	rescheduled_at: string | null;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
 }
@@ -765,6 +823,7 @@ export interface Database {
 	_emdash_menu_items: MenuItemTable;
 	_emdash_widget_areas: WidgetAreaTable;
 	_emdash_widgets: WidgetTable;
+	_emdash_promotional_campaign: PromotionalCampaignTable;
 	_emdash_sections: SectionTable;
 	_emdash_api_tokens: ApiTokenTable;
 	_emdash_oauth_tokens: OAuthTokenTable;
@@ -789,6 +848,7 @@ export interface Database {
 	_emdash_shop_delivery_zones: ShopDeliveryZoneTable;
 	_emdash_shop_customers: ShopCustomerTable;
 	_emdash_shop_orders: ShopOrderTable;
+	_emdash_shop_coupons: ShopCouponTable;
 	_emdash_shop_order_items: ShopOrderItemTable;
 	_emdash_shop_payments: ShopPaymentTable;
 	_emdash_shop_deliveries: ShopDeliveryTable;

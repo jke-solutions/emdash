@@ -800,6 +800,11 @@ export function ContentEditor({
 					>
 						<div className="space-y-6">
 							{Object.entries(fields).map(([name, field]) => {
+								if (
+									collection === "products" &&
+									(name === "promotion_price" || name === "discount_percentage")
+								)
+									return null;
 								// Key by item id so all field editors remount cleanly when the
 								// underlying content item changes (e.g. switching translations).
 								// PortableTextEditor in particular freezes its initial content on
@@ -809,10 +814,12 @@ export function ContentEditor({
 								const fieldKey = `${name}:${item?.id ?? "new"}`;
 								const fieldEl = (
 									<FieldRenderer
+										collection={collection}
 										key={fieldKey}
 										name={name}
 										field={field}
 										value={formData[name]}
+										data={formData}
 										onChange={handleFieldChange}
 										onEditorReady={
 											field.kind === "portableText" && name === "content"
@@ -1092,9 +1099,11 @@ function MobileSettingsCloseButton() {
 }
 
 interface FieldRendererProps {
+	collection?: string;
 	name: string;
 	field: FieldDescriptor;
 	value: unknown;
+	data?: Record<string, unknown>;
 	onChange: (name: string, value: unknown) => void;
 	/** Callback when a portableText editor is ready.
 	 * Called with the editor on mount, and with `null` on unmount. */
@@ -1115,9 +1124,11 @@ interface FieldRendererProps {
  * Render field based on type
  */
 function FieldRenderer({
+	collection,
 	name,
 	field,
 	value,
+	data,
 	onChange,
 	onEditorReady,
 	minimal,
@@ -1133,6 +1144,10 @@ function FieldRenderer({
 	const labelClass = minimal ? "text-kumo-subtle/50 text-xs font-normal" : undefined;
 
 	const handleChange = React.useCallback((v: unknown) => onChange(name, v), [onChange, name]);
+
+	if (collection === "products" && name === "price" && data) {
+		return <ProductPricingEditor data={data} onChange={onChange} />;
+	}
 
 	// Check for plugin field widget override
 	if (field.widget) {
@@ -1447,6 +1462,103 @@ function FieldRenderer({
 				/>
 			);
 	}
+}
+
+function ProductPricingEditor({
+	data,
+	onChange,
+}: {
+	data: Record<string, unknown>;
+	onChange: (name: string, value: unknown) => void;
+}) {
+	const { t } = useLingui();
+	const price = typeof data.price === "number" && Number.isFinite(data.price) ? data.price : "";
+	const promotionPrice =
+		typeof data.promotion_price === "number" && Number.isFinite(data.promotion_price)
+			? data.promotion_price
+			: "";
+	const discountPercentage =
+		typeof data.discount_percentage === "number" && Number.isFinite(data.discount_percentage)
+			? data.discount_percentage
+			: "";
+	const basePrice = typeof price === "number" ? price : null;
+	const updatePrice = (rawValue: string) => {
+		const nextPrice = rawValue === "" ? undefined : Number(rawValue);
+		onChange("price", nextPrice);
+		if (
+			typeof nextPrice === "number" &&
+			Number.isFinite(nextPrice) &&
+			typeof discountPercentage === "number" &&
+			discountPercentage >= 0 &&
+			discountPercentage <= 100
+		) {
+			onChange("promotion_price", roundMoney(nextPrice * (1 - discountPercentage / 100)));
+		}
+	};
+	const updateDiscount = (rawValue: string) => {
+		const nextDiscount = rawValue === "" ? undefined : Number(rawValue);
+		onChange("discount_percentage", nextDiscount);
+		if (
+			basePrice !== null &&
+			typeof nextDiscount === "number" &&
+			Number.isFinite(nextDiscount) &&
+			nextDiscount >= 0 &&
+			nextDiscount <= 100
+		) {
+			onChange("promotion_price", roundMoney(basePrice * (1 - nextDiscount / 100)));
+		}
+	};
+	const updatePromotionPrice = (rawValue: string) => {
+		const nextPromotionPrice = rawValue === "" ? undefined : Number(rawValue);
+		onChange("promotion_price", nextPromotionPrice);
+		if (
+			basePrice !== null &&
+			basePrice > 0 &&
+			typeof nextPromotionPrice === "number" &&
+			Number.isFinite(nextPromotionPrice) &&
+			nextPromotionPrice >= 0 &&
+			nextPromotionPrice <= basePrice
+		) {
+			onChange("discount_percentage", roundMoney((1 - nextPromotionPrice / basePrice) * 100));
+		} else if (rawValue === "") {
+			onChange("discount_percentage", undefined);
+		}
+	};
+	return (
+		<div className="grid gap-4 rounded-lg border border-kumo-line p-4 sm:grid-cols-3">
+			<Input
+				label={t`Precio regular`}
+				type="number"
+				min="0"
+				step="0.01"
+				value={price}
+				onChange={(event) => updatePrice(event.target.value)}
+				required
+			/>
+			<Input
+				label={t`Porcentaje de descuento`}
+				type="number"
+				min="0"
+				max="100"
+				step="0.01"
+				value={discountPercentage}
+				onChange={(event) => updateDiscount(event.target.value)}
+			/>
+			<Input
+				label={t`Precio de promoción`}
+				type="number"
+				min="0"
+				step="0.01"
+				value={promotionPrice}
+				onChange={(event) => updatePromotionPrice(event.target.value)}
+			/>
+			<p className="text-sm text-kumo-subtle sm:col-span-3">{t`Ingresa un porcentaje para calcular el precio de promoción o escribe directamente el precio de promoción.`}</p>
+		</div>
+	);
+}
+
+function roundMoney(value: number): number {
+	return Math.round(value * 100) / 100;
 }
 
 const URL_PROTOCOL_PATTERN = /^https?:\/\//;

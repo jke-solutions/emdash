@@ -292,6 +292,12 @@ export function SidebarNav({ manifest }: SidebarNavProps) {
 			minRole: ROLE_ADMIN,
 		},
 		{ to: "/widgets", label: t`Widgets`, icon: ADMIN_NAV_ICONS.widgets, minRole: ROLE_EDITOR },
+		{
+			to: "/promotions",
+			label: t`Promotions`,
+			icon: ADMIN_NAV_ICONS.promotions,
+			minRole: ROLE_EDITOR,
+		},
 		{ to: "/sections", label: t`Sections`, icon: ADMIN_NAV_ICONS.sections, minRole: ROLE_EDITOR },
 		...getSidebarTaxonomies(manifest.taxonomies, routeLocale, manifest.i18n?.defaultLocale).map(
 			(tax) => ({
