@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr ""
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1541
+#: packages/admin/src/router.tsx:1551
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr ""
 
@@ -273,17 +273,17 @@ msgid "{0} items will be imported"
 msgstr "{0} itens serão importados"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:560
+#: packages/admin/src/router.tsx:563
 msgid "{0} of {total} could not be deleted"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:516
+#: packages/admin/src/router.tsx:519
 msgid "{0} of {total} could not be published"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:539
+#: packages/admin/src/router.tsx:542
 msgid "{0} of {total} could not be updated"
 msgstr ""
 
@@ -600,7 +600,7 @@ msgstr ""
 msgid "A full-width hero banner with heading, text, and CTA button"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:176
+#: packages/admin/src/components/settings/GeneralSettings.tsx:177
 msgid "A short description of your site"
 msgstr "Uma breve descrição do seu site"
 
@@ -624,7 +624,7 @@ msgstr ""
 msgid "Access denied"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1561
+#: packages/admin/src/router.tsx:1571
 msgid "Access Denied"
 msgstr ""
 
@@ -657,23 +657,26 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:617
 #: packages/admin/src/components/ContentList.tsx:743
 #: packages/admin/src/components/ContentTypeList.tsx:190
+#: packages/admin/src/components/Promotions.tsx:122
 #: packages/admin/src/components/TaxonomyManager.tsx:1050
 #: packages/admin/src/routes/byline-schema.tsx:249
-#: packages/admin/src/routes/shop.tsx:427
-#: packages/admin/src/routes/shop.tsx:669
-#: packages/admin/src/routes/shop.tsx:811
+#: packages/admin/src/routes/shop.tsx:206
+#: packages/admin/src/routes/shop.tsx:808
+#: packages/admin/src/routes/shop.tsx:1027
+#: packages/admin/src/routes/shop.tsx:1169
 msgid "Actions"
 msgstr "Ações"
 
+#: packages/admin/src/components/Promotions.tsx:176
 #: packages/admin/src/components/users/UserDetail.tsx:206
 #: packages/admin/src/components/users/UserList.tsx:217
-#: packages/admin/src/routes/shop.tsx:551
-#: packages/admin/src/routes/shop.tsx:587
+#: packages/admin/src/routes/shop.tsx:899
+#: packages/admin/src/routes/shop.tsx:943
 msgid "Active"
 msgstr "Ativo"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:171
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1003
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1016
 #: packages/admin/src/components/MenuEditor.tsx:441
 #: packages/admin/src/components/TaxonomySidebar.tsx:619
 msgid "Add"
@@ -717,10 +720,6 @@ msgstr "Adicionar conteúdo"
 #: packages/admin/src/components/MenuEditor.tsx:496
 msgid "Add Custom Link"
 msgstr "Adicionar link personalizado"
-
-#: packages/admin/src/routes/shop.tsx:462
-msgid "Add delivery zone"
-msgstr ""
 
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:211
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
@@ -830,10 +829,6 @@ msgstr ""
 msgid "Add your social media profiles. These are available to your site's theme and can be displayed in headers, footers, or author bios."
 msgstr "Adicione seus perfis de redes sociais. Eles estão disponíveis para o tema do seu site e podem ser exibidos em cabeçalhos, rodapés ou biografias de autores."
 
-#: packages/admin/src/routes/shop.tsx:495
-msgid "Add zone"
-msgstr ""
-
 #: packages/admin/src/components/MenuEditor.tsx:441
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
 msgid "Adding..."
@@ -843,7 +838,7 @@ msgstr "Adicionando..."
 msgid "Additional data to import."
 msgstr "Dados adicionais para importar."
 
-#: packages/admin/src/routes/shop.tsx:898
+#: packages/admin/src/routes/shop.tsx:1256
 msgid "Address"
 msgstr ""
 
@@ -856,12 +851,12 @@ msgid "admin"
 msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:450
+#: packages/admin/src/components/Sidebar.tsx:456
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "Admin"
 
-#: packages/admin/src/components/Sidebar.tsx:396
+#: packages/admin/src/components/Sidebar.tsx:402
 msgid "Admin navigation"
 msgstr "Navegação administrativa"
 
@@ -929,7 +924,7 @@ msgstr "Todas as coleções"
 msgid "All comments require approval"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:780
+#: packages/admin/src/routes/shop.tsx:1138
 msgid "All districts"
 msgstr ""
 
@@ -940,6 +935,11 @@ msgstr "Todo o conteúdo importado será desatribuído. Você pode reatribuir au
 #: packages/admin/src/components/LocaleSwitcher.tsx:68
 msgid "All locales"
 msgstr "Todas as localizações"
+
+#: packages/admin/src/components/Promotions.tsx:199
+#: packages/admin/src/components/Promotions.tsx:346
+msgid "All pages"
+msgstr ""
 
 #: packages/admin/src/components/users/UserList.tsx:42
 #: packages/admin/src/components/users/UserList.tsx:46
@@ -952,7 +952,7 @@ msgstr "Todas as origens"
 
 #: packages/admin/src/components/ContentList.tsx:831
 #: packages/admin/src/components/Redirects.tsx:426
-#: packages/admin/src/routes/shop.tsx:647
+#: packages/admin/src/routes/shop.tsx:1003
 msgid "All statuses"
 msgstr "Todos os status"
 
@@ -1016,6 +1016,10 @@ msgstr "Texto alternativo definido"
 msgid "Alternatively, you can export from WordPress (Tools → Export) and upload the file."
 msgstr "Alternativamente, você pode exportar do WordPress (Ferramentas → Exportar) e enviar o arquivo."
 
+#: packages/admin/src/routes/shop.tsx:289
+msgid "Amount"
+msgstr ""
+
 #: packages/admin/src/components/DialogError.tsx:14
 #: packages/admin/src/components/MarketplaceBrowse.tsx:135
 #: packages/admin/src/components/PluginManager.tsx:102
@@ -1031,9 +1035,9 @@ msgstr "Alternativamente, você pode exportar do WordPress (Ferramentas → Expo
 #: packages/admin/src/components/settings/BackupSettings.tsx:123
 #: packages/admin/src/components/settings/BackupSettings.tsx:166
 #: packages/admin/src/components/settings/EmailSettings.tsx:45
-#: packages/admin/src/components/settings/GeneralSettings.tsx:78
-#: packages/admin/src/components/settings/GeneralSettings.tsx:140
+#: packages/admin/src/components/settings/GeneralSettings.tsx:79
 #: packages/admin/src/components/settings/GeneralSettings.tsx:141
+#: packages/admin/src/components/settings/GeneralSettings.tsx:142
 #: packages/admin/src/components/settings/SecuritySettings.tsx:51
 #: packages/admin/src/components/settings/SecuritySettings.tsx:67
 #: packages/admin/src/components/settings/SecuritySettings.tsx:124
@@ -1046,24 +1050,24 @@ msgstr "Alternativamente, você pode exportar do WordPress (Ferramentas → Expo
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:448
-#: packages/admin/src/router.tsx:463
-#: packages/admin/src/router.tsx:477
-#: packages/admin/src/router.tsx:491
-#: packages/admin/src/router.tsx:715
-#: packages/admin/src/router.tsx:997
-#: packages/admin/src/router.tsx:1057
-#: packages/admin/src/router.tsx:1075
-#: packages/admin/src/router.tsx:1093
-#: packages/admin/src/router.tsx:1114
-#: packages/admin/src/router.tsx:1135
-#: packages/admin/src/router.tsx:1156
-#: packages/admin/src/router.tsx:1187
-#: packages/admin/src/router.tsx:1207
-#: packages/admin/src/router.tsx:1506
-#: packages/admin/src/router.tsx:1522
-#: packages/admin/src/router.tsx:1547
-#: packages/admin/src/router.tsx:2054
+#: packages/admin/src/router.tsx:451
+#: packages/admin/src/router.tsx:466
+#: packages/admin/src/router.tsx:480
+#: packages/admin/src/router.tsx:494
+#: packages/admin/src/router.tsx:725
+#: packages/admin/src/router.tsx:1007
+#: packages/admin/src/router.tsx:1067
+#: packages/admin/src/router.tsx:1085
+#: packages/admin/src/router.tsx:1103
+#: packages/admin/src/router.tsx:1124
+#: packages/admin/src/router.tsx:1145
+#: packages/admin/src/router.tsx:1166
+#: packages/admin/src/router.tsx:1197
+#: packages/admin/src/router.tsx:1217
+#: packages/admin/src/router.tsx:1516
+#: packages/admin/src/router.tsx:1532
+#: packages/admin/src/router.tsx:1557
+#: packages/admin/src/router.tsx:2070
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1087,7 +1091,7 @@ msgstr "Analisando arquivo de exportação..."
 msgid "Analyzing WordPress site..."
 msgstr "Analisando site WordPress..."
 
-#: packages/admin/src/routes/shop.tsx:790
+#: packages/admin/src/routes/shop.tsx:1148
 msgid "Any date"
 msgstr ""
 
@@ -1183,7 +1187,7 @@ msgstr ""
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "Atribua autores do WordPress a usuários do EmDash. Os posts serão atribuídos ao usuário selecionado."
 
-#: packages/admin/src/routes/shop.tsx:1066
+#: packages/admin/src/routes/shop.tsx:1485
 msgid "Assigned"
 msgstr ""
 
@@ -1221,7 +1225,7 @@ msgstr "A autenticação foi cancelada ou expirou. Tente novamente."
 
 #: packages/admin/src/components/comments/CommentDetail.tsx:77
 #: packages/admin/src/components/comments/CommentInbox.tsx:288
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1213
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1226
 #: packages/admin/src/components/users/roleDefinitions.ts:30
 #: packages/admin/src/components/WelcomeModal.tsx:27
 msgid "Author"
@@ -1281,7 +1285,7 @@ msgstr ""
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1056
+#: packages/admin/src/router.tsx:1066
 msgid "Autosave failed"
 msgstr ""
 
@@ -1358,6 +1362,10 @@ msgstr "Voltar aos temas"
 msgid "Back up now"
 msgstr ""
 
+#: packages/admin/src/components/settings/GeneralSettings.tsx:348
+msgid "Background, surface, text, muted text, borders, and fonts come from the design.md system tokens and cannot be changed here."
+msgstr ""
+
 #: packages/admin/src/components/settings/BackupSettings.tsx:214
 msgid "Backing up..."
 msgstr ""
@@ -1380,7 +1388,7 @@ msgstr ""
 msgid "Backups to keep"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:339
+#: packages/admin/src/routes/shop.tsx:676
 msgid "Bank transfer"
 msgstr ""
 
@@ -1447,8 +1455,16 @@ msgstr "Navegue pelos temas e visualize-os com seu próprio conteúdo."
 msgid "Bullet List"
 msgstr "Lista com marcadores"
 
-#: packages/admin/src/routes/shop.tsx:207
+#: packages/admin/src/routes/shop.tsx:503
 msgid "Business hours"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:331
+msgid "Button label (optional)"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:336
+msgid "Button URL (optional)"
 msgstr ""
 
 #: packages/admin/src/routes/byline-schema.tsx:218
@@ -1456,14 +1472,14 @@ msgstr ""
 msgid "Byline schema"
 msgstr ""
 
-#: packages/admin/src/components/Sidebar.tsx:319
+#: packages/admin/src/components/Sidebar.tsx:325
 msgid "Byline Schema"
 msgstr ""
 
 #: packages/admin/src/components/BylineFilter.tsx:135
-#: packages/admin/src/components/ContentSettingsPanel.tsx:661
-#: packages/admin/src/components/ContentSettingsPanel.tsx:664
-#: packages/admin/src/components/Sidebar.tsx:306
+#: packages/admin/src/components/ContentSettingsPanel.tsx:666
+#: packages/admin/src/components/ContentSettingsPanel.tsx:669
+#: packages/admin/src/components/Sidebar.tsx:312
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "Créditos"
@@ -1478,6 +1494,10 @@ msgstr ""
 
 #: packages/admin/src/components/editor/codeBlockLanguages.ts:31
 msgid "C++"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:392
+msgid "Campaign active"
 msgstr ""
 
 #: packages/admin/src/components/users/roleDefinitions.ts:25
@@ -1500,14 +1520,14 @@ msgstr "Pode visualizar conteúdo"
 #: packages/admin/src/components/CapabilityConsentDialog.tsx:192
 #: packages/admin/src/components/ConfirmDialog.tsx:57
 #: packages/admin/src/components/ContentList.tsx:525
-#: packages/admin/src/components/ContentList.tsx:1251
-#: packages/admin/src/components/ContentList.tsx:1419
+#: packages/admin/src/components/ContentList.tsx:1259
+#: packages/admin/src/components/ContentList.tsx:1438
 #: packages/admin/src/components/ContentPickerModal.tsx:240
 #: packages/admin/src/components/ContentSettingsPanel.tsx:99
-#: packages/admin/src/components/ContentSettingsPanel.tsx:582
-#: packages/admin/src/components/ContentSettingsPanel.tsx:814
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1117
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1170
+#: packages/admin/src/components/ContentSettingsPanel.tsx:583
+#: packages/admin/src/components/ContentSettingsPanel.tsx:827
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1130
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1183
 #: packages/admin/src/components/editor/CodeBlockNode.tsx:193
 #: packages/admin/src/components/editor/CodeBlockNode.tsx:194
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:586
@@ -1523,6 +1543,7 @@ msgstr "Pode visualizar conteúdo"
 #: packages/admin/src/components/MenuList.tsx:175
 #: packages/admin/src/components/PluginManager.tsx:725
 #: packages/admin/src/components/PortableTextEditor.tsx:4209
+#: packages/admin/src/components/Promotions.tsx:395
 #: packages/admin/src/components/Redirects.tsx:183
 #: packages/admin/src/components/SectionPickerModal.tsx:131
 #: packages/admin/src/components/Sections.tsx:209
@@ -1535,6 +1556,9 @@ msgstr "Pode visualizar conteúdo"
 #: packages/admin/src/components/users/InviteUserModal.tsx:198
 #: packages/admin/src/components/Widgets.tsx:451
 #: packages/admin/src/components/WordPressImport.tsx:1917
+#: packages/admin/src/routes/shop.tsx:316
+#: packages/admin/src/routes/shop.tsx:911
+#: packages/admin/src/routes/shop.tsx:1509
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1546,9 +1570,19 @@ msgstr ""
 msgid "Cancel rename"
 msgstr "Cancelar renomeação"
 
-#: packages/admin/src/routes/shop.tsx:52
-#: packages/admin/src/routes/shop.tsx:654
+#: packages/admin/src/routes/shop.tsx:1500
+msgid "Cancellation reason"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:58
+#: packages/admin/src/routes/shop.tsx:1010
+#: packages/admin/src/routes/shop.tsx:1491
+#: packages/admin/src/routes/shop.tsx:1559
 msgid "Cancelled"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:478
+msgid "Cancelled template"
 msgstr ""
 
 #: packages/admin/src/components/Sections.tsx:407
@@ -1583,12 +1617,13 @@ msgstr "Legenda"
 msgid "Captions / Subtitles"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:340
+#: packages/admin/src/routes/shop.tsx:677
 msgid "Cash on delivery"
 msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
+#: packages/admin/src/router.tsx:616
 msgid "Categories"
 msgstr "Categorias"
 
@@ -1607,7 +1642,7 @@ msgstr ""
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:76
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:107
-#: packages/admin/src/components/ContentEditor.tsx:1715
+#: packages/admin/src/components/ContentEditor.tsx:1827
 #: packages/admin/src/components/FieldEditor.tsx:428
 #: packages/admin/src/components/ImageFieldRenderer.tsx:208
 #: packages/admin/src/components/ImageFieldRenderer.tsx:237
@@ -1622,7 +1657,7 @@ msgstr "Alterar"
 msgid "Change <0>{0}</0> from <1>{1}</1> to <2>{2}</2>? They will lose access to higher-level features."
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:280
+#: packages/admin/src/components/settings/GeneralSettings.tsx:281
 msgid "Change Favicon"
 msgstr "Alterar favicon"
 
@@ -1630,7 +1665,7 @@ msgstr "Alterar favicon"
 msgid "Change Image"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:220
+#: packages/admin/src/components/settings/GeneralSettings.tsx:221
 msgid "Change Logo"
 msgstr "Alterar logo"
 
@@ -1638,7 +1673,7 @@ msgstr "Alterar logo"
 msgid "Changelog"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1117
 msgid "Changes discarded"
 msgstr ""
 
@@ -1671,6 +1706,10 @@ msgstr "Verificando autenticação..."
 #. placeholder {0}: deletingField.label
 #: packages/admin/src/routes/byline-schema.tsx:362
 msgid "Checking how many stored values reference \"{0}\"…"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1545
+msgid "Choose a template, review it in WhatsApp, and send it manually."
 msgstr ""
 
 #: packages/admin/src/components/SetupWizard.tsx:288
@@ -1770,12 +1809,14 @@ msgstr "Clique no link no e-mail para entrar."
 #: packages/admin/src/components/Widgets.tsx:413
 #: packages/admin/src/components/Widgets.tsx:419
 #: packages/admin/src/components/Widgets.tsx:423
-#: packages/admin/src/routes/shop.tsx:505
-#: packages/admin/src/routes/shop.tsx:507
-#: packages/admin/src/routes/shop.tsx:690
-#: packages/admin/src/routes/shop.tsx:692
+#: packages/admin/src/routes/shop.tsx:258
+#: packages/admin/src/routes/shop.tsx:260
+#: packages/admin/src/routes/shop.tsx:837
 #: packages/admin/src/routes/shop.tsx:839
-#: packages/admin/src/routes/shop.tsx:841
+#: packages/admin/src/routes/shop.tsx:1048
+#: packages/admin/src/routes/shop.tsx:1050
+#: packages/admin/src/routes/shop.tsx:1197
+#: packages/admin/src/routes/shop.tsx:1199
 msgid "Close"
 msgstr "Fechar"
 
@@ -1791,13 +1832,15 @@ msgstr ""
 msgid "Close panel"
 msgstr "Fechar painel"
 
-#: packages/admin/src/components/ContentEditor.tsx:1088
+#: packages/admin/src/components/ContentEditor.tsx:1095
 msgid "Close settings"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeList.tsx:356
 #: packages/admin/src/components/PortableTextEditor.tsx:3660
 #: packages/admin/src/components/Redirects.tsx:478
+#: packages/admin/src/routes/shop.tsx:203
+#: packages/admin/src/routes/shop.tsx:274
 msgid "Code"
 msgstr "Código"
 
@@ -1806,6 +1849,10 @@ msgstr "Código"
 #: packages/admin/src/components/PortableTextEditor.tsx:4110
 msgid "Code Block"
 msgstr "Bloco de código"
+
+#: packages/admin/src/routes/shop.tsx:1532
+msgid "Code from delivery provider"
+msgstr ""
 
 #: packages/admin/src/components/PluginManager.tsx:506
 msgid "Collapse"
@@ -1878,13 +1925,21 @@ msgstr "Configurar campo"
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: packages/admin/src/routes/shop.tsx:1056
+#: packages/admin/src/routes/shop.tsx:1522
+msgid "Confirm cancellation"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1462
 msgid "Confirm payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:47
-#: packages/admin/src/routes/shop.tsx:649
+#: packages/admin/src/routes/shop.tsx:53
+#: packages/admin/src/routes/shop.tsx:1005
 msgid "Confirmed"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1462
+msgid "Confirming..."
 msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:701
@@ -1920,7 +1975,7 @@ msgstr ""
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:432
+#: packages/admin/src/components/Sidebar.tsx:438
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "Conteúdo"
@@ -1938,7 +1993,7 @@ msgstr "Erros de conteúdo ({0})"
 msgid "Content found:"
 msgstr "Conteúdo encontrado:"
 
-#: packages/admin/src/router.tsx:1129
+#: packages/admin/src/router.tsx:1139
 msgid "Content has been scheduled for publishing"
 msgstr ""
 
@@ -1950,7 +2005,7 @@ msgstr "O conteúdo foi atualizado para a revisão selecionada."
 msgid "Content ID:"
 msgstr "ID do conteúdo:"
 
-#: packages/admin/src/router.tsx:1070
+#: packages/admin/src/router.tsx:1080
 msgid "Content is now live"
 msgstr ""
 
@@ -1958,11 +2013,11 @@ msgstr ""
 msgid "content items"
 msgstr "itens de conteúdo"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:499
+#: packages/admin/src/components/ContentSettingsPanel.tsx:500
 msgid "Content locale"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:510
+#: packages/admin/src/components/ContentSettingsPanel.tsx:511
 msgid "Content locale defaults to English"
 msgstr ""
 
@@ -1970,11 +2025,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "Leitura de conteúdo"
 
-#: packages/admin/src/router.tsx:1088
+#: packages/admin/src/router.tsx:1098
 msgid "Content removed from public view"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1150
+#: packages/admin/src/router.tsx:1160
 msgid "Content reverted to draft"
 msgstr ""
 
@@ -1988,7 +2043,7 @@ msgstr "Conteúdo para importar"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:321
 msgid "Content Types"
 msgstr "Tipos de conteúdo"
 
@@ -2022,13 +2077,13 @@ msgstr ""
 msgid "Contributor"
 msgstr "Colaborador"
 
-#: packages/admin/src/routes/shop.tsx:336
+#: packages/admin/src/routes/shop.tsx:673
 msgid "Coordinate by WhatsApp"
 msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:305
 #: packages/admin/src/components/users/InviteUserModal.tsx:133
-#: packages/admin/src/routes/shop.tsx:853
+#: packages/admin/src/routes/shop.tsx:1211
 msgid "Copied to clipboard"
 msgstr "Copiado para a área de transferência"
 
@@ -2037,7 +2092,7 @@ msgstr "Copiado para a área de transferência"
 msgid "Copy {0} to clipboard"
 msgstr "Copiar {0} para a área de transferência"
 
-#: packages/admin/src/routes/shop.tsx:926
+#: packages/admin/src/routes/shop.tsx:1284
 msgid "Copy address"
 msgstr ""
 
@@ -2045,7 +2100,7 @@ msgstr ""
 msgid "Copy invite link"
 msgstr "Copiar link de convite"
 
-#: packages/admin/src/routes/shop.tsx:920
+#: packages/admin/src/routes/shop.tsx:1278
 msgid "Copy phone"
 msgstr ""
 
@@ -2068,7 +2123,7 @@ msgstr "Copiar token"
 msgid "Copy URL"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:424
+#: packages/admin/src/routes/shop.tsx:805
 msgid "Cost"
 msgstr ""
 
@@ -2080,12 +2135,20 @@ msgstr "Não foi possível copiar automaticamente. Selecione a URL acima e copie
 msgid "Could not insert section"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:725
+#: packages/admin/src/routes/shop.tsx:159
+msgid "Could not load coupons. Please try again."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1083
 msgid "Could not load customers. Please try again."
 msgstr ""
 
 #: packages/admin/src/components/Dashboard.tsx:124
 msgid "Could not load dashboard data"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:757
+msgid "Could not load delivery zones. Please try again."
 msgstr ""
 
 #: packages/admin/src/components/MediaPickerModal.tsx:493
@@ -2108,7 +2171,7 @@ msgstr ""
 msgid "Couldn't map \"{draft}\" to a MIME type. Type the MIME directly."
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1009
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1022
 msgid "Couldn't search bylines. Please try again."
 msgstr ""
 
@@ -2121,7 +2184,19 @@ msgstr ""
 msgid "Count"
 msgstr "Contagem"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1141
+#: packages/admin/src/routes/shop.tsx:154
+msgid "Coupon deleted"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:147
+msgid "Coupon saved"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:88
+msgid "Coupons"
+msgstr ""
+
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1154
 #: packages/admin/src/components/MenuList.tsx:178
 #: packages/admin/src/components/Redirects.tsx:192
 #: packages/admin/src/components/Sections.tsx:212
@@ -2162,7 +2237,7 @@ msgstr "Criar conta"
 msgid "Create an account"
 msgstr "Criar uma conta"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1089
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1102
 #: packages/admin/src/routes/bylines.tsx:476
 msgid "Create byline"
 msgstr "Criar crédito"
@@ -2202,6 +2277,10 @@ msgstr "Criar chave de acesso"
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:326
 msgid "Create personal access tokens for programmatic API access"
 msgstr "Crie tokens de acesso pessoal para acesso programático à API"
+
+#: packages/admin/src/components/Promotions.tsx:107
+msgid "Create Promotion"
+msgstr ""
 
 #. placeholder {0}: item.path
 #: packages/admin/src/components/Redirects.tsx:248
@@ -2283,7 +2362,7 @@ msgid "Create, update, delete content"
 msgstr "Criar, atualizar, excluir conteúdo"
 
 #: packages/admin/src/components/ContentList.tsx:841
-#: packages/admin/src/components/ContentSettingsPanel.tsx:633
+#: packages/admin/src/components/ContentSettingsPanel.tsx:634
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:358
 #: packages/admin/src/components/users/UserDetail.tsx:219
 msgid "Created"
@@ -2300,7 +2379,7 @@ msgid "Created {0}"
 msgstr "Criado em {0}"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1181
+#: packages/admin/src/router.tsx:1191
 msgid "Created {0} translation"
 msgstr ""
 
@@ -2312,7 +2391,7 @@ msgstr "Criado em"
 msgid "Creating collections and fields..."
 msgstr "Criando coleções e campos..."
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1141
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1154
 #: packages/admin/src/components/MenuList.tsx:178
 #: packages/admin/src/components/Redirects.tsx:189
 #: packages/admin/src/components/Sections.tsx:212
@@ -2330,11 +2409,11 @@ msgstr ""
 msgid "CSS"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:155
+#: packages/admin/src/routes/shop.tsx:382
 msgid "Currency"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:162
+#: packages/admin/src/routes/shop.tsx:389
 msgid "Currency symbol"
 msgstr ""
 
@@ -2350,6 +2429,7 @@ msgstr "Atual"
 msgid "Currently set — enter a new value to replace"
 msgstr ""
 
+#: packages/admin/src/components/Promotions.tsx:354
 #: packages/admin/src/components/Sections.tsx:46
 msgid "Custom"
 msgstr "Personalizado"
@@ -2370,16 +2450,16 @@ msgstr "Seção personalizada"
 msgid "Custom Taxonomies"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:806
-#: packages/admin/src/routes/shop.tsx:1019
+#: packages/admin/src/routes/shop.tsx:1164
+#: packages/admin/src/routes/shop.tsx:1418
 msgid "Customer"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:837
+#: packages/admin/src/routes/shop.tsx:1195
 msgid "Customer details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:80
+#: packages/admin/src/routes/shop.tsx:87
 msgid "Customers"
 msgstr ""
 
@@ -2389,6 +2469,10 @@ msgstr ""
 
 #: packages/admin/src/components/settings/BackupSettings.tsx:223
 msgid "Daily automatic backups"
+msgstr ""
+
+#: packages/admin/src/components/settings/GeneralSettings.tsx:355
+msgid "Danger"
 msgstr ""
 
 #: packages/admin/src/components/ThemeToggle.tsx:22
@@ -2403,7 +2487,7 @@ msgstr "Escuro"
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
 #: packages/admin/src/components/Sidebar.tsx:263
-#: packages/admin/src/components/Sidebar.tsx:423
+#: packages/admin/src/components/Sidebar.tsx:429
 msgid "Dashboard"
 msgstr "Painel"
 
@@ -2425,7 +2509,7 @@ msgstr "Seletor de data e hora"
 msgid "Date field to filter on"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:324
+#: packages/admin/src/components/settings/GeneralSettings.tsx:386
 msgid "Date Format"
 msgstr "Formato de data"
 
@@ -2481,6 +2565,7 @@ msgstr ""
 #: packages/admin/src/components/MediaDetailPanel.tsx:453
 #: packages/admin/src/components/MenuEditor.tsx:549
 #: packages/admin/src/components/MenuList.tsx:258
+#: packages/admin/src/components/Promotions.tsx:154
 #: packages/admin/src/components/Redirects.tsx:603
 #: packages/admin/src/components/Sections.tsx:308
 #: packages/admin/src/components/Sections.tsx:407
@@ -2490,6 +2575,7 @@ msgstr ""
 #: packages/admin/src/routes/byline-schema.tsx:378
 #: packages/admin/src/routes/bylines.tsx:588
 #: packages/admin/src/routes/bylines.tsx:624
+#: packages/admin/src/routes/shop.tsx:237
 msgid "Delete"
 msgstr "Excluir"
 
@@ -2499,16 +2585,17 @@ msgid "Delete \"{0}\"? This cannot be undone."
 msgstr "Excluir \"{0}\"? Isso não pode ser desfeito."
 
 #. placeholder {0}: archive.name
+#. placeholder {0}: campaign.title
 #. placeholder {0}: collection.label
-#. placeholder {0}: domain.domain
 #: packages/admin/src/components/ContentTypeList.tsx:341
+#: packages/admin/src/components/Promotions.tsx:218
 #: packages/admin/src/components/Sections.tsx:408
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:266
 #: packages/admin/src/components/settings/BackupSettings.tsx:312
 #: packages/admin/src/components/TaxonomyManager.tsx:280
 #: packages/admin/src/components/Widgets.tsx:817
 #: packages/admin/src/routes/byline-schema.tsx:458
-#: packages/admin/src/routes/shop.tsx:596
+#: packages/admin/src/routes/shop.tsx:952
 msgid "Delete {0}"
 msgstr "Excluir {0}"
 
@@ -2592,13 +2679,17 @@ msgid "Delete permanently"
 msgstr "Excluir permanentemente"
 
 #: packages/admin/src/components/comments/CommentDetail.tsx:182
-#: packages/admin/src/components/ContentList.tsx:1430
+#: packages/admin/src/components/ContentList.tsx:1449
 msgid "Delete Permanently"
 msgstr "Excluir permanentemente"
 
-#: packages/admin/src/components/ContentList.tsx:1410
+#: packages/admin/src/components/ContentList.tsx:1429
 msgid "Delete Permanently?"
 msgstr "Excluir permanentemente?"
+
+#: packages/admin/src/components/Promotions.tsx:152
+msgid "Delete Promotion?"
+msgstr ""
 
 #: packages/admin/src/components/Redirects.tsx:544
 msgid "Delete redirect"
@@ -2645,6 +2736,7 @@ msgstr ""
 #: packages/admin/src/components/MediaDetailPanel.tsx:410
 #: packages/admin/src/components/MediaDetailPanel.tsx:454
 #: packages/admin/src/components/MenuList.tsx:259
+#: packages/admin/src/components/Promotions.tsx:155
 #: packages/admin/src/components/Redirects.tsx:604
 #: packages/admin/src/components/Sections.tsx:309
 #: packages/admin/src/components/settings/BackupSettings.tsx:353
@@ -2658,39 +2750,46 @@ msgstr "Excluindo..."
 msgid "Deleting…"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:51
-#: packages/admin/src/routes/shop.tsx:653
-#: packages/admin/src/routes/shop.tsx:1068
+#: packages/admin/src/routes/shop.tsx:57
+#: packages/admin/src/routes/shop.tsx:1009
+#: packages/admin/src/routes/shop.tsx:1488
+#: packages/admin/src/routes/shop.tsx:1558
 msgid "Delivered"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:667
-#: packages/admin/src/routes/shop.tsx:1046
+#: packages/admin/src/routes/shop.tsx:467
+msgid "Delivered template"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1025
 msgid "Delivery"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:477
-#: packages/admin/src/routes/shop.tsx:534
+#: packages/admin/src/routes/shop.tsx:875
 msgid "Delivery cost"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1016
+#: packages/admin/src/routes/shop.tsx:1468
+msgid "Delivery status"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1381
 msgid "Delivery updated"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:384
+#: packages/admin/src/routes/shop.tsx:724
 msgid "Delivery zone created"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:409
+#: packages/admin/src/routes/shop.tsx:750
 msgid "Delivery zone deleted"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:402
+#: packages/admin/src/routes/shop.tsx:743
 msgid "Delivery zone updated"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:78
+#: packages/admin/src/routes/shop.tsx:85
 msgid "Delivery zones"
 msgstr ""
 
@@ -2741,6 +2840,10 @@ msgstr "Descrição"
 #: packages/admin/src/components/TaxonomyManager.tsx:618
 msgid "Description (optional)"
 msgstr "Descrição (opcional)"
+
+#: packages/admin/src/components/settings/GeneralSettings.tsx:312
+msgid "Design"
+msgstr ""
 
 #: packages/admin/src/components/Redirects.tsx:477
 msgid "Destination"
@@ -2852,6 +2955,14 @@ msgstr "Descartar alterações do rascunho?"
 msgid "Discarding..."
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:204
+msgid "Discount"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:280
+msgid "Discount type"
+msgstr ""
+
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:267
 msgid "Dismiss"
 msgstr "Dispensar"
@@ -2872,8 +2983,8 @@ msgstr "Exibir um menu de navegação"
 msgid "Display category list"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1092
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1154
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1105
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1167
 #: packages/admin/src/routes/bylines.tsx:481
 msgid "Display name"
 msgstr "Nome de exibição"
@@ -2900,18 +3011,17 @@ msgstr "Exibido abaixo da imagem como legenda visível."
 msgid "Distraction-free mode (⌘⇧\\)"
 msgstr "Modo sem distrações (⌘⇧\\)"
 
-#: packages/admin/src/routes/shop.tsx:808
-#: packages/admin/src/routes/shop.tsx:899
+#: packages/admin/src/routes/shop.tsx:1166
+#: packages/admin/src/routes/shop.tsx:1257
 msgid "District"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:473
+#: packages/admin/src/routes/shop.tsx:871
 msgid "District 1, District 2"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:423
-#: packages/admin/src/routes/shop.tsx:470
-#: packages/admin/src/routes/shop.tsx:527
+#: packages/admin/src/routes/shop.tsx:804
+#: packages/admin/src/routes/shop.tsx:864
 msgid "Districts"
 msgstr ""
 
@@ -2953,7 +3063,7 @@ msgstr "Não tem uma conta? <0>Cadastre-se</0>"
 msgid "Done"
 msgstr "Concluído"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1035
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1048
 msgid "Down"
 msgstr "Abaixo"
 
@@ -3053,7 +3163,7 @@ msgstr "Solte seu arquivo de exportação do WordPress aqui"
 msgid "Duplicate"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1224
+#: packages/admin/src/components/ContentList.tsx:1232
 msgid "Duplicate {title}"
 msgstr "Duplicar {title}"
 
@@ -3073,27 +3183,29 @@ msgstr "ex.: Pipeline CI/CD"
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "ex.: MacBook Pro, iPhone"
 
-#: packages/admin/src/components/Sidebar.tsx:309
-#: packages/admin/src/routes/shop.tsx:71
+#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/routes/shop.tsx:78
 msgid "Ecommerce"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1044
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1057
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:367
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:368
 #: packages/admin/src/components/MenuEditor.tsx:544
 #: packages/admin/src/components/MenuList.tsx:234
 #: packages/admin/src/components/Sections.tsx:392
 #: packages/admin/src/components/TranslationsPanel.tsx:93
-#: packages/admin/src/routes/shop.tsx:592
+#: packages/admin/src/routes/shop.tsx:232
+#: packages/admin/src/routes/shop.tsx:948
 msgid "Edit"
 msgstr "Editar"
 
 #. placeholder {0}: block?.label || ""
+#. placeholder {0}: campaign.title
 #. placeholder {0}: collection.label
-#. placeholder {0}: domain.domain
 #: packages/admin/src/components/ContentTypeList.tsx:332
 #: packages/admin/src/components/PortableTextEditor.tsx:1905
+#: packages/admin/src/components/Promotions.tsx:210
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:254
 #: packages/admin/src/components/TaxonomyManager.tsx:272
 #: packages/admin/src/components/TaxonomyManager.tsx:539
@@ -3111,11 +3223,11 @@ msgstr ""
 msgid "Edit {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1216
+#: packages/admin/src/components/ContentList.tsx:1224
 msgid "Edit {title}"
 msgstr "Editar {title}"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1151
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1164
 msgid "Edit byline"
 msgstr "Editar crédito"
 
@@ -3123,7 +3235,11 @@ msgstr "Editar crédito"
 msgid "Edit byline field"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:503
+#: packages/admin/src/routes/shop.tsx:255
+msgid "Edit coupon"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:834
 msgid "Edit delivery zone"
 msgstr ""
 
@@ -3194,7 +3310,7 @@ msgstr ""
 #: packages/admin/src/components/Settings.tsx:95
 #: packages/admin/src/components/SignupPage.tsx:198
 #: packages/admin/src/components/users/UserDetail.tsx:154
-#: packages/admin/src/routes/shop.tsx:897
+#: packages/admin/src/routes/shop.tsx:1255
 msgid "Email"
 msgstr "E-mail"
 
@@ -3267,11 +3383,15 @@ msgstr "Ativar"
 msgid "Enable comments"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:531
+msgid "Enable free delivery"
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:87
 msgid "Enable full-text search on this collection"
 msgstr "Ativar pesquisa de texto completo nesta coleção"
 
-#: packages/admin/src/routes/shop.tsx:229
+#: packages/admin/src/routes/shop.tsx:566
 msgid "Enable payment gateway"
 msgstr ""
 
@@ -3292,12 +3412,16 @@ msgstr "Ativar redirecionamento"
 msgid "Enabled"
 msgstr "Ativado"
 
+#: packages/admin/src/components/Promotions.tsx:386
+msgid "End date and time (optional)"
+msgstr ""
+
 #: packages/admin/src/components/MenuEditor.tsx:423
 #: packages/admin/src/components/MenuEditor.tsx:601
 msgid "Enter a URL (https://…) or a relative path (/…)"
 msgstr "Digite uma URL (https://…) ou um caminho relativo (/…)"
 
-#: packages/admin/src/components/ContentEditor.tsx:1496
+#: packages/admin/src/components/ContentEditor.tsx:1608
 msgid "Enter a valid URL (e.g. https://example.com)"
 msgstr ""
 
@@ -3317,7 +3441,7 @@ msgstr "Digite o e-mail"
 msgid "Enter HTML..."
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1269
+#: packages/admin/src/components/ContentEditor.tsx:1284
 msgid "Enter markdown content..."
 msgstr "Digite o conteúdo em markdown..."
 
@@ -3346,7 +3470,7 @@ msgstr "Digite suas credenciais do WordPress para importar o conteúdo diretamen
 msgid "Enter your WordPress site URL"
 msgstr "Digite a URL do seu site WordPress"
 
-#: packages/admin/src/routes/shop.tsx:251
+#: packages/admin/src/routes/shop.tsx:588
 msgid "Environment"
 msgstr ""
 
@@ -3356,7 +3480,7 @@ msgstr ""
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2269
+#: packages/admin/src/router.tsx:2286
 msgid "Error"
 msgstr "Erro"
 
@@ -3376,9 +3500,8 @@ msgstr "Erro ao salvar seção"
 msgid "Error updating widget"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:425
-#: packages/admin/src/routes/shop.tsx:486
-#: packages/admin/src/routes/shop.tsx:543
+#: packages/admin/src/routes/shop.tsx:806
+#: packages/admin/src/routes/shop.tsx:888
 msgid "Estimated time"
 msgstr ""
 
@@ -3387,19 +3510,23 @@ msgid "Every published release of this plugin has been withdrawn or could not be
 msgstr ""
 
 #. placeholder {0}: formData.dateFormat ?? "MMMM d, yyyy"
-#: packages/admin/src/components/settings/GeneralSettings.tsx:327
+#: packages/admin/src/components/settings/GeneralSettings.tsx:389
 msgid "Example: {0} → January 23, 2026"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:489
+#: packages/admin/src/routes/shop.tsx:513
+msgid "Example: 24 hours"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:895
 msgid "Example: 30–60 minutes"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:176
+#: packages/admin/src/routes/shop.tsx:402
 msgid "Example: 51999999999"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:166
+#: packages/admin/src/routes/shop.tsx:393
 msgid "Example: S/"
 msgstr ""
 
@@ -3427,10 +3554,18 @@ msgstr "Expandir"
 msgid "Expand details"
 msgstr "Expandir detalhes"
 
+#: packages/admin/src/components/Promotions.tsx:178
+msgid "Expired"
+msgstr ""
+
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:365
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:526
 msgid "Expiry"
 msgstr "Expiração"
+
+#: packages/admin/src/routes/shop.tsx:1503
+msgid "Explain why this order is being cancelled"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1273
 msgid "Export from WordPress manually"
@@ -3485,7 +3620,7 @@ msgstr ""
 msgid "Failed to create backup"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1135
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1148
 msgid "Failed to create byline"
 msgstr "Falha ao criar crédito"
 
@@ -3510,14 +3645,14 @@ msgid "Failed to create term"
 msgstr ""
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1186
+#: packages/admin/src/router.tsx:1196
 msgid "Failed to create translation"
 msgstr ""
 
-#: packages/admin/src/router.tsx:447
-#: packages/admin/src/router.tsx:476
-#: packages/admin/src/router.tsx:559
-#: packages/admin/src/router.tsx:1206
+#: packages/admin/src/router.tsx:450
+#: packages/admin/src/router.tsx:479
+#: packages/admin/src/router.tsx:562
+#: packages/admin/src/router.tsx:1216
 msgid "Failed to delete"
 msgstr ""
 
@@ -3542,11 +3677,11 @@ msgid "Failed to delete collection"
 msgstr ""
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1521
+#: packages/admin/src/router.tsx:1531
 msgid "Failed to delete comment"
 msgstr ""
 
-#: packages/admin/src/lib/api/content.ts:302
+#: packages/admin/src/lib/api/content.ts:304
 msgid "Failed to delete content"
 msgstr ""
 
@@ -3573,6 +3708,10 @@ msgstr ""
 
 #: packages/admin/src/lib/api/users.ts:256
 msgid "Failed to delete passkey"
+msgstr ""
+
+#: packages/admin/src/lib/api/promotions.ts:73
+msgid "Failed to delete promotional campaign"
 msgstr ""
 
 #: packages/admin/src/lib/api/redirects.ts:111
@@ -3608,7 +3747,7 @@ msgstr ""
 msgid "Failed to disable user"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1113
+#: packages/admin/src/router.tsx:1123
 msgid "Failed to discard changes"
 msgstr ""
 
@@ -3616,7 +3755,7 @@ msgstr ""
 msgid "Failed to dismiss welcome"
 msgstr ""
 
-#: packages/admin/src/router.tsx:490
+#: packages/admin/src/router.tsx:493
 msgid "Failed to duplicate"
 msgstr ""
 
@@ -3695,12 +3834,20 @@ msgstr ""
 msgid "Failed to fetch plugins"
 msgstr ""
 
+#: packages/admin/src/lib/api/promotions.ts:43
+msgid "Failed to fetch promotional campaign"
+msgstr ""
+
+#: packages/admin/src/lib/api/promotions.ts:51
+msgid "Failed to fetch promotional campaigns"
+msgstr ""
+
 #: packages/admin/src/lib/api/media.ts:397
 msgid "Failed to fetch provider media"
 msgstr ""
 
-#: packages/admin/src/lib/api/content.ts:579
-#: packages/admin/src/lib/api/content.ts:584
+#: packages/admin/src/lib/api/content.ts:581
+#: packages/admin/src/lib/api/content.ts:586
 msgid "Failed to fetch revision"
 msgstr ""
 
@@ -3712,7 +3859,7 @@ msgstr ""
 msgid "Failed to fetch sections"
 msgstr ""
 
-#: packages/admin/src/lib/api/settings.ts:50
+#: packages/admin/src/lib/api/settings.ts:70
 msgid "Failed to fetch settings"
 msgstr ""
 
@@ -3727,8 +3874,8 @@ msgstr ""
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:906
-#: packages/admin/src/router.tsx:1452
+#: packages/admin/src/router.tsx:916
+#: packages/admin/src/router.tsx:1462
 msgid "Failed to fetch user"
 msgstr ""
 
@@ -3770,7 +3917,7 @@ msgstr ""
 msgid "Failed to list byline fields"
 msgstr ""
 
-#: packages/admin/src/router.tsx:288
+#: packages/admin/src/router.tsx:289
 msgid "Failed to load admin"
 msgstr ""
 
@@ -3839,11 +3986,11 @@ msgstr ""
 msgid "Failed to load widget"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1546
+#: packages/admin/src/router.tsx:1556
 msgid "Failed to perform bulk action"
 msgstr ""
 
-#: packages/admin/src/lib/api/content.ts:345
+#: packages/admin/src/lib/api/content.ts:347
 msgid "Failed to permanently delete content"
 msgstr ""
 
@@ -3851,8 +3998,8 @@ msgstr ""
 msgid "Failed to prepare import"
 msgstr ""
 
-#: packages/admin/src/router.tsx:515
-#: packages/admin/src/router.tsx:1074
+#: packages/admin/src/router.tsx:518
+#: packages/admin/src/router.tsx:1084
 msgid "Failed to publish"
 msgstr ""
 
@@ -3890,16 +4037,16 @@ msgstr ""
 msgid "Failed to reorder widgets"
 msgstr ""
 
-#: packages/admin/src/router.tsx:462
+#: packages/admin/src/router.tsx:465
 msgid "Failed to restore"
 msgstr ""
 
-#: packages/admin/src/lib/api/content.ts:334
+#: packages/admin/src/lib/api/content.ts:336
 msgid "Failed to restore content"
 msgstr ""
 
-#: packages/admin/src/lib/api/content.ts:601
-#: packages/admin/src/lib/api/content.ts:606
+#: packages/admin/src/lib/api/content.ts:603
+#: packages/admin/src/lib/api/content.ts:608
 msgid "Failed to restore revision"
 msgstr ""
 
@@ -3911,9 +4058,9 @@ msgstr ""
 msgid "Failed to rewrite URLs"
 msgstr ""
 
-#: packages/admin/src/router.tsx:714
-#: packages/admin/src/router.tsx:996
-#: packages/admin/src/router.tsx:2053
+#: packages/admin/src/router.tsx:724
+#: packages/admin/src/router.tsx:1006
+#: packages/admin/src/router.tsx:2069
 msgid "Failed to save"
 msgstr ""
 
@@ -3925,14 +4072,22 @@ msgstr ""
 msgid "Failed to save field"
 msgstr ""
 
+#: packages/admin/src/components/Promotions.tsx:63
+msgid "Failed to save promotion"
+msgstr ""
+
+#: packages/admin/src/lib/api/promotions.ts:66
+msgid "Failed to save promotional campaign"
+msgstr ""
+
 #: packages/admin/src/components/PluginSettings.tsx:130
-#: packages/admin/src/components/settings/GeneralSettings.tsx:77
+#: packages/admin/src/components/settings/GeneralSettings.tsx:78
 #: packages/admin/src/components/settings/SeoSettings.tsx:76
 #: packages/admin/src/components/settings/SocialSettings.tsx:66
 msgid "Failed to save settings"
 msgstr "Falha ao salvar configurações"
 
-#: packages/admin/src/router.tsx:1134
+#: packages/admin/src/router.tsx:1144
 msgid "Failed to schedule"
 msgstr ""
 
@@ -3963,15 +4118,15 @@ msgstr ""
 msgid "Failed to uninstall plugin"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1092
+#: packages/admin/src/router.tsx:1102
 msgid "Failed to unpublish"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1155
+#: packages/admin/src/router.tsx:1165
 msgid "Failed to unschedule"
 msgstr ""
 
-#: packages/admin/src/router.tsx:538
+#: packages/admin/src/router.tsx:541
 msgid "Failed to update"
 msgstr ""
 
@@ -3984,7 +4139,7 @@ msgstr ""
 msgid "Failed to update backup settings"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1185
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1198
 msgid "Failed to update byline"
 msgstr "Falha ao atualizar crédito"
 
@@ -4017,11 +4172,11 @@ msgstr ""
 msgid "Failed to update section"
 msgstr ""
 
-#: packages/admin/src/lib/api/settings.ts:64
+#: packages/admin/src/lib/api/settings.ts:84
 msgid "Failed to update settings"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1505
+#: packages/admin/src/router.tsx:1515
 msgid "Failed to update status"
 msgstr ""
 
@@ -4049,8 +4204,8 @@ msgstr ""
 msgid "FAQ"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:251
-#: packages/admin/src/components/settings/GeneralSettings.tsx:258
+#: packages/admin/src/components/settings/GeneralSettings.tsx:252
+#: packages/admin/src/components/settings/GeneralSettings.tsx:259
 msgid "Favicon"
 msgstr "Favicon"
 
@@ -4176,20 +4331,24 @@ msgstr ""
 msgid "Filter byline type"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:787
+#: packages/admin/src/routes/shop.tsx:1145
 msgid "Filter customers by date"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:776
+#: packages/admin/src/routes/shop.tsx:1134
 msgid "Filter customers by district"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:643
+#: packages/admin/src/routes/shop.tsx:999
 msgid "Filter orders by status"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:64
 msgid "First-time commenters only"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:286
+msgid "Fixed amount"
 msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:69
@@ -4210,6 +4369,10 @@ msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:26
 msgid "Free"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:535
+msgid "Free delivery from subtotal"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:928
@@ -4243,7 +4406,7 @@ msgstr ""
 msgid "General"
 msgstr "Geral"
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:118
+#: packages/admin/src/components/settings/GeneralSettings.tsx:119
 msgid "General Settings"
 msgstr "Configurações gerais"
 
@@ -4268,7 +4431,7 @@ msgid "Go"
 msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2289
+#: packages/admin/src/router.tsx:2306
 msgid "Go to Dashboard"
 msgstr "Ir para o painel"
 
@@ -4291,6 +4454,10 @@ msgstr "Grupo (opcional)"
 
 #: packages/admin/src/components/Widgets.tsx:162
 msgid "Group by"
+msgstr ""
+
+#: packages/admin/src/components/ContentSettingsPanel.tsx:724
+msgid "Guarda primero este contenido para asignar categorías o etiquetas."
 msgstr ""
 
 #: packages/admin/src/routes/bylines.tsx:555
@@ -4347,8 +4514,12 @@ msgstr ""
 msgid "Height"
 msgstr "Altura"
 
-#: packages/admin/src/routes/shop.tsx:190
-#: packages/admin/src/routes/shop.tsx:324
+#: packages/admin/src/components/Promotions.tsx:368
+msgid "Height (px)"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:416
+#: packages/admin/src/routes/shop.tsx:661
 msgid "Hello, I want to coordinate payment for my order."
 msgstr ""
 
@@ -4382,6 +4553,14 @@ msgstr "Acessos"
 #: packages/admin/src/components/MenuEditor.tsx:416
 msgid "Home"
 msgstr "Início"
+
+#: packages/admin/src/components/Promotions.tsx:199
+msgid "Home only"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:346
+msgid "Home page only"
+msgstr ""
 
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:231
 msgid "Homepage"
@@ -4441,6 +4620,10 @@ msgstr "Se existir uma conta para <0>{email}</0>, enviamos um link de acesso."
 msgid "Image"
 msgstr "Imagem"
 
+#: packages/admin/src/components/Promotions.tsx:310
+msgid "Image (optional)"
+msgstr ""
+
 #. placeholder {0}: index + 1
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:294
 msgid "Image {0}"
@@ -4485,7 +4668,7 @@ msgid "Images"
 msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:357
+#: packages/admin/src/components/Sidebar.tsx:363
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "Importar"
@@ -4578,13 +4761,19 @@ msgstr "Importando mídia"
 msgid "Importing menus and site settings..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:50
-#: packages/admin/src/routes/shop.tsx:652
-#: packages/admin/src/routes/shop.tsx:1067
+#: packages/admin/src/routes/shop.tsx:56
+#: packages/admin/src/routes/shop.tsx:1008
+#: packages/admin/src/routes/shop.tsx:1487
+#: packages/admin/src/routes/shop.tsx:1557
 msgid "In transit"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:587
+#: packages/admin/src/routes/shop.tsx:456
+msgid "In transit template"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:179
+#: packages/admin/src/routes/shop.tsx:943
 msgid "Inactive"
 msgstr ""
 
@@ -4603,6 +4792,10 @@ msgstr "Incompatível"
 #: packages/admin/src/components/FieldEditor.tsx:481
 #: packages/admin/src/components/RegistryPluginDetail.tsx:506
 msgid "Indexed"
+msgstr ""
+
+#: packages/admin/src/components/ContentEditor.tsx:1555
+msgid "Ingresa un porcentaje para calcular el precio de promoción o escribe directamente el precio de promoción."
 msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:4051
@@ -4739,7 +4932,7 @@ msgstr "Inteiro"
 msgid "Invalid invite link"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1565
+#: packages/admin/src/components/ContentEditor.tsx:1677
 msgid "Invalid JSON"
 msgstr ""
 
@@ -4833,7 +5026,7 @@ msgstr ""
 msgid "Keep this tab open. The import runs in small steps and can be safely re-run if interrupted."
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1014
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1027
 msgid "Keep typing to narrow down more bylines."
 msgstr ""
 
@@ -4879,11 +5072,11 @@ msgstr "Idioma"
 msgid "Large section heading"
 msgstr "Título de seção grande"
 
-#: packages/admin/src/routes/shop.tsx:790
+#: packages/admin/src/routes/shop.tsx:1148
 msgid "Last 30 days"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:790
+#: packages/admin/src/routes/shop.tsx:1148
 msgid "Last 90 days"
 msgstr ""
 
@@ -4899,7 +5092,7 @@ msgstr "Último acesso"
 msgid "Last Login"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:810
+#: packages/admin/src/routes/shop.tsx:1168
 msgid "Last order"
 msgstr ""
 
@@ -4961,6 +5154,10 @@ msgstr "Claro"
 msgid "Limit"
 msgstr ""
 
+#: packages/admin/src/components/settings/GeneralSettings.tsx:352
+msgid "Link"
+msgstr ""
+
 #: packages/admin/src/components/SignupPage.tsx:258
 msgid "Link expired"
 msgstr "Link expirado"
@@ -5017,7 +5214,7 @@ msgstr "Carregar mais"
 msgid "Load More"
 msgstr "Carregar mais"
 
-#: packages/admin/src/router.tsx:2244
+#: packages/admin/src/router.tsx:2261
 msgid "Loading"
 msgstr ""
 
@@ -5033,8 +5230,8 @@ msgstr "Carregando coleções..."
 msgid "Loading comments..."
 msgstr "Carregando comentários..."
 
-#: packages/admin/src/router.tsx:2246
-#: packages/admin/src/router.tsx:2258
+#: packages/admin/src/router.tsx:2263
+#: packages/admin/src/router.tsx:2275
 msgid "Loading configuration..."
 msgstr ""
 
@@ -5042,11 +5239,15 @@ msgstr ""
 msgid "Loading content..."
 msgstr "Carregando conteúdo..."
 
-#: packages/admin/src/routes/shop.tsx:723
+#: packages/admin/src/routes/shop.tsx:157
+msgid "Loading coupons"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1081
 msgid "Loading customers"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:414
+#: packages/admin/src/routes/shop.tsx:755
 msgid "Loading delivery zones"
 msgstr ""
 
@@ -5062,17 +5263,21 @@ msgstr "Carregando menu..."
 msgid "Loading menus..."
 msgstr "Carregando menus..."
 
-#: packages/admin/src/routes/shop.tsx:699
+#: packages/admin/src/routes/shop.tsx:1057
 msgid "Loading order details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:619
+#: packages/admin/src/routes/shop.tsx:975
 msgid "Loading orders"
 msgstr ""
 
 #: packages/admin/src/components/PluginManager.tsx:140
 msgid "Loading plugins..."
 msgstr "Carregando Plugins..."
+
+#: packages/admin/src/components/Promotions.tsx:76
+msgid "Loading promotions..."
+msgstr ""
 
 #: packages/admin/src/components/Redirects.tsx:464
 msgid "Loading redirects..."
@@ -5084,7 +5289,7 @@ msgid "Loading sections..."
 msgstr "Carregando seções..."
 
 #: packages/admin/src/components/PluginSettings.tsx:187
-#: packages/admin/src/components/settings/GeneralSettings.tsx:129
+#: packages/admin/src/components/settings/GeneralSettings.tsx:130
 #: packages/admin/src/components/settings/SeoSettings.tsx:128
 #: packages/admin/src/components/settings/SocialSettings.tsx:100
 msgid "Loading settings..."
@@ -5094,7 +5299,7 @@ msgstr "Carregando configurações..."
 msgid "Loading setup..."
 msgstr "Carregando configuração..."
 
-#: packages/admin/src/routes/shop.tsx:122
+#: packages/admin/src/routes/shop.tsx:350
 msgid "Loading store settings"
 msgstr ""
 
@@ -5140,6 +5345,10 @@ msgstr ""
 msgid "Locale"
 msgstr "Localização"
 
+#: packages/admin/src/components/Promotions.tsx:120
+msgid "Location"
+msgstr ""
+
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:296
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:297
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:485
@@ -5155,8 +5364,8 @@ msgstr ""
 msgid "Log out"
 msgstr "Sair"
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:191
-#: packages/admin/src/components/settings/GeneralSettings.tsx:198
+#: packages/admin/src/components/settings/GeneralSettings.tsx:192
+#: packages/admin/src/components/settings/GeneralSettings.tsx:199
 msgid "Logo"
 msgstr "Logo"
 
@@ -5195,7 +5404,7 @@ msgstr ""
 msgid "Make network requests to any host (unrestricted)"
 msgstr ""
 
-#: packages/admin/src/components/Sidebar.tsx:442
+#: packages/admin/src/components/Sidebar.tsx:448
 msgid "Manage"
 msgstr "Gerenciar"
 
@@ -5205,7 +5414,7 @@ msgstr "Gerenciar"
 msgid "Manage {0} for {1}"
 msgstr "Gerenciar {0} para {1}"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:976
+#: packages/admin/src/components/ContentSettingsPanel.tsx:989
 msgid "Manage bylines in {entryLocale}"
 msgstr ""
 
@@ -5221,6 +5430,10 @@ msgstr "Gerencie os Plugins instalados. Ative ou desative Plugins para controlar
 msgid "Manage navigation menus for your site"
 msgstr "Gerencie os menus de navegação do seu site"
 
+#: packages/admin/src/components/Promotions.tsx:105
+msgid "Manage promotional popups for your site"
+msgstr ""
+
 #: packages/admin/src/components/Redirects.tsx:366
 msgid "Manage URL redirects and view 404 errors."
 msgstr "Gerencie redirecionamentos de URL e visualize erros 404."
@@ -5230,7 +5443,7 @@ msgstr "Gerencie redirecionamentos de URL e visualize erros 404."
 msgid "Manage your passkeys and authentication"
 msgstr "Gerencie suas chaves de acesso e autenticação"
 
-#: packages/admin/src/routes/shop.tsx:72
+#: packages/admin/src/routes/shop.tsx:79
 msgid "Manage your products, delivery settings, and orders."
 msgstr ""
 
@@ -5279,7 +5492,7 @@ msgstr "marketplace"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:339
+#: packages/admin/src/components/Sidebar.tsx:345
 msgid "Marketplace"
 msgstr "Marketplace"
 
@@ -5430,12 +5643,16 @@ msgstr "Menus ({0})"
 msgid "Menus Manage"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:186
+#: packages/admin/src/routes/shop.tsx:412
 msgid "Message introduction"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:193
+#: packages/admin/src/routes/shop.tsx:489
 msgid "Message preview"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1550
+msgid "Message template"
 msgstr ""
 
 #: packages/admin/src/components/SeoPanel.tsx:199
@@ -5471,8 +5688,20 @@ msgstr "Comprimento mínimo"
 msgid "Min Value"
 msgstr "Valor mínimo"
 
+#: packages/admin/src/routes/shop.tsx:516
+msgid "Minimum order subtotal"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:297
+msgid "Minimum subtotal"
+msgstr ""
+
 #: packages/admin/src/components/PortableTextEditor.tsx:1421
 msgid "Minor section heading"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:349
+msgid "Modal size"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:519
@@ -5499,7 +5728,7 @@ msgstr ""
 msgid "More information about {label}"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:798
+#: packages/admin/src/routes/shop.tsx:1156
 msgid "Most orders"
 msgstr ""
 
@@ -5507,7 +5736,7 @@ msgstr ""
 msgid "Most Popular"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:798
+#: packages/admin/src/routes/shop.tsx:1156
 msgid "Most recent"
 msgstr ""
 
@@ -5521,7 +5750,7 @@ msgstr ""
 msgid "Move \"{0}\" up"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1245
+#: packages/admin/src/components/ContentList.tsx:1253
 msgid "Move \"{title}\" to trash? You can restore it later."
 msgstr "Mover \"{title}\" para a lixeira? Você pode restaurá-lo depois."
 
@@ -5545,7 +5774,7 @@ msgstr ""
 msgid "Move {0} up — unavailable, its parent has no translation in this locale"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1236
+#: packages/admin/src/components/ContentList.tsx:1244
 msgid "Move {title} to trash"
 msgstr "Mover {title} para a lixeira"
 
@@ -5558,15 +5787,15 @@ msgid "Move to trash"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:536
-#: packages/admin/src/components/ContentList.tsx:1258
-#: packages/admin/src/components/ContentSettingsPanel.tsx:801
-#: packages/admin/src/components/ContentSettingsPanel.tsx:821
+#: packages/admin/src/components/ContentList.tsx:1266
+#: packages/admin/src/components/ContentSettingsPanel.tsx:814
+#: packages/admin/src/components/ContentSettingsPanel.tsx:834
 msgid "Move to Trash"
 msgstr "Mover para a lixeira"
 
 #: packages/admin/src/components/ContentList.tsx:514
-#: packages/admin/src/components/ContentList.tsx:1243
-#: packages/admin/src/components/ContentSettingsPanel.tsx:806
+#: packages/admin/src/components/ContentList.tsx:1251
+#: packages/admin/src/components/ContentSettingsPanel.tsx:819
 msgid "Move to Trash?"
 msgstr "Mover para a lixeira?"
 
@@ -5574,11 +5803,11 @@ msgstr "Mover para a lixeira?"
 msgid "Move up"
 msgstr "Mover para cima"
 
-#: packages/admin/src/router.tsx:535
+#: packages/admin/src/router.tsx:538
 msgid "Moved {total} items to draft"
 msgstr ""
 
-#: packages/admin/src/router.tsx:556
+#: packages/admin/src/router.tsx:559
 msgid "Moved {total} items to trash"
 msgstr ""
 
@@ -5607,7 +5836,7 @@ msgstr "Meu Blog Incrível"
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:37
 #: packages/admin/src/components/users/UserDetail.tsx:148
 #: packages/admin/src/components/Widgets.tsx:430
-#: packages/admin/src/routes/shop.tsx:896
+#: packages/admin/src/routes/shop.tsx:1254
 msgid "Name"
 msgstr "Nome"
 
@@ -5628,13 +5857,13 @@ msgstr "Navegação"
 msgid "Never"
 msgstr "Nunca"
 
-#: packages/admin/src/router.tsx:1181
+#: packages/admin/src/router.tsx:1191
 msgid "new"
 msgstr ""
 
 #: packages/admin/src/routes/bylines.tsx:426
-#: packages/admin/src/routes/shop.tsx:46
-#: packages/admin/src/routes/shop.tsx:648
+#: packages/admin/src/routes/shop.tsx:52
+#: packages/admin/src/routes/shop.tsx:1004
 msgid "New"
 msgstr ""
 
@@ -5663,6 +5892,16 @@ msgstr "Nova coleção"
 #: packages/admin/src/components/ContentTypeList.tsx:122
 msgid "New Content Type"
 msgstr "Novo tipo de conteúdo"
+
+#: packages/admin/src/routes/shop.tsx:197
+#: packages/admin/src/routes/shop.tsx:255
+msgid "New coupon"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:797
+#: packages/admin/src/routes/shop.tsx:834
+msgid "New delivery zone"
+msgstr ""
 
 #: packages/admin/src/routes/byline-schema.tsx:224
 msgid "New field"
@@ -5718,7 +5957,7 @@ msgstr "Próxima página"
 msgid "Next screenshot"
 msgstr "Próxima captura de tela"
 
-#: packages/admin/src/components/ContentList.tsx:1281
+#: packages/admin/src/components/ContentList.tsx:1289
 #: packages/admin/src/components/users/UserDetail.tsx:236
 #: packages/admin/src/routes/byline-schema.tsx:422
 msgid "No"
@@ -5772,7 +6011,7 @@ msgstr ""
 msgid "No byline fields yet."
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:968
+#: packages/admin/src/components/ContentSettingsPanel.tsx:981
 msgid "No bylines available in {entryLocale}. Create a variant from the Bylines page before crediting one on this entry."
 msgstr ""
 
@@ -5781,7 +6020,7 @@ msgstr ""
 msgid "No bylines found"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1076
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1089
 msgid "No bylines selected."
 msgstr "Nenhum crédito selecionado."
 
@@ -5809,7 +6048,7 @@ msgstr "Nenhum conteúdo encontrado"
 msgid "No content in this collection"
 msgstr "Nenhum conteúdo nesta coleção"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:511
+#: packages/admin/src/components/ContentSettingsPanel.tsx:512
 msgid "No content locale is configured, so EmDash stores new content as English (en). Changing the admin language does not change this value."
 msgstr ""
 
@@ -5817,16 +6056,20 @@ msgstr ""
 msgid "No content types yet."
 msgstr "Nenhum tipo de conteúdo ainda."
 
+#: packages/admin/src/routes/shop.tsx:246
+msgid "No coupons match your search."
+msgstr ""
+
 #: packages/admin/src/components/ContentTypeEditor.tsx:627
 msgid "No custom fields yet"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:826
+#: packages/admin/src/routes/shop.tsx:1184
 msgid "No customers match your search."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:453
-msgid "No delivery zones configured yet."
+#: packages/admin/src/routes/shop.tsx:825
+msgid "No delivery zones match your search."
 msgstr ""
 
 #: packages/admin/src/components/MarketplacePluginDetail.tsx:275
@@ -5848,6 +6091,10 @@ msgstr "Nenhum provedor de e-mail configurado. Compartilhe este link manualmente
 #: packages/admin/src/components/WordPressImport.tsx:2516
 msgid "No EmDash users found"
 msgstr "Nenhum usuário do EmDash encontrado"
+
+#: packages/admin/src/components/Promotions.tsx:193
+msgid "No end date"
+msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:33
 msgid "No expiry"
@@ -5891,7 +6138,7 @@ msgstr ""
 msgid "No matches"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1011
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1024
 msgid "No matching bylines."
 msgstr ""
 
@@ -5939,11 +6186,11 @@ msgstr "Sem mínimo"
 msgid "No moderation (auto-approve all)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:680
+#: packages/admin/src/routes/shop.tsx:1038
 msgid "No orders match your filters."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:956
+#: packages/admin/src/routes/shop.tsx:1314
 msgid "No orders yet."
 msgstr ""
 
@@ -5978,6 +6225,10 @@ msgstr ""
 #: packages/admin/src/components/Sections.tsx:343
 msgid "No preview"
 msgstr "Sem pré-visualização"
+
+#: packages/admin/src/components/Promotions.tsx:112
+msgid "No promotions yet"
+msgstr ""
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:304
 msgid "No public URL available"
@@ -6061,17 +6312,18 @@ msgstr "Nenhum (nível superior)"
 msgid "Not compatible with this environment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:53
-#: packages/admin/src/routes/shop.tsx:1069
+#: packages/admin/src/routes/shop.tsx:59
+#: packages/admin/src/routes/shop.tsx:1012
+#: packages/admin/src/routes/shop.tsx:1489
 msgid "Not delivered"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1280
+#: packages/admin/src/components/ContentList.tsx:1288
 #: packages/admin/src/components/PluginSettings.tsx:397
 msgid "Not set"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:901
+#: packages/admin/src/routes/shop.tsx:1259
 msgid "Notes"
 msgstr ""
 
@@ -6084,7 +6336,7 @@ msgstr "Número"
 msgid "Number of posts"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:319
+#: packages/admin/src/components/settings/GeneralSettings.tsx:381
 msgid "Number of posts to show per page on list views"
 msgstr "Número de posts a exibir por página na visualização em lista"
 
@@ -6136,13 +6388,18 @@ msgstr "Ops!"
 msgid "Open in new tab"
 msgstr "Abrir em nova aba"
 
-#: packages/admin/src/routes/shop.tsx:915
+#: packages/admin/src/routes/shop.tsx:1273
+#: packages/admin/src/routes/shop.tsx:1573
 msgid "Open WhatsApp"
 msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1534
 msgid "Open WordPress Profile"
 msgstr "Abrir perfil do WordPress"
+
+#: packages/admin/src/routes/shop.tsx:1573
+msgid "Opening..."
+msgstr ""
 
 #: packages/admin/src/components/ImageEditor.tsx:171
 #: packages/admin/src/components/ImageEditor.tsx:267
@@ -6185,6 +6442,10 @@ msgstr "Legenda opcional para exibição"
 msgid "Optional description"
 msgstr "Descrição opcional"
 
+#: packages/admin/src/routes/shop.tsx:431
+msgid "Optional message used when the customer sends the order to WhatsApp."
+msgstr ""
+
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:364
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:553
 msgid "Optional tooltip on hover"
@@ -6221,30 +6482,39 @@ msgstr "Ou envie um arquivo de exportação"
 msgid "or upload directly"
 msgstr "ou envie diretamente"
 
-#: packages/admin/src/routes/shop.tsx:326
-#: packages/admin/src/routes/shop.tsx:664
+#: packages/admin/src/routes/shop.tsx:663
+#: packages/admin/src/routes/shop.tsx:1022
+#: packages/admin/src/routes/shop.tsx:1424
 msgid "Order"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:688
+#: packages/admin/src/routes/shop.tsx:1046
 msgid "Order details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:703
+#: packages/admin/src/routes/shop.tsx:1061
 msgid "Order details unavailable."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:954
+#: packages/admin/src/routes/shop.tsx:1312
 msgid "Order history"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1554
+msgid "Order received"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:419
+msgid "Order received template"
 msgstr ""
 
 #: packages/admin/src/components/MenuEditor.tsx:227
 msgid "Order saved"
 msgstr "Ordem salva"
 
-#: packages/admin/src/routes/shop.tsx:79
-#: packages/admin/src/routes/shop.tsx:809
-#: packages/admin/src/routes/shop.tsx:932
+#: packages/admin/src/routes/shop.tsx:86
+#: packages/admin/src/routes/shop.tsx:1167
+#: packages/admin/src/routes/shop.tsx:1290
 msgid "Orders"
 msgstr ""
 
@@ -6258,7 +6528,7 @@ msgstr ""
 msgid "Original:"
 msgstr "Original:"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:768
+#: packages/admin/src/components/ContentSettingsPanel.tsx:781
 #: packages/admin/src/components/editor/DocumentOutline.tsx:191
 msgid "Outline"
 msgstr "Contorno"
@@ -6267,8 +6537,8 @@ msgstr "Contorno"
 msgid "Overrides the page title in search engine results"
 msgstr "Substitui o título da página nos resultados dos mecanismos de busca"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:646
-#: packages/admin/src/components/ContentSettingsPanel.tsx:649
+#: packages/admin/src/components/ContentSettingsPanel.tsx:651
+#: packages/admin/src/components/ContentSettingsPanel.tsx:654
 msgid "Ownership"
 msgstr "Propriedade"
 
@@ -6276,7 +6546,7 @@ msgstr "Propriedade"
 msgid "Package"
 msgstr "Pacote"
 
-#: packages/admin/src/router.tsx:2284
+#: packages/admin/src/router.tsx:2301
 msgid "Page Not Found"
 msgstr ""
 
@@ -6387,25 +6657,33 @@ msgstr ""
 msgid "Pattern must include a {0} placeholder"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:666
-#: packages/admin/src/routes/shop.tsx:1043
+#: packages/admin/src/routes/shop.tsx:1024
 msgid "Payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1008
+#: packages/admin/src/routes/shop.tsx:1367
+#: packages/admin/src/routes/shop.tsx:1555
 msgid "Payment confirmed"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:225
+#: packages/admin/src/routes/shop.tsx:434
+msgid "Payment confirmed template"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:562
 msgid "Payment gateway"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:200
+#: packages/admin/src/routes/shop.tsx:496
 msgid "Payment instructions"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:213
+#: packages/admin/src/routes/shop.tsx:550
 msgid "Payment methods"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1449
+msgid "Payment status"
 msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:62
@@ -6417,9 +6695,9 @@ msgid "pending"
 msgstr "pendente"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:198
-#: packages/admin/src/routes/shop.tsx:54
-#: packages/admin/src/routes/shop.tsx:655
-#: packages/admin/src/routes/shop.tsx:1065
+#: packages/admin/src/routes/shop.tsx:61
+#: packages/admin/src/routes/shop.tsx:1011
+#: packages/admin/src/routes/shop.tsx:1484
 msgid "Pending"
 msgstr "Pendente"
 
@@ -6427,11 +6705,16 @@ msgstr "Pendente"
 msgid "Pending changes"
 msgstr "Alterações pendentes"
 
-#: packages/admin/src/components/ContentList.tsx:1413
+#: packages/admin/src/routes/shop.tsx:286
+#: packages/admin/src/routes/shop.tsx:289
+msgid "Percentage"
+msgstr ""
+
+#: packages/admin/src/components/ContentList.tsx:1432
 msgid "Permanently delete \"{title}\"? This cannot be undone."
 msgstr "Excluir \"{title}\" permanentemente? Isso não pode ser desfeito."
 
-#: packages/admin/src/components/ContentList.tsx:1402
+#: packages/admin/src/components/ContentList.tsx:1421
 msgid "Permanently delete {title}"
 msgstr "Excluir {title} permanentemente"
 
@@ -6439,8 +6722,8 @@ msgstr "Excluir {title} permanentemente"
 msgid "Permissions"
 msgstr "Permissões"
 
-#: packages/admin/src/routes/shop.tsx:807
-#: packages/admin/src/routes/shop.tsx:943
+#: packages/admin/src/routes/shop.tsx:1165
+#: packages/admin/src/routes/shop.tsx:1301
 msgid "Phone"
 msgstr ""
 
@@ -6482,7 +6765,7 @@ msgstr "Insira um endereço de e-mail válido"
 msgid "Please enter a valid URL"
 msgstr "Insira uma URL válida"
 
-#: packages/admin/src/routes/shop.tsx:338
+#: packages/admin/src/routes/shop.tsx:675
 msgid "Plin"
 msgstr ""
 
@@ -6590,8 +6873,8 @@ msgstr ""
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:323
-#: packages/admin/src/components/Sidebar.tsx:458
+#: packages/admin/src/components/Sidebar.tsx:329
+#: packages/admin/src/components/Sidebar.tsx:464
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -6602,6 +6885,10 @@ msgstr ""
 #: packages/admin/src/components/SeoPanel.tsx:220
 msgid "Points search engines to the original version of this page, if it's duplicated from another URL"
 msgstr "Aponta os mecanismos de busca para a versão original desta página, se ela for duplicada de outra URL"
+
+#: packages/admin/src/components/ContentEditor.tsx:1539
+msgid "Porcentaje de descuento"
+msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:388
 msgid "Post"
@@ -6616,7 +6903,7 @@ msgstr "Posts"
 msgid "Posts & Pages"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:313
+#: packages/admin/src/components/settings/GeneralSettings.tsx:375
 msgid "Posts Per Page"
 msgstr "Posts por página"
 
@@ -6624,14 +6911,32 @@ msgstr "Posts por página"
 msgid "Pre-release"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:48
-#: packages/admin/src/routes/shop.tsx:650
+#: packages/admin/src/components/ContentEditor.tsx:1548
+msgid "Precio de promoción"
+msgstr ""
+
+#: packages/admin/src/components/ContentEditor.tsx:1530
+msgid "Precio regular"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:510
+msgid "Preparation time"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:54
+#: packages/admin/src/routes/shop.tsx:1006
+#: packages/admin/src/routes/shop.tsx:1486
+#: packages/admin/src/routes/shop.tsx:1556
 msgid "Preparing"
 msgstr ""
 
 #: packages/admin/src/components/auth/PasskeyRegistration.tsx:170
 msgid "Preparing registration..."
 msgstr "Preparando registro..."
+
+#: packages/admin/src/routes/shop.tsx:445
+msgid "Preparing template"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:2179
 msgid "Preparing to download files from WordPress..."
@@ -6641,6 +6946,10 @@ msgstr "Preparando para baixar arquivos do WordPress..."
 #: packages/admin/src/components/SetupWizard.tsx:233
 msgid "Preparing..."
 msgstr "Preparando..."
+
+#: packages/admin/src/routes/shop.tsx:1455
+msgid "Press once to confirm the payment."
+msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
@@ -6673,6 +6982,14 @@ msgstr "Página anterior"
 msgid "Previous screenshot"
 msgstr "Captura de tela anterior"
 
+#: packages/admin/src/components/settings/GeneralSettings.tsx:319
+msgid "Primary color"
+msgstr ""
+
+#: packages/admin/src/components/settings/GeneralSettings.tsx:320
+msgid "Primary hover color"
+msgstr ""
+
 #: packages/admin/src/components/MenuList.tsx:169
 msgid "Primary Navigation"
 msgstr "Navegação principal"
@@ -6685,11 +7002,36 @@ msgstr ""
 msgid "Processing..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:256
+#: packages/admin/src/routes/shop.tsx:593
 msgid "Production"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:237
+#: packages/admin/src/routes/shop.tsx:1437
+msgid "Products"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:119
+msgid "Promotion"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:70
+msgid "Promotion deleted"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:60
+msgid "Promotion saved"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:301
+msgid "Promotional text"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:104
+#: packages/admin/src/components/Sidebar.tsx:297
+msgid "Promotions"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:574
 msgid "Provider"
 msgstr ""
 
@@ -6697,23 +7039,23 @@ msgstr ""
 msgid "Provider:"
 msgstr "Provedor:"
 
-#: packages/admin/src/routes/shop.tsx:260
+#: packages/admin/src/routes/shop.tsx:597
 msgid "Public key"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:265
+#: packages/admin/src/routes/shop.tsx:602
 msgid "Public key from your provider"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:485
 #: packages/admin/src/components/ContentSettingsPanel.tsx:198
 #: packages/admin/src/components/ContentSettingsPanel.tsx:205
-#: packages/admin/src/components/ContentSettingsPanel.tsx:484
-#: packages/admin/src/components/ContentSettingsPanel.tsx:487
+#: packages/admin/src/components/ContentSettingsPanel.tsx:485
+#: packages/admin/src/components/ContentSettingsPanel.tsx:488
 msgid "Publish"
 msgstr "Publicar"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:603
+#: packages/admin/src/components/ContentSettingsPanel.tsx:604
 msgid "Publish date"
 msgstr ""
 
@@ -6721,7 +7063,7 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:843
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1070
+#: packages/admin/src/router.tsx:1080
 msgid "Published"
 msgstr "Publicado"
 
@@ -6730,7 +7072,7 @@ msgstr "Publicado"
 msgid "Published {0}"
 msgstr "Publicado {0}"
 
-#: packages/admin/src/router.tsx:512
+#: packages/admin/src/router.tsx:515
 msgid "Published {total} items"
 msgstr ""
 
@@ -6754,7 +7096,7 @@ msgstr ""
 msgid "Quality:"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1084
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1097
 msgid "Quick create byline"
 msgstr "Criar crédito rapidamente"
 
@@ -6803,7 +7145,7 @@ msgstr ""
 msgid "Read your taxonomies and terms"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:310
+#: packages/admin/src/components/settings/GeneralSettings.tsx:372
 msgid "Reading"
 msgstr "Leitura"
 
@@ -6811,8 +7153,8 @@ msgstr "Leitura"
 msgid "Ready"
 msgstr "Pronto"
 
-#: packages/admin/src/routes/shop.tsx:49
-#: packages/admin/src/routes/shop.tsx:651
+#: packages/admin/src/routes/shop.tsx:55
+#: packages/admin/src/routes/shop.tsx:1007
 msgid "Ready for delivery"
 msgstr ""
 
@@ -6838,6 +7180,10 @@ msgstr "E-mail do destinatário"
 msgid "Recovery link sent to {0}"
 msgstr "Link de recuperação enviado para {0}"
 
+#: packages/admin/src/components/Promotions.tsx:354
+msgid "Rectangle"
+msgstr ""
+
 #: packages/admin/src/components/Redirects.tsx:450
 msgid "Redirect loop detected"
 msgstr "Loop de redirecionamento detectado"
@@ -6857,11 +7203,11 @@ msgid "Redo"
 msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:245
-#: packages/admin/src/routes/shop.tsx:900
+#: packages/admin/src/routes/shop.tsx:1258
 msgid "Reference"
 msgstr "Referência"
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:269
+#: packages/admin/src/components/settings/GeneralSettings.tsx:270
 msgid "Referenced favicon unavailable."
 msgstr ""
 
@@ -6890,7 +7236,7 @@ msgstr ""
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "O registro foi cancelado ou expirou. Tente novamente."
 
-#: packages/admin/src/components/Sidebar.tsx:332
+#: packages/admin/src/components/Sidebar.tsx:338
 msgid "Registry"
 msgstr ""
 
@@ -6904,12 +7250,12 @@ msgstr ""
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:84
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:115
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1053
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1066
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:199
 #: packages/admin/src/components/ImageFieldRenderer.tsx:172
 #: packages/admin/src/components/PortableTextEditor.tsx:4221
-#: packages/admin/src/components/settings/GeneralSettings.tsx:229
-#: packages/admin/src/components/settings/GeneralSettings.tsx:289
+#: packages/admin/src/components/settings/GeneralSettings.tsx:230
+#: packages/admin/src/components/settings/GeneralSettings.tsx:290
 #: packages/admin/src/components/settings/PasskeyItem.tsx:180
 #: packages/admin/src/components/settings/PasskeyItem.tsx:202
 #: packages/admin/src/components/settings/SeoSettings.tsx:212
@@ -6927,7 +7273,7 @@ msgstr "Remover {0}"
 msgid "Remove {entry}"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1723
+#: packages/admin/src/components/ContentEditor.tsx:1835
 msgid "Remove {label}"
 msgstr ""
 
@@ -7028,6 +7374,7 @@ msgid "Repeating group of fields"
 msgstr "Grupo de campos repetidor"
 
 #: packages/admin/src/components/ImageFieldRenderer.tsx:162
+#: packages/admin/src/components/Promotions.tsx:319
 msgid "Replace"
 msgstr ""
 
@@ -7084,6 +7431,12 @@ msgstr "Obrigatório para acessibilidade. Descreve a imagem para leitores de tel
 msgid "Requires EmDash {0}"
 msgstr "Requer EmDash {0}"
 
+#: packages/admin/src/routes/shop.tsx:60
+#: packages/admin/src/routes/shop.tsx:1013
+#: packages/admin/src/routes/shop.tsx:1490
+msgid "Rescheduled"
+msgstr ""
+
 #: packages/admin/src/components/SignupPage.tsx:155
 msgid "Resend email"
 msgstr "Reenviar e-mail"
@@ -7105,7 +7458,7 @@ msgstr ""
 msgid "Restore"
 msgstr "Restaurar"
 
-#: packages/admin/src/components/ContentList.tsx:1390
+#: packages/admin/src/components/ContentList.tsx:1409
 msgid "Restore {title}"
 msgstr "Restaurar {title}"
 
@@ -7135,12 +7488,12 @@ msgstr "Restaurando..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2272
+#: packages/admin/src/router.tsx:2289
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "Tentar novamente"
 
-#: packages/admin/src/routes/shop.tsx:294
+#: packages/admin/src/routes/shop.tsx:631
 msgid "Return URL"
 msgstr ""
 
@@ -7148,7 +7501,7 @@ msgstr ""
 msgid "Reusable content blocks you can insert into any content"
 msgstr "Blocos de conteúdo reutilizáveis que você pode inserir em qualquer conteúdo"
 
-#: packages/admin/src/router.tsx:1108
+#: packages/admin/src/router.tsx:1118
 msgid "Reverted to published version"
 msgstr ""
 
@@ -7164,7 +7517,7 @@ msgstr "Revisar novas permissões"
 msgid "Revision restored"
 msgstr "Revisão restaurada"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:776
+#: packages/admin/src/components/ContentSettingsPanel.tsx:789
 #: packages/admin/src/components/ContentTypeEditor.tsx:76
 #: packages/admin/src/components/RevisionHistory.tsx:168
 msgid "Revisions"
@@ -7226,7 +7579,7 @@ msgstr "Função"
 msgid "Role {role}"
 msgstr "Função {role}"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1058
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1071
 msgid "Role label"
 msgstr "Rótulo da função"
 
@@ -7268,17 +7621,18 @@ msgstr ""
 msgid "Same window"
 msgstr "Mesma janela"
 
-#: packages/admin/src/routes/shop.tsx:327
+#: packages/admin/src/routes/shop.tsx:664
 msgid "Sample product"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1191
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1204
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:395
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:589
 #: packages/admin/src/components/editor/ImageNode.tsx:264
 #: packages/admin/src/components/editor/PluginBlockNode.tsx:417
 #: packages/admin/src/components/MediaDetailPanel.tsx:425
 #: packages/admin/src/components/MenuEditor.tsx:626
+#: packages/admin/src/components/Promotions.tsx:396
 #: packages/admin/src/components/Redirects.tsx:191
 #: packages/admin/src/components/SaveButton.tsx:32
 #: packages/admin/src/components/Widgets.tsx:983
@@ -7295,7 +7649,6 @@ msgid "Save alt text"
 msgstr ""
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:318
-#: packages/admin/src/routes/shop.tsx:557
 msgid "Save changes"
 msgstr ""
 
@@ -7307,7 +7660,11 @@ msgstr "Salvar alterações"
 msgid "Save content as draft before publishing"
 msgstr "Salvar conteúdo como rascunho antes de publicar"
 
-#: packages/admin/src/routes/shop.tsx:226
+#: packages/admin/src/routes/shop.tsx:318
+msgid "Save coupon"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:563
 msgid "Save gateway parameters for a future integration. Orders continue through WhatsApp until a gateway connector is enabled."
 msgstr ""
 
@@ -7315,7 +7672,7 @@ msgstr ""
 msgid "Save name"
 msgstr "Salvar nome"
 
-#: packages/admin/src/routes/shop.tsx:312
+#: packages/admin/src/routes/shop.tsx:649
 msgid "Save settings"
 msgstr ""
 
@@ -7323,6 +7680,10 @@ msgstr ""
 #: packages/admin/src/components/PluginSettings.tsx:265
 msgid "Save Settings"
 msgstr "Salvar configurações"
+
+#: packages/admin/src/routes/shop.tsx:913
+msgid "Save zone"
+msgstr ""
 
 #: packages/admin/src/components/SaveButton.tsx:34
 msgid "Saved"
@@ -7333,7 +7694,7 @@ msgstr "Salvo"
 msgid "Saved \"{0}\"."
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1191
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1204
 #: packages/admin/src/components/FieldEditor.tsx:689
 #: packages/admin/src/components/MediaDetailPanel.tsx:425
 #: packages/admin/src/components/MenuEditor.tsx:626
@@ -7345,8 +7706,9 @@ msgstr ""
 #: packages/admin/src/components/users/UserDetail.tsx:311
 #: packages/admin/src/components/Widgets.tsx:983
 #: packages/admin/src/routes/bylines.tsx:579
-#: packages/admin/src/routes/shop.tsx:312
-#: packages/admin/src/routes/shop.tsx:557
+#: packages/admin/src/routes/shop.tsx:318
+#: packages/admin/src/routes/shop.tsx:649
+#: packages/admin/src/routes/shop.tsx:913
 msgid "Saving..."
 msgstr "Salvando..."
 
@@ -7363,26 +7725,27 @@ msgstr ""
 msgid "SBOM · {0}"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:571
+#: packages/admin/src/components/ContentSettingsPanel.tsx:572
 msgid "Schedule"
 msgstr "Agendar"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:557
+#: packages/admin/src/components/ContentSettingsPanel.tsx:558
 msgid "Schedule for"
 msgstr "Agendar para"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:594
+#: packages/admin/src/components/ContentSettingsPanel.tsx:595
 msgid "Schedule for later"
 msgstr "Agendar para depois"
 
 #: packages/admin/src/components/ContentList.tsx:834
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
-#: packages/admin/src/router.tsx:1128
+#: packages/admin/src/components/Promotions.tsx:177
+#: packages/admin/src/router.tsx:1138
 msgid "Scheduled"
 msgstr "Agendado"
 
 #. placeholder {0}: formatScheduledDate(item.scheduledAt)
-#: packages/admin/src/components/ContentSettingsPanel.tsx:545
+#: packages/admin/src/components/ContentSettingsPanel.tsx:546
 msgid "Scheduled for: {0}"
 msgstr "Agendado para: {0}"
 
@@ -7461,6 +7824,10 @@ msgstr "Pesquisar {0}"
 msgid "Search {0}..."
 msgstr "Pesquisar {0}..."
 
+#: packages/admin/src/routes/shop.tsx:192
+msgid "Search by coupon code"
+msgstr ""
+
 #: packages/admin/src/components/MediaLibrary.tsx:437
 #: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search by filename..."
@@ -7470,21 +7837,25 @@ msgstr ""
 msgid "Search by name or email..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:769
+#: packages/admin/src/routes/shop.tsx:1127
 msgid "Search by name, phone, email, or district"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:636
+#: packages/admin/src/routes/shop.tsx:992
 msgid "Search by order number"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:792
+msgid "Search by zone or district"
+msgstr ""
+
 #: packages/admin/src/components/BylineFilter.tsx:121
-#: packages/admin/src/components/ContentSettingsPanel.tsx:985
+#: packages/admin/src/components/ContentSettingsPanel.tsx:998
 #: packages/admin/src/routes/bylines.tsx:401
 msgid "Search bylines"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:984
+#: packages/admin/src/components/ContentSettingsPanel.tsx:997
 msgid "Search bylines to add..."
 msgstr ""
 
@@ -7504,8 +7875,16 @@ msgstr "Pesquisar comentários..."
 msgid "Search content..."
 msgstr "Pesquisar conteúdo..."
 
-#: packages/admin/src/routes/shop.tsx:768
+#: packages/admin/src/routes/shop.tsx:191
+msgid "Search coupons"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1126
 msgid "Search customers"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:791
+msgid "Search delivery zones"
 msgstr ""
 
 #: packages/admin/src/components/settings/SeoSettings.tsx:161
@@ -7526,7 +7905,7 @@ msgstr ""
 msgid "Search media"
 msgstr "Pesquisar mídia"
 
-#: packages/admin/src/routes/shop.tsx:635
+#: packages/admin/src/routes/shop.tsx:991
 msgid "Search orders"
 msgstr ""
 
@@ -7579,19 +7958,27 @@ msgstr "Pesquisar..."
 msgid "Searchable"
 msgstr "Pesquisável"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:989
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1002
 msgid "Searching..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:268
+#: packages/admin/src/components/settings/GeneralSettings.tsx:321
+msgid "Secondary color"
+msgstr ""
+
+#: packages/admin/src/components/settings/GeneralSettings.tsx:322
+msgid "Secondary hover color"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:605
 msgid "Secret key"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:277
+#: packages/admin/src/routes/shop.tsx:614
 msgid "Secret key from your provider"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:276
+#: packages/admin/src/routes/shop.tsx:613
 msgid "Secret key saved; enter a new one to replace it"
 msgstr ""
 
@@ -7625,7 +8012,7 @@ msgstr "Título da seção"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:295
+#: packages/admin/src/components/Sidebar.tsx:301
 msgid "Sections"
 msgstr "Seções"
 
@@ -7692,8 +8079,8 @@ msgid "Select"
 msgstr "Selecionar"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:140
-#: packages/admin/src/components/ContentEditor.tsx:1735
-#: packages/admin/src/components/ContentEditor.tsx:1751
+#: packages/admin/src/components/ContentEditor.tsx:1847
+#: packages/admin/src/components/ContentEditor.tsx:1863
 #: packages/admin/src/components/ImageFieldRenderer.tsx:273
 msgid "Select {label}"
 msgstr "Selecionar {label}"
@@ -7731,12 +8118,12 @@ msgstr "Selecionar conteúdo"
 msgid "Select Default Social Image"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:301
-#: packages/admin/src/components/settings/GeneralSettings.tsx:364
+#: packages/admin/src/components/settings/GeneralSettings.tsx:302
+#: packages/admin/src/components/settings/GeneralSettings.tsx:426
 msgid "Select Favicon"
 msgstr "Selecionar favicon"
 
-#: packages/admin/src/components/ContentEditor.tsx:1739
+#: packages/admin/src/components/ContentEditor.tsx:1851
 msgid "Select file"
 msgstr ""
 
@@ -7749,6 +8136,7 @@ msgid "Select Gallery Images"
 msgstr ""
 
 #: packages/admin/src/components/ImageFieldRenderer.tsx:261
+#: packages/admin/src/components/Promotions.tsx:326
 msgid "Select image"
 msgstr "Selecionar imagem"
 
@@ -7758,12 +8146,12 @@ msgstr "Selecionar imagem"
 msgid "Select Image"
 msgstr "Selecionar imagem"
 
-#: packages/admin/src/routes/shop.tsx:244
+#: packages/admin/src/routes/shop.tsx:581
 msgid "Select later"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:241
-#: packages/admin/src/components/settings/GeneralSettings.tsx:356
+#: packages/admin/src/components/settings/GeneralSettings.tsx:242
+#: packages/admin/src/components/settings/GeneralSettings.tsx:418
 msgid "Select Logo"
 msgstr "Selecionar logo"
 
@@ -7778,6 +8166,11 @@ msgstr "Selecionar imagem OG"
 #: packages/admin/src/components/SeoImageField.tsx:85
 msgid "Select OG Image"
 msgstr "Selecionar imagem OG"
+
+#: packages/admin/src/components/Promotions.tsx:143
+#: packages/admin/src/components/Promotions.tsx:406
+msgid "Select promotion image"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1732
 msgid "Select which content types to import."
@@ -7844,8 +8237,8 @@ msgstr "Enviar e-mail de teste"
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:719
-#: packages/admin/src/components/ContentSettingsPanel.tsx:722
+#: packages/admin/src/components/ContentSettingsPanel.tsx:732
+#: packages/admin/src/components/ContentSettingsPanel.tsx:735
 #: packages/admin/src/components/ContentTypeEditor.tsx:487
 #: packages/admin/src/components/Settings.tsx:60
 msgid "SEO"
@@ -7899,13 +8292,13 @@ msgid "Setting up..."
 msgstr "Configurando..."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:234
-#: packages/admin/src/components/ContentEditor.tsx:841
-#: packages/admin/src/components/ContentEditor.tsx:1074
+#: packages/admin/src/components/ContentEditor.tsx:848
+#: packages/admin/src/components/ContentEditor.tsx:1081
 #: packages/admin/src/components/ContentTypeEditor.tsx:382
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:361
+#: packages/admin/src/components/Sidebar.tsx:367
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "Configurações"
@@ -7919,7 +8312,7 @@ msgid "Settings Read"
 msgstr ""
 
 #: packages/admin/src/components/PluginSettings.tsx:124
-#: packages/admin/src/components/settings/GeneralSettings.tsx:70
+#: packages/admin/src/components/settings/GeneralSettings.tsx:71
 msgid "Settings saved successfully"
 msgstr "Configurações salvas com sucesso"
 
@@ -7931,12 +8324,16 @@ msgstr ""
 msgid "Share this link with the invited user"
 msgstr "Compartilhe este link com o usuário convidado"
 
-#: packages/admin/src/routes/shop.tsx:204
+#: packages/admin/src/routes/shop.tsx:500
 msgid "Share your Yape, Plin, or bank transfer instructions."
 msgstr ""
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:294
 msgid "Shared across all translations of the same byline."
+msgstr ""
+
+#: packages/admin/src/components/settings/GeneralSettings.tsx:313
+msgid "Shared public colors and fonts for themes, widgets, and email templates"
 msgstr ""
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:52
@@ -7958,6 +8355,10 @@ msgstr ""
 
 #: packages/admin/src/components/Widgets.tsx:139
 msgid "Show hierarchy"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:343
+msgid "Show on"
 msgstr ""
 
 #: packages/admin/src/components/Widgets.tsx:138
@@ -8033,7 +8434,7 @@ msgstr "Entrada de texto de linha única"
 msgid "Site"
 msgstr "Site"
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:162
+#: packages/admin/src/components/settings/GeneralSettings.tsx:163
 msgid "Site Identity"
 msgstr "Identidade do site"
 
@@ -8042,16 +8443,16 @@ msgid "site identity applied (title, tagline, logo)"
 msgstr ""
 
 #: packages/admin/src/components/Settings.tsx:49
-#: packages/admin/src/components/settings/GeneralSettings.tsx:119
-msgid "Site identity, logo, favicon, and reading preferences"
-msgstr "Identidade do site, logo, favicon e preferências de leitura"
+#: packages/admin/src/components/settings/GeneralSettings.tsx:120
+msgid "Site identity, design colors, fonts, logo, favicon, and reading preferences"
+msgstr ""
 
 #: packages/admin/src/components/SetupWizard.tsx:351
 #: packages/admin/src/components/WordPressImport.tsx:1151
 msgid "Site Settings"
 msgstr "Configurações do site"
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:165
+#: packages/admin/src/components/settings/GeneralSettings.tsx:166
 #: packages/admin/src/components/SetupWizard.tsx:116
 msgid "Site Title"
 msgstr "Título do site"
@@ -8064,7 +8465,7 @@ msgstr "Título e slogan do site"
 msgid "Site title is required"
 msgstr "O título do site é obrigatório"
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:181
+#: packages/admin/src/components/settings/GeneralSettings.tsx:182
 msgid "Site URL"
 msgstr "URL do site"
 
@@ -8089,9 +8490,9 @@ msgid "Skipped"
 msgstr "Ignorado"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:239
-#: packages/admin/src/components/ContentSettingsPanel.tsx:491
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1100
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1162
+#: packages/admin/src/components/ContentSettingsPanel.tsx:492
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1113
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1175
 #: packages/admin/src/components/ContentTypeEditor.tsx:111
 #: packages/admin/src/components/ContentTypeEditor.tsx:403
 #: packages/admin/src/components/ContentTypeList.tsx:181
@@ -8152,7 +8553,7 @@ msgstr "Alguns tipos de conteúdo não podem ser importados"
 msgid "Something went wrong"
 msgstr "Algo deu errado"
 
-#: packages/admin/src/routes/shop.tsx:795
+#: packages/admin/src/routes/shop.tsx:1153
 msgid "Sort customers"
 msgstr ""
 
@@ -8200,23 +8601,32 @@ msgstr ""
 msgid "SQL"
 msgstr ""
 
+#: packages/admin/src/components/Promotions.tsx:354
+msgid "Square"
+msgstr ""
+
+#: packages/admin/src/components/Promotions.tsx:380
+msgid "Start date and time (optional)"
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:1922
 msgid "Start Import"
 msgstr "Iniciar importação"
 
-#: packages/admin/src/components/ContentEditor.tsx:1243
+#: packages/admin/src/components/ContentEditor.tsx:1258
 #: packages/admin/src/components/PortableTextEditor.tsx:2579
 #: packages/admin/src/components/PortableTextEditor.tsx:2580
 msgid "Start writing, or type '/' for commands"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:592
-#: packages/admin/src/components/ContentSettingsPanel.tsx:517
+#: packages/admin/src/components/ContentSettingsPanel.tsx:518
 #: packages/admin/src/components/ContentTypeEditor.tsx:117
+#: packages/admin/src/components/Promotions.tsx:121
 #: packages/admin/src/components/Redirects.tsx:480
 #: packages/admin/src/components/users/UserList.tsx:104
-#: packages/admin/src/routes/shop.tsx:426
-#: packages/admin/src/routes/shop.tsx:665
+#: packages/admin/src/routes/shop.tsx:807
+#: packages/admin/src/routes/shop.tsx:1023
 msgid "Status"
 msgstr "Status"
 
@@ -8232,7 +8642,7 @@ msgstr ""
 msgid "Storage available"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:325
+#: packages/admin/src/routes/shop.tsx:662
 msgid "Store"
 msgstr ""
 
@@ -8240,15 +8650,15 @@ msgstr ""
 msgid "Store a daily backup in your site's storage bucket. Old backups are removed automatically."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:148
+#: packages/admin/src/routes/shop.tsx:376
 msgid "Store name"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:77
+#: packages/admin/src/routes/shop.tsx:84
 msgid "Store settings"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:118
+#: packages/admin/src/routes/shop.tsx:346
 msgid "Store settings saved"
 msgstr ""
 
@@ -8286,6 +8696,10 @@ msgstr "Assinante"
 msgid "Subscript"
 msgstr ""
 
+#: packages/admin/src/components/settings/GeneralSettings.tsx:353
+msgid "Success"
+msgstr ""
+
 #: packages/admin/src/components/PortableTextEditor.tsx:3653
 msgid "Superscript"
 msgstr ""
@@ -8318,6 +8732,10 @@ msgstr "Sistema ({resolvedLabel})"
 msgid "System Fields"
 msgstr ""
 
+#: packages/admin/src/components/settings/GeneralSettings.tsx:347
+msgid "System-managed colors"
+msgstr ""
+
 #: packages/admin/src/components/PortableTextEditor.tsx:1498
 msgid "Table"
 msgstr ""
@@ -8326,13 +8744,14 @@ msgstr ""
 msgid "Table controls"
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:173
+#: packages/admin/src/components/settings/GeneralSettings.tsx:174
 #: packages/admin/src/components/SetupWizard.tsx:127
 msgid "Tagline"
 msgstr "Slogan"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:201
 #: packages/admin/src/components/Widgets.tsx:143
+#: packages/admin/src/router.tsx:617
 msgid "Tags"
 msgstr "Tags"
 
@@ -8350,7 +8769,7 @@ msgstr "Destino"
 msgid "Target locale"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:706
+#: packages/admin/src/components/ContentSettingsPanel.tsx:711
 #: packages/admin/src/components/TaxonomySidebar.tsx:683
 msgid "Taxonomies"
 msgstr "Taxonomias"
@@ -8391,7 +8810,7 @@ msgstr ""
 msgid "Term deleted"
 msgstr "Termo excluído"
 
-#: packages/admin/src/routes/shop.tsx:256
+#: packages/admin/src/routes/shop.tsx:593
 msgid "Test mode"
 msgstr ""
 
@@ -8401,6 +8820,14 @@ msgstr "test@example.com"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3995
 msgid "Text formatting"
+msgstr ""
+
+#: packages/admin/src/components/settings/GeneralSettings.tsx:323
+msgid "Text on primary"
+msgstr ""
+
+#: packages/admin/src/components/settings/GeneralSettings.tsx:324
+msgid "Text on secondary"
 msgstr ""
 
 #: packages/admin/src/components/DeviceAuthorizePage.tsx:198
@@ -8436,11 +8863,11 @@ msgstr "O marketplace está vazio. Verifique novamente mais tarde para novos plu
 msgid "The menu has been deleted."
 msgstr "O menu foi excluído."
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:168
+#: packages/admin/src/components/settings/GeneralSettings.tsx:169
 msgid "The name of your site, used in the header and metadata"
 msgstr "O nome do seu site, usado no cabeçalho e metadados"
 
-#: packages/admin/src/router.tsx:2286
+#: packages/admin/src/router.tsx:2303
 msgid "The page you're looking for doesn't exist."
 msgstr ""
 
@@ -8448,7 +8875,7 @@ msgstr ""
 msgid "The plugin field widget failed to render."
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:185
+#: packages/admin/src/components/settings/GeneralSettings.tsx:186
 msgid "The public URL of your site (used for canonical links and sitemaps)"
 msgstr "A URL pública do seu site (usada para links canônicos e sitemaps)"
 
@@ -8456,11 +8883,11 @@ msgstr "A URL pública do seu site (usada para links canônicos e sitemaps)"
 msgid "The referenced image is no longer available. Pick a new one or remove the reference."
 msgstr ""
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:209
+#: packages/admin/src/components/settings/GeneralSettings.tsx:210
 msgid "The referenced logo is no longer available. Pick a new one or remove the reference."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:183
+#: packages/admin/src/routes/shop.tsx:409
 msgid "The store name, order number, products, and total are added automatically."
 msgstr ""
 
@@ -8493,7 +8920,7 @@ msgstr "Seções fornecidas pelo tema não podem ser excluídas. Edite a seção
 msgid "Theme: {label}"
 msgstr "Tema: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:348
+#: packages/admin/src/components/Sidebar.tsx:354
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "Temas"
@@ -8522,7 +8949,7 @@ msgstr ""
 msgid "This field does not accept {sniffedMime} files."
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1754
+#: packages/admin/src/components/ContentEditor.tsx:1866
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "Este campo é obrigatório"
@@ -8540,7 +8967,7 @@ msgstr "Esta é uma seção personalizada."
 msgid "This is a WordPress site."
 msgstr "Este é um site WordPress."
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:503
+#: packages/admin/src/components/ContentSettingsPanel.tsx:504
 msgid "This is stored with the entry and is separate from your admin language."
 msgstr ""
 
@@ -8602,6 +9029,10 @@ msgstr "Esta seção foi importada de outro sistema."
 msgid "This update exposes the following routes without authentication:"
 msgstr ""
 
+#: packages/admin/src/components/Promotions.tsx:153
+msgid "This will delete the saved promotion."
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:715
 msgid "This will delete the widget area and all its widgets. This action cannot be undone."
 msgstr ""
@@ -8610,7 +9041,7 @@ msgstr ""
 msgid "This will grant CLI access with your permissions."
 msgstr "Isso concederá acesso CLI com suas permissões."
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:808
+#: packages/admin/src/components/ContentSettingsPanel.tsx:821
 msgid "This will move the item to trash. You can restore it later from the trash."
 msgstr "Isso moverá o item para a lixeira. Você poderá restaurá-lo depois."
 
@@ -8640,16 +9071,17 @@ msgstr "Isso reverterá para a versão publicada. Suas alterações de rascunho 
 msgid "Thoughts, tutorials, and more"
 msgstr "Pensamentos, tutoriais e mais"
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:332
+#: packages/admin/src/components/settings/GeneralSettings.tsx:394
 msgid "Timezone"
 msgstr "Fuso horário"
 
-#: packages/admin/src/components/settings/GeneralSettings.tsx:335
+#: packages/admin/src/components/settings/GeneralSettings.tsx:397
 msgid "Timezone for displaying dates (e.g., America/New_York)"
 msgstr "Fuso horário para exibição de datas (ex.: América/São_Paulo)"
 
 #: packages/admin/src/components/ContentList.tsx:577
 #: packages/admin/src/components/ContentList.tsx:737
+#: packages/admin/src/components/Promotions.tsx:295
 #: packages/admin/src/components/SectionEditor.tsx:251
 #: packages/admin/src/components/Sections.tsx:170
 #: packages/admin/src/components/Widgets.tsx:891
@@ -8711,18 +9143,27 @@ msgstr ""
 msgid "Tools → Export"
 msgstr "Ferramentas → Exportar"
 
-#: packages/admin/src/routes/shop.tsx:328
-#: packages/admin/src/routes/shop.tsx:668
+#: packages/admin/src/routes/shop.tsx:665
+#: packages/admin/src/routes/shop.tsx:1026
+#: packages/admin/src/routes/shop.tsx:1428
 msgid "Total"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:936
+#: packages/admin/src/routes/shop.tsx:1294
 msgid "Total spent"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:77
 msgid "Track content history"
 msgstr "Rastrear histórico de conteúdo"
+
+#: packages/admin/src/routes/shop.tsx:1529
+msgid "Tracking code (optional)"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1535
+msgid "Tracking URL (optional)"
+msgstr ""
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:287
 #: packages/admin/src/routes/byline-schema.tsx:243
@@ -8753,11 +9194,11 @@ msgstr ""
 #: packages/admin/src/components/MenuEditor.tsx:143
 #: packages/admin/src/components/TaxonomyManager.tsx:987
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1180
+#: packages/admin/src/router.tsx:1190
 msgid "Translation created"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:684
+#: packages/admin/src/components/ContentSettingsPanel.tsx:689
 #: packages/admin/src/components/TranslationsPanel.tsx:60
 msgid "Translations"
 msgstr "Traduções"
@@ -8866,8 +9307,8 @@ msgstr ""
 msgid "Unable to reach marketplace"
 msgstr "Não foi possível acessar o marketplace"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1205
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1222
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1218
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1235
 msgid "Unassigned"
 msgstr "Não atribuído"
 
@@ -8916,6 +9357,11 @@ msgstr "Desconhecido"
 msgid "Unknown role"
 msgstr "Função desconhecida"
 
+#: packages/admin/src/routes/shop.tsx:223
+#: packages/admin/src/routes/shop.tsx:309
+msgid "Unlimited"
+msgstr ""
+
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:296
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:297
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:485
@@ -8932,7 +9378,7 @@ msgstr "Chave de acesso sem nome"
 msgid "Unpublish {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1088
+#: packages/admin/src/router.tsx:1098
 msgid "Unpublished"
 msgstr ""
 
@@ -8944,11 +9390,11 @@ msgstr "Tabelas de conteúdo não registradas encontradas"
 msgid "Unresolved assignment"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:547
+#: packages/admin/src/components/ContentSettingsPanel.tsx:548
 msgid "Unschedule"
 msgstr "Cancelar agendamento"
 
-#: packages/admin/src/router.tsx:1149
+#: packages/admin/src/router.tsx:1159
 msgid "Unscheduled"
 msgstr ""
 
@@ -8957,11 +9403,16 @@ msgstr ""
 msgid "Unsupported widget element type: {0}"
 msgstr ""
 
+#. placeholder {0}: new Date(campaign.endsAt).toLocaleDateString()
+#: packages/admin/src/components/Promotions.tsx:192
+msgid "Until {0}"
+msgstr ""
+
 #: packages/admin/src/components/Dashboard.tsx:368
 msgid "Untitled"
 msgstr "Sem título"
 
-#: packages/admin/src/components/ContentEditor.tsx:1657
+#: packages/admin/src/components/ContentEditor.tsx:1769
 msgid "Untitled file"
 msgstr ""
 
@@ -8974,7 +9425,7 @@ msgstr ""
 msgid "Unverified publisher"
 msgstr ""
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:1032
+#: packages/admin/src/components/ContentSettingsPanel.tsx:1045
 msgid "Up"
 msgstr "Acima"
 
@@ -8986,7 +9437,7 @@ msgstr ""
 msgid "Update"
 msgstr "Atualizar"
 
-#: packages/admin/src/routes/shop.tsx:1059
+#: packages/admin/src/routes/shop.tsx:1474
 msgid "Update delivery status"
 msgstr ""
 
@@ -8994,7 +9445,7 @@ msgstr ""
 msgid "Update Field"
 msgstr "Atualizar campo"
 
-#: packages/admin/src/components/ContentSettingsPanel.tsx:621
+#: packages/admin/src/components/ContentSettingsPanel.tsx:622
 msgid "Update publish date"
 msgstr ""
 
@@ -9022,7 +9473,7 @@ msgid "Update to v{0}"
 msgstr "Atualizar para v{0}"
 
 #: packages/admin/src/components/ContentList.tsx:842
-#: packages/admin/src/components/ContentSettingsPanel.tsx:637
+#: packages/admin/src/components/ContentSettingsPanel.tsx:638
 #: packages/admin/src/components/RegistryPluginDetail.tsx:501
 msgid "Updated"
 msgstr ""
@@ -9164,6 +9615,10 @@ msgstr "Identificador amigável para URL (ex.: \"primary\", \"footer\")"
 msgid "URL:"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:304
+msgid "Usage limit"
+msgstr ""
+
 #: packages/admin/src/components/Redirects.tsx:111
 msgid "Use [param] or [...rest] in paths for pattern matching."
 msgstr "Use [param] ou [...rest] nos caminhos para correspondência de padrão."
@@ -9172,7 +9627,7 @@ msgstr "Use [param] ou [...rest] nos caminhos para correspondência de padrão."
 msgid "Use optimized image"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:178
+#: packages/admin/src/routes/shop.tsx:404
 msgid "Use the country code without spaces or symbols."
 msgstr ""
 
@@ -9192,7 +9647,7 @@ msgstr ""
 msgid "Used as the identifier. Lowercase letters, numbers, and underscores only."
 msgstr "Usado como identificador. Apenas letras minúsculas, números e sublinhados."
 
-#: packages/admin/src/components/ContentEditor.tsx:1346
+#: packages/admin/src/components/ContentEditor.tsx:1361
 msgid "Used as the main visual for this post on listing pages and at the top of the post"
 msgstr "Usado como imagem principal do post nas páginas de listagem e no topo do post"
 
@@ -9230,7 +9685,7 @@ msgid "User not found"
 msgstr "Usuário não encontrado"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:320
+#: packages/admin/src/components/Sidebar.tsx:326
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "Usuários"
@@ -9242,6 +9697,10 @@ msgstr "Usuários de"
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:196
 msgid "Users with email addresses from these domains can sign up without an invite. They will be assigned the specified role automatically."
 msgstr "Usuários com endereços de e-mail destes domínios podem se registrar sem um convite. Eles receberão a função especificada automaticamente."
+
+#: packages/admin/src/routes/shop.tsx:205
+msgid "Uses"
+msgstr ""
 
 #. placeholder {0}: updateInfo.latest
 #: packages/admin/src/components/PluginManager.tsx:387
@@ -9298,8 +9757,8 @@ msgstr ""
 msgid "Video"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:879
-#: packages/admin/src/routes/shop.tsx:994
+#: packages/admin/src/routes/shop.tsx:1237
+#: packages/admin/src/routes/shop.tsx:1352
 msgid "View details"
 msgstr ""
 
@@ -9316,7 +9775,7 @@ msgstr "Ver no marketplace"
 msgid "View mode"
 msgstr "Modo de visualização"
 
-#: packages/admin/src/components/ContentList.tsx:1208
+#: packages/admin/src/components/ContentList.tsx:1216
 msgid "View published {title}"
 msgstr "Ver {title} publicado"
 
@@ -9349,6 +9808,10 @@ msgstr "Aguardando chave de acesso..."
 msgid "Warn"
 msgstr "Alerta"
 
+#: packages/admin/src/components/settings/GeneralSettings.tsx:354
+msgid "Warning"
+msgstr ""
+
 #. placeholder {0}: result.url
 #: packages/admin/src/components/WordPressImport.tsx:1266
 msgid "We couldn't connect to a WordPress site at {0}. This could mean the site isn't WordPress, the REST API is disabled, or the site isn't accessible."
@@ -9379,19 +9842,19 @@ msgstr ""
 msgid "WebAuthn is not supported in this browser"
 msgstr "WebAuthn não é suportado neste navegador"
 
-#: packages/admin/src/routes/shop.tsx:281
+#: packages/admin/src/routes/shop.tsx:618
 msgid "Webhook secret"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:290
+#: packages/admin/src/routes/shop.tsx:627
 msgid "Webhook secret from your provider"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:289
+#: packages/admin/src/routes/shop.tsx:626
 msgid "Webhook secret saved; enter a new one to replace it"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:302
+#: packages/admin/src/routes/shop.tsx:639
 msgid "Webhook URL"
 msgstr ""
 
@@ -9420,11 +9883,15 @@ msgstr "O que acontece quando você importa:"
 msgid "What will happen when you import"
 msgstr "O que acontecerá quando você importar"
 
-#: packages/admin/src/routes/shop.tsx:172
+#: packages/admin/src/routes/shop.tsx:1544
+msgid "WhatsApp message"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:398
 msgid "WhatsApp number"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:182
+#: packages/admin/src/routes/shop.tsx:408
 msgid "WhatsApp order message"
 msgstr ""
 
@@ -9522,6 +9989,10 @@ msgstr "Widgets"
 msgid "Width"
 msgstr "Largura"
 
+#: packages/admin/src/components/Promotions.tsx:359
+msgid "Width (px)"
+msgstr ""
+
 #: packages/admin/src/components/PluginSettings.tsx:394
 msgid "Will be cleared on save"
 msgstr ""
@@ -9554,6 +10025,10 @@ msgstr ""
 msgid "Write widget content..."
 msgstr ""
 
+#: packages/admin/src/components/Promotions.tsx:306
+msgid "Write your discount or promotional code..."
+msgstr ""
+
 #: packages/admin/src/components/WordPressImport.tsx:1181
 msgid "WXR File"
 msgstr "Arquivo WXR"
@@ -9570,7 +10045,7 @@ msgstr ""
 msgid "YAML"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:337
+#: packages/admin/src/routes/shop.tsx:674
 msgid "Yape"
 msgstr ""
 
@@ -9578,7 +10053,7 @@ msgstr ""
 msgid "Yearly"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1283
+#: packages/admin/src/components/ContentList.tsx:1291
 #: packages/admin/src/components/users/UserDetail.tsx:236
 #: packages/admin/src/routes/byline-schema.tsx:420
 #: packages/admin/src/routes/byline-schema.tsx:422
@@ -9621,7 +10096,7 @@ msgstr "Você tem acesso completo para gerenciar este site, incluindo usuários,
 msgid "You need admin permissions to manage byline schema."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1562
+#: packages/admin/src/router.tsx:1572
 msgid "You need Editor permissions to moderate comments."
 msgstr ""
 
@@ -9746,12 +10221,11 @@ msgstr "Seu ID ou usuário do canal do YouTube"
 msgid "YouTube"
 msgstr "YouTube"
 
-#: packages/admin/src/routes/shop.tsx:422
+#: packages/admin/src/routes/shop.tsx:803
 msgid "Zone"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:464
-#: packages/admin/src/routes/shop.tsx:521
+#: packages/admin/src/routes/shop.tsx:854
 msgid "Zone name"
 msgstr ""
 
