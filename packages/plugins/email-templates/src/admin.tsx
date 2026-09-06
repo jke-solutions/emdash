@@ -1866,11 +1866,6 @@ function EmailTemplatesPage() {
 								extensions={EMAIL_EDITOR_EXTENSIONS}
 								onUploadImage={handleEmailImageUpload}
 								className="min-h-[30rem] w-full rounded-md"
-								style={{
-									backgroundColor: emailTheme.surface,
-									color: emailTheme.text,
-									fontFamily: emailTheme.font,
-								}}
 								bubbleMenu={{ hideWhenActiveNodes: [], hideWhenActiveMarks: [] }}
 							/>
 						</div>
