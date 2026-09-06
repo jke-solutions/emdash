@@ -30,7 +30,7 @@ msgstr " (bawaan)"
 msgid " (opens in new window)"
 msgstr " (buka di jendela baru)"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:885
 #: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid " (selected)"
 msgstr " (terpilih)"
@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr "{0, plural, one {# komentar diimpor} other {# komentar diimpor}}"
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1551
+#: packages/admin/src/router.tsx:1541
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0} komentar diperbarui"
 
@@ -273,17 +273,17 @@ msgid "{0} items will be imported"
 msgstr "{0} item akan diimpor"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:563
+#: packages/admin/src/router.tsx:562
 msgid "{0} of {total} could not be deleted"
 msgstr "{0} dari {total} tidak dapat dihapus"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:519
+#: packages/admin/src/router.tsx:518
 msgid "{0} of {total} could not be published"
 msgstr "{0} dari {total} tidak dapat diterbitkan"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:542
+#: packages/admin/src/router.tsx:541
 msgid "{0} of {total} could not be updated"
 msgstr "{0} dari {total} tidak dapat diperbarui"
 
@@ -322,7 +322,7 @@ msgstr "{0} diperbarui ke v{1}"
 
 #. placeholder {0}: item.filename
 #. placeholder {1}: selected ? t` (selected)` : ""
-#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:885
 #: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid "{0}{1}"
 msgstr "{0}{1}"
@@ -417,7 +417,7 @@ msgstr ""
 msgid "{readingTime, plural, one {# min read} other {# min read}}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:292
+#: packages/admin/src/components/MediaLibrary.tsx:291
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr "{resultCount, plural, one {# item} other {# item}}"
 
@@ -437,11 +437,11 @@ msgstr "{total, plural, other {# item}}"
 msgid "{total, plural, one {# total} other {# total}}"
 msgstr "{total} total"
 
-#: packages/admin/src/components/MediaLibrary.tsx:241
+#: packages/admin/src/components/MediaLibrary.tsx:240
 msgid "{total, plural, one {File uploaded} other {# files uploaded}}"
 msgstr "{total, plural, other {# file terunggah}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:246
+#: packages/admin/src/components/MediaLibrary.tsx:245
 msgid "{total, plural, one {Upload failed} other {All # uploads failed}}"
 msgstr "{total, plural, other {Semua # unggahan gagal}}"
 
@@ -461,7 +461,7 @@ msgstr "{unchangedCount, plural, other {Sembunyikan # tidak berubah}}"
 msgid "{unchangedCount, plural, one {Show # unchanged} other {Show # unchanged}}"
 msgstr "{unchangedCount, plural, other {Tampilkan # tidak berubah}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:251
+#: packages/admin/src/components/MediaLibrary.tsx:250
 msgid "{uploaded} uploaded, {failed} failed"
 msgstr "{uploaded} berhasil, {failed} gagal"
 
@@ -624,7 +624,7 @@ msgstr "Terima Undangan"
 msgid "Access denied"
 msgstr "Akses ditolak"
 
-#: packages/admin/src/router.tsx:1571
+#: packages/admin/src/router.tsx:1561
 msgid "Access Denied"
 msgstr "Akses Ditolak"
 
@@ -851,12 +851,12 @@ msgid "admin"
 msgstr "admin"
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:456
+#: packages/admin/src/components/Sidebar.tsx:442
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "Admin"
 
-#: packages/admin/src/components/Sidebar.tsx:402
+#: packages/admin/src/components/Sidebar.tsx:388
 msgid "Admin navigation"
 msgstr "Navigasi admin"
 
@@ -956,7 +956,7 @@ msgstr "Semua Sumber"
 msgid "All statuses"
 msgstr "Semua status"
 
-#: packages/admin/src/components/MediaLibrary.tsx:455
+#: packages/admin/src/components/MediaLibrary.tsx:454
 #: packages/admin/src/components/Redirects.tsx:432
 msgid "All types"
 msgstr "Semua tipe"
@@ -996,7 +996,7 @@ msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:376
 #: packages/admin/src/components/editor/ImageNode.tsx:231
-#: packages/admin/src/components/MediaLibrary.tsx:611
+#: packages/admin/src/components/MediaLibrary.tsx:610
 msgid "Alt text"
 msgstr "Teks alternatif"
 
@@ -1007,8 +1007,8 @@ msgstr "Teks alternatif"
 msgid "Alt Text"
 msgstr "Teks Alt"
 
-#: packages/admin/src/components/MediaLibrary.tsx:868
-#: packages/admin/src/components/MediaLibrary.tsx:925
+#: packages/admin/src/components/MediaLibrary.tsx:873
+#: packages/admin/src/components/MediaLibrary.tsx:932
 msgid "Alt text set"
 msgstr "Teks alt diatur"
 
@@ -1050,24 +1050,24 @@ msgstr ""
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:451
-#: packages/admin/src/router.tsx:466
-#: packages/admin/src/router.tsx:480
-#: packages/admin/src/router.tsx:494
-#: packages/admin/src/router.tsx:725
-#: packages/admin/src/router.tsx:1007
-#: packages/admin/src/router.tsx:1067
-#: packages/admin/src/router.tsx:1085
-#: packages/admin/src/router.tsx:1103
-#: packages/admin/src/router.tsx:1124
-#: packages/admin/src/router.tsx:1145
-#: packages/admin/src/router.tsx:1166
-#: packages/admin/src/router.tsx:1197
-#: packages/admin/src/router.tsx:1217
-#: packages/admin/src/router.tsx:1516
-#: packages/admin/src/router.tsx:1532
-#: packages/admin/src/router.tsx:1557
-#: packages/admin/src/router.tsx:2070
+#: packages/admin/src/router.tsx:450
+#: packages/admin/src/router.tsx:465
+#: packages/admin/src/router.tsx:479
+#: packages/admin/src/router.tsx:493
+#: packages/admin/src/router.tsx:724
+#: packages/admin/src/router.tsx:1006
+#: packages/admin/src/router.tsx:1066
+#: packages/admin/src/router.tsx:1084
+#: packages/admin/src/router.tsx:1102
+#: packages/admin/src/router.tsx:1123
+#: packages/admin/src/router.tsx:1144
+#: packages/admin/src/router.tsx:1165
+#: packages/admin/src/router.tsx:1196
+#: packages/admin/src/router.tsx:1216
+#: packages/admin/src/router.tsx:1508
+#: packages/admin/src/router.tsx:1523
+#: packages/admin/src/router.tsx:1547
+#: packages/admin/src/router.tsx:2060
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1196,7 +1196,7 @@ msgid "Astro"
 msgstr "Astro"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:66
-#: packages/admin/src/components/MediaLibrary.tsx:458
+#: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Audio"
 msgstr "Audio"
 
@@ -1285,7 +1285,7 @@ msgstr "Pencadangan Otomatis"
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr "Pencadangan otomatis memerlukan backend penyimpanan (R2, S3, atau penyimpanan lokal). Konfigurasikan penyimpanan dalam konfigurasi EmDash Anda untuk mengaktifkannya."
 
-#: packages/admin/src/router.tsx:1066
+#: packages/admin/src/router.tsx:1065
 msgid "Autosave failed"
 msgstr "Penyimpanan otomatis gagal"
 
@@ -1472,14 +1472,14 @@ msgstr ""
 msgid "Byline schema"
 msgstr "Skema byline"
 
-#: packages/admin/src/components/Sidebar.tsx:325
+#: packages/admin/src/components/Sidebar.tsx:311
 msgid "Byline Schema"
 msgstr "Skema byline"
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:666
 #: packages/admin/src/components/ContentSettingsPanel.tsx:669
-#: packages/admin/src/components/Sidebar.tsx:312
+#: packages/admin/src/components/Sidebar.tsx:298
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "Byline"
@@ -1623,7 +1623,7 @@ msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
-#: packages/admin/src/router.tsx:616
+#: packages/admin/src/router.tsx:615
 msgid "Categories"
 msgstr "Kategori"
 
@@ -1673,7 +1673,7 @@ msgstr "Ubah Logo"
 msgid "Changelog"
 msgstr "Riwayat perubahan"
 
-#: packages/admin/src/router.tsx:1117
+#: packages/admin/src/router.tsx:1116
 msgid "Changes discarded"
 msgstr "Perubahan dibatalkan"
 
@@ -1725,13 +1725,13 @@ msgid "Clear"
 msgstr "Bersihkan"
 
 #: packages/admin/src/components/ContentList.tsx:947
-#: packages/admin/src/components/MediaLibrary.tsx:519
+#: packages/admin/src/components/MediaLibrary.tsx:518
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
 msgstr "Bersihkan filter"
 
-#: packages/admin/src/components/MediaLibrary.tsx:519
-#: packages/admin/src/components/MediaLibrary.tsx:543
+#: packages/admin/src/components/MediaLibrary.tsx:518
+#: packages/admin/src/components/MediaLibrary.tsx:542
 msgid "Clear search"
 msgstr "Bersihkan pencarian"
 
@@ -1901,7 +1901,7 @@ msgstr "Detail Komentar"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:280
+#: packages/admin/src/components/Sidebar.tsx:267
 msgid "Comments"
 msgstr "Komentar"
 
@@ -1975,7 +1975,7 @@ msgstr ""
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:438
+#: packages/admin/src/components/Sidebar.tsx:424
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "Konten"
@@ -1993,7 +1993,7 @@ msgstr "Kesalahan Konten ({0})"
 msgid "Content found:"
 msgstr "Konten ditemukan:"
 
-#: packages/admin/src/router.tsx:1139
+#: packages/admin/src/router.tsx:1138
 msgid "Content has been scheduled for publishing"
 msgstr "Konten telah dijadwalkan untuk diterbitkan"
 
@@ -2005,7 +2005,7 @@ msgstr "Konten telah diperbarui ke revisi yang dipilih."
 msgid "Content ID:"
 msgstr "ID Konten:"
 
-#: packages/admin/src/router.tsx:1080
+#: packages/admin/src/router.tsx:1079
 msgid "Content is now live"
 msgstr "Konten sekarang tayang"
 
@@ -2025,11 +2025,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "Baca Konten"
 
-#: packages/admin/src/router.tsx:1098
+#: packages/admin/src/router.tsx:1097
 msgid "Content removed from public view"
 msgstr "Konten dihapus dari tampilan publik"
 
-#: packages/admin/src/router.tsx:1160
+#: packages/admin/src/router.tsx:1159
 msgid "Content reverted to draft"
 msgstr "Konten dikembalikan ke draf"
 
@@ -2043,7 +2043,7 @@ msgstr "Konten untuk Diimpor"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:321
+#: packages/admin/src/components/Sidebar.tsx:307
 msgid "Content Types"
 msgstr "Tipe Konten"
 
@@ -2379,7 +2379,7 @@ msgid "Created {0}"
 msgstr "Dibuat {0}"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1191
+#: packages/admin/src/router.tsx:1190
 msgid "Created {0} translation"
 msgstr "{0} terjemahan dibuat"
 
@@ -2486,8 +2486,8 @@ msgstr "Gelap"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:263
-#: packages/admin/src/components/Sidebar.tsx:429
+#: packages/admin/src/components/Sidebar.tsx:250
+#: packages/admin/src/components/Sidebar.tsx:415
 msgid "Dashboard"
 msgstr "Dasbor"
 
@@ -3034,7 +3034,7 @@ msgid "Dockerfile"
 msgstr "Dockerfile"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:63
-#: packages/admin/src/components/MediaLibrary.tsx:459
+#: packages/admin/src/components/MediaLibrary.tsx:458
 msgid "Documents"
 msgstr "Dokumen"
 
@@ -3183,7 +3183,7 @@ msgstr "mis., Pipeline CI/CD"
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "mis., MacBook Pro, iPhone"
 
-#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:301
 #: packages/admin/src/routes/shop.tsx:78
 msgid "Ecommerce"
 msgstr ""
@@ -3483,7 +3483,7 @@ msgstr ""
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2286
+#: packages/admin/src/router.tsx:2276
 msgid "Error"
 msgstr "Kesalahan"
 
@@ -3648,14 +3648,14 @@ msgid "Failed to create term"
 msgstr "Gagal membuat istilah"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1196
+#: packages/admin/src/router.tsx:1195
 msgid "Failed to create translation"
 msgstr "Gagal membuat terjemahan"
 
-#: packages/admin/src/router.tsx:450
-#: packages/admin/src/router.tsx:479
-#: packages/admin/src/router.tsx:562
-#: packages/admin/src/router.tsx:1216
+#: packages/admin/src/router.tsx:449
+#: packages/admin/src/router.tsx:478
+#: packages/admin/src/router.tsx:561
+#: packages/admin/src/router.tsx:1215
 msgid "Failed to delete"
 msgstr "Gagal menghapus"
 
@@ -3680,7 +3680,7 @@ msgid "Failed to delete collection"
 msgstr "Gagal menghapus koleksi"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1531
+#: packages/admin/src/router.tsx:1522
 msgid "Failed to delete comment"
 msgstr "Gagal menghapus komentar"
 
@@ -3750,7 +3750,7 @@ msgstr "Gagal menonaktifkan pencarian"
 msgid "Failed to disable user"
 msgstr "Gagal menonaktifkan pengguna"
 
-#: packages/admin/src/router.tsx:1123
+#: packages/admin/src/router.tsx:1122
 msgid "Failed to discard changes"
 msgstr "Gagal membatalkan perubahan"
 
@@ -3758,7 +3758,7 @@ msgstr "Gagal membatalkan perubahan"
 msgid "Failed to dismiss welcome"
 msgstr "Gagal menutup sambutan"
 
-#: packages/admin/src/router.tsx:493
+#: packages/admin/src/router.tsx:492
 msgid "Failed to duplicate"
 msgstr "Gagal menduplikasi"
 
@@ -3877,8 +3877,8 @@ msgstr "Gagal mengambil istilah"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:916
-#: packages/admin/src/router.tsx:1462
+#: packages/admin/src/router.tsx:915
+#: packages/admin/src/router.tsx:1461
 msgid "Failed to fetch user"
 msgstr "Gagal mengambil pengguna"
 
@@ -3920,7 +3920,7 @@ msgstr "Gagal memasang plugin"
 msgid "Failed to list byline fields"
 msgstr "Gagal memuat daftar bidang byline"
 
-#: packages/admin/src/router.tsx:289
+#: packages/admin/src/router.tsx:288
 msgid "Failed to load admin"
 msgstr "Gagal memuat admin"
 
@@ -3989,7 +3989,7 @@ msgstr "Gagal memuat pengguna: {0}"
 msgid "Failed to load widget"
 msgstr "Gagal memuat widget"
 
-#: packages/admin/src/router.tsx:1556
+#: packages/admin/src/router.tsx:1546
 msgid "Failed to perform bulk action"
 msgstr "Gagal menjalankan aksi massal"
 
@@ -4001,8 +4001,8 @@ msgstr "Gagal menghapus konten secara permanen"
 msgid "Failed to prepare import"
 msgstr "Gagal menyiapkan impor"
 
-#: packages/admin/src/router.tsx:518
-#: packages/admin/src/router.tsx:1084
+#: packages/admin/src/router.tsx:517
+#: packages/admin/src/router.tsx:1083
 msgid "Failed to publish"
 msgstr "Gagal menerbitkan"
 
@@ -4040,7 +4040,7 @@ msgstr "Gagal mengurutkan bidang"
 msgid "Failed to reorder widgets"
 msgstr "Gagal mengurutkan widget"
 
-#: packages/admin/src/router.tsx:465
+#: packages/admin/src/router.tsx:464
 msgid "Failed to restore"
 msgstr "Gagal memulihkan"
 
@@ -4061,9 +4061,9 @@ msgstr "Gagal mencabut token API"
 msgid "Failed to rewrite URLs"
 msgstr "Gagal menulis ulang URL"
 
-#: packages/admin/src/router.tsx:724
-#: packages/admin/src/router.tsx:1006
-#: packages/admin/src/router.tsx:2069
+#: packages/admin/src/router.tsx:723
+#: packages/admin/src/router.tsx:1005
+#: packages/admin/src/router.tsx:2059
 msgid "Failed to save"
 msgstr "Gagal menyimpan"
 
@@ -4090,7 +4090,7 @@ msgstr ""
 msgid "Failed to save settings"
 msgstr "Gagal menyimpan pengaturan"
 
-#: packages/admin/src/router.tsx:1144
+#: packages/admin/src/router.tsx:1143
 msgid "Failed to schedule"
 msgstr "Gagal menjadwalkan"
 
@@ -4121,15 +4121,15 @@ msgstr "Gagal mengatur istilah entri"
 msgid "Failed to uninstall plugin"
 msgstr "Gagal mencopot plugin"
 
-#: packages/admin/src/router.tsx:1102
+#: packages/admin/src/router.tsx:1101
 msgid "Failed to unpublish"
 msgstr "Gagal membatalkan penerbitan"
 
-#: packages/admin/src/router.tsx:1165
+#: packages/admin/src/router.tsx:1164
 msgid "Failed to unschedule"
 msgstr "Gagal membatalkan penjadwalan"
 
-#: packages/admin/src/router.tsx:541
+#: packages/admin/src/router.tsx:540
 msgid "Failed to update"
 msgstr "Gagal memperbarui"
 
@@ -4179,7 +4179,7 @@ msgstr "Gagal memperbarui bagian"
 msgid "Failed to update settings"
 msgstr "Gagal memperbarui pengaturan"
 
-#: packages/admin/src/router.tsx:1515
+#: packages/admin/src/router.tsx:1507
 msgid "Failed to update status"
 msgstr "Gagal memperbarui status"
 
@@ -4278,13 +4278,13 @@ msgstr "File {0}"
 msgid "File from media library"
 msgstr "File dari pustaka media"
 
-#: packages/admin/src/components/MediaLibrary.tsx:195
+#: packages/admin/src/components/MediaLibrary.tsx:194
 msgid "File uploaded"
 msgstr ""
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:325
 #: packages/admin/src/components/MediaDetailPanel.tsx:342
-#: packages/admin/src/components/MediaLibrary.tsx:608
+#: packages/admin/src/components/MediaLibrary.tsx:607
 msgid "Filename"
 msgstr "Nama file"
 
@@ -4325,7 +4325,7 @@ msgstr "Filter berdasarkan sumber"
 msgid "Filter by status"
 msgstr "Filter berdasarkan status"
 
-#: packages/admin/src/components/MediaLibrary.tsx:461
+#: packages/admin/src/components/MediaLibrary.tsx:460
 #: packages/admin/src/components/Redirects.tsx:433
 msgid "Filter by type"
 msgstr "Filter berdasarkan tipe"
@@ -4434,7 +4434,7 @@ msgid "Go"
 msgstr "Go"
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2306
+#: packages/admin/src/router.tsx:2296
 msgid "Go to Dashboard"
 msgstr "Buka Dasbor"
 
@@ -4447,7 +4447,7 @@ msgstr "Verifikasi Google"
 msgid "GraphQL"
 msgstr "GraphQL"
 
-#: packages/admin/src/components/MediaLibrary.tsx:482
+#: packages/admin/src/components/MediaLibrary.tsx:481
 msgid "Grid view"
 msgstr "Tampilan kisi"
 
@@ -4666,12 +4666,12 @@ msgstr "URL gambar diperbarui di"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:61
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:192
-#: packages/admin/src/components/MediaLibrary.tsx:456
+#: packages/admin/src/components/MediaLibrary.tsx:455
 msgid "Images"
 msgstr "Gambar"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:363
+#: packages/admin/src/components/Sidebar.tsx:349
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "Impor"
@@ -5133,9 +5133,9 @@ msgstr "Biarkan tidak ditetapkan"
 msgid "Left"
 msgstr "Kiri"
 
-#: packages/admin/src/components/MediaLibrary.tsx:142
-#: packages/admin/src/components/MediaLibrary.tsx:267
-#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaLibrary.tsx:141
+#: packages/admin/src/components/MediaLibrary.tsx:266
+#: packages/admin/src/components/MediaLibrary.tsx:349
 #: packages/admin/src/components/MediaPickerModal.tsx:214
 #: packages/admin/src/components/MediaPickerModal.tsx:516
 msgid "Library"
@@ -5190,7 +5190,7 @@ msgstr "LinkedIn"
 msgid "Links"
 msgstr "Tautan"
 
-#: packages/admin/src/components/MediaLibrary.tsx:491
+#: packages/admin/src/components/MediaLibrary.tsx:490
 msgid "List view"
 msgstr "Tampilan daftar"
 
@@ -5211,13 +5211,13 @@ msgstr "Muat lebih"
 
 #: packages/admin/src/components/ContentList.tsx:724
 #: packages/admin/src/components/ContentList.tsx:782
-#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaLibrary.tsx:656
 #: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "Muat Lebih"
 
-#: packages/admin/src/router.tsx:2261
+#: packages/admin/src/router.tsx:2251
 msgid "Loading"
 msgstr ""
 
@@ -5233,8 +5233,8 @@ msgstr "Memuat koleksi..."
 msgid "Loading comments..."
 msgstr "Memuat komentar..."
 
-#: packages/admin/src/router.tsx:2263
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2253
+#: packages/admin/src/router.tsx:2265
 msgid "Loading configuration..."
 msgstr "Memuat konfigurasi..."
 
@@ -5320,7 +5320,7 @@ msgstr "Memuat widget..."
 #: packages/admin/src/components/ContentList.tsx:782
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
-#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaLibrary.tsx:656
 #: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/PortableTextEditor.tsx:2413
 #: packages/admin/src/components/Redirects.tsx:560
@@ -5407,7 +5407,7 @@ msgstr "Membuat permintaan jaringan"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "Membuat permintaan jaringan ke host mana pun (tidak terbatas)"
 
-#: packages/admin/src/components/Sidebar.tsx:448
+#: packages/admin/src/components/Sidebar.tsx:434
 msgid "Manage"
 msgstr "Kelola"
 
@@ -5495,7 +5495,7 @@ msgstr "marketplace"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:345
+#: packages/admin/src/components/Sidebar.tsx:331
 msgid "Marketplace"
 msgstr "Marketplace"
 
@@ -5537,7 +5537,7 @@ msgstr "MDX"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:273
+#: packages/admin/src/components/Sidebar.tsx:260
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5566,7 +5566,7 @@ msgid "Media import was skipped"
 msgstr "Impor media dilewati"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:153
-#: packages/admin/src/components/MediaLibrary.tsx:316
+#: packages/admin/src/components/MediaLibrary.tsx:315
 msgid "Media Library"
 msgstr "Pustaka Media"
 
@@ -5574,7 +5574,7 @@ msgstr "Pustaka Media"
 msgid "Media Read"
 msgstr "Baca Media"
 
-#: packages/admin/src/components/MediaLibrary.tsx:374
+#: packages/admin/src/components/MediaLibrary.tsx:373
 msgid "Media storage usage"
 msgstr ""
 
@@ -5632,7 +5632,7 @@ msgstr "Urutan menu telah diperbarui."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:287
+#: packages/admin/src/components/Sidebar.tsx:273
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "Menu"
@@ -5806,11 +5806,11 @@ msgstr "Pindahkan ke Tempat Sampah?"
 msgid "Move up"
 msgstr "Naikkan"
 
-#: packages/admin/src/router.tsx:538
+#: packages/admin/src/router.tsx:537
 msgid "Moved {total} items to draft"
 msgstr "{total} item dipindahkan ke draf"
 
-#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:558
 msgid "Moved {total} items to trash"
 msgstr "{total} item dipindahkan ke tempat sampah"
 
@@ -5860,7 +5860,7 @@ msgstr "Navigasi"
 msgid "Never"
 msgstr "Tidak Pernah"
 
-#: packages/admin/src/router.tsx:1191
+#: packages/admin/src/router.tsx:1190
 msgid "new"
 msgstr "baru"
 
@@ -5989,8 +5989,8 @@ msgstr "Belum ada {0}. Buat satu untuk memulai."
 msgid "No 404 errors recorded yet."
 msgstr "Belum ada kesalahan 404 tercatat."
 
-#: packages/admin/src/components/MediaLibrary.tsx:868
-#: packages/admin/src/components/MediaLibrary.tsx:925
+#: packages/admin/src/components/MediaLibrary.tsx:873
+#: packages/admin/src/components/MediaLibrary.tsx:932
 msgid "No alt text"
 msgstr "Tidak ada teks alt"
 
@@ -6145,8 +6145,8 @@ msgstr "Tidak ada hasil yang cocok"
 msgid "No matching bylines."
 msgstr "Tidak ada byline yang cocok."
 
-#: packages/admin/src/components/MediaLibrary.tsx:511
-#: packages/admin/src/components/MediaLibrary.tsx:539
+#: packages/admin/src/components/MediaLibrary.tsx:510
+#: packages/admin/src/components/MediaLibrary.tsx:538
 msgid "No matching media"
 msgstr "Tidak ada media yang cocok"
 
@@ -6163,11 +6163,11 @@ msgstr "Tanpa maksimum"
 msgid "No media available from this provider"
 msgstr "Tidak ada media yang tersedia dari penyedia ini"
 
-#: packages/admin/src/components/MediaLibrary.tsx:562
+#: packages/admin/src/components/MediaLibrary.tsx:561
 msgid "No media available from this provider."
 msgstr "Tidak ada media yang tersedia dari penyedia ini."
 
-#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaLibrary.tsx:560
 #: packages/admin/src/components/MediaPickerModal.tsx:696
 msgid "No media found"
 msgstr "Tidak ada media yang ditemukan"
@@ -6552,7 +6552,7 @@ msgstr "Kepemilikan"
 msgid "Package"
 msgstr "Paket"
 
-#: packages/admin/src/router.tsx:2301
+#: packages/admin/src/router.tsx:2291
 msgid "Page Not Found"
 msgstr "Halaman Tidak Ditemukan"
 
@@ -6879,8 +6879,8 @@ msgstr "Kesalahan widget plugin"
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:329
-#: packages/admin/src/components/Sidebar.tsx:464
+#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:450
 msgid "Plugins"
 msgstr "Plugin"
 
@@ -6959,7 +6959,7 @@ msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
-#: packages/admin/src/components/MediaLibrary.tsx:607
+#: packages/admin/src/components/MediaLibrary.tsx:606
 msgid "Preview"
 msgstr "Pratinjau"
 
@@ -7033,7 +7033,7 @@ msgid "Promotional text"
 msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:297
+#: packages/admin/src/components/Sidebar.tsx:283
 msgid "Promotions"
 msgstr ""
 
@@ -7069,7 +7069,7 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:843
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1080
+#: packages/admin/src/router.tsx:1079
 msgid "Published"
 msgstr "Dipublikasikan"
 
@@ -7078,7 +7078,7 @@ msgstr "Dipublikasikan"
 msgid "Published {0}"
 msgstr "Dipublikasikan {0}"
 
-#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:514
 msgid "Published {total} items"
 msgstr "{total} item diterbitkan"
 
@@ -7200,7 +7200,7 @@ msgstr "Mengalihkan ke login..."
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:290
+#: packages/admin/src/components/Sidebar.tsx:276
 msgid "Redirects"
 msgstr "Pengalihan"
 
@@ -7242,7 +7242,7 @@ msgstr "Registrasi gagal"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "Pendaftaran dibatalkan atau waktu telah habis. Silakan coba lagi."
 
-#: packages/admin/src/components/Sidebar.tsx:338
+#: packages/admin/src/components/Sidebar.tsx:324
 msgid "Registry"
 msgstr "Registri"
 
@@ -7250,7 +7250,7 @@ msgstr "Registri"
 msgid "Release is too new to install"
 msgstr "Rilis terlalu baru untuk dipasang"
 
-#: packages/admin/src/components/MediaLibrary.tsx:369
+#: packages/admin/src/components/MediaLibrary.tsx:368
 msgid "remaining"
 msgstr ""
 
@@ -7494,7 +7494,7 @@ msgstr "Memulihkan..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2289
+#: packages/admin/src/router.tsx:2279
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "Coba Lagi"
@@ -7507,7 +7507,7 @@ msgstr ""
 msgid "Reusable content blocks you can insert into any content"
 msgstr "Blok konten yang dapat digunakan kembali yang dapat Anda sisipkan ke konten apa pun"
 
-#: packages/admin/src/router.tsx:1118
+#: packages/admin/src/router.tsx:1117
 msgid "Reverted to published version"
 msgstr "Dikembalikan ke versi terbit"
 
@@ -7746,7 +7746,7 @@ msgstr "Jadwalkan nanti"
 #: packages/admin/src/components/ContentList.tsx:834
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
 #: packages/admin/src/components/Promotions.tsx:177
-#: packages/admin/src/router.tsx:1138
+#: packages/admin/src/router.tsx:1137
 msgid "Scheduled"
 msgstr "Terjadwal"
 
@@ -7834,7 +7834,7 @@ msgstr "Cari {0}..."
 msgid "Search by coupon code"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaLibrary.tsx:436
 #: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search by filename..."
 msgstr "Cari berdasarkan nama file..."
@@ -7906,7 +7906,7 @@ msgstr "Optimisasi dan verifikasi mesin pencari"
 msgid "Search form"
 msgstr "Formulir pencarian"
 
-#: packages/admin/src/components/MediaLibrary.tsx:438
+#: packages/admin/src/components/MediaLibrary.tsx:437
 #: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "Cari media"
@@ -7954,7 +7954,7 @@ msgstr ""
 msgid "Search users"
 msgstr "Cari pengguna"
 
-#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaLibrary.tsx:436
 #: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search..."
 msgstr "Cari..."
@@ -8018,7 +8018,7 @@ msgstr "Judul bagian"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:301
+#: packages/admin/src/components/Sidebar.tsx:287
 msgid "Sections"
 msgstr "Bagian"
 
@@ -8304,7 +8304,7 @@ msgstr "Mengatur..."
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:367
+#: packages/admin/src/components/Sidebar.tsx:353
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "Pengaturan"
@@ -8479,7 +8479,7 @@ msgstr "URL Situs"
 msgid "Sites on Cloudflare D1 can additionally restore the database to any minute within the last 30 days using D1 Time Travel — always on, no setup required."
 msgstr "Situs di Cloudflare D1 juga dapat memulihkan basis data ke menit mana pun dalam 30 hari terakhir menggunakan D1 Time Travel — selalu aktif, tanpa perlu penyiapan."
 
-#: packages/admin/src/components/MediaLibrary.tsx:610
+#: packages/admin/src/components/MediaLibrary.tsx:609
 msgid "Size"
 msgstr "Ukuran"
 
@@ -8644,7 +8644,7 @@ msgstr "Kode status"
 msgid "Status: {status}"
 msgstr "Status: {status}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:367
+#: packages/admin/src/components/MediaLibrary.tsx:366
 msgid "Storage available"
 msgstr ""
 
@@ -8757,7 +8757,7 @@ msgstr "Slogan"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:201
 #: packages/admin/src/components/Widgets.tsx:143
-#: packages/admin/src/router.tsx:617
+#: packages/admin/src/router.tsx:616
 msgid "Tags"
 msgstr "Tag"
 
@@ -8873,7 +8873,7 @@ msgstr "Menu telah dihapus."
 msgid "The name of your site, used in the header and metadata"
 msgstr "Nama situs Anda, digunakan di header dan metadata"
 
-#: packages/admin/src/router.tsx:2303
+#: packages/admin/src/router.tsx:2293
 msgid "The page you're looking for doesn't exist."
 msgstr "Halaman yang Anda cari tidak ada."
 
@@ -8926,7 +8926,7 @@ msgstr "Bagian yang disediakan tema tidak dapat dihapus. Edit bagian untuk membu
 msgid "Theme: {label}"
 msgstr "Tema: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:354
+#: packages/admin/src/components/Sidebar.tsx:340
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "Tema"
@@ -9200,7 +9200,7 @@ msgstr "Menerjemahkan..."
 #: packages/admin/src/components/MenuEditor.tsx:143
 #: packages/admin/src/components/TaxonomyManager.tsx:987
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1190
+#: packages/admin/src/router.tsx:1189
 msgid "Translation created"
 msgstr "Terjemahan dibuat"
 
@@ -9233,7 +9233,7 @@ msgstr "Tempat sampah kosong."
 msgid "True/false toggle"
 msgstr "Toggle benar/salah"
 
-#: packages/admin/src/components/MediaLibrary.tsx:515
+#: packages/admin/src/components/MediaLibrary.tsx:514
 msgid "Try a broader media type or clear your filters."
 msgstr "Coba jenis media yang lebih luas atau bersihkan filter Anda."
 
@@ -9262,11 +9262,11 @@ msgstr "Coba Lagi"
 msgid "Try another code"
 msgstr "Coba kode lain"
 
-#: packages/admin/src/components/MediaLibrary.tsx:540
+#: packages/admin/src/components/MediaLibrary.tsx:539
 msgid "Try another filename or clear your search."
 msgstr "Coba nama berkas lain atau bersihkan pencarian Anda."
 
-#: packages/admin/src/components/MediaLibrary.tsx:514
+#: packages/admin/src/components/MediaLibrary.tsx:513
 msgid "Try another filename, or clear your search and filters."
 msgstr "Coba nama berkas lain, atau bersihkan pencarian dan filter Anda."
 
@@ -9294,7 +9294,7 @@ msgstr "Twitter"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
-#: packages/admin/src/components/MediaLibrary.tsx:609
+#: packages/admin/src/components/MediaLibrary.tsx:608
 #: packages/admin/src/routes/byline-schema.tsx:240
 msgid "Type"
 msgstr "Tipe"
@@ -9384,7 +9384,7 @@ msgstr "Passkey tanpa nama"
 msgid "Unpublish {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1098
+#: packages/admin/src/router.tsx:1097
 msgid "Unpublished"
 msgstr "Tidak diterbitkan"
 
@@ -9400,7 +9400,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "Batal Jadwalkan"
 
-#: packages/admin/src/router.tsx:1159
+#: packages/admin/src/router.tsx:1158
 msgid "Unscheduled"
 msgstr "Tidak dijadwalkan"
 
@@ -9527,7 +9527,7 @@ msgstr "Mengunggah dan mengelola media"
 msgid "Upload Export File"
 msgstr "Unggah File Ekspor"
 
-#: packages/admin/src/components/MediaLibrary.tsx:199
+#: packages/admin/src/components/MediaLibrary.tsx:198
 msgid "Upload failed"
 msgstr ""
 
@@ -9535,7 +9535,7 @@ msgstr ""
 msgid "Upload failed: {uploadError}"
 msgstr "Unggah gagal: {uploadError}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:358
+#: packages/admin/src/components/MediaLibrary.tsx:357
 #: packages/admin/src/components/MediaPickerModal.tsx:669
 msgid "Upload file"
 msgstr "Unggah file"
@@ -9544,8 +9544,8 @@ msgstr "Unggah file"
 msgid "Upload File"
 msgstr "Unggah File"
 
-#: packages/admin/src/components/MediaLibrary.tsx:530
-#: packages/admin/src/components/MediaLibrary.tsx:554
+#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:553
 msgid "Upload Files"
 msgstr "Unggah File"
 
@@ -9553,7 +9553,7 @@ msgstr "Unggah File"
 msgid "Upload Image"
 msgstr "Unggah Gambar"
 
-#: packages/admin/src/components/MediaLibrary.tsx:527
+#: packages/admin/src/components/MediaLibrary.tsx:526
 msgid "Upload images, videos, and documents to keep reusable assets in one place."
 msgstr "Unggah gambar, video, dan dokumen agar aset yang dapat digunakan kembali tersimpan di satu tempat."
 
@@ -9561,12 +9561,12 @@ msgstr "Unggah gambar, video, dan dokumen agar aset yang dapat digunakan kembali
 msgid "Upload Media"
 msgstr "Unggah Media"
 
-#: packages/admin/src/components/MediaLibrary.tsx:551
+#: packages/admin/src/components/MediaLibrary.tsx:550
 msgid "Upload media to keep reusable assets in one place."
 msgstr "Unggah media agar aset yang dapat digunakan kembali tersimpan di satu tempat."
 
 #. placeholder {0}: activeProviderInfo?.name || t`Library`
-#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaLibrary.tsx:349
 msgid "Upload to {0}"
 msgstr "Unggah ke {0}"
 
@@ -9584,11 +9584,11 @@ msgstr "Mengunggah"
 
 #. placeholder {0}: uploadState.progress.current
 #. placeholder {1}: uploadState.progress.total
-#: packages/admin/src/components/MediaLibrary.tsx:325
+#: packages/admin/src/components/MediaLibrary.tsx:324
 msgid "Uploading {0}/{1}..."
 msgstr "Mengunggah {0}/{1}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:326
+#: packages/admin/src/components/MediaLibrary.tsx:325
 #: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Uploading..."
 msgstr "Mengunggah..."
@@ -9691,7 +9691,7 @@ msgid "User not found"
 msgstr "Pengguna tidak ditemukan"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:326
+#: packages/admin/src/components/Sidebar.tsx:312
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "Pengguna"
@@ -9759,7 +9759,7 @@ msgid "Version {0}"
 msgstr "Versi {0}"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:67
-#: packages/admin/src/components/MediaLibrary.tsx:457
+#: packages/admin/src/components/MediaLibrary.tsx:456
 msgid "Video"
 msgstr "Video"
 
@@ -9777,7 +9777,7 @@ msgstr "Lihat status penyedia email dan kirim email uji"
 msgid "View in Marketplace"
 msgstr "Lihat di Marketplace"
 
-#: packages/admin/src/components/MediaLibrary.tsx:469
+#: packages/admin/src/components/MediaLibrary.tsx:468
 msgid "View mode"
 msgstr "Mode lihat"
 
@@ -9984,7 +9984,7 @@ msgstr "Widget diperbarui"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:294
+#: packages/admin/src/components/Sidebar.tsx:280
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"
@@ -10102,7 +10102,7 @@ msgstr "Anda memiliki akses penuh untuk mengelola situs ini, termasuk pengguna, 
 msgid "You need admin permissions to manage byline schema."
 msgstr "Anda memerlukan izin admin untuk mengelola skema byline."
 
-#: packages/admin/src/router.tsx:1572
+#: packages/admin/src/router.tsx:1562
 msgid "You need Editor permissions to moderate comments."
 msgstr "Anda memerlukan izin Editor untuk memoderasi komentar."
 
@@ -10183,8 +10183,8 @@ msgstr "Nama pengguna Instagram Anda"
 msgid "Your LinkedIn profile username"
 msgstr "Nama pengguna profil LinkedIn Anda"
 
-#: packages/admin/src/components/MediaLibrary.tsx:526
-#: packages/admin/src/components/MediaLibrary.tsx:550
+#: packages/admin/src/components/MediaLibrary.tsx:525
+#: packages/admin/src/components/MediaLibrary.tsx:549
 msgid "Your media library is empty"
 msgstr "Pustaka media Anda kosong"
 

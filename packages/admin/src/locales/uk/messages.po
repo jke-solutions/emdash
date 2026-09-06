@@ -30,7 +30,7 @@ msgstr " (за замовчуванням)"
 msgid " (opens in new window)"
 msgstr " (відкривається в новому вікні)"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:885
 #: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid " (selected)"
 msgstr " (обрано)"
@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr "{0, plural, one {# коментар імпортовано} few {# коментарі імпортовано} many {# коментарів імпортовано} other {# коментарів імпортовано}}"
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1551
+#: packages/admin/src/router.tsx:1541
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, one {# коментар оновлено} few {# коментарі оновлено} many {# коментарів оновлено} other {# коментарів оновлено}}"
 
@@ -273,17 +273,17 @@ msgid "{0} items will be imported"
 msgstr "{0} елементів буде імпортовано"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:563
+#: packages/admin/src/router.tsx:562
 msgid "{0} of {total} could not be deleted"
 msgstr "{0} з {total} не вдалося видалити"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:519
+#: packages/admin/src/router.tsx:518
 msgid "{0} of {total} could not be published"
 msgstr "{0} з {total} не вдалося опублікувати"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:542
+#: packages/admin/src/router.tsx:541
 msgid "{0} of {total} could not be updated"
 msgstr "{0} з {total} не вдалося оновити"
 
@@ -322,7 +322,7 @@ msgstr "{0} оновлено до v{1}"
 
 #. placeholder {0}: item.filename
 #. placeholder {1}: selected ? t` (selected)` : ""
-#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:885
 #: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid "{0}{1}"
 msgstr "{0}{1}"
@@ -417,7 +417,7 @@ msgstr ""
 msgid "{readingTime, plural, one {# min read} other {# min read}}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:292
+#: packages/admin/src/components/MediaLibrary.tsx:291
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr "{resultCount, plural, one {# елемент} few {# елементи} many {# елементів} other {# елементів}}"
 
@@ -437,11 +437,11 @@ msgstr "{total, plural, one {# елемент} few {# елементи} many {# 
 msgid "{total, plural, one {# total} other {# total}}"
 msgstr "{total, plural, one {# всього} few {# всього} many {# всього} other {# всього}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:241
+#: packages/admin/src/components/MediaLibrary.tsx:240
 msgid "{total, plural, one {File uploaded} other {# files uploaded}}"
 msgstr "{total, plural, one {Файл завантажено} few {# файли завантажено} many {# файлів завантажено} other {# файлів завантажено}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:246
+#: packages/admin/src/components/MediaLibrary.tsx:245
 msgid "{total, plural, one {Upload failed} other {All # uploads failed}}"
 msgstr "{total, plural, one {Завантаження не вдалося} few {Усі # завантаження не вдалися} many {Усі # завантажень не вдалися} other {Усі # завантажень не вдалися}}"
 
@@ -461,7 +461,7 @@ msgstr "{unchangedCount, plural, one {Приховати # без змін} few 
 msgid "{unchangedCount, plural, one {Show # unchanged} other {Show # unchanged}}"
 msgstr "{unchangedCount, plural, one {Показати # без змін} few {Показати # без змін} many {Показати # без змін} other {Показати # без змін}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:251
+#: packages/admin/src/components/MediaLibrary.tsx:250
 msgid "{uploaded} uploaded, {failed} failed"
 msgstr "{uploaded} завантажено, {failed} не вдалося"
 
@@ -624,7 +624,7 @@ msgstr "Прийняти запрошення"
 msgid "Access denied"
 msgstr "Доступ заборонено"
 
-#: packages/admin/src/router.tsx:1571
+#: packages/admin/src/router.tsx:1561
 msgid "Access Denied"
 msgstr "Доступ заборонено"
 
@@ -851,12 +851,12 @@ msgid "admin"
 msgstr "адмін"
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:456
+#: packages/admin/src/components/Sidebar.tsx:442
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "Адмін"
 
-#: packages/admin/src/components/Sidebar.tsx:402
+#: packages/admin/src/components/Sidebar.tsx:388
 msgid "Admin navigation"
 msgstr "Навігація адмін-панелі"
 
@@ -956,7 +956,7 @@ msgstr "Усі джерела"
 msgid "All statuses"
 msgstr "Усі статуси"
 
-#: packages/admin/src/components/MediaLibrary.tsx:455
+#: packages/admin/src/components/MediaLibrary.tsx:454
 #: packages/admin/src/components/Redirects.tsx:432
 msgid "All types"
 msgstr "Усі типи"
@@ -996,7 +996,7 @@ msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:376
 #: packages/admin/src/components/editor/ImageNode.tsx:231
-#: packages/admin/src/components/MediaLibrary.tsx:611
+#: packages/admin/src/components/MediaLibrary.tsx:610
 msgid "Alt text"
 msgstr "Альтернативний текст"
 
@@ -1007,8 +1007,8 @@ msgstr "Альтернативний текст"
 msgid "Alt Text"
 msgstr "Альтернативний текст"
 
-#: packages/admin/src/components/MediaLibrary.tsx:868
-#: packages/admin/src/components/MediaLibrary.tsx:925
+#: packages/admin/src/components/MediaLibrary.tsx:873
+#: packages/admin/src/components/MediaLibrary.tsx:932
 msgid "Alt text set"
 msgstr "Альтернативний текст встановлено"
 
@@ -1050,24 +1050,24 @@ msgstr ""
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:451
-#: packages/admin/src/router.tsx:466
-#: packages/admin/src/router.tsx:480
-#: packages/admin/src/router.tsx:494
-#: packages/admin/src/router.tsx:725
-#: packages/admin/src/router.tsx:1007
-#: packages/admin/src/router.tsx:1067
-#: packages/admin/src/router.tsx:1085
-#: packages/admin/src/router.tsx:1103
-#: packages/admin/src/router.tsx:1124
-#: packages/admin/src/router.tsx:1145
-#: packages/admin/src/router.tsx:1166
-#: packages/admin/src/router.tsx:1197
-#: packages/admin/src/router.tsx:1217
-#: packages/admin/src/router.tsx:1516
-#: packages/admin/src/router.tsx:1532
-#: packages/admin/src/router.tsx:1557
-#: packages/admin/src/router.tsx:2070
+#: packages/admin/src/router.tsx:450
+#: packages/admin/src/router.tsx:465
+#: packages/admin/src/router.tsx:479
+#: packages/admin/src/router.tsx:493
+#: packages/admin/src/router.tsx:724
+#: packages/admin/src/router.tsx:1006
+#: packages/admin/src/router.tsx:1066
+#: packages/admin/src/router.tsx:1084
+#: packages/admin/src/router.tsx:1102
+#: packages/admin/src/router.tsx:1123
+#: packages/admin/src/router.tsx:1144
+#: packages/admin/src/router.tsx:1165
+#: packages/admin/src/router.tsx:1196
+#: packages/admin/src/router.tsx:1216
+#: packages/admin/src/router.tsx:1508
+#: packages/admin/src/router.tsx:1523
+#: packages/admin/src/router.tsx:1547
+#: packages/admin/src/router.tsx:2060
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1196,7 +1196,7 @@ msgid "Astro"
 msgstr "Astro"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:66
-#: packages/admin/src/components/MediaLibrary.tsx:458
+#: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Audio"
 msgstr "Аудіо"
 
@@ -1285,7 +1285,7 @@ msgstr "Автоматичні резервні копії"
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr "Автоматичні резервні копії потребують сховища (R2, S3 або локальне). Налаштуйте сховище в конфігурації EmDash, щоб увімкнути їх."
 
-#: packages/admin/src/router.tsx:1066
+#: packages/admin/src/router.tsx:1065
 msgid "Autosave failed"
 msgstr "Автозбереження не вдалося"
 
@@ -1472,14 +1472,14 @@ msgstr ""
 msgid "Byline schema"
 msgstr "Схема підпису"
 
-#: packages/admin/src/components/Sidebar.tsx:325
+#: packages/admin/src/components/Sidebar.tsx:311
 msgid "Byline Schema"
 msgstr "Схема підпису"
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:666
 #: packages/admin/src/components/ContentSettingsPanel.tsx:669
-#: packages/admin/src/components/Sidebar.tsx:312
+#: packages/admin/src/components/Sidebar.tsx:298
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "Підписи"
@@ -1623,7 +1623,7 @@ msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
-#: packages/admin/src/router.tsx:616
+#: packages/admin/src/router.tsx:615
 msgid "Categories"
 msgstr "Категорії"
 
@@ -1673,7 +1673,7 @@ msgstr "Змінити логотип"
 msgid "Changelog"
 msgstr "Журнал змін"
 
-#: packages/admin/src/router.tsx:1117
+#: packages/admin/src/router.tsx:1116
 msgid "Changes discarded"
 msgstr "Зміни скасовано"
 
@@ -1725,13 +1725,13 @@ msgid "Clear"
 msgstr "Очистити"
 
 #: packages/admin/src/components/ContentList.tsx:947
-#: packages/admin/src/components/MediaLibrary.tsx:519
+#: packages/admin/src/components/MediaLibrary.tsx:518
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
 msgstr "Очистити фільтри"
 
-#: packages/admin/src/components/MediaLibrary.tsx:519
-#: packages/admin/src/components/MediaLibrary.tsx:543
+#: packages/admin/src/components/MediaLibrary.tsx:518
+#: packages/admin/src/components/MediaLibrary.tsx:542
 msgid "Clear search"
 msgstr "Очистити пошук"
 
@@ -1901,7 +1901,7 @@ msgstr "Деталі коментаря"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:280
+#: packages/admin/src/components/Sidebar.tsx:267
 msgid "Comments"
 msgstr "Коментарі"
 
@@ -1975,7 +1975,7 @@ msgstr ""
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:438
+#: packages/admin/src/components/Sidebar.tsx:424
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "Вміст"
@@ -1993,7 +1993,7 @@ msgstr "Помилки вмісту ({0})"
 msgid "Content found:"
 msgstr "Знайдено вмісту:"
 
-#: packages/admin/src/router.tsx:1139
+#: packages/admin/src/router.tsx:1138
 msgid "Content has been scheduled for publishing"
 msgstr "Вміст заплановано до публікації"
 
@@ -2005,7 +2005,7 @@ msgstr "Вміст оновлено до обраної ревізії."
 msgid "Content ID:"
 msgstr "ID вмісту:"
 
-#: packages/admin/src/router.tsx:1080
+#: packages/admin/src/router.tsx:1079
 msgid "Content is now live"
 msgstr "Вміст тепер опубліковано"
 
@@ -2025,11 +2025,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "Читання вмісту"
 
-#: packages/admin/src/router.tsx:1098
+#: packages/admin/src/router.tsx:1097
 msgid "Content removed from public view"
 msgstr "Вміст прибрано з публічного перегляду"
 
-#: packages/admin/src/router.tsx:1160
+#: packages/admin/src/router.tsx:1159
 msgid "Content reverted to draft"
 msgstr "Вміст повернуто до чернетки"
 
@@ -2043,7 +2043,7 @@ msgstr "Вміст для імпорту"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:321
+#: packages/admin/src/components/Sidebar.tsx:307
 msgid "Content Types"
 msgstr "Типи вмісту"
 
@@ -2379,7 +2379,7 @@ msgid "Created {0}"
 msgstr "Створено {0}"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1191
+#: packages/admin/src/router.tsx:1190
 msgid "Created {0} translation"
 msgstr "Створено переклад {0}"
 
@@ -2486,8 +2486,8 @@ msgstr "Темна"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:263
-#: packages/admin/src/components/Sidebar.tsx:429
+#: packages/admin/src/components/Sidebar.tsx:250
+#: packages/admin/src/components/Sidebar.tsx:415
 msgid "Dashboard"
 msgstr "Панель керування"
 
@@ -3034,7 +3034,7 @@ msgid "Dockerfile"
 msgstr "Dockerfile"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:63
-#: packages/admin/src/components/MediaLibrary.tsx:459
+#: packages/admin/src/components/MediaLibrary.tsx:458
 msgid "Documents"
 msgstr "Документи"
 
@@ -3183,7 +3183,7 @@ msgstr "напр., CI/CD Pipeline"
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "напр., MacBook Pro, iPhone"
 
-#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:301
 #: packages/admin/src/routes/shop.tsx:78
 msgid "Ecommerce"
 msgstr ""
@@ -3483,7 +3483,7 @@ msgstr ""
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2286
+#: packages/admin/src/router.tsx:2276
 msgid "Error"
 msgstr "Помилка"
 
@@ -3648,14 +3648,14 @@ msgid "Failed to create term"
 msgstr "Не вдалося створити термін"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1196
+#: packages/admin/src/router.tsx:1195
 msgid "Failed to create translation"
 msgstr "Не вдалося створити переклад"
 
-#: packages/admin/src/router.tsx:450
-#: packages/admin/src/router.tsx:479
-#: packages/admin/src/router.tsx:562
-#: packages/admin/src/router.tsx:1216
+#: packages/admin/src/router.tsx:449
+#: packages/admin/src/router.tsx:478
+#: packages/admin/src/router.tsx:561
+#: packages/admin/src/router.tsx:1215
 msgid "Failed to delete"
 msgstr "Не вдалося видалити"
 
@@ -3680,7 +3680,7 @@ msgid "Failed to delete collection"
 msgstr "Не вдалося видалити колекцію"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1531
+#: packages/admin/src/router.tsx:1522
 msgid "Failed to delete comment"
 msgstr "Не вдалося видалити коментар"
 
@@ -3750,7 +3750,7 @@ msgstr "Не вдалося вимкнути пошук"
 msgid "Failed to disable user"
 msgstr "Не вдалося вимкнути користувача"
 
-#: packages/admin/src/router.tsx:1123
+#: packages/admin/src/router.tsx:1122
 msgid "Failed to discard changes"
 msgstr "Не вдалося скасувати зміни"
 
@@ -3758,7 +3758,7 @@ msgstr "Не вдалося скасувати зміни"
 msgid "Failed to dismiss welcome"
 msgstr "Не вдалося закрити привітання"
 
-#: packages/admin/src/router.tsx:493
+#: packages/admin/src/router.tsx:492
 msgid "Failed to duplicate"
 msgstr "Не вдалося дублювати"
 
@@ -3877,8 +3877,8 @@ msgstr "Не вдалося отримати терміни"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:916
-#: packages/admin/src/router.tsx:1462
+#: packages/admin/src/router.tsx:915
+#: packages/admin/src/router.tsx:1461
 msgid "Failed to fetch user"
 msgstr "Не вдалося отримати користувача"
 
@@ -3920,7 +3920,7 @@ msgstr "Не вдалося встановити плагін"
 msgid "Failed to list byline fields"
 msgstr "Не вдалося отримати список полів підпису"
 
-#: packages/admin/src/router.tsx:289
+#: packages/admin/src/router.tsx:288
 msgid "Failed to load admin"
 msgstr "Не вдалося завантажити адмін-панель"
 
@@ -3989,7 +3989,7 @@ msgstr "Не вдалося завантажити користувачів: {0}
 msgid "Failed to load widget"
 msgstr "Не вдалося завантажити віджет"
 
-#: packages/admin/src/router.tsx:1556
+#: packages/admin/src/router.tsx:1546
 msgid "Failed to perform bulk action"
 msgstr "Не вдалося виконати масову дію"
 
@@ -4001,8 +4001,8 @@ msgstr "Не вдалося остаточно видалити вміст"
 msgid "Failed to prepare import"
 msgstr "Не вдалося підготувати імпорт"
 
-#: packages/admin/src/router.tsx:518
-#: packages/admin/src/router.tsx:1084
+#: packages/admin/src/router.tsx:517
+#: packages/admin/src/router.tsx:1083
 msgid "Failed to publish"
 msgstr "Не вдалося опублікувати"
 
@@ -4040,7 +4040,7 @@ msgstr "Не вдалося змінити порядок полів"
 msgid "Failed to reorder widgets"
 msgstr "Не вдалося змінити порядок віджетів"
 
-#: packages/admin/src/router.tsx:465
+#: packages/admin/src/router.tsx:464
 msgid "Failed to restore"
 msgstr "Не вдалося відновити"
 
@@ -4061,9 +4061,9 @@ msgstr "Не вдалося відкликати API-токен"
 msgid "Failed to rewrite URLs"
 msgstr "Не вдалося переписати URL"
 
-#: packages/admin/src/router.tsx:724
-#: packages/admin/src/router.tsx:1006
-#: packages/admin/src/router.tsx:2069
+#: packages/admin/src/router.tsx:723
+#: packages/admin/src/router.tsx:1005
+#: packages/admin/src/router.tsx:2059
 msgid "Failed to save"
 msgstr "Не вдалося зберегти"
 
@@ -4090,7 +4090,7 @@ msgstr ""
 msgid "Failed to save settings"
 msgstr "Не вдалося зберегти налаштування"
 
-#: packages/admin/src/router.tsx:1144
+#: packages/admin/src/router.tsx:1143
 msgid "Failed to schedule"
 msgstr "Не вдалося запланувати"
 
@@ -4121,15 +4121,15 @@ msgstr "Не вдалося встановити терміни запису"
 msgid "Failed to uninstall plugin"
 msgstr "Не вдалося видалити плагін"
 
-#: packages/admin/src/router.tsx:1102
+#: packages/admin/src/router.tsx:1101
 msgid "Failed to unpublish"
 msgstr "Не вдалося зняти з публікації"
 
-#: packages/admin/src/router.tsx:1165
+#: packages/admin/src/router.tsx:1164
 msgid "Failed to unschedule"
 msgstr "Не вдалося скасувати планування"
 
-#: packages/admin/src/router.tsx:541
+#: packages/admin/src/router.tsx:540
 msgid "Failed to update"
 msgstr "Не вдалося оновити"
 
@@ -4179,7 +4179,7 @@ msgstr "Не вдалося оновити секцію"
 msgid "Failed to update settings"
 msgstr "Не вдалося оновити налаштування"
 
-#: packages/admin/src/router.tsx:1515
+#: packages/admin/src/router.tsx:1507
 msgid "Failed to update status"
 msgstr "Не вдалося оновити статус"
 
@@ -4278,13 +4278,13 @@ msgstr "Файл {0}"
 msgid "File from media library"
 msgstr "Файл з медіатеки"
 
-#: packages/admin/src/components/MediaLibrary.tsx:195
+#: packages/admin/src/components/MediaLibrary.tsx:194
 msgid "File uploaded"
 msgstr ""
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:325
 #: packages/admin/src/components/MediaDetailPanel.tsx:342
-#: packages/admin/src/components/MediaLibrary.tsx:608
+#: packages/admin/src/components/MediaLibrary.tsx:607
 msgid "Filename"
 msgstr "Ім'я файлу"
 
@@ -4325,7 +4325,7 @@ msgstr "Фільтр за джерелом"
 msgid "Filter by status"
 msgstr "Фільтр за статусом"
 
-#: packages/admin/src/components/MediaLibrary.tsx:461
+#: packages/admin/src/components/MediaLibrary.tsx:460
 #: packages/admin/src/components/Redirects.tsx:433
 msgid "Filter by type"
 msgstr "Фільтр за типом"
@@ -4434,7 +4434,7 @@ msgid "Go"
 msgstr "Перейти"
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2306
+#: packages/admin/src/router.tsx:2296
 msgid "Go to Dashboard"
 msgstr "Перейти до панелі"
 
@@ -4447,7 +4447,7 @@ msgstr "Перевірка Google"
 msgid "GraphQL"
 msgstr "GraphQL"
 
-#: packages/admin/src/components/MediaLibrary.tsx:482
+#: packages/admin/src/components/MediaLibrary.tsx:481
 msgid "Grid view"
 msgstr "Сітка"
 
@@ -4666,12 +4666,12 @@ msgstr "URL зображень оновлено в"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:61
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:192
-#: packages/admin/src/components/MediaLibrary.tsx:456
+#: packages/admin/src/components/MediaLibrary.tsx:455
 msgid "Images"
 msgstr "Зображення"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:363
+#: packages/admin/src/components/Sidebar.tsx:349
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "Імпорт"
@@ -5133,9 +5133,9 @@ msgstr "Залишити без призначення"
 msgid "Left"
 msgstr "Ліворуч"
 
-#: packages/admin/src/components/MediaLibrary.tsx:142
-#: packages/admin/src/components/MediaLibrary.tsx:267
-#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaLibrary.tsx:141
+#: packages/admin/src/components/MediaLibrary.tsx:266
+#: packages/admin/src/components/MediaLibrary.tsx:349
 #: packages/admin/src/components/MediaPickerModal.tsx:214
 #: packages/admin/src/components/MediaPickerModal.tsx:516
 msgid "Library"
@@ -5190,7 +5190,7 @@ msgstr "LinkedIn"
 msgid "Links"
 msgstr "Посилання"
 
-#: packages/admin/src/components/MediaLibrary.tsx:491
+#: packages/admin/src/components/MediaLibrary.tsx:490
 msgid "List view"
 msgstr "Список"
 
@@ -5211,13 +5211,13 @@ msgstr "Завантажити ще"
 
 #: packages/admin/src/components/ContentList.tsx:724
 #: packages/admin/src/components/ContentList.tsx:782
-#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaLibrary.tsx:656
 #: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "Завантажити ще"
 
-#: packages/admin/src/router.tsx:2261
+#: packages/admin/src/router.tsx:2251
 msgid "Loading"
 msgstr ""
 
@@ -5233,8 +5233,8 @@ msgstr "Завантаження колекцій..."
 msgid "Loading comments..."
 msgstr "Завантаження коментарів..."
 
-#: packages/admin/src/router.tsx:2263
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2253
+#: packages/admin/src/router.tsx:2265
 msgid "Loading configuration..."
 msgstr "Завантаження конфігурації..."
 
@@ -5320,7 +5320,7 @@ msgstr "Завантаження віджетів..."
 #: packages/admin/src/components/ContentList.tsx:782
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
-#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaLibrary.tsx:656
 #: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/PortableTextEditor.tsx:2413
 #: packages/admin/src/components/Redirects.tsx:560
@@ -5407,7 +5407,7 @@ msgstr "Виконувати мережеві запити"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "Виконувати мережеві запити до будь-якого хоста (без обмежень)"
 
-#: packages/admin/src/components/Sidebar.tsx:448
+#: packages/admin/src/components/Sidebar.tsx:434
 msgid "Manage"
 msgstr "Керувати"
 
@@ -5495,7 +5495,7 @@ msgstr "маркетплейс"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:345
+#: packages/admin/src/components/Sidebar.tsx:331
 msgid "Marketplace"
 msgstr "Маркетплейс"
 
@@ -5537,7 +5537,7 @@ msgstr "MDX"
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:273
+#: packages/admin/src/components/Sidebar.tsx:260
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5566,7 +5566,7 @@ msgid "Media import was skipped"
 msgstr "Імпорт медіа пропущено"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:153
-#: packages/admin/src/components/MediaLibrary.tsx:316
+#: packages/admin/src/components/MediaLibrary.tsx:315
 msgid "Media Library"
 msgstr "Медіатека"
 
@@ -5574,7 +5574,7 @@ msgstr "Медіатека"
 msgid "Media Read"
 msgstr "Читання медіа"
 
-#: packages/admin/src/components/MediaLibrary.tsx:374
+#: packages/admin/src/components/MediaLibrary.tsx:373
 msgid "Media storage usage"
 msgstr ""
 
@@ -5632,7 +5632,7 @@ msgstr "Порядок меню оновлено."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:287
+#: packages/admin/src/components/Sidebar.tsx:273
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "Меню"
@@ -5806,11 +5806,11 @@ msgstr "Перемістити в кошик?"
 msgid "Move up"
 msgstr "Перемістити вгору"
 
-#: packages/admin/src/router.tsx:538
+#: packages/admin/src/router.tsx:537
 msgid "Moved {total} items to draft"
 msgstr "Переміщено {total} елементів у чернетки"
 
-#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:558
 msgid "Moved {total} items to trash"
 msgstr "Переміщено {total} елементів у кошик"
 
@@ -5860,7 +5860,7 @@ msgstr "Навігація"
 msgid "Never"
 msgstr "Ніколи"
 
-#: packages/admin/src/router.tsx:1191
+#: packages/admin/src/router.tsx:1190
 msgid "new"
 msgstr "новий"
 
@@ -5989,8 +5989,8 @@ msgstr "Ще немає {0}. Створіть, щоб почати."
 msgid "No 404 errors recorded yet."
 msgstr "Ще не зафіксовано помилок 404."
 
-#: packages/admin/src/components/MediaLibrary.tsx:868
-#: packages/admin/src/components/MediaLibrary.tsx:925
+#: packages/admin/src/components/MediaLibrary.tsx:873
+#: packages/admin/src/components/MediaLibrary.tsx:932
 msgid "No alt text"
 msgstr "Немає alt-тексту"
 
@@ -6145,8 +6145,8 @@ msgstr "Немає збігів"
 msgid "No matching bylines."
 msgstr "Немає відповідних підписів."
 
-#: packages/admin/src/components/MediaLibrary.tsx:511
-#: packages/admin/src/components/MediaLibrary.tsx:539
+#: packages/admin/src/components/MediaLibrary.tsx:510
+#: packages/admin/src/components/MediaLibrary.tsx:538
 msgid "No matching media"
 msgstr "Немає відповідних медіа"
 
@@ -6163,11 +6163,11 @@ msgstr "Без максимуму"
 msgid "No media available from this provider"
 msgstr "Немає медіа від цього провайдера"
 
-#: packages/admin/src/components/MediaLibrary.tsx:562
+#: packages/admin/src/components/MediaLibrary.tsx:561
 msgid "No media available from this provider."
 msgstr "Немає медіа від цього провайдера."
 
-#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaLibrary.tsx:560
 #: packages/admin/src/components/MediaPickerModal.tsx:696
 msgid "No media found"
 msgstr "Медіа не знайдено"
@@ -6552,7 +6552,7 @@ msgstr "Власність"
 msgid "Package"
 msgstr "Пакет"
 
-#: packages/admin/src/router.tsx:2301
+#: packages/admin/src/router.tsx:2291
 msgid "Page Not Found"
 msgstr "Сторінку не знайдено"
 
@@ -6879,8 +6879,8 @@ msgstr "Помилка віджета плагіна"
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:329
-#: packages/admin/src/components/Sidebar.tsx:464
+#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:450
 msgid "Plugins"
 msgstr "Плагіни"
 
@@ -6959,7 +6959,7 @@ msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
-#: packages/admin/src/components/MediaLibrary.tsx:607
+#: packages/admin/src/components/MediaLibrary.tsx:606
 msgid "Preview"
 msgstr "Попередній перегляд"
 
@@ -7033,7 +7033,7 @@ msgid "Promotional text"
 msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:297
+#: packages/admin/src/components/Sidebar.tsx:283
 msgid "Promotions"
 msgstr ""
 
@@ -7069,7 +7069,7 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:843
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1080
+#: packages/admin/src/router.tsx:1079
 msgid "Published"
 msgstr "Опубліковано"
 
@@ -7078,7 +7078,7 @@ msgstr "Опубліковано"
 msgid "Published {0}"
 msgstr "Опубліковано {0}"
 
-#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:514
 msgid "Published {total} items"
 msgstr "Опубліковано елементів: {total}"
 
@@ -7200,7 +7200,7 @@ msgstr "Перенаправлення на вхід..."
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:290
+#: packages/admin/src/components/Sidebar.tsx:276
 msgid "Redirects"
 msgstr "Перенаправлення"
 
@@ -7242,7 +7242,7 @@ msgstr "Реєстрація не вдалася"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "Реєстрацію скасовано або час очікування минув. Спробуйте ще раз."
 
-#: packages/admin/src/components/Sidebar.tsx:338
+#: packages/admin/src/components/Sidebar.tsx:324
 msgid "Registry"
 msgstr "Реєстр"
 
@@ -7250,7 +7250,7 @@ msgstr "Реєстр"
 msgid "Release is too new to install"
 msgstr "Реліз занадто новий для встановлення"
 
-#: packages/admin/src/components/MediaLibrary.tsx:369
+#: packages/admin/src/components/MediaLibrary.tsx:368
 msgid "remaining"
 msgstr ""
 
@@ -7494,7 +7494,7 @@ msgstr "Відновлення..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2289
+#: packages/admin/src/router.tsx:2279
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "Повторити"
@@ -7507,7 +7507,7 @@ msgstr ""
 msgid "Reusable content blocks you can insert into any content"
 msgstr "Багаторазові блоки вмісту, які можна вставляти в будь-який вміст"
 
-#: packages/admin/src/router.tsx:1118
+#: packages/admin/src/router.tsx:1117
 msgid "Reverted to published version"
 msgstr "Повернуто до опублікованої версії"
 
@@ -7746,7 +7746,7 @@ msgstr "Запланувати на пізніше"
 #: packages/admin/src/components/ContentList.tsx:834
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
 #: packages/admin/src/components/Promotions.tsx:177
-#: packages/admin/src/router.tsx:1138
+#: packages/admin/src/router.tsx:1137
 msgid "Scheduled"
 msgstr "Заплановано"
 
@@ -7834,7 +7834,7 @@ msgstr "Шукати {0}..."
 msgid "Search by coupon code"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaLibrary.tsx:436
 #: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search by filename..."
 msgstr "Шукати за іменем файлу..."
@@ -7906,7 +7906,7 @@ msgstr "Пошукова оптимізація та верифікація"
 msgid "Search form"
 msgstr "Форма пошуку"
 
-#: packages/admin/src/components/MediaLibrary.tsx:438
+#: packages/admin/src/components/MediaLibrary.tsx:437
 #: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "Шукати медіа"
@@ -7954,7 +7954,7 @@ msgstr ""
 msgid "Search users"
 msgstr "Шукати користувачів"
 
-#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaLibrary.tsx:436
 #: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search..."
 msgstr "Пошук..."
@@ -8018,7 +8018,7 @@ msgstr "Назва секції"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:301
+#: packages/admin/src/components/Sidebar.tsx:287
 msgid "Sections"
 msgstr "Секції"
 
@@ -8304,7 +8304,7 @@ msgstr "Налаштування..."
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:367
+#: packages/admin/src/components/Sidebar.tsx:353
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "Налаштування"
@@ -8479,7 +8479,7 @@ msgstr "URL сайту"
 msgid "Sites on Cloudflare D1 can additionally restore the database to any minute within the last 30 days using D1 Time Travel — always on, no setup required."
 msgstr "Сайти на Cloudflare D1 можуть також відновлювати базу даних на будь-яку хвилину за останні 30 днів за допомогою D1 Time Travel — завжди увімкнено, налаштування не потрібне."
 
-#: packages/admin/src/components/MediaLibrary.tsx:610
+#: packages/admin/src/components/MediaLibrary.tsx:609
 msgid "Size"
 msgstr "Розмір"
 
@@ -8644,7 +8644,7 @@ msgstr "Код статусу"
 msgid "Status: {status}"
 msgstr "Статус: {status}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:367
+#: packages/admin/src/components/MediaLibrary.tsx:366
 msgid "Storage available"
 msgstr ""
 
@@ -8757,7 +8757,7 @@ msgstr "Слоган"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:201
 #: packages/admin/src/components/Widgets.tsx:143
-#: packages/admin/src/router.tsx:617
+#: packages/admin/src/router.tsx:616
 msgid "Tags"
 msgstr "Теги"
 
@@ -8873,7 +8873,7 @@ msgstr "Меню видалено."
 msgid "The name of your site, used in the header and metadata"
 msgstr "Назва вашого сайту, що використовується в заголовку та метаданих"
 
-#: packages/admin/src/router.tsx:2303
+#: packages/admin/src/router.tsx:2293
 msgid "The page you're looking for doesn't exist."
 msgstr "Сторінку, яку ви шукаєте, не знайдено."
 
@@ -8926,7 +8926,7 @@ msgstr "Розділи від теми не можна видалити. Від�
 msgid "Theme: {label}"
 msgstr "Тема: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:354
+#: packages/admin/src/components/Sidebar.tsx:340
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "Теми"
@@ -9200,7 +9200,7 @@ msgstr "Переклад..."
 #: packages/admin/src/components/MenuEditor.tsx:143
 #: packages/admin/src/components/TaxonomyManager.tsx:987
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1190
+#: packages/admin/src/router.tsx:1189
 msgid "Translation created"
 msgstr "Переклад створено"
 
@@ -9233,7 +9233,7 @@ msgstr "Кошик порожній."
 msgid "True/false toggle"
 msgstr "Перемикач так/ні"
 
-#: packages/admin/src/components/MediaLibrary.tsx:515
+#: packages/admin/src/components/MediaLibrary.tsx:514
 msgid "Try a broader media type or clear your filters."
 msgstr "Спробуйте ширший тип медіа або скиньте фільтри."
 
@@ -9262,11 +9262,11 @@ msgstr "Спробувати ще раз"
 msgid "Try another code"
 msgstr "Спробуйте інший код"
 
-#: packages/admin/src/components/MediaLibrary.tsx:540
+#: packages/admin/src/components/MediaLibrary.tsx:539
 msgid "Try another filename or clear your search."
 msgstr "Спробуйте іншу назву файлу або скиньте пошук."
 
-#: packages/admin/src/components/MediaLibrary.tsx:514
+#: packages/admin/src/components/MediaLibrary.tsx:513
 msgid "Try another filename, or clear your search and filters."
 msgstr "Спробуйте іншу назву файлу або скиньте пошук і фільтри."
 
@@ -9294,7 +9294,7 @@ msgstr "Twitter"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
-#: packages/admin/src/components/MediaLibrary.tsx:609
+#: packages/admin/src/components/MediaLibrary.tsx:608
 #: packages/admin/src/routes/byline-schema.tsx:240
 msgid "Type"
 msgstr "Тип"
@@ -9384,7 +9384,7 @@ msgstr "Passkey без назви"
 msgid "Unpublish {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1098
+#: packages/admin/src/router.tsx:1097
 msgid "Unpublished"
 msgstr "Неопубліковано"
 
@@ -9400,7 +9400,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "Скасувати публікацію за розкладом"
 
-#: packages/admin/src/router.tsx:1159
+#: packages/admin/src/router.tsx:1158
 msgid "Unscheduled"
 msgstr "Без розкладу"
 
@@ -9527,7 +9527,7 @@ msgstr "Завантаження та керування медіа"
 msgid "Upload Export File"
 msgstr "Завантажити файл експорту"
 
-#: packages/admin/src/components/MediaLibrary.tsx:199
+#: packages/admin/src/components/MediaLibrary.tsx:198
 msgid "Upload failed"
 msgstr ""
 
@@ -9535,7 +9535,7 @@ msgstr ""
 msgid "Upload failed: {uploadError}"
 msgstr "Завантаження не вдалося: {uploadError}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:358
+#: packages/admin/src/components/MediaLibrary.tsx:357
 #: packages/admin/src/components/MediaPickerModal.tsx:669
 msgid "Upload file"
 msgstr "Завантажити файл"
@@ -9544,8 +9544,8 @@ msgstr "Завантажити файл"
 msgid "Upload File"
 msgstr "Завантажити файл"
 
-#: packages/admin/src/components/MediaLibrary.tsx:530
-#: packages/admin/src/components/MediaLibrary.tsx:554
+#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:553
 msgid "Upload Files"
 msgstr "Завантажити файли"
 
@@ -9553,7 +9553,7 @@ msgstr "Завантажити файли"
 msgid "Upload Image"
 msgstr "Завантажити зображення"
 
-#: packages/admin/src/components/MediaLibrary.tsx:527
+#: packages/admin/src/components/MediaLibrary.tsx:526
 msgid "Upload images, videos, and documents to keep reusable assets in one place."
 msgstr "Завантажуйте зображення, відео та документи, щоб тримати багаторазові ресурси в одному місці."
 
@@ -9561,12 +9561,12 @@ msgstr "Завантажуйте зображення, відео та доку�
 msgid "Upload Media"
 msgstr "Завантажити медіа"
 
-#: packages/admin/src/components/MediaLibrary.tsx:551
+#: packages/admin/src/components/MediaLibrary.tsx:550
 msgid "Upload media to keep reusable assets in one place."
 msgstr "Завантажуйте медіа, щоб тримати багаторазові ресурси в одному місці."
 
 #. placeholder {0}: activeProviderInfo?.name || t`Library`
-#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaLibrary.tsx:349
 msgid "Upload to {0}"
 msgstr "Завантажити в {0}"
 
@@ -9584,11 +9584,11 @@ msgstr "Завантаження"
 
 #. placeholder {0}: uploadState.progress.current
 #. placeholder {1}: uploadState.progress.total
-#: packages/admin/src/components/MediaLibrary.tsx:325
+#: packages/admin/src/components/MediaLibrary.tsx:324
 msgid "Uploading {0}/{1}..."
 msgstr "Завантаження {0}/{1}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:326
+#: packages/admin/src/components/MediaLibrary.tsx:325
 #: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Uploading..."
 msgstr "Завантаження..."
@@ -9691,7 +9691,7 @@ msgid "User not found"
 msgstr "Користувача не знайдено"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:326
+#: packages/admin/src/components/Sidebar.tsx:312
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "Користувачі"
@@ -9759,7 +9759,7 @@ msgid "Version {0}"
 msgstr "Версія {0}"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:67
-#: packages/admin/src/components/MediaLibrary.tsx:457
+#: packages/admin/src/components/MediaLibrary.tsx:456
 msgid "Video"
 msgstr "Відео"
 
@@ -9777,7 +9777,7 @@ msgstr "Статус поштового провайдера та тестові
 msgid "View in Marketplace"
 msgstr "Переглянути в маркетплейсі"
 
-#: packages/admin/src/components/MediaLibrary.tsx:469
+#: packages/admin/src/components/MediaLibrary.tsx:468
 msgid "View mode"
 msgstr "Режим перегляду"
 
@@ -9984,7 +9984,7 @@ msgstr "Віджет оновлено"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:294
+#: packages/admin/src/components/Sidebar.tsx:280
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"
@@ -10102,7 +10102,7 @@ msgstr "У вас повний доступ до керування сайтом
 msgid "You need admin permissions to manage byline schema."
 msgstr "Для керування схемою підписів авторів потрібні права адміністратора."
 
-#: packages/admin/src/router.tsx:1572
+#: packages/admin/src/router.tsx:1562
 msgid "You need Editor permissions to moderate comments."
 msgstr "Для модерації коментарів потрібні права редактора."
 
@@ -10183,8 +10183,8 @@ msgstr "Ваше ім’я користувача Instagram"
 msgid "Your LinkedIn profile username"
 msgstr "Ім’я профілю LinkedIn"
 
-#: packages/admin/src/components/MediaLibrary.tsx:526
-#: packages/admin/src/components/MediaLibrary.tsx:550
+#: packages/admin/src/components/MediaLibrary.tsx:525
+#: packages/admin/src/components/MediaLibrary.tsx:549
 msgid "Your media library is empty"
 msgstr "Ваша медіатека порожня"
 

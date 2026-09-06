@@ -34,7 +34,7 @@ msgstr " الافتراضي"
 msgid " (opens in new window)"
 msgstr " (يفتح في نافذة جديدة)"
 
-#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:885
 #: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid " (selected)"
 msgstr " (محدد)"
@@ -100,7 +100,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr ""
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1551
+#: packages/admin/src/router.tsx:1541
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, zero {لم تُحدَّث تعليقات} one {تعليق واحد محدَّث} two {تعليقان محدَّثان} few {# تعليقات محدَّثة} many {# تعليقًا محدَّثًا} other {# تعليق محدَّث}}"
 
@@ -277,17 +277,17 @@ msgid "{0} items will be imported"
 msgstr "سيتم استيراد {0} عنصر"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:563
+#: packages/admin/src/router.tsx:562
 msgid "{0} of {total} could not be deleted"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:519
+#: packages/admin/src/router.tsx:518
 msgid "{0} of {total} could not be published"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:542
+#: packages/admin/src/router.tsx:541
 msgid "{0} of {total} could not be updated"
 msgstr ""
 
@@ -326,7 +326,7 @@ msgstr "تم تحديث {0} إلى الإصدار {1}"
 
 #. placeholder {0}: item.filename
 #. placeholder {1}: selected ? t` (selected)` : ""
-#: packages/admin/src/components/MediaPickerModal.tsx:887
+#: packages/admin/src/components/MediaPickerModal.tsx:885
 #: packages/admin/src/components/MediaPickerModal.tsx:970
 msgid "{0}{1}"
 msgstr "{0}{1}"
@@ -421,7 +421,7 @@ msgstr ""
 msgid "{readingTime, plural, one {# min read} other {# min read}}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:292
+#: packages/admin/src/components/MediaLibrary.tsx:291
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr ""
 
@@ -441,11 +441,11 @@ msgstr "{total, plural, zero {لا عناصر} one {عنصر واحد} two {عن
 msgid "{total, plural, one {# total} other {# total}}"
 msgstr "{total, plural, other {إجمالي #}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:241
+#: packages/admin/src/components/MediaLibrary.tsx:240
 msgid "{total, plural, one {File uploaded} other {# files uploaded}}"
 msgstr "{total, plural, one {تم رفع الملف} few {تم رفع # ملفات} many {تم رفع # ملفًا} other {تم رفع # ملف}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:246
+#: packages/admin/src/components/MediaLibrary.tsx:245
 msgid "{total, plural, one {Upload failed} other {All # uploads failed}}"
 msgstr "{total, plural, one {فشل الرفع} other {جميع عمليات الرفع الـ # فشلت}}"
 
@@ -465,7 +465,7 @@ msgstr "{unchangedCount, plural, one {إخفاء # غير متغير} other {إ�
 msgid "{unchangedCount, plural, one {Show # unchanged} other {Show # unchanged}}"
 msgstr "{unchangedCount, plural, other {إظهار # لم تتغير}}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:251
+#: packages/admin/src/components/MediaLibrary.tsx:250
 msgid "{uploaded} uploaded, {failed} failed"
 msgstr "تم رفع {uploaded}، وفشل {failed}"
 
@@ -628,7 +628,7 @@ msgstr "قبول الدعوة"
 msgid "Access denied"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1571
+#: packages/admin/src/router.tsx:1561
 msgid "Access Denied"
 msgstr "الوصول مرفوض"
 
@@ -855,12 +855,12 @@ msgid "admin"
 msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:102
-#: packages/admin/src/components/Sidebar.tsx:456
+#: packages/admin/src/components/Sidebar.tsx:442
 #: packages/admin/src/components/users/roleDefinitions.ts:42
 msgid "Admin"
 msgstr "مسؤول"
 
-#: packages/admin/src/components/Sidebar.tsx:402
+#: packages/admin/src/components/Sidebar.tsx:388
 msgid "Admin navigation"
 msgstr "تنقل لوحة الإدارة"
 
@@ -960,7 +960,7 @@ msgstr "جميع المصادر"
 msgid "All statuses"
 msgstr "جميع الحالات"
 
-#: packages/admin/src/components/MediaLibrary.tsx:455
+#: packages/admin/src/components/MediaLibrary.tsx:454
 #: packages/admin/src/components/Redirects.tsx:432
 msgid "All types"
 msgstr "جميع الأنواع"
@@ -1000,7 +1000,7 @@ msgstr ""
 
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:376
 #: packages/admin/src/components/editor/ImageNode.tsx:231
-#: packages/admin/src/components/MediaLibrary.tsx:611
+#: packages/admin/src/components/MediaLibrary.tsx:610
 msgid "Alt text"
 msgstr "النص البديل"
 
@@ -1011,8 +1011,8 @@ msgstr "النص البديل"
 msgid "Alt Text"
 msgstr "النص البديل"
 
-#: packages/admin/src/components/MediaLibrary.tsx:868
-#: packages/admin/src/components/MediaLibrary.tsx:925
+#: packages/admin/src/components/MediaLibrary.tsx:873
+#: packages/admin/src/components/MediaLibrary.tsx:932
 msgid "Alt text set"
 msgstr "تم تعيين النص البديل"
 
@@ -1054,24 +1054,24 @@ msgstr ""
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:451
-#: packages/admin/src/router.tsx:466
-#: packages/admin/src/router.tsx:480
-#: packages/admin/src/router.tsx:494
-#: packages/admin/src/router.tsx:725
-#: packages/admin/src/router.tsx:1007
-#: packages/admin/src/router.tsx:1067
-#: packages/admin/src/router.tsx:1085
-#: packages/admin/src/router.tsx:1103
-#: packages/admin/src/router.tsx:1124
-#: packages/admin/src/router.tsx:1145
-#: packages/admin/src/router.tsx:1166
-#: packages/admin/src/router.tsx:1197
-#: packages/admin/src/router.tsx:1217
-#: packages/admin/src/router.tsx:1516
-#: packages/admin/src/router.tsx:1532
-#: packages/admin/src/router.tsx:1557
-#: packages/admin/src/router.tsx:2070
+#: packages/admin/src/router.tsx:450
+#: packages/admin/src/router.tsx:465
+#: packages/admin/src/router.tsx:479
+#: packages/admin/src/router.tsx:493
+#: packages/admin/src/router.tsx:724
+#: packages/admin/src/router.tsx:1006
+#: packages/admin/src/router.tsx:1066
+#: packages/admin/src/router.tsx:1084
+#: packages/admin/src/router.tsx:1102
+#: packages/admin/src/router.tsx:1123
+#: packages/admin/src/router.tsx:1144
+#: packages/admin/src/router.tsx:1165
+#: packages/admin/src/router.tsx:1196
+#: packages/admin/src/router.tsx:1216
+#: packages/admin/src/router.tsx:1508
+#: packages/admin/src/router.tsx:1523
+#: packages/admin/src/router.tsx:1547
+#: packages/admin/src/router.tsx:2060
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1200,7 +1200,7 @@ msgid "Astro"
 msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:66
-#: packages/admin/src/components/MediaLibrary.tsx:458
+#: packages/admin/src/components/MediaLibrary.tsx:457
 msgid "Audio"
 msgstr "صوت"
 
@@ -1289,7 +1289,7 @@ msgstr ""
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1066
+#: packages/admin/src/router.tsx:1065
 msgid "Autosave failed"
 msgstr "فشل الحفظ التلقائي"
 
@@ -1476,14 +1476,14 @@ msgstr ""
 msgid "Byline schema"
 msgstr ""
 
-#: packages/admin/src/components/Sidebar.tsx:325
+#: packages/admin/src/components/Sidebar.tsx:311
 msgid "Byline Schema"
 msgstr ""
 
 #: packages/admin/src/components/BylineFilter.tsx:135
 #: packages/admin/src/components/ContentSettingsPanel.tsx:666
 #: packages/admin/src/components/ContentSettingsPanel.tsx:669
-#: packages/admin/src/components/Sidebar.tsx:312
+#: packages/admin/src/components/Sidebar.tsx:298
 #: packages/admin/src/routes/bylines.tsx:375
 msgid "Bylines"
 msgstr "الكُتّاب"
@@ -1627,7 +1627,7 @@ msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
-#: packages/admin/src/router.tsx:616
+#: packages/admin/src/router.tsx:615
 msgid "Categories"
 msgstr "الفئات"
 
@@ -1677,7 +1677,7 @@ msgstr "تغيير الشعار"
 msgid "Changelog"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1117
+#: packages/admin/src/router.tsx:1116
 msgid "Changes discarded"
 msgstr "تم تجاهل التغييرات"
 
@@ -1729,13 +1729,13 @@ msgid "Clear"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:947
-#: packages/admin/src/components/MediaLibrary.tsx:519
+#: packages/admin/src/components/MediaLibrary.tsx:518
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
 msgstr "مسح الفلاتر"
 
-#: packages/admin/src/components/MediaLibrary.tsx:519
-#: packages/admin/src/components/MediaLibrary.tsx:543
+#: packages/admin/src/components/MediaLibrary.tsx:518
+#: packages/admin/src/components/MediaLibrary.tsx:542
 msgid "Clear search"
 msgstr ""
 
@@ -1905,7 +1905,7 @@ msgstr "تفاصيل التعليق"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:147
 #: packages/admin/src/components/ContentTypeEditor.tsx:500
-#: packages/admin/src/components/Sidebar.tsx:280
+#: packages/admin/src/components/Sidebar.tsx:267
 msgid "Comments"
 msgstr "التعليقات"
 
@@ -1979,7 +1979,7 @@ msgstr ""
 #: packages/admin/src/components/Dashboard.tsx:269
 #: packages/admin/src/components/PortableTextEditor.tsx:2728
 #: packages/admin/src/components/SectionEditor.tsx:195
-#: packages/admin/src/components/Sidebar.tsx:438
+#: packages/admin/src/components/Sidebar.tsx:424
 #: packages/admin/src/components/Widgets.tsx:899
 msgid "Content"
 msgstr "محتوى"
@@ -1997,7 +1997,7 @@ msgstr "أخطاء المحتوى ({0})"
 msgid "Content found:"
 msgstr "المحتوى الذي تم العثور عليه:"
 
-#: packages/admin/src/router.tsx:1139
+#: packages/admin/src/router.tsx:1138
 msgid "Content has been scheduled for publishing"
 msgstr "تمت جدولة المحتوى للنشر"
 
@@ -2009,7 +2009,7 @@ msgstr "تم تحديث المحتوى إلى المراجعة المحددة."
 msgid "Content ID:"
 msgstr "معرف المحتوى:"
 
-#: packages/admin/src/router.tsx:1080
+#: packages/admin/src/router.tsx:1079
 msgid "Content is now live"
 msgstr "المحتوى منشور الآن"
 
@@ -2029,11 +2029,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "قراءة المحتوى"
 
-#: packages/admin/src/router.tsx:1098
+#: packages/admin/src/router.tsx:1097
 msgid "Content removed from public view"
 msgstr "أُزيل المحتوى من العرض العام"
 
-#: packages/admin/src/router.tsx:1160
+#: packages/admin/src/router.tsx:1159
 msgid "Content reverted to draft"
 msgstr "أُعيد المحتوى إلى المسودة"
 
@@ -2047,7 +2047,7 @@ msgstr "المحتوى المراد استيراده"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:184
 #: packages/admin/src/components/ContentTypeList.tsx:116
-#: packages/admin/src/components/Sidebar.tsx:321
+#: packages/admin/src/components/Sidebar.tsx:307
 msgid "Content Types"
 msgstr "أنواع المحتوى"
 
@@ -2383,7 +2383,7 @@ msgid "Created {0}"
 msgstr "تم إنشاء {0}"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1191
+#: packages/admin/src/router.tsx:1190
 msgid "Created {0} translation"
 msgstr "تم إنشاء ترجمة {0}"
 
@@ -2490,8 +2490,8 @@ msgstr "داكن"
 #: packages/admin/src/components/AdminCommandPalette.tsx:130
 #: packages/admin/src/components/ContentTypeList.tsx:358
 #: packages/admin/src/components/Dashboard.tsx:56
-#: packages/admin/src/components/Sidebar.tsx:263
-#: packages/admin/src/components/Sidebar.tsx:429
+#: packages/admin/src/components/Sidebar.tsx:250
+#: packages/admin/src/components/Sidebar.tsx:415
 msgid "Dashboard"
 msgstr "لوحة المعلومات"
 
@@ -3038,7 +3038,7 @@ msgid "Dockerfile"
 msgstr ""
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:63
-#: packages/admin/src/components/MediaLibrary.tsx:459
+#: packages/admin/src/components/MediaLibrary.tsx:458
 msgid "Documents"
 msgstr "مستندات"
 
@@ -3187,7 +3187,7 @@ msgstr "على سبيل المثال، خط CI/CD"
 msgid "e.g., MacBook Pro, iPhone"
 msgstr "مثال: MacBook Pro, iPhone"
 
-#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:301
 #: packages/admin/src/routes/shop.tsx:78
 msgid "Ecommerce"
 msgstr ""
@@ -3484,7 +3484,7 @@ msgstr ""
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2286
+#: packages/admin/src/router.tsx:2276
 msgid "Error"
 msgstr "خطأ"
 
@@ -3649,14 +3649,14 @@ msgid "Failed to create term"
 msgstr "فشل إنشاء المصطلح"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1196
+#: packages/admin/src/router.tsx:1195
 msgid "Failed to create translation"
 msgstr "فشل إنشاء الترجمة"
 
-#: packages/admin/src/router.tsx:450
-#: packages/admin/src/router.tsx:479
-#: packages/admin/src/router.tsx:562
-#: packages/admin/src/router.tsx:1216
+#: packages/admin/src/router.tsx:449
+#: packages/admin/src/router.tsx:478
+#: packages/admin/src/router.tsx:561
+#: packages/admin/src/router.tsx:1215
 msgid "Failed to delete"
 msgstr "فشل الحذف"
 
@@ -3681,7 +3681,7 @@ msgid "Failed to delete collection"
 msgstr "فشل حذف المجموعة"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1531
+#: packages/admin/src/router.tsx:1522
 msgid "Failed to delete comment"
 msgstr "فشل حذف التعليق"
 
@@ -3751,7 +3751,7 @@ msgstr ""
 msgid "Failed to disable user"
 msgstr "فشل تعطيل المستخدم"
 
-#: packages/admin/src/router.tsx:1123
+#: packages/admin/src/router.tsx:1122
 msgid "Failed to discard changes"
 msgstr "فشل تجاهل التغييرات"
 
@@ -3759,7 +3759,7 @@ msgstr "فشل تجاهل التغييرات"
 msgid "Failed to dismiss welcome"
 msgstr "فشل إغلاق رسالة الترحيب"
 
-#: packages/admin/src/router.tsx:493
+#: packages/admin/src/router.tsx:492
 msgid "Failed to duplicate"
 msgstr "فشل التكرار"
 
@@ -3878,8 +3878,8 @@ msgstr "فشل جلب المصطلحات"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:916
-#: packages/admin/src/router.tsx:1462
+#: packages/admin/src/router.tsx:915
+#: packages/admin/src/router.tsx:1461
 msgid "Failed to fetch user"
 msgstr "فشل جلب بيانات المستخدم"
 
@@ -3921,7 +3921,7 @@ msgstr "فشل تثبيت الإضافة"
 msgid "Failed to list byline fields"
 msgstr ""
 
-#: packages/admin/src/router.tsx:289
+#: packages/admin/src/router.tsx:288
 msgid "Failed to load admin"
 msgstr "فشل تحميل لوحة الإدارة"
 
@@ -3990,7 +3990,7 @@ msgstr "فشل تحميل المستخدمين: {0}"
 msgid "Failed to load widget"
 msgstr "فشل تحميل عنصر الواجهة"
 
-#: packages/admin/src/router.tsx:1556
+#: packages/admin/src/router.tsx:1546
 msgid "Failed to perform bulk action"
 msgstr "فشل تنفيذ الإجراء الجماعي"
 
@@ -4002,8 +4002,8 @@ msgstr "فشل الحذف النهائي للمحتوى"
 msgid "Failed to prepare import"
 msgstr "فشل تحضير الاستيراد"
 
-#: packages/admin/src/router.tsx:518
-#: packages/admin/src/router.tsx:1084
+#: packages/admin/src/router.tsx:517
+#: packages/admin/src/router.tsx:1083
 msgid "Failed to publish"
 msgstr "فشل النشر"
 
@@ -4041,7 +4041,7 @@ msgstr "فشل إعادة ترتيب الحقول"
 msgid "Failed to reorder widgets"
 msgstr "فشل إعادة ترتيب عناصر الواجهة"
 
-#: packages/admin/src/router.tsx:465
+#: packages/admin/src/router.tsx:464
 msgid "Failed to restore"
 msgstr "فشل الاستعادة"
 
@@ -4062,9 +4062,9 @@ msgstr "فشل إلغاء رمز API"
 msgid "Failed to rewrite URLs"
 msgstr "فشل إعادة كتابة الروابط"
 
-#: packages/admin/src/router.tsx:724
-#: packages/admin/src/router.tsx:1006
-#: packages/admin/src/router.tsx:2069
+#: packages/admin/src/router.tsx:723
+#: packages/admin/src/router.tsx:1005
+#: packages/admin/src/router.tsx:2059
 msgid "Failed to save"
 msgstr "فشل الحفظ"
 
@@ -4091,7 +4091,7 @@ msgstr ""
 msgid "Failed to save settings"
 msgstr "فشل في حفظ الإعدادات"
 
-#: packages/admin/src/router.tsx:1144
+#: packages/admin/src/router.tsx:1143
 msgid "Failed to schedule"
 msgstr "فشل الجدولة"
 
@@ -4122,15 +4122,15 @@ msgstr "فشل تعيين مصطلحات المدخل"
 msgid "Failed to uninstall plugin"
 msgstr "فشل إلغاء تثبيت الإضافة"
 
-#: packages/admin/src/router.tsx:1102
+#: packages/admin/src/router.tsx:1101
 msgid "Failed to unpublish"
 msgstr "فشل إلغاء النشر"
 
-#: packages/admin/src/router.tsx:1165
+#: packages/admin/src/router.tsx:1164
 msgid "Failed to unschedule"
 msgstr "فشل إلغاء الجدولة"
 
-#: packages/admin/src/router.tsx:541
+#: packages/admin/src/router.tsx:540
 msgid "Failed to update"
 msgstr ""
 
@@ -4180,7 +4180,7 @@ msgstr ""
 msgid "Failed to update settings"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1515
+#: packages/admin/src/router.tsx:1507
 msgid "Failed to update status"
 msgstr "فشل تحديث الحالة"
 
@@ -4279,13 +4279,13 @@ msgstr "الملف {0}"
 msgid "File from media library"
 msgstr "ملف من مكتبة الوسائط"
 
-#: packages/admin/src/components/MediaLibrary.tsx:195
+#: packages/admin/src/components/MediaLibrary.tsx:194
 msgid "File uploaded"
 msgstr ""
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:325
 #: packages/admin/src/components/MediaDetailPanel.tsx:342
-#: packages/admin/src/components/MediaLibrary.tsx:608
+#: packages/admin/src/components/MediaLibrary.tsx:607
 msgid "Filename"
 msgstr "اسم الملف"
 
@@ -4326,7 +4326,7 @@ msgstr "تصفية حسب المصدر"
 msgid "Filter by status"
 msgstr "تصفية حسب الحالة"
 
-#: packages/admin/src/components/MediaLibrary.tsx:461
+#: packages/admin/src/components/MediaLibrary.tsx:460
 #: packages/admin/src/components/Redirects.tsx:433
 msgid "Filter by type"
 msgstr "تصفية حسب النوع"
@@ -4435,7 +4435,7 @@ msgid "Go"
 msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2306
+#: packages/admin/src/router.tsx:2296
 msgid "Go to Dashboard"
 msgstr "الذهاب إلى لوحة المعلومات"
 
@@ -4448,7 +4448,7 @@ msgstr "تحقق Google"
 msgid "GraphQL"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:482
+#: packages/admin/src/components/MediaLibrary.tsx:481
 msgid "Grid view"
 msgstr "عرض شبكي"
 
@@ -4667,12 +4667,12 @@ msgstr "تم تحديث روابط الصور في"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:61
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:192
-#: packages/admin/src/components/MediaLibrary.tsx:456
+#: packages/admin/src/components/MediaLibrary.tsx:455
 msgid "Images"
 msgstr "الصور"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:226
-#: packages/admin/src/components/Sidebar.tsx:363
+#: packages/admin/src/components/Sidebar.tsx:349
 #: packages/admin/src/components/WordPressImport.tsx:738
 msgid "Import"
 msgstr "استيراد"
@@ -5134,9 +5134,9 @@ msgstr "تركه دون تعيين"
 msgid "Left"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:142
-#: packages/admin/src/components/MediaLibrary.tsx:267
-#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaLibrary.tsx:141
+#: packages/admin/src/components/MediaLibrary.tsx:266
+#: packages/admin/src/components/MediaLibrary.tsx:349
 #: packages/admin/src/components/MediaPickerModal.tsx:214
 #: packages/admin/src/components/MediaPickerModal.tsx:516
 msgid "Library"
@@ -5191,7 +5191,7 @@ msgstr "لينكد إن"
 msgid "Links"
 msgstr "الروابط"
 
-#: packages/admin/src/components/MediaLibrary.tsx:491
+#: packages/admin/src/components/MediaLibrary.tsx:490
 msgid "List view"
 msgstr "عرض قائمة"
 
@@ -5212,13 +5212,13 @@ msgstr "تحميل المزيد"
 
 #: packages/admin/src/components/ContentList.tsx:724
 #: packages/admin/src/components/ContentList.tsx:782
-#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaLibrary.tsx:656
 #: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "تحميل المزيد"
 
-#: packages/admin/src/router.tsx:2261
+#: packages/admin/src/router.tsx:2251
 msgid "Loading"
 msgstr ""
 
@@ -5234,8 +5234,8 @@ msgstr "جاري تحميل المجموعات..."
 msgid "Loading comments..."
 msgstr "جاري تحميل التعليقات..."
 
-#: packages/admin/src/router.tsx:2263
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2253
+#: packages/admin/src/router.tsx:2265
 msgid "Loading configuration..."
 msgstr "جارٍ تحميل الإعدادات..."
 
@@ -5321,7 +5321,7 @@ msgstr "جارٍ تحميل عناصر الواجهة..."
 #: packages/admin/src/components/ContentList.tsx:782
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
-#: packages/admin/src/components/MediaLibrary.tsx:657
+#: packages/admin/src/components/MediaLibrary.tsx:656
 #: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/PortableTextEditor.tsx:2413
 #: packages/admin/src/components/Redirects.tsx:560
@@ -5408,7 +5408,7 @@ msgstr "إجراء طلبات الشبكة"
 msgid "Make network requests to any host (unrestricted)"
 msgstr "إجراء طلبات الشبكة لأي مضيف (بدون قيود)"
 
-#: packages/admin/src/components/Sidebar.tsx:448
+#: packages/admin/src/components/Sidebar.tsx:434
 msgid "Manage"
 msgstr "إدارة"
 
@@ -5496,7 +5496,7 @@ msgstr "السوق"
 #: packages/admin/src/components/MarketplaceBrowse.tsx:87
 #: packages/admin/src/components/PluginManager.tsx:176
 #: packages/admin/src/components/PluginManager.tsx:384
-#: packages/admin/src/components/Sidebar.tsx:345
+#: packages/admin/src/components/Sidebar.tsx:331
 msgid "Marketplace"
 msgstr "السوق"
 
@@ -5538,7 +5538,7 @@ msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:2698
 #: packages/admin/src/components/PortableTextEditor.tsx:2713
-#: packages/admin/src/components/Sidebar.tsx:273
+#: packages/admin/src/components/Sidebar.tsx:260
 #: packages/admin/src/components/WordPressImport.tsx:752
 #: packages/admin/src/components/WordPressImport.tsx:1145
 #: packages/admin/src/components/WordPressImport.tsx:1334
@@ -5567,7 +5567,7 @@ msgid "Media import was skipped"
 msgstr "تم تخطي استيراد الوسائط"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:153
-#: packages/admin/src/components/MediaLibrary.tsx:316
+#: packages/admin/src/components/MediaLibrary.tsx:315
 msgid "Media Library"
 msgstr "مكتبة الوسائط"
 
@@ -5575,7 +5575,7 @@ msgstr "مكتبة الوسائط"
 msgid "Media Read"
 msgstr "قراءة الوسائط"
 
-#: packages/admin/src/components/MediaLibrary.tsx:374
+#: packages/admin/src/components/MediaLibrary.tsx:373
 msgid "Media storage usage"
 msgstr ""
 
@@ -5633,7 +5633,7 @@ msgstr "تم تحديث ترتيب القائمة."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:160
 #: packages/admin/src/components/MenuList.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:287
+#: packages/admin/src/components/Sidebar.tsx:273
 #: packages/admin/src/components/WordPressImport.tsx:1149
 msgid "Menus"
 msgstr "القوائم"
@@ -5807,11 +5807,11 @@ msgstr "نقل إلى سلة المحذوفات؟"
 msgid "Move up"
 msgstr "تحريك للأعلى"
 
-#: packages/admin/src/router.tsx:538
+#: packages/admin/src/router.tsx:537
 msgid "Moved {total} items to draft"
 msgstr ""
 
-#: packages/admin/src/router.tsx:559
+#: packages/admin/src/router.tsx:558
 msgid "Moved {total} items to trash"
 msgstr ""
 
@@ -5861,7 +5861,7 @@ msgstr "التنقل"
 msgid "Never"
 msgstr "أبدًا"
 
-#: packages/admin/src/router.tsx:1191
+#: packages/admin/src/router.tsx:1190
 msgid "new"
 msgstr "جديد"
 
@@ -5990,8 +5990,8 @@ msgstr "لا يوجد {0} بعد. قم بإنشاء أحدها للبدء."
 msgid "No 404 errors recorded yet."
 msgstr "لم يتم تسجيل أخطاء 404 بعد."
 
-#: packages/admin/src/components/MediaLibrary.tsx:868
-#: packages/admin/src/components/MediaLibrary.tsx:925
+#: packages/admin/src/components/MediaLibrary.tsx:873
+#: packages/admin/src/components/MediaLibrary.tsx:932
 msgid "No alt text"
 msgstr "لا يوجد نص بديل"
 
@@ -6146,8 +6146,8 @@ msgstr "لا توجد نتائج"
 msgid "No matching bylines."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:511
-#: packages/admin/src/components/MediaLibrary.tsx:539
+#: packages/admin/src/components/MediaLibrary.tsx:510
+#: packages/admin/src/components/MediaLibrary.tsx:538
 msgid "No matching media"
 msgstr ""
 
@@ -6164,11 +6164,11 @@ msgstr "بدون حد أقصى"
 msgid "No media available from this provider"
 msgstr "لا توجد وسائط متاحة من هذا المزود"
 
-#: packages/admin/src/components/MediaLibrary.tsx:562
+#: packages/admin/src/components/MediaLibrary.tsx:561
 msgid "No media available from this provider."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:561
+#: packages/admin/src/components/MediaLibrary.tsx:560
 #: packages/admin/src/components/MediaPickerModal.tsx:696
 msgid "No media found"
 msgstr "لم يتم العثور على وسائط"
@@ -6553,7 +6553,7 @@ msgstr "الملكية"
 msgid "Package"
 msgstr "الحزمة"
 
-#: packages/admin/src/router.tsx:2301
+#: packages/admin/src/router.tsx:2291
 msgid "Page Not Found"
 msgstr "الصفحة غير موجودة"
 
@@ -6880,8 +6880,8 @@ msgstr ""
 #: packages/admin/src/components/PluginManager.tsx:139
 #: packages/admin/src/components/PluginManager.tsx:148
 #: packages/admin/src/components/PluginManager.tsx:158
-#: packages/admin/src/components/Sidebar.tsx:329
-#: packages/admin/src/components/Sidebar.tsx:464
+#: packages/admin/src/components/Sidebar.tsx:315
+#: packages/admin/src/components/Sidebar.tsx:450
 msgid "Plugins"
 msgstr "الإضافات"
 
@@ -6960,7 +6960,7 @@ msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:167
 #: packages/admin/src/components/ContentTypeEditor.tsx:81
-#: packages/admin/src/components/MediaLibrary.tsx:607
+#: packages/admin/src/components/MediaLibrary.tsx:606
 msgid "Preview"
 msgstr "معاينة"
 
@@ -7034,7 +7034,7 @@ msgid "Promotional text"
 msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:104
-#: packages/admin/src/components/Sidebar.tsx:297
+#: packages/admin/src/components/Sidebar.tsx:283
 msgid "Promotions"
 msgstr ""
 
@@ -7070,7 +7070,7 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:843
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1080
+#: packages/admin/src/router.tsx:1079
 msgid "Published"
 msgstr "منشور"
 
@@ -7079,7 +7079,7 @@ msgstr "منشور"
 msgid "Published {0}"
 msgstr "تم نشر {0}"
 
-#: packages/admin/src/router.tsx:515
+#: packages/admin/src/router.tsx:514
 msgid "Published {total} items"
 msgstr ""
 
@@ -7201,7 +7201,7 @@ msgstr "جاري إعادة التوجيه إلى تسجيل الدخول..."
 
 #: packages/admin/src/components/Redirects.tsx:364
 #: packages/admin/src/components/Redirects.tsx:385
-#: packages/admin/src/components/Sidebar.tsx:290
+#: packages/admin/src/components/Sidebar.tsx:276
 msgid "Redirects"
 msgstr "إعادات التوجيه"
 
@@ -7243,7 +7243,7 @@ msgstr "فشل التسجيل"
 msgid "Registration was cancelled or timed out. Please try again."
 msgstr "تم إلغاء التسجيل أو انتهت مهلته. يرجى المحاولة مجددًا."
 
-#: packages/admin/src/components/Sidebar.tsx:338
+#: packages/admin/src/components/Sidebar.tsx:324
 msgid "Registry"
 msgstr "المستودع"
 
@@ -7251,7 +7251,7 @@ msgstr "المستودع"
 msgid "Release is too new to install"
 msgstr "الإصدار حديث جدًا للتثبيت"
 
-#: packages/admin/src/components/MediaLibrary.tsx:369
+#: packages/admin/src/components/MediaLibrary.tsx:368
 msgid "remaining"
 msgstr ""
 
@@ -7495,7 +7495,7 @@ msgstr "جاري الاستعادة..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2289
+#: packages/admin/src/router.tsx:2279
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "إعادة المحاولة"
@@ -7508,7 +7508,7 @@ msgstr ""
 msgid "Reusable content blocks you can insert into any content"
 msgstr "كتل محتوى قابلة لإعادة الاستخدام يمكنك إدراجها في أي محتوى"
 
-#: packages/admin/src/router.tsx:1118
+#: packages/admin/src/router.tsx:1117
 msgid "Reverted to published version"
 msgstr "تمت الإعادة إلى النسخة المنشورة"
 
@@ -7747,7 +7747,7 @@ msgstr "جدولة لوقت لاحق"
 #: packages/admin/src/components/ContentList.tsx:834
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
 #: packages/admin/src/components/Promotions.tsx:177
-#: packages/admin/src/router.tsx:1138
+#: packages/admin/src/router.tsx:1137
 msgid "Scheduled"
 msgstr "مجدول"
 
@@ -7835,7 +7835,7 @@ msgstr "بحث {0}..."
 msgid "Search by coupon code"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaLibrary.tsx:436
 #: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search by filename..."
 msgstr ""
@@ -7907,7 +7907,7 @@ msgstr "تحسين محركات البحث والتحقق"
 msgid "Search form"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:438
+#: packages/admin/src/components/MediaLibrary.tsx:437
 #: packages/admin/src/components/MediaPickerModal.tsx:635
 msgid "Search media"
 msgstr "البحث في الوسائط"
@@ -7955,7 +7955,7 @@ msgstr ""
 msgid "Search users"
 msgstr "البحث عن مستخدمين"
 
-#: packages/admin/src/components/MediaLibrary.tsx:437
+#: packages/admin/src/components/MediaLibrary.tsx:436
 #: packages/admin/src/components/MediaPickerModal.tsx:634
 msgid "Search..."
 msgstr "بحث..."
@@ -8019,7 +8019,7 @@ msgstr "عنوان القسم"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:176
 #: packages/admin/src/components/Sections.tsx:134
-#: packages/admin/src/components/Sidebar.tsx:301
+#: packages/admin/src/components/Sidebar.tsx:287
 msgid "Sections"
 msgstr "أقسام"
 
@@ -8305,7 +8305,7 @@ msgstr "جاري الإعداد..."
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
 #: packages/admin/src/components/Settings.tsx:40
-#: packages/admin/src/components/Sidebar.tsx:367
+#: packages/admin/src/components/Sidebar.tsx:353
 #: packages/admin/src/components/WordPressImport.tsx:1811
 msgid "Settings"
 msgstr "الإعدادات"
@@ -8480,7 +8480,7 @@ msgstr "رابط الموقع"
 msgid "Sites on Cloudflare D1 can additionally restore the database to any minute within the last 30 days using D1 Time Travel — always on, no setup required."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:610
+#: packages/admin/src/components/MediaLibrary.tsx:609
 msgid "Size"
 msgstr "الحجم"
 
@@ -8645,7 +8645,7 @@ msgstr "رمز الحالة"
 msgid "Status: {status}"
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:367
+#: packages/admin/src/components/MediaLibrary.tsx:366
 msgid "Storage available"
 msgstr ""
 
@@ -8758,7 +8758,7 @@ msgstr "الشعار"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:201
 #: packages/admin/src/components/Widgets.tsx:143
-#: packages/admin/src/router.tsx:617
+#: packages/admin/src/router.tsx:616
 msgid "Tags"
 msgstr "الوسوم"
 
@@ -8874,7 +8874,7 @@ msgstr "تم حذف القائمة."
 msgid "The name of your site, used in the header and metadata"
 msgstr "اسم موقعك، يُستخدم في الترويسة والبيانات الوصفية"
 
-#: packages/admin/src/router.tsx:2303
+#: packages/admin/src/router.tsx:2293
 msgid "The page you're looking for doesn't exist."
 msgstr "الصفحة التي تبحث عنها غير موجودة."
 
@@ -8927,7 +8927,7 @@ msgstr "لا يمكن حذف الأقسام المزودة من مظهر. قم �
 msgid "Theme: {label}"
 msgstr "المظهر: {label}"
 
-#: packages/admin/src/components/Sidebar.tsx:354
+#: packages/admin/src/components/Sidebar.tsx:340
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:77
 msgid "Themes"
 msgstr "المظاهر"
@@ -9201,7 +9201,7 @@ msgstr "جارٍ الترجمة..."
 #: packages/admin/src/components/MenuEditor.tsx:143
 #: packages/admin/src/components/TaxonomyManager.tsx:987
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1190
+#: packages/admin/src/router.tsx:1189
 msgid "Translation created"
 msgstr "تم إنشاء الترجمة"
 
@@ -9234,7 +9234,7 @@ msgstr "سلة المحذوفات فارغة."
 msgid "True/false toggle"
 msgstr "زر صح/خطأ"
 
-#: packages/admin/src/components/MediaLibrary.tsx:515
+#: packages/admin/src/components/MediaLibrary.tsx:514
 msgid "Try a broader media type or clear your filters."
 msgstr ""
 
@@ -9263,11 +9263,11 @@ msgstr "حاول مجددًا"
 msgid "Try another code"
 msgstr "جرّب رمزًا آخر"
 
-#: packages/admin/src/components/MediaLibrary.tsx:540
+#: packages/admin/src/components/MediaLibrary.tsx:539
 msgid "Try another filename or clear your search."
 msgstr ""
 
-#: packages/admin/src/components/MediaLibrary.tsx:514
+#: packages/admin/src/components/MediaLibrary.tsx:513
 msgid "Try another filename, or clear your search and filters."
 msgstr ""
 
@@ -9295,7 +9295,7 @@ msgstr "تويتر"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
-#: packages/admin/src/components/MediaLibrary.tsx:609
+#: packages/admin/src/components/MediaLibrary.tsx:608
 #: packages/admin/src/routes/byline-schema.tsx:240
 msgid "Type"
 msgstr "النوع"
@@ -9385,7 +9385,7 @@ msgstr "مفتاح مرور بدون اسم"
 msgid "Unpublish {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1098
+#: packages/admin/src/router.tsx:1097
 msgid "Unpublished"
 msgstr "غير منشور"
 
@@ -9401,7 +9401,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "إلغاء الجدولة"
 
-#: packages/admin/src/router.tsx:1159
+#: packages/admin/src/router.tsx:1158
 msgid "Unscheduled"
 msgstr "غير مجدول"
 
@@ -9528,7 +9528,7 @@ msgstr "رفع الوسائط وإدارتها"
 msgid "Upload Export File"
 msgstr "رفع ملف التصدير"
 
-#: packages/admin/src/components/MediaLibrary.tsx:199
+#: packages/admin/src/components/MediaLibrary.tsx:198
 msgid "Upload failed"
 msgstr ""
 
@@ -9536,7 +9536,7 @@ msgstr ""
 msgid "Upload failed: {uploadError}"
 msgstr "فشل الرفع: {uploadError}"
 
-#: packages/admin/src/components/MediaLibrary.tsx:358
+#: packages/admin/src/components/MediaLibrary.tsx:357
 #: packages/admin/src/components/MediaPickerModal.tsx:669
 msgid "Upload file"
 msgstr "رفع ملف"
@@ -9545,8 +9545,8 @@ msgstr "رفع ملف"
 msgid "Upload File"
 msgstr "رفع ملف"
 
-#: packages/admin/src/components/MediaLibrary.tsx:530
-#: packages/admin/src/components/MediaLibrary.tsx:554
+#: packages/admin/src/components/MediaLibrary.tsx:529
+#: packages/admin/src/components/MediaLibrary.tsx:553
 msgid "Upload Files"
 msgstr "رفع ملفات"
 
@@ -9554,7 +9554,7 @@ msgstr "رفع ملفات"
 msgid "Upload Image"
 msgstr "رفع صورة"
 
-#: packages/admin/src/components/MediaLibrary.tsx:527
+#: packages/admin/src/components/MediaLibrary.tsx:526
 msgid "Upload images, videos, and documents to keep reusable assets in one place."
 msgstr ""
 
@@ -9562,12 +9562,12 @@ msgstr ""
 msgid "Upload Media"
 msgstr "رفع وسائط"
 
-#: packages/admin/src/components/MediaLibrary.tsx:551
+#: packages/admin/src/components/MediaLibrary.tsx:550
 msgid "Upload media to keep reusable assets in one place."
 msgstr ""
 
 #. placeholder {0}: activeProviderInfo?.name || t`Library`
-#: packages/admin/src/components/MediaLibrary.tsx:350
+#: packages/admin/src/components/MediaLibrary.tsx:349
 msgid "Upload to {0}"
 msgstr "رفع إلى {0}"
 
@@ -9585,11 +9585,11 @@ msgstr "جاري الرفع"
 
 #. placeholder {0}: uploadState.progress.current
 #. placeholder {1}: uploadState.progress.total
-#: packages/admin/src/components/MediaLibrary.tsx:325
+#: packages/admin/src/components/MediaLibrary.tsx:324
 msgid "Uploading {0}/{1}..."
 msgstr "جاري رفع {0}/{1}..."
 
-#: packages/admin/src/components/MediaLibrary.tsx:326
+#: packages/admin/src/components/MediaLibrary.tsx:325
 #: packages/admin/src/components/MediaPickerModal.tsx:657
 msgid "Uploading..."
 msgstr "جاري الرفع..."
@@ -9692,7 +9692,7 @@ msgid "User not found"
 msgstr "لم يتم العثور على المستخدم"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:210
-#: packages/admin/src/components/Sidebar.tsx:326
+#: packages/admin/src/components/Sidebar.tsx:312
 #: packages/admin/src/components/users/UserList.tsx:54
 msgid "Users"
 msgstr "المستخدمين"
@@ -9760,7 +9760,7 @@ msgid "Version {0}"
 msgstr "الإصدار {0}"
 
 #: packages/admin/src/components/AllowedTypesEditor.tsx:67
-#: packages/admin/src/components/MediaLibrary.tsx:457
+#: packages/admin/src/components/MediaLibrary.tsx:456
 msgid "Video"
 msgstr "فيديو"
 
@@ -9778,7 +9778,7 @@ msgstr "عرض حالة مزود البريد الإلكتروني وإرسال 
 msgid "View in Marketplace"
 msgstr "عرض في السوق"
 
-#: packages/admin/src/components/MediaLibrary.tsx:469
+#: packages/admin/src/components/MediaLibrary.tsx:468
 msgid "View mode"
 msgstr "وضع العرض"
 
@@ -9985,7 +9985,7 @@ msgstr "تم تحديث عنصر الواجهة"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:168
 #: packages/admin/src/components/PluginManager.tsx:408
-#: packages/admin/src/components/Sidebar.tsx:294
+#: packages/admin/src/components/Sidebar.tsx:280
 #: packages/admin/src/components/Widgets.tsx:388
 #: packages/admin/src/components/WordPressImport.tsx:1157
 msgid "Widgets"
@@ -10103,7 +10103,7 @@ msgstr "لديك الصلاحية الكاملة لإدارة هذا الموق�
 msgid "You need admin permissions to manage byline schema."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1572
+#: packages/admin/src/router.tsx:1562
 msgid "You need Editor permissions to moderate comments."
 msgstr "تحتاج إلى صلاحيات المحرر للإشراف على التعليقات."
 
@@ -10184,8 +10184,8 @@ msgstr "اسم مستخدم Instagram الخاص بك"
 msgid "Your LinkedIn profile username"
 msgstr "اسم مستخدم ملف LinkedIn الشخصي"
 
-#: packages/admin/src/components/MediaLibrary.tsx:526
-#: packages/admin/src/components/MediaLibrary.tsx:550
+#: packages/admin/src/components/MediaLibrary.tsx:525
+#: packages/admin/src/components/MediaLibrary.tsx:549
 msgid "Your media library is empty"
 msgstr ""
 
