@@ -118,8 +118,7 @@ jobs:
             // tree.
             core.setOutput('sha', headSha);
             core.setOutput('full_name', pr.head.repo.full_name);
-            const isFork = pr.head.repo.fork
-              || pr.head.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`;
+            const isFork = pr.head.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`;
             core.setOutput('is_fork', isFork.toString());
 
       - name: Check app token configuration
