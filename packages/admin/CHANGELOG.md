@@ -1,5 +1,26 @@
 # @emdash-cms/admin
 
+## 0.37.0
+
+### Minor Changes
+
+- [#43](https://github.com/jke-solutions/emdash/pull/43) [`0711005`](https://github.com/jke-solutions/emdash/commit/071100530e742151abc659d89b2977cdc8dc72bf) Thanks [@jonico22](https://github.com/jonico22)! - Adds an admin-managed promotional popup with one gallery image, configurable site or home visibility, manual activation, and optional scheduling.
+
+- [#43](https://github.com/jke-solutions/emdash/pull/43) [`aa5ac01`](https://github.com/jke-solutions/emdash/commit/aa5ac013c3e5da78b1cc58ad23894f04f80e280a) Thanks [@jonico22](https://github.com/jonico22)! - Adds ecommerce checkout and delivery configuration for fiscal customer data, scheduled delivery details, preparation time, minimum order totals, free-delivery thresholds, WhatsApp message templates, and expanded delivery statuses.
+
+- [#43](https://github.com/jke-solutions/emdash/pull/43) [`da7eadd`](https://github.com/jke-solutions/emdash/commit/da7eadd99126eaf90fffbbdab50971b14d36b893) Thanks [@jonico22](https://github.com/jonico22)! - Adds coupon management for small-business shops, including usage limits, checkout validation, and order discounts.
+
+- [#43](https://github.com/jke-solutions/emdash/pull/43) [`905b445`](https://github.com/jke-solutions/emdash/commit/905b445c5923cbdacd242940d6bb3c9a507659a3) Thanks [@jonico22](https://github.com/jonico22)! - Adds optional delivery tracking codes and external tracking links to shop orders.
+
+### Patch Changes
+
+- [#43](https://github.com/jke-solutions/emdash/pull/43) [`aa5ac01`](https://github.com/jke-solutions/emdash/commit/aa5ac013c3e5da78b1cc58ad23894f04f80e280a) Thanks [@jonico22](https://github.com/jonico22)! - Adds shared site design tokens for public themes, widgets, and email templates, with admin controls for brand colors and font stacks and optional build-time `design.md` extraction.
+
+- [#43](https://github.com/jke-solutions/emdash/pull/43) [`aa5ac01`](https://github.com/jke-solutions/emdash/commit/aa5ac013c3e5da78b1cc58ad23894f04f80e280a) Thanks [@jonico22](https://github.com/jonico22)! - Adds Spanish as the default admin language and translates the Ecommerce, Sections, and Email Templates interfaces.
+
+- Updated dependencies []:
+  - @emdash-cms/blocks@0.37.0
+
 ## 0.36.3
 
 ### Patch Changes
