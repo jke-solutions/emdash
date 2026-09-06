@@ -18,6 +18,10 @@ import type { PluginDescriptor } from "./runtime.js";
 
 const TS_SOURCE_EXT_RE = /^\.(ts|tsx|mts|cts|jsx)$/;
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+	return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
 /** Pattern to remove scoped package prefix from plugin ID */
 const SCOPED_PREFIX_PATTERN = /^@[^/]+\/plugin-/;
 
@@ -620,18 +624,22 @@ export function generateSeedModule(projectRoot: string, warnOnFallback = false):
 	}
 
 	if (userSeedJson) {
-		const seed = JSON.parse(userSeedJson) as Record<string, unknown>;
+		const parsedSeed: unknown = JSON.parse(userSeedJson);
+		if (!isRecord(parsedSeed)) throw new Error("Seed must contain a JSON object");
+		const seed = parsedSeed;
 		const designPath = resolve(projectRoot, "design.md");
 		if (existsSync(designPath)) {
 			const design = parseDesignMarkdown(readFileSync(designPath, "utf-8"));
-			const existingSettings = (seed.settings ?? {}) as Record<string, unknown>;
-			const existingTheme = (existingSettings.theme ?? {}) as Record<string, unknown>;
+			const existingSettings = isRecord(seed.settings) ? seed.settings : {};
+			const existingTheme = isRecord(existingSettings.theme) ? existingSettings.theme : {};
+			const existingColors = isRecord(existingTheme.colors) ? existingTheme.colors : {};
+			const existingFonts = isRecord(existingTheme.fonts) ? existingTheme.fonts : {};
 			seed.settings = {
 				...existingSettings,
 				theme: {
 					...existingTheme,
-					colors: { ...design.colors, ...(existingTheme.colors as object) },
-					fonts: { ...design.fonts, ...(existingTheme.fonts as object) },
+					colors: { ...design.colors, ...existingColors },
+					fonts: { ...design.fonts, ...existingFonts },
 				},
 			};
 		}

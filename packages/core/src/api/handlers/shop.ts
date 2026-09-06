@@ -219,6 +219,14 @@ function parseJsonRecord(value: string | null | undefined): Record<string, unkno
 	return isRecord(parsed) ? parsed : {};
 }
 
+function parseJsonStringRecord(value: string | null | undefined): Record<string, string> {
+	return Object.fromEntries(
+		Object.entries(parseJsonRecord(value)).filter(
+			(entry): entry is [string, string] => typeof entry[1] === "string",
+		),
+	);
+}
+
 function toSettings(row: {
 	id: string;
 	store_name: string;
@@ -255,7 +263,7 @@ function toSettings(row: {
 		preparationTime: row.preparation_time,
 		minimumSubtotal: row.minimum_subtotal ?? 0,
 		freeDeliveryMinSubtotal: row.free_delivery_min_subtotal,
-		whatsappTemplates: parseJsonRecord(row.whatsapp_templates) as Record<string, string>,
+		whatsappTemplates: parseJsonStringRecord(row.whatsapp_templates),
 		paymentGatewayEnabled: row.payment_gateway_enabled === 1,
 		paymentGatewayProvider: row.payment_gateway_provider,
 		paymentGatewayEnvironment:
@@ -921,19 +929,11 @@ export async function handleShopProductRelatedList(
 	try {
 		const productsResult = await handleShopProductList(db);
 		if (!productsResult.success) return productsResult;
-		const products = productsResult.data as Array<{
-			id?: string;
-			slug?: string | null;
-			data?: Record<string, unknown>;
-		}>;
+		const products = productsResult.data.filter(isRelatedProduct);
 		const current = products.find((product) => product.id === id || product.slug === id);
 		if (!current) return { success: true, data: [] };
 
-		const currentTerms = current.data?.terms;
-		const terms =
-			currentTerms && typeof currentTerms === "object" && !Array.isArray(currentTerms)
-				? (currentTerms as Record<string, unknown>)
-				: {};
+		const terms = isRecord(current.data?.terms) ? current.data.terms : {};
 		const strategy = options.strategy ?? "both";
 		const categories = new Set(strategy === "tag" ? [] : termSlugs(terms.category));
 		const tags = new Set(strategy === "category" ? [] : termSlugs(terms.tag));
@@ -944,10 +944,7 @@ export async function handleShopProductRelatedList(
 			.filter((product) => product.id !== current.id)
 			.map((product, index) => {
 				const productTerms = product.data?.terms;
-				const productTermRecord =
-					productTerms && typeof productTerms === "object" && !Array.isArray(productTerms)
-						? (productTerms as Record<string, unknown>)
-						: {};
+				const productTermRecord = isRecord(productTerms) ? productTerms : {};
 				const categoryMatches = termSlugs(productTermRecord.category).filter((slug) =>
 					categories.has(slug),
 				).length;
@@ -970,10 +967,23 @@ export async function handleShopProductRelatedList(
 function termSlugs(value: unknown): string[] {
 	if (!Array.isArray(value)) return [];
 	return value.flatMap((term) => {
-		if (!term || typeof term !== "object") return [];
-		const slug = (term as { slug?: unknown }).slug;
+		if (!isRecord(term)) return [];
+		const slug = term.slug;
 		return typeof slug === "string" ? [slug] : [];
 	});
+}
+
+function isRelatedProduct(value: unknown): value is {
+	id?: string;
+	slug?: string | null;
+	data?: Record<string, unknown>;
+} {
+	if (!isRecord(value)) return false;
+	return (
+		(value.id === undefined || typeof value.id === "string") &&
+		(value.slug === undefined || value.slug === null || typeof value.slug === "string") &&
+		(value.data === undefined || isRecord(value.data))
+	);
 }
 
 export async function handleShopProductGet(
