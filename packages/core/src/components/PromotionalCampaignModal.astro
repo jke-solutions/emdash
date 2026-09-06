@@ -1,0 +1,59 @@
+---
+import PortableText from "./PortableText.astro";
+import { getPromotionalCampaign } from "../promotions/index.js";
+import { sanitizeHref } from "../utils/url.js";
+import type { PublicPageContext } from "../plugins/types.js";
+
+interface Props { page: PublicPageContext }
+const { page } = Astro.props;
+const campaign = await getPromotionalCampaign();
+const now = Date.now();
+const startsAt = campaign?.startsAt ? Date.parse(campaign.startsAt) : null;
+const endsAt = campaign?.endsAt ? Date.parse(campaign.endsAt) : null;
+const inSchedule = campaign && (!startsAt || now >= startsAt) && (!endsAt || now < endsAt);
+const visible = Boolean(campaign?.isActive && inSchedule && (campaign.pageScope === "all" || page.path === "/"));
+---
+
+{visible && campaign && (
+	<div class="emdash-promotion" data-emdash-promotion role="dialog" aria-modal="true" aria-labelledby="emdash-promotion-title" hidden>
+		<div class="emdash-promotion__backdrop" data-promotion-close></div>
+		<section class={`emdash-promotion__panel emdash-promotion__panel--${campaign.modalSize}${campaign.media ? "" : " emdash-promotion__panel--no-image"}`} style={`--emdash-promotion-width: ${campaign.modalSize === "custom" ? `${campaign.modalWidth ?? 640}px` : campaign.modalSize === "square" ? "min(30rem, 90vw)" : "42rem"}; --emdash-promotion-height: ${campaign.modalSize === "custom" ? `${campaign.modalHeight ?? 480}px` : campaign.modalSize === "square" ? "min(30rem, 90vw)" : "auto"}`} role="document">
+			<button class="emdash-promotion__close" type="button" data-promotion-close aria-label="Close">×</button>
+			{campaign.media && <img class="emdash-promotion__image" src={campaign.media.url} alt={campaign.media.alt ?? campaign.title} />}
+			<div class="emdash-promotion__body">
+				<h2 id="emdash-promotion-title">{campaign.title}</h2>
+				<div class="emdash-promotion__content"><PortableText value={campaign.content} /></div>
+				{campaign.buttonLabel && campaign.buttonUrl && <a class="emdash-promotion__button" href={sanitizeHref(campaign.buttonUrl)}>{campaign.buttonLabel}</a>}
+			</div>
+		</section>
+	</div>
+)}
+
+{visible && (
+	<script>
+		const promotion = document.querySelector<HTMLElement>("[data-emdash-promotion]");
+		if (promotion) {
+			const close = () => { promotion.hidden = true; document.body.style.overflow = ""; };
+			promotion.querySelectorAll("[data-promotion-close]").forEach((element) => element.addEventListener("click", close));
+			document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !promotion.hidden) close(); });
+			promotion.hidden = false;
+			document.body.style.overflow = "hidden";
+		}
+	</script>
+)}
+
+<style>
+	.emdash-promotion[hidden] { display: none; }
+	.emdash-promotion { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 1rem; }
+	.emdash-promotion__backdrop { position: absolute; inset: 0; background: rgb(0 0 0 / 55%); }
+	.emdash-promotion__panel { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); width: min(var(--emdash-promotion-width), 100%); max-height: min(90vh, var(--emdash-promotion-height, 44rem)); overflow: auto; background: Canvas; color: CanvasText; border-radius: .75rem; box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 25%); }
+	.emdash-promotion__panel--square { aspect-ratio: 1; }
+	.emdash-promotion__panel--no-image { grid-template-columns: 1fr; width: min(32rem, 100%); }
+	.emdash-promotion__image { width: 100%; height: 100%; min-height: 14rem; object-fit: cover; }
+	.emdash-promotion__body { display: flex; flex-direction: column; justify-content: center; gap: 1rem; padding: 2rem; }
+	.emdash-promotion__body h2 { margin: 0; }
+	.emdash-promotion__content :global(p) { margin: 0; }
+	.emdash-promotion__close { position: absolute; inset-block-start: .5rem; inset-inline-end: .5rem; z-index: 1; width: 2rem; height: 2rem; border: 0; border-radius: 999px; background: rgb(0 0 0 / 55%); color: white; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+	.emdash-promotion__button { align-self: flex-start; padding: .65rem 1rem; border-radius: .4rem; background: ButtonText; color: ButtonFace; text-decoration: none; }
+	@media (max-width: 600px) { .emdash-promotion__panel { grid-template-columns: 1fr; } .emdash-promotion__image { max-height: 14rem; } .emdash-promotion__body { padding: 1.5rem; } }
+</style>

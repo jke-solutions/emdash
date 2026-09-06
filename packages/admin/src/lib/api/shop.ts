@@ -10,6 +10,10 @@ export interface ShopSettings {
 	paymentMethods: string[];
 	deliveryInstructions: string | null;
 	businessHours: string | null;
+	preparationTime: string | null;
+	minimumSubtotal: number;
+	freeDeliveryMinSubtotal: number | null;
+	whatsappTemplates: Record<string, string>;
 	paymentGatewayEnabled: boolean;
 	paymentGatewayProvider: string | null;
 	paymentGatewayEnvironment: "sandbox" | "production";
@@ -34,6 +38,21 @@ export interface ShopDeliveryZone {
 	active: boolean;
 }
 
+export interface ShopCoupon {
+	id: string;
+	code: string;
+	discountType: "percentage" | "fixed";
+	discountValue: number;
+	minimumSubtotal: number;
+	startsAt: string | null;
+	expiresAt: string | null;
+	usageLimit: number | null;
+	usageCount: number;
+	active: boolean;
+	createdAt: string | null;
+	updatedAt: string | null;
+}
+
 export interface ShopOrderSummary {
 	id: string;
 	orderNumber: string;
@@ -47,6 +66,8 @@ export interface ShopOrderSummary {
 	deliveryCost: number;
 	total: number;
 	whatsappUrl: string | null;
+	couponCode?: string | null;
+	couponDiscount?: number;
 }
 
 export interface ShopOrderDetail extends ShopOrderSummary {
@@ -132,6 +153,34 @@ export function deleteShopDeliveryZone(id: string): Promise<null> {
 	return mutate(`/admin/shop/delivery-zones/${encodeURIComponent(id)}`, "DELETE", undefined);
 }
 
+export function fetchShopCoupons(): Promise<ShopCoupon[]> {
+	return get("/admin/shop/coupons");
+}
+
+export function createShopCoupon(input: {
+	code: string;
+	discountType: "percentage" | "fixed";
+	discountValue: number;
+	minimumSubtotal?: number;
+	startsAt?: string | null;
+	expiresAt?: string | null;
+	usageLimit?: number | null;
+	active?: boolean;
+}): Promise<ShopCoupon> {
+	return mutate("/admin/shop/coupons", "POST", input);
+}
+
+export function updateShopCoupon(
+	id: string,
+	input: Partial<Parameters<typeof createShopCoupon>[0]>,
+): Promise<ShopCoupon> {
+	return mutate(`/admin/shop/coupons/${encodeURIComponent(id)}`, "PATCH", input);
+}
+
+export function deleteShopCoupon(id: string): Promise<null> {
+	return mutate(`/admin/shop/coupons/${encodeURIComponent(id)}`, "DELETE", undefined);
+}
+
 export function fetchShopOrders(): Promise<ShopOrderSummary[]> {
 	return get("/admin/shop/orders");
 }
@@ -144,6 +193,12 @@ export function fetchShopOrder(id: string): Promise<ShopOrderDetail> {
 	return get(`/admin/shop/orders/${encodeURIComponent(id)}`);
 }
 
+export function fetchShopOrderWhatsAppUrl(id: string, template: string): Promise<string> {
+	return get<string>(
+		`/admin/shop/orders/${encodeURIComponent(id)}/whatsapp?template=${encodeURIComponent(template)}`,
+	);
+}
+
 export function confirmShopPayment(
 	id: string,
 	input: { reference?: string; notes?: string } = {},
@@ -153,7 +208,13 @@ export function confirmShopPayment(
 
 export function updateShopDelivery(
 	id: string,
-	input: { status: string; courierName?: string },
+	input: {
+		status: string;
+		courierName?: string;
+		trackingCode?: string | null;
+		trackingUrl?: string | null;
+		cancellationReason?: string | null;
+	},
 ): Promise<null> {
 	return mutate(`/admin/shop/orders/${encodeURIComponent(id)}/delivery`, "PATCH", input);
 }

@@ -71,6 +71,10 @@ describe("resolveLocale", () => {
 		expect(resolveLocale(makeRequest({ cookie: "emdash-locale=de" }))).toBe("de");
 	});
 
+	test("migrates the historical English default cookie to Spanish", () => {
+		expect(resolveLocale(makeRequest({ cookie: "emdash-locale=en" }))).toBe(DEFAULT_LOCALE);
+	});
+
 	test("ignores cookie with unsupported locale", () => {
 		expect(resolveLocale(makeRequest({ cookie: "emdash-locale=xx" }))).toBe(DEFAULT_LOCALE);
 	});
@@ -86,55 +90,57 @@ describe("resolveLocale", () => {
 		).toBe("de");
 	});
 
-	// Accept-Language exact match
-	test("matches exact accept-language tag", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "de" }))).toBe("de");
+	// Non-Spanish browser preferences do not override the Spanish default.
+	test("keeps Spanish for a non-Spanish browser", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "de" }))).toBe(DEFAULT_LOCALE);
 	});
 
-	test("matches accept-language with region (pt-BR)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "pt-BR" }))).toBe("pt-BR");
+	test("keeps Spanish for a non-Spanish browser with region", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "pt-BR" }))).toBe(DEFAULT_LOCALE);
 	});
 
 	// Accept-Language case insensitivity (fix for Copilot review #4)
-	test("matches accept-language case-insensitively (pt-br -> pt-BR)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "pt-br" }))).toBe("pt-BR");
+	test("keeps Spanish for a non-Spanish browser regardless of case", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "pt-br" }))).toBe(DEFAULT_LOCALE);
 	});
 
-	test("matches accept-language case-insensitively (ZH-CN -> zh-CN)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "ZH-CN" }))).toBe("zh-CN");
+	test("keeps Spanish for a Chinese browser", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "ZH-CN" }))).toBe(DEFAULT_LOCALE);
 	});
 
-	test("matches accept-language case-insensitively (DE -> de)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "DE" }))).toBe("de");
+	test("keeps Spanish for a German browser", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "DE" }))).toBe(DEFAULT_LOCALE);
 	});
 
 	// Accept-Language base language fallback
-	test("falls back to base language (pt-PT -> pt-BR)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "pt-PT" }))).toBe("pt-BR");
+	test("keeps Spanish for a Portuguese browser", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "pt-PT" }))).toBe(DEFAULT_LOCALE);
 	});
 
-	test("matches exact accept-language tag with region (zh-TW)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "zh-TW" }))).toBe("zh-TW");
+	test("keeps Spanish for a Chinese region preference", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "zh-TW" }))).toBe(DEFAULT_LOCALE);
 	});
 
-	test("matches Traditional Chinese script tag (zh-Hant -> zh-TW)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "zh-Hant" }))).toBe("zh-TW");
+	test("keeps Spanish for a Traditional Chinese preference", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "zh-Hant" }))).toBe(DEFAULT_LOCALE);
 	});
 
-	test("matches Traditional Chinese script+region tag (zh-Hant-TW -> zh-TW)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "zh-Hant-TW" }))).toBe("zh-TW");
+	test("keeps Spanish for a Traditional Chinese region preference", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "zh-Hant-TW" }))).toBe(DEFAULT_LOCALE);
 	});
 
-	test("matches Simplified Chinese script tag (zh-Hans -> zh-CN)", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "zh-Hans" }))).toBe("zh-CN");
+	test("keeps Spanish for a Simplified Chinese preference", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "zh-Hans" }))).toBe(DEFAULT_LOCALE);
 	});
 	// Accept-Language with quality weights
-	test("respects order in accept-language list", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "fr;q=0.9, de;q=1.0" }))).toBe("fr");
+	test("keeps Spanish when the browser lists non-Spanish languages", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "fr;q=0.9, de;q=1.0" }))).toBe(
+			DEFAULT_LOCALE,
+		);
 	});
 
-	test("skips unsupported languages in accept-language list", () => {
-		expect(resolveLocale(makeRequest({ "accept-language": "xx, yy, de" }))).toBe("de");
+	test("keeps Spanish when the browser lists unsupported languages", () => {
+		expect(resolveLocale(makeRequest({ "accept-language": "xx, yy, de" }))).toBe(DEFAULT_LOCALE);
 	});
 
 	// Malformed input

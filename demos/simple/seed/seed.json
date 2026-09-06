@@ -78,50 +78,55 @@
 		},
 		{
 			"slug": "products",
-			"label": "Products",
-			"labelSingular": "Product",
+			"label": "Productos",
+			"labelSingular": "Producto",
 			"supports": ["drafts", "preview", "search"],
 			"urlPattern": "/shop/products/{slug}",
 			"fields": [
 				{
 					"slug": "name",
-					"label": "Name",
+					"label": "Nombre",
 					"type": "string",
 					"required": true,
 					"searchable": true
 				},
 				{
 					"slug": "featured_image",
-					"label": "Product image",
+					"label": "Imagen del producto",
 					"type": "image"
 				},
 				{
+					"slug": "featured",
+					"label": "Producto destacado",
+					"type": "boolean"
+				},
+				{
 					"slug": "has_variations",
-					"label": "Has variations",
+					"label": "Tiene variaciones",
 					"type": "boolean"
 				},
 				{
 					"slug": "variants",
-					"label": "Product variations",
+					"label": "Variaciones del producto",
 					"type": "repeater",
 					"validation": {
 						"subFields": [
-							{ "slug": "label", "label": "Color or size", "type": "string", "required": true },
-							{ "slug": "image", "label": "Variation image", "type": "image" },
+							{ "slug": "label", "label": "Color o talla", "type": "string", "required": true },
+							{ "slug": "image", "label": "Imagen de la variación", "type": "image" },
 							{ "slug": "stock", "label": "Stock", "type": "integer", "required": true },
-							{ "slug": "price", "label": "Price override", "type": "number" }
+							{ "slug": "price", "label": "Precio de la variación", "type": "number" }
 						],
 						"maxItems": 50
 					}
 				},
 				{
 					"slug": "rich_description",
-					"label": "Rich description",
+					"label": "Descripción detallada",
 					"type": "portableText"
 				},
 				{
 					"slug": "price",
-					"label": "Price",
+					"label": "Precio",
 					"type": "number",
 					"required": true
 				},
@@ -133,12 +138,18 @@
 				},
 				{
 					"slug": "promotion_price",
-					"label": "Promotion price",
+					"label": "Precio de promoción",
 					"type": "number"
 				},
 				{
+					"slug": "discount_percentage",
+					"label": "Porcentaje de descuento",
+					"type": "number",
+					"validation": { "min": 0, "max": 100 }
+				},
+				{
 					"slug": "availability_status",
-					"label": "Availability",
+					"label": "Disponibilidad",
 					"type": "select",
 					"validation": {
 						"options": ["available", "sold_out", "hidden"]
@@ -154,7 +165,7 @@
 			"label": "Categories",
 			"labelSingular": "Category",
 			"hierarchical": true,
-			"collections": ["posts"],
+			"collections": ["posts", "products"],
 			"terms": [
 				{ "slug": "development", "label": "Development" },
 				{ "slug": "design", "label": "Design" },
@@ -166,7 +177,7 @@
 			"label": "Tags",
 			"labelSingular": "Tag",
 			"hierarchical": false,
-			"collections": ["posts"],
+			"collections": ["posts", "products"],
 			"terms": [
 				{ "slug": "webdev", "label": "Web Development" },
 				{ "slug": "opinion", "label": "Opinion" },
@@ -367,6 +378,10 @@
 					"stock": 10,
 					"promotion_price": 24,
 					"availability_status": "available"
+				},
+				"taxonomies": {
+					"category": ["notes"],
+					"tag": ["creativity"]
 				}
 			},
 			{

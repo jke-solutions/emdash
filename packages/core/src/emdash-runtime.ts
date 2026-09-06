@@ -2790,7 +2790,7 @@ export class EmDashRuntime {
 			authMode: authModeValue,
 			i18n,
 			contentLocale: {
-				defaultLocale: i18nConfig?.defaultLocale ?? "en",
+				defaultLocale: i18nConfig?.defaultLocale ?? "es",
 				implicit: i18nConfig === null,
 			},
 			marketplace: !!this.config.marketplace,

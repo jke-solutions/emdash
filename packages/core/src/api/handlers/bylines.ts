@@ -161,7 +161,7 @@ export async function handleBylineCreate(
 			sourceGroup = source.translationGroup ?? source.id;
 		}
 
-		const effectiveLocale = locale ?? getI18nConfig()?.defaultLocale ?? "en";
+		const effectiveLocale = locale ?? getI18nConfig()?.defaultLocale ?? "es";
 
 		// Translation-group guard: the row-per-locale model (PR #916)
 		// allows exactly one row per (translation_group, locale). Reject

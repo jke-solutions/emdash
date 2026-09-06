@@ -222,7 +222,7 @@ describeEachDialect("content terms route locale-awareness (#1218)", (dialect) =>
 		expect(control.locale).toBe("en");
 	});
 
-	it("uses the implicit English locale when i18n is not configured", async () => {
+	it("uses the implicit Spanish locale when i18n is not configured", async () => {
 		setI18nConfig(null);
 
 		const definition = await handleTaxonomyCreate(ctx.db, {
@@ -231,7 +231,7 @@ describeEachDialect("content terms route locale-awareness (#1218)", (dialect) =>
 		});
 		expect(definition.success).toBe(true);
 		if (!definition.success) throw new Error(definition.error.message);
-		expect(definition.data.taxonomy.locale).toBe("en");
+		expect(definition.data.taxonomy.locale).toBe("es");
 
 		const term = await unwrap(
 			handleTermCreate(ctx.db, "categories", {
@@ -239,7 +239,7 @@ describeEachDialect("content terms route locale-awareness (#1218)", (dialect) =>
 				label: "News",
 			}),
 		);
-		expect(term.locale).toBe("en");
+		expect(term.locale).toBe("es");
 	});
 
 	it("stores term locales with the configured casing", async () => {
@@ -486,7 +486,7 @@ describeEachDialect("content terms route locale-awareness (#1218)", (dialect) =>
 		}
 	});
 
-	it("reports the implicit English default for existing mixed-locale data", async () => {
+	it("reports the implicit Spanish default for existing mixed-locale data", async () => {
 		const content = new ContentRepository(ctx.db);
 		const taxonomies = new TaxonomyRepository(ctx.db);
 		const entry = await content.create({

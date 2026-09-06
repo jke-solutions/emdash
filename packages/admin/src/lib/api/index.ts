@@ -115,16 +115,29 @@ export {
 
 // Settings
 export { type SiteSettings, fetchSettings, updateSettings } from "./settings.js";
+export {
+	type PromotionalCampaign,
+	type PromotionalCampaignInput,
+	fetchPromotionalCampaign,
+	fetchPromotionalCampaigns,
+	savePromotionalCampaign,
+	deletePromotionalCampaign,
+} from "./promotions.js";
 
 // Ecommerce
 export {
 	type ShopSettings,
+	type ShopCoupon,
 	type ShopSettingsUpdateInput,
 	type ShopDeliveryZone,
 	type ShopOrderSummary,
 	type ShopOrderDetail,
 	type ShopCustomerSummary,
 	fetchShopSettings,
+	fetchShopCoupons,
+	createShopCoupon,
+	updateShopCoupon,
+	deleteShopCoupon,
 	updateShopSettings,
 	fetchShopDeliveryZones,
 	createShopDeliveryZone,
@@ -133,6 +146,7 @@ export {
 	fetchShopOrders,
 	fetchShopCustomers,
 	fetchShopOrder,
+	fetchShopOrderWhatsAppUrl,
 	confirmShopPayment,
 	updateShopDelivery,
 } from "./shop.js";

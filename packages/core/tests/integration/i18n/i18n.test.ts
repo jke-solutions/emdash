@@ -39,14 +39,14 @@ describe("i18n (Integration)", () => {
 			expect(columnNames).toContain("translation_group");
 		});
 
-		it("should default locale to 'en'", async () => {
+		it("should default locale to 'es'", async () => {
 			const result = await sql<{ name: string; dflt_value: string | null }>`
 				PRAGMA table_info(ec_post)
 			`.execute(db);
 
 			const localeCol = result.rows.find((r) => r.name === "locale");
 			expect(localeCol).toBeDefined();
-			expect(localeCol!.dflt_value).toBe("'en'");
+			expect(localeCol!.dflt_value).toBe("'es'");
 		});
 
 		it("should have translatable column on _emdash_fields", async () => {
@@ -94,9 +94,9 @@ describe("i18n (Integration)", () => {
 	// ─── 2. ContentRepository — locale-aware CRUD ───────────────────
 
 	describe("ContentRepository — locale-aware CRUD", () => {
-		it("create() without locale defaults to 'en'", async () => {
+		it("create() without locale defaults to 'es'", async () => {
 			const post = await repo.create(createPostFixture());
-			expect(post.locale).toBe("en");
+			expect(post.locale).toBe("es");
 		});
 
 		it("create() with explicit locale stores it", async () => {
@@ -668,7 +668,7 @@ describe("i18n (Integration)", () => {
 			const plainRepo = new ContentRepository(db);
 			const post = await plainRepo.findBySlug("post", "plain-post");
 			expect(post).not.toBeNull();
-			expect(post!.locale).toBe("en"); // default
+			expect(post!.locale).toBe("es"); // default
 			expect(post!.translationGroup).toBe(post!.id); // self-reference
 		});
 
@@ -794,14 +794,14 @@ describe("i18n (Integration)", () => {
 	// ─── 6. Non-i18n regression ─────────────────────────────────────
 
 	describe("Non-i18n regression", () => {
-		it("content created without locale has locale 'en'", async () => {
+		it("content created without locale has locale 'es'", async () => {
 			const post = await repo.create({
 				type: "post",
 				slug: "no-locale",
 				data: { title: "No Locale Specified" },
 			});
 
-			expect(post.locale).toBe("en");
+			expect(post.locale).toBe("es");
 		});
 
 		it("findMany without locale param returns all results", async () => {
@@ -865,7 +865,7 @@ describe("i18n (Integration)", () => {
 				data: { title: "Updated Title" },
 			});
 			expect(updated.data.title).toBe("Updated Title");
-			expect(updated.locale).toBe("en"); // locale unchanged
+			expect(updated.locale).toBe("es"); // locale unchanged
 
 			// Delete (soft)
 			const deleted = await repo.delete("post", post.id);
@@ -877,11 +877,11 @@ describe("i18n (Integration)", () => {
 
 			// Restore
 			const restored = await repo.restore("post", post.id);
-			expect(restored).toEqual(expect.objectContaining({ id: post.id, locale: "en" }));
+			expect(restored).toEqual(expect.objectContaining({ id: post.id, locale: "es" }));
 
 			const found = await repo.findById("post", post.id);
 			expect(found).not.toBeNull();
-			expect(found!.locale).toBe("en");
+			expect(found!.locale).toBe("es");
 		});
 	});
 });

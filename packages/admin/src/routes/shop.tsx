@@ -20,11 +20,16 @@ import * as React from "react";
 import {
 	confirmShopPayment,
 	createShopDeliveryZone,
+	createShopCoupon,
+	deleteShopCoupon,
+	fetchShopCoupons,
 	deleteShopDeliveryZone,
 	fetchShopDeliveryZones,
 	updateShopDeliveryZone,
+	type ShopCoupon,
 	fetchShopCustomers,
 	fetchShopOrder,
+	fetchShopOrderWhatsAppUrl,
 	fetchShopOrders,
 	fetchShopSettings,
 	type ShopSettingsUpdateInput,
@@ -35,9 +40,10 @@ import {
 	type ShopSettings,
 	updateShopDelivery,
 	updateShopSettings,
+	updateShopCoupon,
 } from "../lib/api/index.js";
 
-type ShopTab = "settings" | "delivery" | "orders" | "customers";
+type ShopTab = "settings" | "delivery" | "orders" | "customers" | "coupons";
 
 const PAYMENT_METHODS = ["whatsapp", "yape", "plin", "bank_transfer", "cash_on_delivery"] as const;
 
@@ -51,6 +57,7 @@ function formatStatus(status: string, t: (descriptor: MessageDescriptor) => stri
 		delivered: msg`Delivered`,
 		cancelled: msg`Cancelled`,
 		not_delivered: msg`Not delivered`,
+		rescheduled: msg`Rescheduled`,
 		pending: msg`Pending`,
 	};
 	const label = labels[status];
@@ -78,6 +85,7 @@ export function Shop() {
 						["delivery", t`Delivery zones`],
 						["orders", t`Orders`],
 						["customers", t`Customers`],
+						["coupons", t`Coupons`],
 					] as const
 				).map(([value, label]) => (
 					<Button
@@ -93,6 +101,226 @@ export function Shop() {
 			{tab === "delivery" ? <DeliveryZonesPanel /> : null}
 			{tab === "orders" ? <OrdersPanel /> : null}
 			{tab === "customers" ? <CustomersPanel /> : null}
+			{tab === "coupons" ? <CouponsPanel /> : null}
+		</div>
+	);
+}
+
+function CouponsPanel() {
+	const { t } = useLingui();
+	const toastManager = Toast.useToastManager();
+	const queryClient = useQueryClient();
+	const couponsQuery = useQuery({ queryKey: ["shop", "coupons"], queryFn: fetchShopCoupons });
+	const [form, setForm] = React.useState({
+		code: "",
+		discountType: "percentage" as "percentage" | "fixed",
+		discountValue: "",
+		minimumSubtotal: "0",
+		usageLimit: "",
+	});
+	const [editing, setEditing] = React.useState<ShopCoupon | null>(null);
+	const [dialogOpen, setDialogOpen] = React.useState(false);
+	const [search, setSearch] = React.useState("");
+	const saveMutation = useMutation({
+		mutationFn: () => {
+			const input = {
+				code: form.code,
+				discountType: form.discountType,
+				discountValue: Number(form.discountValue),
+				minimumSubtotal: Number(form.minimumSubtotal) || 0,
+				usageLimit: form.usageLimit ? Number(form.usageLimit) : null,
+				active: true,
+			};
+			return editing ? updateShopCoupon(editing.id, input) : createShopCoupon(input);
+		},
+		onSuccess: () => {
+			setForm({
+				code: "",
+				discountType: "percentage",
+				discountValue: "",
+				minimumSubtotal: "0",
+				usageLimit: "",
+			});
+			setEditing(null);
+			setDialogOpen(false);
+			void queryClient.invalidateQueries({ queryKey: ["shop", "coupons"] });
+			toastManager.add({ title: t`Coupon saved`, type: "success" });
+		},
+	});
+	const deleteMutation = useMutation({
+		mutationFn: deleteShopCoupon,
+		onSuccess: () => {
+			void queryClient.invalidateQueries({ queryKey: ["shop", "coupons"] });
+			toastManager.add({ title: t`Coupon deleted`, type: "success" });
+		},
+	});
+	if (couponsQuery.isLoading) return <LoadingState label={t`Loading coupons`} />;
+	if (couponsQuery.isError)
+		return <ErrorState label={t`Could not load coupons. Please try again.`} />;
+	const normalizedSearch = search.trim().toLowerCase();
+	const coupons = (couponsQuery.data ?? []).filter(
+		(coupon) => !normalizedSearch || coupon.code.toLowerCase().includes(normalizedSearch),
+	);
+	const openCreate = () => {
+		setEditing(null);
+		setForm({
+			code: "",
+			discountType: "percentage",
+			discountValue: "",
+			minimumSubtotal: "0",
+			usageLimit: "",
+		});
+		setDialogOpen(true);
+	};
+	const openEdit = (coupon: ShopCoupon) => {
+		setEditing(coupon);
+		setForm({
+			code: coupon.code,
+			discountType: coupon.discountType,
+			discountValue: String(coupon.discountValue),
+			minimumSubtotal: String(coupon.minimumSubtotal),
+			usageLimit: coupon.usageLimit === null ? "" : String(coupon.usageLimit),
+		});
+		setDialogOpen(true);
+	};
+	return (
+		<div className="space-y-4">
+			<div className="flex flex-wrap items-end gap-3">
+				<div className="min-w-[240px] flex-1">
+					<Input
+						label={t`Search coupons`}
+						placeholder={t`Search by coupon code`}
+						value={search}
+						onChange={(event) => setSearch(event.target.value)}
+					/>
+				</div>
+				<Button icon={Plus} onClick={openCreate}>{t`New coupon`}</Button>
+			</div>
+			<div className="overflow-x-auto rounded-lg border border-kumo-line">
+				<table className="w-full text-start">
+					<thead className="border-b border-kumo-line bg-kumo-tint">
+						<tr>
+							<th className="p-3 text-start text-sm font-medium">{t`Code`}</th>
+							<th className="p-3 text-start text-sm font-medium">{t`Discount`}</th>
+							<th className="p-3 text-end text-sm font-medium">{t`Uses`}</th>
+							<th className="p-3 text-end text-sm font-medium">{t`Actions`}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{coupons.map((coupon) => (
+							<tr
+								key={coupon.id}
+								className="border-b border-kumo-line last:border-0 hover:bg-kumo-tint"
+							>
+								<td className="p-3 font-medium">{coupon.code}</td>
+								<td className="p-3">
+									{coupon.discountType === "percentage"
+										? `${coupon.discountValue}%`
+										: money(coupon.discountValue, "")}
+								</td>
+								<td className="p-3 text-end">
+									{coupon.usageLimit === null
+										? t`Unlimited`
+										: `${coupon.usageCount}/${coupon.usageLimit}`}
+								</td>
+								<td className="p-3 text-end">
+									<div className="flex justify-end gap-2">
+										<Button
+											size="sm"
+											variant="outline"
+											onClick={() => openEdit(coupon)}
+										>{t`Edit`}</Button>
+										<Button
+											size="sm"
+											variant="ghost"
+											onClick={() => deleteMutation.mutate(coupon.id)}
+										>{t`Delete`}</Button>
+									</div>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+			{coupons.length === 0 ? (
+				<p className="rounded-lg border p-6 text-sm text-kumo-subtle">{t`No coupons match your search.`}</p>
+			) : null}
+			<Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+				<Dialog
+					className="max-h-[90vh] w-[min(560px,calc(100vw-2rem))] overflow-y-auto p-6"
+					size="lg"
+				>
+					<div className="mb-4 flex items-center justify-between gap-4">
+						<Dialog.Title className="text-lg font-semibold">
+							{editing ? t`Edit coupon` : t`New coupon`}
+						</Dialog.Title>
+						<Dialog.Close
+							aria-label={t`Close`}
+							render={(props) => (
+								<Button {...props} aria-label={t`Close`} variant="ghost" shape="square">
+									×
+								</Button>
+							)}
+						/>
+					</div>
+					<form
+						className="space-y-4"
+						onSubmit={(event) => {
+							event.preventDefault();
+							saveMutation.mutate();
+						}}
+					>
+						<Input
+							label={t`Code`}
+							value={form.code}
+							onChange={(event) => setForm({ ...form, code: event.target.value.toUpperCase() })}
+							required
+						/>
+						<Select
+							label={t`Discount type`}
+							value={form.discountType}
+							onValueChange={(value) =>
+								(value === "percentage" || value === "fixed") &&
+								setForm({ ...form, discountType: value })
+							}
+							items={{ percentage: t`Percentage`, fixed: t`Fixed amount` }}
+						/>
+						<Input
+							label={form.discountType === "percentage" ? t`Percentage` : t`Amount`}
+							type="number"
+							min="0"
+							value={form.discountValue}
+							onChange={(event) => setForm({ ...form, discountValue: event.target.value })}
+							required
+						/>
+						<Input
+							label={t`Minimum subtotal`}
+							type="number"
+							min="0"
+							value={form.minimumSubtotal}
+							onChange={(event) => setForm({ ...form, minimumSubtotal: event.target.value })}
+						/>
+						<Input
+							label={t`Usage limit`}
+							type="number"
+							min="1"
+							value={form.usageLimit}
+							onChange={(event) => setForm({ ...form, usageLimit: event.target.value })}
+							placeholder={t`Unlimited`}
+						/>
+						<div className="flex justify-end gap-2">
+							<Button
+								type="button"
+								variant="ghost"
+								onClick={() => setDialogOpen(false)}
+							>{t`Cancel`}</Button>
+							<Button type="submit" disabled={saveMutation.isPending}>
+								{saveMutation.isPending ? t`Saving...` : t`Save coupon`}
+							</Button>
+						</div>
+					</form>
+				</Dialog>
+			</Dialog.Root>
 		</div>
 	);
 }
@@ -133,7 +361,7 @@ function ShopSettingsPanel() {
 
 	return (
 		<form
-			className="max-w-2xl space-y-6"
+			className="max-w-5xl space-y-4"
 			onSubmit={(event) => {
 				event.preventDefault();
 				saveMutation.mutate({
@@ -143,32 +371,30 @@ function ShopSettingsPanel() {
 				});
 			}}
 		>
-			<div className="grid gap-4 sm:grid-cols-2">
+			<div className="grid gap-4 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
 				<Input
 					label={t`Store name`}
 					value={form.storeName}
 					onChange={(e) => setForm({ ...form, storeName: e.target.value })}
 					required
 				/>
-				<div className="grid gap-4 sm:grid-cols-2">
-					<Input
-						label={t`Currency`}
-						value={form.currency}
-						onChange={(e) => setForm({ ...form, currency: e.target.value.toUpperCase() })}
-						maxLength={3}
-						required
-					/>
-					<Input
-						label={t`Currency symbol`}
-						value={form.currencySymbol}
-						onChange={(e) => setForm({ ...form, currencySymbol: e.target.value })}
-						maxLength={8}
-						placeholder={t`Example: S/`}
-						required
-					/>
-				</div>
+				<Input
+					label={t`Currency`}
+					value={form.currency}
+					onChange={(e) => setForm({ ...form, currency: e.target.value.toUpperCase() })}
+					maxLength={3}
+					required
+				/>
+				<Input
+					label={t`Currency symbol`}
+					value={form.currencySymbol}
+					onChange={(e) => setForm({ ...form, currencySymbol: e.target.value })}
+					maxLength={8}
+					placeholder={t`Example: S/`}
+					required
+				/>
 			</div>
-			<div className="space-y-2">
+			<div className="max-w-3xl space-y-2">
 				<Label>{t`WhatsApp number`}</Label>
 				<Input
 					value={form.whatsappNumber ?? ""}
@@ -177,7 +403,7 @@ function ShopSettingsPanel() {
 				/>
 				<p className="text-sm text-kumo-subtle">{t`Use the country code without spaces or symbols.`}</p>
 			</div>
-			<div className="space-y-4 rounded-lg border border-kumo-line p-4">
+			<div className="max-w-4xl space-y-3 rounded-lg border border-kumo-line p-4">
 				<div>
 					<h2 className="font-semibold">{t`WhatsApp order message`}</h2>
 					<p className="mt-1 text-sm text-kumo-subtle">{t`The store name, order number, products, and total are added automatically.`}</p>
@@ -188,6 +414,76 @@ function ShopSettingsPanel() {
 					onChange={(e) => setForm({ ...form, whatsappMessage: e.target.value || null })}
 					rows={4}
 					placeholder={t`Hello, I want to coordinate payment for my order.`}
+				/>
+				<InputArea
+					label={t`Order received template`}
+					value={form.whatsappTemplates.orderReceived ?? ""}
+					onChange={(e) =>
+						setForm({
+							...form,
+							whatsappTemplates: {
+								...form.whatsappTemplates,
+								orderReceived: e.target.value,
+							},
+						})
+					}
+					rows={3}
+					placeholder={t`Optional message used when the customer sends the order to WhatsApp.`}
+				/>
+				<InputArea
+					label={t`Payment confirmed template`}
+					value={form.whatsappTemplates.paymentConfirmed ?? ""}
+					onChange={(e) =>
+						setForm({
+							...form,
+							whatsappTemplates: { ...form.whatsappTemplates, paymentConfirmed: e.target.value },
+						})
+					}
+					rows={2}
+				/>
+				<InputArea
+					label={t`Preparing template`}
+					value={form.whatsappTemplates.preparing ?? ""}
+					onChange={(e) =>
+						setForm({
+							...form,
+							whatsappTemplates: { ...form.whatsappTemplates, preparing: e.target.value },
+						})
+					}
+					rows={2}
+				/>
+				<InputArea
+					label={t`In transit template`}
+					value={form.whatsappTemplates.inTransit ?? ""}
+					onChange={(e) =>
+						setForm({
+							...form,
+							whatsappTemplates: { ...form.whatsappTemplates, inTransit: e.target.value },
+						})
+					}
+					rows={2}
+				/>
+				<InputArea
+					label={t`Delivered template`}
+					value={form.whatsappTemplates.delivered ?? ""}
+					onChange={(e) =>
+						setForm({
+							...form,
+							whatsappTemplates: { ...form.whatsappTemplates, delivered: e.target.value },
+						})
+					}
+					rows={2}
+				/>
+				<InputArea
+					label={t`Cancelled template`}
+					value={form.whatsappTemplates.cancelled ?? ""}
+					onChange={(e) =>
+						setForm({
+							...form,
+							whatsappTemplates: { ...form.whatsappTemplates, cancelled: e.target.value },
+						})
+					}
+					rows={2}
 				/>
 				<div className="space-y-2">
 					<Label>{t`Message preview`}</Label>
@@ -209,6 +505,47 @@ function ShopSettingsPanel() {
 				onChange={(e) => setForm({ ...form, businessHours: e.target.value || null })}
 				rows={3}
 			/>
+			<div className="grid gap-4 sm:grid-cols-3">
+				<Input
+					label={t`Preparation time`}
+					value={form.preparationTime ?? ""}
+					onChange={(e) => setForm({ ...form, preparationTime: e.target.value || null })}
+					placeholder={t`Example: 24 hours`}
+				/>
+				<Input
+					label={t`Minimum order subtotal`}
+					type="number"
+					min="0"
+					value={form.minimumSubtotal}
+					onChange={(e) => setForm({ ...form, minimumSubtotal: Number(e.target.value) || 0 })}
+				/>
+				<div className="space-y-3">
+					<Switch
+						checked={form.freeDeliveryMinSubtotal !== null}
+						onCheckedChange={(enabled) =>
+							setForm({
+								...form,
+								freeDeliveryMinSubtotal: enabled ? (form.freeDeliveryMinSubtotal ?? 0) : null,
+							})
+						}
+						label={t`Enable free delivery`}
+					/>
+					{form.freeDeliveryMinSubtotal !== null ? (
+						<Input
+							label={t`Free delivery from subtotal`}
+							type="number"
+							min="0"
+							value={form.freeDeliveryMinSubtotal}
+							onChange={(e) =>
+								setForm({
+									...form,
+									freeDeliveryMinSubtotal: Number(e.target.value) || 0,
+								})
+							}
+						/>
+					) : null}
+				</div>
+			</div>
 			<div className="space-y-3">
 				<Label>{t`Payment methods`}</Label>
 				{PAYMENT_METHODS.map((method) => (
@@ -356,6 +693,8 @@ function DeliveryZonesPanel() {
 	const [cost, setCost] = React.useState("0");
 	const [estimatedTime, setEstimatedTime] = React.useState("");
 	const [editingZone, setEditingZone] = React.useState<ShopDeliveryZone | null>(null);
+	const [dialogOpen, setDialogOpen] = React.useState(false);
+	const [search, setSearch] = React.useState("");
 	const [editForm, setEditForm] = React.useState({
 		name: "",
 		districts: "",
@@ -380,6 +719,7 @@ function DeliveryZonesPanel() {
 			setDistricts("");
 			setCost("0");
 			setEstimatedTime("");
+			setDialogOpen(false);
 			void queryClient.invalidateQueries({ queryKey: ["shop", "delivery-zones"] });
 			toastManager.add({ title: t`Delivery zone created`, type: "success" });
 		},
@@ -398,6 +738,7 @@ function DeliveryZonesPanel() {
 			}),
 		onSuccess: () => {
 			setEditingZone(null);
+			setDialogOpen(false);
 			void queryClient.invalidateQueries({ queryKey: ["shop", "delivery-zones"] });
 			toastManager.add({ title: t`Delivery zone updated`, type: "success" });
 		},
@@ -412,9 +753,49 @@ function DeliveryZonesPanel() {
 
 	if (zonesQuery.isLoading || settingsQuery.isLoading)
 		return <LoadingState label={t`Loading delivery zones`} />;
+	if (zonesQuery.isError || settingsQuery.isError)
+		return <ErrorState label={t`Could not load delivery zones. Please try again.`} />;
+	const normalizedSearch = search.trim().toLowerCase();
+	const zones = (zonesQuery.data ?? []).filter(
+		(zone) =>
+			!normalizedSearch ||
+			[zone.name, ...zone.districts].some((value) =>
+				value.toLowerCase().includes(normalizedSearch),
+			),
+	);
+	const openCreate = () => {
+		setEditingZone(null);
+		setName("");
+		setDistricts("");
+		setCost("0");
+		setEstimatedTime("");
+		setDialogOpen(true);
+	};
+	const openEdit = (zone: ShopDeliveryZone) => {
+		setEditingZone(zone);
+		setEditForm({
+			name: zone.name,
+			districts: zone.districts.join(", "),
+			deliveryCost: String(zone.deliveryCost),
+			estimatedTime: zone.estimatedTime ?? "",
+			active: zone.active,
+		});
+		setDialogOpen(true);
+	};
 
 	return (
 		<div className="space-y-6">
+			<div className="flex flex-wrap items-end gap-3">
+				<div className="min-w-[240px] flex-1">
+					<Input
+						label={t`Search delivery zones`}
+						placeholder={t`Search by zone or district`}
+						value={search}
+						onChange={(event) => setSearch(event.target.value)}
+					/>
+				</div>
+				<Button icon={Plus} onClick={openCreate}>{t`New delivery zone`}</Button>
+			</div>
 			<div className="overflow-x-auto rounded-lg border border-kumo-line">
 				<table className="w-full text-start">
 					<thead className="border-b border-kumo-line bg-kumo-tint">
@@ -428,79 +809,30 @@ function DeliveryZonesPanel() {
 						</tr>
 					</thead>
 					<tbody>
-						{(zonesQuery.data ?? []).map((zone) => (
+						{zones.map((zone) => (
 							<DeliveryZoneRow
 								key={zone.id}
 								zone={zone}
 								currencySymbol={settingsQuery.data?.currencySymbol ?? "S/"}
 								onDelete={() => deleteMutation.mutate(zone.id)}
-								onEdit={() => {
-									setEditingZone(zone);
-									setEditForm({
-										name: zone.name,
-										districts: zone.districts.join(", "),
-										deliveryCost: String(zone.deliveryCost),
-										estimatedTime: zone.estimatedTime ?? "",
-										active: zone.active,
-									});
-								}}
+								onEdit={() => openEdit(zone)}
 							/>
 						))}
 					</tbody>
 				</table>
 			</div>
-			{(zonesQuery.data ?? []).length === 0 ? (
-				<p className="rounded-lg border p-6 text-sm text-kumo-subtle">{t`No delivery zones configured yet.`}</p>
+			{zones.length === 0 ? (
+				<p className="rounded-lg border p-6 text-sm text-kumo-subtle">{t`No delivery zones match your search.`}</p>
 			) : null}
-			<form
-				className="space-y-4 rounded-lg border p-4"
-				onSubmit={(event) => {
-					event.preventDefault();
-					createMutation.mutate();
-				}}
-			>
-				<h2 className="text-lg font-semibold">{t`Add delivery zone`}</h2>
-				<Input
-					label={t`Zone name`}
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-					required
-				/>
-				<Input
-					label={t`Districts`}
-					value={districts}
-					onChange={(e) => setDistricts(e.target.value)}
-					placeholder={t`District 1, District 2`}
-					required
-				/>
-				<Input
-					label={t`Delivery cost`}
-					type="number"
-					min="0"
-					step="0.01"
-					value={cost}
-					onChange={(e) => setCost(e.target.value)}
-					required
-				/>
-				<Input
-					label={t`Estimated time`}
-					value={estimatedTime}
-					onChange={(e) => setEstimatedTime(e.target.value)}
-					placeholder={t`Example: 30–60 minutes`}
-				/>
-				<Button
-					type="submit"
-					icon={<Plus />}
-					disabled={createMutation.isPending}
-				>{t`Add zone`}</Button>
-			</form>
-			<Dialog.Root
-				open={editingZone !== null}
-				onOpenChange={(open) => !open && setEditingZone(null)}
-			>
-				<Dialog className="w-[min(600px,calc(100vw-2rem))] p-6">
+			<Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+				<Dialog
+					className="max-h-[90vh] w-[min(600px,calc(100vw-2rem))] overflow-y-auto p-6"
+					size="lg"
+				>
 					<div className="mb-4 flex items-center justify-between gap-4">
-						<Dialog.Title className="text-lg font-semibold">{t`Edit delivery zone`}</Dialog.Title>
+						<Dialog.Title className="text-lg font-semibold">
+							{editingZone ? t`Edit delivery zone` : t`New delivery zone`}
+						</Dialog.Title>
 						<Dialog.Close
 							aria-label={t`Close`}
 							render={(props) => (
@@ -514,47 +846,71 @@ function DeliveryZonesPanel() {
 						className="space-y-4"
 						onSubmit={(event) => {
 							event.preventDefault();
-							updateMutation.mutate();
+							if (editingZone) updateMutation.mutate();
+							else createMutation.mutate();
 						}}
 					>
 						<Input
 							label={t`Zone name`}
-							value={editForm.name}
-							onChange={(event) => setEditForm({ ...editForm, name: event.target.value })}
+							value={editingZone ? editForm.name : name}
+							onChange={(e) =>
+								editingZone
+									? setEditForm({ ...editForm, name: e.target.value })
+									: setName(e.target.value)
+							}
 							required
 						/>
 						<Input
 							label={t`Districts`}
-							value={editForm.districts}
-							onChange={(event) => setEditForm({ ...editForm, districts: event.target.value })}
+							value={editingZone ? editForm.districts : districts}
+							onChange={(e) =>
+								editingZone
+									? setEditForm({ ...editForm, districts: e.target.value })
+									: setDistricts(e.target.value)
+							}
+							placeholder={t`District 1, District 2`}
 							required
 						/>
-						<div className="grid gap-4 sm:grid-cols-2">
-							<Input
-								label={t`Delivery cost`}
-								type="number"
-								min="0"
-								step="0.01"
-								value={editForm.deliveryCost}
-								onChange={(event) => setEditForm({ ...editForm, deliveryCost: event.target.value })}
-								required
-							/>
-							<Input
-								label={t`Estimated time`}
-								value={editForm.estimatedTime}
-								onChange={(event) =>
-									setEditForm({ ...editForm, estimatedTime: event.target.value })
+						<Input
+							label={t`Delivery cost`}
+							type="number"
+							min="0"
+							step="0.01"
+							value={editingZone ? editForm.deliveryCost : cost}
+							onChange={(e) =>
+								editingZone
+									? setEditForm({ ...editForm, deliveryCost: e.target.value })
+									: setCost(e.target.value)
+							}
+							required
+						/>
+						<Input
+							label={t`Estimated time`}
+							value={editingZone ? editForm.estimatedTime : estimatedTime}
+							onChange={(e) =>
+								editingZone
+									? setEditForm({ ...editForm, estimatedTime: e.target.value })
+									: setEstimatedTime(e.target.value)
+							}
+							placeholder={t`Example: 30–60 minutes`}
+						/>
+						{editingZone ? (
+							<Switch
+								label={t`Active`}
+								checked={editForm.active}
+								onCheckedChange={(checked) =>
+									setEditForm({ ...editForm, active: Boolean(checked) })
 								}
 							/>
-						</div>
-						<Switch
-							label={t`Active`}
-							checked={editForm.active}
-							onCheckedChange={(checked) => setEditForm({ ...editForm, active: Boolean(checked) })}
-						/>
-						<div className="flex justify-end">
-							<Button type="submit" disabled={updateMutation.isPending}>
-								{updateMutation.isPending ? t`Saving...` : t`Save changes`}
+						) : null}
+						<div className="flex justify-end gap-2">
+							<Button
+								type="button"
+								variant="ghost"
+								onClick={() => setDialogOpen(false)}
+							>{t`Cancel`}</Button>
+							<Button type="submit" disabled={createMutation.isPending || updateMutation.isPending}>
+								{createMutation.isPending || updateMutation.isPending ? t`Saving...` : t`Save zone`}
 							</Button>
 						</div>
 					</form>
@@ -653,6 +1009,8 @@ function OrdersPanel() {
 							delivered: t`Delivered`,
 							cancelled: t`Cancelled`,
 							pending: t`Pending`,
+							not_delivered: t`Not delivered`,
+							rescheduled: t`Rescheduled`,
 						}}
 					/>
 				</div>
@@ -1005,30 +1363,78 @@ function OrderDetailPanel({ order }: { order: ShopOrderDetail }) {
 		mutationFn: () => confirmShopPayment(order.id),
 		onSuccess: () => {
 			void queryClient.invalidateQueries({ queryKey: ["shop", "orders"] });
+			void queryClient.invalidateQueries({ queryKey: ["shop", "order", order.id] });
 			toastManager.add({ title: t`Payment confirmed`, type: "success" });
 		},
 	});
 	const deliveryMutation = useMutation({
-		mutationFn: (status: string) => updateShopDelivery(order.id, { status }),
+		mutationFn: ({ status, cancellationReason }: { status: string; cancellationReason?: string }) =>
+			updateShopDelivery(order.id, {
+				status,
+				trackingCode: trackingCode || null,
+				trackingUrl: trackingUrl || null,
+				cancellationReason: cancellationReason || null,
+			}),
 		onSuccess: () => {
 			void queryClient.invalidateQueries({ queryKey: ["shop", "orders"] });
 			void queryClient.invalidateQueries({ queryKey: ["shop", "order", order.id] });
 			toastManager.add({ title: t`Delivery updated`, type: "success" });
 		},
 	});
+	const [trackingCode, setTrackingCode] = React.useState(
+		typeof order.delivery.trackingCode === "string" ? order.delivery.trackingCode : "",
+	);
+	const [trackingUrl, setTrackingUrl] = React.useState(
+		typeof order.delivery.trackingUrl === "string" ? order.delivery.trackingUrl : "",
+	);
+	const [pendingStatus, setPendingStatus] = React.useState<string | null>(null);
+	const [cancellationReason, setCancellationReason] = React.useState("");
+	const [templateKey, setTemplateKey] = React.useState(
+		order.deliveryStatus === "delivered"
+			? "delivered"
+			: order.deliveryStatus === "in_transit"
+				? "inTransit"
+				: order.status === "preparing"
+					? "preparing"
+					: "orderReceived",
+	);
+	const whatsappWindowRef = React.useRef<Window | null>(null);
+	const whatsappMutation = useMutation({
+		mutationFn: () => fetchShopOrderWhatsAppUrl(order.id, templateKey),
+		onSuccess: (url) => {
+			if (!url.startsWith("https://wa.me/")) {
+				whatsappWindowRef.current?.close();
+				whatsappWindowRef.current = null;
+				return;
+			}
+			if (whatsappWindowRef.current) {
+				whatsappWindowRef.current.location.href = url;
+				whatsappWindowRef.current = null;
+			} else {
+				window.open(url, "_blank", "noopener,noreferrer");
+			}
+		},
+	});
 	const customerName = typeof order.customer.name === "string" ? order.customer.name : t`Customer`;
 	const address = typeof order.delivery.address === "string" ? order.delivery.address : "";
 	return (
-		<div className="space-y-4 rounded-lg border p-5">
-			<div className="flex items-center justify-between gap-3">
-				<h2 className="text-lg font-semibold">{order.orderNumber}</h2>
-				<span className="font-medium">{money(order.total, order.currencySymbol)}</span>
+		<div className="space-y-5 rounded-xl border border-kumo-line bg-kumo-base p-6">
+			<div className="flex flex-wrap items-start justify-between gap-4">
+				<div>
+					<p className="text-sm text-kumo-subtle">{t`Order`}</p>
+					<h2 className="text-xl font-semibold">{order.orderNumber}</h2>
+				</div>
+				<div className="text-end">
+					<p className="text-sm text-kumo-subtle">{t`Total`}</p>
+					<span className="text-xl font-semibold">{money(order.total, order.currencySymbol)}</span>
+				</div>
 			</div>
-			<div>
+			<div className="rounded-lg bg-kumo-tint p-4">
 				<p className="font-medium">{customerName}</p>
 				<p className="text-sm text-kumo-subtle">{address}</p>
 			</div>
-			<div className="space-y-2">
+			<div className="space-y-2 rounded-lg border border-kumo-line p-4">
+				<p className="text-sm font-medium">{t`Products`}</p>
 				{order.items.map((item) => (
 					<div key={item.id} className="flex justify-between gap-3 text-sm">
 						<span>
@@ -1038,37 +1444,135 @@ function OrderDetailPanel({ order }: { order: ShopOrderDetail }) {
 					</div>
 				))}
 			</div>
-			<div className="grid gap-2 text-sm">
-				<span>
-					{t`Payment`}: {formatStatus(order.paymentStatus, t)}
-				</span>
-				<span>
-					{t`Delivery`}: {formatStatus(order.deliveryStatus, t)}
-				</span>
+			<div className="grid gap-3 sm:grid-cols-2">
+				<div className="rounded-lg border border-kumo-line p-3">
+					<p className="mb-2 text-sm text-kumo-subtle">{t`Payment status`}</p>
+					<Badge variant={order.paymentStatus === "confirmed" ? "success" : "secondary"}>
+						{formatStatus(order.paymentStatus, t)}
+					</Badge>
+					{order.paymentStatus !== "confirmed" ? (
+						<div className="mt-3 space-y-2">
+							<p className="text-xs text-kumo-subtle">{t`Press once to confirm the payment.`}</p>
+							<Button
+								size="sm"
+								icon={<CheckCircle />}
+								onClick={() => paymentMutation.mutate()}
+								disabled={paymentMutation.isPending}
+							>
+								{paymentMutation.isPending ? t`Confirming...` : t`Confirm payment`}
+							</Button>
+						</div>
+					) : null}
+				</div>
+				<div className="rounded-lg border border-kumo-line p-3">
+					<p className="mb-2 text-sm text-kumo-subtle">{t`Delivery status`}</p>
+					<Badge variant={order.deliveryStatus === "delivered" ? "success" : "secondary"}>
+						{formatStatus(order.deliveryStatus, t)}
+					</Badge>
+					<div className="mt-3">
+						<Select
+							aria-label={t`Update delivery status`}
+							value={order.deliveryStatus}
+							onValueChange={(value) => {
+								if (value === "cancelled") {
+									setPendingStatus(value);
+									return;
+								}
+								if (value) deliveryMutation.mutate({ status: value });
+							}}
+							items={{
+								pending: t`Pending`,
+								assigned: t`Assigned`,
+								preparing: t`Preparing`,
+								in_transit: t`In transit`,
+								delivered: t`Delivered`,
+								not_delivered: t`Not delivered`,
+								rescheduled: t`Rescheduled`,
+								cancelled: t`Cancelled`,
+							}}
+						/>
+					</div>
+				</div>
 			</div>
-			<div className="flex flex-wrap gap-2">
-				{order.paymentStatus !== "confirmed" ? (
-					<Button
-						size="sm"
-						icon={<CheckCircle />}
-						onClick={() => paymentMutation.mutate()}
-						disabled={paymentMutation.isPending}
-					>{t`Confirm payment`}</Button>
-				) : null}
-				<Select
-					aria-label={t`Update delivery status`}
-					value={order.deliveryStatus}
-					onValueChange={(value) => {
-						if (value) deliveryMutation.mutate(value);
-					}}
-					items={{
-						pending: t`Pending`,
-						assigned: t`Assigned`,
-						in_transit: t`In transit`,
-						delivered: t`Delivered`,
-						not_delivered: t`Not delivered`,
-					}}
+			{pendingStatus === "cancelled" ? (
+				<div className="space-y-2 rounded-lg border border-kumo-line p-3">
+					<InputArea
+						label={t`Cancellation reason`}
+						value={cancellationReason}
+						onChange={(event) => setCancellationReason(event.target.value)}
+						placeholder={t`Explain why this order is being cancelled`}
+						rows={3}
+						required
+					/>
+					<div className="flex justify-end gap-2">
+						<Button type="button" variant="ghost" onClick={() => setPendingStatus(null)}>
+							{t`Cancel`}
+						</Button>
+						<Button
+							type="button"
+							disabled={!cancellationReason.trim() || deliveryMutation.isPending}
+							onClick={() => {
+								deliveryMutation.mutate({
+									status: "cancelled",
+									cancellationReason: cancellationReason.trim(),
+								});
+								setPendingStatus(null);
+							}}
+						>
+							{t`Confirm cancellation`}
+						</Button>
+					</div>
+				</div>
+			) : null}
+			<div className="grid gap-4 sm:grid-cols-2">
+				<Input
+					label={t`Tracking code (optional)`}
+					value={trackingCode}
+					onChange={(event) => setTrackingCode(event.target.value)}
+					placeholder={t`Code from delivery provider`}
 				/>
+				<Input
+					label={t`Tracking URL (optional)`}
+					type="url"
+					value={trackingUrl}
+					onChange={(event) => setTrackingUrl(event.target.value)}
+					placeholder="https://delivery.example/track/..."
+				/>
+			</div>
+			<div className="space-y-3 rounded-lg border border-kumo-line p-4">
+				<div>
+					<p className="font-medium">{t`WhatsApp message`}</p>
+					<p className="text-sm text-kumo-subtle">{t`Choose a template, review it in WhatsApp, and send it manually.`}</p>
+				</div>
+				<div className="flex flex-wrap items-end gap-3">
+					<div className="min-w-[240px] flex-1">
+						<Select
+							label={t`Message template`}
+							value={templateKey}
+							onValueChange={(value) => value && setTemplateKey(value)}
+							items={{
+								orderReceived: t`Order received`,
+								paymentConfirmed: t`Payment confirmed`,
+								preparing: t`Preparing`,
+								inTransit: t`In transit`,
+								delivered: t`Delivered`,
+								cancelled: t`Cancelled`,
+							}}
+						/>
+					</div>
+					<Button
+						type="button"
+						disabled={whatsappMutation.isPending}
+						onClick={() => {
+							const whatsappWindow = window.open("about:blank", "_blank");
+							if (whatsappWindow) whatsappWindow.opener = null;
+							whatsappWindowRef.current = whatsappWindow;
+							whatsappMutation.mutate();
+						}}
+					>
+						{whatsappMutation.isPending ? t`Opening...` : t`Open WhatsApp`}
+					</Button>
+				</div>
 			</div>
 		</div>
 	);

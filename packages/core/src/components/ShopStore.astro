@@ -9,22 +9,23 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 <section class="emdash-shop" data-emdash-shop data-api-base={apiBase}>
 	<div class="emdash-shop__products">
 		<div class="emdash-shop__products-header">
-			<h2>Products</h2>
+			<h2>Productos</h2>
 			<button class="emdash-shop__cart-toggle" type="button" data-shop-cart-toggle aria-expanded="false">
-				Cart (<span data-shop-cart-count>0</span>)
+				Carrito (<span data-shop-cart-count>0</span>)
 			</button>
 		</div>
-		<div data-shop-products>Loading products…</div>
+		<div class="emdash-shop__filters" data-shop-filters hidden></div>
+		<div data-shop-products>Cargando productos…</div>
 	</div>
 	<aside class="emdash-shop__cart" data-shop-cart-panel aria-live="polite" hidden>
 		<div class="emdash-shop__cart-header">
-			<h2>Cart</h2>
-			<button type="button" data-shop-cart-close aria-label="Close cart">×</button>
+			<h2>Carrito</h2>
+			<button type="button" data-shop-cart-close aria-label="Cerrar carrito">×</button>
 		</div>
-		<div data-shop-cart>Cart is empty.</div>
+		<div data-shop-cart>El carrito está vacío.</div>
 		<div class="emdash-shop__cart-footer">
 			<div data-shop-total hidden></div>
-			<a class="emdash-shop__checkout-link" data-shop-checkout-link href="/shop/checkout" hidden>Continue to checkout</a>
+			<a class="emdash-shop__checkout-link" data-shop-checkout-link href="/shop/checkout" hidden>Continuar al pago</a>
 		</div>
 		<p data-shop-message role="status"></p>
 	</aside>
@@ -33,6 +34,7 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 <script is:inline>
 	const root = document.currentScript?.previousElementSibling;
 	const productName = (product) => typeof product.data?.name === "string" ? product.data.name : product.data?.title ?? product.slug ?? product.id;
+	const productTerms = (product, taxonomy) => Array.isArray(product.data?.terms?.[taxonomy]) ? product.data.terms[taxonomy] : [];
 	const productPrice = (product, variant = null) => {
 		if (typeof variant?.price === "number" && variant.price >= 0) return variant.price;
 		const regular = Number(product.data?.price ?? 0);
@@ -56,6 +58,7 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 	if (root instanceof HTMLElement) {
 		const apiBase = root.dataset.apiBase ?? "/_emdash/api/shop";
 		const productsElement = root.querySelector("[data-shop-products]");
+		const filtersElement = root.querySelector("[data-shop-filters]");
 		const cartElement = root.querySelector("[data-shop-cart]");
 		const cartPanel = root.querySelector("[data-shop-cart-panel]");
 		const cartToggle = root.querySelector("[data-shop-cart-toggle]");
@@ -64,6 +67,8 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 		const checkoutLink = root.querySelector("[data-shop-checkout-link]");
 		const totalElement = root.querySelector("[data-shop-total]");
 		const messageElement = root.querySelector("[data-shop-message]");
+		let activeCategory = "";
+		let activeTag = "";
 		const cartStorageKey = "emdash-shop-cart";
 		const cart = new Map();
 		try {
@@ -87,7 +92,7 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 				headers,
 			});
 			const body = await response.json();
-			if (!response.ok) throw new Error(body?.error?.message ?? "Request failed");
+			if (!response.ok) throw new Error(body?.error?.message ?? "La solicitud falló.");
 			return body.data;
 		};
 		const money = (value) => `${settings.currencySymbol} ${new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}`;
@@ -122,7 +127,7 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 				const decrease = document.createElement("button");
 				decrease.type = "button";
 				decrease.textContent = "−";
-				decrease.setAttribute("aria-label", "Decrease quantity");
+					decrease.setAttribute("aria-label", "Disminuir cantidad");
 				decrease.addEventListener("click", () => {
 					if (entry.quantity <= 1) cart.delete(entry.key);
 					else entry.quantity -= 1;
@@ -134,7 +139,7 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 				const increase = document.createElement("button");
 				increase.type = "button";
 				increase.textContent = "+";
-				increase.setAttribute("aria-label", "Increase quantity");
+				increase.setAttribute("aria-label", "Aumentar cantidad");
 				const availableStock = variant ? effectiveVariantStock(entry.product, variant) : productStock(entry.product);
 				increase.disabled = availableStock !== null && entry.quantity >= availableStock;
 				increase.addEventListener("click", () => {
@@ -151,7 +156,7 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 				total += productPrice(entry.product, variant) * entry.quantity;
 			}
 			if (cart.size === 0) {
-				cartElement.textContent = "Cart is empty.";
+				cartElement.textContent = "El carrito está vacío.";
 				totalElement.hidden = true;
 				if (checkoutLink) checkoutLink.hidden = true;
 				return;
@@ -160,11 +165,47 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 			totalElement.hidden = false;
 			if (checkoutLink) checkoutLink.hidden = false;
 		};
+		const renderFilters = (products) => {
+			if (!(filtersElement instanceof HTMLElement)) return;
+			const categories = new Map();
+			const tags = new Map();
+			for (const product of products) {
+				for (const term of productTerms(product, "category")) if (term?.slug && term?.label) categories.set(term.slug, term.label);
+				for (const term of productTerms(product, "tag")) if (term?.slug && term?.label) tags.set(term.slug, term.label);
+			}
+			filtersElement.replaceChildren();
+			const addFilter = (label, options, onChange) => {
+				if (options.size === 0) return;
+				const wrapper = document.createElement("label");
+				wrapper.textContent = label;
+				const select = document.createElement("select");
+				const all = document.createElement("option");
+				all.value = "";
+				all.textContent = "Todos";
+				select.append(all);
+				for (const [value, text] of options) {
+					const option = document.createElement("option");
+					option.value = value;
+					option.textContent = text;
+					select.append(option);
+				}
+				select.addEventListener("change", () => onChange(select.value));
+				wrapper.append(select);
+				filtersElement.append(wrapper);
+			};
+			addFilter("Categoría", categories, (value) => { activeCategory = value; renderProducts(products); });
+			addFilter("Etiqueta", tags, (value) => { activeTag = value; renderProducts(products); });
+			filtersElement.hidden = filtersElement.childElementCount === 0;
+		};
 		const renderProducts = (products) => {
 			if (!productsElement) return;
 			productsElement.replaceChildren();
+			products = products.filter((product) =>
+				(!activeCategory || productTerms(product, "category").some((term) => term.slug === activeCategory)) &&
+				(!activeTag || productTerms(product, "tag").some((term) => term.slug === activeTag)),
+			);
 			if (products.length === 0) {
-				productsElement.textContent = "No products available.";
+				productsElement.textContent = "No hay productos disponibles.";
 				return;
 			}
 			for (const product of products) {
@@ -185,7 +226,7 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 						imageElement.src = url;
 						if (!imageElement.parentElement) imageLink.replaceChildren(imageElement);
 					} else {
-						imageLink.textContent = "Product image";
+						imageLink.textContent = "Imagen del producto";
 					}
 				};
 				updateImage();
@@ -202,15 +243,15 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 				price.textContent = money(variantPrice(product, selectedVariant));
 				const stock = document.createElement("p");
 				stock.className = "emdash-shop__product-stock";
-				const updateStock = () => { const value = selectedVariant ? variantStock(selectedVariant) : productStock(product); stock.textContent = value === null ? "Available" : `${value} available`; price.textContent = money(variantPrice(product, selectedVariant)); };
+			const updateStock = () => { const value = selectedVariant ? variantStock(selectedVariant) : productStock(product); stock.textContent = value === null ? "Disponible" : `${value} disponibles`; price.textContent = money(variantPrice(product, selectedVariant)); };
 				updateStock();
 				if (variants.length > 0) {
 					const variantSelect = document.createElement("select");
 					variantSelect.className = "emdash-shop__variant-select";
-					variantSelect.setAttribute("aria-label", "Select product variation");
+					variantSelect.setAttribute("aria-label", "Seleccionar variación del producto");
 					const baseOption = document.createElement("option");
 					baseOption.value = "";
-					baseOption.textContent = "Base product";
+					baseOption.textContent = "Producto base";
 					baseOption.selected = true;
 					variantSelect.append(baseOption);
 					for (const variant of variants) {
@@ -226,13 +267,13 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 				}
 				const button = document.createElement("button");
 				button.type = "button";
-				button.textContent = "Add to cart";
+				button.textContent = "Agregar al carrito";
 				button.addEventListener("click", () => {
 					const cartKey = `${product.id}:${selectedVariant?.id ?? selectedVariant?.label ?? ""}`;
 					const current = cart.get(cartKey);
 					const availableStock = selectedVariant ? effectiveVariantStock(product, selectedVariant) : productStock(product);
 					if (availableStock !== null && (current?.quantity ?? 0) >= availableStock) {
-						showMessage("You have reached the available stock for this product.", true);
+						showMessage("Has alcanzado el stock disponible de este producto.", true);
 						return;
 					}
 					cart.set(cartKey, { product, variantId: selectedVariant?.id ?? selectedVariant?.label, quantity: (current?.quantity ?? 0) + 1 });
@@ -247,12 +288,13 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 		Promise.all([json("/products"), json("/settings")])
 			.then(([products, shopSettings]) => {
 				settings = shopSettings;
+				renderFilters(products);
 				renderProducts(products);
 				renderCart();
 				return null;
 			})
 			.catch((error) => {
-				showMessage(error instanceof Error ? error.message : "Could not load the store.", true);
+				showMessage(error instanceof Error ? error.message : "No se pudo cargar la tienda.", true);
 				return null;
 			});
 	}
@@ -287,6 +329,29 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 
 	.emdash-shop__products-header h2 {
 		margin-bottom: 0;
+	}
+
+	.emdash-shop__filters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-3);
+		margin-bottom: var(--spacing-6);
+	}
+
+	.emdash-shop__filters label {
+		display: grid;
+		gap: var(--spacing-1);
+		color: var(--color-text-secondary);
+		font-size: var(--font-size-sm);
+	}
+
+	.emdash-shop__filters select {
+		min-width: 10rem;
+		padding: var(--spacing-2) var(--spacing-3);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-bg);
+		color: var(--color-text);
 	}
 
 	.emdash-shop__cart-toggle {

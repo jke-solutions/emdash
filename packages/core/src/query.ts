@@ -1273,7 +1273,7 @@ export async function getTranslations(type: string, id: string): Promise<Transla
 			translationGroup: group,
 			translations: translations.map((t) => ({
 				id: t.id,
-				locale: t.locale || "en",
+				locale: t.locale || "es",
 				slug: t.slug,
 				status: t.status,
 			})),

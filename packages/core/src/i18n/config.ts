@@ -12,6 +12,9 @@ export interface I18nConfig {
 	prefixDefaultLocale?: boolean;
 }
 
+/** Locale used when a site has not configured Astro i18n explicitly. */
+export const DEFAULT_LOCALE = "es";
+
 export const LOCALE_CODE_PATTERN = /^[a-z]{2,3}(-[a-z0-9]{2,8})*$/i;
 
 const I18N_CONFIG_KEY = Symbol.for("emdash:i18n-config");
@@ -72,7 +75,7 @@ export function resolveContentCreateLocale(
 		return configured ?? locale;
 	}
 
-	return config?.defaultLocale ?? "en";
+	return config?.defaultLocale ?? DEFAULT_LOCALE;
 }
 
 /**

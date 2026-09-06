@@ -24,7 +24,7 @@ export const prerender = false;
 
 function assignmentResponse(assignments: TaxonomyAssignmentResolution[], entryLocale: string) {
 	const config = getI18nConfig();
-	const defaultLocale = config?.defaultLocale ?? "en";
+	const defaultLocale = config?.defaultLocale ?? "es";
 	return {
 		terms: assignments.flatMap(({ term }) =>
 			term
@@ -76,8 +76,8 @@ export const GET: APIRoute = async ({ params, locals }) => {
 		// term variant.
 		const entry = await new ContentRepository(emdash.db).findByIdOrSlug(collection, id);
 		if (!entry) return apiError("NOT_FOUND", "Content not found", 404);
-		const locale = entry.locale || getI18nConfig()?.defaultLocale || "en";
-		const defaultLocale = getI18nConfig()?.defaultLocale ?? "en";
+		const locale = entry.locale || getI18nConfig()?.defaultLocale || "es";
+		const defaultLocale = getI18nConfig()?.defaultLocale ?? "es";
 
 		const repo = new TaxonomyRepository(emdash.db);
 		const assignments = await repo.getTermAssignmentsForEntry(
@@ -148,7 +148,7 @@ export const POST: APIRoute = async ({ params, request, locals }) => {
 	const entryLocale =
 		typeof existingItem?.locale === "string"
 			? existingItem.locale
-			: (getI18nConfig()?.defaultLocale ?? "en");
+			: (getI18nConfig()?.defaultLocale ?? "es");
 
 	try {
 		const body = await parseBody(request, contentTermsBody);
@@ -185,7 +185,7 @@ export const POST: APIRoute = async ({ params, request, locals }) => {
 			canonicalId,
 			taxonomy,
 			entryLocale,
-			getI18nConfig()?.defaultLocale ?? "en",
+			getI18nConfig()?.defaultLocale ?? "es",
 		);
 
 		return apiSuccess(assignmentResponse(assignments, entryLocale));

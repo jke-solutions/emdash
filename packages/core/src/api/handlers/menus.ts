@@ -179,7 +179,7 @@ export async function handleMenuCreate(
 		// defaultLocale to match the column DEFAULT set by migration 036.
 		const effectiveLocale = input.locale
 			? resolveConfiguredLocale(input.locale)
-			: (getI18nConfig()?.defaultLocale ?? "en");
+			: (getI18nConfig()?.defaultLocale ?? "es");
 		if (await repo.existsByNameAndLocale(input.name, effectiveLocale)) {
 			return {
 				success: false,

@@ -415,6 +415,7 @@ export const ContentSettingsPanel = React.memo(function ContentSettingsPanel({
 	const [isReorderingSections, setIsReorderingSections] = React.useState(false);
 	const showDiscard = !isNew && supportsDrafts && hasPendingChanges && !!onDiscardDraft;
 	const activeEntryLocale = item?.locale ?? entryLocale ?? undefined;
+	const showContentLocale = collection !== "posts" && collection !== "products";
 	const hasApplicableTaxonomies = useHasApplicableTaxonomies(
 		collection,
 		activeEntryLocale,
@@ -493,7 +494,7 @@ export const ContentSettingsPanel = React.memo(function ContentSettingsPanel({
 								onChange={(e) => onSlugChange(e.target.value)}
 								placeholder="my-post-slug"
 							/>
-							{contentLocale ? (
+							{showContentLocale && contentLocale ? (
 								<div className="space-y-1">
 									<div className="flex flex-wrap items-center gap-2">
 										<Label>{t`Content locale`}</Label>
@@ -504,7 +505,7 @@ export const ContentSettingsPanel = React.memo(function ContentSettingsPanel({
 									</p>
 								</div>
 							) : null}
-							{usesImplicitEnglish ? (
+							{showContentLocale && usesImplicitEnglish ? (
 								<Banner
 									variant="alert"
 									title={t`Content locale defaults to English`}
@@ -642,22 +643,26 @@ export const ContentSettingsPanel = React.memo(function ContentSettingsPanel({
 					</div>
 				</SortableContentSettingsSection>
 
-				{currentUser && currentUser.role >= ROLE_EDITOR && users && users.length > 0 && (
-					<SortableContentSettingsSection id="ownership" label={t`Ownership`}>
-						<div className="p-4">
-							<Text bold as="h3" DANGEROUS_className="mb-4">
-								{t`Ownership`}
-							</Text>
-							<AuthorSelector
-								authorId={item?.authorId || null}
-								users={users}
-								onChange={onAuthorChange}
-							/>
-						</div>
-					</SortableContentSettingsSection>
-				)}
+				{collection !== "products" &&
+					currentUser &&
+					currentUser.role >= ROLE_EDITOR &&
+					users &&
+					users.length > 0 && (
+						<SortableContentSettingsSection id="ownership" label={t`Ownership`}>
+							<div className="p-4">
+								<Text bold as="h3" DANGEROUS_className="mb-4">
+									{t`Ownership`}
+								</Text>
+								<AuthorSelector
+									authorId={item?.authorId || null}
+									users={users}
+									onChange={onAuthorChange}
+								/>
+							</div>
+						</SortableContentSettingsSection>
+					)}
 
-				{currentUser && currentUser.role >= ROLE_EDITOR && (
+				{collection !== "products" && currentUser && currentUser.role >= ROLE_EDITOR && (
 					<SortableContentSettingsSection id="bylines" label={t`Bylines`}>
 						<div className="p-4">
 							<Text bold as="h3" DANGEROUS_className="mb-4">
@@ -702,16 +707,24 @@ export const ContentSettingsPanel = React.memo(function ContentSettingsPanel({
 				)}
 
 				{/* Do not register an empty sortable row when this collection has no taxonomies. */}
-				{item && hasApplicableTaxonomies && (
+				{hasApplicableTaxonomies && (
 					<SortableContentSettingsSection id="taxonomies" label={t`Taxonomies`}>
-						<TaxonomySidebar
-							className="p-4"
-							collection={collection}
-							entryId={item.id}
-							entryLocale={activeEntryLocale}
-							defaultLocale={i18n?.defaultLocale}
-							canManageTaxonomies={(currentUser?.role ?? 0) >= ROLE_EDITOR}
-						/>
+						{item ? (
+							<TaxonomySidebar
+								className="p-4"
+								collection={collection}
+								entryId={item.id}
+								entryLocale={activeEntryLocale}
+								defaultLocale={i18n?.defaultLocale}
+								canManageTaxonomies={(currentUser?.role ?? 0) >= ROLE_EDITOR}
+							/>
+						) : (
+							<div className="p-4">
+								<Text as="p" variant="secondary">
+									{t`Guarda primero este contenido para asignar categorías o etiquetas.`}
+								</Text>
+							</div>
+						)}
 					</SortableContentSettingsSection>
 				)}
 

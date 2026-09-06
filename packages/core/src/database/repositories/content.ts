@@ -366,7 +366,7 @@ export class ContentRepository {
 			now,
 			publishedAt || null,
 			1,
-			locale || "en",
+			locale || "es",
 			translationGroup,
 		];
 

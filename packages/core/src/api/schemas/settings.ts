@@ -33,6 +33,34 @@ const seoSettingsInput = z.object({
 	bingVerification: z.string().max(100).optional(),
 });
 
+const cssColor = z.string().regex(/^#[0-9a-f]{6}$/i);
+const cssFont = z
+	.string()
+	.max(160)
+	.regex(/^[a-z0-9 ,.'"-]+$/i);
+const themeSettings = z.object({
+	colors: z
+		.object({
+			primary: cssColor.optional(),
+			primaryHover: cssColor.optional(),
+			secondary: cssColor.optional(),
+			secondaryHover: cssColor.optional(),
+			background: cssColor.optional(),
+			surface: cssColor.optional(),
+			text: cssColor.optional(),
+			muted: cssColor.optional(),
+			border: cssColor.optional(),
+			link: cssColor.optional(),
+			success: cssColor.optional(),
+			warning: cssColor.optional(),
+			danger: cssColor.optional(),
+			onPrimary: cssColor.optional(),
+			onSecondary: cssColor.optional(),
+		})
+		.optional(),
+	fonts: z.object({ body: cssFont.optional(), heading: cssFont.optional() }).optional(),
+});
+
 export const settingsUpdateBody = z
 	.object({
 		title: z.string().optional(),
@@ -43,6 +71,7 @@ export const settingsUpdateBody = z
 		postsPerPage: z.number().int().min(1).max(100).optional(),
 		dateFormat: z.string().optional(),
 		timezone: z.string().optional(),
+		theme: themeSettings.optional(),
 		social: socialSettings.optional(),
 		seo: seoSettingsInput.optional(),
 	})
@@ -89,6 +118,7 @@ export const siteSettingsSchema = z
 		postsPerPage: z.number().int().optional(),
 		dateFormat: z.string().optional(),
 		timezone: z.string().optional(),
+		theme: themeSettings.optional(),
 		social: socialSettings.optional(),
 		seo: seoSettingsResponse.optional(),
 	})

@@ -168,6 +168,15 @@ export {
 
 // Settings handlers
 export { handleSettingsGet, handleSettingsUpdate } from "./settings.js";
+export {
+	handlePromotionalCampaignGet,
+	handlePromotionalCampaignList,
+	handlePromotionalCampaignCreate,
+	handlePromotionalCampaignUpdate,
+	handlePromotionalCampaignDelete,
+	type PromotionalCampaign,
+	type PromotionalCampaignInput,
+} from "./promotions.js";
 
 // Ecommerce handlers
 export {
@@ -180,11 +189,13 @@ export {
 	handleShopDeliveryZoneUpdate,
 	handleShopDeliveryZoneDelete,
 	handleShopProductList,
+	handleShopProductRelatedList,
 	handleShopProductGet,
 	handleShopOrderCreate,
 	handleShopOrderList,
 	handleShopCustomerList,
 	handleShopOrderGet,
+	handleShopOrderWhatsAppUrl,
 	handleShopPaymentConfirm,
 	handleShopDeliveryUpdate,
 	type ShopSettings,

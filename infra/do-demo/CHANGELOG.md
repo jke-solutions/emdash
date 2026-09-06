@@ -1,5 +1,37 @@
 # @emdash-cms/do-demo-site
 
+## 0.0.42
+
+### Patch Changes
+
+- Updated dependencies [[`a609a34`](https://github.com/jke-solutions/emdash/commit/a609a34c19863d19188e412458a3fa279a3cff04)]:
+  - emdash@0.36.3
+  - @emdash-cms/cloudflare@0.36.3
+
+## 0.0.41
+
+### Patch Changes
+
+- Updated dependencies [[`5ab6f34`](https://github.com/jke-solutions/emdash/commit/5ab6f3480fb83a017b10b027d753925e0131983e)]:
+  - emdash@0.36.2
+  - @emdash-cms/cloudflare@0.36.2
+
+## 0.0.40
+
+### Patch Changes
+
+- Updated dependencies [[`70b3591`](https://github.com/jke-solutions/emdash/commit/70b35917b6cc00e73f3241dfadbdcfdf2050300f), [`46e3905`](https://github.com/jke-solutions/emdash/commit/46e39053de117b3b42bcc0aa65708dbcdd2bf4ac), [`6c1b613`](https://github.com/jke-solutions/emdash/commit/6c1b613c8ce9c4ff8836b600a395dca1a4ec8f04)]:
+  - emdash@0.36.1
+  - @emdash-cms/cloudflare@0.36.1
+
+## 0.0.39
+
+### Patch Changes
+
+- Updated dependencies []:
+  - emdash@0.36.0
+  - @emdash-cms/cloudflare@0.36.0
+
 ## 0.0.38
 
 ### Patch Changes

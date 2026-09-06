@@ -15,6 +15,7 @@ export * from "./import.js";
 export * from "./setup.js";
 export * from "./users.js";
 export * from "./widgets.js";
+export * from "./promotions.js";
 export * from "./redirects.js";
 export * from "./bylines.js";
 export * from "./byline-fields.js";
