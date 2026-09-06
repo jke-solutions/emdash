@@ -1,5 +1,51 @@
 # emdash
 
+## 0.36.3
+
+### Patch Changes
+
+- [#36](https://github.com/jke-solutions/emdash/pull/36) [`a609a34`](https://github.com/jke-solutions/emdash/commit/a609a34c19863d19188e412458a3fa279a3cff04) Thanks [@jonico22](https://github.com/jonico22)! - Stops the admin sidebar from polling `/_emdash/api/admin/comments/counts` on sites where no collection has comments enabled. The comment inbox link and its pending-count badge now appear only when at least one collection accepts comments.
+
+- Updated dependencies [[`a609a34`](https://github.com/jke-solutions/emdash/commit/a609a34c19863d19188e412458a3fa279a3cff04)]:
+  - @emdash-cms/admin@0.36.3
+  - @emdash-cms/auth@0.36.3
+  - @emdash-cms/gutenberg-to-portable-text@0.36.3
+
+## 0.36.2
+
+### Patch Changes
+
+- [#33](https://github.com/jke-solutions/emdash/pull/33) [`5ab6f34`](https://github.com/jke-solutions/emdash/commit/5ab6f3480fb83a017b10b027d753925e0131983e) Thanks [@jonico22](https://github.com/jonico22)! - Fixes the CLI version output so it matches the installed EmDash package version.
+
+- Updated dependencies []:
+  - @emdash-cms/admin@0.36.2
+  - @emdash-cms/auth@0.36.2
+  - @emdash-cms/gutenberg-to-portable-text@0.36.2
+
+## 0.36.1
+
+### Patch Changes
+
+- [#27](https://github.com/jke-solutions/emdash/pull/27) [`70b3591`](https://github.com/jke-solutions/emdash/commit/70b35917b6cc00e73f3241dfadbdcfdf2050300f) Thanks [@jonico22](https://github.com/jonico22)! - Fixes the migrate CLI exit code when an in-flight migration is interrupted.
+
+- [#27](https://github.com/jke-solutions/emdash/pull/27) [`46e3905`](https://github.com/jke-solutions/emdash/commit/46e39053de117b3b42bcc0aa65708dbcdd2bf4ac) Thanks [@jonico22](https://github.com/jonico22)! - Fixes runtime encryption-key resolution so deployment secrets are not replaced by build-time environment values.
+
+- [#26](https://github.com/jke-solutions/emdash/pull/26) [`6c1b613`](https://github.com/jke-solutions/emdash/commit/6c1b613c8ce9c4ff8836b600a395dca1a4ec8f04) Thanks [@jonico22](https://github.com/jonico22)! - Fixes shop migrations so interrupted deployments can resume without duplicate-column errors.
+
+- Updated dependencies []:
+  - @emdash-cms/admin@0.36.1
+  - @emdash-cms/auth@0.36.1
+  - @emdash-cms/gutenberg-to-portable-text@0.36.1
+
+## 0.36.0
+
+### Patch Changes
+
+- Updated dependencies [[`0e91856`](https://github.com/emdash-cms/emdash/commit/0e918563c6139c2c358a7b5513ac4ef420fe989c)]:
+  - @emdash-cms/admin@0.36.0
+  - @emdash-cms/auth@0.36.0
+  - @emdash-cms/gutenberg-to-portable-text@0.36.0
+
 ## 0.35.0
 
 ### Minor Changes

@@ -273,7 +273,7 @@ msgid "{0} items will be imported"
 msgstr "Se importarán {0} elementos"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:561
+#: packages/admin/src/router.tsx:560
 msgid "{0} of {total} could not be deleted"
 msgstr ""
 
@@ -283,7 +283,7 @@ msgid "{0} of {total} could not be published"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:540
+#: packages/admin/src/router.tsx:539
 msgid "{0} of {total} could not be updated"
 msgstr ""
 
@@ -721,6 +721,10 @@ msgstr "Agregar contenido"
 msgid "Add Custom Link"
 msgstr "Agregar enlace personalizado"
 
+#: packages/admin/src/routes/shop.tsx:462
+msgid "Add delivery zone"
+msgstr ""
+
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:211
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
 msgid "Add Domain"
@@ -828,6 +832,10 @@ msgstr "Añadir área de widgets"
 #: packages/admin/src/components/settings/SocialSettings.tsx:135
 msgid "Add your social media profiles. These are available to your site's theme and can be displayed in headers, footers, or author bios."
 msgstr "Añade tus perfiles de redes sociales. Estos están disponibles para el tema de tu sitio y se pueden mostrar en encabezados, pies de página o biografías de los autores."
+
+#: packages/admin/src/routes/shop.tsx:495
+msgid "Add zone"
+msgstr ""
 
 #: packages/admin/src/components/MenuEditor.tsx:441
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:306
@@ -7533,6 +7541,7 @@ msgid "Save alt text"
 msgstr "Guardar texto alternativo"
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:318
+#: packages/admin/src/routes/shop.tsx:557
 msgid "Save changes"
 msgstr ""
 
