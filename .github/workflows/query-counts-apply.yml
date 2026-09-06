@@ -12,10 +12,9 @@ on:
 permissions:
   # actions:read is needed for listWorkflowRunArtifacts /
   # downloadArtifact. pull-requests:read is needed for pulls.get in the
-  # Resolve PR step. contents:read is a safety default; the commit-back
-  # step uses the app token, not GITHUB_TOKEN.
+  # Resolve PR step. Same-repository commit-back uses GITHUB_TOKEN.
   actions: read
-  contents: read
+  contents: write
   pull-requests: read
 
 jobs:
@@ -123,8 +122,22 @@ jobs:
               || pr.head.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`;
             core.setOutput('is_fork', isFork.toString());
 
+      - name: Check app token configuration
+        if: steps.download.outputs.found == 'true' && steps.pr.outputs.is_fork == 'true'
+        id: app-token-config
+        env:
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+        run: |
+          if [[ -n "$APP_ID" && -n "$APP_PRIVATE_KEY" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Skipping fork snapshot push because APP_ID and APP_PRIVATE_KEY are not configured."
+          fi
+
       - name: Generate app token
-        if: steps.download.outputs.found == 'true'
+        if: steps.download.outputs.found == 'true' && steps.pr.outputs.is_fork == 'true' && steps.app-token-config.outputs.configured == 'true'
         id: app-token
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
@@ -140,7 +153,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ steps.pr.outputs.sha }}
-          token: ${{ steps.app-token.outputs.token }}
+          token: ${{ github.token }}
           # Intentional: the same-repo push step below pushes the
           # updated snapshots back to the PR branch using this credential.
           persist-credentials: true
@@ -209,6 +222,7 @@ jobs:
         if: |
           steps.download.outputs.found == 'true'
           && steps.pr.outputs.is_fork == 'true'
+          && steps.app-token.outputs.token != ''
           && steps.apply.outputs.no_diff == 'false'
         env:
           APP_TOKEN: ${{ steps.app-token.outputs.token }}
