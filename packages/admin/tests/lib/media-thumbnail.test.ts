@@ -1,29 +1,17 @@
 import { describe, it, expect } from "vitest";
 
-import {
-	getMediaThumbnailUrl,
-	fallbackToOriginalThumbnail,
-	MEDIA_THUMBNAIL_WIDTH,
-} from "../../src/lib/media-utils";
+import { getMediaThumbnailUrl, fallbackToOriginalThumbnail } from "../../src/lib/media-utils";
 
 const LOCAL_IMAGE = "/_emdash/api/media/file/01ABC.jpg";
 
 describe("getMediaThumbnailUrl", () => {
-	it("routes a local raster image through Astro's /_image endpoint", () => {
-		const result = getMediaThumbnailUrl(LOCAL_IMAGE, "image/jpeg");
-		expect(result.startsWith("/_image?")).toBe(true);
-
-		const url = new URL(result, window.location.origin);
-		expect(url.pathname).toBe("/_image");
-		expect(url.searchParams.get("href")).toBe(`${window.location.origin}${LOCAL_IMAGE}`);
-		expect(url.searchParams.get("w")).toBe(String(MEDIA_THUMBNAIL_WIDTH));
-		expect(url.searchParams.get("f")).toBe("webp");
+	it("uses the URL resolved by the media API without image transformation", () => {
+		expect(getMediaThumbnailUrl(LOCAL_IMAGE, "image/jpeg")).toBe(LOCAL_IMAGE);
 	});
 
-	it("honors a custom width", () => {
-		const result = getMediaThumbnailUrl(LOCAL_IMAGE, "image/png", 80);
-		const url = new URL(result, window.location.origin);
-		expect(url.searchParams.get("w")).toBe("80");
+	it("keeps public CDN URLs unchanged", () => {
+		const cdnImage = "https://cdn.example.com/01ABC.png";
+		expect(getMediaThumbnailUrl(cdnImage, "image/png", 80)).toBe(cdnImage);
 	});
 
 	it("passes SVGs through unchanged (vector, nothing to downscale)", () => {
@@ -44,7 +32,7 @@ describe("getMediaThumbnailUrl", () => {
 
 describe("fallbackToOriginalThumbnail", () => {
 	it("swaps in the original URL on first error", () => {
-		const img = { dataset: {} as DOMStringMap, src: "/_image?href=...&w=400&f=webp" };
+		const img = { dataset: {} as DOMStringMap, src: "https://cdn.example.com/01ABC.jpg" };
 		fallbackToOriginalThumbnail(img, LOCAL_IMAGE);
 		expect(img.src).toBe(LOCAL_IMAGE);
 		expect(img.dataset.thumbFallback).toBe("1");

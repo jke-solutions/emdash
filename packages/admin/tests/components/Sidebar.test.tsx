@@ -180,7 +180,7 @@ describe("visibleCollectionEntries", () => {
 });
 
 describe("anyCollectionAcceptsComments", () => {
-	it("is false when no collection enables comments — the badge query never runs", () => {
+	it("is false when no collection enables comments", () => {
 		expect(anyCollectionAcceptsComments({ posts: { commentsEnabled: false }, pages: {} })).toBe(
 			false,
 		);

@@ -120,7 +120,6 @@ import {
 } from "./lib/api";
 import {
 	fetchComments,
-	fetchCommentCounts,
 	updateCommentStatus,
 	deleteComment,
 	bulkCommentAction,
@@ -1387,11 +1386,11 @@ function MediaPage() {
 
 	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } =
 		useInfiniteQuery({
-			queryKey: ["media", { search, mime: mimeKey }],
+			queryKey: ["media", { search, mime: mimeKey, pageSize: 10 }],
 			queryFn: ({ pageParam }) =>
 				fetchMediaList({
 					cursor: pageParam,
-					limit: 100,
+					limit: 10,
 					search: search || undefined,
 					mimeType: mimeFilter,
 				}),
@@ -1496,19 +1495,12 @@ function CommentsPage() {
 		getNextPageParam: (lastPage) => lastPage.nextCursor,
 	});
 
-	// Fetch counts
-	const { data: counts } = useQuery({
-		queryKey: ["commentCounts"],
-		queryFn: fetchCommentCounts,
-	});
-
 	// Status change mutation
 	const statusMutation = useMutation({
 		mutationFn: ({ id, status }: { id: string; status: CommentStatus }) =>
 			updateCommentStatus(id, status),
 		onSuccess: () => {
 			void queryClient.invalidateQueries({ queryKey: ["comments"] });
-			void queryClient.invalidateQueries({ queryKey: ["commentCounts"] });
 		},
 		onError: (error) => {
 			toastManager.add({
@@ -1524,7 +1516,6 @@ function CommentsPage() {
 		mutationFn: (id: string) => deleteComment(id),
 		onSuccess: () => {
 			void queryClient.invalidateQueries({ queryKey: ["comments"] });
-			void queryClient.invalidateQueries({ queryKey: ["commentCounts"] });
 		},
 		onError: (error) => {
 			toastManager.add({
@@ -1546,7 +1537,6 @@ function CommentsPage() {
 		}) => bulkCommentAction(ids, action),
 		onSuccess: (result) => {
 			void queryClient.invalidateQueries({ queryKey: ["comments"] });
-			void queryClient.invalidateQueries({ queryKey: ["commentCounts"] });
 			toastManager.add({
 				title: plural(result.affected, { one: "# comment updated", other: "# comments updated" }),
 			});
@@ -1578,7 +1568,7 @@ function CommentsPage() {
 	return (
 		<CommentInbox
 			comments={allComments}
-			counts={counts ?? { pending: 0, approved: 0, spam: 0, trash: 0 }}
+			counts={{ pending: 0, approved: 0, spam: 0, trash: 0 }}
 			isLoading={isLoading}
 			nextCursor={lastPage?.nextCursor}
 			collections={manifest?.collections ?? {}}
