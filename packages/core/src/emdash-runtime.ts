@@ -13,6 +13,7 @@ import { Kysely, sql, type Dialect } from "kysely";
 import virtualConfig from "virtual:emdash/config";
 import { z } from "zod";
 
+import { expireShopReservations } from "./api/handlers/booking.js";
 import { validateContentData } from "./api/handlers/validation.js";
 import { assertMediaUsageActivationWriteAllowed } from "./api/media-usage-write-fence.js";
 import { validateRev } from "./api/rev.js";
@@ -800,6 +801,12 @@ export class EmDashRuntime {
 			await runSystemCleanup(this.db, this.storage ?? undefined);
 		} catch (error) {
 			console.error("[cleanup] System cleanup failed:", error);
+		}
+
+		try {
+			await expireShopReservations(this.db);
+		} catch (error) {
+			console.error("[shop-booking] Reservation expiry failed:", error);
 		}
 
 		try {

@@ -2,6 +2,93 @@
 
 Esta especificación define el comportamiento del ecommerce para negocios pequeños que venden productos y coordinan el pago y la entrega por WhatsApp. El frontend puede usar cualquier estructura visual mientras respete estos flujos y reglas.
 
+## Extensión MVP de reservas: fase 0
+
+Esta fase fija el alcance de la primera versión de reservas antes de implementar migraciones, APIs o pantallas. El MVP está diseñado para un negocio con una sola sede y se activa mediante una opción global en la configuración de la tienda.
+
+### Decisiones de alcance
+
+- Las reservas se habilitan desde `Shop Settings` mediante `bookingEnabled`.
+- Cuando `bookingEnabled` es falso, la tienda conserva exactamente el flujo actual de productos, delivery y pagos.
+- La primera versión admite una sola sede y una única zona horaria configurada para la tienda.
+- Los servicios se gestionan en el tipo de contenido `services`, separado de `products`. El carrito y los pedidos pueden reutilizar la lógica común de ecommerce, pero el catálogo, los campos y la administración de servicios no se agregan a `products`.
+- Un pedido puede contener productos, servicios o una combinación de ambos.
+- Un servicio puede ser presencial o virtual, pero no requiere múltiples sedes, profesionales ni recursos asignables.
+- La disponibilidad se define mediante horarios semanales y bloqueos o excepciones por fecha.
+- La reserva debe seleccionar fecha, hora de inicio y hora de término según la duración configurada del servicio.
+- La sección administrativa `Tienda > Reservas` lista y permite gestionar las reservas creadas.
+- El pago continúa usando los métodos ya soportados por la tienda, incluido WhatsApp. La confirmación del pago determina la confirmación definitiva de la reserva.
+
+### Fuera del MVP
+
+No forman parte de esta fase:
+
+- Múltiples sedes.
+- Profesionales o recursos independientes.
+- Sincronización con Google Calendar, Outlook u otros calendarios.
+- Reservas recurrentes.
+- Pagos parciales o depósitos.
+- Membresías y paquetes de sesiones.
+- Cuentas de usuario para clientes.
+- Reglas complejas de precios por horario.
+
+### Modelo conceptual
+
+`products` y `services` son tipos de contenido independientes. Los campos específicos de servicios pertenecen a `services` y no se agregan a `products`.
+
+```text
+products
+├── name
+├── price
+├── stock
+└── image
+
+services
+├── name
+├── price
+├── serviceMode: in_person | online
+├── requiresBooking: boolean
+├── durationMinutes: number
+└── capacity: number
+```
+
+La disponibilidad y las reservas serán entidades internas de ecommerce, separadas del contenido publicado. Los pedidos conservarán una copia histórica del servicio y del horario reservado para que sigan siendo correctos aunque el servicio se edite después.
+
+### Estados iniciales
+
+Una reserva utilizará estos estados:
+
+- `held`: horario retenido temporalmente durante el checkout.
+- `pending_payment`: pedido creado, pago aún no confirmado.
+- `confirmed`: pago confirmado y horario reservado.
+- `cancelled`: cancelada por el cliente o el administrador.
+- `expired`: la retención venció sin completar el pedido.
+- `completed`: servicio realizado.
+- `no_show`: el cliente no asistió.
+
+### Compatibilidad requerida
+
+En el checkout de un pedido compuesto Ãºnicamente por servicios se muestran solo los datos de contacto y el mÃ©todo de pago. El checkout no consulta ni solicita zonas, direcciÃ³n, distrito o referencia de delivery cuando no hay productos fÃ­sicos. En un pedido mixto se mantienen los datos de delivery porque al menos una lÃ­nea requiere entrega.
+
+- Los registros existentes de `products` conservan su significado y sus campos actuales.
+- La creación o edición de un servicio no modifica la colección `products`.
+- Los pedidos de productos no crean reservas.
+- Los pedidos que solo contienen servicios no exigen dirección ni zona de delivery.
+- Los pedidos mixtos conservan delivery para los productos físicos y reservas para los servicios.
+- Las migraciones serán aditivas y estarán registradas en el proveedor estático de migraciones.
+- La consulta pública de disponibilidad no debe agregar consultas al flujo de visitantes que no usan reservas cuando la opción está desactivada.
+
+### Criterios de salida de la fase 0
+
+La fase de diseño se considera cerrada cuando la implementación posterior respete estas decisiones y tenga definidos, como mínimo:
+
+- El campo global `bookingEnabled` en la configuración pública y administrativa.
+- Los tipos de contenido `products` y `services`, con sus campos y reglas independientes.
+- Las entidades de horarios, excepciones, retenciones y reservas.
+- La relación entre línea de pedido y reserva.
+- La transición de estados de pago, pedido y reserva.
+- La separación entre la gestión del catálogo de servicios y la sección administrativa de reservas.
+
 ## Alcance
 
 El ecommerce permite:
@@ -120,6 +207,20 @@ Un producto base y una variación se consideran líneas diferentes cuando corres
 11. El servidor crea el pedido y descuenta el stock.
 12. El sistema muestra el número de pedido y un enlace de WhatsApp con el resumen de la compra.
 13. El cliente coordina el pago por WhatsApp.
+
+### Checkout especializado para servicios
+
+Los proyectos nuevos deben separar la interfaz de checkout según el contenido del carrito, sin duplicar la lógica de negocio.
+
+- Un carrito compuesto únicamente por servicios abre una ruta como `/shop/services/checkout`.
+- Un carrito compuesto por productos físicos abre `/shop/checkout`.
+- Un carrito mixto usa el checkout de productos y conserva los campos de delivery para las líneas físicas.
+- El checkout de servicios solicita nombre, teléfono, correo opcional, método de pago, cupón y notas. No solicita dirección, distrito, referencia ni zona de delivery.
+- Ambas vistas reutilizan el resumen del carrito, cálculo de totales, cupones, métodos de pago, creación del pedido, validación de reservas y página de confirmación.
+- Antes de crear el pedido, el checkout de servicios confirma o crea la retención del horario seleccionado. El pedido conserva la relación con la reserva.
+- La lógica compartida debe vivir en componentes o funciones reutilizables. La vista determina los campos y el texto que se muestran según el tipo de carrito.
+
+La página de checkout de servicios debe mostrar la fecha y el horario reservado junto al servicio. Si la retención ya expiró o el horario dejó de estar disponible, el checkout debe mostrar el error y permitir seleccionar otro horario antes de crear el pedido.
 
 ## Reutilización de datos del cliente
 
@@ -335,7 +436,7 @@ Core contiene las migraciones, tipos, reglas de creación de pedidos, validacion
 
 La demo simple contiene una implementación de referencia del catálogo, detalle de producto, carrito, checkout, confirmación, seguimiento y reutilización local de datos. Otro proyecto puede implementar esos flujos con una interfaz diferente mientras respete esta especificación.
 
-La colección `products` y sus campos se cargan actualmente mediante el seed de la demo. Para una instalación reutilizable, se necesita un seed o configuración del ecommerce que registre esa colección y sus campos en cualquier proyecto nuevo.
+Las colecciones `products` y `services`, con sus campos propios, se cargan mediante el seed o la configuración del ecommerce. Una instalación reutilizable debe registrar ambas colecciones cuando habilite el flujo de servicios.
 
 ## Criterios de aceptación
 

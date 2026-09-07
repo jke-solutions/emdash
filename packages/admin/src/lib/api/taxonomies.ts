@@ -19,6 +19,8 @@ export interface TaxonomyTerm {
 	label: string;
 	parentId?: string;
 	description?: string;
+	imageId?: string;
+	visibleOnHome?: boolean;
 	children: TaxonomyTerm[];
 	count?: number;
 	locale: string;
@@ -75,6 +77,8 @@ export interface CreateTermInput {
 	label: string;
 	parentId?: string;
 	description?: string;
+	imageId?: string | null;
+	visibleOnHome?: boolean;
 	locale?: string;
 	translationOf?: string;
 }
@@ -84,6 +88,8 @@ export interface UpdateTermInput {
 	label?: string;
 	parentId?: string;
 	description?: string;
+	imageId?: string | null;
+	visibleOnHome?: boolean;
 }
 
 export interface LocaleOptions {

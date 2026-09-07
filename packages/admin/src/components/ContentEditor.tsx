@@ -104,9 +104,13 @@ export interface CurrentUserInfo {
 export interface ContentEditorProps {
 	collection: string;
 	collectionLabel: string;
+	listItemType?: "service";
+	previewUrlPattern?: string;
 	item?: ContentItem | null;
 	fields: Record<string, FieldDescriptor>;
 	isNew?: boolean;
+	/** Values to prefill when creating a new entry. */
+	initialData?: Record<string, unknown>;
 	/**
 	 * Locale this entry is bound to. For existing entries this matches
 	 * `item.locale`; for new entries it's the URL `?locale=` (or default).
@@ -202,9 +206,12 @@ export interface ContentEditorProps {
 export function ContentEditor({
 	collection,
 	collectionLabel,
+	listItemType,
+	previewUrlPattern,
 	item,
 	fields,
 	isNew,
+	initialData,
 	entryLocale,
 	isSaving,
 	isSaveFeedbackActive,
@@ -258,7 +265,9 @@ export function ContentEditor({
 		mq.addEventListener("change", onChange);
 		return () => mq.removeEventListener("change", onChange);
 	}, []);
-	const [formData, setFormData] = React.useState<Record<string, unknown>>(item?.data || {});
+	const [formData, setFormData] = React.useState<Record<string, unknown>>(
+		item?.data || initialData || {},
+	);
 	const [slug, setSlug] = React.useState(item?.slug || "");
 	const [slugTouched, setSlugTouched] = React.useState(!!item?.slug);
 	const [status, setStatus] = React.useState(item?.status || "draft");
@@ -534,7 +543,7 @@ export function ContentEditor({
 	// Preview URL state
 	const [isLoadingPreview, setIsLoadingPreview] = React.useState(false);
 
-	const urlPattern = manifest?.collections[collection]?.urlPattern;
+	const urlPattern = previewUrlPattern ?? manifest?.collections[collection]?.urlPattern;
 
 	// When the collection configures a titleField, the editor header
 	// shows the entry's title for existing entries; otherwise it keeps the
@@ -664,7 +673,7 @@ export function ContentEditor({
 								<RouterLinkButton
 									to="/content/$collection"
 									params={{ collection }}
-									search={{ locale: undefined }}
+									search={{ locale: undefined, itemType: listItemType }}
 									aria-label={t`Back to ${collectionLabel} list`}
 									variant="ghost"
 									shape="square"
@@ -800,6 +809,14 @@ export function ContentEditor({
 					>
 						<div className="space-y-6">
 							{Object.entries(fields).map(([name, field]) => {
+								const isService = isServiceProduct(collection, formData);
+								const serviceHiddenFields = new Set([
+									"availability_status",
+									"has_variations",
+									"variants",
+									"stock",
+								]);
+								if (isService && serviceHiddenFields.has(name)) return null;
 								if (
 									collection === "products" &&
 									(name === "promotion_price" || name === "discount_percentage")
@@ -1123,6 +1140,18 @@ interface FieldRendererProps {
 /**
  * Render field based on type
  */
+function isServiceProduct(
+	collection: string | undefined,
+	data: Record<string, unknown> | undefined,
+): boolean {
+	const itemType = data?.item_type;
+	return (
+		collection === "products" &&
+		typeof itemType === "string" &&
+		itemType.toLowerCase() === "service"
+	);
+}
+
 function FieldRenderer({
 	collection,
 	name,
@@ -1139,7 +1168,17 @@ function FieldRenderer({
 }: FieldRendererProps) {
 	const { t } = useLingui();
 	const pluginAdmins = usePluginAdmins();
-	const label = field.label || name.charAt(0).toUpperCase() + name.slice(1);
+	const isService = isServiceProduct(collection, data);
+	const serviceLabels: Record<string, string> = {
+		name: t`Service name`,
+		rich_description: t`Service description`,
+		featured_image: t`Service image`,
+		featured: t`Featured service`,
+	};
+	const label =
+		(isService && serviceLabels[name]) ||
+		field.label ||
+		name.charAt(0).toUpperCase() + name.slice(1);
 	const id = `field-${name}`;
 	const labelClass = minimal ? "text-kumo-subtle/50 text-xs font-normal" : undefined;
 

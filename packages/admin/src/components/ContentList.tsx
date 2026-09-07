@@ -98,6 +98,7 @@ export const EMPTY_DATE_FILTER: ContentDateFilter = { field: "createdAt", from: 
 export interface ContentListProps {
 	collection: string;
 	collectionLabel: string;
+	itemType?: "service";
 	items: ContentItem[];
 	/** Validated custom-field columns from the collection manifest. */
 	listColumns?: ContentListColumn[];
@@ -209,6 +210,7 @@ function parseListDate(value: unknown): Date | null {
 export function ContentList({
 	collection,
 	collectionLabel,
+	itemType,
 	items,
 	listColumns = [],
 	trashedItems = [],
@@ -402,11 +404,21 @@ export function ContentList({
 				<RouterLinkButton
 					to="/content/$collection/new"
 					params={{ collection }}
-					search={{ locale: activeLocale }}
+					search={{ locale: activeLocale, itemType }}
 					icon={<Plus />}
 				>
 					{t`Add New`}
 				</RouterLinkButton>
+				{collection === "products" ? (
+					<RouterLinkButton
+						to="/content/$collection"
+						params={{ collection }}
+						search={{ locale: activeLocale, itemType: itemType ? undefined : "service" }}
+						variant="outline"
+					>
+						{itemType ? t`View products` : t`View services`}
+					</RouterLinkButton>
+				) : null}
 			</div>
 
 			{/* Search */}
@@ -639,7 +651,7 @@ export function ContentList({
 													<Link
 														to="/content/$collection/new"
 														params={{ collection }}
-														search={{ locale: activeLocale }}
+														search={{ locale: activeLocale, itemType }}
 														className="text-kumo-link underline"
 													>
 														{t`Create your first one`}
@@ -661,6 +673,7 @@ export function ContentList({
 											item={item}
 											visibleItems={paginatedItems}
 											collection={collection}
+											itemType={itemType}
 											onDelete={onDelete}
 											onDuplicate={onDuplicate}
 											showLocale={!!i18n}
@@ -1095,6 +1108,7 @@ interface ContentListItemProps {
 	item: ContentItem;
 	visibleItems: readonly ContentItem[];
 	collection: string;
+	itemType?: "service";
 	onDelete?: (id: string) => void;
 	onDuplicate?: (id: string) => void;
 	showLocale?: boolean;
@@ -1112,6 +1126,7 @@ function ContentListItem({
 	item,
 	visibleItems,
 	collection,
+	itemType,
 	onDelete,
 	onDuplicate,
 	showLocale,
@@ -1146,7 +1161,7 @@ function ContentListItem({
 				<Link
 					to="/content/$collection/$id"
 					params={{ collection, id: item.id }}
-					search={{ locale: item.locale }}
+					search={{ locale: item.locale, itemType }}
 					className="font-medium hover:text-kumo-link"
 				>
 					{title}
@@ -1220,7 +1235,7 @@ function ContentListItem({
 					<RouterLinkButton
 						to="/content/$collection/$id"
 						params={{ collection, id: item.id }}
-						search={{ locale: item.locale }}
+						search={{ locale: item.locale, itemType }}
 						aria-label={t`Edit ${title}`}
 						variant="ghost"
 						shape="square"

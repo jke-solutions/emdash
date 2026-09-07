@@ -12,7 +12,13 @@ const DEFAULT_SETTINGS_ID = "default";
 const DEFAULT_CURRENCY = "PEN";
 const DEFAULT_CURRENCY_SYMBOL = "S/";
 const DEFAULT_PAYMENT_METHODS = ["whatsapp"];
-const SHOP_COLLECTION = "products";
+const PRODUCTS_COLLECTION = "products";
+const SERVICES_COLLECTION = "services";
+type ShopCollection = typeof PRODUCTS_COLLECTION | typeof SERVICES_COLLECTION;
+
+function normalizeShopCollection(value: string): ShopCollection {
+	return value === SERVICES_COLLECTION ? SERVICES_COLLECTION : PRODUCTS_COLLECTION;
+}
 
 function currencySymbolForCurrency(currency: string): string {
 	return (
@@ -46,6 +52,7 @@ export interface ShopSettings {
 	minimumSubtotal: number;
 	freeDeliveryMinSubtotal: number | null;
 	whatsappTemplates: Record<string, string>;
+	bookingEnabled: boolean;
 	paymentGatewayEnabled: boolean;
 	paymentGatewayProvider: string | null;
 	paymentGatewayEnvironment: "sandbox" | "production";
@@ -70,6 +77,7 @@ export interface ShopPublicSettings {
 	minimumSubtotal: number;
 	freeDeliveryMinSubtotal: number | null;
 	whatsappTemplates: Record<string, string>;
+	bookingEnabled: boolean;
 }
 
 export interface ShopSettingsUpdateInput extends Partial<Omit<ShopSettings, "id">> {
@@ -97,20 +105,26 @@ export interface ShopDeliveryZone {
 }
 
 export interface ShopOrderInput {
-	items: Array<{ productId: string; variantId?: string; quantity: number }>;
+	items: Array<{
+		productId: string;
+		collection?: ShopCollection;
+		variantId?: string;
+		quantity: number;
+		booking?: { reservationId: string; startsAt: string; endsAt: string };
+	}>;
 	customer: {
 		name: string;
 		phone: string;
 		email?: string;
-		address: string;
-		district: string;
+		address?: string;
+		district?: string;
 		reference?: string;
 		documentType?: string;
 		documentNumber?: string;
 		fiscalName?: string;
 		fiscalAddress?: string;
 	};
-	deliveryZoneId: string;
+	deliveryZoneId?: string;
 	deliveryDate?: string;
 	deliveryTime?: string;
 	recipientName?: string;
@@ -161,6 +175,7 @@ export interface ShopOrderDetail extends ShopOrderSummary {
 	items: Array<{
 		id: string;
 		productId: string;
+		collection: ShopCollection;
 		variantId: string | null;
 		productName: string;
 		variantName: string | null;
@@ -241,6 +256,7 @@ function toSettings(row: {
 	minimum_subtotal: number;
 	free_delivery_min_subtotal: number | null;
 	whatsapp_templates: string;
+	booking_enabled: number;
 	payment_gateway_enabled: number;
 	payment_gateway_provider: string | null;
 	payment_gateway_environment: string;
@@ -264,6 +280,7 @@ function toSettings(row: {
 		minimumSubtotal: row.minimum_subtotal ?? 0,
 		freeDeliveryMinSubtotal: row.free_delivery_min_subtotal,
 		whatsappTemplates: parseJsonStringRecord(row.whatsapp_templates),
+		bookingEnabled: row.booking_enabled === 1,
 		paymentGatewayEnabled: row.payment_gateway_enabled === 1,
 		paymentGatewayProvider: row.payment_gateway_provider,
 		paymentGatewayEnvironment:
@@ -324,8 +341,25 @@ function isProductAvailable(data: Record<string, unknown>): boolean {
 	return (
 		availability !== "sold_out" &&
 		availability !== "hidden" &&
-		(typeof stock !== "number" || stock > 0)
+		(typeof stock !== "number" || stock > 0 || isBookableService(data))
 	);
+}
+
+function isBookableService(data: Record<string, unknown>): boolean {
+	const itemType = typeof data.item_type === "string" ? data.item_type.toLowerCase() : "";
+	const requiresBooking = data.requires_booking;
+	return (
+		itemType === "service" &&
+		(requiresBooking === true ||
+			requiresBooking === 1 ||
+			requiresBooking === "1" ||
+			requiresBooking === "true")
+	);
+}
+
+function isService(data: Record<string, unknown>): boolean {
+	const itemType = typeof data.item_type === "string" ? data.item_type.toLowerCase() : "";
+	return itemType === "service";
 }
 
 function normalizeCouponCode(code: string): string {
@@ -599,6 +633,7 @@ export async function handleShopSettingsGet(
 				minimumSubtotal: 0,
 				freeDeliveryMinSubtotal: null,
 				whatsappTemplates: {},
+				bookingEnabled: false,
 				paymentGatewayEnabled: false,
 				paymentGatewayProvider: null,
 				paymentGatewayEnvironment: "sandbox",
@@ -636,6 +671,7 @@ export async function handleShopPublicSettingsGet(
 		minimumSubtotal,
 		freeDeliveryMinSubtotal,
 		whatsappTemplates,
+		bookingEnabled,
 	} = result.data;
 	return {
 		success: true,
@@ -653,6 +689,7 @@ export async function handleShopPublicSettingsGet(
 			minimumSubtotal,
 			freeDeliveryMinSubtotal,
 			whatsappTemplates,
+			bookingEnabled,
 		},
 	};
 }
@@ -699,6 +736,12 @@ export async function handleShopSettingsUpdate(
 			whatsapp_templates: JSON.stringify(
 				input.whatsappTemplates ?? parseJsonRecord(existing?.whatsapp_templates),
 			),
+			booking_enabled:
+				input.bookingEnabled === undefined
+					? (existing?.booking_enabled ?? 0)
+					: input.bookingEnabled
+						? 1
+						: 0,
 			payment_gateway_enabled:
 				input.paymentGatewayEnabled === undefined
 					? (existing?.payment_gateway_enabled ?? 0)
@@ -874,8 +917,20 @@ export async function handleShopDeliveryZoneDelete(
 }
 
 export async function handleShopProductList(db: Kysely<Database>): Promise<ApiResult<unknown[]>> {
+	return handleShopCollectionList(db, PRODUCTS_COLLECTION, "product");
+}
+
+export async function handleShopServiceList(db: Kysely<Database>): Promise<ApiResult<unknown[]>> {
+	return handleShopCollectionList(db, SERVICES_COLLECTION, "service");
+}
+
+async function handleShopCollectionList(
+	db: Kysely<Database>,
+	collection: ShopCollection,
+	taxonomyPrefix: "product" | "service",
+): Promise<ApiResult<unknown[]>> {
 	try {
-		const result = await new ContentRepository(db).findMany(SHOP_COLLECTION, {
+		const result = await new ContentRepository(db).findMany(collection, {
 			limit: 100,
 			where: { status: "published" },
 		});
@@ -892,15 +947,16 @@ export async function handleShopProductList(db: Kysely<Database>): Promise<ApiRe
 				"taxonomies.slug as slug",
 				"taxonomies.label as label",
 			])
-			.where("content_taxonomies.collection", "=", SHOP_COLLECTION)
+			.where("content_taxonomies.collection", "=", collection)
 			.where("content_taxonomies.entry_id", "in", entryIds)
-			.where("taxonomies.name", "in", ["category", "tag"])
+			.where("taxonomies.name", "in", [`${taxonomyPrefix}_category`, `${taxonomyPrefix}_tag`])
 			.orderBy("taxonomies.label", "asc")
 			.execute();
 		const termsByEntry = new Map<string, Record<string, Array<{ slug: string; label: string }>>>();
 		for (const row of termRows) {
 			const terms = termsByEntry.get(row.entryId) ?? {};
-			(terms[row.taxonomy] ??= []).push({ slug: row.slug, label: row.label });
+			const termType = row.taxonomy.endsWith("_category") ? "category" : "tag";
+			(terms[termType] ??= []).push({ slug: row.slug, label: row.label });
 			termsByEntry.set(row.entryId, terms);
 		}
 		return {
@@ -916,7 +972,13 @@ export async function handleShopProductList(db: Kysely<Database>): Promise<ApiRe
 	} catch {
 		return {
 			success: false,
-			error: { code: "SHOP_PRODUCT_LIST_ERROR", message: "Failed to list shop products" },
+			error: {
+				code: taxonomyPrefix === "product" ? "SHOP_PRODUCT_LIST_ERROR" : "SHOP_SERVICE_LIST_ERROR",
+				message:
+					taxonomyPrefix === "product"
+						? "Failed to list shop products"
+						: "Failed to list shop services",
+			},
 		};
 	}
 }
@@ -991,7 +1053,7 @@ export async function handleShopProductGet(
 	id: string,
 ): Promise<ApiResult<unknown>> {
 	try {
-		const product = await new ContentRepository(db).findByIdOrSlug(SHOP_COLLECTION, id);
+		const product = await new ContentRepository(db).findByIdOrSlug(PRODUCTS_COLLECTION, id);
 		if (!product || product.status !== "published" || !isProductAvailable(product.data)) {
 			return {
 				success: false,
@@ -1007,6 +1069,27 @@ export async function handleShopProductGet(
 	}
 }
 
+export async function handleShopServiceGet(
+	db: Kysely<Database>,
+	id: string,
+): Promise<ApiResult<unknown>> {
+	try {
+		const service = await new ContentRepository(db).findByIdOrSlug(SERVICES_COLLECTION, id);
+		if (!service || service.status !== "published" || !isProductAvailable(service.data)) {
+			return {
+				success: false,
+				error: { code: "SHOP_SERVICE_NOT_FOUND", message: "Service not found" },
+			};
+		}
+		return { success: true, data: service };
+	} catch {
+		return {
+			success: false,
+			error: { code: "SHOP_SERVICE_GET_ERROR", message: "Failed to get shop service" },
+		};
+	}
+}
+
 export async function handleShopOrderCreate(
 	db: Kysely<Database>,
 	input: ShopOrderInput,
@@ -1015,17 +1098,6 @@ export async function handleShopOrderCreate(
 		const settingsResult = await handleShopSettingsGet(db);
 		if (!settingsResult.success) return settingsResult;
 		const settings = settingsResult.data;
-		const zone = await db
-			.selectFrom("_emdash_shop_delivery_zones")
-			.selectAll()
-			.where("id", "=", input.deliveryZoneId)
-			.where("active", "=", 1)
-			.executeTakeFirst();
-		if (!zone)
-			return {
-				success: false,
-				error: { code: "SHOP_DELIVERY_ZONE_NOT_FOUND", message: "Delivery zone not found" },
-			};
 		if (input.items.length === 0)
 			return {
 				success: false,
@@ -1035,19 +1107,30 @@ export async function handleShopOrderCreate(
 		const products = new ContentRepository(db);
 		const requestedQuantities = new Map<
 			string,
-			{ productId: string; variantId?: string; quantity: number }
+			{
+				productId: string;
+				collection: ShopCollection;
+				variantId?: string;
+				quantity: number;
+				booking?: ShopOrderInput["items"][number]["booking"];
+			}
 		>();
 		for (const inputItem of input.items) {
-			const key = `${inputItem.productId}:${inputItem.variantId ?? ""}`;
+			const collection =
+				inputItem.collection ?? (inputItem.booking ? SERVICES_COLLECTION : PRODUCTS_COLLECTION);
+			const key = `${collection}:${inputItem.productId}:${inputItem.variantId ?? ""}:${inputItem.booking?.reservationId ?? ""}`;
 			const current = requestedQuantities.get(key);
 			requestedQuantities.set(key, {
 				productId: inputItem.productId,
+				collection,
 				variantId: inputItem.variantId,
 				quantity: (current?.quantity ?? 0) + inputItem.quantity,
+				booking: inputItem.booking,
 			});
 		}
 		const items = [] as Array<{
 			productId: string;
+			collection: ShopCollection;
 			productName: string;
 			unitPrice: number;
 			quantity: number;
@@ -1055,13 +1138,57 @@ export async function handleShopOrderCreate(
 			subtotal: number;
 			variantId: string | null;
 			variantName: string | null;
+			booking?: ShopOrderInput["items"][number]["booking"];
 		}>;
 		for (const requested of requestedQuantities.values()) {
-			const product = await products.findByIdOrSlug(SHOP_COLLECTION, requested.productId);
+			const product = await products.findByIdOrSlug(requested.collection, requested.productId);
 			if (!product || product.status !== "published" || !isProductAvailable(product.data)) {
 				return {
 					success: false,
-					error: { code: "SHOP_PRODUCT_UNAVAILABLE", message: "Product is not available" },
+					error: {
+						code:
+							requested.collection === SERVICES_COLLECTION
+								? "SHOP_SERVICE_UNAVAILABLE"
+								: "SHOP_PRODUCT_UNAVAILABLE",
+						message:
+							requested.collection === SERVICES_COLLECTION
+								? "Service is not available"
+								: "Product is not available",
+					},
+				};
+			}
+			if (requested.collection === PRODUCTS_COLLECTION && isService(product.data)) {
+				return {
+					success: false,
+					error: {
+						code: "SHOP_SERVICE_COLLECTION_REQUIRED",
+						message: "Services must use the services collection",
+					},
+				};
+			}
+			if (requested.collection === SERVICES_COLLECTION && !isService(product.data)) {
+				return {
+					success: false,
+					error: {
+						code: "SHOP_PRODUCT_COLLECTION_REQUIRED",
+						message: "Products must use the products collection",
+					},
+				};
+			}
+			const bookableService = isBookableService(product.data);
+			if (bookableService && !requested.booking) {
+				return {
+					success: false,
+					error: {
+						code: "SHOP_BOOKING_REQUIRED",
+						message: "A booking is required for this service",
+					},
+				};
+			}
+			if (!bookableService && requested.booking) {
+				return {
+					success: false,
+					error: { code: "SHOP_BOOKING_INVALID", message: "Booking is only valid for services" },
 				};
 			}
 			const variants = productVariants(product.data);
@@ -1085,7 +1212,7 @@ export async function handleShopOrderCreate(
 					error: { code: "SHOP_PRODUCT_INVALID", message: "Product price or quantity is invalid" },
 				};
 			}
-			if (typeof stock === "number" && requested.quantity > stock) {
+			if (!isBookableService && typeof stock === "number" && requested.quantity > stock) {
 				return {
 					success: false,
 					error: {
@@ -1098,6 +1225,7 @@ export async function handleShopOrderCreate(
 				typeof product.data.name === "string" ? product.data.name : product.slug || product.id;
 			items.push({
 				productId: product.id,
+				collection: requested.collection,
 				productName: variant?.label ? `${productName} (${variant.label})` : productName,
 				unitPrice: price.price,
 				quantity: requested.quantity,
@@ -1105,7 +1233,23 @@ export async function handleShopOrderCreate(
 				subtotal: price.price * requested.quantity,
 				variantId: requested.variantId ?? null,
 				variantName: null,
+				booking: requested.booking,
 			});
+		}
+		const hasPhysicalItems = items.some((item) => item.collection === PRODUCTS_COLLECTION);
+		const zone = input.deliveryZoneId
+			? await db
+					.selectFrom("_emdash_shop_delivery_zones")
+					.selectAll()
+					.where("id", "=", input.deliveryZoneId)
+					.where("active", "=", 1)
+					.executeTakeFirst()
+			: undefined;
+		if (hasPhysicalItems && !zone) {
+			return {
+				success: false,
+				error: { code: "SHOP_DELIVERY_ZONE_NOT_FOUND", message: "Delivery zone not found" },
+			};
 		}
 
 		const subtotal = items.reduce((sum, item) => sum + item.subtotal, 0);
@@ -1145,16 +1289,16 @@ export async function handleShopOrderCreate(
 			settings.freeDeliveryMinSubtotal >= 0 &&
 			subtotal >= settings.freeDeliveryMinSubtotal
 				? 0
-				: zone.delivery_cost;
+				: (zone?.delivery_cost ?? 0);
 		const orderNumber = makeOrderNumber();
 		const orderId = ulid();
 		const customerId = ulid();
 		const customerSnapshot = { ...input.customer };
 		const deliverySnapshot = {
-			zoneId: zone.id,
-			zone: zone.name,
-			address: input.customer.address,
-			district: input.customer.district,
+			zoneId: zone?.id ?? null,
+			zone: zone?.name ?? null,
+			address: input.customer.address ?? null,
+			district: input.customer.district ?? null,
 			reference: input.customer.reference ?? null,
 			phone: input.customer.phone,
 			recipientName: input.recipientName ?? input.customer.name,
@@ -1178,9 +1322,10 @@ export async function handleShopOrderCreate(
 				if (Number(updatedCoupon.numUpdatedRows) !== 1) throw new ShopCouponError();
 			}
 			for (const item of items) {
+				if (item.collection !== PRODUCTS_COLLECTION) continue;
 				if (item.variantId) {
 					const currentProduct = await new ContentRepository(trx).findById(
-						SHOP_COLLECTION,
+						PRODUCTS_COLLECTION,
 						item.productId,
 					);
 					const currentVariants = currentProduct ? productVariants(currentProduct.data) : [];
@@ -1198,7 +1343,7 @@ export async function handleShopOrderCreate(
 								? { ...variant, stock: currentStock - item.quantity }
 								: variant,
 						);
-						await new ContentRepository(trx).update(SHOP_COLLECTION, item.productId, {
+						await new ContentRepository(trx).update(PRODUCTS_COLLECTION, item.productId, {
 							data: { ...currentProduct.data, variants: updatedVariants },
 						});
 						continue;
@@ -1248,23 +1393,40 @@ export async function handleShopOrderCreate(
 					notes: input.notes ?? null,
 				})
 				.execute();
-			await trx
-				.insertInto("_emdash_shop_order_items")
-				.values(
-					items.map((item) => ({
-						id: ulid(),
+			const orderItemRows = items.map((item) => ({
+				id: ulid(),
+				order_id: orderId,
+				product_id: item.productId,
+				collection: item.collection,
+				variant_id: item.variantId,
+				product_name: item.productName,
+				variant_name: item.variantName,
+				unit_price: item.unitPrice,
+				quantity: item.quantity,
+				discount: item.discount,
+				subtotal: item.subtotal,
+			}));
+			await trx.insertInto("_emdash_shop_order_items").values(orderItemRows).execute();
+			for (const [index, item] of items.entries()) {
+				if (item.collection !== SERVICES_COLLECTION || !item.booking) continue;
+				const updatedReservation = await trx
+					.updateTable("_emdash_shop_reservations")
+					.set({
 						order_id: orderId,
-						product_id: item.productId,
-						variant_id: item.variantId,
-						product_name: item.productName,
-						variant_name: item.variantName,
-						unit_price: item.unitPrice,
-						quantity: item.quantity,
-						discount: item.discount,
-						subtotal: item.subtotal,
-					})),
-				)
-				.execute();
+						order_item_id: orderItemRows[index]?.id ?? null,
+						status: "pending_payment",
+						expires_at: null,
+						updated_at: new Date().toISOString(),
+					})
+					.where("id", "=", item.booking.reservationId)
+					.where("service_id", "=", item.productId)
+					.where("status", "=", "held")
+					.where("starts_at", "=", item.booking.startsAt)
+					.where("ends_at", "=", item.booking.endsAt)
+					.executeTakeFirst();
+				if (Number(updatedReservation.numUpdatedRows ?? 0) !== 1)
+					throw new Error("BOOKING_UNAVAILABLE");
+			}
 			await trx
 				.insertInto("_emdash_shop_payments")
 				.values({
@@ -1274,26 +1436,28 @@ export async function handleShopOrderCreate(
 					amount: subtotal - couponDiscountAmount + deliveryCost,
 				})
 				.execute();
-			await trx
-				.insertInto("_emdash_shop_deliveries")
-				.values({
-					id: ulid(),
-					order_id: orderId,
-					zone: zone.name,
-					address: input.customer.address,
-					district: input.customer.district,
-					reference: input.customer.reference ?? null,
-					phone: input.customer.phone,
-					delivery_cost: deliveryCost,
-					scheduled_date: input.deliveryDate ?? null,
-					scheduled_time: input.deliveryTime ?? null,
-					recipient_name: input.recipientName ?? input.customer.name,
-					recipient_phone: input.recipientPhone ?? input.customer.phone,
-					instructions: input.deliveryInstructions ?? null,
-				})
-				.execute();
+			if (zone)
+				await trx
+					.insertInto("_emdash_shop_deliveries")
+					.values({
+						id: ulid(),
+						order_id: orderId,
+						zone: zone.name,
+						address: input.customer.address ?? "",
+						district: input.customer.district ?? "",
+						reference: input.customer.reference ?? null,
+						phone: input.customer.phone,
+						delivery_cost: deliveryCost,
+						scheduled_date: input.deliveryDate ?? null,
+						scheduled_time: input.deliveryTime ?? null,
+						recipient_name: input.recipientName ?? input.customer.name,
+						recipient_phone: input.recipientPhone ?? input.customer.phone,
+						instructions: input.deliveryInstructions ?? null,
+					})
+					.execute();
 		});
-		invalidateCollectionCache(SHOP_COLLECTION);
+		invalidateCollectionCache(PRODUCTS_COLLECTION);
+		invalidateCollectionCache(SERVICES_COLLECTION);
 
 		return {
 			success: true,
@@ -1545,6 +1709,7 @@ export async function handleShopOrderGet(
 			items: items.map((item) => ({
 				id: item.id,
 				productId: item.product_id,
+				collection: normalizeShopCollection(item.collection),
 				variantId: item.variant_id,
 				productName: item.product_name,
 				variantName: item.variant_name,
@@ -1592,7 +1757,7 @@ export async function handleShopOrderGetByNumber(
 		const repository = new ContentRepository(db);
 		const publicItems = await Promise.all(
 			detail.data.items.map(async (item) => {
-				const product = await repository.findById(SHOP_COLLECTION, item.productId);
+				const product = await repository.findById(item.collection, item.productId);
 				const variants =
 					product && Array.isArray(product.data.variants) ? product.data.variants : [];
 				const selectedVariant = variants.find(
@@ -1671,6 +1836,12 @@ export async function handleShopPaymentConfirm(
 			.updateTable("_emdash_shop_payments")
 			.set({ status: "confirmed", confirmed_by: confirmedBy, confirmed_at: now })
 			.where("order_id", "=", orderId)
+			.execute();
+		await db
+			.updateTable("_emdash_shop_reservations")
+			.set({ status: "confirmed", updated_at: now })
+			.where("order_id", "=", orderId)
+			.where("status", "=", "pending_payment")
 			.execute();
 		return { success: true, data: null };
 	} catch {

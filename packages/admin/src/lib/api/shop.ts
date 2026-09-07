@@ -14,6 +14,7 @@ export interface ShopSettings {
 	minimumSubtotal: number;
 	freeDeliveryMinSubtotal: number | null;
 	whatsappTemplates: Record<string, string>;
+	bookingEnabled: boolean;
 	paymentGatewayEnabled: boolean;
 	paymentGatewayProvider: string | null;
 	paymentGatewayEnvironment: "sandbox" | "production";
@@ -36,6 +37,31 @@ export interface ShopDeliveryZone {
 	deliveryCost: number;
 	estimatedTime: string | null;
 	active: boolean;
+}
+
+export interface ShopBookingHour {
+	id: string;
+	serviceId: string;
+	weekday: number;
+	startsAt: string;
+	endsAt: string;
+	validFrom: string | null;
+	validUntil: string | null;
+	active: boolean;
+}
+
+export interface ShopReservationSummary {
+	id: string;
+	serviceId: string;
+	orderId: string | null;
+	orderItemId: string | null;
+	startsAt: string;
+	endsAt: string;
+	status: string;
+	expiresAt: string | null;
+	customerName: string | null;
+	serviceName: string | null;
+	createdAt: string | null;
 }
 
 export interface ShopCoupon {
@@ -126,6 +152,27 @@ export function fetchShopSettings(): Promise<ShopSettings> {
 
 export function updateShopSettings(input: ShopSettingsUpdateInput): Promise<ShopSettings> {
 	return mutate("/admin/shop/settings", "PUT", input);
+}
+
+export function fetchShopBookingHours(serviceId: string): Promise<ShopBookingHour[]> {
+	return get(`/admin/shop/booking-hours?serviceId=${encodeURIComponent(serviceId)}`);
+}
+
+export function updateShopBookingHours(
+	serviceId: string,
+	hours: Array<{ weekday: number; startsAt: string; endsAt: string }>,
+	validFrom?: string | null,
+	validUntil?: string | null,
+): Promise<ShopBookingHour[]> {
+	return mutate("/admin/shop/booking-hours", "PUT", { serviceId, hours, validFrom, validUntil });
+}
+
+export function fetchShopReservations(status = "all"): Promise<ShopReservationSummary[]> {
+	return get(`/admin/shop/reservations?status=${encodeURIComponent(status)}`);
+}
+
+export function updateShopReservation(id: string, status: string): Promise<ShopReservationSummary> {
+	return mutate(`/admin/shop/reservations/${encodeURIComponent(id)}`, "PATCH", { status });
 }
 
 export function fetchShopDeliveryZones(): Promise<ShopDeliveryZone[]> {

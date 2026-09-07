@@ -1,0 +1,9 @@
+---
+const slug = Astro.params.slug;
+
+if (!slug) {
+	return Astro.redirect("/404");
+}
+
+return Astro.rewrite(new URL(`/shop/products/${encodeURIComponent(slug)}`, Astro.url));
+---

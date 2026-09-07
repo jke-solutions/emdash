@@ -91,6 +91,35 @@
 					"searchable": true
 				},
 				{
+					"slug": "item_type",
+					"label": "Tipo de elemento",
+					"type": "select",
+					"validation": { "options": ["product", "service"] }
+				},
+				{
+					"slug": "service_mode",
+					"label": "Modalidad del servicio",
+					"type": "select",
+					"validation": { "options": ["in_person", "online"] }
+				},
+				{
+					"slug": "requires_booking",
+					"label": "Requiere reserva",
+					"type": "boolean"
+				},
+				{
+					"slug": "duration_minutes",
+					"label": "Duración en minutos",
+					"type": "integer",
+					"validation": { "min": 1, "max": 1440 }
+				},
+				{
+					"slug": "service_capacity",
+					"label": "Cupos por horario",
+					"type": "integer",
+					"validation": { "min": 1, "max": 1000 }
+				},
+				{
 					"slug": "featured_image",
 					"label": "Imagen del producto",
 					"type": "image"

@@ -60,6 +60,8 @@ export const createTermBody = z
 		label: z.string().min(1),
 		parentId: z.string().nullish(),
 		description: z.string().optional(),
+		imageId: z.string().min(1).nullable().optional(),
+		visibleOnHome: z.boolean().optional(),
 		locale: localeCode.optional(),
 		translationOf: z.string().min(1).optional(),
 	})
@@ -71,6 +73,8 @@ export const updateTermBody = z
 		label: z.string().min(1).optional(),
 		parentId: z.string().nullish(),
 		description: z.string().optional(),
+		imageId: z.string().min(1).nullable().optional(),
+		visibleOnHome: z.boolean().optional(),
 	})
 	.meta({ id: "UpdateTermBody" });
 
@@ -109,6 +113,10 @@ export const termListQuery = z
 				description:
 					"Resolve one term per translation group, preferring the requested locale and then the configured default locale.",
 			}),
+		visibleOnHome: z
+			.enum(["true", "false"])
+			.transform((value) => value === "true")
+			.optional(),
 	})
 	.meta({ id: "TermListQuery" });
 
@@ -159,6 +167,8 @@ export const termSchema = z
 		label: z.string(),
 		parentId: z.string().nullable(),
 		description: z.string().optional(),
+		imageId: z.string().optional(),
+		visibleOnHome: z.boolean().optional(),
 		locale: z.string(),
 		translationGroup: z.string().nullable(),
 	})
@@ -186,6 +196,8 @@ export const termWithCountSchema: z.ZodType = z
 		label: z.string(),
 		parentId: z.string().nullable(),
 		description: z.string().optional(),
+		imageId: z.string().optional(),
+		visibleOnHome: z.boolean().optional(),
 		count: z.number().int().optional(),
 		children: z.array(z.lazy(() => termWithCountSchema)),
 		locale: z.string(),

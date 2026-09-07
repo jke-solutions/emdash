@@ -34,6 +34,10 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 <script is:inline>
 	const root = document.currentScript?.previousElementSibling;
 	const productName = (product) => typeof product.data?.name === "string" ? product.data.name : product.data?.title ?? product.slug ?? product.id;
+	const isServiceEntry = (entry) => {
+		const itemType = entry?.product?.data?.item_type ?? entry?.product?.data?.itemType;
+		return Boolean(entry?.booking || entry?.product?.isBookableService) || (typeof itemType === "string" && itemType.toLowerCase() === "service");
+	};
 	const productTerms = (product, taxonomy) => Array.isArray(product.data?.terms?.[taxonomy]) ? product.data.terms[taxonomy] : [];
 	const productPrice = (product, variant = null) => {
 		if (typeof variant?.price === "number" && variant.price >= 0) return variant.price;
@@ -71,17 +75,23 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 		let activeTag = "";
 		const cartStorageKey = "emdash-shop-cart";
 		const cart = new Map();
+		let cartWasNormalized = false;
 		try {
 			const storedCart = JSON.parse(localStorage.getItem(cartStorageKey) ?? "[]");
 			if (Array.isArray(storedCart)) {
 				for (const entry of storedCart) {
-					if (entry?.key && entry.product && Number.isInteger(entry.quantity) && entry.quantity > 0) cart.set(entry.key, entry);
+					if (entry?.key && entry.product && Number.isInteger(entry.quantity) && entry.quantity > 0) {
+						const normalizedEntry = isServiceEntry(entry) ? { ...entry, quantity: 1 } : entry;
+						cartWasNormalized ||= normalizedEntry.quantity !== entry.quantity;
+						cart.set(entry.key, normalizedEntry);
+					}
 				}
 			}
 		} catch {
 			// Ignore invalid local cart data and start with an empty cart.
 		}
 		const saveCart = () => localStorage.setItem(cartStorageKey, JSON.stringify(Array.from(cart.entries(), ([key, entry]) => ({ ...entry, key }))));
+		if (cartWasNormalized) saveCart();
 		let settings = { currency: "PEN", currencySymbol: "S/", paymentMethods: ["whatsapp"] };
 
 		const json = async (path, options) => {
@@ -117,6 +127,8 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 			cartElement.replaceChildren();
 			let total = 0;
 			for (const entry of cart.values()) {
+				const serviceEntry = isServiceEntry(entry);
+				if (serviceEntry) entry.quantity = 1;
 				const row = document.createElement("div");
 				row.className = "emdash-shop__cart-row";
 				const variant = productVariants(entry.product).find((item) => (item.id ?? item.label) === entry.variantId);
@@ -127,7 +139,7 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 				const decrease = document.createElement("button");
 				decrease.type = "button";
 				decrease.textContent = "−";
-					decrease.setAttribute("aria-label", "Disminuir cantidad");
+				decrease.setAttribute("aria-label", "Disminuir cantidad");
 				decrease.addEventListener("click", () => {
 					if (entry.quantity <= 1) cart.delete(entry.key);
 					else entry.quantity -= 1;
@@ -148,7 +160,20 @@ const { apiBase = "/_emdash/api/shop" } = Astro.props;
 					saveCart();
 					renderCart();
 				});
-				controls.append(decrease, quantity, increase);
+				if (serviceEntry) {
+					decrease.hidden = true;
+					increase.hidden = true;
+				}
+				const remove = document.createElement("button");
+				remove.type = "button";
+				remove.textContent = "Eliminar";
+				remove.setAttribute("aria-label", `Eliminar ${productName(entry.product)} del carrito`);
+				remove.addEventListener("click", () => {
+					cart.delete(entry.key);
+					saveCart();
+					renderCart();
+				});
+				controls.append(decrease, quantity, increase, remove);
 				const subtotal = document.createElement("span");
 				subtotal.textContent = money(productPrice(entry.product, variant) * entry.quantity);
 				row.append(label, controls, subtotal);

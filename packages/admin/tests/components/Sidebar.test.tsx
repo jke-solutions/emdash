@@ -78,6 +78,45 @@ describe("getSidebarTaxonomies", () => {
 		expect(getSidebarTaxonomies(taxonomies, "it", "fr")[0]?.label).toBe("Types de plats");
 		expect(getSidebarTaxonomies(taxonomies, "it")[0]?.label).toBe("Gänge");
 	});
+
+	it("deduplicates definitions with different translation groups by taxonomy name", () => {
+		expect(
+			getSidebarTaxonomies(
+				[
+					{
+						id: "category-en",
+						name: "category",
+						label: "Categories",
+						locale: "en",
+						translationGroup: "legacy-category",
+					},
+					{
+						id: "category-es",
+						name: "category",
+						label: "Categorías",
+						locale: "es",
+						translationGroup: "seed-category",
+					},
+					{
+						id: "tag-en",
+						name: "tag",
+						label: "Tags",
+						locale: "en",
+						translationGroup: "legacy-tag",
+					},
+					{
+						id: "tag-es",
+						name: "tag",
+						label: "Etiquetas",
+						locale: "es",
+						translationGroup: "seed-tag",
+					},
+				],
+				"es",
+				"en",
+			).map((taxonomy) => taxonomy.label),
+		).toEqual(["Categorías", "Etiquetas"]);
+	});
 });
 
 describe("resolveItemPath", () => {
