@@ -100,7 +100,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr ""
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1551
+#: packages/admin/src/router.tsx:1568
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, zero {لم تُحدَّث تعليقات} one {تعليق واحد محدَّث} two {تعليقان محدَّثان} few {# تعليقات محدَّثة} many {# تعليقًا محدَّثًا} other {# تعليق محدَّث}}"
 
@@ -226,7 +226,7 @@ msgid "{0} banner"
 msgstr ""
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:228
+#: packages/admin/src/components/TaxonomyManager.tsx:229
 msgid "{0} can't be moved here — its parent has no translation in this locale, so this list isn't the group it belongs to."
 msgstr ""
 
@@ -277,17 +277,17 @@ msgid "{0} items will be imported"
 msgstr "سيتم استيراد {0} عنصر"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:562
+#: packages/admin/src/router.tsx:563
 msgid "{0} of {total} could not be deleted"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:518
+#: packages/admin/src/router.tsx:519
 msgid "{0} of {total} could not be published"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:541
+#: packages/admin/src/router.tsx:542
 msgid "{0} of {total} could not be updated"
 msgstr ""
 
@@ -363,7 +363,7 @@ msgstr "{current} من {total}"
 
 #. placeholder {0}: hasMore ? "+" : ""
 #. placeholder {1}: hasMore ? "+" : ""
-#: packages/admin/src/components/ContentList.tsx:1088
+#: packages/admin/src/components/ContentList.tsx:1101
 msgid "{filteredCount, plural, one {#{0} item} other {#{1} items}}"
 msgstr "{filteredCount, plural, zero {لا عناصر} one {عنصر واحد} two {عنصران} few {#{0} عناصر} many {#{1} عنصرًا} other {#{1} عنصر}}"
 
@@ -375,7 +375,7 @@ msgstr "{label} — بدون ترجمة"
 msgid "{label} — view translation"
 msgstr "{label} — عرض الترجمة"
 
-#: packages/admin/src/components/ContentList.tsx:1077
+#: packages/admin/src/components/ContentList.tsx:1090
 msgid "{matchCount, plural, one {# item matching \"{searchQuery}\"} other {# items matching \"{searchQuery}\"}}"
 msgstr ""
 
@@ -425,15 +425,15 @@ msgstr ""
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:474
+#: packages/admin/src/components/ContentList.tsx:486
 msgid "{selectedCount, plural, one {# selected} other {# selected}}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:516
+#: packages/admin/src/components/ContentList.tsx:528
 msgid "{selectedCount, plural, one {Move # item to trash? You can restore it later.} other {Move # items to trash? You can restore them later.}}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1083
+#: packages/admin/src/components/ContentList.tsx:1096
 msgid "{total, plural, one {# item} other {# items}}"
 msgstr "{total, plural, zero {لا عناصر} one {عنصر واحد} two {عنصران} few {# عناصر} many {# عنصرًا} other {# عنصر}}"
 
@@ -628,7 +628,7 @@ msgstr "قبول الدعوة"
 msgid "Access denied"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1571
+#: packages/admin/src/router.tsx:1588
 msgid "Access Denied"
 msgstr "الوصول مرفوض"
 
@@ -658,25 +658,26 @@ msgid "ACF Fields"
 msgstr ""
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:300
-#: packages/admin/src/components/ContentList.tsx:617
-#: packages/admin/src/components/ContentList.tsx:743
+#: packages/admin/src/components/ContentList.tsx:629
+#: packages/admin/src/components/ContentList.tsx:756
 #: packages/admin/src/components/ContentTypeList.tsx:190
 #: packages/admin/src/components/Promotions.tsx:122
-#: packages/admin/src/components/TaxonomyManager.tsx:1050
+#: packages/admin/src/components/TaxonomyManager.tsx:1070
 #: packages/admin/src/routes/byline-schema.tsx:249
-#: packages/admin/src/routes/shop.tsx:198
-#: packages/admin/src/routes/shop.tsx:503
-#: packages/admin/src/routes/shop.tsx:1115
-#: packages/admin/src/routes/shop.tsx:1334
-#: packages/admin/src/routes/shop.tsx:1476
+#: packages/admin/src/routes/shop.tsx:211
+#: packages/admin/src/routes/shop.tsx:450
+#: packages/admin/src/routes/shop.tsx:771
+#: packages/admin/src/routes/shop.tsx:1383
+#: packages/admin/src/routes/shop.tsx:1602
+#: packages/admin/src/routes/shop.tsx:1744
 msgid "Actions"
 msgstr "الإجراءات"
 
 #: packages/admin/src/components/Promotions.tsx:176
 #: packages/admin/src/components/users/UserDetail.tsx:206
 #: packages/admin/src/components/users/UserList.tsx:217
-#: packages/admin/src/routes/shop.tsx:1206
-#: packages/admin/src/routes/shop.tsx:1250
+#: packages/admin/src/routes/shop.tsx:1474
+#: packages/admin/src/routes/shop.tsx:1518
 msgid "Active"
 msgstr "نشط"
 
@@ -690,8 +691,8 @@ msgstr "إضافة"
 #. placeholder {0}: field.item_label
 #. placeholder {0}: taxonomyDef.labelSingular || t`Term`
 #: packages/admin/src/components/PortableTextEditor.tsx:2124
-#: packages/admin/src/components/TaxonomyManager.tsx:540
-#: packages/admin/src/components/TaxonomyManager.tsx:1041
+#: packages/admin/src/components/TaxonomyManager.tsx:549
+#: packages/admin/src/components/TaxonomyManager.tsx:1061
 msgid "Add {0}"
 msgstr "إضافة {0}"
 
@@ -703,7 +704,7 @@ msgstr "إضافة {label}"
 msgid "Add a new passkey"
 msgstr "إضافة مفتاح مرور جديد"
 
-#: packages/admin/src/routes/shop.tsx:232
+#: packages/admin/src/routes/shop.tsx:284
 msgid "Add a start and end time for each selected day."
 msgstr ""
 
@@ -789,7 +790,7 @@ msgstr "أضف روابط لتصميم قائمة التنقل الخاصة بك
 msgid "Add MIME type or extension"
 msgstr "إضافة نوع MIME أو امتداد"
 
-#: packages/admin/src/components/ContentList.tsx:408
+#: packages/admin/src/components/ContentList.tsx:410
 msgid "Add New"
 msgstr "إضافة جديد"
 
@@ -822,7 +823,7 @@ msgstr "إضافة صف قبله"
 msgid "Add SEO metadata fields (title, description, image) and include in sitemap"
 msgstr "أضف حقول بيانات تحسين محركات البحث (العنوان والوصف والصورة) وضمّنها في خريطة الموقع"
 
-#: packages/admin/src/routes/shop.tsx:169
+#: packages/admin/src/routes/shop.tsx:176
 msgid "Add service"
 msgstr ""
 
@@ -851,7 +852,8 @@ msgstr "جاري الإضافة..."
 msgid "Additional data to import."
 msgstr "بيانات إضافية للاستيراد."
 
-#: packages/admin/src/routes/shop.tsx:1563
+#: packages/admin/src/routes/shop.tsx:606
+#: packages/admin/src/routes/shop.tsx:1831
 msgid "Address"
 msgstr ""
 
@@ -911,12 +913,12 @@ msgstr "محاذاة لليمين"
 msgid "Alignment"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:435
+#: packages/admin/src/components/ContentList.tsx:447
 msgid "All"
 msgstr "الكل"
 
-#: packages/admin/src/components/ContentList.tsx:891
-#: packages/admin/src/components/ContentList.tsx:895
+#: packages/admin/src/components/ContentList.tsx:904
+#: packages/admin/src/components/ContentList.tsx:908
 msgid "All authors"
 msgstr ""
 
@@ -937,7 +939,7 @@ msgstr "جميع المجموعات"
 msgid "All comments require approval"
 msgstr "جميع التعليقات تستلزم الموافقة"
 
-#: packages/admin/src/routes/shop.tsx:1445
+#: packages/admin/src/routes/shop.tsx:1713
 msgid "All districts"
 msgstr ""
 
@@ -963,10 +965,10 @@ msgstr "جميع الأدوار"
 msgid "All Sources"
 msgstr "جميع المصادر"
 
-#: packages/admin/src/components/ContentList.tsx:831
+#: packages/admin/src/components/ContentList.tsx:844
 #: packages/admin/src/components/Redirects.tsx:426
-#: packages/admin/src/routes/shop.tsx:300
-#: packages/admin/src/routes/shop.tsx:1310
+#: packages/admin/src/routes/shop.tsx:426
+#: packages/admin/src/routes/shop.tsx:1578
 msgid "All statuses"
 msgstr "جميع الحالات"
 
@@ -1030,7 +1032,7 @@ msgstr "تم تعيين النص البديل"
 msgid "Alternatively, you can export from WordPress (Tools → Export) and upload the file."
 msgstr "كبديل عن ذلك، يمكنك التصدير من WordPress (الأدوات > التصدير) ورفع الملف."
 
-#: packages/admin/src/routes/shop.tsx:586
+#: packages/admin/src/routes/shop.tsx:854
 msgid "Amount"
 msgstr ""
 
@@ -1064,24 +1066,24 @@ msgstr ""
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:450
-#: packages/admin/src/router.tsx:465
-#: packages/admin/src/router.tsx:479
-#: packages/admin/src/router.tsx:493
-#: packages/admin/src/router.tsx:725
-#: packages/admin/src/router.tsx:1016
-#: packages/admin/src/router.tsx:1076
-#: packages/admin/src/router.tsx:1094
-#: packages/admin/src/router.tsx:1112
-#: packages/admin/src/router.tsx:1133
-#: packages/admin/src/router.tsx:1154
-#: packages/admin/src/router.tsx:1175
-#: packages/admin/src/router.tsx:1206
-#: packages/admin/src/router.tsx:1226
-#: packages/admin/src/router.tsx:1518
-#: packages/admin/src/router.tsx:1533
-#: packages/admin/src/router.tsx:1557
-#: packages/admin/src/router.tsx:2070
+#: packages/admin/src/router.tsx:451
+#: packages/admin/src/router.tsx:466
+#: packages/admin/src/router.tsx:480
+#: packages/admin/src/router.tsx:494
+#: packages/admin/src/router.tsx:733
+#: packages/admin/src/router.tsx:1029
+#: packages/admin/src/router.tsx:1089
+#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1125
+#: packages/admin/src/router.tsx:1146
+#: packages/admin/src/router.tsx:1167
+#: packages/admin/src/router.tsx:1188
+#: packages/admin/src/router.tsx:1219
+#: packages/admin/src/router.tsx:1239
+#: packages/admin/src/router.tsx:1535
+#: packages/admin/src/router.tsx:1550
+#: packages/admin/src/router.tsx:1574
+#: packages/admin/src/router.tsx:2087
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1105,7 +1107,7 @@ msgstr "جاري تحليل ملف التصدير..."
 msgid "Analyzing WordPress site..."
 msgstr "جاري تحليل موقع WordPress..."
 
-#: packages/admin/src/routes/shop.tsx:1455
+#: packages/admin/src/routes/shop.tsx:1723
 msgid "Any date"
 msgstr ""
 
@@ -1160,7 +1162,7 @@ msgstr "موافق عليه"
 msgid "Arbitrary JSON data"
 msgstr "بيانات JSON غير مقيدة"
 
-#: packages/admin/src/components/ContentList.tsx:835
+#: packages/admin/src/components/ContentList.tsx:848
 #: packages/admin/src/components/ContentStatusBadge.tsx:65
 msgid "Archived"
 msgstr ""
@@ -1201,7 +1203,7 @@ msgstr ""
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "قم بتعيين مؤلفي WordPress إلى مستخدمي EmDash. سيتم نسب المنشورات إلى المستخدم المحدد."
 
-#: packages/admin/src/routes/shop.tsx:1792
+#: packages/admin/src/routes/shop.tsx:2060
 msgid "Assigned"
 msgstr ""
 
@@ -1285,7 +1287,7 @@ msgstr "تلقائي (تغيير جزء الرابط)"
 msgid "Auto-approve authenticated users"
 msgstr "الموافقة التلقائية على المستخدمين المسجّلين"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:586
+#: packages/admin/src/components/TaxonomyManager.tsx:595
 msgid "Auto-generated from name (you can edit)"
 msgstr "تم توليده تلقائيًا من الاسم (يمكنك التعديل)"
 
@@ -1299,11 +1301,11 @@ msgstr ""
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1075
+#: packages/admin/src/router.tsx:1088
 msgid "Autosave failed"
 msgstr "فشل الحفظ التلقائي"
 
-#: packages/admin/src/routes/shop.tsx:244
+#: packages/admin/src/routes/shop.tsx:309
 msgid "Available days"
 msgstr ""
 
@@ -1336,7 +1338,7 @@ msgstr ""
 msgid "Back"
 msgstr "رجوع"
 
-#: packages/admin/src/components/ContentEditor.tsx:671
+#: packages/admin/src/components/ContentEditor.tsx:677
 msgid "Back to {collectionLabel} list"
 msgstr "العودة إلى قائمة {collectionLabel}"
 
@@ -1406,7 +1408,7 @@ msgstr ""
 msgid "Backups to keep"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:983
+#: packages/admin/src/routes/shop.tsx:1251
 msgid "Bank transfer"
 msgstr ""
 
@@ -1436,11 +1438,11 @@ msgstr "إجراءات الكتلة - اسحب لإعادة الترتيب، ا�
 msgid "Bold"
 msgstr "عريض"
 
-#: packages/admin/src/routes/shop.tsx:152
+#: packages/admin/src/routes/shop.tsx:159
 msgid "Booking schedule saved"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:383
+#: packages/admin/src/routes/shop.tsx:651
 msgid "Bookings"
 msgstr ""
 
@@ -1481,7 +1483,7 @@ msgstr "تصفح المظاهر وقم بمعاينتها مع محتواك ال
 msgid "Bullet List"
 msgstr "قائمة نقطية"
 
-#: packages/admin/src/routes/shop.tsx:800
+#: packages/admin/src/routes/shop.tsx:1068
 msgid "Business hours"
 msgstr ""
 
@@ -1545,9 +1547,9 @@ msgstr "يمكنه عرض المحتوى"
 #: packages/admin/src/components/BylineFieldEditor.tsx:315
 #: packages/admin/src/components/CapabilityConsentDialog.tsx:192
 #: packages/admin/src/components/ConfirmDialog.tsx:57
-#: packages/admin/src/components/ContentList.tsx:525
-#: packages/admin/src/components/ContentList.tsx:1259
-#: packages/admin/src/components/ContentList.tsx:1438
+#: packages/admin/src/components/ContentList.tsx:537
+#: packages/admin/src/components/ContentList.tsx:1274
+#: packages/admin/src/components/ContentList.tsx:1453
 #: packages/admin/src/components/ContentPickerModal.tsx:240
 #: packages/admin/src/components/ContentSettingsPanel.tsx:99
 #: packages/admin/src/components/ContentSettingsPanel.tsx:583
@@ -1576,16 +1578,17 @@ msgstr "يمكنه عرض المحتوى"
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:207
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:234
 #: packages/admin/src/components/settings/SecuritySettings.tsx:166
-#: packages/admin/src/components/TaxonomyManager.tsx:369
-#: packages/admin/src/components/TaxonomyManager.tsx:656
-#: packages/admin/src/components/TaxonomyManager.tsx:870
+#: packages/admin/src/components/TaxonomyManager.tsx:370
+#: packages/admin/src/components/TaxonomyManager.tsx:676
+#: packages/admin/src/components/TaxonomyManager.tsx:890
 #: packages/admin/src/components/users/InviteUserModal.tsx:198
 #: packages/admin/src/components/Widgets.tsx:451
 #: packages/admin/src/components/WordPressImport.tsx:1917
-#: packages/admin/src/routes/shop.tsx:264
-#: packages/admin/src/routes/shop.tsx:613
-#: packages/admin/src/routes/shop.tsx:1218
-#: packages/admin/src/routes/shop.tsx:1816
+#: packages/admin/src/routes/shop.tsx:381
+#: packages/admin/src/routes/shop.tsx:508
+#: packages/admin/src/routes/shop.tsx:881
+#: packages/admin/src/routes/shop.tsx:1486
+#: packages/admin/src/routes/shop.tsx:2084
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -1597,20 +1600,20 @@ msgstr "إلغاء (Esc)"
 msgid "Cancel rename"
 msgstr "إلغاء إعادة التسمية"
 
-#: packages/admin/src/routes/shop.tsx:1807
+#: packages/admin/src/routes/shop.tsx:2075
 msgid "Cancellation reason"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:64
-#: packages/admin/src/routes/shop.tsx:304
-#: packages/admin/src/routes/shop.tsx:347
-#: packages/admin/src/routes/shop.tsx:1317
-#: packages/admin/src/routes/shop.tsx:1798
-#: packages/admin/src/routes/shop.tsx:1866
+#: packages/admin/src/routes/shop.tsx:65
+#: packages/admin/src/routes/shop.tsx:430
+#: packages/admin/src/routes/shop.tsx:478
+#: packages/admin/src/routes/shop.tsx:1585
+#: packages/admin/src/routes/shop.tsx:2066
+#: packages/admin/src/routes/shop.tsx:2134
 msgid "Cancelled"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:775
+#: packages/admin/src/routes/shop.tsx:1043
 msgid "Cancelled template"
 msgstr ""
 
@@ -1635,7 +1638,7 @@ msgstr "الإمكانيات"
 msgid "Capability consent"
 msgstr "الموافقة على الصلاحية"
 
-#: packages/admin/src/routes/shop.tsx:197
+#: packages/admin/src/routes/shop.tsx:210
 msgid "Capacity"
 msgstr ""
 
@@ -1650,13 +1653,13 @@ msgstr "التسمية التوضيحية"
 msgid "Captions / Subtitles"
 msgstr "التسميات التوضيحية / الترجمات"
 
-#: packages/admin/src/routes/shop.tsx:984
+#: packages/admin/src/routes/shop.tsx:1252
 msgid "Cash on delivery"
 msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
-#: packages/admin/src/router.tsx:615
+#: packages/admin/src/router.tsx:621
 msgid "Categories"
 msgstr "الفئات"
 
@@ -1675,7 +1678,7 @@ msgstr ""
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:76
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:107
-#: packages/admin/src/components/ContentEditor.tsx:1846
+#: packages/admin/src/components/ContentEditor.tsx:1866
 #: packages/admin/src/components/FieldEditor.tsx:428
 #: packages/admin/src/components/ImageFieldRenderer.tsx:208
 #: packages/admin/src/components/ImageFieldRenderer.tsx:237
@@ -1706,7 +1709,7 @@ msgstr "تغيير الشعار"
 msgid "Changelog"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1126
+#: packages/admin/src/router.tsx:1139
 msgid "Changes discarded"
 msgstr "تم تجاهل التغييرات"
 
@@ -1741,7 +1744,7 @@ msgstr "جاري التحقق من المصادقة..."
 msgid "Checking how many stored values reference \"{0}\"…"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1852
+#: packages/admin/src/routes/shop.tsx:2120
 msgid "Choose a template, review it in WhatsApp, and send it manually."
 msgstr ""
 
@@ -1749,7 +1752,7 @@ msgstr ""
 msgid "Choose how to sign in"
 msgstr "اختر طريقة تسجيل الدخول"
 
-#: packages/admin/src/routes/shop.tsx:242
+#: packages/admin/src/routes/shop.tsx:307
 msgid "Choose the date range in which this weekly schedule can be booked. Days outside the selected range or selected weekdays are unavailable."
 msgstr ""
 
@@ -1757,11 +1760,11 @@ msgstr ""
 msgid "Choose your preferred admin language"
 msgstr "إختر لغة التحكم المفضلة لديك"
 
-#: packages/admin/src/components/ContentList.tsx:551
+#: packages/admin/src/components/ContentList.tsx:563
 msgid "Clear"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:947
+#: packages/admin/src/components/ContentList.tsx:960
 #: packages/admin/src/components/MediaLibrary.tsx:518
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
@@ -1831,13 +1834,13 @@ msgstr "إضغط على الرابط في البريد الإلكتروني لت
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:328
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:334
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:338
-#: packages/admin/src/components/TaxonomyManager.tsx:346
-#: packages/admin/src/components/TaxonomyManager.tsx:549
-#: packages/admin/src/components/TaxonomyManager.tsx:555
-#: packages/admin/src/components/TaxonomyManager.tsx:559
-#: packages/admin/src/components/TaxonomyManager.tsx:789
-#: packages/admin/src/components/TaxonomyManager.tsx:795
-#: packages/admin/src/components/TaxonomyManager.tsx:799
+#: packages/admin/src/components/TaxonomyManager.tsx:347
+#: packages/admin/src/components/TaxonomyManager.tsx:558
+#: packages/admin/src/components/TaxonomyManager.tsx:564
+#: packages/admin/src/components/TaxonomyManager.tsx:568
+#: packages/admin/src/components/TaxonomyManager.tsx:809
+#: packages/admin/src/components/TaxonomyManager.tsx:815
+#: packages/admin/src/components/TaxonomyManager.tsx:819
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:298
 #: packages/admin/src/components/users/InviteUserModal.tsx:88
 #: packages/admin/src/components/users/InviteUserModal.tsx:94
@@ -1846,16 +1849,18 @@ msgstr "إضغط على الرابط في البريد الإلكتروني لت
 #: packages/admin/src/components/Widgets.tsx:413
 #: packages/admin/src/components/Widgets.tsx:419
 #: packages/admin/src/components/Widgets.tsx:423
-#: packages/admin/src/routes/shop.tsx:222
-#: packages/admin/src/routes/shop.tsx:222
-#: packages/admin/src/routes/shop.tsx:555
-#: packages/admin/src/routes/shop.tsx:557
-#: packages/admin/src/routes/shop.tsx:1144
-#: packages/admin/src/routes/shop.tsx:1146
-#: packages/admin/src/routes/shop.tsx:1355
-#: packages/admin/src/routes/shop.tsx:1357
-#: packages/admin/src/routes/shop.tsx:1504
-#: packages/admin/src/routes/shop.tsx:1506
+#: packages/admin/src/routes/shop.tsx:263
+#: packages/admin/src/routes/shop.tsx:265
+#: packages/admin/src/routes/shop.tsx:530
+#: packages/admin/src/routes/shop.tsx:532
+#: packages/admin/src/routes/shop.tsx:823
+#: packages/admin/src/routes/shop.tsx:825
+#: packages/admin/src/routes/shop.tsx:1412
+#: packages/admin/src/routes/shop.tsx:1414
+#: packages/admin/src/routes/shop.tsx:1623
+#: packages/admin/src/routes/shop.tsx:1625
+#: packages/admin/src/routes/shop.tsx:1772
+#: packages/admin/src/routes/shop.tsx:1774
 msgid "Close"
 msgstr "إغلاق"
 
@@ -1871,15 +1876,15 @@ msgstr ""
 msgid "Close panel"
 msgstr "إغلاق اللوحة"
 
-#: packages/admin/src/components/ContentEditor.tsx:1106
+#: packages/admin/src/components/ContentEditor.tsx:1112
 msgid "Close settings"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeList.tsx:356
 #: packages/admin/src/components/PortableTextEditor.tsx:3660
 #: packages/admin/src/components/Redirects.tsx:478
-#: packages/admin/src/routes/shop.tsx:500
-#: packages/admin/src/routes/shop.tsx:571
+#: packages/admin/src/routes/shop.tsx:768
+#: packages/admin/src/routes/shop.tsx:839
 msgid "Code"
 msgstr "كود"
 
@@ -1889,7 +1894,7 @@ msgstr "كود"
 msgid "Code Block"
 msgstr "كتلة كود"
 
-#: packages/admin/src/routes/shop.tsx:1839
+#: packages/admin/src/routes/shop.tsx:2107
 msgid "Code from delivery provider"
 msgstr ""
 
@@ -1913,7 +1918,7 @@ msgstr "مجموعة"
 msgid "Collection:"
 msgstr "المجموعة:"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:840
+#: packages/admin/src/components/TaxonomyManager.tsx:860
 msgid "Collections"
 msgstr "المجموعات"
 
@@ -1952,8 +1957,8 @@ msgstr "تعليقات مستخدمي نظام إدارة المحتوى الم�
 msgid "Complete signup"
 msgstr "إكمال التسجيل"
 
-#: packages/admin/src/routes/shop.tsx:305
-#: packages/admin/src/routes/shop.tsx:349
+#: packages/admin/src/routes/shop.tsx:431
+#: packages/admin/src/routes/shop.tsx:480
 msgid "Completed"
 msgstr ""
 
@@ -1969,22 +1974,22 @@ msgstr "تهيئة الحقل"
 msgid "Confirm"
 msgstr "تأكيد"
 
-#: packages/admin/src/routes/shop.tsx:1829
+#: packages/admin/src/routes/shop.tsx:2097
 msgid "Confirm cancellation"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1769
+#: packages/admin/src/routes/shop.tsx:2037
 msgid "Confirm payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:59
-#: packages/admin/src/routes/shop.tsx:303
-#: packages/admin/src/routes/shop.tsx:346
-#: packages/admin/src/routes/shop.tsx:1312
+#: packages/admin/src/routes/shop.tsx:60
+#: packages/admin/src/routes/shop.tsx:429
+#: packages/admin/src/routes/shop.tsx:477
+#: packages/admin/src/routes/shop.tsx:1580
 msgid "Confirmed"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1769
+#: packages/admin/src/routes/shop.tsx:2037
 msgid "Confirming..."
 msgstr ""
 
@@ -2039,7 +2044,7 @@ msgstr "أخطاء المحتوى ({0})"
 msgid "Content found:"
 msgstr "المحتوى الذي تم العثور عليه:"
 
-#: packages/admin/src/router.tsx:1148
+#: packages/admin/src/router.tsx:1161
 msgid "Content has been scheduled for publishing"
 msgstr "تمت جدولة المحتوى للنشر"
 
@@ -2051,7 +2056,7 @@ msgstr "تم تحديث المحتوى إلى المراجعة المحددة."
 msgid "Content ID:"
 msgstr "معرف المحتوى:"
 
-#: packages/admin/src/router.tsx:1089
+#: packages/admin/src/router.tsx:1102
 msgid "Content is now live"
 msgstr "المحتوى منشور الآن"
 
@@ -2071,11 +2076,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "قراءة المحتوى"
 
-#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1120
 msgid "Content removed from public view"
 msgstr "أُزيل المحتوى من العرض العام"
 
-#: packages/admin/src/router.tsx:1169
+#: packages/admin/src/router.tsx:1182
 msgid "Content reverted to draft"
 msgstr "أُعيد المحتوى إلى المسودة"
 
@@ -2123,13 +2128,13 @@ msgstr ""
 msgid "Contributor"
 msgstr "مساهم"
 
-#: packages/admin/src/routes/shop.tsx:980
+#: packages/admin/src/routes/shop.tsx:1248
 msgid "Coordinate by WhatsApp"
 msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:305
 #: packages/admin/src/components/users/InviteUserModal.tsx:133
-#: packages/admin/src/routes/shop.tsx:1518
+#: packages/admin/src/routes/shop.tsx:1786
 msgid "Copied to clipboard"
 msgstr "تم النسخ إلى الحافظة"
 
@@ -2138,7 +2143,7 @@ msgstr "تم النسخ إلى الحافظة"
 msgid "Copy {0} to clipboard"
 msgstr "نسخ {0} إلى الحافظة"
 
-#: packages/admin/src/routes/shop.tsx:1591
+#: packages/admin/src/routes/shop.tsx:1859
 msgid "Copy address"
 msgstr ""
 
@@ -2146,7 +2151,7 @@ msgstr ""
 msgid "Copy invite link"
 msgstr "نسخ رابط الدعوة"
 
-#: packages/admin/src/routes/shop.tsx:1585
+#: packages/admin/src/routes/shop.tsx:1853
 msgid "Copy phone"
 msgstr ""
 
@@ -2169,7 +2174,7 @@ msgstr "نسخ الرمز"
 msgid "Copy URL"
 msgstr "نسخ الرابط"
 
-#: packages/admin/src/routes/shop.tsx:1112
+#: packages/admin/src/routes/shop.tsx:1380
 msgid "Cost"
 msgstr ""
 
@@ -2181,11 +2186,11 @@ msgstr "تعذّر النسخ تلقائيًا. يرجى تحديد الرابط
 msgid "Could not insert section"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:456
+#: packages/admin/src/routes/shop.tsx:724
 msgid "Could not load coupons. Please try again."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1390
+#: packages/admin/src/routes/shop.tsx:1658
 msgid "Could not load customers. Please try again."
 msgstr ""
 
@@ -2193,7 +2198,7 @@ msgstr ""
 msgid "Could not load dashboard data"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1064
+#: packages/admin/src/routes/shop.tsx:1332
 msgid "Could not load delivery zones. Please try again."
 msgstr ""
 
@@ -2226,19 +2231,19 @@ msgstr ""
 msgid "Couldn't verify how many values reference \"{0}\". Deleting will still remove every stored value for this field — but the count above could not be checked."
 msgstr ""
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1049
+#: packages/admin/src/components/TaxonomyManager.tsx:1069
 msgid "Count"
 msgstr "العدد"
 
-#: packages/admin/src/routes/shop.tsx:451
+#: packages/admin/src/routes/shop.tsx:719
 msgid "Coupon deleted"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:444
+#: packages/admin/src/routes/shop.tsx:712
 msgid "Coupon saved"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:382
+#: packages/admin/src/routes/shop.tsx:650
 msgid "Coupons"
 msgstr ""
 
@@ -2246,7 +2251,7 @@ msgstr ""
 #: packages/admin/src/components/MenuList.tsx:178
 #: packages/admin/src/components/Redirects.tsx:192
 #: packages/admin/src/components/Sections.tsx:212
-#: packages/admin/src/components/TaxonomyManager.tsx:663
+#: packages/admin/src/components/TaxonomyManager.tsx:683
 #: packages/admin/src/components/Widgets.tsx:454
 #: packages/admin/src/routes/bylines.tsx:579
 msgid "Create"
@@ -2266,7 +2271,7 @@ msgid "Create a bullet list"
 msgstr "إنشاء قائمة نقطية"
 
 #. placeholder {0}: taxonomyDef.labelSingular?.toLowerCase() || "term"
-#: packages/admin/src/components/TaxonomyManager.tsx:545
+#: packages/admin/src/components/TaxonomyManager.tsx:554
 msgid "Create a new {0}"
 msgstr "إنشاء {0} جديد"
 
@@ -2274,7 +2279,7 @@ msgstr "إنشاء {0} جديد"
 msgid "Create a numbered list"
 msgstr "إنشاء قائمة مرقمة"
 
-#: packages/admin/src/routes/shop.tsx:162
+#: packages/admin/src/routes/shop.tsx:169
 msgid "Create a service to configure its availability and accept bookings."
 msgstr ""
 
@@ -2358,8 +2363,8 @@ msgstr "إنشاء قسم"
 msgid "Create sections in the Sections library to use them here"
 msgstr "قم بإنشاء أقسام في مكتبة الأقسام لاستخدامها هنا"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:782
-#: packages/admin/src/components/TaxonomyManager.tsx:873
+#: packages/admin/src/components/TaxonomyManager.tsx:802
+#: packages/admin/src/components/TaxonomyManager.tsx:893
 msgid "Create Taxonomy"
 msgstr "إنشاء تصنيف"
 
@@ -2380,7 +2385,7 @@ msgstr "قم بإنشاء حسابك"
 msgid "Create your first navigation menu to get started"
 msgstr "قم بإنشاء أول قائمة تنقل خاصة بك للبدء"
 
-#: packages/admin/src/components/ContentList.tsx:645
+#: packages/admin/src/components/ContentList.tsx:657
 #: packages/admin/src/components/ContentTypeList.tsx:206
 msgid "Create your first one"
 msgstr "قم بإنشاء أول واحد خاص بك"
@@ -2411,7 +2416,7 @@ msgstr "إنشاء مصطلحات التصنيف وتعديلها وحذفها"
 msgid "Create, update, delete content"
 msgstr "إنشاء، تحديث، حذف المحتوى"
 
-#: packages/admin/src/components/ContentList.tsx:841
+#: packages/admin/src/components/ContentList.tsx:854
 #: packages/admin/src/components/ContentSettingsPanel.tsx:634
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:358
 #: packages/admin/src/components/users/UserDetail.tsx:219
@@ -2429,7 +2434,7 @@ msgid "Created {0}"
 msgstr "تم إنشاء {0}"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1200
+#: packages/admin/src/router.tsx:1213
 msgid "Created {0} translation"
 msgstr "تم إنشاء ترجمة {0}"
 
@@ -2446,7 +2451,7 @@ msgstr "جاري إنشاء المجموعات والحقول..."
 #: packages/admin/src/components/Redirects.tsx:189
 #: packages/admin/src/components/Sections.tsx:212
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:540
-#: packages/admin/src/components/TaxonomyManager.tsx:873
+#: packages/admin/src/components/TaxonomyManager.tsx:893
 #: packages/admin/src/components/TaxonomySidebar.tsx:339
 msgid "Creating..."
 msgstr "جاري الإنشاء..."
@@ -2459,11 +2464,11 @@ msgstr ""
 msgid "CSS"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:679
+#: packages/admin/src/routes/shop.tsx:947
 msgid "Currency"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:686
+#: packages/admin/src/routes/shop.tsx:954
 msgid "Currency symbol"
 msgstr ""
 
@@ -2500,18 +2505,21 @@ msgstr "قسم مخصص"
 msgid "Custom Taxonomies"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:320
-#: packages/admin/src/routes/shop.tsx:330
-#: packages/admin/src/routes/shop.tsx:1471
-#: packages/admin/src/routes/shop.tsx:1725
+#: packages/admin/src/routes/shop.tsx:446
+#: packages/admin/src/routes/shop.tsx:459
+#: packages/admin/src/routes/shop.tsx:543
+#: packages/admin/src/routes/shop.tsx:543
+#: packages/admin/src/routes/shop.tsx:1739
+#: packages/admin/src/routes/shop.tsx:1993
 msgid "Customer"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1502
+#: packages/admin/src/routes/shop.tsx:599
+#: packages/admin/src/routes/shop.tsx:1770
 msgid "Customer details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:381
+#: packages/admin/src/routes/shop.tsx:649
 msgid "Customers"
 msgstr ""
 
@@ -2544,7 +2552,7 @@ msgid "Dashboard"
 msgstr "لوحة المعلومات"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:297
-#: packages/admin/src/components/ContentList.tsx:606
+#: packages/admin/src/components/ContentList.tsx:618
 msgid "Date"
 msgstr "التاريخ"
 
@@ -2553,7 +2561,7 @@ msgstr "التاريخ"
 msgid "Date & Time"
 msgstr "تاريخ ووقت"
 
-#: packages/admin/src/routes/shop.tsx:321
+#: packages/admin/src/routes/shop.tsx:447
 msgid "Date and time"
 msgstr ""
 
@@ -2561,7 +2569,7 @@ msgstr ""
 msgid "Date and time picker"
 msgstr "منتقي التاريخ والوقت"
 
-#: packages/admin/src/components/ContentList.tsx:912
+#: packages/admin/src/components/ContentList.tsx:925
 msgid "Date field to filter on"
 msgstr ""
 
@@ -2594,7 +2602,7 @@ msgstr "صورة التواصل الاجتماعي الافتراضية"
 msgid "Default Social Image"
 msgstr "صورة التواصل الاجتماعي الافتراضية"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:785
+#: packages/admin/src/components/TaxonomyManager.tsx:805
 msgid "Define a new taxonomy for classifying content"
 msgstr "قم بتعريف تصنيف جديد لتنظيم المحتوى"
 
@@ -2626,12 +2634,12 @@ msgstr "مُعرَّف في الكود"
 #: packages/admin/src/components/Sections.tsx:308
 #: packages/admin/src/components/Sections.tsx:407
 #: packages/admin/src/components/settings/BackupSettings.tsx:352
-#: packages/admin/src/components/TaxonomyManager.tsx:1112
+#: packages/admin/src/components/TaxonomyManager.tsx:1132
 #: packages/admin/src/components/Widgets.tsx:716
 #: packages/admin/src/routes/byline-schema.tsx:378
 #: packages/admin/src/routes/bylines.tsx:588
 #: packages/admin/src/routes/bylines.tsx:624
-#: packages/admin/src/routes/shop.tsx:534
+#: packages/admin/src/routes/shop.tsx:802
 msgid "Delete"
 msgstr "حذف"
 
@@ -2648,10 +2656,10 @@ msgstr "حذف \"{0}\"؟ لا يمكن التراجع عن هذا الإجراء
 #: packages/admin/src/components/Sections.tsx:408
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:266
 #: packages/admin/src/components/settings/BackupSettings.tsx:312
-#: packages/admin/src/components/TaxonomyManager.tsx:280
+#: packages/admin/src/components/TaxonomyManager.tsx:281
 #: packages/admin/src/components/Widgets.tsx:817
 #: packages/admin/src/routes/byline-schema.tsx:458
-#: packages/admin/src/routes/shop.tsx:1259
+#: packages/admin/src/routes/shop.tsx:1527
 msgid "Delete {0}"
 msgstr "حذف {0}"
 
@@ -2671,7 +2679,7 @@ msgid "Delete {0} widget area"
 msgstr "حذف منطقة عناصر الواجهة {0}"
 
 #. placeholder {0}: taxonomyDef.labelSingular || "Term"
-#: packages/admin/src/components/TaxonomyManager.tsx:1108
+#: packages/admin/src/components/TaxonomyManager.tsx:1128
 msgid "Delete {0}?"
 msgstr "حذف {0}؟"
 
@@ -2735,11 +2743,11 @@ msgid "Delete permanently"
 msgstr "حذف نهائي"
 
 #: packages/admin/src/components/comments/CommentDetail.tsx:182
-#: packages/admin/src/components/ContentList.tsx:1449
+#: packages/admin/src/components/ContentList.tsx:1464
 msgid "Delete Permanently"
 msgstr "حذف نهائي"
 
-#: packages/admin/src/components/ContentList.tsx:1429
+#: packages/admin/src/components/ContentList.tsx:1444
 msgid "Delete Permanently?"
 msgstr "حذف نهائي؟"
 
@@ -2776,7 +2784,7 @@ msgstr "حذف الجدول"
 msgid "Delete Widget Area?"
 msgstr "حذف منطقة عناصر الواجهة؟"
 
-#: packages/admin/src/components/ContentList.tsx:740
+#: packages/admin/src/components/ContentList.tsx:753
 msgid "Deleted"
 msgstr "محذوف"
 
@@ -2796,7 +2804,7 @@ msgstr ""
 #: packages/admin/src/components/Redirects.tsx:604
 #: packages/admin/src/components/Sections.tsx:309
 #: packages/admin/src/components/settings/BackupSettings.tsx:353
-#: packages/admin/src/components/TaxonomyManager.tsx:1113
+#: packages/admin/src/components/TaxonomyManager.tsx:1133
 #: packages/admin/src/components/Widgets.tsx:717
 #: packages/admin/src/routes/bylines.tsx:625
 msgid "Deleting..."
@@ -2806,46 +2814,46 @@ msgstr "جاري الحذف..."
 msgid "Deleting…"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:63
-#: packages/admin/src/routes/shop.tsx:1316
-#: packages/admin/src/routes/shop.tsx:1795
-#: packages/admin/src/routes/shop.tsx:1865
+#: packages/admin/src/routes/shop.tsx:64
+#: packages/admin/src/routes/shop.tsx:1584
+#: packages/admin/src/routes/shop.tsx:2063
+#: packages/admin/src/routes/shop.tsx:2133
 msgid "Delivered"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:764
+#: packages/admin/src/routes/shop.tsx:1032
 msgid "Delivered template"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1332
+#: packages/admin/src/routes/shop.tsx:1600
 msgid "Delivery"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1182
+#: packages/admin/src/routes/shop.tsx:1450
 msgid "Delivery cost"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1775
+#: packages/admin/src/routes/shop.tsx:2043
 msgid "Delivery status"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1688
+#: packages/admin/src/routes/shop.tsx:1956
 msgid "Delivery updated"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1031
+#: packages/admin/src/routes/shop.tsx:1299
 msgid "Delivery zone created"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1057
+#: packages/admin/src/routes/shop.tsx:1325
 msgid "Delivery zone deleted"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1050
+#: packages/admin/src/routes/shop.tsx:1318
 msgid "Delivery zone updated"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:379
+#: packages/admin/src/routes/shop.tsx:647
 msgid "Delivery zones"
 msgstr ""
 
@@ -2893,7 +2901,7 @@ msgstr "قم بوصف الغرض من هذا القسم..."
 msgid "Description"
 msgstr "الوصف"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:618
+#: packages/admin/src/components/TaxonomyManager.tsx:627
 msgid "Description (optional)"
 msgstr "الوصف (اختياري)"
 
@@ -3011,11 +3019,11 @@ msgstr "التخلي عن تغييرات المسودة؟"
 msgid "Discarding..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:501
+#: packages/admin/src/routes/shop.tsx:769
 msgid "Discount"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:577
+#: packages/admin/src/routes/shop.tsx:845
 msgid "Discount type"
 msgstr ""
 
@@ -3063,21 +3071,22 @@ msgstr ""
 msgid "Displayed below the image as a visible caption."
 msgstr "تُعرض أسفل الصورة كتسمية مرئية."
 
-#: packages/admin/src/components/ContentEditor.tsx:732
+#: packages/admin/src/components/ContentEditor.tsx:738
 msgid "Distraction-free mode (⌘⇧\\)"
 msgstr "وضع الخلو من التشتيت (⌘⇧\\)"
 
-#: packages/admin/src/routes/shop.tsx:1473
-#: packages/admin/src/routes/shop.tsx:1564
+#: packages/admin/src/routes/shop.tsx:607
+#: packages/admin/src/routes/shop.tsx:1741
+#: packages/admin/src/routes/shop.tsx:1832
 msgid "District"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1178
+#: packages/admin/src/routes/shop.tsx:1446
 msgid "District 1, District 2"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1111
-#: packages/admin/src/routes/shop.tsx:1171
+#: packages/admin/src/routes/shop.tsx:1379
+#: packages/admin/src/routes/shop.tsx:1439
 msgid "Districts"
 msgstr ""
 
@@ -3153,7 +3162,7 @@ msgstr ""
 msgid "Downloading"
 msgstr "جاري التنزيل"
 
-#: packages/admin/src/components/ContentList.tsx:833
+#: packages/admin/src/components/ContentList.tsx:846
 #: packages/admin/src/components/ContentStatusBadge.tsx:61
 msgid "Draft"
 msgstr "مسودة"
@@ -3219,11 +3228,11 @@ msgstr "قم بإفلات ملف تصدير WordPress الخاص بك هنا"
 msgid "Duplicate"
 msgstr "تكرار"
 
-#: packages/admin/src/components/ContentList.tsx:1232
+#: packages/admin/src/components/ContentList.tsx:1247
 msgid "Duplicate {title}"
 msgstr "استنساخ {title}"
 
-#: packages/admin/src/routes/shop.tsx:196
+#: packages/admin/src/routes/shop.tsx:209
 msgid "Duration"
 msgstr ""
 
@@ -3244,7 +3253,7 @@ msgid "e.g., MacBook Pro, iPhone"
 msgstr "مثال: MacBook Pro, iPhone"
 
 #: packages/admin/src/components/Sidebar.tsx:301
-#: packages/admin/src/routes/shop.tsx:372
+#: packages/admin/src/routes/shop.tsx:640
 msgid "Ecommerce"
 msgstr ""
 
@@ -3255,8 +3264,8 @@ msgstr ""
 #: packages/admin/src/components/MenuList.tsx:234
 #: packages/admin/src/components/Sections.tsx:392
 #: packages/admin/src/components/TranslationsPanel.tsx:93
-#: packages/admin/src/routes/shop.tsx:529
-#: packages/admin/src/routes/shop.tsx:1255
+#: packages/admin/src/routes/shop.tsx:797
+#: packages/admin/src/routes/shop.tsx:1523
 msgid "Edit"
 msgstr "تعديل"
 
@@ -3267,8 +3276,8 @@ msgstr "تعديل"
 #: packages/admin/src/components/PortableTextEditor.tsx:1905
 #: packages/admin/src/components/Promotions.tsx:210
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:254
-#: packages/admin/src/components/TaxonomyManager.tsx:272
-#: packages/admin/src/components/TaxonomyManager.tsx:539
+#: packages/admin/src/components/TaxonomyManager.tsx:273
+#: packages/admin/src/components/TaxonomyManager.tsx:548
 #: packages/admin/src/routes/byline-schema.tsx:449
 #: packages/admin/src/routes/bylines.tsx:476
 msgid "Edit {0}"
@@ -3279,11 +3288,11 @@ msgstr "تعديل {0}"
 msgid "Edit {0} field"
 msgstr "تعديل حقل {0}"
 
-#: packages/admin/src/components/ContentEditor.tsx:678
+#: packages/admin/src/components/ContentEditor.tsx:684
 msgid "Edit {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1224
+#: packages/admin/src/components/ContentList.tsx:1239
 msgid "Edit {title}"
 msgstr "تعديل {title}"
 
@@ -3295,11 +3304,11 @@ msgstr "تعديل الكاتب"
 msgid "Edit byline field"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:552
+#: packages/admin/src/routes/shop.tsx:820
 msgid "Edit coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1141
+#: packages/admin/src/routes/shop.tsx:1409
 msgid "Edit delivery zone"
 msgstr ""
 
@@ -3370,7 +3379,8 @@ msgstr ""
 #: packages/admin/src/components/Settings.tsx:95
 #: packages/admin/src/components/SignupPage.tsx:198
 #: packages/admin/src/components/users/UserDetail.tsx:154
-#: packages/admin/src/routes/shop.tsx:1562
+#: packages/admin/src/routes/shop.tsx:605
+#: packages/admin/src/routes/shop.tsx:1830
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
@@ -3443,7 +3453,7 @@ msgstr "تفعيل"
 msgid "Enable comments"
 msgstr "تفعيل التعليقات"
 
-#: packages/admin/src/routes/shop.tsx:838
+#: packages/admin/src/routes/shop.tsx:1106
 msgid "Enable free delivery"
 msgstr ""
 
@@ -3451,7 +3461,7 @@ msgstr ""
 msgid "Enable full-text search on this collection"
 msgstr "تفعيل البحث النصي الكامل على هذه المجموعة"
 
-#: packages/admin/src/routes/shop.tsx:873
+#: packages/admin/src/routes/shop.tsx:1141
 msgid "Enable payment gateway"
 msgstr ""
 
@@ -3467,11 +3477,11 @@ msgstr ""
 msgid "Enable redirect"
 msgstr "تفعيل إعادة التوجيه"
 
-#: packages/admin/src/routes/shop.tsx:807
+#: packages/admin/src/routes/shop.tsx:1075
 msgid "Enable service bookings"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:812
+#: packages/admin/src/routes/shop.tsx:1080
 msgid "Enable this store to offer services with scheduled bookings."
 msgstr ""
 
@@ -3480,7 +3490,7 @@ msgstr ""
 msgid "Enabled"
 msgstr "مُفعَّل"
 
-#: packages/admin/src/routes/shop.tsx:240
+#: packages/admin/src/routes/shop.tsx:300
 msgid "End date"
 msgstr ""
 
@@ -3488,7 +3498,8 @@ msgstr ""
 msgid "End date and time (optional)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:258
+#: packages/admin/src/routes/shop.tsx:359
+#: packages/admin/src/routes/shop.tsx:553
 msgid "Ends at"
 msgstr ""
 
@@ -3497,7 +3508,7 @@ msgstr ""
 msgid "Enter a URL (https://…) or a relative path (/…)"
 msgstr "قم بإدخال رابطًا (https://…) أو رابطًا نسبيًا (/…)"
 
-#: packages/admin/src/components/ContentEditor.tsx:1627
+#: packages/admin/src/components/ContentEditor.tsx:1647
 msgid "Enter a valid URL (e.g. https://example.com)"
 msgstr "أدخل رابطًا صالحًا (مثال: https://example.com)"
 
@@ -3505,7 +3516,7 @@ msgstr "أدخل رابطًا صالحًا (مثال: https://example.com)"
 msgid "Enter credentials manually"
 msgstr "إدخال بيانات الاعتماد يدويًا"
 
-#: packages/admin/src/components/ContentEditor.tsx:731
+#: packages/admin/src/components/ContentEditor.tsx:737
 msgid "Enter distraction-free mode"
 msgstr "الدخول إلى وضع الخلو من التشتت"
 
@@ -3517,7 +3528,7 @@ msgstr "أدخل البريد الإلكتروني"
 msgid "Enter HTML..."
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1303
+#: packages/admin/src/components/ContentEditor.tsx:1323
 msgid "Enter markdown content..."
 msgstr "أدخل محتوى Markdown..."
 
@@ -3546,7 +3557,7 @@ msgstr "أدخل بيانات اعتماد WordPress لاستيراد المحت
 msgid "Enter your WordPress site URL"
 msgstr "أدخل رابط موقع WordPress الخاص بك"
 
-#: packages/admin/src/routes/shop.tsx:895
+#: packages/admin/src/routes/shop.tsx:1163
 msgid "Environment"
 msgstr ""
 
@@ -3554,9 +3565,9 @@ msgstr ""
 #: packages/admin/src/components/MenuEditor.tsx:193
 #: packages/admin/src/components/MenuEditor.tsx:233
 #: packages/admin/src/components/SetupWizard.tsx:539
-#: packages/admin/src/components/TaxonomyManager.tsx:941
+#: packages/admin/src/components/TaxonomyManager.tsx:961
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2286
+#: packages/admin/src/router.tsx:2303
 msgid "Error"
 msgstr "خطأ"
 
@@ -3576,8 +3587,8 @@ msgstr "خطأ في حفظ القسم"
 msgid "Error updating widget"
 msgstr "خطأ أثناء تحديث عنصر الواجهة"
 
-#: packages/admin/src/routes/shop.tsx:1113
-#: packages/admin/src/routes/shop.tsx:1195
+#: packages/admin/src/routes/shop.tsx:1381
+#: packages/admin/src/routes/shop.tsx:1463
 msgid "Estimated time"
 msgstr ""
 
@@ -3590,19 +3601,19 @@ msgstr "كل الإصدارات المنشورة لهذه الإضافة تم س
 msgid "Example: {0} → January 23, 2026"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:820
+#: packages/admin/src/routes/shop.tsx:1088
 msgid "Example: 24 hours"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1202
+#: packages/admin/src/routes/shop.tsx:1470
 msgid "Example: 30–60 minutes"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:699
+#: packages/admin/src/routes/shop.tsx:967
 msgid "Example: 51999999999"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:690
+#: packages/admin/src/routes/shop.tsx:958
 msgid "Example: S/"
 msgstr ""
 
@@ -3614,7 +3625,7 @@ msgstr ""
 msgid "Exists"
 msgstr "موجود"
 
-#: packages/admin/src/components/ContentEditor.tsx:790
+#: packages/admin/src/components/ContentEditor.tsx:796
 msgid "Exit distraction-free mode"
 msgstr "الخروج من وضع الخلو من التشتت"
 
@@ -3631,7 +3642,7 @@ msgid "Expand details"
 msgstr "توسيع التفاصيل"
 
 #: packages/admin/src/components/Promotions.tsx:178
-#: packages/admin/src/routes/shop.tsx:348
+#: packages/admin/src/routes/shop.tsx:479
 msgid "Expired"
 msgstr ""
 
@@ -3640,7 +3651,7 @@ msgstr ""
 msgid "Expiry"
 msgstr "الإنتهاء"
 
-#: packages/admin/src/routes/shop.tsx:1810
+#: packages/admin/src/routes/shop.tsx:2078
 msgid "Explain why this order is being cancelled"
 msgstr ""
 
@@ -3722,14 +3733,14 @@ msgid "Failed to create term"
 msgstr "فشل إنشاء المصطلح"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1205
+#: packages/admin/src/router.tsx:1218
 msgid "Failed to create translation"
 msgstr "فشل إنشاء الترجمة"
 
-#: packages/admin/src/router.tsx:449
-#: packages/admin/src/router.tsx:478
-#: packages/admin/src/router.tsx:561
-#: packages/admin/src/router.tsx:1225
+#: packages/admin/src/router.tsx:450
+#: packages/admin/src/router.tsx:479
+#: packages/admin/src/router.tsx:562
+#: packages/admin/src/router.tsx:1238
 msgid "Failed to delete"
 msgstr "فشل الحذف"
 
@@ -3754,7 +3765,7 @@ msgid "Failed to delete collection"
 msgstr "فشل حذف المجموعة"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1532
+#: packages/admin/src/router.tsx:1549
 msgid "Failed to delete comment"
 msgstr "فشل حذف التعليق"
 
@@ -3799,7 +3810,7 @@ msgstr "فشل حذف إعادة التوجيه"
 msgid "Failed to delete section"
 msgstr "فشل حذف القسم"
 
-#: packages/admin/src/lib/api/taxonomies.ts:221
+#: packages/admin/src/lib/api/taxonomies.ts:227
 msgid "Failed to delete term"
 msgstr "فشل حذف المصطلح"
 
@@ -3824,7 +3835,7 @@ msgstr ""
 msgid "Failed to disable user"
 msgstr "فشل تعطيل المستخدم"
 
-#: packages/admin/src/router.tsx:1132
+#: packages/admin/src/router.tsx:1145
 msgid "Failed to discard changes"
 msgstr "فشل تجاهل التغييرات"
 
@@ -3832,7 +3843,7 @@ msgstr "فشل تجاهل التغييرات"
 msgid "Failed to dismiss welcome"
 msgstr "فشل إغلاق رسالة الترحيب"
 
-#: packages/admin/src/router.tsx:492
+#: packages/admin/src/router.tsx:493
 msgid "Failed to duplicate"
 msgstr "فشل التكرار"
 
@@ -3951,8 +3962,8 @@ msgstr "فشل جلب المصطلحات"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:925
-#: packages/admin/src/router.tsx:1471
+#: packages/admin/src/router.tsx:938
+#: packages/admin/src/router.tsx:1488
 msgid "Failed to fetch user"
 msgstr "فشل جلب بيانات المستخدم"
 
@@ -4063,7 +4074,7 @@ msgstr "فشل تحميل المستخدمين: {0}"
 msgid "Failed to load widget"
 msgstr "فشل تحميل عنصر الواجهة"
 
-#: packages/admin/src/router.tsx:1556
+#: packages/admin/src/router.tsx:1573
 msgid "Failed to perform bulk action"
 msgstr "فشل تنفيذ الإجراء الجماعي"
 
@@ -4075,8 +4086,8 @@ msgstr "فشل الحذف النهائي للمحتوى"
 msgid "Failed to prepare import"
 msgstr "فشل تحضير الاستيراد"
 
-#: packages/admin/src/router.tsx:517
-#: packages/admin/src/router.tsx:1093
+#: packages/admin/src/router.tsx:518
+#: packages/admin/src/router.tsx:1106
 msgid "Failed to publish"
 msgstr "فشل النشر"
 
@@ -4114,7 +4125,7 @@ msgstr "فشل إعادة ترتيب الحقول"
 msgid "Failed to reorder widgets"
 msgstr "فشل إعادة ترتيب عناصر الواجهة"
 
-#: packages/admin/src/router.tsx:464
+#: packages/admin/src/router.tsx:465
 msgid "Failed to restore"
 msgstr "فشل الاستعادة"
 
@@ -4135,9 +4146,9 @@ msgstr "فشل إلغاء رمز API"
 msgid "Failed to rewrite URLs"
 msgstr "فشل إعادة كتابة الروابط"
 
-#: packages/admin/src/router.tsx:724
-#: packages/admin/src/router.tsx:1015
-#: packages/admin/src/router.tsx:2069
+#: packages/admin/src/router.tsx:732
+#: packages/admin/src/router.tsx:1028
+#: packages/admin/src/router.tsx:2086
 msgid "Failed to save"
 msgstr "فشل الحفظ"
 
@@ -4164,7 +4175,7 @@ msgstr ""
 msgid "Failed to save settings"
 msgstr "فشل في حفظ الإعدادات"
 
-#: packages/admin/src/router.tsx:1153
+#: packages/admin/src/router.tsx:1166
 msgid "Failed to schedule"
 msgstr "فشل الجدولة"
 
@@ -4195,15 +4206,15 @@ msgstr "فشل تعيين مصطلحات المدخل"
 msgid "Failed to uninstall plugin"
 msgstr "فشل إلغاء تثبيت الإضافة"
 
-#: packages/admin/src/router.tsx:1111
+#: packages/admin/src/router.tsx:1124
 msgid "Failed to unpublish"
 msgstr "فشل إلغاء النشر"
 
-#: packages/admin/src/router.tsx:1174
+#: packages/admin/src/router.tsx:1187
 msgid "Failed to unschedule"
 msgstr "فشل إلغاء الجدولة"
 
-#: packages/admin/src/router.tsx:540
+#: packages/admin/src/router.tsx:541
 msgid "Failed to update"
 msgstr ""
 
@@ -4253,7 +4264,7 @@ msgstr ""
 msgid "Failed to update settings"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1517
+#: packages/admin/src/router.tsx:1534
 msgid "Failed to update status"
 msgstr "فشل تحديث الحالة"
 
@@ -4294,7 +4305,7 @@ msgstr "ميزة"
 msgid "Featured Images"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1158
+#: packages/admin/src/components/ContentEditor.tsx:1176
 msgid "Featured service"
 msgstr ""
 
@@ -4374,7 +4385,7 @@ msgstr "لا يمكن تغيير اسم الملف بعد الرفع"
 msgid "files imported"
 msgstr "ملفات تم استيرادها"
 
-#: packages/admin/src/components/ContentList.tsx:887
+#: packages/admin/src/components/ContentList.tsx:900
 msgid "Filter by author"
 msgstr ""
 
@@ -4398,7 +4409,7 @@ msgstr "تصفية حسب الدور"
 msgid "Filter by source"
 msgstr "تصفية حسب المصدر"
 
-#: packages/admin/src/components/ContentList.tsx:869
+#: packages/admin/src/components/ContentList.tsx:882
 #: packages/admin/src/components/Redirects.tsx:427
 msgid "Filter by status"
 msgstr "تصفية حسب الحالة"
@@ -4412,19 +4423,19 @@ msgstr "تصفية حسب النوع"
 msgid "Filter byline type"
 msgstr "تصفية حسب نوع الكاتب"
 
-#: packages/admin/src/routes/shop.tsx:1452
+#: packages/admin/src/routes/shop.tsx:1720
 msgid "Filter customers by date"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1441
+#: packages/admin/src/routes/shop.tsx:1709
 msgid "Filter customers by district"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1306
+#: packages/admin/src/routes/shop.tsx:1574
 msgid "Filter orders by status"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:296
+#: packages/admin/src/routes/shop.tsx:422
 msgid "Filter reservations by status"
 msgstr ""
 
@@ -4432,7 +4443,7 @@ msgstr ""
 msgid "First-time commenters only"
 msgstr "المعلّقون للمرة الأولى فقط"
 
-#: packages/admin/src/routes/shop.tsx:583
+#: packages/admin/src/routes/shop.tsx:851
 msgid "Fixed amount"
 msgstr ""
 
@@ -4456,15 +4467,15 @@ msgstr ""
 msgid "Free"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:842
+#: packages/admin/src/routes/shop.tsx:1110
 msgid "Free delivery from subtotal"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:83
+#: packages/admin/src/routes/shop.tsx:84
 msgid "Friday"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:928
+#: packages/admin/src/components/ContentList.tsx:941
 msgid "From date"
 msgstr ""
 
@@ -4499,7 +4510,7 @@ msgstr "عام"
 msgid "General Settings"
 msgstr "الإعدادات العامة"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:810
+#: packages/admin/src/components/TaxonomyManager.tsx:830
 msgid "Genres"
 msgstr "الأنواع الأدبية"
 
@@ -4520,7 +4531,7 @@ msgid "Go"
 msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2306
+#: packages/admin/src/router.tsx:2323
 msgid "Go to Dashboard"
 msgstr "الذهاب إلى لوحة المعلومات"
 
@@ -4607,13 +4618,13 @@ msgstr "الارتفاع"
 msgid "Height (px)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:301
-#: packages/admin/src/routes/shop.tsx:344
+#: packages/admin/src/routes/shop.tsx:427
+#: packages/admin/src/routes/shop.tsx:475
 msgid "Held"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:713
-#: packages/admin/src/routes/shop.tsx:968
+#: packages/admin/src/routes/shop.tsx:981
+#: packages/admin/src/routes/shop.tsx:1236
 msgid "Hello, I want to coordinate payment for my order."
 msgstr ""
 
@@ -4635,7 +4646,7 @@ msgstr "إخفاء من محركات البحث"
 msgid "Hide token"
 msgstr "إخفاء الرمز"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:833
+#: packages/admin/src/components/TaxonomyManager.tsx:853
 msgid "Hierarchical (like categories, with parent/child relationships)"
 msgstr "هرمي (مثل الفئات، بعلاقات أب/ابن)"
 
@@ -4711,6 +4722,8 @@ msgstr "إذا كان يوجد حساب لـ <0>{email}</0>، قمنا بإرس�
 #: packages/admin/src/components/FieldEditor.tsx:233
 #: packages/admin/src/components/FieldEditor.tsx:616
 #: packages/admin/src/components/PortableTextEditor.tsx:2694
+#: packages/admin/src/components/TaxonomyImageField.tsx:25
+#: packages/admin/src/components/TaxonomyImageField.tsx:48
 msgid "Image"
 msgstr "صورة"
 
@@ -4855,23 +4868,23 @@ msgstr "جاري استيراد الوسائط"
 msgid "Importing menus and site settings..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:207
+#: packages/admin/src/routes/shop.tsx:227
 msgid "In person"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:62
-#: packages/admin/src/routes/shop.tsx:1315
-#: packages/admin/src/routes/shop.tsx:1794
-#: packages/admin/src/routes/shop.tsx:1864
+#: packages/admin/src/routes/shop.tsx:63
+#: packages/admin/src/routes/shop.tsx:1583
+#: packages/admin/src/routes/shop.tsx:2062
+#: packages/admin/src/routes/shop.tsx:2132
 msgid "In transit"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:753
+#: packages/admin/src/routes/shop.tsx:1021
 msgid "In transit template"
 msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:179
-#: packages/admin/src/routes/shop.tsx:1250
+#: packages/admin/src/routes/shop.tsx:1518
 msgid "Inactive"
 msgstr ""
 
@@ -4892,7 +4905,7 @@ msgstr "غير متوافق"
 msgid "Indexed"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1574
+#: packages/admin/src/components/ContentEditor.tsx:1594
 msgid "Ingresa un porcentaje para calcular el precio de promoción o escribe directamente el precio de promoción."
 msgstr ""
 
@@ -5030,7 +5043,7 @@ msgstr "عدد صحيح"
 msgid "Invalid invite link"
 msgstr "رابط الدعوة غير صالح"
 
-#: packages/admin/src/components/ContentEditor.tsx:1696
+#: packages/admin/src/components/ContentEditor.tsx:1716
 msgid "Invalid JSON"
 msgstr "صيغة JSON غير صالحة"
 
@@ -5144,7 +5157,7 @@ msgstr ""
 #: packages/admin/src/components/MenuEditor.tsx:416
 #: packages/admin/src/components/MenuEditor.tsx:593
 #: packages/admin/src/components/MenuList.tsx:169
-#: packages/admin/src/components/TaxonomyManager.tsx:807
+#: packages/admin/src/components/TaxonomyManager.tsx:827
 #: packages/admin/src/components/Widgets.tsx:436
 #: packages/admin/src/routes/byline-schema.tsx:234
 msgid "Label"
@@ -5170,11 +5183,11 @@ msgstr "اللغة"
 msgid "Large section heading"
 msgstr "عنوان قسم كبير"
 
-#: packages/admin/src/routes/shop.tsx:1455
+#: packages/admin/src/routes/shop.tsx:1723
 msgid "Last 30 days"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1455
+#: packages/admin/src/routes/shop.tsx:1723
 msgid "Last 90 days"
 msgstr ""
 
@@ -5190,7 +5203,7 @@ msgstr "آخر تسجيل دخول"
 msgid "Last Login"
 msgstr "آخر تسجيل دخول"
 
-#: packages/admin/src/routes/shop.tsx:1475
+#: packages/admin/src/routes/shop.tsx:1743
 msgid "Last order"
 msgstr ""
 
@@ -5289,8 +5302,8 @@ msgstr "الروابط"
 msgid "List view"
 msgstr "عرض قائمة"
 
-#: packages/admin/src/components/ContentEditor.tsx:712
-#: packages/admin/src/components/ContentEditor.tsx:755
+#: packages/admin/src/components/ContentEditor.tsx:718
+#: packages/admin/src/components/ContentEditor.tsx:761
 #: packages/admin/src/components/ContentSettingsPanel.tsx:265
 msgid "Live View"
 msgstr "العرض المباشر"
@@ -5304,15 +5317,15 @@ msgstr "العرض المباشر"
 msgid "Load more"
 msgstr "تحميل المزيد"
 
-#: packages/admin/src/components/ContentList.tsx:724
-#: packages/admin/src/components/ContentList.tsx:782
+#: packages/admin/src/components/ContentList.tsx:737
+#: packages/admin/src/components/ContentList.tsx:795
 #: packages/admin/src/components/MediaLibrary.tsx:656
 #: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "تحميل المزيد"
 
-#: packages/admin/src/router.tsx:2261
+#: packages/admin/src/router.tsx:2278
 msgid "Loading"
 msgstr ""
 
@@ -5328,8 +5341,8 @@ msgstr "جاري تحميل المجموعات..."
 msgid "Loading comments..."
 msgstr "جاري تحميل التعليقات..."
 
-#: packages/admin/src/router.tsx:2263
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2280
+#: packages/admin/src/router.tsx:2292
 msgid "Loading configuration..."
 msgstr "جارٍ تحميل الإعدادات..."
 
@@ -5337,15 +5350,15 @@ msgstr "جارٍ تحميل الإعدادات..."
 msgid "Loading content..."
 msgstr "جاري تحميل المحتوى..."
 
-#: packages/admin/src/routes/shop.tsx:454
+#: packages/admin/src/routes/shop.tsx:722
 msgid "Loading coupons"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1388
+#: packages/admin/src/routes/shop.tsx:1656
 msgid "Loading customers"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1062
+#: packages/admin/src/routes/shop.tsx:1330
 msgid "Loading delivery zones"
 msgstr ""
 
@@ -5361,11 +5374,12 @@ msgstr "جاري تحميل القائمة..."
 msgid "Loading menus..."
 msgstr "جاري تحميل القوائم..."
 
-#: packages/admin/src/routes/shop.tsx:1364
+#: packages/admin/src/routes/shop.tsx:573
+#: packages/admin/src/routes/shop.tsx:1632
 msgid "Loading order details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1282
+#: packages/admin/src/routes/shop.tsx:1550
 msgid "Loading orders"
 msgstr ""
 
@@ -5381,7 +5395,7 @@ msgstr ""
 msgid "Loading redirects..."
 msgstr "جاري تحميل إعادات التوجيه..."
 
-#: packages/admin/src/routes/shop.tsx:310
+#: packages/admin/src/routes/shop.tsx:436
 msgid "Loading reservations"
 msgstr ""
 
@@ -5390,7 +5404,7 @@ msgstr ""
 msgid "Loading sections..."
 msgstr "جاري تحميل الأقسام..."
 
-#: packages/admin/src/routes/shop.tsx:156
+#: packages/admin/src/routes/shop.tsx:163
 msgid "Loading services"
 msgstr ""
 
@@ -5405,11 +5419,11 @@ msgstr "جاري تحميل الإعدادات..."
 msgid "Loading setup..."
 msgstr "جاري تحميل الإعداد..."
 
-#: packages/admin/src/routes/shop.tsx:647
+#: packages/admin/src/routes/shop.tsx:915
 msgid "Loading store settings"
 msgstr ""
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1054
+#: packages/admin/src/components/TaxonomyManager.tsx:1074
 msgid "Loading terms..."
 msgstr "جاري تحميل المصطلحات..."
 
@@ -5417,10 +5431,10 @@ msgstr "جاري تحميل المصطلحات..."
 msgid "Loading widgets..."
 msgstr "جارٍ تحميل عناصر الواجهة..."
 
-#: packages/admin/src/components/ContentList.tsx:627
-#: packages/admin/src/components/ContentList.tsx:724
-#: packages/admin/src/components/ContentList.tsx:753
-#: packages/admin/src/components/ContentList.tsx:782
+#: packages/admin/src/components/ContentList.tsx:639
+#: packages/admin/src/components/ContentList.tsx:737
+#: packages/admin/src/components/ContentList.tsx:766
+#: packages/admin/src/components/ContentList.tsx:795
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
 #: packages/admin/src/components/MediaLibrary.tsx:656
@@ -5433,7 +5447,7 @@ msgstr "جارٍ تحميل عناصر الواجهة..."
 #: packages/admin/src/components/settings/BackupSettings.tsx:154
 #: packages/admin/src/components/settings/EmailSettings.tsx:69
 #: packages/admin/src/components/settings/SecuritySettings.tsx:99
-#: packages/admin/src/components/TaxonomyManager.tsx:1008
+#: packages/admin/src/components/TaxonomyManager.tsx:1028
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:170
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:244
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:143
@@ -5446,7 +5460,7 @@ msgstr "جاري التحميل..."
 msgid "Loading…"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:599
+#: packages/admin/src/components/ContentList.tsx:611
 #: packages/admin/src/components/LocaleSwitcher.tsx:60
 msgid "Locale"
 msgstr "المَحلية"
@@ -5492,7 +5506,7 @@ msgstr "نص طويل"
 msgid "Lowercase letters, numbers, and hyphens only"
 msgstr "أحرف صغيرة وأرقام وشرطات فقط"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:825
+#: packages/admin/src/components/TaxonomyManager.tsx:845
 msgid "Lowercase letters, numbers, and underscores only, starting with a letter"
 msgstr "أحرف صغيرة وأرقام وشرطات سفلية فقط، تبدأ بحرف"
 
@@ -5516,7 +5530,7 @@ msgstr "إدارة"
 
 #. placeholder {0}: taxonomyDef.label.toLowerCase()
 #. placeholder {1}: taxonomyDef.collections.join(", ")
-#: packages/admin/src/components/TaxonomyManager.tsx:1025
+#: packages/admin/src/components/TaxonomyManager.tsx:1045
 msgid "Manage {0} for {1}"
 msgstr "إدارة {0} لـ {1}"
 
@@ -5549,7 +5563,7 @@ msgstr "إدارة إعادات توجيه الروابط وعرض أخطاء 40
 msgid "Manage your passkeys and authentication"
 msgstr "إدارة مفاتيح مرورك والمصادقة"
 
-#: packages/admin/src/routes/shop.tsx:373
+#: packages/admin/src/routes/shop.tsx:641
 msgid "Manage your products, delivery settings, and orders."
 msgstr ""
 
@@ -5749,15 +5763,15 @@ msgstr "القوائم ({0})"
 msgid "Menus Manage"
 msgstr "إدارة القوائم"
 
-#: packages/admin/src/routes/shop.tsx:709
+#: packages/admin/src/routes/shop.tsx:977
 msgid "Message introduction"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:786
+#: packages/admin/src/routes/shop.tsx:1054
 msgid "Message preview"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1857
+#: packages/admin/src/routes/shop.tsx:2125
 msgid "Message template"
 msgstr ""
 
@@ -5794,11 +5808,11 @@ msgstr "الحد الأدنى للطول"
 msgid "Min Value"
 msgstr "القيمة الدنيا"
 
-#: packages/admin/src/routes/shop.tsx:823
+#: packages/admin/src/routes/shop.tsx:1091
 msgid "Minimum order subtotal"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:594
+#: packages/admin/src/routes/shop.tsx:862
 msgid "Minimum subtotal"
 msgstr ""
 
@@ -5822,7 +5836,7 @@ msgstr "إشارات الإشراف"
 msgid "Modify collection schemas"
 msgstr "تغيير مخططات المجموعات"
 
-#: packages/admin/src/routes/shop.tsx:79
+#: packages/admin/src/routes/shop.tsx:80
 msgid "Monday"
 msgstr ""
 
@@ -5838,7 +5852,7 @@ msgstr ""
 msgid "More information about {label}"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1463
+#: packages/admin/src/routes/shop.tsx:1731
 msgid "Most orders"
 msgstr ""
 
@@ -5846,7 +5860,7 @@ msgstr ""
 msgid "Most Popular"
 msgstr "الأكثر شيوعًا"
 
-#: packages/admin/src/routes/shop.tsx:1463
+#: packages/admin/src/routes/shop.tsx:1731
 msgid "Most recent"
 msgstr ""
 
@@ -5860,31 +5874,31 @@ msgstr ""
 msgid "Move \"{0}\" up"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1253
+#: packages/admin/src/components/ContentList.tsx:1268
 msgid "Move \"{title}\" to trash? You can restore it later."
 msgstr "نقل \"{title}\" إلى سلة المحذوفات؟ يمكنك استعادته لاحقًا."
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:251
+#: packages/admin/src/components/TaxonomyManager.tsx:252
 msgid "Move {0} down"
 msgstr ""
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:250
+#: packages/admin/src/components/TaxonomyManager.tsx:251
 msgid "Move {0} down — unavailable, its parent has no translation in this locale"
 msgstr ""
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:238
+#: packages/admin/src/components/TaxonomyManager.tsx:239
 msgid "Move {0} up"
 msgstr ""
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:237
+#: packages/admin/src/components/TaxonomyManager.tsx:238
 msgid "Move {0} up — unavailable, its parent has no translation in this locale"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1244
+#: packages/admin/src/components/ContentList.tsx:1259
 msgid "Move {title} to trash"
 msgstr "نقل {title} إلى سلة المحذوفات"
 
@@ -5892,19 +5906,19 @@ msgstr "نقل {title} إلى سلة المحذوفات"
 msgid "Move down"
 msgstr "تحريك للأسفل"
 
-#: packages/admin/src/components/ContentList.tsx:509
+#: packages/admin/src/components/ContentList.tsx:521
 msgid "Move to trash"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:536
-#: packages/admin/src/components/ContentList.tsx:1266
+#: packages/admin/src/components/ContentList.tsx:548
+#: packages/admin/src/components/ContentList.tsx:1281
 #: packages/admin/src/components/ContentSettingsPanel.tsx:814
 #: packages/admin/src/components/ContentSettingsPanel.tsx:834
 msgid "Move to Trash"
 msgstr "نقل إلى سلة المحذوفات"
 
-#: packages/admin/src/components/ContentList.tsx:514
-#: packages/admin/src/components/ContentList.tsx:1251
+#: packages/admin/src/components/ContentList.tsx:526
+#: packages/admin/src/components/ContentList.tsx:1266
 #: packages/admin/src/components/ContentSettingsPanel.tsx:819
 msgid "Move to Trash?"
 msgstr "نقل إلى سلة المحذوفات؟"
@@ -5913,11 +5927,11 @@ msgstr "نقل إلى سلة المحذوفات؟"
 msgid "Move up"
 msgstr "تحريك للأعلى"
 
-#: packages/admin/src/router.tsx:537
+#: packages/admin/src/router.tsx:538
 msgid "Moved {total} items to draft"
 msgstr ""
 
-#: packages/admin/src/router.tsx:558
+#: packages/admin/src/router.tsx:559
 msgid "Moved {total} items to trash"
 msgstr ""
 
@@ -5940,21 +5954,22 @@ msgstr "مدونتي الرائعة"
 #: packages/admin/src/components/ContentTypeList.tsx:178
 #: packages/admin/src/components/MarketplaceBrowse.tsx:45
 #: packages/admin/src/components/MenuList.tsx:157
-#: packages/admin/src/components/TaxonomyManager.tsx:567
-#: packages/admin/src/components/TaxonomyManager.tsx:816
-#: packages/admin/src/components/TaxonomyManager.tsx:1048
+#: packages/admin/src/components/TaxonomyManager.tsx:576
+#: packages/admin/src/components/TaxonomyManager.tsx:836
+#: packages/admin/src/components/TaxonomyManager.tsx:1068
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:37
 #: packages/admin/src/components/users/UserDetail.tsx:148
 #: packages/admin/src/components/Widgets.tsx:430
-#: packages/admin/src/routes/shop.tsx:1561
+#: packages/admin/src/routes/shop.tsx:603
+#: packages/admin/src/routes/shop.tsx:1829
 msgid "Name"
 msgstr "الاسم"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:742
+#: packages/admin/src/components/TaxonomyManager.tsx:762
 msgid "Name and label are required"
 msgstr "الاسم والتسمية مطلوبان"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:748
+#: packages/admin/src/components/TaxonomyManager.tsx:768
 msgid "Name must start with a letter and contain only lowercase letters, numbers, and underscores"
 msgstr "يجب أن يبدأ الاسم بحرف ويحتوي فقط على أحرف صغيرة وأرقام وشرطات سفلية"
 
@@ -5967,13 +5982,13 @@ msgstr "التنقل"
 msgid "Never"
 msgstr "أبدًا"
 
-#: packages/admin/src/router.tsx:1200
+#: packages/admin/src/router.tsx:1213
 msgid "new"
 msgstr "جديد"
 
 #: packages/admin/src/routes/bylines.tsx:426
-#: packages/admin/src/routes/shop.tsx:58
-#: packages/admin/src/routes/shop.tsx:1311
+#: packages/admin/src/routes/shop.tsx:59
+#: packages/admin/src/routes/shop.tsx:1579
 msgid "New"
 msgstr "جديد"
 
@@ -5986,7 +6001,7 @@ msgstr "جديد"
 msgid "New {0}"
 msgstr "{0} جديد"
 
-#: packages/admin/src/components/ContentEditor.tsx:678
+#: packages/admin/src/components/ContentEditor.tsx:684
 msgid "New {itemLabel}"
 msgstr ""
 
@@ -6003,13 +6018,13 @@ msgstr "مجموعة جديدة"
 msgid "New Content Type"
 msgstr "نوع محتوى جديد"
 
-#: packages/admin/src/routes/shop.tsx:494
-#: packages/admin/src/routes/shop.tsx:552
+#: packages/admin/src/routes/shop.tsx:762
+#: packages/admin/src/routes/shop.tsx:820
 msgid "New coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1104
-#: packages/admin/src/routes/shop.tsx:1141
+#: packages/admin/src/routes/shop.tsx:1372
+#: packages/admin/src/routes/shop.tsx:1409
 msgid "New delivery zone"
 msgstr ""
 
@@ -6034,7 +6049,7 @@ msgstr "قسم جديد"
 msgid "new tab"
 msgstr "علامة تبويب جديدة"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1038
+#: packages/admin/src/components/TaxonomyManager.tsx:1058
 msgid "New Taxonomy"
 msgstr "تصنيف جديد"
 
@@ -6050,7 +6065,7 @@ msgstr "نافذة جديدة"
 msgid "Newest"
 msgstr "الأحدث"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:570
+#: packages/admin/src/components/TaxonomyManager.tsx:579
 msgid "News"
 msgstr "أخبار"
 
@@ -6059,7 +6074,7 @@ msgid "Next"
 msgstr "التالي"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:372
-#: packages/admin/src/components/ContentList.tsx:712
+#: packages/admin/src/components/ContentList.tsx:725
 msgid "Next page"
 msgstr "الصفحة التالية"
 
@@ -6067,7 +6082,7 @@ msgstr "الصفحة التالية"
 msgid "Next screenshot"
 msgstr "لقطة الشاشة التالية"
 
-#: packages/admin/src/components/ContentList.tsx:1289
+#: packages/admin/src/components/ContentList.tsx:1304
 #: packages/admin/src/components/users/UserDetail.tsx:236
 #: packages/admin/src/routes/byline-schema.tsx:422
 msgid "No"
@@ -6083,12 +6098,12 @@ msgid "No {0} available."
 msgstr "لا يوجد {0} متاح."
 
 #. placeholder {0}: collectionLabel.toLowerCase()
-#: packages/admin/src/components/ContentList.tsx:638
+#: packages/admin/src/components/ContentList.tsx:650
 msgid "No {0} yet."
 msgstr "لا يوجد {0} بعد."
 
 #. placeholder {0}: taxonomyDef.label.toLowerCase()
-#: packages/admin/src/components/TaxonomyManager.tsx:1057
+#: packages/admin/src/components/TaxonomyManager.tsx:1077
 msgid "No {0} yet. Create one to get started."
 msgstr "لا يوجد {0} بعد. قم بإنشاء أحدها للبدء."
 
@@ -6109,7 +6124,7 @@ msgstr "لا يوجد رموز API بعد. قم بإنشاء أحدها للبد
 msgid "No approved comments yet."
 msgstr "لا توجد تعليقات موافق عليها بعد."
 
-#: packages/admin/src/routes/shop.tsx:160
+#: packages/admin/src/routes/shop.tsx:167
 msgid "No bookable services found."
 msgstr ""
 
@@ -6170,7 +6185,7 @@ msgstr ""
 msgid "No content types yet."
 msgstr "لا يوجد أنواع محتوى بعد."
 
-#: packages/admin/src/routes/shop.tsx:543
+#: packages/admin/src/routes/shop.tsx:811
 msgid "No coupons match your search."
 msgstr ""
 
@@ -6178,11 +6193,11 @@ msgstr ""
 msgid "No custom fields yet"
 msgstr "لا توجد حقول مخصصة بعد"
 
-#: packages/admin/src/routes/shop.tsx:1491
+#: packages/admin/src/routes/shop.tsx:1759
 msgid "No customers match your search."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1132
+#: packages/admin/src/routes/shop.tsx:1400
 msgid "No delivery zones match your search."
 msgstr ""
 
@@ -6300,11 +6315,11 @@ msgstr "بدون حد أدنى"
 msgid "No moderation (auto-approve all)"
 msgstr "بدون إشراف (موافقة تلقائية على الجميع)"
 
-#: packages/admin/src/routes/shop.tsx:1345
+#: packages/admin/src/routes/shop.tsx:1613
 msgid "No orders match your filters."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1621
+#: packages/admin/src/routes/shop.tsx:1889
 msgid "No orders yet."
 msgstr ""
 
@@ -6356,7 +6371,7 @@ msgstr "لا يوجد نشاط حديث"
 msgid "No redirects yet"
 msgstr "لا توجد إعادات توجيه بعد"
 
-#: packages/admin/src/routes/shop.tsx:312
+#: packages/admin/src/routes/shop.tsx:438
 msgid "No reservations found."
 msgstr ""
 
@@ -6365,8 +6380,8 @@ msgstr ""
 msgid "No results"
 msgstr "لا يوجد نتائج"
 
-#: packages/admin/src/components/ContentList.tsx:635
-#: packages/admin/src/components/ContentList.tsx:654
+#: packages/admin/src/components/ContentList.tsx:647
+#: packages/admin/src/components/ContentList.tsx:666
 msgid "No results for \"{activeSearch}\""
 msgstr ""
 
@@ -6397,12 +6412,12 @@ msgstr "لم يتم العثور على أقسام"
 msgid "No sections yet"
 msgstr "لا توجد أقسام بعد"
 
-#: packages/admin/src/routes/shop.tsx:217
+#: packages/admin/src/routes/shop.tsx:253
 msgid "No services match your search."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:306
-#: packages/admin/src/routes/shop.tsx:350
+#: packages/admin/src/routes/shop.tsx:432
+#: packages/admin/src/routes/shop.tsx:481
 msgid "No show"
 msgstr ""
 
@@ -6430,8 +6445,8 @@ msgstr "لا توجد مناطق عناصر واجهة بعد. أنشئ واحد
 msgid "None"
 msgstr ""
 
-#: packages/admin/src/components/TaxonomyManager.tsx:596
 #: packages/admin/src/components/TaxonomyManager.tsx:605
+#: packages/admin/src/components/TaxonomyManager.tsx:614
 msgid "None (top level)"
 msgstr "بدون (المستوى الأعلى)"
 
@@ -6439,19 +6454,19 @@ msgstr "بدون (المستوى الأعلى)"
 msgid "Not compatible with this environment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:65
-#: packages/admin/src/routes/shop.tsx:1319
-#: packages/admin/src/routes/shop.tsx:1796
+#: packages/admin/src/routes/shop.tsx:66
+#: packages/admin/src/routes/shop.tsx:1587
+#: packages/admin/src/routes/shop.tsx:2064
 msgid "Not delivered"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1288
+#: packages/admin/src/components/ContentList.tsx:1303
 #: packages/admin/src/components/PluginSettings.tsx:397
-#: packages/admin/src/routes/shop.tsx:208
+#: packages/admin/src/routes/shop.tsx:232
 msgid "Not set"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1566
+#: packages/admin/src/routes/shop.tsx:1834
 msgid "Notes"
 msgstr ""
 
@@ -6487,7 +6502,7 @@ msgstr "صورة OG"
 msgid "on a custom hostname is not treated as secure, even on loopback."
 msgstr "على اسم مضيف مخصص لا يُعامَل على أنه آمن، حتى على loopback."
 
-#: packages/admin/src/routes/shop.tsx:207
+#: packages/admin/src/routes/shop.tsx:227
 msgid "Online"
 msgstr ""
 
@@ -6520,8 +6535,8 @@ msgstr "عذرًا!"
 msgid "Open in new tab"
 msgstr "فتح في علامة تبويب جديدة"
 
-#: packages/admin/src/routes/shop.tsx:1580
-#: packages/admin/src/routes/shop.tsx:1880
+#: packages/admin/src/routes/shop.tsx:1848
+#: packages/admin/src/routes/shop.tsx:2148
 msgid "Open WhatsApp"
 msgstr ""
 
@@ -6529,7 +6544,7 @@ msgstr ""
 msgid "Open WordPress Profile"
 msgstr "فتح ملف WordPress الشخصي"
 
-#: packages/admin/src/routes/shop.tsx:1880
+#: packages/admin/src/routes/shop.tsx:2148
 msgid "Opening..."
 msgstr ""
 
@@ -6573,11 +6588,11 @@ msgstr "تسمية توضيحية اختيارية تُعرض أسفل الصو�
 msgid "Optional caption for display"
 msgstr "تسمية توضيحية اختيارية للعرض"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:621
+#: packages/admin/src/components/TaxonomyManager.tsx:630
 msgid "Optional description"
 msgstr "وصف اختياري"
 
-#: packages/admin/src/routes/shop.tsx:728
+#: packages/admin/src/routes/shop.tsx:996
 msgid "Optional message used when the customer sends the order to WhatsApp."
 msgstr ""
 
@@ -6617,30 +6632,31 @@ msgstr "أو ارفع ملف تصدير"
 msgid "or upload directly"
 msgstr "أو ارفع مباشرةً"
 
-#: packages/admin/src/routes/shop.tsx:323
-#: packages/admin/src/routes/shop.tsx:970
-#: packages/admin/src/routes/shop.tsx:1329
-#: packages/admin/src/routes/shop.tsx:1731
+#: packages/admin/src/routes/shop.tsx:449
+#: packages/admin/src/routes/shop.tsx:561
+#: packages/admin/src/routes/shop.tsx:1238
+#: packages/admin/src/routes/shop.tsx:1597
+#: packages/admin/src/routes/shop.tsx:1999
 msgid "Order"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1353
+#: packages/admin/src/routes/shop.tsx:1621
 msgid "Order details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1368
+#: packages/admin/src/routes/shop.tsx:1636
 msgid "Order details unavailable."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1619
+#: packages/admin/src/routes/shop.tsx:1887
 msgid "Order history"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1861
+#: packages/admin/src/routes/shop.tsx:2129
 msgid "Order received"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:716
+#: packages/admin/src/routes/shop.tsx:984
 msgid "Order received template"
 msgstr ""
 
@@ -6648,9 +6664,9 @@ msgstr ""
 msgid "Order saved"
 msgstr "تم حفظ الترتيب"
 
-#: packages/admin/src/routes/shop.tsx:380
-#: packages/admin/src/routes/shop.tsx:1474
-#: packages/admin/src/routes/shop.tsx:1597
+#: packages/admin/src/routes/shop.tsx:648
+#: packages/admin/src/routes/shop.tsx:1742
+#: packages/admin/src/routes/shop.tsx:1865
 msgid "Orders"
 msgstr ""
 
@@ -6682,7 +6698,7 @@ msgstr "الملكية"
 msgid "Package"
 msgstr "الحزمة"
 
-#: packages/admin/src/router.tsx:2301
+#: packages/admin/src/router.tsx:2318
 msgid "Page Not Found"
 msgstr "الصفحة غير موجودة"
 
@@ -6696,7 +6712,7 @@ msgid "Paragraph"
 msgstr "فقرة"
 
 #: packages/admin/src/components/MenuEditor.tsx:615
-#: packages/admin/src/components/TaxonomyManager.tsx:592
+#: packages/admin/src/components/TaxonomyManager.tsx:601
 msgid "Parent"
 msgstr "الأب"
 
@@ -6793,32 +6809,32 @@ msgstr "نمط لتوليد الروابط، مثال: /blog/{0}"
 msgid "Pattern must include a {0} placeholder"
 msgstr "يجب أن يحتوي النمط على عنصر نائب {0}"
 
-#: packages/admin/src/routes/shop.tsx:1331
+#: packages/admin/src/routes/shop.tsx:1599
 msgid "Payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1674
-#: packages/admin/src/routes/shop.tsx:1862
+#: packages/admin/src/routes/shop.tsx:1942
+#: packages/admin/src/routes/shop.tsx:2130
 msgid "Payment confirmed"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:731
+#: packages/admin/src/routes/shop.tsx:999
 msgid "Payment confirmed template"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:869
+#: packages/admin/src/routes/shop.tsx:1137
 msgid "Payment gateway"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:793
+#: packages/admin/src/routes/shop.tsx:1061
 msgid "Payment instructions"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:857
+#: packages/admin/src/routes/shop.tsx:1125
 msgid "Payment methods"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1756
+#: packages/admin/src/routes/shop.tsx:2024
 msgid "Payment status"
 msgstr ""
 
@@ -6831,9 +6847,9 @@ msgid "pending"
 msgstr "معلّق"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:198
-#: packages/admin/src/routes/shop.tsx:67
-#: packages/admin/src/routes/shop.tsx:1318
-#: packages/admin/src/routes/shop.tsx:1791
+#: packages/admin/src/routes/shop.tsx:68
+#: packages/admin/src/routes/shop.tsx:1586
+#: packages/admin/src/routes/shop.tsx:2059
 msgid "Pending"
 msgstr "معلّق"
 
@@ -6841,21 +6857,21 @@ msgstr "معلّق"
 msgid "Pending changes"
 msgstr "تغييرات معلّقة"
 
-#: packages/admin/src/routes/shop.tsx:302
-#: packages/admin/src/routes/shop.tsx:345
+#: packages/admin/src/routes/shop.tsx:428
+#: packages/admin/src/routes/shop.tsx:476
 msgid "Pending payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:583
-#: packages/admin/src/routes/shop.tsx:586
+#: packages/admin/src/routes/shop.tsx:851
+#: packages/admin/src/routes/shop.tsx:854
 msgid "Percentage"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1432
+#: packages/admin/src/components/ContentList.tsx:1447
 msgid "Permanently delete \"{title}\"? This cannot be undone."
 msgstr "حذف \"{title}\" نهائيًا؟ لا يمكن التراجع عن هذا الإجراء."
 
-#: packages/admin/src/components/ContentList.tsx:1421
+#: packages/admin/src/components/ContentList.tsx:1436
 msgid "Permanently delete {title}"
 msgstr "حذف {title} نهائيًا"
 
@@ -6863,8 +6879,9 @@ msgstr "حذف {title} نهائيًا"
 msgid "Permissions"
 msgstr "الصلاحيات"
 
-#: packages/admin/src/routes/shop.tsx:1472
-#: packages/admin/src/routes/shop.tsx:1608
+#: packages/admin/src/routes/shop.tsx:604
+#: packages/admin/src/routes/shop.tsx:1740
+#: packages/admin/src/routes/shop.tsx:1876
 msgid "Phone"
 msgstr ""
 
@@ -6906,7 +6923,7 @@ msgstr "يرجى إدخال عنوان بريد إلكتروني صحيح"
 msgid "Please enter a valid URL"
 msgstr "يرجى إدخال رابط صحيح"
 
-#: packages/admin/src/routes/shop.tsx:982
+#: packages/admin/src/routes/shop.tsx:1250
 msgid "Plin"
 msgstr ""
 
@@ -7027,7 +7044,7 @@ msgstr ""
 msgid "Points search engines to the original version of this page, if it's duplicated from another URL"
 msgstr "يرشد محركات البحث إلى النسخة الأصلية من هذه الصفحة، إذا كانت مكررة من رابط آخر"
 
-#: packages/admin/src/components/ContentEditor.tsx:1558
+#: packages/admin/src/components/ContentEditor.tsx:1578
 msgid "Porcentaje de descuento"
 msgstr ""
 
@@ -7052,22 +7069,22 @@ msgstr "المنشورات لكل صفحة"
 msgid "Pre-release"
 msgstr "إصدار أولي"
 
-#: packages/admin/src/components/ContentEditor.tsx:1567
+#: packages/admin/src/components/ContentEditor.tsx:1587
 msgid "Precio de promoción"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1549
+#: packages/admin/src/components/ContentEditor.tsx:1569
 msgid "Precio regular"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:817
+#: packages/admin/src/routes/shop.tsx:1085
 msgid "Preparation time"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:60
-#: packages/admin/src/routes/shop.tsx:1313
-#: packages/admin/src/routes/shop.tsx:1793
-#: packages/admin/src/routes/shop.tsx:1863
+#: packages/admin/src/routes/shop.tsx:61
+#: packages/admin/src/routes/shop.tsx:1581
+#: packages/admin/src/routes/shop.tsx:2061
+#: packages/admin/src/routes/shop.tsx:2131
 msgid "Preparing"
 msgstr ""
 
@@ -7075,7 +7092,7 @@ msgstr ""
 msgid "Preparing registration..."
 msgstr "جاري تجهيز التسجيل..."
 
-#: packages/admin/src/routes/shop.tsx:742
+#: packages/admin/src/routes/shop.tsx:1010
 msgid "Preparing template"
 msgstr ""
 
@@ -7088,7 +7105,7 @@ msgstr "جاري التحضير لتنزيل الملفات من WordPress..."
 msgid "Preparing..."
 msgstr "جاري التحضير..."
 
-#: packages/admin/src/routes/shop.tsx:1762
+#: packages/admin/src/routes/shop.tsx:2030
 msgid "Press once to confirm the payment."
 msgstr ""
 
@@ -7115,7 +7132,7 @@ msgid "Previous"
 msgstr "السابق"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:353
-#: packages/admin/src/components/ContentList.tsx:700
+#: packages/admin/src/components/ContentList.tsx:713
 msgid "Previous page"
 msgstr "الصفحة السابقة"
 
@@ -7143,12 +7160,16 @@ msgstr ""
 msgid "Processing..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:900
+#: packages/admin/src/routes/shop.tsx:1168
 msgid "Production"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1744
+#: packages/admin/src/routes/shop.tsx:2012
 msgid "Products"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:571
+msgid "Products in the order"
 msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:119
@@ -7172,7 +7193,7 @@ msgstr ""
 msgid "Promotions"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:881
+#: packages/admin/src/routes/shop.tsx:1149
 msgid "Provider"
 msgstr ""
 
@@ -7180,15 +7201,15 @@ msgstr ""
 msgid "Provider:"
 msgstr "المزود:"
 
-#: packages/admin/src/routes/shop.tsx:904
+#: packages/admin/src/routes/shop.tsx:1172
 msgid "Public key"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:909
+#: packages/admin/src/routes/shop.tsx:1177
 msgid "Public key from your provider"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:485
+#: packages/admin/src/components/ContentList.tsx:497
 #: packages/admin/src/components/ContentSettingsPanel.tsx:198
 #: packages/admin/src/components/ContentSettingsPanel.tsx:205
 #: packages/admin/src/components/ContentSettingsPanel.tsx:485
@@ -7200,11 +7221,11 @@ msgstr "نشر"
 msgid "Publish date"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:832
-#: packages/admin/src/components/ContentList.tsx:843
+#: packages/admin/src/components/ContentList.tsx:845
+#: packages/admin/src/components/ContentList.tsx:856
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1089
+#: packages/admin/src/router.tsx:1102
 msgid "Published"
 msgstr "منشور"
 
@@ -7213,7 +7234,7 @@ msgstr "منشور"
 msgid "Published {0}"
 msgstr "تم نشر {0}"
 
-#: packages/admin/src/router.tsx:514
+#: packages/admin/src/router.tsx:515
 msgid "Published {total} items"
 msgstr ""
 
@@ -7294,8 +7315,8 @@ msgstr "القراءة"
 msgid "Ready"
 msgstr "جاهز"
 
-#: packages/admin/src/routes/shop.tsx:61
-#: packages/admin/src/routes/shop.tsx:1314
+#: packages/admin/src/routes/shop.tsx:62
+#: packages/admin/src/routes/shop.tsx:1582
 msgid "Ready for delivery"
 msgstr ""
 
@@ -7344,7 +7365,8 @@ msgid "Redo"
 msgstr "إعادة"
 
 #: packages/admin/src/components/FieldEditor.tsx:245
-#: packages/admin/src/routes/shop.tsx:1565
+#: packages/admin/src/routes/shop.tsx:608
+#: packages/admin/src/routes/shop.tsx:1833
 msgid "Reference"
 msgstr "مرجع"
 
@@ -7414,7 +7436,7 @@ msgstr "إزالة {0}"
 msgid "Remove {entry}"
 msgstr "إزالة {entry}"
 
-#: packages/admin/src/components/ContentEditor.tsx:1854
+#: packages/admin/src/components/ContentEditor.tsx:1874
 msgid "Remove {label}"
 msgstr "إزالة {label}"
 
@@ -7572,9 +7594,9 @@ msgstr "مطلوب لإمكانية الوصول. يصف الصورة لقارئ
 msgid "Requires EmDash {0}"
 msgstr "يتطلب EmDash {0}"
 
-#: packages/admin/src/routes/shop.tsx:66
-#: packages/admin/src/routes/shop.tsx:1320
-#: packages/admin/src/routes/shop.tsx:1797
+#: packages/admin/src/routes/shop.tsx:67
+#: packages/admin/src/routes/shop.tsx:1588
+#: packages/admin/src/routes/shop.tsx:2065
 msgid "Rescheduled"
 msgstr ""
 
@@ -7586,7 +7608,11 @@ msgstr "إعادة إرسال البريد الإلكتروني"
 msgid "Resend in {resendCooldown}s"
 msgstr "إعادة الإرسال بعد {resendCooldown}ث"
 
-#: packages/admin/src/routes/shop.tsx:292
+#: packages/admin/src/routes/shop.tsx:528
+msgid "Reservation details"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:418
 msgid "Reservations"
 msgstr ""
 
@@ -7603,7 +7629,7 @@ msgstr ""
 msgid "Restore"
 msgstr "استعادة"
 
-#: packages/admin/src/components/ContentList.tsx:1409
+#: packages/admin/src/components/ContentList.tsx:1424
 msgid "Restore {title}"
 msgstr "استعادة {title}"
 
@@ -7633,12 +7659,12 @@ msgstr "جاري الاستعادة..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2289
+#: packages/admin/src/router.tsx:2306
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "إعادة المحاولة"
 
-#: packages/admin/src/routes/shop.tsx:938
+#: packages/admin/src/routes/shop.tsx:1206
 msgid "Return URL"
 msgstr ""
 
@@ -7646,7 +7672,7 @@ msgstr ""
 msgid "Reusable content blocks you can insert into any content"
 msgstr "كتل محتوى قابلة لإعادة الاستخدام يمكنك إدراجها في أي محتوى"
 
-#: packages/admin/src/router.tsx:1127
+#: packages/admin/src/router.tsx:1140
 msgid "Reverted to published version"
 msgstr "تمت الإعادة إلى النسخة المنشورة"
 
@@ -7654,7 +7680,7 @@ msgstr "تمت الإعادة إلى النسخة المنشورة"
 msgid "Review"
 msgstr "مراجعة"
 
-#: packages/admin/src/routes/shop.tsx:293
+#: packages/admin/src/routes/shop.tsx:419
 msgid "Review and update service bookings."
 msgstr ""
 
@@ -7770,11 +7796,11 @@ msgstr ""
 msgid "Same window"
 msgstr "نفس النافذة"
 
-#: packages/admin/src/routes/shop.tsx:971
+#: packages/admin/src/routes/shop.tsx:1239
 msgid "Sample product"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:84
+#: packages/admin/src/routes/shop.tsx:85
 msgid "Saturday"
 msgstr ""
 
@@ -7813,11 +7839,11 @@ msgstr "حفظ التغييرات"
 msgid "Save content as draft before publishing"
 msgstr "حفظ المحتوى كمسودة قبل النشر"
 
-#: packages/admin/src/routes/shop.tsx:615
+#: packages/admin/src/routes/shop.tsx:883
 msgid "Save coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:870
+#: packages/admin/src/routes/shop.tsx:1138
 msgid "Save gateway parameters for a future integration. Orders continue through WhatsApp until a gateway connector is enabled."
 msgstr ""
 
@@ -7825,11 +7851,11 @@ msgstr ""
 msgid "Save name"
 msgstr "حفظ الاسم"
 
-#: packages/admin/src/routes/shop.tsx:265
+#: packages/admin/src/routes/shop.tsx:383
 msgid "Save schedule"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:956
+#: packages/admin/src/routes/shop.tsx:1224
 msgid "Save settings"
 msgstr ""
 
@@ -7838,7 +7864,7 @@ msgstr ""
 msgid "Save Settings"
 msgstr "حفظ الإعدادات"
 
-#: packages/admin/src/routes/shop.tsx:1220
+#: packages/admin/src/routes/shop.tsx:1488
 msgid "Save zone"
 msgstr ""
 
@@ -7859,18 +7885,18 @@ msgstr ""
 #: packages/admin/src/components/PluginSettings.tsx:265
 #: packages/admin/src/components/Redirects.tsx:188
 #: packages/admin/src/components/SaveButton.tsx:33
-#: packages/admin/src/components/TaxonomyManager.tsx:660
+#: packages/admin/src/components/TaxonomyManager.tsx:680
 #: packages/admin/src/components/users/UserDetail.tsx:311
 #: packages/admin/src/components/Widgets.tsx:983
 #: packages/admin/src/routes/bylines.tsx:579
-#: packages/admin/src/routes/shop.tsx:615
-#: packages/admin/src/routes/shop.tsx:956
-#: packages/admin/src/routes/shop.tsx:1220
+#: packages/admin/src/routes/shop.tsx:883
+#: packages/admin/src/routes/shop.tsx:1224
+#: packages/admin/src/routes/shop.tsx:1488
 msgid "Saving..."
 msgstr "جاري الحفظ..."
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:318
-#: packages/admin/src/routes/shop.tsx:265
+#: packages/admin/src/routes/shop.tsx:383
 msgid "Saving…"
 msgstr ""
 
@@ -7884,7 +7910,7 @@ msgid "SBOM · {0}"
 msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:572
-#: packages/admin/src/routes/shop.tsx:210
+#: packages/admin/src/routes/shop.tsx:244
 msgid "Schedule"
 msgstr "جدولة"
 
@@ -7896,14 +7922,14 @@ msgstr "جدولة لـ"
 msgid "Schedule for later"
 msgstr "جدولة لوقت لاحق"
 
-#: packages/admin/src/routes/shop.tsx:221
+#: packages/admin/src/routes/shop.tsx:261
 msgid "Schedule service availability"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:834
+#: packages/admin/src/components/ContentList.tsx:847
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
 #: packages/admin/src/components/Promotions.tsx:177
-#: packages/admin/src/router.tsx:1147
+#: packages/admin/src/router.tsx:1160
 msgid "Scheduled"
 msgstr "مجدول"
 
@@ -7978,16 +8004,16 @@ msgid "Search"
 msgstr "بحث"
 
 #. placeholder {0}: collectionLabel.toLowerCase()
-#: packages/admin/src/components/ContentList.tsx:419
+#: packages/admin/src/components/ContentList.tsx:431
 msgid "Search {0}"
 msgstr "بحث {0}"
 
 #. placeholder {0}: collectionLabel.toLowerCase()
-#: packages/admin/src/components/ContentList.tsx:418
+#: packages/admin/src/components/ContentList.tsx:430
 msgid "Search {0}..."
 msgstr "بحث {0}..."
 
-#: packages/admin/src/routes/shop.tsx:489
+#: packages/admin/src/routes/shop.tsx:757
 msgid "Search by coupon code"
 msgstr ""
 
@@ -8000,19 +8026,19 @@ msgstr ""
 msgid "Search by name or email..."
 msgstr "ابحث بالاسم أو البريد الإلكتروني..."
 
-#: packages/admin/src/routes/shop.tsx:1434
+#: packages/admin/src/routes/shop.tsx:1702
 msgid "Search by name, phone, email, or district"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1299
+#: packages/admin/src/routes/shop.tsx:1567
 msgid "Search by order number"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:187
+#: packages/admin/src/routes/shop.tsx:197
 msgid "Search by service name"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1099
+#: packages/admin/src/routes/shop.tsx:1367
 msgid "Search by zone or district"
 msgstr ""
 
@@ -8042,15 +8068,15 @@ msgstr "البحث في التعليقات..."
 msgid "Search content..."
 msgstr "البحث في المحتوى..."
 
-#: packages/admin/src/routes/shop.tsx:488
+#: packages/admin/src/routes/shop.tsx:756
 msgid "Search coupons"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1433
+#: packages/admin/src/routes/shop.tsx:1701
 msgid "Search customers"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1098
+#: packages/admin/src/routes/shop.tsx:1366
 msgid "Search delivery zones"
 msgstr ""
 
@@ -8072,7 +8098,7 @@ msgstr ""
 msgid "Search media"
 msgstr "البحث في الوسائط"
 
-#: packages/admin/src/routes/shop.tsx:1298
+#: packages/admin/src/routes/shop.tsx:1566
 msgid "Search orders"
 msgstr ""
 
@@ -8095,7 +8121,7 @@ msgstr "البحث في الإضافات..."
 msgid "Search sections..."
 msgstr "البحث في الأقسام..."
 
-#: packages/admin/src/routes/shop.tsx:187
+#: packages/admin/src/routes/shop.tsx:196
 msgid "Search services"
 msgstr ""
 
@@ -8141,15 +8167,15 @@ msgstr ""
 msgid "Secondary hover color"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:912
+#: packages/admin/src/routes/shop.tsx:1180
 msgid "Secret key"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:921
+#: packages/admin/src/routes/shop.tsx:1189
 msgid "Secret key from your provider"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:920
+#: packages/admin/src/routes/shop.tsx:1188
 msgid "Secret key saved; enter a new one to replace it"
 msgstr ""
 
@@ -8250,13 +8276,13 @@ msgid "Select"
 msgstr "اختيار"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:140
-#: packages/admin/src/components/ContentEditor.tsx:1866
-#: packages/admin/src/components/ContentEditor.tsx:1882
+#: packages/admin/src/components/ContentEditor.tsx:1886
+#: packages/admin/src/components/ContentEditor.tsx:1902
 #: packages/admin/src/components/ImageFieldRenderer.tsx:273
 msgid "Select {label}"
 msgstr "اختيار {label}"
 
-#: packages/admin/src/components/ContentList.tsx:1141
+#: packages/admin/src/components/ContentList.tsx:1156
 msgid "Select {title}"
 msgstr ""
 
@@ -8272,11 +8298,11 @@ msgstr "اختر قائمة..."
 msgid "Select all"
 msgstr "اختيار الكل"
 
-#: packages/admin/src/components/ContentList.tsx:567
+#: packages/admin/src/components/ContentList.tsx:579
 msgid "Select all on this page"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:228
+#: packages/admin/src/routes/shop.tsx:280
 msgid "Select at least one available day."
 msgstr ""
 
@@ -8298,7 +8324,7 @@ msgstr "اختر صورة التواصل الاجتماعي الافتراضية
 msgid "Select Favicon"
 msgstr "اختيار أيقونة المتصفح"
 
-#: packages/admin/src/components/ContentEditor.tsx:1870
+#: packages/admin/src/components/ContentEditor.tsx:1890
 msgid "Select file"
 msgstr "اختر ملفًا"
 
@@ -8321,7 +8347,7 @@ msgstr "اختيار صورة"
 msgid "Select Image"
 msgstr "اختيار صورة"
 
-#: packages/admin/src/routes/shop.tsx:888
+#: packages/admin/src/routes/shop.tsx:1156
 msgid "Select later"
 msgstr ""
 
@@ -8342,7 +8368,7 @@ msgstr "اختيار صورة OG"
 msgid "Select OG Image"
 msgstr "اختيار صورة OG"
 
-#: packages/admin/src/routes/shop.tsx:245
+#: packages/admin/src/routes/shop.tsx:310
 msgid "Select only the days when this service is available. Saturday and Sunday can be left unselected."
 msgstr ""
 
@@ -8440,22 +8466,28 @@ msgstr "تم حفظ إعدادات تحسين محركات البحث"
 msgid "SEO Title"
 msgstr "عنوان تحسين محركات البحث"
 
-#: packages/admin/src/router.tsx:799
-#: packages/admin/src/routes/shop.tsx:194
-#: packages/admin/src/routes/shop.tsx:319
+#: packages/admin/src/router.tsx:807
+#: packages/admin/src/routes/shop.tsx:207
+#: packages/admin/src/routes/shop.tsx:445
+#: packages/admin/src/routes/shop.tsx:542
 msgid "Service"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1156
+#: packages/admin/src/components/ContentEditor.tsx:1174
 msgid "Service description"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1157
+#: packages/admin/src/components/ContentEditor.tsx:1175
 msgid "Service image"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1155
+#: packages/admin/src/components/ContentEditor.tsx:1173
 msgid "Service name"
+msgstr ""
+
+#: packages/admin/src/router.tsx:640
+#: packages/admin/src/router.tsx:1353
+msgid "Services"
 msgstr ""
 
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:316
@@ -8476,7 +8508,7 @@ msgstr "تعيين اللغة (الحالية: {label})"
 msgid "Set to 0 to never close comments automatically."
 msgstr "اضبط على 0 لتجنب الإغلاق التلقائي للتعليقات."
 
-#: packages/admin/src/components/ContentList.tsx:495
+#: packages/admin/src/components/ContentList.tsx:507
 msgid "Set to draft"
 msgstr ""
 
@@ -8489,8 +8521,8 @@ msgid "Setting up..."
 msgstr "جاري الإعداد..."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:234
-#: packages/admin/src/components/ContentEditor.tsx:859
-#: packages/admin/src/components/ContentEditor.tsx:1092
+#: packages/admin/src/components/ContentEditor.tsx:865
+#: packages/admin/src/components/ContentEditor.tsx:1098
 #: packages/admin/src/components/ContentTypeEditor.tsx:382
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
@@ -8521,7 +8553,7 @@ msgstr "فشل الإعداد"
 msgid "Share this link with the invited user"
 msgstr "شارك هذا الرابط مع المستخدم المدعو"
 
-#: packages/admin/src/routes/shop.tsx:797
+#: packages/admin/src/routes/shop.tsx:1065
 msgid "Share your Yape, Plin, or bank transfer instructions."
 msgstr ""
 
@@ -8556,6 +8588,10 @@ msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:343
 msgid "Show on"
+msgstr ""
+
+#: packages/admin/src/components/TaxonomyManager.tsx:642
+msgid "Show on home"
 msgstr ""
 
 #: packages/admin/src/components/Widgets.tsx:138
@@ -8697,7 +8733,7 @@ msgstr "تم التخطي"
 #: packages/admin/src/components/FieldEditor.tsx:444
 #: packages/admin/src/components/SectionEditor.tsx:259
 #: packages/admin/src/components/Sections.tsx:184
-#: packages/admin/src/components/TaxonomyManager.tsx:576
+#: packages/admin/src/components/TaxonomyManager.tsx:585
 #: packages/admin/src/routes/byline-schema.tsx:237
 #: packages/admin/src/routes/bylines.tsx:486
 msgid "Slug"
@@ -8750,7 +8786,7 @@ msgstr "لا يمكن استيراد بعض أنواع المحتوى"
 msgid "Something went wrong"
 msgstr "حدث خطأ ما"
 
-#: packages/admin/src/routes/shop.tsx:1460
+#: packages/admin/src/routes/shop.tsx:1728
 msgid "Sort customers"
 msgstr ""
 
@@ -8802,7 +8838,7 @@ msgstr ""
 msgid "Square"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:239
+#: packages/admin/src/routes/shop.tsx:293
 msgid "Start date"
 msgstr ""
 
@@ -8814,25 +8850,27 @@ msgstr ""
 msgid "Start Import"
 msgstr "بدء الاستيراد"
 
-#: packages/admin/src/components/ContentEditor.tsx:1277
+#: packages/admin/src/components/ContentEditor.tsx:1297
 #: packages/admin/src/components/PortableTextEditor.tsx:2579
 #: packages/admin/src/components/PortableTextEditor.tsx:2580
 msgid "Start writing, or type '/' for commands"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:257
+#: packages/admin/src/routes/shop.tsx:345
+#: packages/admin/src/routes/shop.tsx:545
 msgid "Starts at"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:592
+#: packages/admin/src/components/ContentList.tsx:604
 #: packages/admin/src/components/ContentSettingsPanel.tsx:518
 #: packages/admin/src/components/ContentTypeEditor.tsx:117
 #: packages/admin/src/components/Promotions.tsx:121
 #: packages/admin/src/components/Redirects.tsx:480
 #: packages/admin/src/components/users/UserList.tsx:104
-#: packages/admin/src/routes/shop.tsx:322
-#: packages/admin/src/routes/shop.tsx:1114
-#: packages/admin/src/routes/shop.tsx:1330
+#: packages/admin/src/routes/shop.tsx:448
+#: packages/admin/src/routes/shop.tsx:560
+#: packages/admin/src/routes/shop.tsx:1382
+#: packages/admin/src/routes/shop.tsx:1598
 msgid "Status"
 msgstr "الحالة"
 
@@ -8848,7 +8886,7 @@ msgstr ""
 msgid "Storage available"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:969
+#: packages/admin/src/routes/shop.tsx:1237
 msgid "Store"
 msgstr ""
 
@@ -8856,15 +8894,15 @@ msgstr ""
 msgid "Store a daily backup in your site's storage bucket. Old backups are removed automatically."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:673
+#: packages/admin/src/routes/shop.tsx:941
 msgid "Store name"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:378
+#: packages/admin/src/routes/shop.tsx:646
 msgid "Store settings"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:643
+#: packages/admin/src/routes/shop.tsx:911
 msgid "Store settings saved"
 msgstr ""
 
@@ -8906,7 +8944,7 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:78
+#: packages/admin/src/routes/shop.tsx:79
 msgid "Sunday"
 msgstr ""
 
@@ -8961,7 +8999,7 @@ msgstr "الشعار"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:201
 #: packages/admin/src/components/Widgets.tsx:143
-#: packages/admin/src/router.tsx:616
+#: packages/admin/src/router.tsx:622
 msgid "Tags"
 msgstr "الوسوم"
 
@@ -8975,7 +9013,7 @@ msgstr "الوسوم ({0})"
 msgid "Target"
 msgstr "الهدف"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:354
+#: packages/admin/src/components/TaxonomyManager.tsx:355
 msgid "Target locale"
 msgstr "اللغة المستهدفة"
 
@@ -8988,15 +9026,15 @@ msgstr "التصنيفات"
 msgid "Taxonomies Manage"
 msgstr "إدارة التصنيفات"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1124
+#: packages/admin/src/components/TaxonomyManager.tsx:1144
 msgid "Taxonomy created"
 msgstr "تم إنشاء التصنيف"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1014
+#: packages/admin/src/components/TaxonomyManager.tsx:1034
 msgid "Taxonomy not found:"
 msgstr "لم يتم العثور على التصنيف:"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:341
+#: packages/admin/src/components/TaxonomyManager.tsx:342
 msgid "Taxonomy: {taxonomyName}"
 msgstr "التصنيف: {taxonomyName}"
 
@@ -9004,23 +9042,23 @@ msgstr "التصنيف: {taxonomyName}"
 msgid "Template:"
 msgstr "القالب:"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:539
-#: packages/admin/src/components/TaxonomyManager.tsx:540
-#: packages/admin/src/components/TaxonomyManager.tsx:1041
+#: packages/admin/src/components/TaxonomyManager.tsx:548
+#: packages/admin/src/components/TaxonomyManager.tsx:549
+#: packages/admin/src/components/TaxonomyManager.tsx:1061
 msgid "Term"
 msgstr "المصطلح"
 
 #. placeholder {0}: term.label
 #. placeholder {1}: term.locale.toUpperCase()
-#: packages/admin/src/components/TaxonomyManager.tsx:988
+#: packages/admin/src/components/TaxonomyManager.tsx:1008
 msgid "Term \"{0}\" created in {1}."
 msgstr "تم إنشاء المصطلح \"{0}\" في {1}."
 
-#: packages/admin/src/components/TaxonomyManager.tsx:928
+#: packages/admin/src/components/TaxonomyManager.tsx:948
 msgid "Term deleted"
 msgstr "تم حذف المصطلح"
 
-#: packages/admin/src/routes/shop.tsx:900
+#: packages/admin/src/routes/shop.tsx:1168
 msgid "Test mode"
 msgstr ""
 
@@ -9077,7 +9115,7 @@ msgstr "تم حذف القائمة."
 msgid "The name of your site, used in the header and metadata"
 msgstr "اسم موقعك، يُستخدم في الترويسة والبيانات الوصفية"
 
-#: packages/admin/src/router.tsx:2303
+#: packages/admin/src/router.tsx:2320
 msgid "The page you're looking for doesn't exist."
 msgstr "الصفحة التي تبحث عنها غير موجودة."
 
@@ -9097,7 +9135,7 @@ msgstr "الصورة المرجعية لم تعد متاحة. اختر أخرى 
 msgid "The referenced logo is no longer available. Pick a new one or remove the reference."
 msgstr "الشعار المرجعي لم يعد متاحًا. اختر آخر أو احذف المرجع."
 
-#: packages/admin/src/routes/shop.tsx:706
+#: packages/admin/src/routes/shop.tsx:974
 msgid "The store name, order number, products, and total are added automatically."
 msgstr ""
 
@@ -9159,7 +9197,7 @@ msgstr ""
 msgid "This field does not accept {sniffedMime} files."
 msgstr "هذا الحقل لا يقبل ملفات {sniffedMime}."
 
-#: packages/admin/src/components/ContentEditor.tsx:1885
+#: packages/admin/src/components/ContentEditor.tsx:1905
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "هذا الحقل مطلوب"
@@ -9256,7 +9294,7 @@ msgid "This will move the item to trash. You can restore it later from the trash
 msgstr "سيؤدي هذا إلى نقل العنصر إلى سلة المحذوفات. يمكنك استعادته لاحقًا من سلة المحذوفات."
 
 #. placeholder {0}: deleteTarget?.label
-#: packages/admin/src/components/TaxonomyManager.tsx:1110
+#: packages/admin/src/components/TaxonomyManager.tsx:1130
 msgid "This will permanently delete \"{0}\" and remove it from all content."
 msgstr "سيؤدي هذا إلى حذف \"{0}\" نهائيًا وإزالته من جميع المحتوى."
 
@@ -9281,7 +9319,7 @@ msgstr "سيؤدي هذا إلى الرجوع إلى النسخة المنشور
 msgid "Thoughts, tutorials, and more"
 msgstr "أفكار، شروحات، والمزيد"
 
-#: packages/admin/src/routes/shop.tsx:82
+#: packages/admin/src/routes/shop.tsx:83
 msgid "Thursday"
 msgstr ""
 
@@ -9293,8 +9331,8 @@ msgstr "المنطقة الزمنية"
 msgid "Timezone for displaying dates (e.g., America/New_York)"
 msgstr "المنطقة الزمنية لعرض التواريخ (مثال: America/New_York)"
 
-#: packages/admin/src/components/ContentList.tsx:577
-#: packages/admin/src/components/ContentList.tsx:737
+#: packages/admin/src/components/ContentList.tsx:589
+#: packages/admin/src/components/ContentList.tsx:750
 #: packages/admin/src/components/Promotions.tsx:295
 #: packages/admin/src/components/SectionEditor.tsx:251
 #: packages/admin/src/components/Sections.tsx:170
@@ -9311,7 +9349,7 @@ msgstr "العنوان (تلميح)"
 msgid "Title Separator"
 msgstr "فاصل العنوان"
 
-#: packages/admin/src/components/ContentList.tsx:933
+#: packages/admin/src/components/ContentList.tsx:946
 msgid "to"
 msgstr ""
 
@@ -9319,7 +9357,7 @@ msgstr ""
 msgid "to close"
 msgstr "للإغلاق"
 
-#: packages/admin/src/components/ContentList.tsx:937
+#: packages/admin/src/components/ContentList.tsx:950
 msgid "To date"
 msgstr ""
 
@@ -9357,13 +9395,13 @@ msgstr ""
 msgid "Tools → Export"
 msgstr "الأدوات > التصدير"
 
-#: packages/admin/src/routes/shop.tsx:972
-#: packages/admin/src/routes/shop.tsx:1333
-#: packages/admin/src/routes/shop.tsx:1735
+#: packages/admin/src/routes/shop.tsx:1240
+#: packages/admin/src/routes/shop.tsx:1601
+#: packages/admin/src/routes/shop.tsx:2003
 msgid "Total"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1601
+#: packages/admin/src/routes/shop.tsx:1869
 msgid "Total spent"
 msgstr ""
 
@@ -9371,11 +9409,11 @@ msgstr ""
 msgid "Track content history"
 msgstr "تتبع تاريخ المحتوى"
 
-#: packages/admin/src/routes/shop.tsx:1836
+#: packages/admin/src/routes/shop.tsx:2104
 msgid "Tracking code (optional)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1842
+#: packages/admin/src/routes/shop.tsx:2110
 msgid "Tracking URL (optional)"
 msgstr ""
 
@@ -9384,31 +9422,31 @@ msgstr ""
 msgid "Translatable"
 msgstr ""
 
-#: packages/admin/src/components/TaxonomyManager.tsx:266
-#: packages/admin/src/components/TaxonomyManager.tsx:376
+#: packages/admin/src/components/TaxonomyManager.tsx:267
+#: packages/admin/src/components/TaxonomyManager.tsx:377
 #: packages/admin/src/components/TranslationsPanel.tsx:104
 msgid "Translate"
 msgstr "ترجمة"
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:338
+#: packages/admin/src/components/TaxonomyManager.tsx:339
 msgid "Translate \"{0}\""
 msgstr "ترجمة \"{0}\""
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:263
+#: packages/admin/src/components/TaxonomyManager.tsx:264
 msgid "Translate {0}"
 msgstr "ترجمة {0}"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:376
+#: packages/admin/src/components/TaxonomyManager.tsx:377
 #: packages/admin/src/components/TranslationsPanel.tsx:104
 msgid "Translating..."
 msgstr "جارٍ الترجمة..."
 
 #: packages/admin/src/components/MenuEditor.tsx:143
-#: packages/admin/src/components/TaxonomyManager.tsx:987
+#: packages/admin/src/components/TaxonomyManager.tsx:1007
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1199
+#: packages/admin/src/router.tsx:1212
 msgid "Translation created"
 msgstr "تم إنشاء الترجمة"
 
@@ -9425,11 +9463,11 @@ msgstr "سلة المحذوفات"
 #: packages/admin/src/components/comments/CommentInbox.tsx:217
 #: packages/admin/src/components/comments/CommentInbox.tsx:258
 #: packages/admin/src/components/comments/CommentInbox.tsx:514
-#: packages/admin/src/components/ContentList.tsx:441
+#: packages/admin/src/components/ContentList.tsx:453
 msgid "Trash"
 msgstr "سلة المحذوفات"
 
-#: packages/admin/src/components/ContentList.tsx:760
+#: packages/admin/src/components/ContentList.tsx:773
 msgid "Trash is empty"
 msgstr "سلة المحذوفات فارغة"
 
@@ -9492,7 +9530,7 @@ msgstr "جرّب مع بياناتي"
 msgid "TSX"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:80
+#: packages/admin/src/routes/shop.tsx:81
 msgid "Tuesday"
 msgstr ""
 
@@ -9508,7 +9546,7 @@ msgstr "تويتر"
 #: packages/admin/src/components/FieldEditor.tsx:600
 #: packages/admin/src/components/MediaLibrary.tsx:608
 #: packages/admin/src/routes/byline-schema.tsx:240
-#: packages/admin/src/routes/shop.tsx:195
+#: packages/admin/src/routes/shop.tsx:208
 msgid "Type"
 msgstr "النوع"
 
@@ -9576,8 +9614,8 @@ msgstr "غير معروف"
 msgid "Unknown role"
 msgstr "دور غير معروف"
 
-#: packages/admin/src/routes/shop.tsx:520
-#: packages/admin/src/routes/shop.tsx:606
+#: packages/admin/src/routes/shop.tsx:788
+#: packages/admin/src/routes/shop.tsx:874
 msgid "Unlimited"
 msgstr ""
 
@@ -9597,7 +9635,7 @@ msgstr "مفتاح مرور بدون اسم"
 msgid "Unpublish {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1120
 msgid "Unpublished"
 msgstr "غير منشور"
 
@@ -9613,7 +9651,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "إلغاء الجدولة"
 
-#: packages/admin/src/router.tsx:1168
+#: packages/admin/src/router.tsx:1181
 msgid "Unscheduled"
 msgstr "غير مجدول"
 
@@ -9631,7 +9669,7 @@ msgstr ""
 msgid "Untitled"
 msgstr "بدون عنوان"
 
-#: packages/admin/src/components/ContentEditor.tsx:1788
+#: packages/admin/src/components/ContentEditor.tsx:1808
 msgid "Untitled file"
 msgstr "ملف بلا عنوان"
 
@@ -9652,11 +9690,11 @@ msgstr "أعلى"
 msgid "Up to {MAX_SELECTED} bylines can be selected"
 msgstr ""
 
-#: packages/admin/src/components/TaxonomyManager.tsx:662
+#: packages/admin/src/components/TaxonomyManager.tsx:682
 msgid "Update"
 msgstr "تحديث"
 
-#: packages/admin/src/routes/shop.tsx:1781
+#: packages/admin/src/routes/shop.tsx:2049
 msgid "Update delivery status"
 msgstr ""
 
@@ -9668,7 +9706,7 @@ msgstr "تحديث الحقل"
 msgid "Update publish date"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:338
+#: packages/admin/src/routes/shop.tsx:469
 msgid "Update reservation status"
 msgstr ""
 
@@ -9682,7 +9720,7 @@ msgid "Update site settings"
 msgstr "تحديث إعدادات الموقع"
 
 #. placeholder {0}: taxonomyDef.labelSingular?.toLowerCase() || "term"
-#: packages/admin/src/components/TaxonomyManager.tsx:544
+#: packages/admin/src/components/TaxonomyManager.tsx:553
 msgid "Update the {0} details"
 msgstr "تحديث تفاصيل {0}"
 
@@ -9695,7 +9733,7 @@ msgstr "تحديث قاعدة التحويل هذه."
 msgid "Update to v{0}"
 msgstr "التحديث إلى الإصدار {0}"
 
-#: packages/admin/src/components/ContentList.tsx:842
+#: packages/admin/src/components/ContentList.tsx:855
 #: packages/admin/src/components/ContentSettingsPanel.tsx:638
 #: packages/admin/src/components/RegistryPluginDetail.tsx:501
 msgid "Updated"
@@ -9838,7 +9876,7 @@ msgstr "معرف مناسب للروابط (مثال: \"primary\"، \"footer\")"
 msgid "URL:"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:601
+#: packages/admin/src/routes/shop.tsx:869
 msgid "Usage limit"
 msgstr ""
 
@@ -9850,7 +9888,7 @@ msgstr "استخدم [param] أو [...rest] في الروابط النسبية �
 msgid "Use optimized image"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:701
+#: packages/admin/src/routes/shop.tsx:969
 msgid "Use the country code without spaces or symbols."
 msgstr ""
 
@@ -9866,11 +9904,11 @@ msgstr "قم باستخدام مفتاح المرور المسجل الخاص ب
 msgid "Used as the fallback Open Graph image when a page has none. Recommended size: 1200×630."
 msgstr "تُستخدم صورةً احتياطية لـ Open Graph حين لا تحتوي الصفحة على صورة. الحجم الموصى به: 1200×630."
 
-#: packages/admin/src/components/TaxonomyManager.tsx:828
+#: packages/admin/src/components/TaxonomyManager.tsx:848
 msgid "Used as the identifier. Lowercase letters, numbers, and underscores only."
 msgstr "يُستخدم كمعرف. أحرف صغيرة وأرقام وشرطات سفلية فقط."
 
-#: packages/admin/src/components/ContentEditor.tsx:1380
+#: packages/admin/src/components/ContentEditor.tsx:1400
 msgid "Used as the main visual for this post on listing pages and at the top of the post"
 msgstr "يُستخدم كالصورة الرئيسية لهذا المنشور في صفحات القائمة وأعلى المنشور"
 
@@ -9921,7 +9959,7 @@ msgstr "المستخدمون من"
 msgid "Users with email addresses from these domains can sign up without an invite. They will be assigned the specified role automatically."
 msgstr "يمكن للمستخدمين الذين لديهم عناوين بريد إلكتروني من هذه النطاقات التسجيل بدون دعوة. سيتم منحهم الدور الذي تم تحديده تلقائيًا."
 
-#: packages/admin/src/routes/shop.tsx:502
+#: packages/admin/src/routes/shop.tsx:770
 msgid "Uses"
 msgstr ""
 
@@ -9980,8 +10018,9 @@ msgstr "الإصدار {0}"
 msgid "Video"
 msgstr "فيديو"
 
-#: packages/admin/src/routes/shop.tsx:1544
-#: packages/admin/src/routes/shop.tsx:1659
+#: packages/admin/src/routes/shop.tsx:494
+#: packages/admin/src/routes/shop.tsx:1812
+#: packages/admin/src/routes/shop.tsx:1927
 msgid "View details"
 msgstr ""
 
@@ -9998,9 +10037,17 @@ msgstr "عرض في السوق"
 msgid "View mode"
 msgstr "وضع العرض"
 
-#: packages/admin/src/components/ContentList.tsx:1216
+#: packages/admin/src/components/ContentList.tsx:419
+msgid "View products"
+msgstr ""
+
+#: packages/admin/src/components/ContentList.tsx:1231
 msgid "View published {title}"
 msgstr "عرض {title} المنشور"
+
+#: packages/admin/src/components/ContentList.tsx:419
+msgid "View services"
+msgstr ""
 
 #: packages/admin/src/components/Header.tsx:59
 msgid "View Site"
@@ -10065,19 +10112,19 @@ msgstr "عنوان الويب"
 msgid "WebAuthn is not supported in this browser"
 msgstr "WebAuthn غير مدعوم في هذا المتصفح"
 
-#: packages/admin/src/routes/shop.tsx:925
+#: packages/admin/src/routes/shop.tsx:1193
 msgid "Webhook secret"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:934
+#: packages/admin/src/routes/shop.tsx:1202
 msgid "Webhook secret from your provider"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:933
+#: packages/admin/src/routes/shop.tsx:1201
 msgid "Webhook secret saved; enter a new one to replace it"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:946
+#: packages/admin/src/routes/shop.tsx:1214
 msgid "Webhook URL"
 msgstr ""
 
@@ -10090,7 +10137,7 @@ msgstr "الموقع الإلكتروني"
 msgid "Website URL"
 msgstr "رابط الموقع الإلكتروني"
 
-#: packages/admin/src/routes/shop.tsx:81
+#: packages/admin/src/routes/shop.tsx:82
 msgid "Wednesday"
 msgstr ""
 
@@ -10110,15 +10157,15 @@ msgstr "ما يحدث عند الاستيراد:"
 msgid "What will happen when you import"
 msgstr "ما سيحدث عند الاستيراد"
 
-#: packages/admin/src/routes/shop.tsx:1851
+#: packages/admin/src/routes/shop.tsx:2119
 msgid "WhatsApp message"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:695
+#: packages/admin/src/routes/shop.tsx:963
 msgid "WhatsApp number"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:705
+#: packages/admin/src/routes/shop.tsx:973
 msgid "WhatsApp order message"
 msgstr ""
 
@@ -10134,7 +10181,7 @@ msgstr "متى تم تحديث المُدخل في آخر مرة"
 msgid "When the entry was published"
 msgstr "متى تم نشر المُدخل"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:842
+#: packages/admin/src/components/TaxonomyManager.tsx:862
 msgid "Which content types can use this taxonomy"
 msgstr "أنواع المحتوى التي يمكنها استخدام هذا التصنيف"
 
@@ -10244,7 +10291,7 @@ msgstr ""
 msgid "WordPress Username"
 msgstr "اسم مستخدم WordPress"
 
-#: packages/admin/src/components/ContentList.tsx:473
+#: packages/admin/src/components/ContentList.tsx:485
 msgid "Working on {selectedCount} items…"
 msgstr ""
 
@@ -10272,7 +10319,7 @@ msgstr ""
 msgid "YAML"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:981
+#: packages/admin/src/routes/shop.tsx:1249
 msgid "Yape"
 msgstr ""
 
@@ -10280,7 +10327,7 @@ msgstr ""
 msgid "Yearly"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1291
+#: packages/admin/src/components/ContentList.tsx:1306
 #: packages/admin/src/components/users/UserDetail.tsx:236
 #: packages/admin/src/routes/byline-schema.tsx:420
 #: packages/admin/src/routes/byline-schema.tsx:422
@@ -10323,7 +10370,7 @@ msgstr "لديك الصلاحية الكاملة لإدارة هذا الموق�
 msgid "You need admin permissions to manage byline schema."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1572
+#: packages/admin/src/router.tsx:1589
 msgid "You need Editor permissions to moderate comments."
 msgstr "تحتاج إلى صلاحيات المحرر للإشراف على التعليقات."
 
@@ -10448,11 +10495,11 @@ msgstr "معرف قناة YouTube أو المعرّف الخاص بك"
 msgid "YouTube"
 msgstr "يوتيوب"
 
-#: packages/admin/src/routes/shop.tsx:1110
+#: packages/admin/src/routes/shop.tsx:1378
 msgid "Zone"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1161
+#: packages/admin/src/routes/shop.tsx:1429
 msgid "Zone name"
 msgstr ""
 
