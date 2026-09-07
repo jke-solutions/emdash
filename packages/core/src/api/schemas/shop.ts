@@ -16,6 +16,7 @@ export const shopSettingsUpdateBody = z
 		minimumSubtotal: z.number().min(0).optional(),
 		freeDeliveryMinSubtotal: z.number().min(0).nullable().optional(),
 		whatsappTemplates: z.record(z.string(), z.string().max(2000)).optional(),
+		bookingEnabled: z.boolean().optional(),
 		paymentGatewayEnabled: z.boolean().optional(),
 		paymentGatewayProvider: z.string().max(100).nullable().optional(),
 		paymentGatewayEnvironment: z.enum(["sandbox", "production"]).optional(),
@@ -33,8 +34,16 @@ export const shopOrderCreateBody = z
 			.array(
 				z.object({
 					productId: z.string().min(1),
+					collection: z.enum(["products", "services"]).optional(),
 					variantId: z.string().min(1).optional(),
 					quantity: z.number().int().min(1).max(100),
+					booking: z
+						.object({
+							reservationId: z.string().min(1),
+							startsAt: z.string().datetime({ offset: true }),
+							endsAt: z.string().datetime({ offset: true }),
+						})
+						.optional(),
 				}),
 			)
 			.min(1)
@@ -43,15 +52,15 @@ export const shopOrderCreateBody = z
 			name: z.string().min(1).max(200),
 			phone: z.string().min(5).max(30),
 			email: z.string().email().optional(),
-			address: z.string().min(1).max(500),
-			district: z.string().min(1).max(200),
+			address: z.string().max(500).optional(),
+			district: z.string().max(200).optional(),
 			reference: z.string().max(500).optional(),
 			documentType: z.string().max(30).optional(),
 			documentNumber: z.string().max(50).optional(),
 			fiscalName: z.string().max(200).optional(),
 			fiscalAddress: z.string().max(500).optional(),
 		}),
-		deliveryZoneId: z.string().min(1),
+		deliveryZoneId: z.string().min(1).optional(),
 		deliveryDate: z.string().max(20).optional(),
 		deliveryTime: z.string().max(100).optional(),
 		recipientName: z.string().max(200).optional(),

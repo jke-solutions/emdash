@@ -100,10 +100,20 @@ export async function validateContentData(
 		}
 	}
 
+	const isService = collection === "products" && data.item_type === "service";
+	const fieldsForValidation = isService
+		? collectionWithFields.fields.map((field) =>
+				field.slug === "stock" ? { ...field, required: false } : field,
+			)
+		: collectionWithFields.fields;
+	const collectionForValidation = isService
+		? { ...collectionWithFields, fields: fieldsForValidation }
+		: collectionWithFields;
+
 	// Zod handles type, enum, length and missing-required (in non-partial
 	// mode) checks. Empty-string handling for required string fields is
 	// done as a separate pass below since Zod's `z.string()` accepts "".
-	const baseSchema = generateZodSchema(collectionWithFields);
+	const baseSchema = generateZodSchema(collectionForValidation);
 	const schema = options.partial ? baseSchema.partial() : baseSchema;
 	const parsed = schema.safeParse(data);
 	if (!parsed.success) {
@@ -116,7 +126,7 @@ export async function validateContentData(
 	// already catches missing/null for required fields, but `z.string()`
 	// happily accepts "". In update mode (partial=true) the field is only
 	// checked if it's present in `data`.
-	for (const field of collectionWithFields.fields) {
+	for (const field of fieldsForValidation) {
 		if (!field.required) continue;
 		const present = Object.hasOwn(data, field.slug);
 		if (options.partial && !present) continue;

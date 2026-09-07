@@ -5,6 +5,18 @@
 
 import type { ContentBylineCredit, TaxonomyTerm, PortableTextBlock } from "emdash";
 
+export interface Categoria {
+  id: string;
+  slug: string | null;
+  status: string;
+  imagen?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 export interface Page {
   id: string;
   slug: string | null;
@@ -40,9 +52,9 @@ export interface Product {
   slug: string | null;
   status: string;
   name: string;
+  rich_description?: PortableTextBlock[];
   price: number;
   promotion_price?: number;
-  rich_description?: PortableTextBlock[];
   availability_status?: "available" | "sold_out" | "hidden";
   featured_image?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
   stock: number;
@@ -59,6 +71,7 @@ export interface Product {
 
 declare module "emdash" {
   interface EmDashCollections {
+    categorias: Categoria;
     pages: Page;
     posts: Post;
     products: Product;

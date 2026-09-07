@@ -652,6 +652,16 @@ export function injectCoreRoutes(
 	});
 
 	injectRoute({
+		pattern: "/_emdash/api/shop/services/[id]/availability",
+		entrypoint: resolveRoute("api/shop/services/[id]/availability.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/shop/reservations/hold",
+		entrypoint: resolveRoute("api/shop/reservations/hold.ts"),
+	});
+
+	injectRoute({
 		pattern: "/_emdash/api/shop/settings",
 		entrypoint: resolveRoute("api/shop/settings.ts"),
 	});
@@ -680,6 +690,31 @@ export function injectCoreRoutes(
 	injectRoute({
 		pattern: "/_emdash/api/admin/shop/settings",
 		entrypoint: resolveRoute("api/admin/shop/settings.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/booking-hours",
+		entrypoint: resolveRoute("api/admin/shop/booking-hours.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/booking-blocks",
+		entrypoint: resolveRoute("api/admin/shop/booking-blocks.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/booking-blocks/[id]",
+		entrypoint: resolveRoute("api/admin/shop/booking-blocks/[id].ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/reservations",
+		entrypoint: resolveRoute("api/admin/shop/reservations/index.ts"),
+	});
+
+	injectRoute({
+		pattern: "/_emdash/api/admin/shop/reservations/[id]",
+		entrypoint: resolveRoute("api/admin/shop/reservations/[id].ts"),
 	});
 
 	injectRoute({

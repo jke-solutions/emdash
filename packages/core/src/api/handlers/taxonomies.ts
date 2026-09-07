@@ -29,6 +29,47 @@ function isTermSlugUniqueViolation(error: unknown): boolean {
 	);
 }
 
+async function validateTermImage(
+	db: Kysely<Database>,
+	imageId: string | null | undefined,
+): Promise<string | null> {
+	if (!imageId) return null;
+	const media = await db
+		.selectFrom("media")
+		.select(["id", "status", "mime_type"])
+		.where("id", "=", imageId)
+		.executeTakeFirst();
+	if (!media || media.status !== "ready" || !media.mime_type.startsWith("image/")) {
+		return "The selected term image is not available";
+	}
+	return null;
+}
+
+function termDataWithMetadata(
+	data: Record<string, unknown> | null,
+	input: { description?: string; imageId?: string | null; visibleOnHome?: boolean },
+): Record<string, unknown> | undefined {
+	const next = data ? { ...data } : {};
+	if (input.description !== undefined) {
+		if (input.description) next.description = input.description;
+		else delete next.description;
+	}
+	if (input.imageId !== undefined) {
+		if (input.imageId) next.imageId = input.imageId;
+		else delete next.imageId;
+	}
+	if (input.visibleOnHome !== undefined) next.visibleOnHome = input.visibleOnHome;
+	return Object.keys(next).length > 0 ? next : undefined;
+}
+
+function termMetadata(data: Record<string, unknown> | null) {
+	return {
+		description: typeof data?.description === "string" ? data.description : undefined,
+		imageId: typeof data?.imageId === "string" ? data.imageId : undefined,
+		visibleOnHome: typeof data?.visibleOnHome === "boolean" ? data.visibleOnHome : undefined,
+	};
+}
+
 // ---------------------------------------------------------------------------
 // Response types
 // ---------------------------------------------------------------------------
@@ -59,6 +100,8 @@ export interface TermData {
 	label: string;
 	parentId: string | null;
 	description?: string;
+	imageId?: string;
+	visibleOnHome?: boolean;
 	locale: string;
 	translationGroup: string | null;
 }
@@ -605,7 +648,12 @@ export async function handleTaxonomyDefTranslations(
 export async function handleTermList(
 	db: Kysely<Database>,
 	taxonomyName: string,
-	options: { locale?: string; includeCounts?: boolean; resolveFallback?: boolean } = {},
+	options: {
+		locale?: string;
+		includeCounts?: boolean;
+		resolveFallback?: boolean;
+		visibleOnHome?: boolean;
+	} = {},
 ): Promise<ApiResult<TermListResponse>> {
 	try {
 		if (options.resolveFallback && !options.locale) {
@@ -643,18 +691,24 @@ export async function handleTermList(
 			? await fetchVisibleTermCounts(db, taxonomyName, defCollections(lookup.def), locale)
 			: undefined;
 
-		const termData: TermWithCount[] = terms.map((term) => ({
-			id: term.id,
-			name: term.name,
-			slug: term.slug,
-			label: term.label,
-			parentId: term.parentId,
-			description: typeof term.data?.description === "string" ? term.data.description : undefined,
-			children: [],
-			...(countsByGroup && { count: countsByGroup.get(term.translationGroup ?? term.id) ?? 0 }),
-			locale: term.locale,
-			translationGroup: term.translationGroup,
-		}));
+		const termData: TermWithCount[] = terms
+			.filter(
+				(term) =>
+					options.visibleOnHome === undefined ||
+					termMetadata(term.data).visibleOnHome === options.visibleOnHome,
+			)
+			.map((term) => ({
+				id: term.id,
+				name: term.name,
+				slug: term.slug,
+				label: term.label,
+				parentId: term.parentId,
+				...termMetadata(term.data),
+				children: [],
+				...(countsByGroup && { count: countsByGroup.get(term.translationGroup ?? term.id) ?? 0 }),
+				locale: term.locale,
+				translationGroup: term.translationGroup,
+			}));
 
 		const isHierarchical = lookup.def.hierarchical === 1;
 		const result = isHierarchical
@@ -869,6 +923,8 @@ export async function handleTermCreate(
 		label: string;
 		parentId?: string | null;
 		description?: string;
+		imageId?: string | null;
+		visibleOnHome?: boolean;
 		locale?: string;
 		translationOf?: string;
 	},
@@ -881,6 +937,9 @@ export async function handleTermCreate(
 		// def across all locales — we only care that it *exists*.
 		const lookup = await requireTaxonomyDef(db, taxonomyName);
 		if (!lookup.success) return lookup;
+		const imageError = await validateTermImage(db, input.imageId);
+		if (imageError)
+			return { success: false, error: { code: "VALIDATION_ERROR", message: imageError } };
 
 		const repo = new TaxonomyRepository(db);
 
@@ -934,7 +993,7 @@ export async function handleTermCreate(
 				slug,
 				label: input.label,
 				parentId: parentId ?? undefined,
-				data: input.description ? { description: input.description } : undefined,
+				data: termDataWithMetadata(null, input),
 				locale,
 				translationOf: input.translationOf,
 			});
@@ -967,8 +1026,7 @@ export async function handleTermCreate(
 					slug: term.slug,
 					label: term.label,
 					parentId: term.parentId,
-					description:
-						typeof term.data?.description === "string" ? term.data.description : undefined,
+					...termMetadata(term.data),
 					locale: term.locale,
 					translationGroup: term.translationGroup,
 				},
@@ -1040,8 +1098,7 @@ export async function handleTermGet(
 					slug: term.slug,
 					label: term.label,
 					parentId: term.parentId,
-					description:
-						typeof term.data?.description === "string" ? term.data.description : undefined,
+					...termMetadata(term.data),
 					count,
 					children: children.map((c) => ({ id: c.id, slug: c.slug, label: c.label })),
 					locale: term.locale,
@@ -1108,7 +1165,14 @@ export async function handleTermUpdate(
 	db: Kysely<Database>,
 	taxonomyName: string,
 	termSlug: string,
-	input: { slug?: string; label?: string; parentId?: string | null; description?: string },
+	input: {
+		slug?: string;
+		label?: string;
+		parentId?: string | null;
+		description?: string;
+		imageId?: string | null;
+		visibleOnHome?: boolean;
+	},
 	options: { locale?: string } = {},
 ): Promise<ApiResult<TermResponse>> {
 	try {
@@ -1125,6 +1189,9 @@ export async function handleTermUpdate(
 				},
 			};
 		}
+		const imageError = await validateTermImage(db, input.imageId);
+		if (imageError)
+			return { success: false, error: { code: "VALIDATION_ERROR", message: imageError } };
 
 		// Coerce empty-string slug/parentId to undefined (treat as "no change").
 		// `null` parentId is a valid request meaning "detach from parent".
@@ -1156,7 +1223,12 @@ export async function handleTermUpdate(
 			slug: newSlug,
 			label: input.label,
 			parentId: newParentId,
-			data: input.description !== undefined ? { description: input.description } : undefined,
+			data:
+				input.description !== undefined ||
+				input.imageId !== undefined ||
+				input.visibleOnHome !== undefined
+					? termDataWithMetadata(term.data, input)
+					: undefined,
 		});
 
 		invalidateTermCache();
@@ -1177,8 +1249,7 @@ export async function handleTermUpdate(
 					slug: updated.slug,
 					label: updated.label,
 					parentId: updated.parentId,
-					description:
-						typeof updated.data?.description === "string" ? updated.data.description : undefined,
+					...termMetadata(updated.data),
 					locale: updated.locale,
 					translationGroup: updated.translationGroup,
 				},

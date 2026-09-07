@@ -652,6 +652,7 @@ export interface ShopSettingsTable {
 	minimum_subtotal: Generated<number>;
 	free_delivery_min_subtotal: number | null;
 	whatsapp_templates: Generated<string>;
+	booking_enabled: Generated<number>;
 	payment_gateway_enabled: Generated<number>;
 	payment_gateway_provider: string | null;
 	payment_gateway_environment: string;
@@ -737,6 +738,7 @@ export interface ShopOrderItemTable {
 	id: string;
 	order_id: string;
 	product_id: string;
+	collection: Generated<string>;
 	variant_id: string | null;
 	product_name: string;
 	variant_name: string | null;
@@ -783,6 +785,45 @@ export interface ShopDeliveryTable {
 	failed_reason: string | null;
 	delivered_at: string | null;
 	rescheduled_at: string | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
+export interface ShopBookingHourTable {
+	id: string;
+	service_id: string;
+	weekday: number;
+	starts_at: string;
+	ends_at: string;
+	valid_from: string | null;
+	valid_until: string | null;
+	active: Generated<number>;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
+export interface ShopBookingBlockTable {
+	id: string;
+	service_id: string | null;
+	starts_at: string;
+	ends_at: string;
+	reason: string | null;
+	created_at: Generated<string>;
+}
+
+export interface ShopReservationTable {
+	id: string;
+	service_id: string;
+	order_id: string | null;
+	order_item_id: string | null;
+	customer_id: string | null;
+	starts_at: string;
+	ends_at: string;
+	status: Generated<string>;
+	expires_at: string | null;
+	customer_snapshot: string | null;
+	service_snapshot: string | null;
+	notes: string | null;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
 }
@@ -852,6 +893,9 @@ export interface Database {
 	_emdash_shop_order_items: ShopOrderItemTable;
 	_emdash_shop_payments: ShopPaymentTable;
 	_emdash_shop_deliveries: ShopDeliveryTable;
+	_emdash_shop_booking_hours: ShopBookingHourTable;
+	_emdash_shop_booking_blocks: ShopBookingBlockTable;
+	_emdash_shop_reservations: ShopReservationTable;
 }
 
 export type MediaRow = {

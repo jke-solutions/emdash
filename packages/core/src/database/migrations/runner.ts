@@ -81,6 +81,12 @@ import * as m075 from "./075_shop_delivery_tracking.js";
 import * as m076 from "./076_promotional_campaign.js";
 import * as m077 from "./077_promotional_campaign_size.js";
 import * as m078 from "./078_shop_checkout_delivery_options.js";
+import * as m079 from "./079_shop_booking_enabled.js";
+import * as m080 from "./080_shop_booking_tables.js";
+import * as m081 from "./081_shop_service_fields.js";
+import * as m082 from "./082_shop_booking_date_range.js";
+import * as m083 from "./083_shop_order_item_collection.js";
+import * as m084 from "./084_move_service_fields_to_services.js";
 
 const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"001_initial": m001,
@@ -160,6 +166,12 @@ const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"076_promotional_campaign": m076,
 	"077_promotional_campaign_size": m077,
 	"078_shop_checkout_delivery_options": m078,
+	"079_shop_booking_enabled": m079,
+	"080_shop_booking_tables": m080,
+	"081_shop_service_fields": m081,
+	"082_shop_booking_date_range": m082,
+	"083_shop_order_item_collection": m083,
+	"084_move_service_fields_to_services": m084,
 });
 
 /** Ordered names from the statically registered migration set. */

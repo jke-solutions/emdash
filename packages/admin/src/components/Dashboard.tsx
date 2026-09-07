@@ -152,7 +152,7 @@ function QuickActions({ manifest }: { manifest: AdminManifest }) {
 					key={slug}
 					to="/content/$collection/new"
 					params={{ collection: slug }}
-					search={{ locale: undefined }}
+					search={{ locale: undefined, itemType: undefined }}
 					variant="secondary"
 					icon={<Plus aria-hidden="true" />}
 				>
@@ -283,7 +283,7 @@ function CollectionList({
 									key={col.slug}
 									to="/content/$collection"
 									params={{ collection: col.slug }}
-									search={{ locale: undefined }}
+									search={{ locale: undefined, itemType: undefined }}
 									className="group flex items-center justify-between gap-2 rounded-md px-3 py-2 hover:bg-kumo-tint"
 								>
 									<span className="text-base font-medium leading-5">

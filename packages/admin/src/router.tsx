@@ -321,13 +321,14 @@ const contentListRoute = createRoute({
 	component: ContentListPage,
 	validateSearch: (search: Record<string, unknown>) => ({
 		locale: typeof search.locale === "string" ? search.locale : undefined,
+		itemType: search.itemType === "service" ? ("service" as const) : undefined,
 	}),
 });
 
 function ContentListPage() {
 	const { t } = useLingui();
 	const { collection } = useParams({ from: "/_admin/content/$collection" });
-	const { locale: localeParam } = useSearch({ from: "/_admin/content/$collection" });
+	const { locale: localeParam, itemType } = useSearch({ from: "/_admin/content/$collection" });
 	const queryClient = useQueryClient();
 	const navigate = useNavigate();
 	const toastManager = Toast.useToastManager();
@@ -571,13 +572,18 @@ function ContentListPage() {
 	});
 
 	const items = React.useMemo(() => {
-		return data?.pages.flatMap((page) => page.items) || [];
-	}, [data]);
+		const loadedItems = data?.pages.flatMap((page) => page.items) || [];
+		if (collection !== "products" || itemType !== "service") return loadedItems;
+		return loadedItems.filter((item) => {
+			const value = item.data.item_type;
+			return typeof value === "string" && value.toLowerCase() === "service";
+		});
+	}, [collection, data, itemType]);
 
 	// Server returns `total` on every page; the first page is authoritative
 	// because filters don't change within a fetch cycle. Fall back to the
 	// loaded count so old servers (pre-total) still render a denominator.
-	const total = data?.pages[0]?.total ?? items.length;
+	const total = itemType === "service" ? items.length : (data?.pages[0]?.total ?? items.length);
 
 	// Keep every hook above the early returns below — a render that takes a
 	// guard (e.g. `error`) must run the same number of hooks as a full render,
@@ -617,20 +623,21 @@ function ContentListPage() {
 		);
 	}
 	const isProductCollection = collection === "products";
+	const isServicesView = isProductCollection && itemType === "service";
 
 	const handleLocaleChange = (locale: string) => {
 		// Update URL search params without full navigation
 		void navigate({
 			to: "/content/$collection",
 			params: { collection },
-			search: { locale: locale || undefined },
+			search: { locale: locale || undefined, itemType },
 		});
 	};
 
 	return (
 		<ContentList
 			collection={collection}
-			collectionLabel={collectionConfig.label}
+			collectionLabel={isServicesView ? t`Services` : collectionConfig.label}
 			items={items}
 			listColumns={listColumns}
 			trashedItems={trashedData?.items || []}
@@ -667,6 +674,7 @@ function ContentListPage() {
 			onBulkDelete={(ids) => bulkDeleteMutation.mutateAsync(ids).then((r) => r.failedIds)}
 			pluginStates={manifest.plugins}
 			userRole={currentUser?.role ?? 0}
+			itemType={itemType}
 		/>
 	);
 }
@@ -679,12 +687,13 @@ const contentNewRoute = createRoute({
 	staticData: { fullBleed: true },
 	validateSearch: (search: Record<string, unknown>) => ({
 		locale: typeof search.locale === "string" ? search.locale : undefined,
+		itemType: search.itemType === "service" ? "service" : undefined,
 	}),
 });
 
 function ContentNewPage() {
 	const { collection } = useParams({ from: "/_admin/content/$collection/new" });
-	const { locale } = useSearch({ from: "/_admin/content/$collection/new" });
+	const { locale, itemType } = useSearch({ from: "/_admin/content/$collection/new" });
 	const navigate = useNavigate();
 	const queryClient = useQueryClient();
 	const { t } = useLingui();
@@ -793,9 +802,18 @@ function ContentNewPage() {
 	return (
 		<ContentEditor
 			collection={collection}
-			collectionLabel={collectionConfig.labelSingular || collectionConfig.label}
+			collectionLabel={
+				collection === "products" && itemType === "service"
+					? t`Service`
+					: collectionConfig.labelSingular || collectionConfig.label
+			}
 			fields={collectionConfig.fields}
 			isNew
+			initialData={
+				collection === "products" && itemType === "service"
+					? { item_type: "service", requires_booking: true }
+					: undefined
+			}
 			entryLocale={pickerLocale}
 			i18n={manifest?.i18n}
 			isSaving={createMutation.isPending}
@@ -821,6 +839,7 @@ const contentEditRoute = createRoute({
 	validateSearch: (search) => ({
 		...(typeof search.field === "string" && { field: search.field }),
 		...(typeof search.locale === "string" && { locale: search.locale }),
+		...(search.itemType === "service" && { itemType: "service" as const }),
 	}),
 });
 
@@ -906,6 +925,10 @@ function ContentEditPage() {
 			data: { ...rawItem.data, ...draftData },
 		};
 	}, [rawItem, draftRevision]);
+	const isServiceItem =
+		collection === "products" &&
+		typeof item?.data.item_type === "string" &&
+		item.data.item_type.toLowerCase() === "service";
 
 	// Fetch current user for permission checks
 	const { data: currentUser } = useQuery({
@@ -1207,7 +1230,7 @@ function ContentEditPage() {
 			void navigate({
 				to: "/content/$collection",
 				params: { collection },
-				search: { locale: activeLocale },
+				search: { locale: activeLocale, itemType: searchParams.itemType },
 			});
 		},
 		onError: (error) => {
@@ -1326,7 +1349,9 @@ function ContentEditPage() {
 	return (
 		<ContentEditor
 			collection={collection}
-			collectionLabel={collectionConfig.labelSingular || collectionConfig.label}
+			collectionLabel={
+				isServiceItem ? t`Services` : collectionConfig.labelSingular || collectionConfig.label
+			}
 			item={item}
 			fields={collectionConfig.fields}
 			isSaving={updateMutation.isPending || publishedAtMutation.isPending}
@@ -1365,6 +1390,8 @@ function ContentEditPage() {
 			onQuickCreateByline={handleQuickCreateByline}
 			onQuickEditByline={handleQuickEditByline}
 			manifest={manifest ?? null}
+			listItemType={isServiceItem || searchParams.itemType === "service" ? "service" : undefined}
+			previewUrlPattern={isServiceItem ? "/shop/services/{slug}" : undefined}
 		/>
 	);
 }
