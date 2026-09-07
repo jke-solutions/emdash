@@ -17,7 +17,7 @@ import Base from "../../layouts/Base.astro";
 				<strong id="checkout-total"></strong>
 			</section>
 			<form id="checkout-form" class="checkout-form">
-				<h2>Datos de entrega</h2>
+				<h2 id="delivery-heading">Datos de entrega</h2>
 				<div id="saved-customer" class="saved-customer" hidden>
 					<p>Encontramos tus datos de entrega anteriores en este dispositivo.</p>
 					<div class="saved-customer-actions">
@@ -28,10 +28,10 @@ import Base from "../../layouts/Base.astro";
 				<label>Nombre <input name="name" required /></label>
 				<label>Teléfono <input name="phone" required /></label>
 				<label>Correo electrónico <input name="email" type="email" /></label>
-				<label>Dirección <input name="address" required /></label>
-				<label>Distrito <input name="district" required /></label>
-				<label>Referencia <input name="reference" /></label>
-				<label>Zona de entrega <select name="deliveryZoneId" required id="delivery-zone"></select></label>
+				<label data-delivery-field>Dirección <input name="address" required /></label>
+				<label data-delivery-field>Distrito <input name="district" required /></label>
+				<label data-delivery-field>Referencia <input name="reference" /></label>
+				<label data-delivery-field>Zona de entrega <select name="deliveryZoneId" required id="delivery-zone"></select></label>
 				<label>Método de pago <select name="paymentMethod" required id="payment-method"></select></label>
 				<div class="coupon-box">
 					<label>Código de descuento <input name="couponCode" id="coupon-code" autocomplete="off" /></label>
@@ -76,12 +76,36 @@ import Base from "../../layouts/Base.astro";
 
 	try {
 		const stored = JSON.parse(localStorage.getItem(storageKey) ?? "[]");
-		if (Array.isArray(stored)) cart = stored.filter((entry) => entry?.product && Number.isInteger(entry.quantity) && entry.quantity > 0);
+		if (Array.isArray(stored)) {
+			cart = stored
+				.filter((entry) => entry?.product && Number.isInteger(entry.quantity) && entry.quantity > 0)
+				.map((entry) => {
+					const itemType = entry.product?.data?.item_type ?? entry.product?.data?.itemType;
+					const isService = entry.booking || entry.product?.isBookableService || (typeof itemType === "string" && itemType.toLowerCase() === "service");
+					return isService ? { ...entry, quantity: 1 } : entry;
+				});
+			localStorage.setItem(storageKey, JSON.stringify(cart));
+		}
 	} catch {
 		cart = [];
 	}
 
 	if (cart.length === 0) window.location.replace("/shop");
+	const hasPhysicalItems = cart.some((entry) => {
+		const itemType = entry.product?.data?.item_type ?? entry.product?.data?.itemType;
+		const isService = entry.booking || entry.product?.isBookableService || (typeof itemType === "string" && itemType.toLowerCase() === "service");
+		return !isService;
+	});
+	if (!hasPhysicalItems) {
+		document.querySelectorAll("[data-delivery-field]").forEach((field) => {
+			if (field instanceof HTMLElement) field.hidden = true;
+			field.querySelectorAll("[required]").forEach((input) => input.removeAttribute("required"));
+		});
+		const deliveryHeading = document.querySelector("#delivery-heading");
+		if (deliveryHeading) deliveryHeading.textContent = "Datos de contacto";
+		const checkoutDescription = document.querySelector(".checkout-page header p:last-child");
+		if (checkoutDescription) checkoutDescription.textContent = "Completa tus datos de contacto para confirmar la reserva.";
+	}
 
 	const customerFields = ["name", "phone", "email", "address", "district", "reference"];
 	let savedCustomer = null;
@@ -158,7 +182,9 @@ import Base from "../../layouts/Base.astro";
 	const loadOptions = async () => {
 		const [shopSettings, zones] = await Promise.all([
 			fetch(`${apiBase}/settings`).then((response) => response.json()).then((body) => body.data),
-			fetch(`${apiBase}/delivery-zones`).then((response) => response.json()).then((body) => body.data),
+			hasPhysicalItems
+				? fetch(`${apiBase}/delivery-zones`).then((response) => response.json()).then((body) => body.data)
+				: Promise.resolve([]),
 		]);
 		settings = shopSettings;
 		for (const zone of zones) {
@@ -178,9 +204,24 @@ import Base from "../../layouts/Base.astro";
 	form?.addEventListener("submit", async (event) => {
 		event.preventDefault();
 		const data = new FormData(form);
-		if (messageElement) messageElement.textContent = "Creando tu pedido…";
 		try {
-			const customer = Object.fromEntries(customerFields.map((key) => [key, data.get(key)]));
+			for (const entry of cart) {
+				if (!entry.booking || entry.booking.reservationId) continue;
+				const holdResponse = await fetch(`${apiBase}/reservations/hold`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json", "X-EmDash-Request": "1" },
+					body: JSON.stringify({ serviceId: entry.product.id, ...entry.booking, locale: "es" }),
+				});
+				const holdBody = await holdResponse.json();
+				if (!holdResponse.ok) throw new Error(holdBody?.error?.message ?? "El horario ya no está disponible.");
+				entry.booking = {
+					reservationId: holdBody.data.id,
+					startsAt: holdBody.data.startsAt,
+					endsAt: holdBody.data.endsAt,
+				};
+			}
+		if (messageElement) messageElement.textContent = "Creando tu pedido…";
+		const customer = Object.fromEntries(customerFields.map((key) => [key, data.get(key)]));
 			try {
 				localStorage.setItem(customerStorageKey, JSON.stringify(customer));
 			} catch {
@@ -188,15 +229,16 @@ import Base from "../../layouts/Base.astro";
 			}
 			const response = await fetch(`${apiBase}/orders`, {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				headers: { "Content-Type": "application/json", "X-EmDash-Request": "1" },
 				body: JSON.stringify({
 					items: cart.map((entry) => ({
 						productId: entry.product.id,
 						quantity: entry.quantity,
 						...(typeof entry.variantId === "string" && entry.variantId ? { variantId: entry.variantId } : {}),
+						...(entry.booking ? { booking: entry.booking } : {}),
 					})),
 					customer,
-					deliveryZoneId: data.get("deliveryZoneId"),
+					deliveryZoneId: data.get("deliveryZoneId") || undefined,
 					paymentMethod: data.get("paymentMethod"),
 					couponCode: appliedCoupon?.code ?? undefined,
 					notes: data.get("notes"),
@@ -232,6 +274,7 @@ import Base from "../../layouts/Base.astro";
 	.checkout-summary p { padding: var(--spacing-3) 0; border-bottom: 1px solid var(--color-border); }
 	.checkout-summary strong { display: block; margin-top: var(--spacing-6); font-size: var(--font-size-xl); }
 	.checkout-form { display: grid; gap: var(--spacing-3); }
+	.checkout-form [hidden] { display: none !important; }
 	.checkout-form h2 { margin-bottom: var(--spacing-2); }
 	.checkout-form label { display: grid; gap: var(--spacing-1); font-size: var(--font-size-sm); }
 	.checkout-form input, .checkout-form select, .checkout-form textarea { width: 100%; padding: var(--spacing-3); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); }

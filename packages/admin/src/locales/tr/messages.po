@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr ""
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1541
+#: packages/admin/src/router.tsx:1551
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, one {# yorum güncellendi} other {# yorum güncellendi}}"
 
@@ -624,7 +624,7 @@ msgstr "Daveti Kabul Et"
 msgid "Access denied"
 msgstr "Erişim engellendi"
 
-#: packages/admin/src/router.tsx:1561
+#: packages/admin/src/router.tsx:1571
 msgid "Access Denied"
 msgstr "Erişim engellendi"
 
@@ -660,18 +660,19 @@ msgstr ""
 #: packages/admin/src/components/Promotions.tsx:122
 #: packages/admin/src/components/TaxonomyManager.tsx:1050
 #: packages/admin/src/routes/byline-schema.tsx:249
-#: packages/admin/src/routes/shop.tsx:206
-#: packages/admin/src/routes/shop.tsx:808
-#: packages/admin/src/routes/shop.tsx:1027
-#: packages/admin/src/routes/shop.tsx:1169
+#: packages/admin/src/routes/shop.tsx:198
+#: packages/admin/src/routes/shop.tsx:503
+#: packages/admin/src/routes/shop.tsx:1115
+#: packages/admin/src/routes/shop.tsx:1334
+#: packages/admin/src/routes/shop.tsx:1476
 msgid "Actions"
 msgstr "Eylemler"
 
 #: packages/admin/src/components/Promotions.tsx:176
 #: packages/admin/src/components/users/UserDetail.tsx:206
 #: packages/admin/src/components/users/UserList.tsx:217
-#: packages/admin/src/routes/shop.tsx:899
-#: packages/admin/src/routes/shop.tsx:943
+#: packages/admin/src/routes/shop.tsx:1206
+#: packages/admin/src/routes/shop.tsx:1250
 msgid "Active"
 msgstr "Aktif"
 
@@ -697,6 +698,10 @@ msgstr "{label}'i ekleyin"
 #: packages/admin/src/components/settings/SecuritySettings.tsx:160
 msgid "Add a new passkey"
 msgstr "Yeni bir geçiş anahtarı ekleyin"
+
+#: packages/admin/src/routes/shop.tsx:232
+msgid "Add a start and end time for each selected day."
+msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:573
 msgid "Add at least one sub-field to define the repeater structure."
@@ -813,6 +818,10 @@ msgstr "Öncesine satır ekle"
 msgid "Add SEO metadata fields (title, description, image) and include in sitemap"
 msgstr "SEO meta veri alanlarını (başlık, açıklama, resim) ekleyin ve site haritasına ekleyin"
 
+#: packages/admin/src/routes/shop.tsx:169
+msgid "Add service"
+msgstr ""
+
 #: packages/admin/src/components/FieldEditor.tsx:567
 msgid "Add Sub-Field"
 msgstr "Alt Alan Ekle"
@@ -838,7 +847,7 @@ msgstr "Ekleniyor..."
 msgid "Additional data to import."
 msgstr "İçe aktarılacak ek veriler."
 
-#: packages/admin/src/routes/shop.tsx:1256
+#: packages/admin/src/routes/shop.tsx:1563
 msgid "Address"
 msgstr ""
 
@@ -924,7 +933,7 @@ msgstr "Tüm koleksiyonlar"
 msgid "All comments require approval"
 msgstr "Tüm yorumlar onay gerektirir"
 
-#: packages/admin/src/routes/shop.tsx:1138
+#: packages/admin/src/routes/shop.tsx:1445
 msgid "All districts"
 msgstr ""
 
@@ -952,7 +961,8 @@ msgstr "Tüm Kaynaklar"
 
 #: packages/admin/src/components/ContentList.tsx:831
 #: packages/admin/src/components/Redirects.tsx:426
-#: packages/admin/src/routes/shop.tsx:1003
+#: packages/admin/src/routes/shop.tsx:300
+#: packages/admin/src/routes/shop.tsx:1310
 msgid "All statuses"
 msgstr "Tüm durumlar"
 
@@ -1016,7 +1026,7 @@ msgstr "Alternatif metin seti"
 msgid "Alternatively, you can export from WordPress (Tools → Export) and upload the file."
 msgstr "Alternatif olarak WordPress'ten (Araçlar → Dışa Aktar) dışa aktarabilir ve dosyayı yükleyebilirsiniz."
 
-#: packages/admin/src/routes/shop.tsx:289
+#: packages/admin/src/routes/shop.tsx:586
 msgid "Amount"
 msgstr ""
 
@@ -1054,20 +1064,20 @@ msgstr ""
 #: packages/admin/src/router.tsx:465
 #: packages/admin/src/router.tsx:479
 #: packages/admin/src/router.tsx:493
-#: packages/admin/src/router.tsx:724
-#: packages/admin/src/router.tsx:1006
-#: packages/admin/src/router.tsx:1066
-#: packages/admin/src/router.tsx:1084
-#: packages/admin/src/router.tsx:1102
-#: packages/admin/src/router.tsx:1123
-#: packages/admin/src/router.tsx:1144
-#: packages/admin/src/router.tsx:1165
-#: packages/admin/src/router.tsx:1196
-#: packages/admin/src/router.tsx:1216
-#: packages/admin/src/router.tsx:1508
-#: packages/admin/src/router.tsx:1523
-#: packages/admin/src/router.tsx:1547
-#: packages/admin/src/router.tsx:2060
+#: packages/admin/src/router.tsx:725
+#: packages/admin/src/router.tsx:1016
+#: packages/admin/src/router.tsx:1076
+#: packages/admin/src/router.tsx:1094
+#: packages/admin/src/router.tsx:1112
+#: packages/admin/src/router.tsx:1133
+#: packages/admin/src/router.tsx:1154
+#: packages/admin/src/router.tsx:1175
+#: packages/admin/src/router.tsx:1206
+#: packages/admin/src/router.tsx:1226
+#: packages/admin/src/router.tsx:1518
+#: packages/admin/src/router.tsx:1533
+#: packages/admin/src/router.tsx:1557
+#: packages/admin/src/router.tsx:2070
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1091,7 +1101,7 @@ msgstr "Dışa aktarma dosyası analiz ediliyor..."
 msgid "Analyzing WordPress site..."
 msgstr "WordPress sitesi analiz ediliyor..."
 
-#: packages/admin/src/routes/shop.tsx:1148
+#: packages/admin/src/routes/shop.tsx:1455
 msgid "Any date"
 msgstr ""
 
@@ -1187,7 +1197,7 @@ msgstr ""
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "WordPress yazarlarını EmDash kullanıcılarına atayın. Gönderiler seçilen kullanıcıya atfedilecektir."
 
-#: packages/admin/src/routes/shop.tsx:1485
+#: packages/admin/src/routes/shop.tsx:1792
 msgid "Assigned"
 msgstr ""
 
@@ -1285,9 +1295,13 @@ msgstr ""
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1065
+#: packages/admin/src/router.tsx:1075
 msgid "Autosave failed"
 msgstr "Otomatik kaydetme başarısız oldu"
+
+#: packages/admin/src/routes/shop.tsx:244
+msgid "Available days"
+msgstr ""
 
 #. placeholder {0}: assignment.availableLocales.map((locale) => locale.toUpperCase()).join(", ")
 #: packages/admin/src/components/TaxonomySidebar.tsx:545
@@ -1318,7 +1332,7 @@ msgstr "avatar"
 msgid "Back"
 msgstr "Geri"
 
-#: packages/admin/src/components/ContentEditor.tsx:668
+#: packages/admin/src/components/ContentEditor.tsx:671
 msgid "Back to {collectionLabel} list"
 msgstr "{collectionLabel} listesine geri dön"
 
@@ -1388,7 +1402,7 @@ msgstr ""
 msgid "Backups to keep"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:676
+#: packages/admin/src/routes/shop.tsx:983
 msgid "Bank transfer"
 msgstr ""
 
@@ -1417,6 +1431,14 @@ msgstr "Eylemleri engelle - yeniden sıralamak için sürükleyin, menü için t
 #: packages/admin/src/components/PortableTextEditor.tsx:4023
 msgid "Bold"
 msgstr "Kalın"
+
+#: packages/admin/src/routes/shop.tsx:152
+msgid "Booking schedule saved"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:383
+msgid "Bookings"
+msgstr ""
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:55
 #: packages/admin/src/components/FieldEditor.tsx:203
@@ -1455,7 +1477,7 @@ msgstr "Temalara göz atın ve bunları kendi içeriğinizle önizleyin."
 msgid "Bullet List"
 msgstr "Madde İşareti Listesi"
 
-#: packages/admin/src/routes/shop.tsx:503
+#: packages/admin/src/routes/shop.tsx:800
 msgid "Business hours"
 msgstr ""
 
@@ -1556,9 +1578,10 @@ msgstr "İçeriği görüntüleyebilir"
 #: packages/admin/src/components/users/InviteUserModal.tsx:198
 #: packages/admin/src/components/Widgets.tsx:451
 #: packages/admin/src/components/WordPressImport.tsx:1917
-#: packages/admin/src/routes/shop.tsx:316
-#: packages/admin/src/routes/shop.tsx:911
-#: packages/admin/src/routes/shop.tsx:1509
+#: packages/admin/src/routes/shop.tsx:264
+#: packages/admin/src/routes/shop.tsx:613
+#: packages/admin/src/routes/shop.tsx:1218
+#: packages/admin/src/routes/shop.tsx:1816
 msgid "Cancel"
 msgstr "İptal"
 
@@ -1570,18 +1593,20 @@ msgstr "İptal (Esc)"
 msgid "Cancel rename"
 msgstr "Yeniden adlandırmayı iptal et"
 
-#: packages/admin/src/routes/shop.tsx:1500
+#: packages/admin/src/routes/shop.tsx:1807
 msgid "Cancellation reason"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:58
-#: packages/admin/src/routes/shop.tsx:1010
-#: packages/admin/src/routes/shop.tsx:1491
-#: packages/admin/src/routes/shop.tsx:1559
+#: packages/admin/src/routes/shop.tsx:64
+#: packages/admin/src/routes/shop.tsx:304
+#: packages/admin/src/routes/shop.tsx:347
+#: packages/admin/src/routes/shop.tsx:1317
+#: packages/admin/src/routes/shop.tsx:1798
+#: packages/admin/src/routes/shop.tsx:1866
 msgid "Cancelled"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:478
+#: packages/admin/src/routes/shop.tsx:775
 msgid "Cancelled template"
 msgstr ""
 
@@ -1606,6 +1631,10 @@ msgstr "Yetenekler"
 msgid "Capability consent"
 msgstr "Yetenek onayı"
 
+#: packages/admin/src/routes/shop.tsx:197
+msgid "Capacity"
+msgstr ""
+
 #: packages/admin/src/components/editor/GalleryDetailPanel.tsx:382
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:352
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:541
@@ -1617,7 +1646,7 @@ msgstr "Altyazı"
 msgid "Captions / Subtitles"
 msgstr "Alt yazılar"
 
-#: packages/admin/src/routes/shop.tsx:677
+#: packages/admin/src/routes/shop.tsx:984
 msgid "Cash on delivery"
 msgstr ""
 
@@ -1642,7 +1671,7 @@ msgstr ""
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:76
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:107
-#: packages/admin/src/components/ContentEditor.tsx:1827
+#: packages/admin/src/components/ContentEditor.tsx:1846
 #: packages/admin/src/components/FieldEditor.tsx:428
 #: packages/admin/src/components/ImageFieldRenderer.tsx:208
 #: packages/admin/src/components/ImageFieldRenderer.tsx:237
@@ -1673,7 +1702,7 @@ msgstr "Logoyu Değiştir"
 msgid "Changelog"
 msgstr "Değişiklik günlüğü"
 
-#: packages/admin/src/router.tsx:1116
+#: packages/admin/src/router.tsx:1126
 msgid "Changes discarded"
 msgstr "Değişiklikler iptal edildi"
 
@@ -1708,13 +1737,17 @@ msgstr "Kimlik doğrulaması kontrol ediliyor..."
 msgid "Checking how many stored values reference \"{0}\"…"
 msgstr "Kaç tane kayıtlı değerin \"{0}\"e referans verdiği kontrol ediliyor…"
 
-#: packages/admin/src/routes/shop.tsx:1545
+#: packages/admin/src/routes/shop.tsx:1852
 msgid "Choose a template, review it in WhatsApp, and send it manually."
 msgstr ""
 
 #: packages/admin/src/components/SetupWizard.tsx:288
 msgid "Choose how to sign in"
 msgstr "Nasıl oturum açılacağını seçin"
+
+#: packages/admin/src/routes/shop.tsx:242
+msgid "Choose the date range in which this weekly schedule can be booked. Days outside the selected range or selected weekdays are unavailable."
+msgstr ""
 
 #: packages/admin/src/components/Settings.tsx:119
 msgid "Choose your preferred admin language"
@@ -1809,14 +1842,16 @@ msgstr "Oturum açmak için e-postadaki bağlantıya tıklayın."
 #: packages/admin/src/components/Widgets.tsx:413
 #: packages/admin/src/components/Widgets.tsx:419
 #: packages/admin/src/components/Widgets.tsx:423
-#: packages/admin/src/routes/shop.tsx:258
-#: packages/admin/src/routes/shop.tsx:260
-#: packages/admin/src/routes/shop.tsx:837
-#: packages/admin/src/routes/shop.tsx:839
-#: packages/admin/src/routes/shop.tsx:1048
-#: packages/admin/src/routes/shop.tsx:1050
-#: packages/admin/src/routes/shop.tsx:1197
-#: packages/admin/src/routes/shop.tsx:1199
+#: packages/admin/src/routes/shop.tsx:222
+#: packages/admin/src/routes/shop.tsx:222
+#: packages/admin/src/routes/shop.tsx:555
+#: packages/admin/src/routes/shop.tsx:557
+#: packages/admin/src/routes/shop.tsx:1144
+#: packages/admin/src/routes/shop.tsx:1146
+#: packages/admin/src/routes/shop.tsx:1355
+#: packages/admin/src/routes/shop.tsx:1357
+#: packages/admin/src/routes/shop.tsx:1504
+#: packages/admin/src/routes/shop.tsx:1506
 msgid "Close"
 msgstr "Kapat"
 
@@ -1832,15 +1867,15 @@ msgstr ""
 msgid "Close panel"
 msgstr "Paneli kapat"
 
-#: packages/admin/src/components/ContentEditor.tsx:1095
+#: packages/admin/src/components/ContentEditor.tsx:1106
 msgid "Close settings"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeList.tsx:356
 #: packages/admin/src/components/PortableTextEditor.tsx:3660
 #: packages/admin/src/components/Redirects.tsx:478
-#: packages/admin/src/routes/shop.tsx:203
-#: packages/admin/src/routes/shop.tsx:274
+#: packages/admin/src/routes/shop.tsx:500
+#: packages/admin/src/routes/shop.tsx:571
 msgid "Code"
 msgstr "Kod"
 
@@ -1850,7 +1885,7 @@ msgstr "Kod"
 msgid "Code Block"
 msgstr "Kod Bloğu"
 
-#: packages/admin/src/routes/shop.tsx:1532
+#: packages/admin/src/routes/shop.tsx:1839
 msgid "Code from delivery provider"
 msgstr ""
 
@@ -1913,6 +1948,11 @@ msgstr "Oturum açmış CMS kullanıcılarının yorumları otomatik olarak onay
 msgid "Complete signup"
 msgstr "Kaydı tamamla"
 
+#: packages/admin/src/routes/shop.tsx:305
+#: packages/admin/src/routes/shop.tsx:349
+msgid "Completed"
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:931
 msgid "Component"
 msgstr "Bileşen"
@@ -1925,20 +1965,22 @@ msgstr "Alanı Yapılandır"
 msgid "Confirm"
 msgstr "Onayla"
 
-#: packages/admin/src/routes/shop.tsx:1522
+#: packages/admin/src/routes/shop.tsx:1829
 msgid "Confirm cancellation"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1462
+#: packages/admin/src/routes/shop.tsx:1769
 msgid "Confirm payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:53
-#: packages/admin/src/routes/shop.tsx:1005
+#: packages/admin/src/routes/shop.tsx:59
+#: packages/admin/src/routes/shop.tsx:303
+#: packages/admin/src/routes/shop.tsx:346
+#: packages/admin/src/routes/shop.tsx:1312
 msgid "Confirmed"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1462
+#: packages/admin/src/routes/shop.tsx:1769
 msgid "Confirming..."
 msgstr ""
 
@@ -1993,7 +2035,7 @@ msgstr "İçerik Hataları ({0})"
 msgid "Content found:"
 msgstr "Bulunan içerik:"
 
-#: packages/admin/src/router.tsx:1138
+#: packages/admin/src/router.tsx:1148
 msgid "Content has been scheduled for publishing"
 msgstr "İçeriğin yayınlanması planlandı"
 
@@ -2005,7 +2047,7 @@ msgstr "İçerik seçilen revizyona güncellendi."
 msgid "Content ID:"
 msgstr "İçerik Kimliği:"
 
-#: packages/admin/src/router.tsx:1079
+#: packages/admin/src/router.tsx:1089
 msgid "Content is now live"
 msgstr "İçerik artık yayında"
 
@@ -2025,11 +2067,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "İçerik Okuma"
 
-#: packages/admin/src/router.tsx:1097
+#: packages/admin/src/router.tsx:1107
 msgid "Content removed from public view"
 msgstr "İçerik herkese açık görünümden kaldırıldı"
 
-#: packages/admin/src/router.tsx:1159
+#: packages/admin/src/router.tsx:1169
 msgid "Content reverted to draft"
 msgstr "İçerik taslağa geri döndürüldü"
 
@@ -2077,13 +2119,13 @@ msgstr ""
 msgid "Contributor"
 msgstr "Katkıda Bulunan"
 
-#: packages/admin/src/routes/shop.tsx:673
+#: packages/admin/src/routes/shop.tsx:980
 msgid "Coordinate by WhatsApp"
 msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:305
 #: packages/admin/src/components/users/InviteUserModal.tsx:133
-#: packages/admin/src/routes/shop.tsx:1211
+#: packages/admin/src/routes/shop.tsx:1518
 msgid "Copied to clipboard"
 msgstr "Panoya kopyalandı"
 
@@ -2092,7 +2134,7 @@ msgstr "Panoya kopyalandı"
 msgid "Copy {0} to clipboard"
 msgstr "{0}'i panoya kopyala"
 
-#: packages/admin/src/routes/shop.tsx:1284
+#: packages/admin/src/routes/shop.tsx:1591
 msgid "Copy address"
 msgstr ""
 
@@ -2100,7 +2142,7 @@ msgstr ""
 msgid "Copy invite link"
 msgstr "Davet bağlantısını kopyala"
 
-#: packages/admin/src/routes/shop.tsx:1278
+#: packages/admin/src/routes/shop.tsx:1585
 msgid "Copy phone"
 msgstr ""
 
@@ -2123,7 +2165,7 @@ msgstr "Belirteci kopyala"
 msgid "Copy URL"
 msgstr "URL'yi kopyala"
 
-#: packages/admin/src/routes/shop.tsx:805
+#: packages/admin/src/routes/shop.tsx:1112
 msgid "Cost"
 msgstr ""
 
@@ -2135,11 +2177,11 @@ msgstr "Otomatik olarak kopyalanamadı. Lütfen yukarıdaki URL'yi seçin ve man
 msgid "Could not insert section"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:159
+#: packages/admin/src/routes/shop.tsx:456
 msgid "Could not load coupons. Please try again."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1083
+#: packages/admin/src/routes/shop.tsx:1390
 msgid "Could not load customers. Please try again."
 msgstr ""
 
@@ -2147,7 +2189,7 @@ msgstr ""
 msgid "Could not load dashboard data"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:757
+#: packages/admin/src/routes/shop.tsx:1064
 msgid "Could not load delivery zones. Please try again."
 msgstr ""
 
@@ -2184,15 +2226,15 @@ msgstr "Kaç değerin \"{0}\"e referans verdiği doğrulanamadı. Silme işlemi 
 msgid "Count"
 msgstr "Sayı"
 
-#: packages/admin/src/routes/shop.tsx:154
+#: packages/admin/src/routes/shop.tsx:451
 msgid "Coupon deleted"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:147
+#: packages/admin/src/routes/shop.tsx:444
 msgid "Coupon saved"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:88
+#: packages/admin/src/routes/shop.tsx:382
 msgid "Coupons"
 msgstr ""
 
@@ -2227,6 +2269,10 @@ msgstr "Yeni bir {0} oluşturun"
 #: packages/admin/src/components/PortableTextEditor.tsx:1451
 msgid "Create a numbered list"
 msgstr "Numaralandırılmış bir liste oluşturun"
+
+#: packages/admin/src/routes/shop.tsx:162
+msgid "Create a service to configure its availability and accept bookings."
+msgstr ""
 
 #: packages/admin/src/components/InviteAcceptPage.tsx:84
 #: packages/admin/src/components/SignupPage.tsx:221
@@ -2379,7 +2425,7 @@ msgid "Created {0}"
 msgstr "{0} oluşturuldu"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1190
+#: packages/admin/src/router.tsx:1200
 msgid "Created {0} translation"
 msgstr "{0} çevirisi oluşturuldu"
 
@@ -2409,11 +2455,11 @@ msgstr ""
 msgid "CSS"
 msgstr "CSS"
 
-#: packages/admin/src/routes/shop.tsx:382
+#: packages/admin/src/routes/shop.tsx:679
 msgid "Currency"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:389
+#: packages/admin/src/routes/shop.tsx:686
 msgid "Currency symbol"
 msgstr ""
 
@@ -2450,16 +2496,18 @@ msgstr "Özel Bölüm"
 msgid "Custom Taxonomies"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1164
-#: packages/admin/src/routes/shop.tsx:1418
+#: packages/admin/src/routes/shop.tsx:320
+#: packages/admin/src/routes/shop.tsx:330
+#: packages/admin/src/routes/shop.tsx:1471
+#: packages/admin/src/routes/shop.tsx:1725
 msgid "Customer"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1195
+#: packages/admin/src/routes/shop.tsx:1502
 msgid "Customer details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:87
+#: packages/admin/src/routes/shop.tsx:381
 msgid "Customers"
 msgstr ""
 
@@ -2500,6 +2548,10 @@ msgstr "Tarih"
 #: packages/admin/src/components/FieldEditor.tsx:613
 msgid "Date & Time"
 msgstr "Tarih ve Saat"
+
+#: packages/admin/src/routes/shop.tsx:321
+msgid "Date and time"
+msgstr ""
 
 #: packages/admin/src/components/FieldEditor.tsx:210
 msgid "Date and time picker"
@@ -2575,7 +2627,7 @@ msgstr "Kodda tanımlandı"
 #: packages/admin/src/routes/byline-schema.tsx:378
 #: packages/admin/src/routes/bylines.tsx:588
 #: packages/admin/src/routes/bylines.tsx:624
-#: packages/admin/src/routes/shop.tsx:237
+#: packages/admin/src/routes/shop.tsx:534
 msgid "Delete"
 msgstr "Sil"
 
@@ -2595,7 +2647,7 @@ msgstr "\"{0}\" silinsin mi? Bu geri alınamaz."
 #: packages/admin/src/components/TaxonomyManager.tsx:280
 #: packages/admin/src/components/Widgets.tsx:817
 #: packages/admin/src/routes/byline-schema.tsx:458
-#: packages/admin/src/routes/shop.tsx:952
+#: packages/admin/src/routes/shop.tsx:1259
 msgid "Delete {0}"
 msgstr "{0}'i silin"
 
@@ -2750,46 +2802,46 @@ msgstr "Siliniyor..."
 msgid "Deleting…"
 msgstr "Siliniyor…"
 
-#: packages/admin/src/routes/shop.tsx:57
-#: packages/admin/src/routes/shop.tsx:1009
-#: packages/admin/src/routes/shop.tsx:1488
-#: packages/admin/src/routes/shop.tsx:1558
+#: packages/admin/src/routes/shop.tsx:63
+#: packages/admin/src/routes/shop.tsx:1316
+#: packages/admin/src/routes/shop.tsx:1795
+#: packages/admin/src/routes/shop.tsx:1865
 msgid "Delivered"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:467
+#: packages/admin/src/routes/shop.tsx:764
 msgid "Delivered template"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1025
+#: packages/admin/src/routes/shop.tsx:1332
 msgid "Delivery"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:875
+#: packages/admin/src/routes/shop.tsx:1182
 msgid "Delivery cost"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1468
+#: packages/admin/src/routes/shop.tsx:1775
 msgid "Delivery status"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1381
+#: packages/admin/src/routes/shop.tsx:1688
 msgid "Delivery updated"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:724
+#: packages/admin/src/routes/shop.tsx:1031
 msgid "Delivery zone created"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:750
+#: packages/admin/src/routes/shop.tsx:1057
 msgid "Delivery zone deleted"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:743
+#: packages/admin/src/routes/shop.tsx:1050
 msgid "Delivery zone updated"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:85
+#: packages/admin/src/routes/shop.tsx:379
 msgid "Delivery zones"
 msgstr ""
 
@@ -2955,11 +3007,11 @@ msgstr "Taslak değişiklikler silinsin mi?"
 msgid "Discarding..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:204
+#: packages/admin/src/routes/shop.tsx:501
 msgid "Discount"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:280
+#: packages/admin/src/routes/shop.tsx:577
 msgid "Discount type"
 msgstr ""
 
@@ -3007,21 +3059,21 @@ msgstr ""
 msgid "Displayed below the image as a visible caption."
 msgstr "Görselin altında görünür bir başlık olarak görüntülenir."
 
-#: packages/admin/src/components/ContentEditor.tsx:729
+#: packages/admin/src/components/ContentEditor.tsx:732
 msgid "Distraction-free mode (⌘⇧\\)"
 msgstr "Dikkat dağıtmayan mod (⌘⇧\\)"
 
-#: packages/admin/src/routes/shop.tsx:1166
-#: packages/admin/src/routes/shop.tsx:1257
+#: packages/admin/src/routes/shop.tsx:1473
+#: packages/admin/src/routes/shop.tsx:1564
 msgid "District"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:871
+#: packages/admin/src/routes/shop.tsx:1178
 msgid "District 1, District 2"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:804
-#: packages/admin/src/routes/shop.tsx:864
+#: packages/admin/src/routes/shop.tsx:1111
+#: packages/admin/src/routes/shop.tsx:1171
 msgid "Districts"
 msgstr ""
 
@@ -3167,6 +3219,10 @@ msgstr "Çoğalt"
 msgid "Duplicate {title}"
 msgstr "{title}'i çoğaltın"
 
+#: packages/admin/src/routes/shop.tsx:196
+msgid "Duration"
+msgstr ""
+
 #: packages/admin/src/components/AllowedTypesEditor.tsx:161
 msgid "e.g. application/zip or .pdf"
 msgstr "örneğin uygulama/zip veya.pdf"
@@ -3184,7 +3240,7 @@ msgid "e.g., MacBook Pro, iPhone"
 msgstr "ör. MacBook Pro, iPhone"
 
 #: packages/admin/src/components/Sidebar.tsx:301
-#: packages/admin/src/routes/shop.tsx:78
+#: packages/admin/src/routes/shop.tsx:372
 msgid "Ecommerce"
 msgstr ""
 
@@ -3195,8 +3251,8 @@ msgstr ""
 #: packages/admin/src/components/MenuList.tsx:234
 #: packages/admin/src/components/Sections.tsx:392
 #: packages/admin/src/components/TranslationsPanel.tsx:93
-#: packages/admin/src/routes/shop.tsx:232
-#: packages/admin/src/routes/shop.tsx:948
+#: packages/admin/src/routes/shop.tsx:529
+#: packages/admin/src/routes/shop.tsx:1255
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -3219,7 +3275,7 @@ msgstr "{0}'i düzenleyin"
 msgid "Edit {0} field"
 msgstr "{0} alanını düzenleyin"
 
-#: packages/admin/src/components/ContentEditor.tsx:675
+#: packages/admin/src/components/ContentEditor.tsx:678
 msgid "Edit {itemLabel}"
 msgstr ""
 
@@ -3235,11 +3291,11 @@ msgstr "Yazar bilgisini düzenle"
 msgid "Edit byline field"
 msgstr "Yazar bilgisi alanını düzenle"
 
-#: packages/admin/src/routes/shop.tsx:255
+#: packages/admin/src/routes/shop.tsx:552
 msgid "Edit coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:834
+#: packages/admin/src/routes/shop.tsx:1141
 msgid "Edit delivery zone"
 msgstr ""
 
@@ -3313,7 +3369,7 @@ msgstr ""
 #: packages/admin/src/components/Settings.tsx:95
 #: packages/admin/src/components/SignupPage.tsx:198
 #: packages/admin/src/components/users/UserDetail.tsx:154
-#: packages/admin/src/routes/shop.tsx:1255
+#: packages/admin/src/routes/shop.tsx:1562
 msgid "Email"
 msgstr "E-posta"
 
@@ -3386,7 +3442,7 @@ msgstr "Etkinleştir"
 msgid "Enable comments"
 msgstr "Yorumları etkinleştir"
 
-#: packages/admin/src/routes/shop.tsx:531
+#: packages/admin/src/routes/shop.tsx:838
 msgid "Enable free delivery"
 msgstr ""
 
@@ -3394,7 +3450,7 @@ msgstr ""
 msgid "Enable full-text search on this collection"
 msgstr "Bu koleksiyonda tam metin aramasını etkinleştir"
 
-#: packages/admin/src/routes/shop.tsx:566
+#: packages/admin/src/routes/shop.tsx:873
 msgid "Enable payment gateway"
 msgstr ""
 
@@ -3410,13 +3466,29 @@ msgstr ""
 msgid "Enable redirect"
 msgstr "Yönlendirmeyi etkinleştir"
 
+#: packages/admin/src/routes/shop.tsx:807
+msgid "Enable service bookings"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:812
+msgid "Enable this store to offer services with scheduled bookings."
+msgstr ""
+
 #: packages/admin/src/components/Redirects.tsx:176
 #: packages/admin/src/components/Redirects.tsx:426
 msgid "Enabled"
 msgstr "Etkin"
 
+#: packages/admin/src/routes/shop.tsx:240
+msgid "End date"
+msgstr ""
+
 #: packages/admin/src/components/Promotions.tsx:386
 msgid "End date and time (optional)"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:258
+msgid "Ends at"
 msgstr ""
 
 #: packages/admin/src/components/MenuEditor.tsx:423
@@ -3424,7 +3496,7 @@ msgstr ""
 msgid "Enter a URL (https://…) or a relative path (/…)"
 msgstr "Bir URL (https://…) veya göreli yol (/…) girin"
 
-#: packages/admin/src/components/ContentEditor.tsx:1608
+#: packages/admin/src/components/ContentEditor.tsx:1627
 msgid "Enter a valid URL (e.g. https://example.com)"
 msgstr "Geçerli bir URL girin (ör. https://example.com)"
 
@@ -3432,7 +3504,7 @@ msgstr "Geçerli bir URL girin (ör. https://example.com)"
 msgid "Enter credentials manually"
 msgstr "Kimlik bilgilerini manuel olarak girin"
 
-#: packages/admin/src/components/ContentEditor.tsx:728
+#: packages/admin/src/components/ContentEditor.tsx:731
 msgid "Enter distraction-free mode"
 msgstr "Dikkat dağıtmayan moda girin"
 
@@ -3444,7 +3516,7 @@ msgstr "E-postayı girin"
 msgid "Enter HTML..."
 msgstr "HTML'yi girin..."
 
-#: packages/admin/src/components/ContentEditor.tsx:1284
+#: packages/admin/src/components/ContentEditor.tsx:1303
 msgid "Enter markdown content..."
 msgstr "İşaretleme içeriğini girin..."
 
@@ -3473,7 +3545,7 @@ msgstr "İçeriği doğrudan içe aktarmak için WordPress kimlik bilgilerinizi 
 msgid "Enter your WordPress site URL"
 msgstr "WordPress site URL'nizi girin"
 
-#: packages/admin/src/routes/shop.tsx:588
+#: packages/admin/src/routes/shop.tsx:895
 msgid "Environment"
 msgstr ""
 
@@ -3483,7 +3555,7 @@ msgstr ""
 #: packages/admin/src/components/SetupWizard.tsx:539
 #: packages/admin/src/components/TaxonomyManager.tsx:941
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2276
+#: packages/admin/src/router.tsx:2286
 msgid "Error"
 msgstr "Hata"
 
@@ -3503,8 +3575,8 @@ msgstr "Bölüm kaydedilirken hata oluştu"
 msgid "Error updating widget"
 msgstr "Widget güncellenirken hata oluştu"
 
-#: packages/admin/src/routes/shop.tsx:806
-#: packages/admin/src/routes/shop.tsx:888
+#: packages/admin/src/routes/shop.tsx:1113
+#: packages/admin/src/routes/shop.tsx:1195
 msgid "Estimated time"
 msgstr ""
 
@@ -3517,19 +3589,19 @@ msgstr "Bu eklentinin yayınlanan her sürümü geri çekildi veya doğrulanamad
 msgid "Example: {0} → January 23, 2026"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:513
+#: packages/admin/src/routes/shop.tsx:820
 msgid "Example: 24 hours"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:895
+#: packages/admin/src/routes/shop.tsx:1202
 msgid "Example: 30–60 minutes"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:402
+#: packages/admin/src/routes/shop.tsx:699
 msgid "Example: 51999999999"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:393
+#: packages/admin/src/routes/shop.tsx:690
 msgid "Example: S/"
 msgstr ""
 
@@ -3541,7 +3613,7 @@ msgstr ""
 msgid "Exists"
 msgstr "Var"
 
-#: packages/admin/src/components/ContentEditor.tsx:787
+#: packages/admin/src/components/ContentEditor.tsx:790
 msgid "Exit distraction-free mode"
 msgstr "Dikkat dağıtmayan moddan çık"
 
@@ -3558,6 +3630,7 @@ msgid "Expand details"
 msgstr "Ayrıntıları genişlet"
 
 #: packages/admin/src/components/Promotions.tsx:178
+#: packages/admin/src/routes/shop.tsx:348
 msgid "Expired"
 msgstr ""
 
@@ -3566,7 +3639,7 @@ msgstr ""
 msgid "Expiry"
 msgstr "Son kullanma tarihi"
 
-#: packages/admin/src/routes/shop.tsx:1503
+#: packages/admin/src/routes/shop.tsx:1810
 msgid "Explain why this order is being cancelled"
 msgstr ""
 
@@ -3648,14 +3721,14 @@ msgid "Failed to create term"
 msgstr "Terim oluşturulamadı"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1195
+#: packages/admin/src/router.tsx:1205
 msgid "Failed to create translation"
 msgstr "Çeviri oluşturulamadı"
 
 #: packages/admin/src/router.tsx:449
 #: packages/admin/src/router.tsx:478
 #: packages/admin/src/router.tsx:561
-#: packages/admin/src/router.tsx:1215
+#: packages/admin/src/router.tsx:1225
 msgid "Failed to delete"
 msgstr "Silinemedi"
 
@@ -3680,7 +3753,7 @@ msgid "Failed to delete collection"
 msgstr "Koleksiyon silinemedi"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1522
+#: packages/admin/src/router.tsx:1532
 msgid "Failed to delete comment"
 msgstr "Yorum silinemedi"
 
@@ -3750,7 +3823,7 @@ msgstr "Arama devre dışı bırakılamadı"
 msgid "Failed to disable user"
 msgstr "Kullanıcı devre dışı bırakılamadı"
 
-#: packages/admin/src/router.tsx:1122
+#: packages/admin/src/router.tsx:1132
 msgid "Failed to discard changes"
 msgstr "Değişiklikler silinemedi"
 
@@ -3877,8 +3950,8 @@ msgstr "Terimler getirilemedi"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:915
-#: packages/admin/src/router.tsx:1461
+#: packages/admin/src/router.tsx:925
+#: packages/admin/src/router.tsx:1471
 msgid "Failed to fetch user"
 msgstr "Kullanıcı getirilemedi"
 
@@ -3989,7 +4062,7 @@ msgstr "Kullanıcılar yüklenemedi: {0}"
 msgid "Failed to load widget"
 msgstr "Widget yüklenemedi"
 
-#: packages/admin/src/router.tsx:1546
+#: packages/admin/src/router.tsx:1556
 msgid "Failed to perform bulk action"
 msgstr "Toplu işlem gerçekleştirilemedi"
 
@@ -4002,7 +4075,7 @@ msgid "Failed to prepare import"
 msgstr "İçe aktarma hazırlanamadı"
 
 #: packages/admin/src/router.tsx:517
-#: packages/admin/src/router.tsx:1083
+#: packages/admin/src/router.tsx:1093
 msgid "Failed to publish"
 msgstr "Yayınlanamadı"
 
@@ -4061,9 +4134,9 @@ msgstr "API belirteci iptal edilemedi"
 msgid "Failed to rewrite URLs"
 msgstr "URL'ler yeniden yazılamadı"
 
-#: packages/admin/src/router.tsx:723
-#: packages/admin/src/router.tsx:1005
-#: packages/admin/src/router.tsx:2059
+#: packages/admin/src/router.tsx:724
+#: packages/admin/src/router.tsx:1015
+#: packages/admin/src/router.tsx:2069
 msgid "Failed to save"
 msgstr "Kaydedilemedi"
 
@@ -4090,7 +4163,7 @@ msgstr ""
 msgid "Failed to save settings"
 msgstr "Ayarlar kaydedilemedi"
 
-#: packages/admin/src/router.tsx:1143
+#: packages/admin/src/router.tsx:1153
 msgid "Failed to schedule"
 msgstr "Planlama başarısız oldu"
 
@@ -4121,11 +4194,11 @@ msgstr "Kayıt terimleri ayarlanamadı"
 msgid "Failed to uninstall plugin"
 msgstr "Eklenti kaldırılamadı"
 
-#: packages/admin/src/router.tsx:1101
+#: packages/admin/src/router.tsx:1111
 msgid "Failed to unpublish"
 msgstr "Yayından kaldırılamadı"
 
-#: packages/admin/src/router.tsx:1164
+#: packages/admin/src/router.tsx:1174
 msgid "Failed to unschedule"
 msgstr "Planlama iptal edilemedi"
 
@@ -4179,7 +4252,7 @@ msgstr "Bölüm güncellenemedi"
 msgid "Failed to update settings"
 msgstr "Ayarlar güncellenemedi"
 
-#: packages/admin/src/router.tsx:1507
+#: packages/admin/src/router.tsx:1517
 msgid "Failed to update status"
 msgstr "Durum güncellenemedi"
 
@@ -4218,6 +4291,10 @@ msgstr "Özellik"
 
 #: packages/admin/src/components/WordPressImport.tsx:1148
 msgid "Featured Images"
+msgstr ""
+
+#: packages/admin/src/components/ContentEditor.tsx:1158
+msgid "Featured service"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:455
@@ -4334,23 +4411,27 @@ msgstr "Türe göre filtrele"
 msgid "Filter byline type"
 msgstr "Yazar bilgisi türünü filtrele"
 
-#: packages/admin/src/routes/shop.tsx:1145
+#: packages/admin/src/routes/shop.tsx:1452
 msgid "Filter customers by date"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1134
+#: packages/admin/src/routes/shop.tsx:1441
 msgid "Filter customers by district"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:999
+#: packages/admin/src/routes/shop.tsx:1306
 msgid "Filter orders by status"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:296
+msgid "Filter reservations by status"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeEditor.tsx:64
 msgid "First-time commenters only"
 msgstr "Yalnızca ilk kez yorum yapanlar"
 
-#: packages/admin/src/routes/shop.tsx:286
+#: packages/admin/src/routes/shop.tsx:583
 msgid "Fixed amount"
 msgstr ""
 
@@ -4374,8 +4455,12 @@ msgstr ""
 msgid "Free"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:535
+#: packages/admin/src/routes/shop.tsx:842
 msgid "Free delivery from subtotal"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:83
+msgid "Friday"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:928
@@ -4434,7 +4519,7 @@ msgid "Go"
 msgstr "Git"
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2296
+#: packages/admin/src/router.tsx:2306
 msgid "Go to Dashboard"
 msgstr "Kontrol Paneline Git"
 
@@ -4521,8 +4606,13 @@ msgstr "Yükseklik"
 msgid "Height (px)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:416
-#: packages/admin/src/routes/shop.tsx:661
+#: packages/admin/src/routes/shop.tsx:301
+#: packages/admin/src/routes/shop.tsx:344
+msgid "Held"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:713
+#: packages/admin/src/routes/shop.tsx:968
 msgid "Hello, I want to coordinate payment for my order."
 msgstr ""
 
@@ -4764,19 +4854,23 @@ msgstr "Medyayı İçe Aktarma"
 msgid "Importing menus and site settings..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:56
-#: packages/admin/src/routes/shop.tsx:1008
-#: packages/admin/src/routes/shop.tsx:1487
-#: packages/admin/src/routes/shop.tsx:1557
+#: packages/admin/src/routes/shop.tsx:207
+msgid "In person"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:62
+#: packages/admin/src/routes/shop.tsx:1315
+#: packages/admin/src/routes/shop.tsx:1794
+#: packages/admin/src/routes/shop.tsx:1864
 msgid "In transit"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:456
+#: packages/admin/src/routes/shop.tsx:753
 msgid "In transit template"
 msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:179
-#: packages/admin/src/routes/shop.tsx:943
+#: packages/admin/src/routes/shop.tsx:1250
 msgid "Inactive"
 msgstr ""
 
@@ -4797,7 +4891,7 @@ msgstr "Uyumsuz"
 msgid "Indexed"
 msgstr "Dizine eklendi"
 
-#: packages/admin/src/components/ContentEditor.tsx:1555
+#: packages/admin/src/components/ContentEditor.tsx:1574
 msgid "Ingresa un porcentaje para calcular el precio de promoción o escribe directamente el precio de promoción."
 msgstr ""
 
@@ -4935,7 +5029,7 @@ msgstr "Tamsayı"
 msgid "Invalid invite link"
 msgstr "Geçersiz davet bağlantısı"
 
-#: packages/admin/src/components/ContentEditor.tsx:1677
+#: packages/admin/src/components/ContentEditor.tsx:1696
 msgid "Invalid JSON"
 msgstr "Geçersiz JSON"
 
@@ -5075,11 +5169,11 @@ msgstr "Dil"
 msgid "Large section heading"
 msgstr "Büyük bölüm başlığı"
 
-#: packages/admin/src/routes/shop.tsx:1148
+#: packages/admin/src/routes/shop.tsx:1455
 msgid "Last 30 days"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1148
+#: packages/admin/src/routes/shop.tsx:1455
 msgid "Last 90 days"
 msgstr ""
 
@@ -5095,7 +5189,7 @@ msgstr "Son giriş"
 msgid "Last Login"
 msgstr "Son Giriş"
 
-#: packages/admin/src/routes/shop.tsx:1168
+#: packages/admin/src/routes/shop.tsx:1475
 msgid "Last order"
 msgstr ""
 
@@ -5194,8 +5288,8 @@ msgstr "Bağlantılar"
 msgid "List view"
 msgstr "Liste görünümü"
 
-#: packages/admin/src/components/ContentEditor.tsx:709
-#: packages/admin/src/components/ContentEditor.tsx:752
+#: packages/admin/src/components/ContentEditor.tsx:712
+#: packages/admin/src/components/ContentEditor.tsx:755
 #: packages/admin/src/components/ContentSettingsPanel.tsx:265
 msgid "Live View"
 msgstr "Canlı Görünüm"
@@ -5217,7 +5311,7 @@ msgstr "Daha fazlasını yükle"
 msgid "Load More"
 msgstr "Daha Fazla Yükle"
 
-#: packages/admin/src/router.tsx:2251
+#: packages/admin/src/router.tsx:2261
 msgid "Loading"
 msgstr ""
 
@@ -5233,8 +5327,8 @@ msgstr "Koleksiyonlar yükleniyor..."
 msgid "Loading comments..."
 msgstr "Yorumlar yükleniyor..."
 
-#: packages/admin/src/router.tsx:2253
-#: packages/admin/src/router.tsx:2265
+#: packages/admin/src/router.tsx:2263
+#: packages/admin/src/router.tsx:2275
 msgid "Loading configuration..."
 msgstr "Yapılandırma yükleniyor..."
 
@@ -5242,15 +5336,15 @@ msgstr "Yapılandırma yükleniyor..."
 msgid "Loading content..."
 msgstr "İçerik yükleniyor..."
 
-#: packages/admin/src/routes/shop.tsx:157
+#: packages/admin/src/routes/shop.tsx:454
 msgid "Loading coupons"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1081
+#: packages/admin/src/routes/shop.tsx:1388
 msgid "Loading customers"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:755
+#: packages/admin/src/routes/shop.tsx:1062
 msgid "Loading delivery zones"
 msgstr ""
 
@@ -5266,11 +5360,11 @@ msgstr "Menü yükleniyor..."
 msgid "Loading menus..."
 msgstr "Menüler yükleniyor..."
 
-#: packages/admin/src/routes/shop.tsx:1057
+#: packages/admin/src/routes/shop.tsx:1364
 msgid "Loading order details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:975
+#: packages/admin/src/routes/shop.tsx:1282
 msgid "Loading orders"
 msgstr ""
 
@@ -5286,10 +5380,18 @@ msgstr ""
 msgid "Loading redirects..."
 msgstr "Yönlendirmeler yükleniyor..."
 
+#: packages/admin/src/routes/shop.tsx:310
+msgid "Loading reservations"
+msgstr ""
+
 #: packages/admin/src/components/SectionPickerModal.tsx:95
 #: packages/admin/src/components/Sections.tsx:252
 msgid "Loading sections..."
 msgstr "Bölümler yükleniyor..."
+
+#: packages/admin/src/routes/shop.tsx:156
+msgid "Loading services"
+msgstr ""
 
 #: packages/admin/src/components/PluginSettings.tsx:187
 #: packages/admin/src/components/settings/GeneralSettings.tsx:130
@@ -5302,7 +5404,7 @@ msgstr "Ayarlar yükleniyor..."
 msgid "Loading setup..."
 msgstr "Kurulum yükleniyor..."
 
-#: packages/admin/src/routes/shop.tsx:350
+#: packages/admin/src/routes/shop.tsx:647
 msgid "Loading store settings"
 msgstr ""
 
@@ -5446,7 +5548,7 @@ msgstr "URL yönlendirmelerini yönetin ve 404 hatalarını görüntüleyin."
 msgid "Manage your passkeys and authentication"
 msgstr "Geçiş anahtarlarınızı ve kimlik doğrulamanızı yönetin"
 
-#: packages/admin/src/routes/shop.tsx:79
+#: packages/admin/src/routes/shop.tsx:373
 msgid "Manage your products, delivery settings, and orders."
 msgstr ""
 
@@ -5646,15 +5748,15 @@ msgstr "Menüler ({0})"
 msgid "Menus Manage"
 msgstr "Menüler Yönet"
 
-#: packages/admin/src/routes/shop.tsx:412
+#: packages/admin/src/routes/shop.tsx:709
 msgid "Message introduction"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:489
+#: packages/admin/src/routes/shop.tsx:786
 msgid "Message preview"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1550
+#: packages/admin/src/routes/shop.tsx:1857
 msgid "Message template"
 msgstr ""
 
@@ -5691,11 +5793,11 @@ msgstr "Minimum Uzunluk"
 msgid "Min Value"
 msgstr "Minimum Değer"
 
-#: packages/admin/src/routes/shop.tsx:516
+#: packages/admin/src/routes/shop.tsx:823
 msgid "Minimum order subtotal"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:297
+#: packages/admin/src/routes/shop.tsx:594
 msgid "Minimum subtotal"
 msgstr ""
 
@@ -5719,6 +5821,10 @@ msgstr "Moderasyon Sinyalleri"
 msgid "Modify collection schemas"
 msgstr "Koleksiyon şemalarını değiştirin"
 
+#: packages/admin/src/routes/shop.tsx:79
+msgid "Monday"
+msgstr ""
+
 #: packages/admin/src/components/Widgets.tsx:163
 msgid "Monthly"
 msgstr ""
@@ -5731,7 +5837,7 @@ msgstr ""
 msgid "More information about {label}"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1156
+#: packages/admin/src/routes/shop.tsx:1463
 msgid "Most orders"
 msgstr ""
 
@@ -5739,7 +5845,7 @@ msgstr ""
 msgid "Most Popular"
 msgstr "En Popüler"
 
-#: packages/admin/src/routes/shop.tsx:1156
+#: packages/admin/src/routes/shop.tsx:1463
 msgid "Most recent"
 msgstr ""
 
@@ -5839,7 +5945,7 @@ msgstr "Benim Harika Blogum"
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:37
 #: packages/admin/src/components/users/UserDetail.tsx:148
 #: packages/admin/src/components/Widgets.tsx:430
-#: packages/admin/src/routes/shop.tsx:1254
+#: packages/admin/src/routes/shop.tsx:1561
 msgid "Name"
 msgstr "İsim"
 
@@ -5860,13 +5966,13 @@ msgstr "Gezinme"
 msgid "Never"
 msgstr "Asla"
 
-#: packages/admin/src/router.tsx:1190
+#: packages/admin/src/router.tsx:1200
 msgid "new"
 msgstr "yeni"
 
 #: packages/admin/src/routes/bylines.tsx:426
-#: packages/admin/src/routes/shop.tsx:52
-#: packages/admin/src/routes/shop.tsx:1004
+#: packages/admin/src/routes/shop.tsx:58
+#: packages/admin/src/routes/shop.tsx:1311
 msgid "New"
 msgstr "Yeni"
 
@@ -5879,7 +5985,7 @@ msgstr "YENİ"
 msgid "New {0}"
 msgstr "Yeni {0}"
 
-#: packages/admin/src/components/ContentEditor.tsx:675
+#: packages/admin/src/components/ContentEditor.tsx:678
 msgid "New {itemLabel}"
 msgstr ""
 
@@ -5896,13 +6002,13 @@ msgstr "Yeni koleksiyon"
 msgid "New Content Type"
 msgstr "Yeni İçerik Türü"
 
-#: packages/admin/src/routes/shop.tsx:197
-#: packages/admin/src/routes/shop.tsx:255
+#: packages/admin/src/routes/shop.tsx:494
+#: packages/admin/src/routes/shop.tsx:552
 msgid "New coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:797
-#: packages/admin/src/routes/shop.tsx:834
+#: packages/admin/src/routes/shop.tsx:1104
+#: packages/admin/src/routes/shop.tsx:1141
 msgid "New delivery zone"
 msgstr ""
 
@@ -6002,6 +6108,10 @@ msgstr "Henüz API belirteci yok. Başlamak için bir tane oluşturun."
 msgid "No approved comments yet."
 msgstr "Henüz onaylanmış yorum yok."
 
+#: packages/admin/src/routes/shop.tsx:160
+msgid "No bookable services found."
+msgstr ""
+
 #: packages/admin/src/components/BylineFilter.tsx:99
 msgid "No byline"
 msgstr ""
@@ -6059,7 +6169,7 @@ msgstr ""
 msgid "No content types yet."
 msgstr "Henüz içerik türü yok."
 
-#: packages/admin/src/routes/shop.tsx:246
+#: packages/admin/src/routes/shop.tsx:543
 msgid "No coupons match your search."
 msgstr ""
 
@@ -6067,11 +6177,11 @@ msgstr ""
 msgid "No custom fields yet"
 msgstr "Henüz özel alan yok"
 
-#: packages/admin/src/routes/shop.tsx:1184
+#: packages/admin/src/routes/shop.tsx:1491
 msgid "No customers match your search."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:825
+#: packages/admin/src/routes/shop.tsx:1132
 msgid "No delivery zones match your search."
 msgstr ""
 
@@ -6189,11 +6299,11 @@ msgstr "Minimum yok"
 msgid "No moderation (auto-approve all)"
 msgstr "Denetleme yok (tümünü otomatik onayla)"
 
-#: packages/admin/src/routes/shop.tsx:1038
+#: packages/admin/src/routes/shop.tsx:1345
 msgid "No orders match your filters."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1314
+#: packages/admin/src/routes/shop.tsx:1621
 msgid "No orders yet."
 msgstr ""
 
@@ -6245,6 +6355,10 @@ msgstr "Yakın zamanda etkinlik yok"
 msgid "No redirects yet"
 msgstr "Henüz yönlendirme yok"
 
+#: packages/admin/src/routes/shop.tsx:312
+msgid "No reservations found."
+msgstr ""
+
 #: packages/admin/src/components/PortableTextEditor.tsx:1758
 #: packages/admin/src/components/RepeaterField.tsx:374
 msgid "No results"
@@ -6282,6 +6396,15 @@ msgstr "Hiçbir bölüm bulunamadı"
 msgid "No sections yet"
 msgstr "Henüz bölüm yok"
 
+#: packages/admin/src/routes/shop.tsx:217
+msgid "No services match your search."
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:306
+#: packages/admin/src/routes/shop.tsx:350
+msgid "No show"
+msgstr ""
+
 #: packages/admin/src/components/comments/CommentInbox.tsx:549
 msgid "No spam comments."
 msgstr "Spam yorum yok."
@@ -6315,18 +6438,19 @@ msgstr "Yok (en üst düzey)"
 msgid "Not compatible with this environment"
 msgstr "Bu ortamla uyumlu değil"
 
-#: packages/admin/src/routes/shop.tsx:59
-#: packages/admin/src/routes/shop.tsx:1012
-#: packages/admin/src/routes/shop.tsx:1489
+#: packages/admin/src/routes/shop.tsx:65
+#: packages/admin/src/routes/shop.tsx:1319
+#: packages/admin/src/routes/shop.tsx:1796
 msgid "Not delivered"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:1288
 #: packages/admin/src/components/PluginSettings.tsx:397
+#: packages/admin/src/routes/shop.tsx:208
 msgid "Not set"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1259
+#: packages/admin/src/routes/shop.tsx:1566
 msgid "Notes"
 msgstr ""
 
@@ -6362,6 +6486,10 @@ msgstr "OG Görseli"
 msgid "on a custom hostname is not treated as secure, even on loopback."
 msgstr "özel bir ana bilgisayar adında, geri döngüde bile güvenli olarak değerlendirilmez."
 
+#: packages/admin/src/routes/shop.tsx:207
+msgid "Online"
+msgstr ""
+
 #: packages/admin/src/components/DeviceAuthorizePage.tsx:278
 msgid "Only authorize codes you recognize."
 msgstr "Yalnızca tanıdığınız kodları yetkilendirin."
@@ -6391,8 +6519,8 @@ msgstr "Hata!"
 msgid "Open in new tab"
 msgstr "Yeni sekmede aç"
 
-#: packages/admin/src/routes/shop.tsx:1273
-#: packages/admin/src/routes/shop.tsx:1573
+#: packages/admin/src/routes/shop.tsx:1580
+#: packages/admin/src/routes/shop.tsx:1880
 msgid "Open WhatsApp"
 msgstr ""
 
@@ -6400,7 +6528,7 @@ msgstr ""
 msgid "Open WordPress Profile"
 msgstr "WordPress Profilini Aç"
 
-#: packages/admin/src/routes/shop.tsx:1573
+#: packages/admin/src/routes/shop.tsx:1880
 msgid "Opening..."
 msgstr ""
 
@@ -6448,7 +6576,7 @@ msgstr "Görüntüleme için isteğe bağlı başlık"
 msgid "Optional description"
 msgstr "İsteğe bağlı açıklama"
 
-#: packages/admin/src/routes/shop.tsx:431
+#: packages/admin/src/routes/shop.tsx:728
 msgid "Optional message used when the customer sends the order to WhatsApp."
 msgstr ""
 
@@ -6488,29 +6616,30 @@ msgstr "Veya bir dışa aktarma dosyası yükleyin"
 msgid "or upload directly"
 msgstr "veya doğrudan yükleyin"
 
-#: packages/admin/src/routes/shop.tsx:663
-#: packages/admin/src/routes/shop.tsx:1022
-#: packages/admin/src/routes/shop.tsx:1424
+#: packages/admin/src/routes/shop.tsx:323
+#: packages/admin/src/routes/shop.tsx:970
+#: packages/admin/src/routes/shop.tsx:1329
+#: packages/admin/src/routes/shop.tsx:1731
 msgid "Order"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1046
+#: packages/admin/src/routes/shop.tsx:1353
 msgid "Order details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1061
+#: packages/admin/src/routes/shop.tsx:1368
 msgid "Order details unavailable."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1312
+#: packages/admin/src/routes/shop.tsx:1619
 msgid "Order history"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1554
+#: packages/admin/src/routes/shop.tsx:1861
 msgid "Order received"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:419
+#: packages/admin/src/routes/shop.tsx:716
 msgid "Order received template"
 msgstr ""
 
@@ -6518,9 +6647,9 @@ msgstr ""
 msgid "Order saved"
 msgstr "Sipariş kaydedildi"
 
-#: packages/admin/src/routes/shop.tsx:86
-#: packages/admin/src/routes/shop.tsx:1167
-#: packages/admin/src/routes/shop.tsx:1290
+#: packages/admin/src/routes/shop.tsx:380
+#: packages/admin/src/routes/shop.tsx:1474
+#: packages/admin/src/routes/shop.tsx:1597
 msgid "Orders"
 msgstr ""
 
@@ -6552,7 +6681,7 @@ msgstr "Mülkiyet"
 msgid "Package"
 msgstr "Paket"
 
-#: packages/admin/src/router.tsx:2291
+#: packages/admin/src/router.tsx:2301
 msgid "Page Not Found"
 msgstr "Sayfa Bulunamadı"
 
@@ -6663,32 +6792,32 @@ msgstr "URL oluşturma modeli, ör. /blog/{0}"
 msgid "Pattern must include a {0} placeholder"
 msgstr "Desen bir {0} yer tutucusu içermelidir"
 
-#: packages/admin/src/routes/shop.tsx:1024
+#: packages/admin/src/routes/shop.tsx:1331
 msgid "Payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1367
-#: packages/admin/src/routes/shop.tsx:1555
+#: packages/admin/src/routes/shop.tsx:1674
+#: packages/admin/src/routes/shop.tsx:1862
 msgid "Payment confirmed"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:434
+#: packages/admin/src/routes/shop.tsx:731
 msgid "Payment confirmed template"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:562
+#: packages/admin/src/routes/shop.tsx:869
 msgid "Payment gateway"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:496
+#: packages/admin/src/routes/shop.tsx:793
 msgid "Payment instructions"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:550
+#: packages/admin/src/routes/shop.tsx:857
 msgid "Payment methods"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1449
+#: packages/admin/src/routes/shop.tsx:1756
 msgid "Payment status"
 msgstr ""
 
@@ -6701,9 +6830,9 @@ msgid "pending"
 msgstr "beklemede"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:198
-#: packages/admin/src/routes/shop.tsx:61
-#: packages/admin/src/routes/shop.tsx:1011
-#: packages/admin/src/routes/shop.tsx:1484
+#: packages/admin/src/routes/shop.tsx:67
+#: packages/admin/src/routes/shop.tsx:1318
+#: packages/admin/src/routes/shop.tsx:1791
 msgid "Pending"
 msgstr "Beklemede"
 
@@ -6711,8 +6840,13 @@ msgstr "Beklemede"
 msgid "Pending changes"
 msgstr "Bekleyen değişiklikler"
 
-#: packages/admin/src/routes/shop.tsx:286
-#: packages/admin/src/routes/shop.tsx:289
+#: packages/admin/src/routes/shop.tsx:302
+#: packages/admin/src/routes/shop.tsx:345
+msgid "Pending payment"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:583
+#: packages/admin/src/routes/shop.tsx:586
 msgid "Percentage"
 msgstr ""
 
@@ -6728,8 +6862,8 @@ msgstr "{title}'i kalıcı olarak sil"
 msgid "Permissions"
 msgstr "İzinler"
 
-#: packages/admin/src/routes/shop.tsx:1165
-#: packages/admin/src/routes/shop.tsx:1301
+#: packages/admin/src/routes/shop.tsx:1472
+#: packages/admin/src/routes/shop.tsx:1608
 msgid "Phone"
 msgstr ""
 
@@ -6771,7 +6905,7 @@ msgstr "Geçerli bir e"
 msgid "Please enter a valid URL"
 msgstr "Lütfen geçerli bir URL girin"
 
-#: packages/admin/src/routes/shop.tsx:675
+#: packages/admin/src/routes/shop.tsx:982
 msgid "Plin"
 msgstr ""
 
@@ -6892,7 +7026,7 @@ msgstr ""
 msgid "Points search engines to the original version of this page, if it's duplicated from another URL"
 msgstr "Başka bir URL'den kopyalanmışsa, arama motorlarını bu sayfanın orijinal sürümüne yönlendirir"
 
-#: packages/admin/src/components/ContentEditor.tsx:1539
+#: packages/admin/src/components/ContentEditor.tsx:1558
 msgid "Porcentaje de descuento"
 msgstr ""
 
@@ -6917,22 +7051,22 @@ msgstr "Sayfa Başına Gönderiler"
 msgid "Pre-release"
 msgstr "Ön sürüm"
 
-#: packages/admin/src/components/ContentEditor.tsx:1548
+#: packages/admin/src/components/ContentEditor.tsx:1567
 msgid "Precio de promoción"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1530
+#: packages/admin/src/components/ContentEditor.tsx:1549
 msgid "Precio regular"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:510
+#: packages/admin/src/routes/shop.tsx:817
 msgid "Preparation time"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:54
-#: packages/admin/src/routes/shop.tsx:1006
-#: packages/admin/src/routes/shop.tsx:1486
-#: packages/admin/src/routes/shop.tsx:1556
+#: packages/admin/src/routes/shop.tsx:60
+#: packages/admin/src/routes/shop.tsx:1313
+#: packages/admin/src/routes/shop.tsx:1793
+#: packages/admin/src/routes/shop.tsx:1863
 msgid "Preparing"
 msgstr ""
 
@@ -6940,7 +7074,7 @@ msgstr ""
 msgid "Preparing registration..."
 msgstr "Kayıt hazırlanıyor..."
 
-#: packages/admin/src/routes/shop.tsx:445
+#: packages/admin/src/routes/shop.tsx:742
 msgid "Preparing template"
 msgstr ""
 
@@ -6953,7 +7087,7 @@ msgstr "WordPress'ten dosya indirmeye hazırlanıyor..."
 msgid "Preparing..."
 msgstr "Hazırlanıyor..."
 
-#: packages/admin/src/routes/shop.tsx:1455
+#: packages/admin/src/routes/shop.tsx:1762
 msgid "Press once to confirm the payment."
 msgstr ""
 
@@ -7008,11 +7142,11 @@ msgstr ""
 msgid "Processing..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:593
+#: packages/admin/src/routes/shop.tsx:900
 msgid "Production"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1437
+#: packages/admin/src/routes/shop.tsx:1744
 msgid "Products"
 msgstr ""
 
@@ -7037,7 +7171,7 @@ msgstr ""
 msgid "Promotions"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:574
+#: packages/admin/src/routes/shop.tsx:881
 msgid "Provider"
 msgstr ""
 
@@ -7045,11 +7179,11 @@ msgstr ""
 msgid "Provider:"
 msgstr "Sağlayıcı:"
 
-#: packages/admin/src/routes/shop.tsx:597
+#: packages/admin/src/routes/shop.tsx:904
 msgid "Public key"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:602
+#: packages/admin/src/routes/shop.tsx:909
 msgid "Public key from your provider"
 msgstr ""
 
@@ -7069,7 +7203,7 @@ msgstr ""
 #: packages/admin/src/components/ContentList.tsx:843
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1079
+#: packages/admin/src/router.tsx:1089
 msgid "Published"
 msgstr "Yayınlandı"
 
@@ -7159,8 +7293,8 @@ msgstr "Okuma"
 msgid "Ready"
 msgstr "Hazır"
 
-#: packages/admin/src/routes/shop.tsx:55
-#: packages/admin/src/routes/shop.tsx:1007
+#: packages/admin/src/routes/shop.tsx:61
+#: packages/admin/src/routes/shop.tsx:1314
 msgid "Ready for delivery"
 msgstr ""
 
@@ -7209,7 +7343,7 @@ msgid "Redo"
 msgstr "Yinele"
 
 #: packages/admin/src/components/FieldEditor.tsx:245
-#: packages/admin/src/routes/shop.tsx:1258
+#: packages/admin/src/routes/shop.tsx:1565
 msgid "Reference"
 msgstr "Referans"
 
@@ -7279,7 +7413,7 @@ msgstr "{0}'i kaldırın"
 msgid "Remove {entry}"
 msgstr "{entry} öğesini kaldır"
 
-#: packages/admin/src/components/ContentEditor.tsx:1835
+#: packages/admin/src/components/ContentEditor.tsx:1854
 msgid "Remove {label}"
 msgstr "{label}'i kaldırın"
 
@@ -7437,9 +7571,9 @@ msgstr "Erişilebilirlik için gereklidir. Ekran okuyucular için görüntüyü 
 msgid "Requires EmDash {0}"
 msgstr "EmDash gerektirir {0}"
 
-#: packages/admin/src/routes/shop.tsx:60
-#: packages/admin/src/routes/shop.tsx:1013
-#: packages/admin/src/routes/shop.tsx:1490
+#: packages/admin/src/routes/shop.tsx:66
+#: packages/admin/src/routes/shop.tsx:1320
+#: packages/admin/src/routes/shop.tsx:1797
 msgid "Rescheduled"
 msgstr ""
 
@@ -7450,6 +7584,10 @@ msgstr "E-postayı yeniden gönder"
 #: packages/admin/src/components/SignupPage.tsx:154
 msgid "Resend in {resendCooldown}s"
 msgstr "{resendCooldown}'lerde yeniden gönder"
+
+#: packages/admin/src/routes/shop.tsx:292
+msgid "Reservations"
+msgstr ""
 
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:277
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:466
@@ -7494,12 +7632,12 @@ msgstr "Geri yükleniyor..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2279
+#: packages/admin/src/router.tsx:2289
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "Yeniden dene"
 
-#: packages/admin/src/routes/shop.tsx:631
+#: packages/admin/src/routes/shop.tsx:938
 msgid "Return URL"
 msgstr ""
 
@@ -7507,13 +7645,17 @@ msgstr ""
 msgid "Reusable content blocks you can insert into any content"
 msgstr "Herhangi bir içeriğe ekleyebileceğiniz yeniden kullanılabilir içerik blokları"
 
-#: packages/admin/src/router.tsx:1117
+#: packages/admin/src/router.tsx:1127
 msgid "Reverted to published version"
 msgstr "Yayınlanan sürüme geri dönüldü"
 
 #: packages/admin/src/components/WordPressImport.tsx:724
 msgid "Review"
 msgstr "İncele"
+
+#: packages/admin/src/routes/shop.tsx:293
+msgid "Review and update service bookings."
+msgstr ""
 
 #: packages/admin/src/components/CapabilityConsentDialog.tsx:79
 msgid "Review New Permissions"
@@ -7627,8 +7769,12 @@ msgstr "Rust"
 msgid "Same window"
 msgstr "Aynı pencere"
 
-#: packages/admin/src/routes/shop.tsx:664
+#: packages/admin/src/routes/shop.tsx:971
 msgid "Sample product"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:84
+msgid "Saturday"
 msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1204
@@ -7666,11 +7812,11 @@ msgstr "Değişiklikleri Kaydet"
 msgid "Save content as draft before publishing"
 msgstr "İçeriği yayınlamadan önce taslak olarak kaydedin"
 
-#: packages/admin/src/routes/shop.tsx:318
+#: packages/admin/src/routes/shop.tsx:615
 msgid "Save coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:563
+#: packages/admin/src/routes/shop.tsx:870
 msgid "Save gateway parameters for a future integration. Orders continue through WhatsApp until a gateway connector is enabled."
 msgstr ""
 
@@ -7678,7 +7824,11 @@ msgstr ""
 msgid "Save name"
 msgstr "Adı kaydet"
 
-#: packages/admin/src/routes/shop.tsx:649
+#: packages/admin/src/routes/shop.tsx:265
+msgid "Save schedule"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:956
 msgid "Save settings"
 msgstr ""
 
@@ -7687,7 +7837,7 @@ msgstr ""
 msgid "Save Settings"
 msgstr "Ayarları Kaydet"
 
-#: packages/admin/src/routes/shop.tsx:913
+#: packages/admin/src/routes/shop.tsx:1220
 msgid "Save zone"
 msgstr ""
 
@@ -7712,13 +7862,14 @@ msgstr "\"{0}\" kaydedildi."
 #: packages/admin/src/components/users/UserDetail.tsx:311
 #: packages/admin/src/components/Widgets.tsx:983
 #: packages/admin/src/routes/bylines.tsx:579
-#: packages/admin/src/routes/shop.tsx:318
-#: packages/admin/src/routes/shop.tsx:649
-#: packages/admin/src/routes/shop.tsx:913
+#: packages/admin/src/routes/shop.tsx:615
+#: packages/admin/src/routes/shop.tsx:956
+#: packages/admin/src/routes/shop.tsx:1220
 msgid "Saving..."
 msgstr "Kaydediliyor..."
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:318
+#: packages/admin/src/routes/shop.tsx:265
 msgid "Saving…"
 msgstr "Kaydediliyor…"
 
@@ -7732,6 +7883,7 @@ msgid "SBOM · {0}"
 msgstr "SBOM · {0}"
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:572
+#: packages/admin/src/routes/shop.tsx:210
 msgid "Schedule"
 msgstr "Zamanla"
 
@@ -7743,10 +7895,14 @@ msgstr "Şunun için planla:"
 msgid "Schedule for later"
 msgstr "Daha sonrası için planla"
 
+#: packages/admin/src/routes/shop.tsx:221
+msgid "Schedule service availability"
+msgstr ""
+
 #: packages/admin/src/components/ContentList.tsx:834
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
 #: packages/admin/src/components/Promotions.tsx:177
-#: packages/admin/src/router.tsx:1137
+#: packages/admin/src/router.tsx:1147
 msgid "Scheduled"
 msgstr "Zamanlandı"
 
@@ -7830,7 +7986,7 @@ msgstr "{0}'te arama yapın"
 msgid "Search {0}..."
 msgstr "{0}'i arayın..."
 
-#: packages/admin/src/routes/shop.tsx:192
+#: packages/admin/src/routes/shop.tsx:489
 msgid "Search by coupon code"
 msgstr ""
 
@@ -7843,15 +7999,19 @@ msgstr "Dosya adına göre ara..."
 msgid "Search by name or email..."
 msgstr "Ada veya e-postaya göre arayın..."
 
-#: packages/admin/src/routes/shop.tsx:1127
+#: packages/admin/src/routes/shop.tsx:1434
 msgid "Search by name, phone, email, or district"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:992
+#: packages/admin/src/routes/shop.tsx:1299
 msgid "Search by order number"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:792
+#: packages/admin/src/routes/shop.tsx:187
+msgid "Search by service name"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:1099
 msgid "Search by zone or district"
 msgstr ""
 
@@ -7881,15 +8041,15 @@ msgstr "Yorumları ara..."
 msgid "Search content..."
 msgstr "İçerik ara..."
 
-#: packages/admin/src/routes/shop.tsx:191
+#: packages/admin/src/routes/shop.tsx:488
 msgid "Search coupons"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1126
+#: packages/admin/src/routes/shop.tsx:1433
 msgid "Search customers"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:791
+#: packages/admin/src/routes/shop.tsx:1098
 msgid "Search delivery zones"
 msgstr ""
 
@@ -7911,7 +8071,7 @@ msgstr ""
 msgid "Search media"
 msgstr "Medya ara"
 
-#: packages/admin/src/routes/shop.tsx:991
+#: packages/admin/src/routes/shop.tsx:1298
 msgid "Search orders"
 msgstr ""
 
@@ -7933,6 +8093,10 @@ msgstr "Eklentileri ara..."
 #: packages/admin/src/components/Sections.tsx:226
 msgid "Search sections..."
 msgstr "Bölümleri ara..."
+
+#: packages/admin/src/routes/shop.tsx:187
+msgid "Search services"
+msgstr ""
 
 #: packages/admin/src/components/Redirects.tsx:417
 msgid "Search source or destination..."
@@ -7976,15 +8140,15 @@ msgstr ""
 msgid "Secondary hover color"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:605
+#: packages/admin/src/routes/shop.tsx:912
 msgid "Secret key"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:614
+#: packages/admin/src/routes/shop.tsx:921
 msgid "Secret key from your provider"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:613
+#: packages/admin/src/routes/shop.tsx:920
 msgid "Secret key saved; enter a new one to replace it"
 msgstr ""
 
@@ -8085,8 +8249,8 @@ msgid "Select"
 msgstr "Seç"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:140
-#: packages/admin/src/components/ContentEditor.tsx:1847
-#: packages/admin/src/components/ContentEditor.tsx:1863
+#: packages/admin/src/components/ContentEditor.tsx:1866
+#: packages/admin/src/components/ContentEditor.tsx:1882
 #: packages/admin/src/components/ImageFieldRenderer.tsx:273
 msgid "Select {label}"
 msgstr "{label}'i seçin"
@@ -8111,6 +8275,10 @@ msgstr "Tümünü seç"
 msgid "Select all on this page"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:228
+msgid "Select at least one available day."
+msgstr ""
+
 #. placeholder {0}: comment.authorName
 #: packages/admin/src/components/comments/CommentInbox.tsx:457
 msgid "Select comment by {0}"
@@ -8129,7 +8297,7 @@ msgstr "Varsayılan Sosyal Görseli Seç"
 msgid "Select Favicon"
 msgstr "Favicon Seç"
 
-#: packages/admin/src/components/ContentEditor.tsx:1851
+#: packages/admin/src/components/ContentEditor.tsx:1870
 msgid "Select file"
 msgstr "Dosya seç"
 
@@ -8152,7 +8320,7 @@ msgstr "Resim seç"
 msgid "Select Image"
 msgstr "Resim Seç"
 
-#: packages/admin/src/routes/shop.tsx:581
+#: packages/admin/src/routes/shop.tsx:888
 msgid "Select later"
 msgstr ""
 
@@ -8172,6 +8340,10 @@ msgstr "OG görselini seçin"
 #: packages/admin/src/components/SeoImageField.tsx:85
 msgid "Select OG Image"
 msgstr "OG Görseli Seç"
+
+#: packages/admin/src/routes/shop.tsx:245
+msgid "Select only the days when this service is available. Saturday and Sunday can be left unselected."
+msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:143
 #: packages/admin/src/components/Promotions.tsx:406
@@ -8267,6 +8439,24 @@ msgstr "SEO ayarları kaydedildi"
 msgid "SEO Title"
 msgstr "SEO Başlığı"
 
+#: packages/admin/src/router.tsx:799
+#: packages/admin/src/routes/shop.tsx:194
+#: packages/admin/src/routes/shop.tsx:319
+msgid "Service"
+msgstr ""
+
+#: packages/admin/src/components/ContentEditor.tsx:1156
+msgid "Service description"
+msgstr ""
+
+#: packages/admin/src/components/ContentEditor.tsx:1157
+msgid "Service image"
+msgstr ""
+
+#: packages/admin/src/components/ContentEditor.tsx:1155
+msgid "Service name"
+msgstr ""
+
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:316
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:505
 msgid "Set a custom display size for this image instance."
@@ -8298,8 +8488,8 @@ msgid "Setting up..."
 msgstr "Kurulum..."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:234
-#: packages/admin/src/components/ContentEditor.tsx:848
-#: packages/admin/src/components/ContentEditor.tsx:1081
+#: packages/admin/src/components/ContentEditor.tsx:859
+#: packages/admin/src/components/ContentEditor.tsx:1092
 #: packages/admin/src/components/ContentTypeEditor.tsx:382
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
@@ -8330,7 +8520,7 @@ msgstr "Kurulum başarısız oldu"
 msgid "Share this link with the invited user"
 msgstr "Bu bağlantıyı davet edilen kullanıcıyla paylaşın"
 
-#: packages/admin/src/routes/shop.tsx:500
+#: packages/admin/src/routes/shop.tsx:797
 msgid "Share your Yape, Plin, or bank transfer instructions."
 msgstr ""
 
@@ -8559,7 +8749,7 @@ msgstr "Bazı içerik türleri içe aktarılamaz"
 msgid "Something went wrong"
 msgstr "Bir şeyler ters gitti"
 
-#: packages/admin/src/routes/shop.tsx:1153
+#: packages/admin/src/routes/shop.tsx:1460
 msgid "Sort customers"
 msgstr ""
 
@@ -8611,6 +8801,10 @@ msgstr "SQL"
 msgid "Square"
 msgstr ""
 
+#: packages/admin/src/routes/shop.tsx:239
+msgid "Start date"
+msgstr ""
+
 #: packages/admin/src/components/Promotions.tsx:380
 msgid "Start date and time (optional)"
 msgstr ""
@@ -8619,10 +8813,14 @@ msgstr ""
 msgid "Start Import"
 msgstr "İçe aktarmayı başlat"
 
-#: packages/admin/src/components/ContentEditor.tsx:1258
+#: packages/admin/src/components/ContentEditor.tsx:1277
 #: packages/admin/src/components/PortableTextEditor.tsx:2579
 #: packages/admin/src/components/PortableTextEditor.tsx:2580
 msgid "Start writing, or type '/' for commands"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:257
+msgid "Starts at"
 msgstr ""
 
 #: packages/admin/src/components/ContentList.tsx:592
@@ -8631,8 +8829,9 @@ msgstr ""
 #: packages/admin/src/components/Promotions.tsx:121
 #: packages/admin/src/components/Redirects.tsx:480
 #: packages/admin/src/components/users/UserList.tsx:104
-#: packages/admin/src/routes/shop.tsx:807
-#: packages/admin/src/routes/shop.tsx:1023
+#: packages/admin/src/routes/shop.tsx:322
+#: packages/admin/src/routes/shop.tsx:1114
+#: packages/admin/src/routes/shop.tsx:1330
 msgid "Status"
 msgstr "Durum"
 
@@ -8648,7 +8847,7 @@ msgstr ""
 msgid "Storage available"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:662
+#: packages/admin/src/routes/shop.tsx:969
 msgid "Store"
 msgstr ""
 
@@ -8656,15 +8855,15 @@ msgstr ""
 msgid "Store a daily backup in your site's storage bucket. Old backups are removed automatically."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:376
+#: packages/admin/src/routes/shop.tsx:673
 msgid "Store name"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:84
+#: packages/admin/src/routes/shop.tsx:378
 msgid "Store settings"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:346
+#: packages/admin/src/routes/shop.tsx:643
 msgid "Store settings saved"
 msgstr ""
 
@@ -8704,6 +8903,10 @@ msgstr ""
 
 #: packages/admin/src/components/settings/GeneralSettings.tsx:353
 msgid "Success"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:78
+msgid "Sunday"
 msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3653
@@ -8816,7 +9019,7 @@ msgstr "\"{0}\" terimi {1} içinde oluşturuldu."
 msgid "Term deleted"
 msgstr "Terim silindi"
 
-#: packages/admin/src/routes/shop.tsx:593
+#: packages/admin/src/routes/shop.tsx:900
 msgid "Test mode"
 msgstr ""
 
@@ -8873,7 +9076,7 @@ msgstr "Menü silindi."
 msgid "The name of your site, used in the header and metadata"
 msgstr "Başlıkta ve meta verilerde kullanılan sitenizin adı"
 
-#: packages/admin/src/router.tsx:2293
+#: packages/admin/src/router.tsx:2303
 msgid "The page you're looking for doesn't exist."
 msgstr "Aradığınız sayfa mevcut değil."
 
@@ -8893,7 +9096,7 @@ msgstr "Referans verilen görsel artık mevcut değil. Yeni bir tane seçin veya
 msgid "The referenced logo is no longer available. Pick a new one or remove the reference."
 msgstr "Referans verilen logo artık mevcut değil. Yeni bir tane seçin veya referansı kaldırın."
 
-#: packages/admin/src/routes/shop.tsx:409
+#: packages/admin/src/routes/shop.tsx:706
 msgid "The store name, order number, products, and total are added automatically."
 msgstr ""
 
@@ -8955,7 +9158,7 @@ msgstr ""
 msgid "This field does not accept {sniffedMime} files."
 msgstr "Bu alan {sniffedMime} dosyalarını kabul etmiyor."
 
-#: packages/admin/src/components/ContentEditor.tsx:1866
+#: packages/admin/src/components/ContentEditor.tsx:1885
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "Bu alan zorunludur"
@@ -9077,6 +9280,10 @@ msgstr "Bu, yayınlanan sürüme geri dönecektir. Taslak değişiklikleriniz ka
 msgid "Thoughts, tutorials, and more"
 msgstr "Düşünceler, öğreticiler ve daha fazlası"
 
+#: packages/admin/src/routes/shop.tsx:82
+msgid "Thursday"
+msgstr ""
+
 #: packages/admin/src/components/settings/GeneralSettings.tsx:394
 msgid "Timezone"
 msgstr "Saat dilimi"
@@ -9149,13 +9356,13 @@ msgstr "TOML"
 msgid "Tools → Export"
 msgstr "Araçlar → Dışa Aktar"
 
-#: packages/admin/src/routes/shop.tsx:665
-#: packages/admin/src/routes/shop.tsx:1026
-#: packages/admin/src/routes/shop.tsx:1428
+#: packages/admin/src/routes/shop.tsx:972
+#: packages/admin/src/routes/shop.tsx:1333
+#: packages/admin/src/routes/shop.tsx:1735
 msgid "Total"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1294
+#: packages/admin/src/routes/shop.tsx:1601
 msgid "Total spent"
 msgstr ""
 
@@ -9163,11 +9370,11 @@ msgstr ""
 msgid "Track content history"
 msgstr "İçerik geçmişini takip edin"
 
-#: packages/admin/src/routes/shop.tsx:1529
+#: packages/admin/src/routes/shop.tsx:1836
 msgid "Tracking code (optional)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1535
+#: packages/admin/src/routes/shop.tsx:1842
 msgid "Tracking URL (optional)"
 msgstr ""
 
@@ -9200,7 +9407,7 @@ msgstr "Çeviri..."
 #: packages/admin/src/components/MenuEditor.tsx:143
 #: packages/admin/src/components/TaxonomyManager.tsx:987
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1189
+#: packages/admin/src/router.tsx:1199
 msgid "Translation created"
 msgstr "Çeviri oluşturuldu"
 
@@ -9284,6 +9491,10 @@ msgstr "Verilerimle dene"
 msgid "TSX"
 msgstr "TSX"
 
+#: packages/admin/src/routes/shop.tsx:80
+msgid "Tuesday"
+msgstr ""
+
 #: packages/admin/src/components/editor/BlockMenu.tsx:297
 msgid "Turn into"
 msgstr "Şuna dönüştür"
@@ -9296,6 +9507,7 @@ msgstr "Twitter"
 #: packages/admin/src/components/FieldEditor.tsx:600
 #: packages/admin/src/components/MediaLibrary.tsx:608
 #: packages/admin/src/routes/byline-schema.tsx:240
+#: packages/admin/src/routes/shop.tsx:195
 msgid "Type"
 msgstr "Tür"
 
@@ -9363,8 +9575,8 @@ msgstr "Bilinmiyor"
 msgid "Unknown role"
 msgstr "Bilinmeyen rol"
 
-#: packages/admin/src/routes/shop.tsx:223
-#: packages/admin/src/routes/shop.tsx:309
+#: packages/admin/src/routes/shop.tsx:520
+#: packages/admin/src/routes/shop.tsx:606
 msgid "Unlimited"
 msgstr ""
 
@@ -9384,7 +9596,7 @@ msgstr "Adsız geçiş anahtarı"
 msgid "Unpublish {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1097
+#: packages/admin/src/router.tsx:1107
 msgid "Unpublished"
 msgstr "Yayımlanmamış"
 
@@ -9400,7 +9612,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "Programı iptal et"
 
-#: packages/admin/src/router.tsx:1158
+#: packages/admin/src/router.tsx:1168
 msgid "Unscheduled"
 msgstr "Zamanlanmamış"
 
@@ -9418,7 +9630,7 @@ msgstr ""
 msgid "Untitled"
 msgstr "İsimsiz"
 
-#: packages/admin/src/components/ContentEditor.tsx:1769
+#: packages/admin/src/components/ContentEditor.tsx:1788
 msgid "Untitled file"
 msgstr "Başlıksız dosya"
 
@@ -9443,7 +9655,7 @@ msgstr ""
 msgid "Update"
 msgstr "Güncelle"
 
-#: packages/admin/src/routes/shop.tsx:1474
+#: packages/admin/src/routes/shop.tsx:1781
 msgid "Update delivery status"
 msgstr ""
 
@@ -9453,6 +9665,10 @@ msgstr "Alanı Güncelle"
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:622
 msgid "Update publish date"
+msgstr ""
+
+#: packages/admin/src/routes/shop.tsx:338
+msgid "Update reservation status"
 msgstr ""
 
 #. placeholder {0}: editingDomain?.domain
@@ -9621,7 +9837,7 @@ msgstr "URL dostu tanımlayıcı (ör. \"birincil\", \"alt bilgi\")"
 msgid "URL:"
 msgstr "URL'si:"
 
-#: packages/admin/src/routes/shop.tsx:304
+#: packages/admin/src/routes/shop.tsx:601
 msgid "Usage limit"
 msgstr ""
 
@@ -9633,7 +9849,7 @@ msgstr "Desen eşleştirme için yollarda [param] veya [...rest] kullanın."
 msgid "Use optimized image"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:404
+#: packages/admin/src/routes/shop.tsx:701
 msgid "Use the country code without spaces or symbols."
 msgstr ""
 
@@ -9653,7 +9869,7 @@ msgstr "Sayfada görsel olmadığında yedek Open Graph görseli olarak kullanı
 msgid "Used as the identifier. Lowercase letters, numbers, and underscores only."
 msgstr "Tanımlayıcı olarak kullanılır. Yalnızca küçük harfler, sayılar ve alt çizgiler."
 
-#: packages/admin/src/components/ContentEditor.tsx:1361
+#: packages/admin/src/components/ContentEditor.tsx:1380
 msgid "Used as the main visual for this post on listing pages and at the top of the post"
 msgstr "Listeleme sayfalarında ve gönderinin üst kısmında bu yazının ana görseli olarak kullanıldı"
 
@@ -9704,7 +9920,7 @@ msgstr "Şuradan kullanıcılar:"
 msgid "Users with email addresses from these domains can sign up without an invite. They will be assigned the specified role automatically."
 msgstr "Bu alanlardan e-posta adreslerine sahip kullanıcılar davetsiz kaydolabilirler. Belirtilen rol otomatik olarak kendilerine atanacaktır."
 
-#: packages/admin/src/routes/shop.tsx:205
+#: packages/admin/src/routes/shop.tsx:502
 msgid "Uses"
 msgstr ""
 
@@ -9763,8 +9979,8 @@ msgstr "Sürüm {0}"
 msgid "Video"
 msgstr "Video"
 
-#: packages/admin/src/routes/shop.tsx:1237
-#: packages/admin/src/routes/shop.tsx:1352
+#: packages/admin/src/routes/shop.tsx:1544
+#: packages/admin/src/routes/shop.tsx:1659
 msgid "View details"
 msgstr ""
 
@@ -9848,19 +10064,19 @@ msgstr "Web adresi"
 msgid "WebAuthn is not supported in this browser"
 msgstr "WebAuthn bu tarayıcıda desteklenmiyor"
 
-#: packages/admin/src/routes/shop.tsx:618
+#: packages/admin/src/routes/shop.tsx:925
 msgid "Webhook secret"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:627
+#: packages/admin/src/routes/shop.tsx:934
 msgid "Webhook secret from your provider"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:626
+#: packages/admin/src/routes/shop.tsx:933
 msgid "Webhook secret saved; enter a new one to replace it"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:639
+#: packages/admin/src/routes/shop.tsx:946
 msgid "Webhook URL"
 msgstr ""
 
@@ -9872,6 +10088,10 @@ msgstr "Web sitesi"
 #: packages/admin/src/routes/bylines.tsx:491
 msgid "Website URL"
 msgstr "Web sitesi URL'si"
+
+#: packages/admin/src/routes/shop.tsx:81
+msgid "Wednesday"
+msgstr ""
 
 #: packages/admin/src/components/WelcomeModal.tsx:102
 msgid "Welcome to EmDash, {firstName}!"
@@ -9889,15 +10109,15 @@ msgstr "İçe aktardığınızda ne olur:"
 msgid "What will happen when you import"
 msgstr "İthalat yaptığınızda ne olacak?"
 
-#: packages/admin/src/routes/shop.tsx:1544
+#: packages/admin/src/routes/shop.tsx:1851
 msgid "WhatsApp message"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:398
+#: packages/admin/src/routes/shop.tsx:695
 msgid "WhatsApp number"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:408
+#: packages/admin/src/routes/shop.tsx:705
 msgid "WhatsApp order message"
 msgstr ""
 
@@ -10051,7 +10271,7 @@ msgstr ""
 msgid "YAML"
 msgstr "YAML"
 
-#: packages/admin/src/routes/shop.tsx:674
+#: packages/admin/src/routes/shop.tsx:981
 msgid "Yape"
 msgstr ""
 
@@ -10102,7 +10322,7 @@ msgstr "Kullanıcılar, ayarlar ve tüm içerik dahil olmak üzere bu siteyi yö
 msgid "You need admin permissions to manage byline schema."
 msgstr "Yazar bilgisi şemasını yönetmek için yönetici izinleri gerekir."
 
-#: packages/admin/src/router.tsx:1562
+#: packages/admin/src/router.tsx:1572
 msgid "You need Editor permissions to moderate comments."
 msgstr "Yorumları denetlemek için Editör izinlerine ihtiyacınız var."
 
@@ -10227,11 +10447,11 @@ msgstr "YouTube kanal kimliğiniz veya kullanıcı adınız"
 msgid "YouTube"
 msgstr "YouTube"
 
-#: packages/admin/src/routes/shop.tsx:803
+#: packages/admin/src/routes/shop.tsx:1110
 msgid "Zone"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:854
+#: packages/admin/src/routes/shop.tsx:1161
 msgid "Zone name"
 msgstr ""
 

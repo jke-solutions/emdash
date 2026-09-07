@@ -127,6 +127,8 @@ export {
 // Ecommerce
 export {
 	type ShopSettings,
+	type ShopBookingHour,
+	type ShopReservationSummary,
 	type ShopCoupon,
 	type ShopSettingsUpdateInput,
 	type ShopDeliveryZone,
@@ -139,6 +141,10 @@ export {
 	updateShopCoupon,
 	deleteShopCoupon,
 	updateShopSettings,
+	fetchShopBookingHours,
+	updateShopBookingHours,
+	fetchShopReservations,
+	updateShopReservation,
 	fetchShopDeliveryZones,
 	createShopDeliveryZone,
 	updateShopDeliveryZone,

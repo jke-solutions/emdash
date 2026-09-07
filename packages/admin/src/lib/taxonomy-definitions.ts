@@ -28,7 +28,10 @@ export function resolveTaxonomyDefinitions<T extends LocalizedTaxonomyDefinition
 	const groups = new Map<string, T[]>();
 
 	for (const definition of definitions) {
-		const group = definition.translationGroup?.trim() || definition.name;
+		// `name` identifies the taxonomy in the API. A seed or migration can
+		// leave locale rows with different translation groups; they still must
+		// render as one taxonomy in the admin.
+		const group = definition.name;
 		const variants = groups.get(group);
 		if (variants) variants.push(definition);
 		else groups.set(group, [definition]);

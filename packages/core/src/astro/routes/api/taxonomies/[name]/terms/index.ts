@@ -37,6 +37,7 @@ export const GET: APIRoute = async ({ params, request, locals }) => {
 			locale: query.locale,
 			includeCounts: query.includeCounts,
 			resolveFallback: query.resolveFallback,
+			visibleOnHome: query.visibleOnHome,
 		});
 		return unwrapResult(result);
 	} catch (error) {

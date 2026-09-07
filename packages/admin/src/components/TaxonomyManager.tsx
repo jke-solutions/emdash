@@ -28,6 +28,7 @@ import { slugify } from "../lib/utils";
 import { ConfirmDialog } from "./ConfirmDialog.js";
 import { DialogError, getMutationError } from "./DialogError.js";
 import { LocaleSwitcher, useI18nConfig } from "./LocaleSwitcher.js";
+import { TaxonomyImageField } from "./TaxonomyImageField.js";
 import { TranslationsPanel } from "./TranslationsPanel.js";
 
 interface TaxonomyManagerProps {
@@ -411,6 +412,8 @@ function TermFormDialog({
 	const [slug, setSlug] = React.useState(term?.slug || "");
 	const [parentId, setParentId] = React.useState(term?.parentId || "");
 	const [description, setDescription] = React.useState(term?.description || "");
+	const [imageId, setImageId] = React.useState<string | undefined>(term?.imageId);
+	const [visibleOnHome, setVisibleOnHome] = React.useState(term?.visibleOnHome ?? false);
 	const [autoSlug, setAutoSlug] = React.useState(!term);
 	const [error, setError] = React.useState<string | null>(null);
 
@@ -420,6 +423,8 @@ function TermFormDialog({
 		setSlug(term?.slug || "");
 		setParentId(term?.parentId || "");
 		setDescription(term?.description || "");
+		setImageId(term?.imageId);
+		setVisibleOnHome(term?.visibleOnHome ?? false);
 		setAutoSlug(!term);
 		setError(null);
 	}, [term]);
@@ -438,6 +443,8 @@ function TermFormDialog({
 				label,
 				parentId: parentId || undefined,
 				description: description || undefined,
+				imageId,
+				visibleOnHome,
 				locale,
 			}),
 		onSuccess: () => {
@@ -462,6 +469,8 @@ function TermFormDialog({
 					label,
 					parentId: parentId || undefined,
 					description: description || undefined,
+					imageId: imageId ?? null,
+					visibleOnHome,
 				},
 				{ locale: term.locale ?? locale },
 			);
@@ -620,6 +629,17 @@ function TermFormDialog({
 							onChange={(e) => setDescription(e.target.value)}
 							placeholder={t`Optional description`}
 							rows={3}
+						/>
+
+						<TaxonomyImageField
+							value={imageId}
+							onChange={(next) => setImageId(next ?? undefined)}
+						/>
+
+						<Checkbox
+							checked={visibleOnHome}
+							onCheckedChange={(checked) => setVisibleOnHome(checked)}
+							label={t`Show on home`}
 						/>
 
 						<DialogError

@@ -191,6 +191,8 @@ export {
 	handleShopProductList,
 	handleShopProductRelatedList,
 	handleShopProductGet,
+	handleShopServiceList,
+	handleShopServiceGet,
 	handleShopOrderCreate,
 	handleShopOrderList,
 	handleShopCustomerList,
@@ -209,6 +211,25 @@ export {
 	type ShopOrderDetail,
 	type ShopCustomerSummary,
 } from "./shop.js";
+export {
+	handleShopBookingAvailability,
+	handleShopBookingHold,
+	handleShopBookingHoursGet,
+	handleShopBookingHoursUpdate,
+	handleShopReservationList,
+	handleShopReservationUpdate,
+	expireShopReservations,
+	handleShopBookingBlocksList,
+	handleShopBookingBlockCreate,
+	handleShopBookingBlockDelete,
+	type ShopBookingSlot,
+	type ShopBookingHold,
+	type ShopBookingHoldInput,
+	type ShopBookingHour,
+	type ShopBookingHoursUpdateInput,
+	type ShopReservationSummary,
+	type ShopBookingBlock,
+} from "./booking.js";
 
 // Taxonomy handlers
 export {
