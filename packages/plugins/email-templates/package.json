@@ -1,6 +1,6 @@
 {
 	"name": "@emdash-cms/plugin-email-templates",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Visual email template management for EmDash CMS",
 	"type": "module",
 	"main": "src/index.ts",
