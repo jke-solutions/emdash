@@ -87,6 +87,7 @@ import * as m081 from "./081_shop_service_fields.js";
 import * as m082 from "./082_shop_booking_date_range.js";
 import * as m083 from "./083_shop_order_item_collection.js";
 import * as m084 from "./084_move_service_fields_to_services.js";
+import * as m085 from "./085_repair_implicit_taxonomy_locale.js";
 
 const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"001_initial": m001,
@@ -172,6 +173,7 @@ const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"082_shop_booking_date_range": m082,
 	"083_shop_order_item_collection": m083,
 	"084_move_service_fields_to_services": m084,
+	"085_repair_implicit_taxonomy_locale": m085,
 });
 
 /** Ordered names from the statically registered migration set. */

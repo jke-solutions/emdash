@@ -145,6 +145,17 @@ export default defineConfig({
 	// the patched implementation into every published entry that uses it.
 	noExternal: ["image-size"],
 	inlineOnly: false,
+	plugins: [
+		{
+			name: "preserve-vite-ignore-for-runtime-plugin-imports",
+			renderChunk(code: string) {
+				return code.replaceAll(
+					"import(`data:text/javascript;base64,",
+					"import(/* @vite-ignore */ `data:text/javascript;base64,",
+				);
+			},
+		},
+	],
 	inputOptions: (options) => {
 		// tsdown has already normalized the `entry` array into an input record
 		// by this hook; we only augment it with the route map.
