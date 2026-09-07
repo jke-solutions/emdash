@@ -1,5 +1,12 @@
 # @emdash-cms/plugin-mcp-smoke
 
+## 8.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`997fbe5`](https://github.com/jke-solutions/emdash/commit/997fbe59338ab9fb930fbffb75f413ad18df4b44)]:
+  - emdash@0.37.2
+
 ## 8.0.1
 
 ### Patch Changes

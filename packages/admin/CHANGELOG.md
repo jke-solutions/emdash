@@ -1,5 +1,14 @@
 # @emdash-cms/admin
 
+## 0.37.2
+
+### Patch Changes
+
+- [#53](https://github.com/jke-solutions/emdash/pull/53) [`997fbe5`](https://github.com/jke-solutions/emdash/commit/997fbe59338ab9fb930fbffb75f413ad18df4b44) Thanks [@jonico22](https://github.com/jonico22)! - Adds optional images and home visibility to taxonomy terms, so product, service, and post categories can be presented with their own metadata without creating duplicate content types.
+
+- Updated dependencies []:
+  - @emdash-cms/blocks@0.37.2
+
 ## 0.37.1
 
 ### Patch Changes

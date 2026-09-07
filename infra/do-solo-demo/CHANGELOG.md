@@ -1,5 +1,13 @@
 # @emdash-cms/do-solo-demo-site
 
+## 0.0.45
+
+### Patch Changes
+
+- Updated dependencies [[`997fbe5`](https://github.com/jke-solutions/emdash/commit/997fbe59338ab9fb930fbffb75f413ad18df4b44)]:
+  - emdash@0.37.2
+  - @emdash-cms/cloudflare@0.37.2
+
 ## 0.0.44
 
 ### Patch Changes
