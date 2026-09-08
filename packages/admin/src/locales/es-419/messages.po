@@ -10468,3 +10468,27 @@ msgstr ""
 #: packages/admin/src/components/ImageEditor.tsx:225
 msgid "Zoom:"
 msgstr ""
+
+msgid "Open enrollments"
+msgstr "Inscripciones abiertas"
+
+msgid "Pending schedule"
+msgstr "Pendiente de programar"
+
+msgid "Review people registered for services without a fixed date."
+msgstr "Revisa las personas inscritas en servicios sin fecha fija."
+
+msgid "Scheduled bookings"
+msgstr "Reservas programadas"
+
+msgid "Filter enrollments by status"
+msgstr "Filtrar inscripciones por estado"
+
+msgid "Loading enrollments"
+msgstr "Cargando inscripciones"
+
+msgid "No open enrollments found."
+msgstr "No se encontraron inscripciones abiertas."
+
+msgid "People"
+msgstr "Personas"

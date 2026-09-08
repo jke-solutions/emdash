@@ -828,6 +828,23 @@ export interface ShopReservationTable {
 	updated_at: Generated<string>;
 }
 
+export interface ShopEnrollmentTable {
+	id: string;
+	service_id: string;
+	order_id: string | null;
+	order_item_id: string | null;
+	customer_id: string | null;
+	quantity: number;
+	starts_at: string | null;
+	ends_at: string | null;
+	status: Generated<string>;
+	customer_snapshot: string | null;
+	service_snapshot: string | null;
+	notes: string | null;
+	created_at: Generated<string>;
+	updated_at: Generated<string>;
+}
+
 export interface Database {
 	revisions: RevisionTable;
 	_emdash_revision_prune_queue: RevisionPruneQueueTable;
@@ -896,6 +913,7 @@ export interface Database {
 	_emdash_shop_booking_hours: ShopBookingHourTable;
 	_emdash_shop_booking_blocks: ShopBookingBlockTable;
 	_emdash_shop_reservations: ShopReservationTable;
+	_emdash_shop_enrollments: ShopEnrollmentTable;
 }
 
 export type MediaRow = {

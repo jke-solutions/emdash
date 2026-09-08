@@ -341,8 +341,23 @@ function isProductAvailable(data: Record<string, unknown>): boolean {
 	return (
 		availability !== "sold_out" &&
 		availability !== "hidden" &&
-		(typeof stock !== "number" || stock > 0 || isBookableService(data))
+		(typeof stock !== "number" ||
+			stock > 0 ||
+			isBookableService(data) ||
+			isOpenEnrollmentService(data))
 	);
+}
+
+function isOpenEnrollmentService(data: Record<string, unknown>): boolean {
+	const itemType = typeof data.item_type === "string" ? data.item_type.toLowerCase() : "";
+	return itemType === "service" && data.registration_mode === "open_enrollment";
+}
+
+function serviceCapacity(data: Record<string, unknown>): number | null {
+	const capacity = data.service_capacity;
+	return typeof capacity === "number" && Number.isInteger(capacity) && capacity > 0
+		? capacity
+		: null;
 }
 
 function isBookableService(data: Record<string, unknown>): boolean {
@@ -564,6 +579,7 @@ export async function handleShopCouponDelete(
 
 class ShopStockError extends Error {}
 class ShopCouponError extends Error {}
+class ShopCapacityError extends Error {}
 
 function makeOrderNumber(): string {
 	return `#${Date.now().toString(36).toUpperCase()}-${ulid().slice(-4)}`;
@@ -1113,6 +1129,7 @@ export async function handleShopOrderCreate(
 				variantId?: string;
 				quantity: number;
 				booking?: ShopOrderInput["items"][number]["booking"];
+				openEnrollment?: boolean;
 			}
 		>();
 		for (const inputItem of input.items) {
@@ -1139,6 +1156,8 @@ export async function handleShopOrderCreate(
 			variantId: string | null;
 			variantName: string | null;
 			booking?: ShopOrderInput["items"][number]["booking"];
+			openEnrollment: boolean;
+			openEnrollmentCapacity: number | null;
 		}>;
 		for (const requested of requestedQuantities.values()) {
 			const product = await products.findByIdOrSlug(requested.collection, requested.productId);
@@ -1176,7 +1195,8 @@ export async function handleShopOrderCreate(
 				};
 			}
 			const bookableService = isBookableService(product.data);
-			if (bookableService && !requested.booking) {
+			const openEnrollment = isOpenEnrollmentService(product.data);
+			if (bookableService && !openEnrollment && !requested.booking) {
 				return {
 					success: false,
 					error: {
@@ -1234,6 +1254,8 @@ export async function handleShopOrderCreate(
 				variantId: requested.variantId ?? null,
 				variantName: null,
 				booking: requested.booking,
+				openEnrollment,
+				openEnrollmentCapacity: openEnrollment ? serviceCapacity(product.data) : null,
 			});
 		}
 		const hasPhysicalItems = items.some((item) => item.collection === PRODUCTS_COLLECTION);
@@ -1322,6 +1344,18 @@ export async function handleShopOrderCreate(
 				if (Number(updatedCoupon.numUpdatedRows) !== 1) throw new ShopCouponError();
 			}
 			for (const item of items) {
+				if (!item.openEnrollment || item.openEnrollmentCapacity === null) continue;
+				const activeEnrollment = await trx
+					.selectFrom("_emdash_shop_enrollments")
+					.select(({ fn }) => fn.sum("quantity").as("quantity"))
+					.where("service_id", "=", item.productId)
+					.where("status", "in", ["pending_schedule", "scheduled"])
+					.executeTakeFirst();
+				if (Number(activeEnrollment?.quantity ?? 0) + item.quantity > item.openEnrollmentCapacity) {
+					throw new ShopCapacityError();
+				}
+			}
+			for (const item of items) {
 				if (item.collection !== PRODUCTS_COLLECTION) continue;
 				if (item.variantId) {
 					const currentProduct = await new ContentRepository(trx).findById(
@@ -1408,12 +1442,38 @@ export async function handleShopOrderCreate(
 			}));
 			await trx.insertInto("_emdash_shop_order_items").values(orderItemRows).execute();
 			for (const [index, item] of items.entries()) {
-				if (item.collection !== SERVICES_COLLECTION || !item.booking) continue;
+				if (item.collection !== SERVICES_COLLECTION) continue;
+				const orderItemId = orderItemRows[index]?.id ?? null;
+				if (item.openEnrollment) {
+					await trx
+						.insertInto("_emdash_shop_enrollments")
+						.values({
+							id: ulid(),
+							service_id: item.productId,
+							order_id: orderId,
+							order_item_id: orderItemId,
+							customer_id: customerId,
+							quantity: item.quantity,
+							starts_at: null,
+							ends_at: null,
+							status: "pending_schedule",
+							customer_snapshot: JSON.stringify(customerSnapshot),
+							service_snapshot: JSON.stringify({
+								id: item.productId,
+								name: item.productName,
+								capacity: item.openEnrollmentCapacity,
+							}),
+							notes: input.notes ?? null,
+						})
+						.execute();
+					continue;
+				}
+				if (!item.booking) continue;
 				const updatedReservation = await trx
 					.updateTable("_emdash_shop_reservations")
 					.set({
 						order_id: orderId,
-						order_item_id: orderItemRows[index]?.id ?? null,
+						order_item_id: orderItemId,
 						status: "pending_payment",
 						expires_at: null,
 						updated_at: new Date().toISOString(),
@@ -1524,6 +1584,15 @@ export async function handleShopOrderCreate(
 			return {
 				success: false,
 				error: { code: "SHOP_COUPON_INVALID", message: "Coupon is no longer available" },
+			};
+		}
+		if (error instanceof ShopCapacityError) {
+			return {
+				success: false,
+				error: {
+					code: "SHOP_SERVICE_CAPACITY_REACHED",
+					message: "Service capacity has been reached",
+				},
 			};
 		}
 		return {
