@@ -1,6 +1,8 @@
 export type EmailBlockType =
 	| "section"
 	| "columns"
+	| "branding"
+	| "footer"
 	| "text"
 	| "heading"
 	| "image"
@@ -85,6 +87,18 @@ export const EMAIL_SAFE_FONTS: readonly EmailFontDefinition[] = [
 ];
 
 export const DEFAULT_EMAIL_BLOCKS: readonly EmailBlockDefinition[] = [
+	{
+		type: "branding",
+		label: "Email header",
+		category: "layout",
+		defaultProps: {},
+	},
+	{
+		type: "footer",
+		label: "Email footer",
+		category: "layout",
+		defaultProps: {},
+	},
 	{
 		type: "text",
 		label: "Text",

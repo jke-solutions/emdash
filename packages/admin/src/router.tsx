@@ -62,6 +62,7 @@ import { SeoSettings } from "./components/settings/SeoSettings";
 import { SocialSettings } from "./components/settings/SocialSettings";
 import { SetupWizard } from "./components/SetupWizard";
 import { Shell } from "./components/Shell";
+import { SiteSettingsProvider } from "./lib/site-settings-context.js";
 import { SignupPage } from "./components/SignupPage";
 import { TaxonomyManager } from "./components/TaxonomyManager";
 import { ThemeMarketplaceBrowse } from "./components/ThemeMarketplaceBrowse";
@@ -290,9 +291,11 @@ function RootComponent() {
 
 	// Plugin admin components are passed via props and available through PluginAdminContext
 	return (
-		<Shell manifest={manifest}>
-			<Outlet />
-		</Shell>
+		<SiteSettingsProvider>
+			<Shell manifest={manifest}>
+				<Outlet />
+			</Shell>
+		</SiteSettingsProvider>
 	);
 }
 
