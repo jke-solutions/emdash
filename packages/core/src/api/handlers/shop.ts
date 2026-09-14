@@ -17,7 +17,10 @@ const SERVICES_COLLECTION = "services";
 type ShopCollection = typeof PRODUCTS_COLLECTION | typeof SERVICES_COLLECTION;
 
 async function shopCartTokenHash(token: string): Promise<string> {
-	const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`shop-cart:${token}`));
+	const digest = await crypto.subtle.digest(
+		"SHA-256",
+		new TextEncoder().encode(`shop-cart:${token}`),
+	);
 	return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
@@ -1129,7 +1132,11 @@ export async function handleShopOrderCreate(
 				.where("status", "=", "active")
 				.where("expires_at", ">", new Date().toISOString())
 				.executeTakeFirst();
-			if (!cart) return { success: false, error: { code: "SHOP_CART_NOT_FOUND", message: "Cart not found" } };
+			if (!cart)
+				return {
+					success: false,
+					error: { code: "SHOP_CART_NOT_FOUND", message: "Cart not found" },
+				};
 			const cartItems = await db
 				.selectFrom("_emdash_shop_cart_items")
 				.selectAll()
@@ -1138,7 +1145,7 @@ export async function handleShopOrderCreate(
 				.execute();
 			checkoutItems = cartItems.map((item) => ({
 				productId: item.product_id,
-				collection: item.collection as ShopCollection,
+				collection: normalizeShopCollection(item.collection),
 				variantId: item.variant_id ?? undefined,
 				quantity: item.quantity,
 			}));
@@ -1367,10 +1374,10 @@ export async function handleShopOrderCreate(
 			order_item_id: string;
 			type: string;
 			quantity_delta: number;
-				reference_type: string;
-				reference_id: string;
-				event_key: string;
-			}> = [];
+			reference_type: string;
+			reference_id: string;
+			event_key: string;
+		}> = [];
 		const firstName = input.customer.firstName.trim();
 		const lastName = input.customer.lastName.trim();
 		const customerName = `${firstName} ${lastName}`;
@@ -1406,7 +1413,11 @@ export async function handleShopOrderCreate(
 				if (!cart) throw new Error("SHOP_CART_NOT_FOUND");
 				await trx
 					.updateTable("_emdash_shop_carts")
-					.set({ status: "converted", converted_order_id: orderId, updated_at: new Date().toISOString() })
+					.set({
+						status: "converted",
+						converted_order_id: orderId,
+						updated_at: new Date().toISOString(),
+					})
 					.where("id", "=", cart.id)
 					.execute();
 			}
@@ -1466,9 +1477,9 @@ export async function handleShopOrderCreate(
 							order_item_id: orderItemRows[itemIndex]?.id ?? "",
 							type: "sale",
 							quantity_delta: -item.quantity,
-						reference_type: "order",
-						reference_id: orderId,
-						event_key: `sale:${orderId}:${orderItemRows[itemIndex]?.id ?? ""}`,
+							reference_type: "order",
+							reference_id: orderId,
+							event_key: `sale:${orderId}:${orderItemRows[itemIndex]?.id ?? ""}`,
 						});
 						continue;
 					}
@@ -1606,7 +1617,7 @@ export async function handleShopOrderCreate(
 						delivery_cost: deliveryCost,
 						scheduled_date: input.deliveryDate ?? null,
 						scheduled_time: input.deliveryTime ?? null,
-					recipient_name: input.recipientName ?? customerName,
+						recipient_name: input.recipientName ?? customerName,
 						recipient_phone: input.recipientPhone ?? input.customer.phone,
 						instructions: input.deliveryInstructions ?? null,
 					})
