@@ -82,6 +82,9 @@ describe("Database Migrations (Integration)", () => {
 			"_emdash_shop_settings",
 			"_emdash_shop_delivery_zones",
 			"_emdash_shop_customers",
+			"_emdash_shop_inventory_movements",
+			"_emdash_shop_carts",
+			"_emdash_shop_cart_items",
 			"_emdash_shop_orders",
 			"_emdash_shop_order_items",
 			"_emdash_shop_payments",
@@ -96,6 +99,55 @@ describe("Database Migrations (Integration)", () => {
 				.execute();
 			expect(Array.isArray(result)).toBe(true);
 		}
+	});
+
+	it("should register customer first and last name columns", async () => {
+		await runMigrations(db);
+		await runMigrations(db);
+
+		const columns = await sql<{ name: string }>`
+			SELECT name FROM pragma_table_info('_emdash_shop_customers')
+		`.execute(db);
+
+		expect(columns.rows.map((column) => column.name)).toEqual(
+			expect.arrayContaining(["first_name", "last_name"]),
+		);
+		expect(MIGRATION_NAMES.at(-3)).toBe("088_shop_inventory_movements");
+		expect(MIGRATION_NAMES.at(-2)).toBe("089_shop_inventory_idempotency");
+		expect(MIGRATION_NAMES.at(-1)).toBe("090_shop_carts");
+	});
+
+	it("should create persistent cart identity and item columns", async () => {
+		await runMigrations(db);
+
+		const carts = await sql<{ name: string }>`
+			SELECT name FROM pragma_table_info('_emdash_shop_carts')
+		`.execute(db);
+		const items = await sql<{ name: string }>`
+			SELECT name FROM pragma_table_info('_emdash_shop_cart_items')
+		`.execute(db);
+
+		expect(carts.rows.map((column) => column.name)).toEqual(
+			expect.arrayContaining(["user_id", "guest_token_hash", "status", "currency", "expires_at"]),
+		);
+		expect(items.rows.map((column) => column.name)).toEqual(
+			expect.arrayContaining(["cart_id", "collection", "product_id", "variant_id", "quantity"]),
+		);
+	});
+
+	it("should enforce unique inventory movement event keys", async () => {
+		await runMigrations(db);
+		await db
+			.insertInto("_emdash_shop_inventory_movements")
+			.values({ id: "movement-1", product_id: "product-1", type: "sale", quantity_delta: -1, event_key: "sale:order-1:item-1" })
+			.execute();
+
+		await expect(
+			db
+				.insertInto("_emdash_shop_inventory_movements")
+				.values({ id: "movement-2", product_id: "product-1", type: "sale", quantity_delta: -1, event_key: "sale:order-1:item-1" })
+				.execute(),
+		).rejects.toThrow();
 	});
 
 	it("should create the ecommerce transaction tables with stable order snapshots", async () => {

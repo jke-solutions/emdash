@@ -679,6 +679,8 @@ export interface ShopDeliveryZoneTable {
 export interface ShopCustomerTable {
 	id: string;
 	name: string;
+	first_name: string | null;
+	last_name: string | null;
 	phone: string;
 	email: string | null;
 	address: string | null;
@@ -691,6 +693,46 @@ export interface ShopCustomerTable {
 	fiscal_address: string | null;
 	created_at: Generated<string>;
 	updated_at: Generated<string>;
+}
+
+export interface ShopInventoryMovementTable {
+	id: string;
+	product_id: string;
+	variant_id: string | null;
+	order_id: string | null;
+	order_item_id: string | null;
+	type: string;
+	quantity_delta: number;
+	reason: string | null;
+	reference_type: string | null;
+	reference_id: string | null;
+	event_key: string | null;
+	created_at: Generated<string>;
+}
+
+export interface ShopCartTable {
+	id: string;
+	user_id: string | null;
+	guest_token_hash: string | null;
+	status: string;
+	currency: string;
+	locale: string;
+	expires_at: string;
+	converted_order_id: string | null;
+	created_at: string;
+	updated_at: string;
+	last_accessed_at: string;
+}
+
+export interface ShopCartItemTable {
+	id: string;
+	cart_id: string;
+	collection: string;
+	product_id: string;
+	variant_id: string | null;
+	quantity: number;
+	created_at: string;
+	updated_at: string;
 }
 
 export interface ShopOrderTable {
@@ -905,6 +947,9 @@ export interface Database {
 	_emdash_shop_settings: ShopSettingsTable;
 	_emdash_shop_delivery_zones: ShopDeliveryZoneTable;
 	_emdash_shop_customers: ShopCustomerTable;
+	_emdash_shop_inventory_movements: ShopInventoryMovementTable;
+	_emdash_shop_carts: ShopCartTable;
+	_emdash_shop_cart_items: ShopCartItemTable;
 	_emdash_shop_orders: ShopOrderTable;
 	_emdash_shop_coupons: ShopCouponTable;
 	_emdash_shop_order_items: ShopOrderItemTable;
