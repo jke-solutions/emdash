@@ -94,6 +94,7 @@ import * as m088 from "./088_shop_inventory_movements.js";
 import * as m089 from "./089_shop_inventory_idempotency.js";
 import * as m090 from "./090_shop_carts.js";
 import * as m091 from "./091_faq_collection.js";
+import * as m092 from "./092_shop_product_presentation_fields.js";
 
 const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"001_initial": m001,
@@ -186,6 +187,7 @@ const MIGRATIONS: Readonly<Record<string, Migration>> = Object.freeze({
 	"089_shop_inventory_idempotency": m089,
 	"090_shop_carts": m090,
 	"091_faq_collection": m091,
+	"092_shop_product_presentation_fields": m092,
 });
 
 /** Ordered names from the statically registered migration set. */
