@@ -1,5 +1,13 @@
 # @emdash-cms/do-solo-demo-site
 
+## 0.0.47
+
+### Patch Changes
+
+- Updated dependencies []:
+  - emdash@0.38.1
+  - @emdash-cms/cloudflare@0.38.1
+
 ## 0.0.46
 
 ### Patch Changes

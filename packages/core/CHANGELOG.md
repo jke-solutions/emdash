@@ -1,5 +1,16 @@
 # emdash
 
+## 0.38.1
+
+### Patch Changes
+
+- Protects public order tracking with per-order credentials, deduplicates checkout retries, and sends order confirmation email through the active template.
+
+- Updated dependencies []:
+  - @emdash-cms/admin@0.38.1
+  - @emdash-cms/auth@0.38.1
+  - @emdash-cms/gutenberg-to-portable-text@0.38.1
+
 ## 0.38.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # @emdash-cms/template-ecommerce-cloudflare
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - emdash@0.38.1
+  - @emdash-cms/cloudflare@0.38.1
+
 ## 0.0.2
 
 ### Patch Changes
