@@ -1,5 +1,20 @@
 # emdash
 
+## 0.38.0
+
+### Minor Changes
+
+- [#58](https://github.com/jke-solutions/emdash/pull/58) [`300d30f`](https://github.com/jke-solutions/emdash/commit/300d30f007a907e6162b4d5728cf6e55e3753072) Thanks [@jonico22](https://github.com/jonico22)! - Adds a built-in, admin-managed FAQs collection to every CMS installation.
+
+- [#58](https://github.com/jke-solutions/emdash/pull/58) [`dc5a8e6`](https://github.com/jke-solutions/emdash/commit/dc5a8e66b8ff5ac449ab7a13fdeac36248ea1e13) Thanks [@jonico22](https://github.com/jonico22)! - Adds SKU, short descriptions, and structured product details to Core shop products.
+
+### Patch Changes
+
+- Updated dependencies [[`c739487`](https://github.com/jke-solutions/emdash/commit/c739487706d7c0d7b2b0e71111c8cb2073bfa794)]:
+  - @emdash-cms/admin@0.38.0
+  - @emdash-cms/auth@0.38.0
+  - @emdash-cms/gutenberg-to-portable-text@0.38.0
+
 ## 0.37.2
 
 ### Patch Changes
