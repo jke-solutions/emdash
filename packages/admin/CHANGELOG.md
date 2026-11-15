@@ -1,5 +1,14 @@
 # @emdash-cms/admin
 
+## 0.38.0
+
+### Patch Changes
+
+- [#58](https://github.com/jke-solutions/emdash/pull/58) [`c739487`](https://github.com/jke-solutions/emdash/commit/c739487706d7c0d7b2b0e71111c8cb2073bfa794) Thanks [@jonico22](https://github.com/jonico22)! - Adds route-backed Ecommerce sections and a summary view, while organizing store settings and service administration under the correct services collection.
+
+- Updated dependencies []:
+  - @emdash-cms/blocks@0.38.0
+
 ## 0.37.2
 
 ### Patch Changes
