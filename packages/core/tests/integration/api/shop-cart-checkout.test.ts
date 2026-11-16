@@ -1,8 +1,12 @@
 import { sql, type Kysely } from "kysely";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { handleShopCartItemCreate } from "../../../src/api/handlers/shop-cart.js";
-import { handleShopOrderCreate } from "../../../src/api/handlers/shop.js";
+import {
+	handleShopOrderCreate,
+	handleShopOrderGetByNumber,
+} from "../../../src/api/handlers/shop.js";
+import { sendOrderConfirmation } from "../../../src/astro/routes/api/shop/orders/index.js";
 import { ContentRepository } from "../../../src/database/repositories/content.js";
 import type { Database } from "../../../src/database/types.js";
 import { SchemaRegistry } from "../../../src/schema/registry.js";
@@ -20,10 +24,22 @@ describe("shop cart checkout integration", () => {
 			{ slug: "price", label: "Price", type: "number" as const },
 			{ slug: "stock", label: "Stock", type: "number" as const },
 			{ slug: "availability_status", label: "Availability", type: "string" as const },
-		] as const) await registry.createField("products", field);
-		await db.insertInto("_emdash_shop_settings").values({ id: "default", store_name: "Shop", currency: "PEN" }).execute();
-		await db.insertInto("_emdash_shop_delivery_zones").values({ id: "zone-1", name: "Lima", districts: "[]", delivery_cost: 0 }).execute();
-		await new ContentRepository(db).create({ type: "products", id: "product-1", status: "published", data: { name: "Polo", price: 25, stock: 3, availability_status: "available" } });
+		] as const)
+			await registry.createField("products", field);
+		await db
+			.insertInto("_emdash_shop_settings")
+			.values({ id: "default", store_name: "Shop", currency: "PEN" })
+			.execute();
+		await db
+			.insertInto("_emdash_shop_delivery_zones")
+			.values({ id: "zone-1", name: "Lima", districts: "[]", delivery_cost: 0 })
+			.execute();
+		await new ContentRepository(db).create({
+			type: "products",
+			id: "product-1",
+			status: "published",
+			data: { name: "Polo", price: 25, stock: 3, availability_status: "available" },
+		});
 	});
 
 	afterEach(async () => {
@@ -44,7 +60,20 @@ describe("shop cart checkout integration", () => {
 		});
 
 		expect(order.success).toBe(true);
-		const storedCart = await db.selectFrom("_emdash_shop_carts").selectAll().executeTakeFirstOrThrow();
+		if (!order.success) return;
+		expect(order.data.trackingToken).toBeTruthy();
+		const unverifiedLookup = await handleShopOrderGetByNumber(db, order.data.orderNumber, "");
+		expect(unverifiedLookup.success).toBe(false);
+		const verifiedLookup = await handleShopOrderGetByNumber(
+			db,
+			order.data.orderNumber,
+			order.data.trackingToken ?? "",
+		);
+		expect(verifiedLookup.success).toBe(true);
+		const storedCart = await db
+			.selectFrom("_emdash_shop_carts")
+			.selectAll()
+			.executeTakeFirstOrThrow();
 		const product = await new ContentRepository(db).findById("products", "product-1");
 		expect(storedCart.status).toBe("converted");
 		expect(storedCart.converted_order_id).toBe(order.success ? order.data.id : null);
@@ -63,7 +92,9 @@ describe("shop cart checkout integration", () => {
 		const cart = await handleShopCartItemCreate(db, {}, { productId: "product-1", quantity: 2 });
 		expect(cart.success && cart.data.guestToken).toBeTruthy();
 		if (!cart.success || !cart.data.guestToken) return;
-		await sql`UPDATE ${sql.ref("ec_products")} SET stock = ${1}, version = version + 1 WHERE id = ${"product-1"}`.execute(db);
+		await sql`UPDATE ${sql.ref("ec_products")} SET stock = ${1}, version = version + 1 WHERE id = ${"product-1"}`.execute(
+			db,
+		);
 
 		const order = await handleShopOrderCreate(db, {
 			items: [],
@@ -72,16 +103,103 @@ describe("shop cart checkout integration", () => {
 			deliveryZoneId: "zone-1",
 			paymentMethod: "whatsapp",
 		});
-		const storedCart = await db.selectFrom("_emdash_shop_carts").select("status").executeTakeFirstOrThrow();
+		const storedCart = await db
+			.selectFrom("_emdash_shop_carts")
+			.select("status")
+			.executeTakeFirstOrThrow();
 		expect(order.success).toBe(false);
 		expect(storedCart.status).toBe("active");
+	});
+
+	it("returns the same order for a retried idempotency key", async () => {
+		const input = {
+			items: [{ productId: "product-1", quantity: 1 }],
+			customer: { firstName: "Ana", lastName: "Torres", phone: "999888777" },
+			deliveryZoneId: "zone-1",
+			paymentMethod: "whatsapp",
+			idempotencyKey: "checkout-attempt-0001",
+		};
+		const [first, retry] = await Promise.all([
+			handleShopOrderCreate(db, input),
+			handleShopOrderCreate(db, input),
+		]);
+
+		expect(first.success).toBe(true);
+		expect(retry.success).toBe(true);
+		if (!first.success || !retry.success) return;
+		expect(retry.data.id).toBe(first.data.id);
+		expect(retry.data.trackingToken).toBe(first.data.trackingToken);
+		const conflict = await handleShopOrderCreate(db, {
+			...input,
+			customer: { ...input.customer, phone: "999777666" },
+		});
+		expect(conflict.success).toBe(false);
+		if (!conflict.success) expect(conflict.error.code).toBe("IDEMPOTENCY_CONFLICT");
+		const product = await new ContentRepository(db).findById("products", "product-1");
+		expect(product?.data.stock).toBe(2);
+		const orders = await db.selectFrom("_emdash_shop_orders").select("id").execute();
+		expect(orders).toHaveLength(1);
+		const checkoutRequest = await db
+			.selectFrom("_emdash_shop_checkout_requests")
+			.select("idempotency_key_hash")
+			.executeTakeFirstOrThrow();
+		expect(checkoutRequest.idempotency_key_hash).not.toBe(input.idempotencyKey);
+	});
+
+	it("renders and deduplicates the active local order email template", async () => {
+		const order = await handleShopOrderCreate(db, {
+			items: [{ productId: "product-1", quantity: 1 }],
+			customer: {
+				firstName: "Ana",
+				lastName: "Torres",
+				phone: "999888777",
+				email: "ana@example.test",
+			},
+			deliveryZoneId: "zone-1",
+			paymentMethod: "whatsapp",
+		});
+		expect(order.success).toBe(true);
+		if (!order.success) return;
+		await db
+			.insertInto("_plugin_storage")
+			.values({
+				plugin_id: "email-templates",
+				collection: "templates",
+				id: "order-confirmation",
+				data: JSON.stringify({
+					slug: "order-confirmation",
+					status: "active",
+					subject: "Pedido {{order_number}}",
+					html: '<p>Total {{order_total}}</p><a href="{{order_url}}">Ver pedido</a>',
+				}),
+			})
+			.execute();
+		const send = vi.fn(async () => undefined);
+		const emdash = { email: { send } } as never;
+
+		await sendOrderConfirmation(db, emdash, order.data, "https://shop.example.test/");
+		await sendOrderConfirmation(db, emdash, order.data, "https://shop.example.test/");
+
+		expect(send).toHaveBeenCalledTimes(1);
+		expect(send).toHaveBeenCalledWith(
+			expect.objectContaining({
+				to: "ana@example.test",
+				subject: `Pedido ${order.data.orderNumber}`,
+				html: expect.stringContaining(`${order.data.currency} ${order.data.total.toFixed(2)}`),
+			}),
+			"shop",
+		);
 	});
 
 	it("rejects an expired cart before creating an order", async () => {
 		const cart = await handleShopCartItemCreate(db, {}, { productId: "product-1", quantity: 1 });
 		expect(cart.success && cart.data.guestToken).toBeTruthy();
 		if (!cart.success || !cart.data.guestToken) return;
-		await db.updateTable("_emdash_shop_carts").set({ expires_at: "2000-01-01T00:00:00.000Z" }).where("id", "=", cart.data.id).execute();
+		await db
+			.updateTable("_emdash_shop_carts")
+			.set({ expires_at: "2000-01-01T00:00:00.000Z" })
+			.where("id", "=", cart.data.id)
+			.execute();
 
 		const order = await handleShopOrderCreate(db, {
 			items: [],
