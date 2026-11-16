@@ -96,7 +96,7 @@ msgid "{0, plural, one {# comment imported} other {# comments imported}}"
 msgstr ""
 
 #. placeholder {0}: result.affected
-#: packages/admin/src/router.tsx:1551
+#: packages/admin/src/router.tsx:1579
 msgid "{0, plural, one {# comment updated} other {# comments updated}}"
 msgstr "{0, plural, one {# hozzászólás frissítve} other {# hozzászólás frissítve}}"
 
@@ -222,7 +222,7 @@ msgid "{0} banner"
 msgstr "{0} banner"
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:228
+#: packages/admin/src/components/TaxonomyManager.tsx:229
 msgid "{0} can't be moved here — its parent has no translation in this locale, so this list isn't the group it belongs to."
 msgstr ""
 
@@ -273,17 +273,17 @@ msgid "{0} items will be imported"
 msgstr "{0} elem importálva lesz"
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:562
+#: packages/admin/src/router.tsx:575
 msgid "{0} of {total} could not be deleted"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:518
+#: packages/admin/src/router.tsx:531
 msgid "{0} of {total} could not be published"
 msgstr ""
 
 #. placeholder {0}: failedIds.length
-#: packages/admin/src/router.tsx:541
+#: packages/admin/src/router.tsx:554
 msgid "{0} of {total} could not be updated"
 msgstr ""
 
@@ -359,7 +359,7 @@ msgstr "{current}/{total}"
 
 #. placeholder {0}: hasMore ? "+" : ""
 #. placeholder {1}: hasMore ? "+" : ""
-#: packages/admin/src/components/ContentList.tsx:1088
+#: packages/admin/src/components/ContentList.tsx:1101
 msgid "{filteredCount, plural, one {#{0} item} other {#{1} items}}"
 msgstr "{filteredCount, plural, one {#{0} elem} other {#{1} elem}}"
 
@@ -371,7 +371,7 @@ msgstr "{label} — nincs fordítás"
 msgid "{label} — view translation"
 msgstr "{label} — fordítás megtekintése"
 
-#: packages/admin/src/components/ContentList.tsx:1077
+#: packages/admin/src/components/ContentList.tsx:1090
 msgid "{matchCount, plural, one {# item matching \"{searchQuery}\"} other {# items matching \"{searchQuery}\"}}"
 msgstr "{matchCount, plural, one {# elem egyezik ezzel: \"{searchQuery}\"} other {# elem egyezik ezzel: \"{searchQuery}\"}}"
 
@@ -421,15 +421,15 @@ msgstr ""
 msgid "{resultCount, plural, one {# item} other {# items}}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:474
+#: packages/admin/src/components/ContentList.tsx:486
 msgid "{selectedCount, plural, one {# selected} other {# selected}}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:516
+#: packages/admin/src/components/ContentList.tsx:528
 msgid "{selectedCount, plural, one {Move # item to trash? You can restore it later.} other {Move # items to trash? You can restore them later.}}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1083
+#: packages/admin/src/components/ContentList.tsx:1096
 msgid "{total, plural, one {# item} other {# items}}"
 msgstr "{total, plural, one {# elem} other {# elem}}"
 
@@ -624,7 +624,7 @@ msgstr "Meghívás elfogadása"
 msgid "Access denied"
 msgstr "Hozzáférés megtagadva"
 
-#: packages/admin/src/router.tsx:1571
+#: packages/admin/src/router.tsx:1599
 msgid "Access Denied"
 msgstr "Hozzáférés megtagadva"
 
@@ -654,25 +654,28 @@ msgid "ACF Fields"
 msgstr ""
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:300
-#: packages/admin/src/components/ContentList.tsx:617
-#: packages/admin/src/components/ContentList.tsx:743
+#: packages/admin/src/components/ContentList.tsx:629
+#: packages/admin/src/components/ContentList.tsx:756
 #: packages/admin/src/components/ContentTypeList.tsx:190
 #: packages/admin/src/components/Promotions.tsx:122
-#: packages/admin/src/components/TaxonomyManager.tsx:1050
+#: packages/admin/src/components/TaxonomyManager.tsx:1070
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:134
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:95
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:71
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:131
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:129
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:162
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:74
 #: packages/admin/src/routes/byline-schema.tsx:249
-#: packages/admin/src/routes/shop.tsx:198
-#: packages/admin/src/routes/shop.tsx:503
-#: packages/admin/src/routes/shop.tsx:1115
-#: packages/admin/src/routes/shop.tsx:1334
-#: packages/admin/src/routes/shop.tsx:1476
 msgid "Actions"
 msgstr "Műveletek"
 
 #: packages/admin/src/components/Promotions.tsx:176
 #: packages/admin/src/components/users/UserDetail.tsx:206
 #: packages/admin/src/components/users/UserList.tsx:217
-#: packages/admin/src/routes/shop.tsx:1206
-#: packages/admin/src/routes/shop.tsx:1250
+#: packages/admin/src/features/shop/delivery/DeliveryZoneRow.tsx:35
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:255
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:57
 msgid "Active"
 msgstr "Aktív"
 
@@ -686,8 +689,8 @@ msgstr "Hozzáadás"
 #. placeholder {0}: field.item_label
 #. placeholder {0}: taxonomyDef.labelSingular || t`Term`
 #: packages/admin/src/components/PortableTextEditor.tsx:2124
-#: packages/admin/src/components/TaxonomyManager.tsx:540
-#: packages/admin/src/components/TaxonomyManager.tsx:1041
+#: packages/admin/src/components/TaxonomyManager.tsx:549
+#: packages/admin/src/components/TaxonomyManager.tsx:1061
 msgid "Add {0}"
 msgstr "{0} hozzáadása"
 
@@ -699,7 +702,7 @@ msgstr "{label} hozzáadása"
 msgid "Add a new passkey"
 msgstr "Új passkey hozzáadása"
 
-#: packages/admin/src/routes/shop.tsx:232
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:207
 msgid "Add a start and end time for each selected day."
 msgstr ""
 
@@ -785,7 +788,7 @@ msgstr "Adj hozzá linkeket a navigációs menü felépítéséhez"
 msgid "Add MIME type or extension"
 msgstr "MIME-típus vagy kiterjesztés hozzáadása"
 
-#: packages/admin/src/components/ContentList.tsx:408
+#: packages/admin/src/components/ContentList.tsx:410
 msgid "Add New"
 msgstr "Új hozzáadása"
 
@@ -818,7 +821,7 @@ msgstr "Sor hozzáadása elé"
 msgid "Add SEO metadata fields (title, description, image) and include in sitemap"
 msgstr "SEO metaadatmezők hozzáadása (cím, leírás, kép), és felvétel az oldaltérképbe"
 
-#: packages/admin/src/routes/shop.tsx:169
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:99
 msgid "Add service"
 msgstr ""
 
@@ -847,7 +850,8 @@ msgstr "Hozzáadás..."
 msgid "Additional data to import."
 msgstr "További importálandó adatok."
 
-#: packages/admin/src/routes/shop.tsx:1563
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:227
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:42
 msgid "Address"
 msgstr ""
 
@@ -907,12 +911,12 @@ msgstr "Jobbra igazítás"
 msgid "Alignment"
 msgstr "Igazítás"
 
-#: packages/admin/src/components/ContentList.tsx:435
+#: packages/admin/src/components/ContentList.tsx:447
 msgid "All"
 msgstr "Összes"
 
-#: packages/admin/src/components/ContentList.tsx:891
-#: packages/admin/src/components/ContentList.tsx:895
+#: packages/admin/src/components/ContentList.tsx:904
+#: packages/admin/src/components/ContentList.tsx:908
 msgid "All authors"
 msgstr "Összes szerző"
 
@@ -933,7 +937,7 @@ msgstr "Összes tartalom"
 msgid "All comments require approval"
 msgstr "Minden hozzászóláshoz jóváhagyás szükséges"
 
-#: packages/admin/src/routes/shop.tsx:1445
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:98
 msgid "All districts"
 msgstr ""
 
@@ -959,10 +963,11 @@ msgstr "Összes szerepkör"
 msgid "All Sources"
 msgstr "Összes forrás"
 
-#: packages/admin/src/components/ContentList.tsx:831
+#: packages/admin/src/components/ContentList.tsx:844
 #: packages/admin/src/components/Redirects.tsx:426
-#: packages/admin/src/routes/shop.tsx:300
-#: packages/admin/src/routes/shop.tsx:1310
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:71
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:47
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:50
 msgid "All statuses"
 msgstr "Összes állapot"
 
@@ -1026,7 +1031,7 @@ msgstr "Alternatív szöveg beállítva"
 msgid "Alternatively, you can export from WordPress (Tools → Export) and upload the file."
 msgstr "Másik lehetőségként exportálhatsz WordPressből (Eszközök → Exportálás), majd feltöltheted a fájlt."
 
-#: packages/admin/src/routes/shop.tsx:586
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:214
 msgid "Amount"
 msgstr ""
 
@@ -1060,24 +1065,24 @@ msgstr ""
 #: packages/admin/src/components/TaxonomySidebar.tsx:416
 #: packages/admin/src/components/TaxonomySidebar.tsx:476
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:114
-#: packages/admin/src/router.tsx:450
-#: packages/admin/src/router.tsx:465
-#: packages/admin/src/router.tsx:479
-#: packages/admin/src/router.tsx:493
-#: packages/admin/src/router.tsx:725
-#: packages/admin/src/router.tsx:1016
-#: packages/admin/src/router.tsx:1076
-#: packages/admin/src/router.tsx:1094
-#: packages/admin/src/router.tsx:1112
-#: packages/admin/src/router.tsx:1133
-#: packages/admin/src/router.tsx:1154
-#: packages/admin/src/router.tsx:1175
-#: packages/admin/src/router.tsx:1206
-#: packages/admin/src/router.tsx:1226
-#: packages/admin/src/router.tsx:1518
-#: packages/admin/src/router.tsx:1533
-#: packages/admin/src/router.tsx:1557
-#: packages/admin/src/router.tsx:2070
+#: packages/admin/src/router.tsx:463
+#: packages/admin/src/router.tsx:478
+#: packages/admin/src/router.tsx:492
+#: packages/admin/src/router.tsx:506
+#: packages/admin/src/router.tsx:744
+#: packages/admin/src/router.tsx:1040
+#: packages/admin/src/router.tsx:1100
+#: packages/admin/src/router.tsx:1118
+#: packages/admin/src/router.tsx:1136
+#: packages/admin/src/router.tsx:1157
+#: packages/admin/src/router.tsx:1178
+#: packages/admin/src/router.tsx:1199
+#: packages/admin/src/router.tsx:1230
+#: packages/admin/src/router.tsx:1250
+#: packages/admin/src/router.tsx:1546
+#: packages/admin/src/router.tsx:1561
+#: packages/admin/src/router.tsx:1585
+#: packages/admin/src/router.tsx:2134
 #: packages/admin/src/routes/byline-schema.tsx:103
 #: packages/admin/src/routes/byline-schema.tsx:123
 #: packages/admin/src/routes/byline-schema.tsx:139
@@ -1101,7 +1106,7 @@ msgstr "Exportfájl elemzése..."
 msgid "Analyzing WordPress site..."
 msgstr "WordPress weboldal elemzése..."
 
-#: packages/admin/src/routes/shop.tsx:1455
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:108
 msgid "Any date"
 msgstr ""
 
@@ -1156,7 +1161,7 @@ msgstr "Jóváhagyva"
 msgid "Arbitrary JSON data"
 msgstr "Tetszőleges JSON-adatok"
 
-#: packages/admin/src/components/ContentList.tsx:835
+#: packages/admin/src/components/ContentList.tsx:848
 #: packages/admin/src/components/ContentStatusBadge.tsx:65
 msgid "Archived"
 msgstr "Archiválva"
@@ -1197,7 +1202,7 @@ msgstr ""
 msgid "Assign WordPress authors to EmDash users. Posts will be attributed to the selected user."
 msgstr "Rendeld hozzá a WordPress szerzőket EmDash-felhasználókhoz. A bejegyzések a kiválasztott felhasználóhoz lesznek társítva."
 
-#: packages/admin/src/routes/shop.tsx:1792
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:142
 msgid "Assigned"
 msgstr ""
 
@@ -1281,7 +1286,7 @@ msgstr "Automatikus (slug módosítás)"
 msgid "Auto-approve authenticated users"
 msgstr "Hitelesített felhasználók automatikus jóváhagyása"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:586
+#: packages/admin/src/components/TaxonomyManager.tsx:595
 msgid "Auto-generated from name (you can edit)"
 msgstr "A névből automatikusan generálva (szerkeszthető)"
 
@@ -1295,11 +1300,11 @@ msgstr ""
 msgid "Automatic backups need a storage backend (R2, S3, or local storage). Configure storage in your EmDash config to enable them."
 msgstr ""
 
-#: packages/admin/src/router.tsx:1075
+#: packages/admin/src/router.tsx:1099
 msgid "Autosave failed"
 msgstr "Az automatikus mentés sikertelen"
 
-#: packages/admin/src/routes/shop.tsx:244
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:232
 msgid "Available days"
 msgstr ""
 
@@ -1332,7 +1337,7 @@ msgstr "Avatár"
 msgid "Back"
 msgstr "Vissza"
 
-#: packages/admin/src/components/ContentEditor.tsx:671
+#: packages/admin/src/components/ContentEditor.tsx:677
 msgid "Back to {collectionLabel} list"
 msgstr "Vissza a(z) {collectionLabel} listához"
 
@@ -1402,7 +1407,7 @@ msgstr ""
 msgid "Backups to keep"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:983
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:379
 msgid "Bank transfer"
 msgstr ""
 
@@ -1432,11 +1437,12 @@ msgstr "Blokkműveletek – húzással átrendezhető, kattintásra menü nyíli
 msgid "Bold"
 msgstr "Félkövér"
 
-#: packages/admin/src/routes/shop.tsx:152
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:82
 msgid "Booking schedule saved"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:383
+#: packages/admin/src/features/shop/navigation/items.ts:16
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:37
 msgid "Bookings"
 msgstr ""
 
@@ -1477,7 +1483,7 @@ msgstr "Témák böngészése és előnézete a saját tartalmaddal."
 msgid "Bullet List"
 msgstr "Felsorolás"
 
-#: packages/admin/src/routes/shop.tsx:800
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:194
 msgid "Business hours"
 msgstr ""
 
@@ -1541,9 +1547,9 @@ msgstr "Tartalmat tekinthet meg"
 #: packages/admin/src/components/BylineFieldEditor.tsx:315
 #: packages/admin/src/components/CapabilityConsentDialog.tsx:192
 #: packages/admin/src/components/ConfirmDialog.tsx:57
-#: packages/admin/src/components/ContentList.tsx:525
-#: packages/admin/src/components/ContentList.tsx:1259
-#: packages/admin/src/components/ContentList.tsx:1438
+#: packages/admin/src/components/ContentList.tsx:537
+#: packages/admin/src/components/ContentList.tsx:1274
+#: packages/admin/src/components/ContentList.tsx:1453
 #: packages/admin/src/components/ContentPickerModal.tsx:240
 #: packages/admin/src/components/ContentSettingsPanel.tsx:99
 #: packages/admin/src/components/ContentSettingsPanel.tsx:583
@@ -1572,16 +1578,19 @@ msgstr "Tartalmat tekinthet meg"
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:207
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:234
 #: packages/admin/src/components/settings/SecuritySettings.tsx:166
-#: packages/admin/src/components/TaxonomyManager.tsx:369
-#: packages/admin/src/components/TaxonomyManager.tsx:656
-#: packages/admin/src/components/TaxonomyManager.tsx:870
+#: packages/admin/src/components/TaxonomyManager.tsx:370
+#: packages/admin/src/components/TaxonomyManager.tsx:676
+#: packages/admin/src/components/TaxonomyManager.tsx:890
 #: packages/admin/src/components/users/InviteUserModal.tsx:198
 #: packages/admin/src/components/Widgets.tsx:451
 #: packages/admin/src/components/WordPressImport.tsx:1917
-#: packages/admin/src/routes/shop.tsx:264
-#: packages/admin/src/routes/shop.tsx:613
-#: packages/admin/src/routes/shop.tsx:1218
-#: packages/admin/src/routes/shop.tsx:1816
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:304
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:147
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:211
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:129
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:241
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:264
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:166
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -1593,20 +1602,24 @@ msgstr "Mégse (Esc)"
 msgid "Cancel rename"
 msgstr "Átnevezés megszakítása"
 
-#: packages/admin/src/routes/shop.tsx:1807
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:157
 msgid "Cancellation reason"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:64
-#: packages/admin/src/routes/shop.tsx:304
-#: packages/admin/src/routes/shop.tsx:347
-#: packages/admin/src/routes/shop.tsx:1317
-#: packages/admin/src/routes/shop.tsx:1798
-#: packages/admin/src/routes/shop.tsx:1866
+#: packages/admin/src/features/shop/bookings/helpers.tsx:13
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:53
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:74
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:51
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:99
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:16
+#: packages/admin/src/features/shop/orders/helpers.ts:12
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:148
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:216
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:57
 msgid "Cancelled"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:775
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:169
 msgid "Cancelled template"
 msgstr ""
 
@@ -1631,7 +1644,8 @@ msgstr "Engedélyek"
 msgid "Capability consent"
 msgstr "Engedélyek jóváhagyása"
 
-#: packages/admin/src/routes/shop.tsx:197
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:133
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:92
 msgid "Capacity"
 msgstr ""
 
@@ -1646,13 +1660,13 @@ msgstr "Képaláírás"
 msgid "Captions / Subtitles"
 msgstr "Feliratok"
 
-#: packages/admin/src/routes/shop.tsx:984
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:380
 msgid "Cash on delivery"
 msgstr ""
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:192
 #: packages/admin/src/components/Widgets.tsx:135
-#: packages/admin/src/router.tsx:615
+#: packages/admin/src/router.tsx:633
 msgid "Categories"
 msgstr "Kategóriák"
 
@@ -1671,7 +1685,7 @@ msgstr "Közép"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:76
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:107
-#: packages/admin/src/components/ContentEditor.tsx:1846
+#: packages/admin/src/components/ContentEditor.tsx:1866
 #: packages/admin/src/components/FieldEditor.tsx:428
 #: packages/admin/src/components/ImageFieldRenderer.tsx:208
 #: packages/admin/src/components/ImageFieldRenderer.tsx:237
@@ -1702,7 +1716,7 @@ msgstr "Logó módosítása"
 msgid "Changelog"
 msgstr "Változásnapló"
 
-#: packages/admin/src/router.tsx:1126
+#: packages/admin/src/router.tsx:1150
 msgid "Changes discarded"
 msgstr "Módosítások elvetve"
 
@@ -1737,7 +1751,7 @@ msgstr "Hitelesítés ellenőrzése..."
 msgid "Checking how many stored values reference \"{0}\"…"
 msgstr "Annak ellenőrzése, hány tárolt érték hivatkozik erre: \"{0}\"…"
 
-#: packages/admin/src/routes/shop.tsx:1852
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:202
 msgid "Choose a template, review it in WhatsApp, and send it manually."
 msgstr ""
 
@@ -1745,7 +1759,7 @@ msgstr ""
 msgid "Choose how to sign in"
 msgstr "Válaszd ki a bejelentkezés módját"
 
-#: packages/admin/src/routes/shop.tsx:242
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:230
 msgid "Choose the date range in which this weekly schedule can be booked. Days outside the selected range or selected weekdays are unavailable."
 msgstr ""
 
@@ -1753,11 +1767,11 @@ msgstr ""
 msgid "Choose your preferred admin language"
 msgstr "Válaszd ki az adminfelület nyelvét"
 
-#: packages/admin/src/components/ContentList.tsx:551
+#: packages/admin/src/components/ContentList.tsx:563
 msgid "Clear"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:947
+#: packages/admin/src/components/ContentList.tsx:960
 #: packages/admin/src/components/MediaLibrary.tsx:518
 #: packages/admin/src/components/users/UserList.tsx:129
 msgid "Clear filters"
@@ -1827,13 +1841,13 @@ msgstr "A bejelentkezéshez kattints az e-mailben lévő linkre."
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:328
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:334
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:338
-#: packages/admin/src/components/TaxonomyManager.tsx:346
-#: packages/admin/src/components/TaxonomyManager.tsx:549
-#: packages/admin/src/components/TaxonomyManager.tsx:555
-#: packages/admin/src/components/TaxonomyManager.tsx:559
-#: packages/admin/src/components/TaxonomyManager.tsx:789
-#: packages/admin/src/components/TaxonomyManager.tsx:795
-#: packages/admin/src/components/TaxonomyManager.tsx:799
+#: packages/admin/src/components/TaxonomyManager.tsx:347
+#: packages/admin/src/components/TaxonomyManager.tsx:558
+#: packages/admin/src/components/TaxonomyManager.tsx:564
+#: packages/admin/src/components/TaxonomyManager.tsx:568
+#: packages/admin/src/components/TaxonomyManager.tsx:809
+#: packages/admin/src/components/TaxonomyManager.tsx:815
+#: packages/admin/src/components/TaxonomyManager.tsx:819
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:298
 #: packages/admin/src/components/users/InviteUserModal.tsx:88
 #: packages/admin/src/components/users/InviteUserModal.tsx:94
@@ -1842,16 +1856,20 @@ msgstr "A bejelentkezéshez kattints az e-mailben lévő linkre."
 #: packages/admin/src/components/Widgets.tsx:413
 #: packages/admin/src/components/Widgets.tsx:419
 #: packages/admin/src/components/Widgets.tsx:423
-#: packages/admin/src/routes/shop.tsx:222
-#: packages/admin/src/routes/shop.tsx:222
-#: packages/admin/src/routes/shop.tsx:555
-#: packages/admin/src/routes/shop.tsx:557
-#: packages/admin/src/routes/shop.tsx:1144
-#: packages/admin/src/routes/shop.tsx:1146
-#: packages/admin/src/routes/shop.tsx:1355
-#: packages/admin/src/routes/shop.tsx:1357
-#: packages/admin/src/routes/shop.tsx:1504
-#: packages/admin/src/routes/shop.tsx:1506
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:186
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:188
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:166
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:168
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:151
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:153
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:183
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:185
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:157
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:159
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:193
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:195
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:95
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:97
 msgid "Close"
 msgstr "Bezárás"
 
@@ -1867,15 +1885,15 @@ msgstr ""
 msgid "Close panel"
 msgstr "Panel bezárása"
 
-#: packages/admin/src/components/ContentEditor.tsx:1106
+#: packages/admin/src/components/ContentEditor.tsx:1112
 msgid "Close settings"
 msgstr ""
 
 #: packages/admin/src/components/ContentTypeList.tsx:356
 #: packages/admin/src/components/PortableTextEditor.tsx:3660
 #: packages/admin/src/components/Redirects.tsx:478
-#: packages/admin/src/routes/shop.tsx:500
-#: packages/admin/src/routes/shop.tsx:571
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:128
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:199
 msgid "Code"
 msgstr "Kód"
 
@@ -1885,7 +1903,7 @@ msgstr "Kód"
 msgid "Code Block"
 msgstr "Kódblokk"
 
-#: packages/admin/src/routes/shop.tsx:1839
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:189
 msgid "Code from delivery provider"
 msgstr ""
 
@@ -1909,7 +1927,7 @@ msgstr "Gyűjtemény"
 msgid "Collection:"
 msgstr "Gyűjtemény:"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:840
+#: packages/admin/src/components/TaxonomyManager.tsx:860
 msgid "Collections"
 msgstr "Gyűjtemények"
 
@@ -1948,8 +1966,8 @@ msgstr "A bejelentkezett CMS-felhasználók hozzászólásai automatikusan jóv�
 msgid "Complete signup"
 msgstr "Regisztráció befejezése"
 
-#: packages/admin/src/routes/shop.tsx:305
-#: packages/admin/src/routes/shop.tsx:349
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:52
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:101
 msgid "Completed"
 msgstr ""
 
@@ -1961,26 +1979,32 @@ msgstr "Komponens"
 msgid "Configure Field"
 msgstr "Mező beállítása"
 
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:44
+msgid "Configure WhatsApp, payments, and checkout."
+msgstr ""
+
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:416
 msgid "Confirm"
 msgstr "Megerősítés"
 
-#: packages/admin/src/routes/shop.tsx:1829
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:179
 msgid "Confirm cancellation"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1769
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:119
 msgid "Confirm payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:59
-#: packages/admin/src/routes/shop.tsx:303
-#: packages/admin/src/routes/shop.tsx:346
-#: packages/admin/src/routes/shop.tsx:1312
+#: packages/admin/src/features/shop/bookings/helpers.tsx:8
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:50
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:98
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:11
+#: packages/admin/src/features/shop/orders/helpers.ts:7
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:52
 msgid "Confirmed"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1769
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:119
 msgid "Confirming..."
 msgstr ""
 
@@ -2035,7 +2059,7 @@ msgstr "Tartalmi hibák ({0})"
 msgid "Content found:"
 msgstr "Talált tartalom:"
 
-#: packages/admin/src/router.tsx:1148
+#: packages/admin/src/router.tsx:1172
 msgid "Content has been scheduled for publishing"
 msgstr "A tartalom publikálása ütemezve"
 
@@ -2047,7 +2071,7 @@ msgstr "A tartalom frissült a kiválasztott verzióra."
 msgid "Content ID:"
 msgstr "Tartalom ID:"
 
-#: packages/admin/src/router.tsx:1089
+#: packages/admin/src/router.tsx:1113
 msgid "Content is now live"
 msgstr "A tartalom élesítve"
 
@@ -2067,11 +2091,11 @@ msgstr ""
 msgid "Content Read"
 msgstr "Tartalom olvasása"
 
-#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1131
 msgid "Content removed from public view"
 msgstr "A tartalom eltávolítva a nyilvános nézetből"
 
-#: packages/admin/src/router.tsx:1169
+#: packages/admin/src/router.tsx:1193
 msgid "Content reverted to draft"
 msgstr "A tartalom visszaállítva vázlatra"
 
@@ -2119,13 +2143,13 @@ msgstr ""
 msgid "Contributor"
 msgstr "Közreműködő"
 
-#: packages/admin/src/routes/shop.tsx:980
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:376
 msgid "Coordinate by WhatsApp"
 msgstr ""
 
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:305
 #: packages/admin/src/components/users/InviteUserModal.tsx:133
-#: packages/admin/src/routes/shop.tsx:1518
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:171
 msgid "Copied to clipboard"
 msgstr "Vágólapra másolva"
 
@@ -2134,7 +2158,7 @@ msgstr "Vágólapra másolva"
 msgid "Copy {0} to clipboard"
 msgstr "{0} másolása a vágólapra"
 
-#: packages/admin/src/routes/shop.tsx:1591
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:70
 msgid "Copy address"
 msgstr ""
 
@@ -2142,7 +2166,7 @@ msgstr ""
 msgid "Copy invite link"
 msgstr "Meghívólink másolása"
 
-#: packages/admin/src/routes/shop.tsx:1585
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:64
 msgid "Copy phone"
 msgstr ""
 
@@ -2165,7 +2189,7 @@ msgstr "Token másolása"
 msgid "Copy URL"
 msgstr "URL másolása"
 
-#: packages/admin/src/routes/shop.tsx:1112
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:159
 msgid "Cost"
 msgstr ""
 
@@ -2177,11 +2201,11 @@ msgstr "Nem sikerült automatikusan másolni. Jelöld ki a fenti URL-t, és más
 msgid "Could not insert section"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:456
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:84
 msgid "Could not load coupons. Please try again."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1390
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:43
 msgid "Could not load customers. Please try again."
 msgstr ""
 
@@ -2189,7 +2213,7 @@ msgstr ""
 msgid "Could not load dashboard data"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1064
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:108
 msgid "Could not load delivery zones. Please try again."
 msgstr ""
 
@@ -2222,19 +2246,20 @@ msgstr "Nem sikerült keresni a szerzők között. Próbáld újra."
 msgid "Couldn't verify how many values reference \"{0}\". Deleting will still remove every stored value for this field — but the count above could not be checked."
 msgstr "Nem sikerült ellenőrizni, hány érték hivatkozik erre: \"{0}\". A törlés így is eltávolít minden ehhez a mezőhöz tartozó tárolt értéket — de a fenti darabszámot nem sikerült ellenőrizni."
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1049
+#: packages/admin/src/components/TaxonomyManager.tsx:1069
 msgid "Count"
 msgstr "Darab"
 
-#: packages/admin/src/routes/shop.tsx:451
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:79
 msgid "Coupon deleted"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:444
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:72
 msgid "Coupon saved"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:382
+#: packages/admin/src/features/shop/navigation/items.ts:15
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:31
 msgid "Coupons"
 msgstr ""
 
@@ -2242,7 +2267,7 @@ msgstr ""
 #: packages/admin/src/components/MenuList.tsx:178
 #: packages/admin/src/components/Redirects.tsx:192
 #: packages/admin/src/components/Sections.tsx:212
-#: packages/admin/src/components/TaxonomyManager.tsx:663
+#: packages/admin/src/components/TaxonomyManager.tsx:683
 #: packages/admin/src/components/Widgets.tsx:454
 #: packages/admin/src/routes/bylines.tsx:579
 msgid "Create"
@@ -2262,7 +2287,7 @@ msgid "Create a bullet list"
 msgstr "Felsorolás létrehozása"
 
 #. placeholder {0}: taxonomyDef.labelSingular?.toLowerCase() || "term"
-#: packages/admin/src/components/TaxonomyManager.tsx:545
+#: packages/admin/src/components/TaxonomyManager.tsx:554
 msgid "Create a new {0}"
 msgstr "Új {0} létrehozása"
 
@@ -2270,7 +2295,7 @@ msgstr "Új {0} létrehozása"
 msgid "Create a numbered list"
 msgstr "Számozott lista létrehozása"
 
-#: packages/admin/src/routes/shop.tsx:162
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:92
 msgid "Create a service to configure its availability and accept bookings."
 msgstr ""
 
@@ -2282,6 +2307,10 @@ msgstr "Fiók létrehozása"
 #: packages/admin/src/components/SignupPage.tsx:401
 msgid "Create an account"
 msgstr "Fiók létrehozása"
+
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:32
+msgid "Create and validate promotions for checkout."
+msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1102
 #: packages/admin/src/routes/bylines.tsx:476
@@ -2354,8 +2383,8 @@ msgstr "Szakasz létrehozása"
 msgid "Create sections in the Sections library to use them here"
 msgstr "Hozz létre szakaszokat a Szakaszok könyvtárban, hogy itt használhasd őket"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:782
-#: packages/admin/src/components/TaxonomyManager.tsx:873
+#: packages/admin/src/components/TaxonomyManager.tsx:802
+#: packages/admin/src/components/TaxonomyManager.tsx:893
 msgid "Create Taxonomy"
 msgstr "Taxonómia létrehozása"
 
@@ -2376,7 +2405,7 @@ msgstr "Fiók létrehozása"
 msgid "Create your first navigation menu to get started"
 msgstr "Első navigációs menü létrehozása a kezdéshez"
 
-#: packages/admin/src/components/ContentList.tsx:645
+#: packages/admin/src/components/ContentList.tsx:657
 #: packages/admin/src/components/ContentTypeList.tsx:206
 msgid "Create your first one"
 msgstr "Hozd létre az elsőt"
@@ -2407,7 +2436,7 @@ msgstr "Taxonómiai kifejezések létrehozása, frissítése és törlése"
 msgid "Create, update, delete content"
 msgstr "Tartalom létrehozása, frissítése, törlése"
 
-#: packages/admin/src/components/ContentList.tsx:841
+#: packages/admin/src/components/ContentList.tsx:854
 #: packages/admin/src/components/ContentSettingsPanel.tsx:634
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:358
 #: packages/admin/src/components/users/UserDetail.tsx:219
@@ -2425,7 +2454,7 @@ msgid "Created {0}"
 msgstr "{0} létrehozva"
 
 #. placeholder {0}: result.locale?.toUpperCase() ?? t`new`
-#: packages/admin/src/router.tsx:1200
+#: packages/admin/src/router.tsx:1224
 msgid "Created {0} translation"
 msgstr "{0} fordítás létrehozva"
 
@@ -2442,7 +2471,7 @@ msgstr "Gyűjtemények és mezők létrehozása..."
 #: packages/admin/src/components/Redirects.tsx:189
 #: packages/admin/src/components/Sections.tsx:212
 #: packages/admin/src/components/settings/ApiTokenSettings.tsx:540
-#: packages/admin/src/components/TaxonomyManager.tsx:873
+#: packages/admin/src/components/TaxonomyManager.tsx:893
 #: packages/admin/src/components/TaxonomySidebar.tsx:339
 msgid "Creating..."
 msgstr "Létrehozás..."
@@ -2455,11 +2484,11 @@ msgstr ""
 msgid "CSS"
 msgstr "CSS"
 
-#: packages/admin/src/routes/shop.tsx:679
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:71
 msgid "Currency"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:686
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:78
 msgid "Currency symbol"
 msgstr ""
 
@@ -2496,18 +2525,23 @@ msgstr "Egyéni szakasz"
 msgid "Custom Taxonomies"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:320
-#: packages/admin/src/routes/shop.tsx:330
-#: packages/admin/src/routes/shop.tsx:1471
-#: packages/admin/src/routes/shop.tsx:1725
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:90
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:104
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:67
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:80
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:164
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:164
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:124
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:75
 msgid "Customer"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1502
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:220
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:155
 msgid "Customer details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:381
+#: packages/admin/src/features/shop/navigation/items.ts:14
 msgid "Customers"
 msgstr ""
 
@@ -2540,7 +2574,7 @@ msgid "Dashboard"
 msgstr "Vezérlőpult"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:297
-#: packages/admin/src/components/ContentList.tsx:606
+#: packages/admin/src/components/ContentList.tsx:618
 msgid "Date"
 msgstr "Dátum"
 
@@ -2549,7 +2583,7 @@ msgstr "Dátum"
 msgid "Date & Time"
 msgstr "Dátum és idő"
 
-#: packages/admin/src/routes/shop.tsx:321
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:68
 msgid "Date and time"
 msgstr ""
 
@@ -2557,7 +2591,7 @@ msgstr ""
 msgid "Date and time picker"
 msgstr "Dátum- és időválasztó"
 
-#: packages/admin/src/components/ContentList.tsx:912
+#: packages/admin/src/components/ContentList.tsx:925
 msgid "Date field to filter on"
 msgstr "Szűréshez használt dátummező"
 
@@ -2590,7 +2624,7 @@ msgstr "Alapértelmezett közösségi kép"
 msgid "Default Social Image"
 msgstr "Alapértelmezett közösségi kép"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:785
+#: packages/admin/src/components/TaxonomyManager.tsx:805
 msgid "Define a new taxonomy for classifying content"
 msgstr "Új taxonómia meghatározása a tartalom osztályozásához"
 
@@ -2622,12 +2656,12 @@ msgstr "Kódban definiálva"
 #: packages/admin/src/components/Sections.tsx:308
 #: packages/admin/src/components/Sections.tsx:407
 #: packages/admin/src/components/settings/BackupSettings.tsx:352
-#: packages/admin/src/components/TaxonomyManager.tsx:1112
+#: packages/admin/src/components/TaxonomyManager.tsx:1132
 #: packages/admin/src/components/Widgets.tsx:716
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:162
 #: packages/admin/src/routes/byline-schema.tsx:378
 #: packages/admin/src/routes/bylines.tsx:588
 #: packages/admin/src/routes/bylines.tsx:624
-#: packages/admin/src/routes/shop.tsx:534
 msgid "Delete"
 msgstr "Törlés"
 
@@ -2644,10 +2678,10 @@ msgstr "Törlöd ezt: \"{0}\"? Ez nem vonható vissza."
 #: packages/admin/src/components/Sections.tsx:408
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:266
 #: packages/admin/src/components/settings/BackupSettings.tsx:312
-#: packages/admin/src/components/TaxonomyManager.tsx:280
+#: packages/admin/src/components/TaxonomyManager.tsx:281
 #: packages/admin/src/components/Widgets.tsx:817
+#: packages/admin/src/features/shop/delivery/DeliveryZoneRow.tsx:46
 #: packages/admin/src/routes/byline-schema.tsx:458
-#: packages/admin/src/routes/shop.tsx:1259
 msgid "Delete {0}"
 msgstr "{0} törlése"
 
@@ -2667,7 +2701,7 @@ msgid "Delete {0} widget area"
 msgstr "{0} widgetterület törlése"
 
 #. placeholder {0}: taxonomyDef.labelSingular || "Term"
-#: packages/admin/src/components/TaxonomyManager.tsx:1108
+#: packages/admin/src/components/TaxonomyManager.tsx:1128
 msgid "Delete {0}?"
 msgstr "{0} törlése?"
 
@@ -2731,11 +2765,11 @@ msgid "Delete permanently"
 msgstr "Végleges törlés"
 
 #: packages/admin/src/components/comments/CommentDetail.tsx:182
-#: packages/admin/src/components/ContentList.tsx:1449
+#: packages/admin/src/components/ContentList.tsx:1464
 msgid "Delete Permanently"
 msgstr "Végleges törlés"
 
-#: packages/admin/src/components/ContentList.tsx:1429
+#: packages/admin/src/components/ContentList.tsx:1444
 msgid "Delete Permanently?"
 msgstr "Végleges törlés?"
 
@@ -2772,7 +2806,7 @@ msgstr "Táblázat törlése"
 msgid "Delete Widget Area?"
 msgstr "Törlöd a widgetterületet?"
 
-#: packages/admin/src/components/ContentList.tsx:740
+#: packages/admin/src/components/ContentList.tsx:753
 msgid "Deleted"
 msgstr "Törölve"
 
@@ -2792,7 +2826,7 @@ msgstr "\"{0}\" törlése az összes szerzői leírásból eltávolítja a hozz�
 #: packages/admin/src/components/Redirects.tsx:604
 #: packages/admin/src/components/Sections.tsx:309
 #: packages/admin/src/components/settings/BackupSettings.tsx:353
-#: packages/admin/src/components/TaxonomyManager.tsx:1113
+#: packages/admin/src/components/TaxonomyManager.tsx:1133
 #: packages/admin/src/components/Widgets.tsx:717
 #: packages/admin/src/routes/bylines.tsx:625
 msgid "Deleting..."
@@ -2802,46 +2836,49 @@ msgstr "Törlés..."
 msgid "Deleting…"
 msgstr "Törlés…"
 
-#: packages/admin/src/routes/shop.tsx:63
-#: packages/admin/src/routes/shop.tsx:1316
-#: packages/admin/src/routes/shop.tsx:1795
-#: packages/admin/src/routes/shop.tsx:1865
+#: packages/admin/src/features/shop/bookings/helpers.tsx:12
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:15
+#: packages/admin/src/features/shop/orders/helpers.ts:11
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:145
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:215
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:56
 msgid "Delivered"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:764
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:158
 msgid "Delivered template"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1332
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:72
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:25
 msgid "Delivery"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1182
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:231
 msgid "Delivery cost"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1775
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:125
 msgid "Delivery status"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1688
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:38
 msgid "Delivery updated"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1031
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:74
 msgid "Delivery zone created"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1057
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:100
 msgid "Delivery zone deleted"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1050
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:93
 msgid "Delivery zone updated"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:379
+#: packages/admin/src/features/shop/navigation/items.ts:12
 msgid "Delivery zones"
 msgstr ""
 
@@ -2889,7 +2926,7 @@ msgstr "Írd le, mire való ez a szakasz..."
 msgid "Description"
 msgstr "Leírás"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:618
+#: packages/admin/src/components/TaxonomyManager.tsx:627
 msgid "Description (optional)"
 msgstr "Leírás (opcionális)"
 
@@ -3007,11 +3044,11 @@ msgstr "Elveted a vázlat módosításait?"
 msgid "Discarding..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:501
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:129
 msgid "Discount"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:577
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:205
 msgid "Discount type"
 msgstr ""
 
@@ -3059,21 +3096,22 @@ msgstr ""
 msgid "Displayed below the image as a visible caption."
 msgstr "A kép alatt látható képaláírásként jelenik meg."
 
-#: packages/admin/src/components/ContentEditor.tsx:732
+#: packages/admin/src/components/ContentEditor.tsx:738
 msgid "Distraction-free mode (⌘⇧\\)"
 msgstr "Zavarásmentes mód (⌘⇧\\)"
 
-#: packages/admin/src/routes/shop.tsx:1473
-#: packages/admin/src/routes/shop.tsx:1564
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:228
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:43
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:126
 msgid "District"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1178
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:227
 msgid "District 1, District 2"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1111
-#: packages/admin/src/routes/shop.tsx:1171
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:158
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:220
 msgid "Districts"
 msgstr ""
 
@@ -3149,7 +3187,7 @@ msgstr "SBOM letöltése"
 msgid "Downloading"
 msgstr "Letöltés"
 
-#: packages/admin/src/components/ContentList.tsx:833
+#: packages/admin/src/components/ContentList.tsx:846
 #: packages/admin/src/components/ContentStatusBadge.tsx:61
 msgid "Draft"
 msgstr "Vázlat"
@@ -3215,11 +3253,11 @@ msgstr "Húzd ide a WordPress exportfájlt"
 msgid "Duplicate"
 msgstr "Duplikálás"
 
-#: packages/admin/src/components/ContentList.tsx:1232
+#: packages/admin/src/components/ContentList.tsx:1247
 msgid "Duplicate {title}"
 msgstr "{title} duplikálása"
 
-#: packages/admin/src/routes/shop.tsx:196
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:132
 msgid "Duration"
 msgstr ""
 
@@ -3240,8 +3278,13 @@ msgid "e.g., MacBook Pro, iPhone"
 msgstr "pl. MacBook Pro, iPhone"
 
 #: packages/admin/src/components/Sidebar.tsx:301
-#: packages/admin/src/routes/shop.tsx:372
+#: packages/admin/src/features/shop/navigation/ShopShell.tsx:9
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:56
 msgid "Ecommerce"
+msgstr ""
+
+#: packages/admin/src/features/shop/navigation/ShopNavigation.tsx:9
+msgid "Ecommerce sections"
 msgstr ""
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:1057
@@ -3251,8 +3294,8 @@ msgstr ""
 #: packages/admin/src/components/MenuList.tsx:234
 #: packages/admin/src/components/Sections.tsx:392
 #: packages/admin/src/components/TranslationsPanel.tsx:93
-#: packages/admin/src/routes/shop.tsx:529
-#: packages/admin/src/routes/shop.tsx:1255
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:157
+#: packages/admin/src/features/shop/delivery/DeliveryZoneRow.tsx:41
 msgid "Edit"
 msgstr "Szerkesztés"
 
@@ -3263,8 +3306,8 @@ msgstr "Szerkesztés"
 #: packages/admin/src/components/PortableTextEditor.tsx:1905
 #: packages/admin/src/components/Promotions.tsx:210
 #: packages/admin/src/components/settings/AllowedDomainsSettings.tsx:254
-#: packages/admin/src/components/TaxonomyManager.tsx:272
-#: packages/admin/src/components/TaxonomyManager.tsx:539
+#: packages/admin/src/components/TaxonomyManager.tsx:273
+#: packages/admin/src/components/TaxonomyManager.tsx:548
 #: packages/admin/src/routes/byline-schema.tsx:449
 #: packages/admin/src/routes/bylines.tsx:476
 msgid "Edit {0}"
@@ -3275,11 +3318,11 @@ msgstr "{0} szerkesztése"
 msgid "Edit {0} field"
 msgstr "{0} mező szerkesztése"
 
-#: packages/admin/src/components/ContentEditor.tsx:678
+#: packages/admin/src/components/ContentEditor.tsx:684
 msgid "Edit {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1224
+#: packages/admin/src/components/ContentList.tsx:1239
 msgid "Edit {title}"
 msgstr "{title} szerkesztése"
 
@@ -3291,11 +3334,11 @@ msgstr "Szerző szerkesztése"
 msgid "Edit byline field"
 msgstr "Szerző mezőjének szerkesztése"
 
-#: packages/admin/src/routes/shop.tsx:552
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:180
 msgid "Edit coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1141
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:190
 msgid "Edit delivery zone"
 msgstr ""
 
@@ -3369,7 +3412,8 @@ msgstr ""
 #: packages/admin/src/components/Settings.tsx:95
 #: packages/admin/src/components/SignupPage.tsx:198
 #: packages/admin/src/components/users/UserDetail.tsx:154
-#: packages/admin/src/routes/shop.tsx:1562
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:226
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:41
 msgid "Email"
 msgstr "E-mail"
 
@@ -3442,7 +3486,7 @@ msgstr "Engedélyezés"
 msgid "Enable comments"
 msgstr "Hozzászólások engedélyezése"
 
-#: packages/admin/src/routes/shop.tsx:838
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:232
 msgid "Enable free delivery"
 msgstr ""
 
@@ -3450,7 +3494,7 @@ msgstr ""
 msgid "Enable full-text search on this collection"
 msgstr "Teljes szövegű keresés engedélyezése ebben a gyűjteményben"
 
-#: packages/admin/src/routes/shop.tsx:873
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:269
 msgid "Enable payment gateway"
 msgstr ""
 
@@ -3466,11 +3510,11 @@ msgstr ""
 msgid "Enable redirect"
 msgstr "Átirányítás engedélyezése"
 
-#: packages/admin/src/routes/shop.tsx:807
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:201
 msgid "Enable service bookings"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:812
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:206
 msgid "Enable this store to offer services with scheduled bookings."
 msgstr ""
 
@@ -3479,7 +3523,8 @@ msgstr ""
 msgid "Enabled"
 msgstr "Engedélyezve"
 
-#: packages/admin/src/routes/shop.tsx:240
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:223
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:198
 msgid "End date"
 msgstr ""
 
@@ -3487,7 +3532,8 @@ msgstr ""
 msgid "End date and time (optional)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:258
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:282
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:174
 msgid "Ends at"
 msgstr ""
 
@@ -3496,7 +3542,7 @@ msgstr ""
 msgid "Enter a URL (https://…) or a relative path (/…)"
 msgstr "Adj meg egy URL-t (https://…) vagy relatív útvonalat (/…)"
 
-#: packages/admin/src/components/ContentEditor.tsx:1627
+#: packages/admin/src/components/ContentEditor.tsx:1647
 msgid "Enter a valid URL (e.g. https://example.com)"
 msgstr "Adj meg érvényes URL-t (pl. https://example.com)"
 
@@ -3504,7 +3550,7 @@ msgstr "Adj meg érvényes URL-t (pl. https://example.com)"
 msgid "Enter credentials manually"
 msgstr "Hitelesítő adatok megadása kézzel"
 
-#: packages/admin/src/components/ContentEditor.tsx:731
+#: packages/admin/src/components/ContentEditor.tsx:737
 msgid "Enter distraction-free mode"
 msgstr "Belépés zavarásmentes módba"
 
@@ -3516,7 +3562,7 @@ msgstr "E-mail megadása"
 msgid "Enter HTML..."
 msgstr "HTML megadása..."
 
-#: packages/admin/src/components/ContentEditor.tsx:1303
+#: packages/admin/src/components/ContentEditor.tsx:1323
 msgid "Enter markdown content..."
 msgstr "Markdown tartalom megadása..."
 
@@ -3545,7 +3591,7 @@ msgstr "Add meg a WordPress hitelesítő adataidat a közvetlen importhoz."
 msgid "Enter your WordPress site URL"
 msgstr "Add meg a WordPress weboldal URL-jét"
 
-#: packages/admin/src/routes/shop.tsx:895
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:291
 msgid "Environment"
 msgstr ""
 
@@ -3553,9 +3599,9 @@ msgstr ""
 #: packages/admin/src/components/MenuEditor.tsx:193
 #: packages/admin/src/components/MenuEditor.tsx:233
 #: packages/admin/src/components/SetupWizard.tsx:539
-#: packages/admin/src/components/TaxonomyManager.tsx:941
+#: packages/admin/src/components/TaxonomyManager.tsx:961
 #: packages/admin/src/components/Widgets.tsx:769
-#: packages/admin/src/router.tsx:2286
+#: packages/admin/src/router.tsx:2356
 msgid "Error"
 msgstr "Hiba"
 
@@ -3575,8 +3621,8 @@ msgstr "Hiba a szakasz mentésekor"
 msgid "Error updating widget"
 msgstr "Hiba a widget frissítésekor"
 
-#: packages/admin/src/routes/shop.tsx:1113
-#: packages/admin/src/routes/shop.tsx:1195
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:160
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:244
 msgid "Estimated time"
 msgstr ""
 
@@ -3589,19 +3635,19 @@ msgstr "A plugin minden közzétett kiadását visszavonták, vagy nem sikerült
 msgid "Example: {0} → January 23, 2026"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:820
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:214
 msgid "Example: 24 hours"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1202
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:251
 msgid "Example: 30–60 minutes"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:699
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:91
 msgid "Example: 51999999999"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:690
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:82
 msgid "Example: S/"
 msgstr ""
 
@@ -3613,7 +3659,7 @@ msgstr ""
 msgid "Exists"
 msgstr "Létezik"
 
-#: packages/admin/src/components/ContentEditor.tsx:790
+#: packages/admin/src/components/ContentEditor.tsx:796
 msgid "Exit distraction-free mode"
 msgstr "Kilépés a zavarásmentes módból"
 
@@ -3630,7 +3676,7 @@ msgid "Expand details"
 msgstr "Részletek kibontása"
 
 #: packages/admin/src/components/Promotions.tsx:178
-#: packages/admin/src/routes/shop.tsx:348
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:100
 msgid "Expired"
 msgstr ""
 
@@ -3639,7 +3685,7 @@ msgstr ""
 msgid "Expiry"
 msgstr "Lejárat"
 
-#: packages/admin/src/routes/shop.tsx:1810
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:160
 msgid "Explain why this order is being cancelled"
 msgstr ""
 
@@ -3721,14 +3767,14 @@ msgid "Failed to create term"
 msgstr "Nem sikerült kifejezést létrehozni"
 
 #: packages/admin/src/components/TaxonomySidebar.tsx:475
-#: packages/admin/src/router.tsx:1205
+#: packages/admin/src/router.tsx:1229
 msgid "Failed to create translation"
 msgstr "Nem sikerült fordítást létrehozni"
 
-#: packages/admin/src/router.tsx:449
-#: packages/admin/src/router.tsx:478
-#: packages/admin/src/router.tsx:561
-#: packages/admin/src/router.tsx:1225
+#: packages/admin/src/router.tsx:462
+#: packages/admin/src/router.tsx:491
+#: packages/admin/src/router.tsx:574
+#: packages/admin/src/router.tsx:1249
 msgid "Failed to delete"
 msgstr "Nem sikerült törölni"
 
@@ -3753,7 +3799,7 @@ msgid "Failed to delete collection"
 msgstr "Nem sikerült gyűjteményt törölni"
 
 #: packages/admin/src/lib/api/comments.ts:111
-#: packages/admin/src/router.tsx:1532
+#: packages/admin/src/router.tsx:1560
 msgid "Failed to delete comment"
 msgstr "Nem sikerült hozzászólást törölni"
 
@@ -3798,7 +3844,7 @@ msgstr "Nem sikerült átirányítást törölni"
 msgid "Failed to delete section"
 msgstr "Nem sikerült szakaszt törölni"
 
-#: packages/admin/src/lib/api/taxonomies.ts:221
+#: packages/admin/src/lib/api/taxonomies.ts:227
 msgid "Failed to delete term"
 msgstr "Nem sikerült kifejezést törölni"
 
@@ -3823,7 +3869,7 @@ msgstr "Nem sikerült keresést letiltani"
 msgid "Failed to disable user"
 msgstr "Nem sikerült felhasználót letiltani"
 
-#: packages/admin/src/router.tsx:1132
+#: packages/admin/src/router.tsx:1156
 msgid "Failed to discard changes"
 msgstr "Nem sikerült módosításokat elvetni"
 
@@ -3831,7 +3877,7 @@ msgstr "Nem sikerült módosításokat elvetni"
 msgid "Failed to dismiss welcome"
 msgstr "Nem sikerült üdvözlést bezárni"
 
-#: packages/admin/src/router.tsx:492
+#: packages/admin/src/router.tsx:505
 msgid "Failed to duplicate"
 msgstr "Nem sikerült duplikálni"
 
@@ -3950,8 +3996,8 @@ msgstr "Nem sikerült kifejezéseket lekérni"
 #: packages/admin/src/lib/api/current-user.ts:22
 #: packages/admin/src/lib/api/users.ts:88
 #: packages/admin/src/lib/api/users.ts:93
-#: packages/admin/src/router.tsx:925
-#: packages/admin/src/router.tsx:1471
+#: packages/admin/src/router.tsx:949
+#: packages/admin/src/router.tsx:1499
 msgid "Failed to fetch user"
 msgstr "Nem sikerült felhasználót lekérni"
 
@@ -3993,7 +4039,7 @@ msgstr "Nem sikerült plugint telepíteni"
 msgid "Failed to list byline fields"
 msgstr "Nem sikerült a szerző mezőit listázni"
 
-#: packages/admin/src/router.tsx:288
+#: packages/admin/src/router.tsx:297
 msgid "Failed to load admin"
 msgstr "Nem sikerült admint betölteni"
 
@@ -4062,7 +4108,7 @@ msgstr "Nem sikerült betölteni a felhasználókat: {0}"
 msgid "Failed to load widget"
 msgstr "Nem sikerült betölteni a widgetet"
 
-#: packages/admin/src/router.tsx:1556
+#: packages/admin/src/router.tsx:1584
 msgid "Failed to perform bulk action"
 msgstr "Nem sikerült tömeges műveletet végrehajtani"
 
@@ -4074,8 +4120,8 @@ msgstr "Nem sikerült tartalmat véglegesen törölni"
 msgid "Failed to prepare import"
 msgstr "Nem sikerült importot előkészíteni"
 
-#: packages/admin/src/router.tsx:517
-#: packages/admin/src/router.tsx:1093
+#: packages/admin/src/router.tsx:530
+#: packages/admin/src/router.tsx:1117
 msgid "Failed to publish"
 msgstr "Nem sikerült publikálni"
 
@@ -4113,7 +4159,7 @@ msgstr "Nem sikerült átrendezni a mezőket"
 msgid "Failed to reorder widgets"
 msgstr "Nem sikerült átrendezni a widgeteket"
 
-#: packages/admin/src/router.tsx:464
+#: packages/admin/src/router.tsx:477
 msgid "Failed to restore"
 msgstr "A visszaállítás nem sikerült"
 
@@ -4134,9 +4180,9 @@ msgstr "Az API tokent nem sikerült visszavonni"
 msgid "Failed to rewrite URLs"
 msgstr "URL-ek átírása nem sikerült"
 
-#: packages/admin/src/router.tsx:724
-#: packages/admin/src/router.tsx:1015
-#: packages/admin/src/router.tsx:2069
+#: packages/admin/src/router.tsx:743
+#: packages/admin/src/router.tsx:1039
+#: packages/admin/src/router.tsx:2133
 msgid "Failed to save"
 msgstr "Nem sikerült a mentés"
 
@@ -4163,7 +4209,7 @@ msgstr ""
 msgid "Failed to save settings"
 msgstr "Nem sikerült a beállítások mentése"
 
-#: packages/admin/src/router.tsx:1153
+#: packages/admin/src/router.tsx:1177
 msgid "Failed to schedule"
 msgstr "Az ütemezés nem sikerült"
 
@@ -4194,15 +4240,15 @@ msgstr "Nem sikerült bejegyzés kifejezéseit beállítani"
 msgid "Failed to uninstall plugin"
 msgstr "Nem sikerült a plugin eltávolítása"
 
-#: packages/admin/src/router.tsx:1111
+#: packages/admin/src/router.tsx:1135
 msgid "Failed to unpublish"
 msgstr "Nem sikerült a közzététel visszavonása"
 
-#: packages/admin/src/router.tsx:1174
+#: packages/admin/src/router.tsx:1198
 msgid "Failed to unschedule"
 msgstr "Nem sikerült az ütemezés törlése"
 
-#: packages/admin/src/router.tsx:540
+#: packages/admin/src/router.tsx:553
 msgid "Failed to update"
 msgstr ""
 
@@ -4252,7 +4298,7 @@ msgstr "Nem sikerült a szakasz frissítése"
 msgid "Failed to update settings"
 msgstr "Nem sikerült frissíteni a beállításokat"
 
-#: packages/admin/src/router.tsx:1517
+#: packages/admin/src/router.tsx:1545
 msgid "Failed to update status"
 msgstr "Nem sikerült frissíteni az állapotot"
 
@@ -4293,7 +4339,7 @@ msgstr "Funkció"
 msgid "Featured Images"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1158
+#: packages/admin/src/components/ContentEditor.tsx:1176
 msgid "Featured service"
 msgstr ""
 
@@ -4373,7 +4419,7 @@ msgstr "A fájlnév feltöltés után nem módosítható"
 msgid "files imported"
 msgstr "fájl importálva"
 
-#: packages/admin/src/components/ContentList.tsx:887
+#: packages/admin/src/components/ContentList.tsx:900
 msgid "Filter by author"
 msgstr "Szűrés szerző szerint"
 
@@ -4397,7 +4443,7 @@ msgstr "Szűrés szerepkör szerint"
 msgid "Filter by source"
 msgstr "Szűrés forrás szerint"
 
-#: packages/admin/src/components/ContentList.tsx:869
+#: packages/admin/src/components/ContentList.tsx:882
 #: packages/admin/src/components/Redirects.tsx:427
 msgid "Filter by status"
 msgstr "Szűrés állapot szerint"
@@ -4411,19 +4457,23 @@ msgstr "Szűrés típus szerint"
 msgid "Filter byline type"
 msgstr "Szerző típus szűrése"
 
-#: packages/admin/src/routes/shop.tsx:1452
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:105
 msgid "Filter customers by date"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1441
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:94
 msgid "Filter customers by district"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1306
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:67
+msgid "Filter enrollments by status"
+msgstr ""
+
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:46
 msgid "Filter orders by status"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:296
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:43
 msgid "Filter reservations by status"
 msgstr ""
 
@@ -4431,7 +4481,7 @@ msgstr ""
 msgid "First-time commenters only"
 msgstr "Csak első hozzászólók"
 
-#: packages/admin/src/routes/shop.tsx:583
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:211
 msgid "Fixed amount"
 msgstr ""
 
@@ -4455,15 +4505,15 @@ msgstr ""
 msgid "Free"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:842
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:236
 msgid "Free delivery from subtotal"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:83
+#: packages/admin/src/features/shop/bookings/helpers.tsx:32
 msgid "Friday"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:928
+#: packages/admin/src/components/ContentList.tsx:941
 msgid "From date"
 msgstr "Kezdő dátum"
 
@@ -4498,7 +4548,7 @@ msgstr "Általános"
 msgid "General Settings"
 msgstr "Általános beállítások"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:810
+#: packages/admin/src/components/TaxonomyManager.tsx:830
 msgid "Genres"
 msgstr "Műfajok"
 
@@ -4519,7 +4569,7 @@ msgid "Go"
 msgstr "Go"
 
 #: packages/admin/src/components/WordPressImport.tsx:2418
-#: packages/admin/src/router.tsx:2306
+#: packages/admin/src/router.tsx:2376
 msgid "Go to Dashboard"
 msgstr "Ugrás a vezérlőpultra"
 
@@ -4606,13 +4656,13 @@ msgstr "Magasság"
 msgid "Height (px)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:301
-#: packages/admin/src/routes/shop.tsx:344
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:48
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:96
 msgid "Held"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:713
-#: packages/admin/src/routes/shop.tsx:968
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:107
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:364
 msgid "Hello, I want to coordinate payment for my order."
 msgstr ""
 
@@ -4634,7 +4684,7 @@ msgstr "Elrejtés a keresők elől"
 msgid "Hide token"
 msgstr "Token elrejtése"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:833
+#: packages/admin/src/components/TaxonomyManager.tsx:853
 msgid "Hierarchical (like categories, with parent/child relationships)"
 msgstr "Hierarchikus (mint a kategóriák, szülő-gyermek kapcsolatokkal)"
 
@@ -4686,9 +4736,17 @@ msgstr ""
 msgid "https://example.com or /about"
 msgstr "https://example.com vagy /about"
 
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:347
+msgid "https://example.com/_emdash/api/shop/payment-webhook"
+msgstr ""
+
 #: packages/admin/src/components/MediaPickerModal.tsx:563
 msgid "https://example.com/image.jpg"
 msgstr "https://example.com/image.jpg"
+
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:339
+msgid "https://example.com/shop/payment-return"
+msgstr ""
 
 #: packages/admin/src/components/WordPressImport.tsx:1089
 msgid "https://yoursite.com"
@@ -4710,6 +4768,8 @@ msgstr "Ha létezik fiók ehhez: <0>{email}</0>, elküldtünk egy bejelentkezés
 #: packages/admin/src/components/FieldEditor.tsx:233
 #: packages/admin/src/components/FieldEditor.tsx:616
 #: packages/admin/src/components/PortableTextEditor.tsx:2694
+#: packages/admin/src/components/TaxonomyImageField.tsx:25
+#: packages/admin/src/components/TaxonomyImageField.tsx:48
 msgid "Image"
 msgstr "Kép"
 
@@ -4854,23 +4914,25 @@ msgstr "Média importálása"
 msgid "Importing menus and site settings..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:207
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:150
 msgid "In person"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:62
-#: packages/admin/src/routes/shop.tsx:1315
-#: packages/admin/src/routes/shop.tsx:1794
-#: packages/admin/src/routes/shop.tsx:1864
+#: packages/admin/src/features/shop/bookings/helpers.tsx:11
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:14
+#: packages/admin/src/features/shop/orders/helpers.ts:10
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:144
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:214
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:55
 msgid "In transit"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:753
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:147
 msgid "In transit template"
 msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:179
-#: packages/admin/src/routes/shop.tsx:1250
+#: packages/admin/src/features/shop/delivery/DeliveryZoneRow.tsx:35
 msgid "Inactive"
 msgstr ""
 
@@ -4891,7 +4953,7 @@ msgstr "Nem kompatibilis"
 msgid "Indexed"
 msgstr "Indexelve"
 
-#: packages/admin/src/components/ContentEditor.tsx:1574
+#: packages/admin/src/components/ContentEditor.tsx:1594
 msgid "Ingresa un porcentaje para calcular el precio de promoción o escribe directamente el precio de promoción."
 msgstr ""
 
@@ -5029,7 +5091,7 @@ msgstr "Egész szám"
 msgid "Invalid invite link"
 msgstr "Érvénytelen meghívólink"
 
-#: packages/admin/src/components/ContentEditor.tsx:1696
+#: packages/admin/src/components/ContentEditor.tsx:1716
 msgid "Invalid JSON"
 msgstr "Érvénytelen JSON"
 
@@ -5143,7 +5205,7 @@ msgstr "Kotlin"
 #: packages/admin/src/components/MenuEditor.tsx:416
 #: packages/admin/src/components/MenuEditor.tsx:593
 #: packages/admin/src/components/MenuList.tsx:169
-#: packages/admin/src/components/TaxonomyManager.tsx:807
+#: packages/admin/src/components/TaxonomyManager.tsx:827
 #: packages/admin/src/components/Widgets.tsx:436
 #: packages/admin/src/routes/byline-schema.tsx:234
 msgid "Label"
@@ -5169,11 +5231,11 @@ msgstr "Nyelv"
 msgid "Large section heading"
 msgstr "Nagy szakaszcím"
 
-#: packages/admin/src/routes/shop.tsx:1455
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:108
 msgid "Last 30 days"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1455
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:108
 msgid "Last 90 days"
 msgstr ""
 
@@ -5189,7 +5251,7 @@ msgstr "Utolsó bejelentkezés"
 msgid "Last Login"
 msgstr "Utolsó bejelentkezés"
 
-#: packages/admin/src/routes/shop.tsx:1475
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:128
 msgid "Last order"
 msgstr ""
 
@@ -5288,8 +5350,8 @@ msgstr "Linkek"
 msgid "List view"
 msgstr "Listanézet"
 
-#: packages/admin/src/components/ContentEditor.tsx:712
-#: packages/admin/src/components/ContentEditor.tsx:755
+#: packages/admin/src/components/ContentEditor.tsx:718
+#: packages/admin/src/components/ContentEditor.tsx:761
 #: packages/admin/src/components/ContentSettingsPanel.tsx:265
 msgid "Live View"
 msgstr "Élő nézet"
@@ -5303,15 +5365,15 @@ msgstr "Élő nézet"
 msgid "Load more"
 msgstr "Továbbiak betöltése"
 
-#: packages/admin/src/components/ContentList.tsx:724
-#: packages/admin/src/components/ContentList.tsx:782
+#: packages/admin/src/components/ContentList.tsx:737
+#: packages/admin/src/components/ContentList.tsx:795
 #: packages/admin/src/components/MediaLibrary.tsx:656
 #: packages/admin/src/components/MediaPickerModal.tsx:783
 #: packages/admin/src/components/users/UserList.tsx:169
 msgid "Load More"
 msgstr "Továbbiak betöltése"
 
-#: packages/admin/src/router.tsx:2261
+#: packages/admin/src/router.tsx:2331
 msgid "Loading"
 msgstr ""
 
@@ -5327,8 +5389,8 @@ msgstr "Gyűjtemények betöltése..."
 msgid "Loading comments..."
 msgstr "Hozzászólások betöltése..."
 
-#: packages/admin/src/router.tsx:2263
-#: packages/admin/src/router.tsx:2275
+#: packages/admin/src/router.tsx:2333
+#: packages/admin/src/router.tsx:2345
 msgid "Loading configuration..."
 msgstr "Konfiguráció betöltése..."
 
@@ -5336,21 +5398,25 @@ msgstr "Konfiguráció betöltése..."
 msgid "Loading content..."
 msgstr "Tartalom betöltése..."
 
-#: packages/admin/src/routes/shop.tsx:454
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:82
 msgid "Loading coupons"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1388
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:41
 msgid "Loading customers"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1062
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:105
 msgid "Loading delivery zones"
 msgstr ""
 
 #: packages/admin/src/components/PortableTextEditor.tsx:3344
 msgid "Loading editor..."
 msgstr "Szerkesztő betöltése..."
+
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:78
+msgid "Loading enrollments"
+msgstr ""
 
 #: packages/admin/src/components/MenuEditor.tsx:342
 msgid "Loading menu..."
@@ -5360,11 +5426,12 @@ msgstr "Menü betöltése..."
 msgid "Loading menus..."
 msgstr "Menük betöltése..."
 
-#: packages/admin/src/routes/shop.tsx:1364
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:194
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:104
 msgid "Loading order details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1282
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:22
 msgid "Loading orders"
 msgstr ""
 
@@ -5380,7 +5447,7 @@ msgstr ""
 msgid "Loading redirects..."
 msgstr "Átirányítások betöltése..."
 
-#: packages/admin/src/routes/shop.tsx:310
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:57
 msgid "Loading reservations"
 msgstr ""
 
@@ -5389,7 +5456,7 @@ msgstr ""
 msgid "Loading sections..."
 msgstr "Szakaszok betöltése..."
 
-#: packages/admin/src/routes/shop.tsx:156
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:86
 msgid "Loading services"
 msgstr ""
 
@@ -5404,11 +5471,11 @@ msgstr "Beállítások betöltése..."
 msgid "Loading setup..."
 msgstr "Beállítás betöltése..."
 
-#: packages/admin/src/routes/shop.tsx:647
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:39
 msgid "Loading store settings"
 msgstr ""
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1054
+#: packages/admin/src/components/TaxonomyManager.tsx:1074
 msgid "Loading terms..."
 msgstr "Kifejezések betöltése..."
 
@@ -5416,10 +5483,10 @@ msgstr "Kifejezések betöltése..."
 msgid "Loading widgets..."
 msgstr "Widgetek betöltése..."
 
-#: packages/admin/src/components/ContentList.tsx:627
-#: packages/admin/src/components/ContentList.tsx:724
-#: packages/admin/src/components/ContentList.tsx:753
-#: packages/admin/src/components/ContentList.tsx:782
+#: packages/admin/src/components/ContentList.tsx:639
+#: packages/admin/src/components/ContentList.tsx:737
+#: packages/admin/src/components/ContentList.tsx:766
+#: packages/admin/src/components/ContentList.tsx:795
 #: packages/admin/src/components/ContentPickerModal.tsx:225
 #: packages/admin/src/components/MarketplaceBrowse.tsx:200
 #: packages/admin/src/components/MediaLibrary.tsx:656
@@ -5432,7 +5499,7 @@ msgstr "Widgetek betöltése..."
 #: packages/admin/src/components/settings/BackupSettings.tsx:154
 #: packages/admin/src/components/settings/EmailSettings.tsx:69
 #: packages/admin/src/components/settings/SecuritySettings.tsx:99
-#: packages/admin/src/components/TaxonomyManager.tsx:1008
+#: packages/admin/src/components/TaxonomyManager.tsx:1028
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:170
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:244
 #: packages/admin/src/components/ThemeMarketplaceDetail.tsx:143
@@ -5445,7 +5512,7 @@ msgstr "Betöltés..."
 msgid "Loading…"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:599
+#: packages/admin/src/components/ContentList.tsx:611
 #: packages/admin/src/components/LocaleSwitcher.tsx:60
 msgid "Locale"
 msgstr "Nyelvi változat"
@@ -5491,7 +5558,7 @@ msgstr "Hosszú szöveg"
 msgid "Lowercase letters, numbers, and hyphens only"
 msgstr "Csak kisbetűk, számok és kötőjelek"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:825
+#: packages/admin/src/components/TaxonomyManager.tsx:845
 msgid "Lowercase letters, numbers, and underscores only, starting with a letter"
 msgstr "Csak kisbetűk, számok és aláhúzások, betűvel kezdve"
 
@@ -5515,7 +5582,7 @@ msgstr "Kezelés"
 
 #. placeholder {0}: taxonomyDef.label.toLowerCase()
 #. placeholder {1}: taxonomyDef.collections.join(", ")
-#: packages/admin/src/components/TaxonomyManager.tsx:1025
+#: packages/admin/src/components/TaxonomyManager.tsx:1045
 msgid "Manage {0} for {1}"
 msgstr "{0} kezelése ehhez: {1}"
 
@@ -5539,6 +5606,10 @@ msgstr "A weboldal navigációs menüinek kezelése"
 msgid "Manage promotional popups for your site"
 msgstr ""
 
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:38
+msgid "Manage scheduled bookings and open enrollments."
+msgstr ""
+
 #: packages/admin/src/components/Redirects.tsx:366
 msgid "Manage URL redirects and view 404 errors."
 msgstr "URL-átirányítások kezelése és 404 hibák megtekintése."
@@ -5548,8 +5619,16 @@ msgstr "URL-átirányítások kezelése és 404 hibák megtekintése."
 msgid "Manage your passkeys and authentication"
 msgstr "Passkeyek és hitelesítés kezelése"
 
-#: packages/admin/src/routes/shop.tsx:373
+#: packages/admin/src/features/shop/navigation/ShopShell.tsx:10
 msgid "Manage your products, delivery settings, and orders."
+msgstr ""
+
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:60
+msgid "Manage your store operations from one place."
+msgstr ""
+
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:26
+msgid "Manage zones, costs, and delivery availability."
 msgstr ""
 
 #: packages/admin/src/components/MediaDetailPanel.tsx:317
@@ -5748,15 +5827,15 @@ msgstr "Menük ({0})"
 msgid "Menus Manage"
 msgstr "Menük kezelése"
 
-#: packages/admin/src/routes/shop.tsx:709
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:103
 msgid "Message introduction"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:786
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:180
 msgid "Message preview"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1857
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:207
 msgid "Message template"
 msgstr ""
 
@@ -5793,11 +5872,11 @@ msgstr "Minimális hossz"
 msgid "Min Value"
 msgstr "Minimális érték"
 
-#: packages/admin/src/routes/shop.tsx:823
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:217
 msgid "Minimum order subtotal"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:594
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:222
 msgid "Minimum subtotal"
 msgstr ""
 
@@ -5821,7 +5900,7 @@ msgstr "Moderálási jelzések"
 msgid "Modify collection schemas"
 msgstr "Gyűjteménysémák módosítása"
 
-#: packages/admin/src/routes/shop.tsx:79
+#: packages/admin/src/features/shop/bookings/helpers.tsx:28
 msgid "Monday"
 msgstr ""
 
@@ -5837,7 +5916,7 @@ msgstr ""
 msgid "More information about {label}"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1463
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:116
 msgid "Most orders"
 msgstr ""
 
@@ -5845,7 +5924,7 @@ msgstr ""
 msgid "Most Popular"
 msgstr "Legnépszerűbb"
 
-#: packages/admin/src/routes/shop.tsx:1463
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:116
 msgid "Most recent"
 msgstr ""
 
@@ -5859,31 +5938,31 @@ msgstr "\"{0}\" mozgatása le"
 msgid "Move \"{0}\" up"
 msgstr "\"{0}\" mozgatása fel"
 
-#: packages/admin/src/components/ContentList.tsx:1253
+#: packages/admin/src/components/ContentList.tsx:1268
 msgid "Move \"{title}\" to trash? You can restore it later."
 msgstr "Áthelyezed a kukába ezt: \"{title}\"? Később visszaállíthatod."
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:251
+#: packages/admin/src/components/TaxonomyManager.tsx:252
 msgid "Move {0} down"
 msgstr ""
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:250
+#: packages/admin/src/components/TaxonomyManager.tsx:251
 msgid "Move {0} down — unavailable, its parent has no translation in this locale"
 msgstr ""
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:238
+#: packages/admin/src/components/TaxonomyManager.tsx:239
 msgid "Move {0} up"
 msgstr ""
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:237
+#: packages/admin/src/components/TaxonomyManager.tsx:238
 msgid "Move {0} up — unavailable, its parent has no translation in this locale"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1244
+#: packages/admin/src/components/ContentList.tsx:1259
 msgid "Move {title} to trash"
 msgstr "{title} áthelyezése a kukába"
 
@@ -5891,19 +5970,19 @@ msgstr "{title} áthelyezése a kukába"
 msgid "Move down"
 msgstr "Mozgatás le"
 
-#: packages/admin/src/components/ContentList.tsx:509
+#: packages/admin/src/components/ContentList.tsx:521
 msgid "Move to trash"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:536
-#: packages/admin/src/components/ContentList.tsx:1266
+#: packages/admin/src/components/ContentList.tsx:548
+#: packages/admin/src/components/ContentList.tsx:1281
 #: packages/admin/src/components/ContentSettingsPanel.tsx:814
 #: packages/admin/src/components/ContentSettingsPanel.tsx:834
 msgid "Move to Trash"
 msgstr "Áthelyezés a kukába"
 
-#: packages/admin/src/components/ContentList.tsx:514
-#: packages/admin/src/components/ContentList.tsx:1251
+#: packages/admin/src/components/ContentList.tsx:526
+#: packages/admin/src/components/ContentList.tsx:1266
 #: packages/admin/src/components/ContentSettingsPanel.tsx:819
 msgid "Move to Trash?"
 msgstr "Áthelyezés a kukába?"
@@ -5912,11 +5991,11 @@ msgstr "Áthelyezés a kukába?"
 msgid "Move up"
 msgstr "Mozgatás fel"
 
-#: packages/admin/src/router.tsx:537
+#: packages/admin/src/router.tsx:550
 msgid "Moved {total} items to draft"
 msgstr ""
 
-#: packages/admin/src/router.tsx:558
+#: packages/admin/src/router.tsx:571
 msgid "Moved {total} items to trash"
 msgstr ""
 
@@ -5939,21 +6018,22 @@ msgstr "My Awesome Blog"
 #: packages/admin/src/components/ContentTypeList.tsx:178
 #: packages/admin/src/components/MarketplaceBrowse.tsx:45
 #: packages/admin/src/components/MenuList.tsx:157
-#: packages/admin/src/components/TaxonomyManager.tsx:567
-#: packages/admin/src/components/TaxonomyManager.tsx:816
-#: packages/admin/src/components/TaxonomyManager.tsx:1048
+#: packages/admin/src/components/TaxonomyManager.tsx:576
+#: packages/admin/src/components/TaxonomyManager.tsx:836
+#: packages/admin/src/components/TaxonomyManager.tsx:1068
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:37
 #: packages/admin/src/components/users/UserDetail.tsx:148
 #: packages/admin/src/components/Widgets.tsx:430
-#: packages/admin/src/routes/shop.tsx:1561
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:224
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:40
 msgid "Name"
 msgstr "Név"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:742
+#: packages/admin/src/components/TaxonomyManager.tsx:762
 msgid "Name and label are required"
 msgstr "A név és a címke kötelező"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:748
+#: packages/admin/src/components/TaxonomyManager.tsx:768
 msgid "Name must start with a letter and contain only lowercase letters, numbers, and underscores"
 msgstr "A névnek betűvel kell kezdődnie, és csak kisbetűket, számokat és aláhúzásokat tartalmazhat"
 
@@ -5966,13 +6046,15 @@ msgstr "Navigáció"
 msgid "Never"
 msgstr "Soha"
 
-#: packages/admin/src/router.tsx:1200
+#: packages/admin/src/router.tsx:1224
 msgid "new"
 msgstr "új"
 
+#: packages/admin/src/features/shop/bookings/helpers.tsx:7
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:10
+#: packages/admin/src/features/shop/orders/helpers.ts:6
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:51
 #: packages/admin/src/routes/bylines.tsx:426
-#: packages/admin/src/routes/shop.tsx:58
-#: packages/admin/src/routes/shop.tsx:1311
 msgid "New"
 msgstr "Új"
 
@@ -5985,7 +6067,7 @@ msgstr "ÚJ"
 msgid "New {0}"
 msgstr "Új {0}"
 
-#: packages/admin/src/components/ContentEditor.tsx:678
+#: packages/admin/src/components/ContentEditor.tsx:684
 msgid "New {itemLabel}"
 msgstr ""
 
@@ -6002,13 +6084,13 @@ msgstr "Új gyűjtemény"
 msgid "New Content Type"
 msgstr "Új tartalomtípus"
 
-#: packages/admin/src/routes/shop.tsx:494
-#: packages/admin/src/routes/shop.tsx:552
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:122
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:180
 msgid "New coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1104
-#: packages/admin/src/routes/shop.tsx:1141
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:150
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:190
 msgid "New delivery zone"
 msgstr ""
 
@@ -6033,7 +6115,7 @@ msgstr "Új szakasz"
 msgid "new tab"
 msgstr "új lap"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1038
+#: packages/admin/src/components/TaxonomyManager.tsx:1058
 msgid "New Taxonomy"
 msgstr "Új taxonómia"
 
@@ -6049,7 +6131,7 @@ msgstr "Új ablak"
 msgid "Newest"
 msgstr "Legújabb"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:570
+#: packages/admin/src/components/TaxonomyManager.tsx:579
 msgid "News"
 msgstr "Hírek"
 
@@ -6058,7 +6140,7 @@ msgid "Next"
 msgstr "Következő"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:372
-#: packages/admin/src/components/ContentList.tsx:712
+#: packages/admin/src/components/ContentList.tsx:725
 msgid "Next page"
 msgstr "Következő oldal"
 
@@ -6066,7 +6148,7 @@ msgstr "Következő oldal"
 msgid "Next screenshot"
 msgstr "Következő képernyőkép"
 
-#: packages/admin/src/components/ContentList.tsx:1289
+#: packages/admin/src/components/ContentList.tsx:1304
 #: packages/admin/src/components/users/UserDetail.tsx:236
 #: packages/admin/src/routes/byline-schema.tsx:422
 msgid "No"
@@ -6082,12 +6164,12 @@ msgid "No {0} available."
 msgstr "Nincs elérhető {0}."
 
 #. placeholder {0}: collectionLabel.toLowerCase()
-#: packages/admin/src/components/ContentList.tsx:638
+#: packages/admin/src/components/ContentList.tsx:650
 msgid "No {0} yet."
 msgstr "Még nincs {0}."
 
 #. placeholder {0}: taxonomyDef.label.toLowerCase()
-#: packages/admin/src/components/TaxonomyManager.tsx:1057
+#: packages/admin/src/components/TaxonomyManager.tsx:1077
 msgid "No {0} yet. Create one to get started."
 msgstr "Még nincs {0}. Hozz létre egyet a kezdéshez."
 
@@ -6108,7 +6190,7 @@ msgstr "Még nincsenek API tokenek. Hozz létre egyet a kezdéshez."
 msgid "No approved comments yet."
 msgstr "Még nincs jóváhagyott hozzászólás."
 
-#: packages/admin/src/routes/shop.tsx:160
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:90
 msgid "No bookable services found."
 msgstr ""
 
@@ -6169,7 +6251,7 @@ msgstr ""
 msgid "No content types yet."
 msgstr "Még nincsenek tartalomtípusok."
 
-#: packages/admin/src/routes/shop.tsx:543
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:171
 msgid "No coupons match your search."
 msgstr ""
 
@@ -6177,11 +6259,11 @@ msgstr ""
 msgid "No custom fields yet"
 msgstr "Még nincsenek egyedi mezők"
 
-#: packages/admin/src/routes/shop.tsx:1491
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:144
 msgid "No customers match your search."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1132
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:180
 msgid "No delivery zones match your search."
 msgstr ""
 
@@ -6299,11 +6381,15 @@ msgstr "Nincs minimum"
 msgid "No moderation (auto-approve all)"
 msgstr "Nincs moderálás (minden automatikusan jóváhagyva)"
 
-#: packages/admin/src/routes/shop.tsx:1345
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:81
+msgid "No open enrollments found."
+msgstr ""
+
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:85
 msgid "No orders match your filters."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1621
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:100
 msgid "No orders yet."
 msgstr ""
 
@@ -6355,7 +6441,7 @@ msgstr "Nincs friss tevékenység"
 msgid "No redirects yet"
 msgstr "Még nincsenek átirányítások"
 
-#: packages/admin/src/routes/shop.tsx:312
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:59
 msgid "No reservations found."
 msgstr ""
 
@@ -6364,8 +6450,8 @@ msgstr ""
 msgid "No results"
 msgstr "Nincs találat"
 
-#: packages/admin/src/components/ContentList.tsx:635
-#: packages/admin/src/components/ContentList.tsx:654
+#: packages/admin/src/components/ContentList.tsx:647
+#: packages/admin/src/components/ContentList.tsx:666
 msgid "No results for \"{activeSearch}\""
 msgstr "Nincs találat erre: \"{activeSearch}\""
 
@@ -6396,12 +6482,12 @@ msgstr "Nem találhatók szakaszok"
 msgid "No sections yet"
 msgstr "Még nincsenek szakaszok"
 
-#: packages/admin/src/routes/shop.tsx:217
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:176
 msgid "No services match your search."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:306
-#: packages/admin/src/routes/shop.tsx:350
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:53
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:102
 msgid "No show"
 msgstr ""
 
@@ -6429,8 +6515,8 @@ msgstr "Még nincsenek widgetterületek. Hozz létre egyet a kezdéshez."
 msgid "None"
 msgstr "Nincs"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:596
 #: packages/admin/src/components/TaxonomyManager.tsx:605
+#: packages/admin/src/components/TaxonomyManager.tsx:614
 msgid "None (top level)"
 msgstr "Nincs (felső szint)"
 
@@ -6438,19 +6524,21 @@ msgstr "Nincs (felső szint)"
 msgid "Not compatible with this environment"
 msgstr "Nem kompatibilis ezzel a környezettel"
 
-#: packages/admin/src/routes/shop.tsx:65
-#: packages/admin/src/routes/shop.tsx:1319
-#: packages/admin/src/routes/shop.tsx:1796
+#: packages/admin/src/features/shop/bookings/helpers.tsx:14
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:17
+#: packages/admin/src/features/shop/orders/helpers.ts:13
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:146
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:59
 msgid "Not delivered"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1288
+#: packages/admin/src/components/ContentList.tsx:1303
 #: packages/admin/src/components/PluginSettings.tsx:397
-#: packages/admin/src/routes/shop.tsx:208
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:155
 msgid "Not set"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1566
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:45
 msgid "Notes"
 msgstr ""
 
@@ -6486,7 +6574,7 @@ msgstr "OG Image"
 msgid "on a custom hostname is not treated as secure, even on loopback."
 msgstr "egyéni hosztnéven nem számít biztonságosnak, még loopback esetén sem."
 
-#: packages/admin/src/routes/shop.tsx:207
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:150
 msgid "Online"
 msgstr ""
 
@@ -6510,6 +6598,11 @@ msgstr "Ehhez a mezőhöz csak a felsorolt MIME-típusok fogadhatók el."
 msgid "Oops!"
 msgstr "Hoppá!"
 
+#: packages/admin/src/features/shop/bookings/BookingsPanel.tsx:24
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:61
+msgid "Open enrollments"
+msgstr ""
+
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:379
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:380
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:568
@@ -6519,8 +6612,12 @@ msgstr "Hoppá!"
 msgid "Open in new tab"
 msgstr "Megnyitás új lapon"
 
-#: packages/admin/src/routes/shop.tsx:1580
-#: packages/admin/src/routes/shop.tsx:1880
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:95
+msgid "Open public store"
+msgstr ""
+
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:59
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:230
 msgid "Open WhatsApp"
 msgstr ""
 
@@ -6528,7 +6625,7 @@ msgstr ""
 msgid "Open WordPress Profile"
 msgstr "WordPress profil megnyitása"
 
-#: packages/admin/src/routes/shop.tsx:1880
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:230
 msgid "Opening..."
 msgstr ""
 
@@ -6572,11 +6669,11 @@ msgstr "Opcionális képaláírás a kép alatt"
 msgid "Optional caption for display"
 msgstr "Opcionális megjelenített képaláírás"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:621
+#: packages/admin/src/components/TaxonomyManager.tsx:630
 msgid "Optional description"
 msgstr "Opcionális leírás"
 
-#: packages/admin/src/routes/shop.tsx:728
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:122
 msgid "Optional message used when the customer sends the order to WhatsApp."
 msgstr ""
 
@@ -6616,30 +6713,31 @@ msgstr "Vagy tölts fel egy exportfájlt"
 msgid "or upload directly"
 msgstr "vagy töltsd fel közvetlenül"
 
-#: packages/admin/src/routes/shop.tsx:323
-#: packages/admin/src/routes/shop.tsx:970
-#: packages/admin/src/routes/shop.tsx:1329
-#: packages/admin/src/routes/shop.tsx:1731
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:70
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:182
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:81
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:69
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:366
 msgid "Order"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1353
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:93
 msgid "Order details"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1368
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:108
 msgid "Order details unavailable."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1619
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:98
 msgid "Order history"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1861
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:211
 msgid "Order received"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:716
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:110
 msgid "Order received template"
 msgstr ""
 
@@ -6647,9 +6745,10 @@ msgstr ""
 msgid "Order saved"
 msgstr "Sorrend mentve"
 
-#: packages/admin/src/routes/shop.tsx:380
-#: packages/admin/src/routes/shop.tsx:1474
-#: packages/admin/src/routes/shop.tsx:1597
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:76
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:127
+#: packages/admin/src/features/shop/navigation/items.ts:13
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:19
 msgid "Orders"
 msgstr ""
 
@@ -6681,7 +6780,7 @@ msgstr "Tulajdonjog"
 msgid "Package"
 msgstr "Csomag"
 
-#: packages/admin/src/router.tsx:2301
+#: packages/admin/src/router.tsx:2371
 msgid "Page Not Found"
 msgstr "Az oldal nem található"
 
@@ -6695,7 +6794,7 @@ msgid "Paragraph"
 msgstr "Bekezdés"
 
 #: packages/admin/src/components/MenuEditor.tsx:615
-#: packages/admin/src/components/TaxonomyManager.tsx:592
+#: packages/admin/src/components/TaxonomyManager.tsx:601
 msgid "Parent"
 msgstr "Szülő"
 
@@ -6792,32 +6891,32 @@ msgstr "URL-ek generálásához használt minta, pl. /blog/{0}"
 msgid "Pattern must include a {0} placeholder"
 msgstr "A mintának tartalmaznia kell egy {0} helyőrzőt"
 
-#: packages/admin/src/routes/shop.tsx:1331
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:71
 msgid "Payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1674
-#: packages/admin/src/routes/shop.tsx:1862
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:24
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:212
 msgid "Payment confirmed"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:731
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:125
 msgid "Payment confirmed template"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:869
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:263
 msgid "Payment gateway"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:793
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:187
 msgid "Payment instructions"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:857
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:251
 msgid "Payment methods"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1756
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:106
 msgid "Payment status"
 msgstr ""
 
@@ -6830,9 +6929,11 @@ msgid "pending"
 msgstr "függőben"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:198
-#: packages/admin/src/routes/shop.tsx:67
-#: packages/admin/src/routes/shop.tsx:1318
-#: packages/admin/src/routes/shop.tsx:1791
+#: packages/admin/src/features/shop/bookings/helpers.tsx:16
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:19
+#: packages/admin/src/features/shop/orders/helpers.ts:15
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:141
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:58
 msgid "Pending"
 msgstr "Függőben"
 
@@ -6840,21 +6941,30 @@ msgstr "Függőben"
 msgid "Pending changes"
 msgstr "Függőben lévő módosítások"
 
-#: packages/admin/src/routes/shop.tsx:302
-#: packages/admin/src/routes/shop.tsx:345
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:49
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:97
 msgid "Pending payment"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:583
-#: packages/admin/src/routes/shop.tsx:586
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:51
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:72
+msgid "Pending schedule"
+msgstr ""
+
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:91
+msgid "People"
+msgstr ""
+
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:211
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:214
 msgid "Percentage"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1432
+#: packages/admin/src/components/ContentList.tsx:1447
 msgid "Permanently delete \"{title}\"? This cannot be undone."
 msgstr "Véglegesen törlöd ezt: \"{title}\"? Ez nem vonható vissza."
 
-#: packages/admin/src/components/ContentList.tsx:1421
+#: packages/admin/src/components/ContentList.tsx:1436
 msgid "Permanently delete {title}"
 msgstr "{title} végleges törlése"
 
@@ -6862,8 +6972,9 @@ msgstr "{title} végleges törlése"
 msgid "Permissions"
 msgstr "Engedélyek"
 
-#: packages/admin/src/routes/shop.tsx:1472
-#: packages/admin/src/routes/shop.tsx:1608
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:225
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:87
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:125
 msgid "Phone"
 msgstr ""
 
@@ -6905,7 +7016,7 @@ msgstr "Adj meg érvényes e-mail címet"
 msgid "Please enter a valid URL"
 msgstr "Adj meg érvényes URL-t"
 
-#: packages/admin/src/routes/shop.tsx:982
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:378
 msgid "Plin"
 msgstr ""
 
@@ -7026,7 +7137,7 @@ msgstr ""
 msgid "Points search engines to the original version of this page, if it's duplicated from another URL"
 msgstr "A keresőmotorokat az oldal eredeti verziójára irányítja, ha az oldal egy másik URL-ről duplikált"
 
-#: packages/admin/src/components/ContentEditor.tsx:1558
+#: packages/admin/src/components/ContentEditor.tsx:1578
 msgid "Porcentaje de descuento"
 msgstr ""
 
@@ -7051,22 +7162,24 @@ msgstr "Bejegyzések oldalanként"
 msgid "Pre-release"
 msgstr "Előzetes kiadás"
 
-#: packages/admin/src/components/ContentEditor.tsx:1567
+#: packages/admin/src/components/ContentEditor.tsx:1587
 msgid "Precio de promoción"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1549
+#: packages/admin/src/components/ContentEditor.tsx:1569
 msgid "Precio regular"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:817
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:211
 msgid "Preparation time"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:60
-#: packages/admin/src/routes/shop.tsx:1313
-#: packages/admin/src/routes/shop.tsx:1793
-#: packages/admin/src/routes/shop.tsx:1863
+#: packages/admin/src/features/shop/bookings/helpers.tsx:9
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:12
+#: packages/admin/src/features/shop/orders/helpers.ts:8
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:143
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:213
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:53
 msgid "Preparing"
 msgstr ""
 
@@ -7074,7 +7187,7 @@ msgstr ""
 msgid "Preparing registration..."
 msgstr "Regisztráció előkészítése..."
 
-#: packages/admin/src/routes/shop.tsx:742
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:136
 msgid "Preparing template"
 msgstr ""
 
@@ -7087,7 +7200,7 @@ msgstr "WordPress-fájlok letöltésének előkészítése..."
 msgid "Preparing..."
 msgstr "Előkészítés..."
 
-#: packages/admin/src/routes/shop.tsx:1762
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:112
 msgid "Press once to confirm the payment."
 msgstr ""
 
@@ -7114,7 +7227,7 @@ msgid "Previous"
 msgstr "Előző"
 
 #: packages/admin/src/components/comments/CommentInbox.tsx:353
-#: packages/admin/src/components/ContentList.tsx:700
+#: packages/admin/src/components/ContentList.tsx:713
 msgid "Previous page"
 msgstr "Előző oldal"
 
@@ -7142,12 +7255,16 @@ msgstr ""
 msgid "Processing..."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:900
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:296
 msgid "Production"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1744
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:94
 msgid "Products"
+msgstr ""
+
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:192
+msgid "Products in the order"
 msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:119
@@ -7171,7 +7288,7 @@ msgstr ""
 msgid "Promotions"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:881
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:277
 msgid "Provider"
 msgstr ""
 
@@ -7179,15 +7296,19 @@ msgstr ""
 msgid "Provider:"
 msgstr "Szolgáltató:"
 
-#: packages/admin/src/routes/shop.tsx:904
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:300
 msgid "Public key"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:909
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:305
 msgid "Public key from your provider"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:485
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:88
+msgid "Public store verification"
+msgstr ""
+
+#: packages/admin/src/components/ContentList.tsx:497
 #: packages/admin/src/components/ContentSettingsPanel.tsx:198
 #: packages/admin/src/components/ContentSettingsPanel.tsx:205
 #: packages/admin/src/components/ContentSettingsPanel.tsx:485
@@ -7199,11 +7320,11 @@ msgstr "Publikálás"
 msgid "Publish date"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:832
-#: packages/admin/src/components/ContentList.tsx:843
+#: packages/admin/src/components/ContentList.tsx:845
+#: packages/admin/src/components/ContentList.tsx:856
 #: packages/admin/src/components/ContentStatusBadge.tsx:59
 #: packages/admin/src/components/Dashboard.tsx:297
-#: packages/admin/src/router.tsx:1089
+#: packages/admin/src/router.tsx:1113
 msgid "Published"
 msgstr "Publikálva"
 
@@ -7212,7 +7333,7 @@ msgstr "Publikálva"
 msgid "Published {0}"
 msgstr "Publikálva: {0}"
 
-#: packages/admin/src/router.tsx:514
+#: packages/admin/src/router.tsx:527
 msgid "Published {total} items"
 msgstr ""
 
@@ -7293,8 +7414,10 @@ msgstr "Olvasás"
 msgid "Ready"
 msgstr "Kész"
 
-#: packages/admin/src/routes/shop.tsx:61
-#: packages/admin/src/routes/shop.tsx:1314
+#: packages/admin/src/features/shop/bookings/helpers.tsx:10
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:13
+#: packages/admin/src/features/shop/orders/helpers.ts:9
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:54
 msgid "Ready for delivery"
 msgstr ""
 
@@ -7343,7 +7466,8 @@ msgid "Redo"
 msgstr "Újra"
 
 #: packages/admin/src/components/FieldEditor.tsx:245
-#: packages/admin/src/routes/shop.tsx:1565
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:229
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:44
 msgid "Reference"
 msgstr "Hivatkozás"
 
@@ -7363,6 +7487,10 @@ msgstr "Regisztráció"
 #: packages/admin/src/components/settings/SecuritySettings.tsx:182
 msgid "Register Passkey"
 msgstr "Passkey regisztrálása"
+
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:94
+msgid "Registered"
+msgstr ""
 
 #: packages/admin/src/components/comments/CommentDetail.tsx:83
 msgid "Registered user"
@@ -7413,7 +7541,7 @@ msgstr "{0} eltávolítása"
 msgid "Remove {entry}"
 msgstr "{entry} eltávolítása"
 
-#: packages/admin/src/components/ContentEditor.tsx:1854
+#: packages/admin/src/components/ContentEditor.tsx:1874
 msgid "Remove {label}"
 msgstr "{label} eltávolítása"
 
@@ -7571,9 +7699,11 @@ msgstr "Akadálymentességhez kötelező. Leírja a képet a képernyőolvasók 
 msgid "Requires EmDash {0}"
 msgstr "EmDash {0} szükséges"
 
-#: packages/admin/src/routes/shop.tsx:66
-#: packages/admin/src/routes/shop.tsx:1320
-#: packages/admin/src/routes/shop.tsx:1797
+#: packages/admin/src/features/shop/bookings/helpers.tsx:15
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:18
+#: packages/admin/src/features/shop/orders/helpers.ts:14
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:147
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:60
 msgid "Rescheduled"
 msgstr ""
 
@@ -7585,7 +7715,11 @@ msgstr "E-mail újraküldése"
 msgid "Resend in {resendCooldown}s"
 msgstr "Újraküldés {resendCooldown} mp múlva"
 
-#: packages/admin/src/routes/shop.tsx:292
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:149
+msgid "Reservation details"
+msgstr ""
+
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:39
 msgid "Reservations"
 msgstr ""
 
@@ -7602,7 +7736,7 @@ msgstr ""
 msgid "Restore"
 msgstr "Visszaállítás"
 
-#: packages/admin/src/components/ContentList.tsx:1409
+#: packages/admin/src/components/ContentList.tsx:1424
 msgid "Restore {title}"
 msgstr "{title} visszaállítása"
 
@@ -7632,12 +7766,12 @@ msgstr "Visszaállítás..."
 #: packages/admin/src/components/PluginFieldErrorBoundary.tsx:44
 #: packages/admin/src/components/ThemeMarketplaceBrowse.tsx:122
 #: packages/admin/src/lib/content-editor-panels.tsx:201
-#: packages/admin/src/router.tsx:2289
+#: packages/admin/src/router.tsx:2359
 #: packages/admin/src/routes/byline-schema.tsx:280
 msgid "Retry"
 msgstr "Újrapróbálkozás"
 
-#: packages/admin/src/routes/shop.tsx:938
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:334
 msgid "Return URL"
 msgstr ""
 
@@ -7645,7 +7779,7 @@ msgstr ""
 msgid "Reusable content blocks you can insert into any content"
 msgstr "Bármely tartalomba beszúrható újrahasznosítható tartalomblokkok"
 
-#: packages/admin/src/router.tsx:1127
+#: packages/admin/src/router.tsx:1151
 msgid "Reverted to published version"
 msgstr "Visszaállítva a publikált verzióra"
 
@@ -7653,13 +7787,21 @@ msgstr "Visszaállítva a publikált verzióra"
 msgid "Review"
 msgstr "Áttekintés"
 
-#: packages/admin/src/routes/shop.tsx:293
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:40
 msgid "Review and update service bookings."
 msgstr ""
 
 #: packages/admin/src/components/CapabilityConsentDialog.tsx:79
 msgid "Review New Permissions"
 msgstr "Új engedélyek áttekintése"
+
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:20
+msgid "Review payments, delivery, and order status."
+msgstr ""
+
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:63
+msgid "Review people registered for services without a fixed date."
+msgstr ""
 
 #: packages/admin/src/components/RevisionHistory.tsx:129
 msgid "Revision restored"
@@ -7769,11 +7911,11 @@ msgstr "Rust"
 msgid "Same window"
 msgstr "Azonos ablak"
 
-#: packages/admin/src/routes/shop.tsx:971
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:367
 msgid "Sample product"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:84
+#: packages/admin/src/features/shop/bookings/helpers.tsx:33
 msgid "Saturday"
 msgstr ""
 
@@ -7812,11 +7954,11 @@ msgstr "Módosítások mentése"
 msgid "Save content as draft before publishing"
 msgstr "Tartalom mentése vázlatként publikálás előtt"
 
-#: packages/admin/src/routes/shop.tsx:615
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:243
 msgid "Save coupon"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:870
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:265
 msgid "Save gateway parameters for a future integration. Orders continue through WhatsApp until a gateway connector is enabled."
 msgstr ""
 
@@ -7824,11 +7966,12 @@ msgstr ""
 msgid "Save name"
 msgstr "Név mentése"
 
-#: packages/admin/src/routes/shop.tsx:265
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:306
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:212
 msgid "Save schedule"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:956
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:352
 msgid "Save settings"
 msgstr ""
 
@@ -7837,7 +7980,7 @@ msgstr ""
 msgid "Save Settings"
 msgstr "Beállítások mentése"
 
-#: packages/admin/src/routes/shop.tsx:1220
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:267
 msgid "Save zone"
 msgstr ""
 
@@ -7858,18 +8001,18 @@ msgstr "\"{0}\" mentve."
 #: packages/admin/src/components/PluginSettings.tsx:265
 #: packages/admin/src/components/Redirects.tsx:188
 #: packages/admin/src/components/SaveButton.tsx:33
-#: packages/admin/src/components/TaxonomyManager.tsx:660
+#: packages/admin/src/components/TaxonomyManager.tsx:680
 #: packages/admin/src/components/users/UserDetail.tsx:311
 #: packages/admin/src/components/Widgets.tsx:983
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:243
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:267
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:352
 #: packages/admin/src/routes/bylines.tsx:579
-#: packages/admin/src/routes/shop.tsx:615
-#: packages/admin/src/routes/shop.tsx:956
-#: packages/admin/src/routes/shop.tsx:1220
 msgid "Saving..."
 msgstr "Mentés..."
 
 #: packages/admin/src/components/BylineFieldEditor.tsx:318
-#: packages/admin/src/routes/shop.tsx:265
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:306
 msgid "Saving…"
 msgstr "Mentés…"
 
@@ -7883,7 +8026,9 @@ msgid "SBOM · {0}"
 msgstr "SBOM · {0}"
 
 #: packages/admin/src/components/ContentSettingsPanel.tsx:572
-#: packages/admin/src/routes/shop.tsx:210
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:167
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:134
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:164
 msgid "Schedule"
 msgstr "Ütemezés"
 
@@ -7895,16 +8040,22 @@ msgstr "Ütemezés ekkorra"
 msgid "Schedule for later"
 msgstr "Ütemezés későbbre"
 
-#: packages/admin/src/routes/shop.tsx:221
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:184
 msgid "Schedule service availability"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:834
+#: packages/admin/src/components/ContentList.tsx:847
 #: packages/admin/src/components/ContentStatusBadge.tsx:63
 #: packages/admin/src/components/Promotions.tsx:177
-#: packages/admin/src/router.tsx:1147
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:52
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:73
+#: packages/admin/src/router.tsx:1171
 msgid "Scheduled"
 msgstr "Ütemezve"
+
+#: packages/admin/src/features/shop/bookings/BookingsPanel.tsx:21
+msgid "Scheduled bookings"
+msgstr ""
 
 #. placeholder {0}: formatScheduledDate(item.scheduledAt)
 #: packages/admin/src/components/ContentSettingsPanel.tsx:546
@@ -7977,16 +8128,16 @@ msgid "Search"
 msgstr "Keresés"
 
 #. placeholder {0}: collectionLabel.toLowerCase()
-#: packages/admin/src/components/ContentList.tsx:419
+#: packages/admin/src/components/ContentList.tsx:431
 msgid "Search {0}"
 msgstr "{0} keresése"
 
 #. placeholder {0}: collectionLabel.toLowerCase()
-#: packages/admin/src/components/ContentList.tsx:418
+#: packages/admin/src/components/ContentList.tsx:430
 msgid "Search {0}..."
 msgstr "{0} keresése..."
 
-#: packages/admin/src/routes/shop.tsx:489
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:117
 msgid "Search by coupon code"
 msgstr ""
 
@@ -7999,19 +8150,19 @@ msgstr "Keresés fájlnév alapján..."
 msgid "Search by name or email..."
 msgstr "Keresés név vagy e-mail alapján..."
 
-#: packages/admin/src/routes/shop.tsx:1434
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:87
 msgid "Search by name, phone, email, or district"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1299
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:39
 msgid "Search by order number"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:187
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:120
 msgid "Search by service name"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1099
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:144
 msgid "Search by zone or district"
 msgstr ""
 
@@ -8041,15 +8192,15 @@ msgstr "Hozzászólás keresése..."
 msgid "Search content..."
 msgstr "Tartalom keresése..."
 
-#: packages/admin/src/routes/shop.tsx:488
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:116
 msgid "Search coupons"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1433
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:86
 msgid "Search customers"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1098
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:143
 msgid "Search delivery zones"
 msgstr ""
 
@@ -8071,7 +8222,7 @@ msgstr ""
 msgid "Search media"
 msgstr "Média keresése"
 
-#: packages/admin/src/routes/shop.tsx:1298
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:38
 msgid "Search orders"
 msgstr ""
 
@@ -8094,7 +8245,7 @@ msgstr "Pluginek keresése..."
 msgid "Search sections..."
 msgstr "Szakaszok keresése..."
 
-#: packages/admin/src/routes/shop.tsx:187
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:119
 msgid "Search services"
 msgstr ""
 
@@ -8140,15 +8291,15 @@ msgstr ""
 msgid "Secondary hover color"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:912
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:308
 msgid "Secret key"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:921
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:317
 msgid "Secret key from your provider"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:920
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:316
 msgid "Secret key saved; enter a new one to replace it"
 msgstr ""
 
@@ -8249,13 +8400,13 @@ msgid "Select"
 msgstr "Kiválasztás"
 
 #: packages/admin/src/components/BlockKitMediaPickerField.tsx:140
-#: packages/admin/src/components/ContentEditor.tsx:1866
-#: packages/admin/src/components/ContentEditor.tsx:1882
+#: packages/admin/src/components/ContentEditor.tsx:1886
+#: packages/admin/src/components/ContentEditor.tsx:1902
 #: packages/admin/src/components/ImageFieldRenderer.tsx:273
 msgid "Select {label}"
 msgstr "{label} kiválasztása"
 
-#: packages/admin/src/components/ContentList.tsx:1141
+#: packages/admin/src/components/ContentList.tsx:1156
 msgid "Select {title}"
 msgstr ""
 
@@ -8271,11 +8422,11 @@ msgstr "Menü kiválasztása..."
 msgid "Select all"
 msgstr "Összes kijelölése"
 
-#: packages/admin/src/components/ContentList.tsx:567
+#: packages/admin/src/components/ContentList.tsx:579
 msgid "Select all on this page"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:228
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:203
 msgid "Select at least one available day."
 msgstr ""
 
@@ -8297,7 +8448,7 @@ msgstr "Alapértelmezett közösségi kép kiválasztása"
 msgid "Select Favicon"
 msgstr "Favicon kiválasztása"
 
-#: packages/admin/src/components/ContentEditor.tsx:1870
+#: packages/admin/src/components/ContentEditor.tsx:1890
 msgid "Select file"
 msgstr "Fájl kiválasztása"
 
@@ -8320,7 +8471,7 @@ msgstr "Kép kiválasztása"
 msgid "Select Image"
 msgstr "Kép kiválasztása"
 
-#: packages/admin/src/routes/shop.tsx:888
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:284
 msgid "Select later"
 msgstr ""
 
@@ -8341,7 +8492,7 @@ msgstr "OG kép kiválasztása"
 msgid "Select OG Image"
 msgstr "OG kép kiválasztása"
 
-#: packages/admin/src/routes/shop.tsx:245
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:233
 msgid "Select only the days when this service is available. Saturday and Sunday can be left unselected."
 msgstr ""
 
@@ -8439,22 +8590,29 @@ msgstr "SEO beállítások mentve"
 msgid "SEO Title"
 msgstr "SEO cím"
 
-#: packages/admin/src/router.tsx:799
-#: packages/admin/src/routes/shop.tsx:194
-#: packages/admin/src/routes/shop.tsx:319
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:130
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:89
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:66
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:163
+#: packages/admin/src/router.tsx:818
 msgid "Service"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1156
+#: packages/admin/src/components/ContentEditor.tsx:1174
 msgid "Service description"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1157
+#: packages/admin/src/components/ContentEditor.tsx:1175
 msgid "Service image"
 msgstr ""
 
-#: packages/admin/src/components/ContentEditor.tsx:1155
+#: packages/admin/src/components/ContentEditor.tsx:1173
 msgid "Service name"
+msgstr ""
+
+#: packages/admin/src/router.tsx:651
+#: packages/admin/src/router.tsx:1364
+msgid "Services"
 msgstr ""
 
 #: packages/admin/src/components/editor/ImageDetailPanel.tsx:316
@@ -8475,7 +8633,7 @@ msgstr "Nyelv beállítása (jelenlegi: {label})"
 msgid "Set to 0 to never close comments automatically."
 msgstr "Állítsd 0-ra, ha soha ne záródjanak le automatikusan a hozzászólások."
 
-#: packages/admin/src/components/ContentList.tsx:495
+#: packages/admin/src/components/ContentList.tsx:507
 msgid "Set to draft"
 msgstr ""
 
@@ -8488,8 +8646,8 @@ msgid "Setting up..."
 msgstr "Beállítás..."
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:234
-#: packages/admin/src/components/ContentEditor.tsx:859
-#: packages/admin/src/components/ContentEditor.tsx:1092
+#: packages/admin/src/components/ContentEditor.tsx:865
+#: packages/admin/src/components/ContentEditor.tsx:1098
 #: packages/admin/src/components/ContentTypeEditor.tsx:382
 #: packages/admin/src/components/Header.tsx:101
 #: packages/admin/src/components/PluginManager.tsx:472
@@ -8520,7 +8678,7 @@ msgstr "A beállítás sikertelen"
 msgid "Share this link with the invited user"
 msgstr "Oszd meg ezt a linket a meghívott felhasználóval"
 
-#: packages/admin/src/routes/shop.tsx:797
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:191
 msgid "Share your Yape, Plin, or bank transfer instructions."
 msgstr ""
 
@@ -8555,6 +8713,10 @@ msgstr ""
 
 #: packages/admin/src/components/Promotions.tsx:343
 msgid "Show on"
+msgstr ""
+
+#: packages/admin/src/components/TaxonomyManager.tsx:642
+msgid "Show on home"
 msgstr ""
 
 #: packages/admin/src/components/Widgets.tsx:138
@@ -8696,7 +8858,7 @@ msgstr "Kihagyva"
 #: packages/admin/src/components/FieldEditor.tsx:444
 #: packages/admin/src/components/SectionEditor.tsx:259
 #: packages/admin/src/components/Sections.tsx:184
-#: packages/admin/src/components/TaxonomyManager.tsx:576
+#: packages/admin/src/components/TaxonomyManager.tsx:585
 #: packages/admin/src/routes/byline-schema.tsx:237
 #: packages/admin/src/routes/bylines.tsx:486
 msgid "Slug"
@@ -8749,7 +8911,7 @@ msgstr "Egyes tartalomtípusok nem importálhatók"
 msgid "Something went wrong"
 msgstr "Valami hiba történt"
 
-#: packages/admin/src/routes/shop.tsx:1460
+#: packages/admin/src/features/shop/customers/CustomersPanel.tsx:113
 msgid "Sort customers"
 msgstr ""
 
@@ -8801,7 +8963,8 @@ msgstr "SQL"
 msgid "Square"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:239
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:216
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:189
 msgid "Start date"
 msgstr ""
 
@@ -8813,25 +8976,28 @@ msgstr ""
 msgid "Start Import"
 msgstr "Import indítása"
 
-#: packages/admin/src/components/ContentEditor.tsx:1277
+#: packages/admin/src/components/ContentEditor.tsx:1297
 #: packages/admin/src/components/PortableTextEditor.tsx:2579
 #: packages/admin/src/components/PortableTextEditor.tsx:2580
 msgid "Start writing, or type '/' for commands"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:257
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:268
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:166
 msgid "Starts at"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:592
+#: packages/admin/src/components/ContentList.tsx:604
 #: packages/admin/src/components/ContentSettingsPanel.tsx:518
 #: packages/admin/src/components/ContentTypeEditor.tsx:117
 #: packages/admin/src/components/Promotions.tsx:121
 #: packages/admin/src/components/Redirects.tsx:480
 #: packages/admin/src/components/users/UserList.tsx:104
-#: packages/admin/src/routes/shop.tsx:322
-#: packages/admin/src/routes/shop.tsx:1114
-#: packages/admin/src/routes/shop.tsx:1330
+#: packages/admin/src/features/shop/bookings/OpenEnrollmentsPanel.tsx:93
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:69
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:181
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:161
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:70
 msgid "Status"
 msgstr "Állapot"
 
@@ -8847,7 +9013,7 @@ msgstr ""
 msgid "Storage available"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:969
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:365
 msgid "Store"
 msgstr ""
 
@@ -8855,15 +9021,16 @@ msgstr ""
 msgid "Store a daily backup in your site's storage bucket. Old backups are removed automatically."
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:673
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:65
 msgid "Store name"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:378
+#: packages/admin/src/features/shop/navigation/items.ts:11
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:43
 msgid "Store settings"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:643
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:35
 msgid "Store settings saved"
 msgstr ""
 
@@ -8905,7 +9072,7 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:78
+#: packages/admin/src/features/shop/bookings/helpers.tsx:27
 msgid "Sunday"
 msgstr ""
 
@@ -8960,7 +9127,7 @@ msgstr "Alcím"
 
 #: packages/admin/src/components/AdminCommandPalette.tsx:201
 #: packages/admin/src/components/Widgets.tsx:143
-#: packages/admin/src/router.tsx:616
+#: packages/admin/src/router.tsx:634
 msgid "Tags"
 msgstr "Címkék"
 
@@ -8974,7 +9141,7 @@ msgstr "Címkék ({0})"
 msgid "Target"
 msgstr "Cél"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:354
+#: packages/admin/src/components/TaxonomyManager.tsx:355
 msgid "Target locale"
 msgstr "Célnyelv"
 
@@ -8987,15 +9154,15 @@ msgstr "Taxonómiák"
 msgid "Taxonomies Manage"
 msgstr "Taxonómiák kezelése"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1124
+#: packages/admin/src/components/TaxonomyManager.tsx:1144
 msgid "Taxonomy created"
 msgstr "Taxonómia létrehozva"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:1014
+#: packages/admin/src/components/TaxonomyManager.tsx:1034
 msgid "Taxonomy not found:"
 msgstr "Taxonómia nem található:"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:341
+#: packages/admin/src/components/TaxonomyManager.tsx:342
 msgid "Taxonomy: {taxonomyName}"
 msgstr "Taxonómia: {taxonomyName}"
 
@@ -9003,23 +9170,23 @@ msgstr "Taxonómia: {taxonomyName}"
 msgid "Template:"
 msgstr "Sablon:"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:539
-#: packages/admin/src/components/TaxonomyManager.tsx:540
-#: packages/admin/src/components/TaxonomyManager.tsx:1041
+#: packages/admin/src/components/TaxonomyManager.tsx:548
+#: packages/admin/src/components/TaxonomyManager.tsx:549
+#: packages/admin/src/components/TaxonomyManager.tsx:1061
 msgid "Term"
 msgstr "Kifejezés"
 
 #. placeholder {0}: term.label
 #. placeholder {1}: term.locale.toUpperCase()
-#: packages/admin/src/components/TaxonomyManager.tsx:988
+#: packages/admin/src/components/TaxonomyManager.tsx:1008
 msgid "Term \"{0}\" created in {1}."
 msgstr "\"{0}\" kifejezés létrehozva itt: {1}."
 
-#: packages/admin/src/components/TaxonomyManager.tsx:928
+#: packages/admin/src/components/TaxonomyManager.tsx:948
 msgid "Term deleted"
 msgstr "Kifejezés törölve"
 
-#: packages/admin/src/routes/shop.tsx:900
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:296
 msgid "Test mode"
 msgstr ""
 
@@ -9076,7 +9243,7 @@ msgstr "A menü törölve lett."
 msgid "The name of your site, used in the header and metadata"
 msgstr "A weboldal neve, amely a fejlécben és a metaadatokban jelenik meg"
 
-#: packages/admin/src/router.tsx:2303
+#: packages/admin/src/router.tsx:2373
 msgid "The page you're looking for doesn't exist."
 msgstr "A keresett oldal nem létezik."
 
@@ -9096,7 +9263,7 @@ msgstr "A hivatkozott kép már nem érhető el. Válassz újat, vagy távolíts
 msgid "The referenced logo is no longer available. Pick a new one or remove the reference."
 msgstr "A hivatkozott logó már nem érhető el. Válassz újat, vagy távolítsd el a hivatkozást."
 
-#: packages/admin/src/routes/shop.tsx:706
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:99
 msgid "The store name, order number, products, and total are added automatically."
 msgstr ""
 
@@ -9158,7 +9325,7 @@ msgstr ""
 msgid "This field does not accept {sniffedMime} files."
 msgstr "Ez a mező nem fogad {sniffedMime} fájlokat."
 
-#: packages/admin/src/components/ContentEditor.tsx:1885
+#: packages/admin/src/components/ContentEditor.tsx:1905
 #: packages/admin/src/components/ImageFieldRenderer.tsx:276
 msgid "This field is required"
 msgstr "Ez a mező kötelező"
@@ -9255,7 +9422,7 @@ msgid "This will move the item to trash. You can restore it later from the trash
 msgstr "Ez az elemet a kukába helyezi. Később visszaállíthatod a kukából."
 
 #. placeholder {0}: deleteTarget?.label
-#: packages/admin/src/components/TaxonomyManager.tsx:1110
+#: packages/admin/src/components/TaxonomyManager.tsx:1130
 msgid "This will permanently delete \"{0}\" and remove it from all content."
 msgstr "Ez véglegesen törli ezt: \"{0}\", és eltávolítja minden tartalomból."
 
@@ -9280,7 +9447,7 @@ msgstr "Ez visszaállítja a publikált verziót. A vázlat módosításai elves
 msgid "Thoughts, tutorials, and more"
 msgstr "Gondolatok, útmutatók és egyebek"
 
-#: packages/admin/src/routes/shop.tsx:82
+#: packages/admin/src/features/shop/bookings/helpers.tsx:31
 msgid "Thursday"
 msgstr ""
 
@@ -9292,8 +9459,8 @@ msgstr "Időzóna"
 msgid "Timezone for displaying dates (e.g., America/New_York)"
 msgstr "Dátumok megjelenítéséhez használt időzóna (pl. Europe/Budapest)"
 
-#: packages/admin/src/components/ContentList.tsx:577
-#: packages/admin/src/components/ContentList.tsx:737
+#: packages/admin/src/components/ContentList.tsx:589
+#: packages/admin/src/components/ContentList.tsx:750
 #: packages/admin/src/components/Promotions.tsx:295
 #: packages/admin/src/components/SectionEditor.tsx:251
 #: packages/admin/src/components/Sections.tsx:170
@@ -9310,7 +9477,7 @@ msgstr "Cím (súgó)"
 msgid "Title Separator"
 msgstr "Címelválasztó"
 
-#: packages/admin/src/components/ContentList.tsx:933
+#: packages/admin/src/components/ContentList.tsx:946
 msgid "to"
 msgstr "-"
 
@@ -9318,7 +9485,7 @@ msgstr "-"
 msgid "to close"
 msgstr "bezár"
 
-#: packages/admin/src/components/ContentList.tsx:937
+#: packages/admin/src/components/ContentList.tsx:950
 msgid "To date"
 msgstr "Záró dátum"
 
@@ -9356,13 +9523,13 @@ msgstr "TOML"
 msgid "Tools → Export"
 msgstr "Eszközök → Exportálás"
 
-#: packages/admin/src/routes/shop.tsx:972
-#: packages/admin/src/routes/shop.tsx:1333
-#: packages/admin/src/routes/shop.tsx:1735
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:85
+#: packages/admin/src/features/shop/orders/OrdersPanel.tsx:73
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:368
 msgid "Total"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1601
+#: packages/admin/src/features/shop/customers/CustomerDetail.tsx:80
 msgid "Total spent"
 msgstr ""
 
@@ -9370,11 +9537,11 @@ msgstr ""
 msgid "Track content history"
 msgstr "Tartalomtörténet követése"
 
-#: packages/admin/src/routes/shop.tsx:1836
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:186
 msgid "Tracking code (optional)"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1842
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:192
 msgid "Tracking URL (optional)"
 msgstr ""
 
@@ -9383,31 +9550,31 @@ msgstr ""
 msgid "Translatable"
 msgstr "Fordítható"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:266
-#: packages/admin/src/components/TaxonomyManager.tsx:376
+#: packages/admin/src/components/TaxonomyManager.tsx:267
+#: packages/admin/src/components/TaxonomyManager.tsx:377
 #: packages/admin/src/components/TranslationsPanel.tsx:104
 msgid "Translate"
 msgstr "Fordítás"
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:338
+#: packages/admin/src/components/TaxonomyManager.tsx:339
 msgid "Translate \"{0}\""
 msgstr "\"{0}\" fordítása"
 
 #. placeholder {0}: term.label
-#: packages/admin/src/components/TaxonomyManager.tsx:263
+#: packages/admin/src/components/TaxonomyManager.tsx:264
 msgid "Translate {0}"
 msgstr "{0} fordítása"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:376
+#: packages/admin/src/components/TaxonomyManager.tsx:377
 #: packages/admin/src/components/TranslationsPanel.tsx:104
 msgid "Translating..."
 msgstr "Fordítás..."
 
 #: packages/admin/src/components/MenuEditor.tsx:143
-#: packages/admin/src/components/TaxonomyManager.tsx:987
+#: packages/admin/src/components/TaxonomyManager.tsx:1007
 #: packages/admin/src/components/TaxonomySidebar.tsx:471
-#: packages/admin/src/router.tsx:1199
+#: packages/admin/src/router.tsx:1223
 msgid "Translation created"
 msgstr "Fordítás létrehozva"
 
@@ -9424,11 +9591,11 @@ msgstr "kuka"
 #: packages/admin/src/components/comments/CommentInbox.tsx:217
 #: packages/admin/src/components/comments/CommentInbox.tsx:258
 #: packages/admin/src/components/comments/CommentInbox.tsx:514
-#: packages/admin/src/components/ContentList.tsx:441
+#: packages/admin/src/components/ContentList.tsx:453
 msgid "Trash"
 msgstr "Kuka"
 
-#: packages/admin/src/components/ContentList.tsx:760
+#: packages/admin/src/components/ContentList.tsx:773
 msgid "Trash is empty"
 msgstr "A kuka üres"
 
@@ -9491,7 +9658,7 @@ msgstr "Kipróbálás saját adatokkal"
 msgid "TSX"
 msgstr "TSX"
 
-#: packages/admin/src/routes/shop.tsx:80
+#: packages/admin/src/features/shop/bookings/helpers.tsx:29
 msgid "Tuesday"
 msgstr ""
 
@@ -9506,8 +9673,8 @@ msgstr "Twitter"
 #: packages/admin/src/components/BylineFieldEditor.tsx:260
 #: packages/admin/src/components/FieldEditor.tsx:600
 #: packages/admin/src/components/MediaLibrary.tsx:608
+#: packages/admin/src/features/shop/bookings/BookingSchedulePanel.tsx:131
 #: packages/admin/src/routes/byline-schema.tsx:240
-#: packages/admin/src/routes/shop.tsx:195
 msgid "Type"
 msgstr "Típus"
 
@@ -9575,8 +9742,8 @@ msgstr "Ismeretlen"
 msgid "Unknown role"
 msgstr "Ismeretlen szerepkör"
 
-#: packages/admin/src/routes/shop.tsx:520
-#: packages/admin/src/routes/shop.tsx:606
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:148
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:234
 msgid "Unlimited"
 msgstr ""
 
@@ -9596,7 +9763,7 @@ msgstr "Névtelen passkey"
 msgid "Unpublish {itemLabel}"
 msgstr ""
 
-#: packages/admin/src/router.tsx:1107
+#: packages/admin/src/router.tsx:1131
 msgid "Unpublished"
 msgstr "Nincs publikálva"
 
@@ -9612,7 +9779,7 @@ msgstr ""
 msgid "Unschedule"
 msgstr "Ütemezés törlése"
 
-#: packages/admin/src/router.tsx:1168
+#: packages/admin/src/router.tsx:1192
 msgid "Unscheduled"
 msgstr "Nincs ütemezve"
 
@@ -9630,7 +9797,7 @@ msgstr ""
 msgid "Untitled"
 msgstr "Cím nélküli"
 
-#: packages/admin/src/components/ContentEditor.tsx:1788
+#: packages/admin/src/components/ContentEditor.tsx:1808
 msgid "Untitled file"
 msgstr "Cím nélküli fájl"
 
@@ -9651,11 +9818,11 @@ msgstr "Fel"
 msgid "Up to {MAX_SELECTED} bylines can be selected"
 msgstr ""
 
-#: packages/admin/src/components/TaxonomyManager.tsx:662
+#: packages/admin/src/components/TaxonomyManager.tsx:682
 msgid "Update"
 msgstr "Frissítés"
 
-#: packages/admin/src/routes/shop.tsx:1781
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:131
 msgid "Update delivery status"
 msgstr ""
 
@@ -9667,7 +9834,7 @@ msgstr "Mező frissítése"
 msgid "Update publish date"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:338
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:90
 msgid "Update reservation status"
 msgstr ""
 
@@ -9681,7 +9848,7 @@ msgid "Update site settings"
 msgstr "Weboldalbeállítások frissítése"
 
 #. placeholder {0}: taxonomyDef.labelSingular?.toLowerCase() || "term"
-#: packages/admin/src/components/TaxonomyManager.tsx:544
+#: packages/admin/src/components/TaxonomyManager.tsx:553
 msgid "Update the {0} details"
 msgstr "{0} adatainak frissítése"
 
@@ -9694,7 +9861,7 @@ msgstr "Átirányítási szabály frissítése."
 msgid "Update to v{0}"
 msgstr "Frissítés erre: v{0}"
 
-#: packages/admin/src/components/ContentList.tsx:842
+#: packages/admin/src/components/ContentList.tsx:855
 #: packages/admin/src/components/ContentSettingsPanel.tsx:638
 #: packages/admin/src/components/RegistryPluginDetail.tsx:501
 msgid "Updated"
@@ -9837,7 +10004,7 @@ msgstr "URL-barát azonosító (pl. \"primary\", \"footer\")"
 msgid "URL:"
 msgstr "URL:"
 
-#: packages/admin/src/routes/shop.tsx:601
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:229
 msgid "Usage limit"
 msgstr ""
 
@@ -9849,8 +10016,12 @@ msgstr "Használj [param] vagy [...rest] mintát az útvonalakban a mintailleszt
 msgid "Use optimized image"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:701
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:93
 msgid "Use the country code without spaces or symbols."
+msgstr ""
+
+#: packages/admin/src/features/shop/overview/ShopOverviewPage.tsx:90
+msgid "Use the public store to verify the cart, checkout, WhatsApp order flow, coupons, and order tracking."
 msgstr ""
 
 #: packages/admin/src/components/auth/PasskeyLogin.tsx:364
@@ -9865,11 +10036,11 @@ msgstr "Használd a regisztrált passkeyedet a biztonságos bejelentkezéshez."
 msgid "Used as the fallback Open Graph image when a page has none. Recommended size: 1200×630."
 msgstr "Tartalék Open Graph képként használatos, ha az oldalhoz nincs kép megadva. Ajánlott méret: 1200×630."
 
-#: packages/admin/src/components/TaxonomyManager.tsx:828
+#: packages/admin/src/components/TaxonomyManager.tsx:848
 msgid "Used as the identifier. Lowercase letters, numbers, and underscores only."
 msgstr "Azonosítóként használatos. Csak kisbetűk, számok és aláhúzások."
 
-#: packages/admin/src/components/ContentEditor.tsx:1380
+#: packages/admin/src/components/ContentEditor.tsx:1400
 msgid "Used as the main visual for this post on listing pages and at the top of the post"
 msgstr "A bejegyzés fő vizuális elemeként használatos a listanézetekben és a bejegyzés tetején"
 
@@ -9920,7 +10091,7 @@ msgstr "Felhasználók innen:"
 msgid "Users with email addresses from these domains can sign up without an invite. They will be assigned the specified role automatically."
 msgstr "Az ezekhez a domainekhez tartozó e-mail címmel rendelkező felhasználók meghívó nélkül regisztrálhatnak. Automatikusan a megadott szerepkört kapják."
 
-#: packages/admin/src/routes/shop.tsx:502
+#: packages/admin/src/features/shop/coupons/CouponsPanel.tsx:130
 msgid "Uses"
 msgstr ""
 
@@ -9979,8 +10150,9 @@ msgstr "Verzió {0}"
 msgid "Video"
 msgstr "Videó"
 
-#: packages/admin/src/routes/shop.tsx:1544
-#: packages/admin/src/routes/shop.tsx:1659
+#: packages/admin/src/features/shop/bookings/ReservationsPanel.tsx:115
+#: packages/admin/src/features/shop/customers/CustomerRow.tsx:22
+#: packages/admin/src/features/shop/orders/OrderRow.tsx:25
 msgid "View details"
 msgstr ""
 
@@ -9997,9 +10169,17 @@ msgstr "Megtekintés a piactéren"
 msgid "View mode"
 msgstr "Nézetmód"
 
-#: packages/admin/src/components/ContentList.tsx:1216
+#: packages/admin/src/components/ContentList.tsx:419
+msgid "View products"
+msgstr ""
+
+#: packages/admin/src/components/ContentList.tsx:1231
 msgid "View published {title}"
 msgstr "Publikált {title} megtekintése"
+
+#: packages/admin/src/components/ContentList.tsx:419
+msgid "View services"
+msgstr ""
 
 #: packages/admin/src/components/Header.tsx:59
 msgid "View Site"
@@ -10064,19 +10244,19 @@ msgstr "Webcím"
 msgid "WebAuthn is not supported in this browser"
 msgstr "Ez a böngésző nem támogatja a WebAuthn-t"
 
-#: packages/admin/src/routes/shop.tsx:925
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:321
 msgid "Webhook secret"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:934
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:330
 msgid "Webhook secret from your provider"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:933
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:329
 msgid "Webhook secret saved; enter a new one to replace it"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:946
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:342
 msgid "Webhook URL"
 msgstr ""
 
@@ -10089,7 +10269,7 @@ msgstr "Weboldal"
 msgid "Website URL"
 msgstr "Weboldal URL"
 
-#: packages/admin/src/routes/shop.tsx:81
+#: packages/admin/src/features/shop/bookings/helpers.tsx:30
 msgid "Wednesday"
 msgstr ""
 
@@ -10109,15 +10289,15 @@ msgstr "Mi történik importáláskor:"
 msgid "What will happen when you import"
 msgstr "Mi fog történni importáláskor"
 
-#: packages/admin/src/routes/shop.tsx:1851
+#: packages/admin/src/features/shop/orders/OrderDetailPanel.tsx:201
 msgid "WhatsApp message"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:695
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:87
 msgid "WhatsApp number"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:705
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:97
 msgid "WhatsApp order message"
 msgstr ""
 
@@ -10133,7 +10313,7 @@ msgstr "A bejegyzés utolsó módosításának ideje"
 msgid "When the entry was published"
 msgstr "A bejegyzés publikálásának ideje"
 
-#: packages/admin/src/components/TaxonomyManager.tsx:842
+#: packages/admin/src/components/TaxonomyManager.tsx:862
 msgid "Which content types can use this taxonomy"
 msgstr "Mely tartalomtípusok használhatják ezt a taxonómiát"
 
@@ -10243,7 +10423,7 @@ msgstr ""
 msgid "WordPress Username"
 msgstr "WordPress felhasználónév"
 
-#: packages/admin/src/components/ContentList.tsx:473
+#: packages/admin/src/components/ContentList.tsx:485
 msgid "Working on {selectedCount} items…"
 msgstr ""
 
@@ -10271,7 +10451,7 @@ msgstr ""
 msgid "YAML"
 msgstr "YAML"
 
-#: packages/admin/src/routes/shop.tsx:981
+#: packages/admin/src/features/shop/settings/ShopSettingsPanel.tsx:377
 msgid "Yape"
 msgstr ""
 
@@ -10279,7 +10459,7 @@ msgstr ""
 msgid "Yearly"
 msgstr ""
 
-#: packages/admin/src/components/ContentList.tsx:1291
+#: packages/admin/src/components/ContentList.tsx:1306
 #: packages/admin/src/components/users/UserDetail.tsx:236
 #: packages/admin/src/routes/byline-schema.tsx:420
 #: packages/admin/src/routes/byline-schema.tsx:422
@@ -10322,7 +10502,7 @@ msgstr "Teljes hozzáférésed van a weboldal kezeléséhez, beleértve a felhas
 msgid "You need admin permissions to manage byline schema."
 msgstr "A szerzői sor sémájának kezeléséhez admin jogosultság szükséges."
 
-#: packages/admin/src/router.tsx:1572
+#: packages/admin/src/router.tsx:1600
 msgid "You need Editor permissions to moderate comments."
 msgstr "A hozzászólások moderálásához szerkesztői jogosultság szükséges."
 
@@ -10447,11 +10627,11 @@ msgstr "YouTube csatorna ID vagy felhasználónév"
 msgid "YouTube"
 msgstr "YouTube"
 
-#: packages/admin/src/routes/shop.tsx:1110
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:157
 msgid "Zone"
 msgstr ""
 
-#: packages/admin/src/routes/shop.tsx:1161
+#: packages/admin/src/features/shop/delivery/DeliveryZonesPanel.tsx:210
 msgid "Zone name"
 msgstr ""
 

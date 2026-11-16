@@ -1,5 +1,16 @@
 # emdash
 
+## 0.38.1
+
+### Patch Changes
+
+- Protects public order tracking with per-order credentials, deduplicates checkout retries, and sends order confirmation email through the active template.
+
+- Updated dependencies []:
+  - @emdash-cms/admin@0.38.1
+  - @emdash-cms/auth@0.38.1
+  - @emdash-cms/gutenberg-to-portable-text@0.38.1
+
 ## 0.38.0
 
 ### Minor Changes
@@ -10,14 +21,21 @@
 
 ### Patch Changes
 
-- [`d65ae1d`](https://github.com/jke-solutions/emdash/commit/d65ae1d802932021d776cd6a51063162690dc470) Thanks [@jonico22](https://github.com/jonico22)! - Protects public order tracking with per-order credentials, deduplicates checkout retries, and sends order confirmation email through the active template.
-
-- [#53](https://github.com/jke-solutions/emdash/pull/53) [`997fbe5`](https://github.com/jke-solutions/emdash/commit/997fbe59338ab9fb930fbffb75f413ad18df4b44) Thanks [@jonico22](https://github.com/jonico22)! - Adds optional images and home visibility to taxonomy terms, so product, service, and post categories can be presented with their own metadata without creating duplicate content types.
-
-- Updated dependencies [[`c739487`](https://github.com/jke-solutions/emdash/commit/c739487706d7c0d7b2b0e71111c8cb2073bfa794), [`997fbe5`](https://github.com/jke-solutions/emdash/commit/997fbe59338ab9fb930fbffb75f413ad18df4b44)]:
+- Updated dependencies [[`c739487`](https://github.com/jke-solutions/emdash/commit/c739487706d7c0d7b2b0e71111c8cb2073bfa794)]:
   - @emdash-cms/admin@0.38.0
   - @emdash-cms/auth@0.38.0
   - @emdash-cms/gutenberg-to-portable-text@0.38.0
+
+## 0.37.2
+
+### Patch Changes
+
+- [#53](https://github.com/jke-solutions/emdash/pull/53) [`997fbe5`](https://github.com/jke-solutions/emdash/commit/997fbe59338ab9fb930fbffb75f413ad18df4b44) Thanks [@jonico22](https://github.com/jonico22)! - Adds optional images and home visibility to taxonomy terms, so product, service, and post categories can be presented with their own metadata without creating duplicate content types.
+
+- Updated dependencies [[`997fbe5`](https://github.com/jke-solutions/emdash/commit/997fbe59338ab9fb930fbffb75f413ad18df4b44)]:
+  - @emdash-cms/admin@0.37.2
+  - @emdash-cms/auth@0.37.2
+  - @emdash-cms/gutenberg-to-portable-text@0.37.2
 
 ## 0.37.1
 
