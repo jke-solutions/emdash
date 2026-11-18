@@ -7,12 +7,7 @@ import { defineConfig, fontProviders } from "astro/config";
 import emdash, { local } from "emdash/astro";
 import { sqlite } from "emdash/db";
 
-const entitiesDecode = fileURLToPath(
-	new URL(
-		"../../node_modules/.pnpm/entities@6.0.1/node_modules/entities/dist/esm/decode.js",
-		import.meta.url,
-	),
-);
+const entitiesDecode = fileURLToPath(import.meta.resolve("entities/decode"));
 
 export default defineConfig({
 	output: "server",
