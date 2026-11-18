@@ -7,12 +7,7 @@ import { emailTemplatesPlugin, resendEmail } from "@emdash-cms/plugin-email-temp
 import { defineConfig, fontProviders } from "astro/config";
 import emdash from "emdash/astro";
 
-const entitiesDecode = fileURLToPath(
-	new URL(
-		"../../node_modules/.pnpm/entities@6.0.1/node_modules/entities/dist/esm/decode.js",
-		import.meta.url,
-	),
-);
+const entitiesDecode = fileURLToPath(import.meta.resolve("entities/decode"));
 
 export default defineConfig({
 	output: "server",
