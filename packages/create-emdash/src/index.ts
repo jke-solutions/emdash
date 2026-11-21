@@ -20,6 +20,7 @@ import * as p from "@clack/prompts";
 import { downloadTemplate } from "giget";
 import pc from "picocolors";
 
+import { scaffoldEcommerce } from "./ecommerce.js";
 import {
 	FlagError,
 	HELP_TEXT,
@@ -63,6 +64,11 @@ const NODE_TEMPLATES = {
 		description: "A portfolio site with projects and case studies",
 		dir: "portfolio",
 	},
+	ecommerce: {
+		name: "Ecommerce",
+		description: "A storefront with products, services, and checkout",
+		dir: "ecommerce",
+	},
 } as const satisfies Record<TemplateKey, TemplateConfig>;
 
 const CLOUDFLARE_TEMPLATES = {
@@ -85,6 +91,11 @@ const CLOUDFLARE_TEMPLATES = {
 		name: "Portfolio",
 		description: "A portfolio site with projects and case studies",
 		dir: "portfolio-cloudflare",
+	},
+	ecommerce: {
+		name: "Ecommerce",
+		description: "A storefront with products, services, and checkout",
+		dir: "ecommerce-cloudflare",
 	},
 } as const satisfies Record<TemplateKey, TemplateConfig>;
 
@@ -336,7 +347,11 @@ async function main() {
 	const platform = await resolvePlatform(flags);
 	const templateKey = await resolveTemplate(flags, platform);
 	const templateConfig = getTemplateConfig(platform, templateKey);
-	const pm = await resolvePackageManager(flags);
+	if (templateKey === "ecommerce" && flags.packageManager && flags.packageManager !== "npm") {
+		p.cancel("The Ecommerce template uses npm workspaces. Pass --pm npm.");
+		process.exit(1);
+	}
+	const pm = templateKey === "ecommerce" ? "npm" : await resolvePackageManager(flags);
 	const shouldInstall = await resolveShouldInstall(flags);
 
 	const installCmd = `${pm} install`;
@@ -346,10 +361,25 @@ async function main() {
 	s.start("Creating project...");
 
 	try {
-		await downloadTemplate(`github:${GITHUB_REPO}/${templateConfig.dir}`, {
-			dir: projectDir,
-			force: true,
-		});
+		if (templateKey === "ecommerce") {
+			scaffoldEcommerce(templateConfig.dir, projectDir);
+			for (const entry of [
+				"node_modules/",
+				"/dist/",
+				"/.astro/",
+				"/.emdash/",
+				"/data.db*",
+				"/uploads/",
+				"/.wrangler/",
+			]) {
+				ensureGitignored(projectDir, entry);
+			}
+		} else {
+			await downloadTemplate(`github:${GITHUB_REPO}/${templateConfig.dir}`, {
+				dir: projectDir,
+				force: true,
+			});
+		}
 
 		// Set project name in package.json
 		const pkgPath = resolve(projectDir, "package.json");
@@ -414,8 +444,9 @@ async function main() {
 			try {
 				await execAsync(installCmd, { cwd: projectDir });
 				s.stop("Dependencies installed!");
-			} catch {
+			} catch (error) {
 				s.stop("Failed to install dependencies");
+				if (templateKey === "ecommerce") throw error;
 				p.log.warn(
 					isCurrentDir
 						? `Run ${pc.cyan(installCmd)} manually`

@@ -90,6 +90,18 @@ pnpm dev
 
 Open http://localhost:4321 to see your site, and http://localhost:4321/\_emdash/admin for the CMS.
 
+### Generate a standalone Ecommerce project
+
+Use Node.js 24 and run `pnpm build` from the root of this fork. Then change to the directory where you want to create the new project and invoke the compiled generator:
+
+```bash
+node /path/to/emdash/packages/create-emdash/dist/index.mjs my-shop --template node:ecommerce --yes
+cd my-shop
+npm run dev
+```
+
+Use `cloudflare:ecommerce` for the Cloudflare variant. The generated project uses npm and includes the fork packages under `vendor/`. Keep that directory in your new repository so the project can be installed without the original checkout.
+
 ### Template Structure
 
 ```
