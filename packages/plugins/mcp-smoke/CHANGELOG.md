@@ -1,5 +1,12 @@
 # @emdash-cms/plugin-mcp-smoke
 
+## 10.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - emdash@0.39.0
+
 ## 9.0.1
 
 ### Patch Changes

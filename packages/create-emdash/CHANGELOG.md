@@ -1,5 +1,11 @@
 # create-emdash
 
+## 0.39.0
+
+### Minor Changes
+
+- [#64](https://github.com/jke-solutions/emdash/pull/64) [`93f7fe4`](https://github.com/jke-solutions/emdash/commit/93f7fe46f84ac6ec22da2434fe1c216afc7dec94) Thanks [@jonico22](https://github.com/jonico22)! - Adds an Ecommerce template for Node and Cloudflare that creates a standalone project from a built checkout of the fork.
+
 ## 0.38.1
 
 ## 0.38.0
