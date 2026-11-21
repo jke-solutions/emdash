@@ -1,5 +1,14 @@
 # emdash
 
+## 0.39.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @emdash-cms/admin@0.39.0
+  - @emdash-cms/auth@0.39.0
+  - @emdash-cms/gutenberg-to-portable-text@0.39.0
+
 ## 0.38.1
 
 ### Patch Changes
